@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_get_infrastructure_configuration}
 \alias{imagebuilder_get_infrastructure_configuration}
-\title{Gets an infrastructure configuration}
+\title{Retrieves an infrastructure configuration}
 \usage{
 imagebuilder_get_infrastructure_configuration(infrastructureConfigurationArn)
 }
@@ -10,7 +10,7 @@ imagebuilder_get_infrastructure_configuration(infrastructureConfigurationArn)
 \item{infrastructureConfigurationArn}{[required] The Amazon Resource Name (ARN) of the infrastructure configuration that you want to retrieve.}
 }
 \description{
-Gets an infrastructure configuration.
+Retrieves an infrastructure configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_infrastructure_configuration/} for full documentation.
 }

@@ -19,7 +19,8 @@ ec2_create_flow_logs(
   LogFormat = NULL,
   TagSpecifications = NULL,
   MaxAggregationInterval = NULL,
-  DestinationOptions = NULL
+  DestinationOptions = NULL,
+  TagFieldSpecifications = NULL
 )
 }
 \arguments{
@@ -39,7 +40,7 @@ This parameter is valid only if the destination type is \code{cloud-watch-logs}.
 
 \item{ResourceIds}{[required] The IDs of the resources to monitor. For example, if the resource type is \code{VPC}, specify the IDs of the VPCs.
 
-Constraints: Maximum of 25 for transit gateway resource types. Maximum of 1000 for the other resource types.}
+Constraints: Maximum of 25 for transit gateway resource types. Maximum of 300 for the other resource types.}
 
 \item{ResourceType}{[required] The type of resource to monitor.}
 
@@ -79,6 +80,8 @@ When a network interface is attached to a \href{https://docs.aws.amazon.com/ec2/
 Default: 600}
 
 \item{DestinationOptions}{The destination options.}
+
+\item{TagFieldSpecifications}{The tag configuration associated with the Flow Logs Amazon EC2 Tags feature fields in your custom log format.}
 }
 \description{
 Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC.

@@ -62,7 +62,7 @@ connectparticipant_cancel_participant_authentication <- function(SessionId, Conn
 #' @description
 #' Allows you to confirm that the attachment has been uploaded using the pre-signed URL provided in StartAttachmentUpload API. A conflict exception is thrown when an attachment with that identifier is already being uploaded.
 #' 
-#' For security recommendations, see [Amazon Connect Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
+#' For security recommendations, see [Connect Customer Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #' 
 #' `ConnectionToken` is used for invoking this API instead of `ParticipantToken`.
 #' 
@@ -119,9 +119,9 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 #' @description
 #' Creates the participant's connection.
 #' 
-#' For security recommendations, see [Amazon Connect Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
+#' For security recommendations, see [Connect Customer Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #' 
-#' For WebRTC security recommendations, see [Amazon Connect WebRTC security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-webrtc-security).
+#' For WebRTC security recommendations, see [Connect Customer WebRTC security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-webrtc-security).
 #' 
 #' `ParticipantToken` is used for invoking this API instead of `ConnectionToken`.
 #' 
@@ -240,7 +240,7 @@ connectparticipant_create_participant_connection <- function(Type = NULL, Partic
 #' @description
 #' Retrieves the view for the specified view token.
 #' 
-#' For security recommendations, see [Amazon Connect Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
+#' For security recommendations, see [Connect Customer Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #'
 #' @usage
 #' connectparticipant_describe_view(ViewToken, ConnectionToken)
@@ -305,7 +305,7 @@ connectparticipant_describe_view <- function(ViewToken, ConnectionToken) {
 #' @description
 #' Disconnects a participant.
 #' 
-#' For security recommendations, see [Amazon Connect Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
+#' For security recommendations, see [Connect Customer Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #' 
 #' `ConnectionToken` is used for invoking this API instead of `ParticipantToken`.
 #' 
@@ -357,7 +357,7 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
 #' @description
 #' Provides a pre-signed URL for download of a completed attachment. This is an asynchronous API for use with active contacts.
 #' 
-#' For security recommendations, see [Amazon Connect Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
+#' For security recommendations, see [Connect Customer Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #' 
 #' -   The participant role `CUSTOM_BOT` is not permitted to access attachments customers may upload. An `AccessDeniedException` can indicate that the participant may be a CUSTOM_BOT, and it doesn't have access to attachments.
 #' 
@@ -422,7 +422,7 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken, Url
 #' @description
 #' Retrieves the AuthenticationUrl for the current authentication session for the AuthenticateCustomer flow block.
 #' 
-#' For security recommendations, see [Amazon Connect Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
+#' For security recommendations, see [Connect Customer Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #' 
 #' -   This API can only be called within one minute of receiving the authenticationInitiated event.
 #' 
@@ -487,7 +487,7 @@ connectparticipant_get_authentication_url <- function(SessionId, RedirectUri, Co
 #' @description
 #' Retrieves a transcript of the session, including details about any attachments. For information about accessing past chat contact transcripts for a persistent chat, see [Enable persistent chat](https://docs.aws.amazon.com/connect/latest/adminguide/chat-persistence.html).
 #' 
-#' For security recommendations, see [Amazon Connect Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
+#' For security recommendations, see [Connect Customer Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #' 
 #' If you have a process that consumes events in the transcript of an chat that has ended, note that chat transcripts contain the following event content types if the event has occurred during the chat session:
 #' 
@@ -609,7 +609,7 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #' 
 #' Sends an event. Message receipts are not supported when there are more than two active participants in the chat. Using the SendEvent API for message receipts when a supervisor is barged-in will result in a conflict exception.
 #' 
-#' For security recommendations, see [Amazon Connect Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
+#' For security recommendations, see [Connect Customer Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #' 
 #' `ConnectionToken` is used for invoking this API instead of `ParticipantToken`.
 #' 
@@ -682,7 +682,7 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
 #' @description
 #' Sends a message.
 #' 
-#' For security recommendations, see [Amazon Connect Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
+#' For security recommendations, see [Connect Customer Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #' 
 #' `ConnectionToken` is used for invoking this API instead of `ParticipantToken`.
 #' 
@@ -759,7 +759,7 @@ connectparticipant_send_message <- function(ContentType, Content, ClientToken = 
 #' @description
 #' Provides a pre-signed Amazon S3 URL in response for uploading the file directly to S3.
 #' 
-#' For security recommendations, see [Amazon Connect Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
+#' For security recommendations, see [Connect Customer Chat security best practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #' 
 #' `ConnectionToken` is used for invoking this API instead of `ParticipantToken`.
 #' 

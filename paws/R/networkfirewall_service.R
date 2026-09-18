@@ -19,7 +19,7 @@ NULL
 #' 
 #' For descriptions of Network Firewall features, including and step-by-step instructions on how to use them through the Network Firewall console, see the [Network Firewall Developer Guide](https://docs.aws.amazon.com/network-firewall/latest/developerguide/).
 #' 
-#' Network Firewall is a stateful, managed, network firewall and intrusion detection and prevention service for Amazon Virtual Private Cloud (Amazon VPC). With Network Firewall, you can filter traffic at the perimeter of your VPC. This includes filtering traffic going to and coming from an internet gateway, NAT gateway, or over VPN or Direct Connect. Network Firewall uses rules that are compatible with Suricata, a free, open source network analysis and threat detection engine. Network Firewall supports Suricata version 7.0.3. For information about Suricata, see the [Suricata website](https://suricata.io/) and the [Suricata User Guide](https://docs.suricata.io/en/suricata-7.0.3/).
+#' Network Firewall is a stateful, managed, network firewall and intrusion detection and prevention service for Amazon Virtual Private Cloud (Amazon VPC). With Network Firewall, you can filter traffic at the perimeter of your VPC. This includes filtering traffic going to and coming from an internet gateway, NAT gateway, or over VPN or Direct Connect. Network Firewall uses rules that are compatible with Suricata, a free, open source network analysis and threat detection engine. Network Firewall supports Suricata version 7.0.8. For information about Suricata, see the [Suricata website](https://suricata.io/) and the [Suricata User Guide](https://docs.suricata.io/en/suricata-7.0.8/).
 #' 
 #' You can use Network Firewall to monitor and protect your VPC traffic in a number of ways. The following are just a few examples:
 #' 
@@ -139,6 +139,7 @@ NULL
 #'  \link[=networkfirewall_associate_firewall_policy]{associate_firewall_policy} \tab Associates a FirewallPolicy to a Firewall\cr
 #'  \link[=networkfirewall_associate_subnets]{associate_subnets} \tab Associates the specified subnets in the Amazon VPC to the firewall\cr
 #'  \link[=networkfirewall_attach_rule_groups_to_proxy_configuration]{attach_rule_groups_to_proxy_configuration} \tab Attaches ProxyRuleGroup resources to a ProxyConfiguration\cr
+#'  \link[=networkfirewall_create_container_association]{create_container_association} \tab Creates a Network Firewall container association\cr
 #'  \link[=networkfirewall_create_firewall]{create_firewall} \tab Creates an Network Firewall Firewall and accompanying FirewallStatus for a VPC\cr
 #'  \link[=networkfirewall_create_firewall_policy]{create_firewall_policy} \tab Creates the firewall policy for the firewall according to the specifications\cr
 #'  \link[=networkfirewall_create_proxy]{create_proxy} \tab Creates an Network Firewall Proxy\cr
@@ -148,6 +149,7 @@ NULL
 #'  \link[=networkfirewall_create_rule_group]{create_rule_group} \tab Creates the specified stateless or stateful rule group, which includes the rules for network traffic inspection, a capacity setting, and tags\cr
 #'  \link[=networkfirewall_create_tls_inspection_configuration]{create_tls_inspection_configuration} \tab Creates an Network Firewall TLS inspection configuration\cr
 #'  \link[=networkfirewall_create_vpc_endpoint_association]{create_vpc_endpoint_association} \tab Creates a firewall endpoint for an Network Firewall firewall\cr
+#'  \link[=networkfirewall_delete_container_association]{delete_container_association} \tab Deletes a container association\cr
 #'  \link[=networkfirewall_delete_firewall]{delete_firewall} \tab Deletes the specified Firewall and its FirewallStatus\cr
 #'  \link[=networkfirewall_delete_firewall_policy]{delete_firewall_policy} \tab Deletes the specified FirewallPolicy\cr
 #'  \link[=networkfirewall_delete_network_firewall_transit_gateway_attachment]{delete_network_firewall_transit_gateway_attachment} \tab Deletes a transit gateway attachment from a Network Firewall\cr
@@ -159,6 +161,7 @@ NULL
 #'  \link[=networkfirewall_delete_rule_group]{delete_rule_group} \tab Deletes the specified RuleGroup\cr
 #'  \link[=networkfirewall_delete_tls_inspection_configuration]{delete_tls_inspection_configuration} \tab Deletes the specified TLSInspectionConfiguration\cr
 #'  \link[=networkfirewall_delete_vpc_endpoint_association]{delete_vpc_endpoint_association} \tab Deletes the specified VpcEndpointAssociation\cr
+#'  \link[=networkfirewall_describe_container_association]{describe_container_association} \tab Retrieves the configuration and status of a container association\cr
 #'  \link[=networkfirewall_describe_firewall]{describe_firewall} \tab Returns the data objects for the specified firewall\cr
 #'  \link[=networkfirewall_describe_firewall_metadata]{describe_firewall_metadata} \tab Returns the high-level information about a firewall, including the Availability Zones where the Firewall is currently in use\cr
 #'  \link[=networkfirewall_describe_firewall_policy]{describe_firewall_policy} \tab Returns the data objects for the specified firewall policy\cr
@@ -179,6 +182,7 @@ NULL
 #'  \link[=networkfirewall_disassociate_subnets]{disassociate_subnets} \tab Removes the specified subnet associations from the firewall\cr
 #'  \link[=networkfirewall_get_analysis_report_results]{get_analysis_report_results} \tab The results of a COMPLETED analysis report generated with StartAnalysisReport\cr
 #'  \link[=networkfirewall_list_analysis_reports]{list_analysis_reports} \tab Returns a list of all traffic analysis reports generated within the last 30 days\cr
+#'  \link[=networkfirewall_list_container_associations]{list_container_associations} \tab Lists the container associations in your account and Region\cr
 #'  \link[=networkfirewall_list_firewall_policies]{list_firewall_policies} \tab Retrieves the metadata for the firewall policies that you have defined\cr
 #'  \link[=networkfirewall_list_firewalls]{list_firewalls} \tab Retrieves the metadata for the firewalls that you have defined\cr
 #'  \link[=networkfirewall_list_flow_operation_results]{list_flow_operation_results} \tab Returns the results of a specific flow operation\cr
@@ -198,6 +202,7 @@ NULL
 #'  \link[=networkfirewall_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 #'  \link[=networkfirewall_untag_resource]{untag_resource} \tab Removes the tags with the specified keys from the specified resource\cr
 #'  \link[=networkfirewall_update_availability_zone_change_protection]{update_availability_zone_change_protection} \tab Modifies the AvailabilityZoneChangeProtection setting for a transit gateway-attached firewall\cr
+#'  \link[=networkfirewall_update_container_association]{update_container_association} \tab Updates the monitoring configurations and description of a container association\cr
 #'  \link[=networkfirewall_update_firewall_analysis_settings]{update_firewall_analysis_settings} \tab Enables specific types of firewall analysis on a specific firewall you define\cr
 #'  \link[=networkfirewall_update_firewall_delete_protection]{update_firewall_delete_protection} \tab Modifies the flag, DeleteProtection, which indicates whether it is possible to delete the firewall\cr
 #'  \link[=networkfirewall_update_firewall_description]{update_firewall_description} \tab Modifies the description for the specified firewall\cr
@@ -210,6 +215,7 @@ NULL
 #'  \link[=networkfirewall_update_proxy_rule]{update_proxy_rule} \tab Updates the properties of the specified proxy rule\cr
 #'  \link[=networkfirewall_update_proxy_rule_group_priorities]{update_proxy_rule_group_priorities} \tab Updates proxy rule group priorities within a proxy configuration\cr
 #'  \link[=networkfirewall_update_proxy_rule_priorities]{update_proxy_rule_priorities} \tab Updates proxy rule priorities within a proxy rule group\cr
+#'  \link[=networkfirewall_update_proxy_settings]{update_proxy_settings} \tab Modifies the proxy listener configuration of a proxy mode firewall\cr
 #'  \link[=networkfirewall_update_rule_group]{update_rule_group} \tab Updates the rule settings for the specified rule group\cr
 #'  \link[=networkfirewall_update_subnet_change_protection]{update_subnet_change_protection} \tab Update subnet change protection\cr
 #'  \link[=networkfirewall_update_tls_inspection_configuration]{update_tls_inspection_configuration} \tab Updates the TLS inspection configuration settings for the specified TLS inspection configuration

@@ -13,7 +13,8 @@ emrcontainers_create_managed_endpoint(
   certificateArn = NULL,
   configurationOverrides = NULL,
   clientToken,
-  tags = NULL
+  tags = NULL,
+  sessionIdleTimeoutInMinutes = NULL
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ emrcontainers_create_managed_endpoint(
 \item{clientToken}{[required] The client idempotency token for this create call.}
 
 \item{tags}{The tags of the managed endpoint.}
+
+\item{sessionIdleTimeoutInMinutes}{The number of idle minutes before the managed endpoint session times out.}
 }
 \description{
 Creates a managed endpoint. A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR Studio can communicate with your virtual cluster.

@@ -8,7 +8,7 @@ specified Amazon Web Services Region}
 securityhub_disable_security_hub_v2()
 }
 \description{
-Disable the service for the current Amazon Web Services Region or specified Amazon Web Services Region.
+Disable the service for the current Amazon Web Services Region or specified Amazon Web Services Region. Disabling the service also disables all opt-in features that are currently enabled in that Region.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_disable_security_hub_v2/} for full documentation.
 }

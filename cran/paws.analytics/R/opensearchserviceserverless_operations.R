@@ -215,12 +215,13 @@ opensearchserviceserverless_create_access_policy <- function(type, name, descrip
 #' @param vectorOptions Configuration options for vector search capabilities in the collection.
 #' @param collectionGroupName The name of the collection group to associate with the collection.
 #' @param encryptionConfig Encryption settings for the collection.
+#' @param deletionProtection Indicates whether to enable deletion protection for the collection. When set to `ENABLED`, the collection cannot be deleted.
 #' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_create_collection
-opensearchserviceserverless_create_collection <- function(name, type = NULL, description = NULL, tags = NULL, standbyReplicas = NULL, vectorOptions = NULL, collectionGroupName = NULL, encryptionConfig = NULL, clientToken = NULL) {
+opensearchserviceserverless_create_collection <- function(name, type = NULL, description = NULL, tags = NULL, standbyReplicas = NULL, vectorOptions = NULL, collectionGroupName = NULL, encryptionConfig = NULL, deletionProtection = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateCollection",
     http_method = "POST",
@@ -229,7 +230,7 @@ opensearchserviceserverless_create_collection <- function(name, type = NULL, des
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$create_collection_input(name = name, type = type, description = description, tags = tags, standbyReplicas = standbyReplicas, vectorOptions = vectorOptions, collectionGroupName = collectionGroupName, encryptionConfig = encryptionConfig, clientToken = clientToken)
+  input <- .opensearchserviceserverless$create_collection_input(name = name, type = type, description = description, tags = tags, standbyReplicas = standbyReplicas, vectorOptions = vectorOptions, collectionGroupName = collectionGroupName, encryptionConfig = encryptionConfig, deletionProtection = deletionProtection, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_collection_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -251,12 +252,13 @@ opensearchserviceserverless_create_collection <- function(name, type = NULL, des
 #' @param description A description of the collection group.
 #' @param tags An arbitrary set of tags (key–value pairs) to associate with the OpenSearch Serverless collection group.
 #' @param capacityLimits The capacity limits for the collection group, in OpenSearch Compute Units (OCUs). These limits control the maximum and minimum capacity for collections within the group.
+#' @param generation The generation of Amazon OpenSearch Serverless for the collection group. Valid values are `CLASSIC` and `NEXTGEN`.
 #' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_create_collection_group
-opensearchserviceserverless_create_collection_group <- function(name, standbyReplicas, description = NULL, tags = NULL, capacityLimits = NULL, clientToken = NULL) {
+opensearchserviceserverless_create_collection_group <- function(name, standbyReplicas, description = NULL, tags = NULL, capacityLimits = NULL, generation = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateCollectionGroup",
     http_method = "POST",
@@ -265,7 +267,7 @@ opensearchserviceserverless_create_collection_group <- function(name, standbyRep
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$create_collection_group_input(name = name, standbyReplicas = standbyReplicas, description = description, tags = tags, capacityLimits = capacityLimits, clientToken = clientToken)
+  input <- .opensearchserviceserverless$create_collection_group_input(name = name, standbyReplicas = standbyReplicas, description = description, tags = tags, capacityLimits = capacityLimits, generation = generation, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_collection_group_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -1313,12 +1315,13 @@ opensearchserviceserverless_update_account_settings <- function(capacityLimits =
 #' @param id &#91;required&#93; The unique identifier of the collection.
 #' @param description A description of the collection.
 #' @param vectorOptions Configuration options for vector search capabilities in the collection.
+#' @param deletionProtection Indicates whether to enable or disable deletion protection for the collection. When set to `ENABLED`, the collection cannot be deleted.
 #' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_update_collection
-opensearchserviceserverless_update_collection <- function(id, description = NULL, vectorOptions = NULL, clientToken = NULL) {
+opensearchserviceserverless_update_collection <- function(id, description = NULL, vectorOptions = NULL, deletionProtection = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateCollection",
     http_method = "POST",
@@ -1327,7 +1330,7 @@ opensearchserviceserverless_update_collection <- function(id, description = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$update_collection_input(id = id, description = description, vectorOptions = vectorOptions, clientToken = clientToken)
+  input <- .opensearchserviceserverless$update_collection_input(id = id, description = description, vectorOptions = vectorOptions, deletionProtection = deletionProtection, clientToken = clientToken)
   output <- .opensearchserviceserverless$update_collection_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)

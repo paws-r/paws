@@ -73,7 +73,7 @@ Default Value: \code{Car}}
 
 \item{DepartureTime}{Specifies the desired time of departure. Uses the given time to calculate the route. Otherwise, the best time of day to travel with the best traffic conditions is used to calculate the route.
 \itemize{
-\item In \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601} format: \code{YYYY-MM-DDThh:mm:ss.sssZ}. For example, \verb{2020–07-2T12:15:20.000Z+01:00}
+\item In ISO 8601 format: \code{YYYY-MM-DDThh:mm:ss.sssZ}. For example, \verb{2020–07-2T12:15:20.000Z+01:00}
 }}
 
 \item{DepartNow}{Sets the time of departure as the current time. Uses the current time to calculate a route. Otherwise, the best time of day to travel with the best traffic conditions is used to calculate the route.

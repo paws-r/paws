@@ -5,312 +5,260 @@ NULL
 
 .servicequotas$associate_service_quota_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["associate_service_quota_template_input"]]))
 }
 
 .servicequotas$associate_service_quota_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["associate_service_quota_template_output"]]))
 }
 
 .servicequotas$create_support_case_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["create_support_case_input"]]))
 }
 
 .servicequotas$create_support_case_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["create_support_case_output"]]))
 }
 
 .servicequotas$delete_service_quota_increase_request_from_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), AwsRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["delete_service_quota_increase_request_from_template_input"]]))
 }
 
 .servicequotas$delete_service_quota_increase_request_from_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["delete_service_quota_increase_request_from_template_output"]]))
 }
 
 .servicequotas$disassociate_service_quota_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["disassociate_service_quota_template_input"]]))
 }
 
 .servicequotas$disassociate_service_quota_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["disassociate_service_quota_template_output"]]))
 }
 
 .servicequotas$get_aws_default_service_quota_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["get_aws_default_service_quota_input"]]))
 }
 
 .servicequotas$get_aws_default_service_quota_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Quota = structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "double")), Unit = structure(logical(0), tags = list(type = "string")), Adjustable = structure(logical(0), tags = list(type = "boolean")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), UsageMetric = structure(list(MetricNamespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), MetricDimensions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), MetricStatisticRecommendation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Period = structure(list(PeriodValue = structure(logical(0), tags = list(type = "integer")), PeriodUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ErrorReason = structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), QuotaAppliedAtLevel = structure(logical(0), tags = list(type = "string")), QuotaContext = structure(list(ContextScope = structure(logical(0), tags = list(type = "string")), ContextScopeType = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["get_aws_default_service_quota_output"]]))
 }
 
 .servicequotas$get_association_for_service_quota_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["get_association_for_service_quota_template_input"]]))
 }
 
 .servicequotas$get_association_for_service_quota_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceQuotaTemplateAssociationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["get_association_for_service_quota_template_output"]]))
 }
 
 .servicequotas$get_auto_management_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["get_auto_management_configuration_input"]]))
 }
 
 .servicequotas$get_auto_management_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OptInLevel = structure(logical(0), tags = list(type = "string")), OptInType = structure(logical(0), tags = list(type = "string")), NotificationArn = structure(logical(0), tags = list(type = "string")), OptInStatus = structure(logical(0), tags = list(type = "string")), ExclusionList = structure(list(structure(list(structure(list(QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["get_auto_management_configuration_output"]]))
 }
 
 .servicequotas$get_quota_utilization_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["get_quota_utilization_report_input"]]))
 }
 
 .servicequotas$get_quota_utilization_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), GeneratedAt = structure(logical(0), tags = list(type = "timestamp")), TotalCount = structure(logical(0), tags = list(type = "integer")), Quotas = structure(list(structure(list(QuotaCode = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), Utilization = structure(logical(0), tags = list(type = "double")), DefaultValue = structure(logical(0), tags = list(type = "double")), AppliedValue = structure(logical(0), tags = list(type = "double")), ServiceName = structure(logical(0), tags = list(type = "string")), Adjustable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["get_quota_utilization_report_output"]]))
 }
 
 .servicequotas$get_requested_service_quota_change_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["get_requested_service_quota_change_input"]]))
 }
 
 .servicequotas$get_requested_service_quota_change_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestedQuota = structure(list(Id = structure(logical(0), tags = list(type = "string")), RequestType = structure(logical(0), tags = list(type = "string")), CaseId = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), Status = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), Requester = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), QuotaRequestedAtLevel = structure(logical(0), tags = list(type = "string")), QuotaContext = structure(list(ContextScope = structure(logical(0), tags = list(type = "string")), ContextScopeType = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["get_requested_service_quota_change_output"]]))
 }
 
 .servicequotas$get_service_quota_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["get_service_quota_input"]]))
 }
 
 .servicequotas$get_service_quota_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Quota = structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "double")), Unit = structure(logical(0), tags = list(type = "string")), Adjustable = structure(logical(0), tags = list(type = "boolean")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), UsageMetric = structure(list(MetricNamespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), MetricDimensions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), MetricStatisticRecommendation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Period = structure(list(PeriodValue = structure(logical(0), tags = list(type = "integer")), PeriodUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ErrorReason = structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), QuotaAppliedAtLevel = structure(logical(0), tags = list(type = "string")), QuotaContext = structure(list(ContextScope = structure(logical(0), tags = list(type = "string")), ContextScopeType = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["get_service_quota_output"]]))
 }
 
 .servicequotas$get_service_quota_increase_request_from_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), AwsRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["get_service_quota_increase_request_from_template_input"]]))
 }
 
 .servicequotas$get_service_quota_increase_request_from_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceQuotaIncreaseRequestInTemplate = structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), AwsRegion = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string")), GlobalQuota = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["get_service_quota_increase_request_from_template_output"]]))
 }
 
 .servicequotas$list_aws_default_service_quotas_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["list_aws_default_service_quotas_input"]]))
 }
 
 .servicequotas$list_aws_default_service_quotas_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Quotas = structure(list(structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "double")), Unit = structure(logical(0), tags = list(type = "string")), Adjustable = structure(logical(0), tags = list(type = "boolean")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), UsageMetric = structure(list(MetricNamespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), MetricDimensions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), MetricStatisticRecommendation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Period = structure(list(PeriodValue = structure(logical(0), tags = list(type = "integer")), PeriodUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ErrorReason = structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), QuotaAppliedAtLevel = structure(logical(0), tags = list(type = "string")), QuotaContext = structure(list(ContextScope = structure(logical(0), tags = list(type = "string")), ContextScopeType = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["list_aws_default_service_quotas_output"]]))
 }
 
 .servicequotas$list_requested_service_quota_change_history_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), QuotaRequestedAtLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["list_requested_service_quota_change_history_input"]]))
 }
 
 .servicequotas$list_requested_service_quota_change_history_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), RequestedQuotas = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), RequestType = structure(logical(0), tags = list(type = "string")), CaseId = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), Status = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), Requester = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), QuotaRequestedAtLevel = structure(logical(0), tags = list(type = "string")), QuotaContext = structure(list(ContextScope = structure(logical(0), tags = list(type = "string")), ContextScopeType = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["list_requested_service_quota_change_history_output"]]))
 }
 
 .servicequotas$list_requested_service_quota_change_history_by_quota_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), QuotaRequestedAtLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["list_requested_service_quota_change_history_by_quota_input"]]))
 }
 
 .servicequotas$list_requested_service_quota_change_history_by_quota_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), RequestedQuotas = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), RequestType = structure(logical(0), tags = list(type = "string")), CaseId = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), Status = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), Requester = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), QuotaRequestedAtLevel = structure(logical(0), tags = list(type = "string")), QuotaContext = structure(list(ContextScope = structure(logical(0), tags = list(type = "string")), ContextScopeType = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["list_requested_service_quota_change_history_by_quota_output"]]))
 }
 
 .servicequotas$list_service_quota_increase_requests_in_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), AwsRegion = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["list_service_quota_increase_requests_in_template_input"]]))
 }
 
 .servicequotas$list_service_quota_increase_requests_in_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceQuotaIncreaseRequestInTemplateList = structure(list(structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), AwsRegion = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string")), GlobalQuota = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["list_service_quota_increase_requests_in_template_output"]]))
 }
 
 .servicequotas$list_service_quotas_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaAppliedAtLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["list_service_quotas_input"]]))
 }
 
 .servicequotas$list_service_quotas_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Quotas = structure(list(structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "double")), Unit = structure(logical(0), tags = list(type = "string")), Adjustable = structure(logical(0), tags = list(type = "boolean")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), UsageMetric = structure(list(MetricNamespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), MetricDimensions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), MetricStatisticRecommendation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Period = structure(list(PeriodValue = structure(logical(0), tags = list(type = "integer")), PeriodUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ErrorReason = structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), QuotaAppliedAtLevel = structure(logical(0), tags = list(type = "string")), QuotaContext = structure(list(ContextScope = structure(logical(0), tags = list(type = "string")), ContextScopeType = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["list_service_quotas_output"]]))
 }
 
 .servicequotas$list_services_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["list_services_input"]]))
 }
 
 .servicequotas$list_services_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Services = structure(list(structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["list_services_output"]]))
 }
 
 .servicequotas$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["list_tags_for_resource_input"]]))
 }
 
 .servicequotas$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["list_tags_for_resource_output"]]))
 }
 
 .servicequotas$put_service_quota_increase_request_into_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QuotaCode = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), AwsRegion = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["put_service_quota_increase_request_into_template_input"]]))
 }
 
 .servicequotas$put_service_quota_increase_request_into_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceQuotaIncreaseRequestInTemplate = structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), AwsRegion = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string")), GlobalQuota = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["put_service_quota_increase_request_into_template_output"]]))
 }
 
 .servicequotas$request_service_quota_increase_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), ContextId = structure(logical(0), tags = list(type = "string")), SupportCaseAllowed = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["request_service_quota_increase_input"]]))
 }
 
 .servicequotas$request_service_quota_increase_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestedQuota = structure(list(Id = structure(logical(0), tags = list(type = "string")), RequestType = structure(logical(0), tags = list(type = "string")), CaseId = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), Status = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), Requester = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), QuotaRequestedAtLevel = structure(logical(0), tags = list(type = "string")), QuotaContext = structure(list(ContextScope = structure(logical(0), tags = list(type = "string")), ContextScopeType = structure(logical(0), tags = list(type = "string")), ContextId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["request_service_quota_increase_output"]]))
 }
 
 .servicequotas$start_auto_management_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OptInLevel = structure(logical(0), tags = list(type = "string")), OptInType = structure(logical(0), tags = list(type = "string")), NotificationArn = structure(logical(0), tags = list(type = "string")), ExclusionList = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["start_auto_management_input"]]))
 }
 
 .servicequotas$start_auto_management_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["start_auto_management_output"]]))
 }
 
 .servicequotas$start_quota_utilization_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["start_quota_utilization_report_input"]]))
 }
 
 .servicequotas$start_quota_utilization_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["start_quota_utilization_report_output"]]))
 }
 
 .servicequotas$stop_auto_management_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["stop_auto_management_input"]]))
 }
 
 .servicequotas$stop_auto_management_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["stop_auto_management_output"]]))
 }
 
 .servicequotas$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["tag_resource_input"]]))
 }
 
 .servicequotas$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["tag_resource_output"]]))
 }
 
 .servicequotas$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["untag_resource_input"]]))
 }
 
 .servicequotas$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["untag_resource_output"]]))
 }
 
 .servicequotas$update_auto_management_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OptInType = structure(logical(0), tags = list(type = "string")), NotificationArn = structure(logical(0), tags = list(type = "string")), ExclusionList = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["update_auto_management_input"]]))
 }
 
 .servicequotas$update_auto_management_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicequotas_shapes[["update_auto_management_output"]]))
 }

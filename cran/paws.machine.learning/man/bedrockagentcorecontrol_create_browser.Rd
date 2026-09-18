@@ -13,6 +13,7 @@ bedrockagentcorecontrol_create_browser(
   browserSigning = NULL,
   enterprisePolicies = NULL,
   certificates = NULL,
+  filesystemConfigurations = NULL,
   clientToken = NULL,
   tags = NULL
 )
@@ -33,6 +34,8 @@ bedrockagentcorecontrol_create_browser(
 \item{enterprisePolicies}{A list of enterprise policy files for the browser.}
 
 \item{certificates}{A list of certificates to install in the browser.}
+
+\item{filesystemConfigurations}{The file system configurations to mount into the browser. Use these configurations to mount your own Amazon Simple Storage Service (Amazon S3) Files or Amazon Elastic File System (Amazon EFS) access points. Your sessions can then access your data. If you don't specify this field, no file systems are mounted.}
 
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, Amazon Bedrock AgentCore ignores the request but does not return an error.}
 

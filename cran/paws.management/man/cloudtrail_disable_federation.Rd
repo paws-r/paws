@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_disable_federation}
 \alias{cloudtrail_disable_federation}
-\title{Disables Lake query federation on the specified event data store}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_disable_federation(EventDataStore)
 }
@@ -10,7 +11,7 @@ cloudtrail_disable_federation(EventDataStore)
 \item{EventDataStore}{[required] The ARN (or ID suffix of the ARN) of the event data store for which you want to disable Lake query federation.}
 }
 \description{
-Disables Lake query federation on the specified event data store. When you disable federation, CloudTrail disables the integration with Glue, Lake Formation, and Amazon Athena. After disabling Lake query federation, you can no longer query your event data in Amazon Athena.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_disable_federation/} for full documentation.
 }

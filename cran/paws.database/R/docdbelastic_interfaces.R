@@ -5,228 +5,190 @@ NULL
 
 .docdbelastic$apply_pending_maintenance_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applyAction = structure(logical(0), tags = list(type = "string")), applyOn = structure(logical(0), tags = list(type = "string")), optInType = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["apply_pending_maintenance_action_input"]]))
 }
 
 .docdbelastic$apply_pending_maintenance_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourcePendingMaintenanceAction = structure(list(pendingMaintenanceActionDetails = structure(list(structure(list(action = structure(logical(0), tags = list(type = "string")), autoAppliedAfterDate = structure(logical(0), tags = list(type = "string")), currentApplyDate = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), forcedApplyDate = structure(logical(0), tags = list(type = "string")), optInStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["apply_pending_maintenance_action_output"]]))
 }
 
 .docdbelastic$copy_cluster_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), kmsKeyId = structure(logical(0), tags = list(type = "string")), snapshotArn = structure(logical(0), tags = list(location = "uri", locationName = "snapshotArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), targetSnapshotName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["copy_cluster_snapshot_input"]]))
 }
 
 .docdbelastic$copy_cluster_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshot = structure(list(adminUserName = structure(logical(0), tags = list(type = "string")), clusterArn = structure(logical(0), tags = list(type = "string")), clusterCreationTime = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), snapshotArn = structure(logical(0), tags = list(type = "string")), snapshotCreationTime = structure(logical(0), tags = list(type = "string")), snapshotName = structure(logical(0), tags = list(type = "string")), snapshotType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["copy_cluster_snapshot_output"]]))
 }
 
 .docdbelastic$create_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(adminUserName = structure(logical(0), tags = list(type = "string")), adminUserPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), authType = structure(logical(0), tags = list(type = "string")), backupRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), preferredBackupWindow = structure(logical(0), tags = list(type = "string")), preferredMaintenanceWindow = structure(logical(0), tags = list(type = "string")), shardCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardInstanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), vpcSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["create_cluster_input"]]))
 }
 
 .docdbelastic$create_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cluster = structure(list(adminUserName = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), backupRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), clusterArn = structure(logical(0), tags = list(type = "string")), clusterEndpoint = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), preferredBackupWindow = structure(logical(0), tags = list(type = "string")), preferredMaintenanceWindow = structure(logical(0), tags = list(type = "string")), shardCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardInstanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), shards = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "string")), shardId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["create_cluster_output"]]))
 }
 
 .docdbelastic$create_cluster_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterArn = structure(logical(0), tags = list(type = "string")), snapshotName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["create_cluster_snapshot_input"]]))
 }
 
 .docdbelastic$create_cluster_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshot = structure(list(adminUserName = structure(logical(0), tags = list(type = "string")), clusterArn = structure(logical(0), tags = list(type = "string")), clusterCreationTime = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), snapshotArn = structure(logical(0), tags = list(type = "string")), snapshotCreationTime = structure(logical(0), tags = list(type = "string")), snapshotName = structure(logical(0), tags = list(type = "string")), snapshotType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["create_cluster_snapshot_output"]]))
 }
 
 .docdbelastic$delete_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterArn = structure(logical(0), tags = list(location = "uri", locationName = "clusterArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["delete_cluster_input"]]))
 }
 
 .docdbelastic$delete_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cluster = structure(list(adminUserName = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), backupRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), clusterArn = structure(logical(0), tags = list(type = "string")), clusterEndpoint = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), preferredBackupWindow = structure(logical(0), tags = list(type = "string")), preferredMaintenanceWindow = structure(logical(0), tags = list(type = "string")), shardCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardInstanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), shards = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "string")), shardId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["delete_cluster_output"]]))
 }
 
 .docdbelastic$delete_cluster_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshotArn = structure(logical(0), tags = list(location = "uri", locationName = "snapshotArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["delete_cluster_snapshot_input"]]))
 }
 
 .docdbelastic$delete_cluster_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshot = structure(list(adminUserName = structure(logical(0), tags = list(type = "string")), clusterArn = structure(logical(0), tags = list(type = "string")), clusterCreationTime = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), snapshotArn = structure(logical(0), tags = list(type = "string")), snapshotCreationTime = structure(logical(0), tags = list(type = "string")), snapshotName = structure(logical(0), tags = list(type = "string")), snapshotType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["delete_cluster_snapshot_output"]]))
 }
 
 .docdbelastic$get_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterArn = structure(logical(0), tags = list(location = "uri", locationName = "clusterArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["get_cluster_input"]]))
 }
 
 .docdbelastic$get_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cluster = structure(list(adminUserName = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), backupRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), clusterArn = structure(logical(0), tags = list(type = "string")), clusterEndpoint = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), preferredBackupWindow = structure(logical(0), tags = list(type = "string")), preferredMaintenanceWindow = structure(logical(0), tags = list(type = "string")), shardCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardInstanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), shards = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "string")), shardId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["get_cluster_output"]]))
 }
 
 .docdbelastic$get_cluster_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshotArn = structure(logical(0), tags = list(location = "uri", locationName = "snapshotArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["get_cluster_snapshot_input"]]))
 }
 
 .docdbelastic$get_cluster_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshot = structure(list(adminUserName = structure(logical(0), tags = list(type = "string")), clusterArn = structure(logical(0), tags = list(type = "string")), clusterCreationTime = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), snapshotArn = structure(logical(0), tags = list(type = "string")), snapshotCreationTime = structure(logical(0), tags = list(type = "string")), snapshotName = structure(logical(0), tags = list(type = "string")), snapshotType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["get_cluster_snapshot_output"]]))
 }
 
 .docdbelastic$get_pending_maintenance_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["get_pending_maintenance_action_input"]]))
 }
 
 .docdbelastic$get_pending_maintenance_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourcePendingMaintenanceAction = structure(list(pendingMaintenanceActionDetails = structure(list(structure(list(action = structure(logical(0), tags = list(type = "string")), autoAppliedAfterDate = structure(logical(0), tags = list(type = "string")), currentApplyDate = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), forcedApplyDate = structure(logical(0), tags = list(type = "string")), optInStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["get_pending_maintenance_action_output"]]))
 }
 
 .docdbelastic$list_cluster_snapshots_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterArn = structure(logical(0), tags = list(location = "querystring", locationName = "clusterArn", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), snapshotType = structure(logical(0), tags = list(location = "querystring", locationName = "snapshotType", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["list_cluster_snapshots_input"]]))
 }
 
 .docdbelastic$list_cluster_snapshots_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), snapshots = structure(list(structure(list(clusterArn = structure(logical(0), tags = list(type = "string")), snapshotArn = structure(logical(0), tags = list(type = "string")), snapshotCreationTime = structure(logical(0), tags = list(type = "string")), snapshotName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["list_cluster_snapshots_output"]]))
 }
 
 .docdbelastic$list_clusters_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["list_clusters_input"]]))
 }
 
 .docdbelastic$list_clusters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusters = structure(list(structure(list(clusterArn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["list_clusters_output"]]))
 }
 
 .docdbelastic$list_pending_maintenance_actions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["list_pending_maintenance_actions_input"]]))
 }
 
 .docdbelastic$list_pending_maintenance_actions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), resourcePendingMaintenanceActions = structure(list(structure(list(pendingMaintenanceActionDetails = structure(list(structure(list(action = structure(logical(0), tags = list(type = "string")), autoAppliedAfterDate = structure(logical(0), tags = list(type = "string")), currentApplyDate = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), forcedApplyDate = structure(logical(0), tags = list(type = "string")), optInStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["list_pending_maintenance_actions_output"]]))
 }
 
 .docdbelastic$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["list_tags_for_resource_input"]]))
 }
 
 .docdbelastic$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["list_tags_for_resource_output"]]))
 }
 
 .docdbelastic$restore_cluster_from_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), shardCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardInstanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotArn = structure(logical(0), tags = list(location = "uri", locationName = "snapshotArn", type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), vpcSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["restore_cluster_from_snapshot_input"]]))
 }
 
 .docdbelastic$restore_cluster_from_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cluster = structure(list(adminUserName = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), backupRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), clusterArn = structure(logical(0), tags = list(type = "string")), clusterEndpoint = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), preferredBackupWindow = structure(logical(0), tags = list(type = "string")), preferredMaintenanceWindow = structure(logical(0), tags = list(type = "string")), shardCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardInstanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), shards = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "string")), shardId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["restore_cluster_from_snapshot_output"]]))
 }
 
 .docdbelastic$start_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterArn = structure(logical(0), tags = list(location = "uri", locationName = "clusterArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["start_cluster_input"]]))
 }
 
 .docdbelastic$start_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cluster = structure(list(adminUserName = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), backupRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), clusterArn = structure(logical(0), tags = list(type = "string")), clusterEndpoint = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), preferredBackupWindow = structure(logical(0), tags = list(type = "string")), preferredMaintenanceWindow = structure(logical(0), tags = list(type = "string")), shardCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardInstanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), shards = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "string")), shardId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["start_cluster_output"]]))
 }
 
 .docdbelastic$stop_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterArn = structure(logical(0), tags = list(location = "uri", locationName = "clusterArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["stop_cluster_input"]]))
 }
 
 .docdbelastic$stop_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cluster = structure(list(adminUserName = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), backupRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), clusterArn = structure(logical(0), tags = list(type = "string")), clusterEndpoint = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), preferredBackupWindow = structure(logical(0), tags = list(type = "string")), preferredMaintenanceWindow = structure(logical(0), tags = list(type = "string")), shardCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardInstanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), shards = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "string")), shardId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["stop_cluster_output"]]))
 }
 
 .docdbelastic$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["tag_resource_input"]]))
 }
 
 .docdbelastic$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["tag_resource_output"]]))
 }
 
 .docdbelastic$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["untag_resource_input"]]))
 }
 
 .docdbelastic$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["untag_resource_output"]]))
 }
 
 .docdbelastic$update_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(adminUserPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), authType = structure(logical(0), tags = list(type = "string")), backupRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), clusterArn = structure(logical(0), tags = list(location = "uri", locationName = "clusterArn", type = "string")), preferredBackupWindow = structure(logical(0), tags = list(type = "string")), preferredMaintenanceWindow = structure(logical(0), tags = list(type = "string")), shardCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardInstanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["update_cluster_input"]]))
 }
 
 .docdbelastic$update_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cluster = structure(list(adminUserName = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), backupRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), clusterArn = structure(logical(0), tags = list(type = "string")), clusterEndpoint = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), preferredBackupWindow = structure(logical(0), tags = list(type = "string")), preferredMaintenanceWindow = structure(logical(0), tags = list(type = "string")), shardCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), shardInstanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), shards = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "string")), shardId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .docdbelastic_shapes[["update_cluster_output"]]))
 }

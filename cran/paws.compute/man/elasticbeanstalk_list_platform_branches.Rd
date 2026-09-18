@@ -2,7 +2,8 @@
 % Please edit documentation in R/elasticbeanstalk_operations.R
 \name{elasticbeanstalk_list_platform_branches}
 \alias{elasticbeanstalk_list_platform_branches}
-\title{Lists the platform branches available for your account in an AWS Region}
+\title{Lists the platform branches available for your account in an Amazon Web
+Services Region}
 \usage{
 elasticbeanstalk_list_platform_branches(
   Filters = NULL,
@@ -46,7 +47,7 @@ Within each \code{SearchFilter} item, the \code{Values} array is limited to 10 i
 If no \code{NextToken} is specified, the first page is retrieved.}
 }
 \description{
-Lists the platform branches available for your account in an AWS Region. Provides summary information about each platform branch.
+Lists the platform branches available for your account in an Amazon Web Services Region. Provides summary information about each platform branch.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_list_platform_branches/} for full documentation.
 }

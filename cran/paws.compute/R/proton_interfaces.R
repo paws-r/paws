@@ -5,1044 +5,870 @@ NULL
 
 .proton$accept_environment_account_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["accept_environment_account_connection_input"]]))
 }
 
 .proton$accept_environment_account_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentAccountConnection = structure(list(arn = structure(logical(0), tags = list(type = "string")), codebuildRoleArn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), environmentAccountId = structure(logical(0), tags = list(type = "string")), environmentName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), managementAccountId = structure(logical(0), tags = list(type = "string")), requestedAt = structure(logical(0), tags = list(type = "timestamp")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["accept_environment_account_connection_output"]]))
 }
 
 .proton$cancel_component_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(componentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["cancel_component_deployment_input"]]))
 }
 
 .proton$cancel_component_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(component = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentName = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastClientRequestToken = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), serviceSpec = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["cancel_component_deployment_output"]]))
 }
 
 .proton$cancel_environment_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["cancel_environment_deployment_input"]]))
 }
 
 .proton$cancel_environment_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environment = structure(list(arn = structure(logical(0), tags = list(type = "string")), codebuildRoleArn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentAccountConnectionId = structure(logical(0), tags = list(type = "string")), environmentAccountId = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), protonServiceRoleArn = structure(logical(0), tags = list(type = "string")), provisioning = structure(logical(0), tags = list(type = "string")), provisioningRepository = structure(list(arn = structure(logical(0), tags = list(type = "string")), branch = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["cancel_environment_deployment_output"]]))
 }
 
 .proton$cancel_service_instance_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["cancel_service_instance_deployment_input"]]))
 }
 
 .proton$cancel_service_instance_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceInstance = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentName = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastClientRequestToken = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["cancel_service_instance_deployment_output"]]))
 }
 
 .proton$cancel_service_pipeline_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["cancel_service_pipeline_deployment_input"]]))
 }
 
 .proton$cancel_service_pipeline_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipeline = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["cancel_service_pipeline_deployment_output"]]))
 }
 
 .proton$create_component_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentName = structure(logical(0), tags = list(type = "string")), manifest = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), serviceSpec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), templateFile = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_component_input"]]))
 }
 
 .proton$create_component_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(component = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentName = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastClientRequestToken = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), serviceSpec = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_component_output"]]))
 }
 
 .proton$create_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(codebuildRoleArn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentAccountConnectionId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), protonServiceRoleArn = structure(logical(0), tags = list(type = "string")), provisioningRepository = structure(list(branch = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_environment_input"]]))
 }
 
 .proton$create_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environment = structure(list(arn = structure(logical(0), tags = list(type = "string")), codebuildRoleArn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentAccountConnectionId = structure(logical(0), tags = list(type = "string")), environmentAccountId = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), protonServiceRoleArn = structure(logical(0), tags = list(type = "string")), provisioning = structure(logical(0), tags = list(type = "string")), provisioningRepository = structure(list(arn = structure(logical(0), tags = list(type = "string")), branch = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_environment_output"]]))
 }
 
 .proton$create_environment_account_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), codebuildRoleArn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), environmentName = structure(logical(0), tags = list(type = "string")), managementAccountId = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_environment_account_connection_input"]]))
 }
 
 .proton$create_environment_account_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentAccountConnection = structure(list(arn = structure(logical(0), tags = list(type = "string")), codebuildRoleArn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), environmentAccountId = structure(logical(0), tags = list(type = "string")), environmentName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), managementAccountId = structure(logical(0), tags = list(type = "string")), requestedAt = structure(logical(0), tags = list(type = "timestamp")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_environment_account_connection_output"]]))
 }
 
 .proton$create_environment_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), encryptionKey = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provisioning = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_environment_template_input"]]))
 }
 
 .proton$create_environment_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentTemplate = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), encryptionKey = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), provisioning = structure(logical(0), tags = list(type = "string")), recommendedVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_environment_template_output"]]))
 }
 
 .proton$create_environment_template_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), majorVersion = structure(logical(0), tags = list(type = "string")), source = structure(list(s3 = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_environment_template_version_input"]]))
 }
 
 .proton$create_environment_template_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentTemplateVersion = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), majorVersion = structure(logical(0), tags = list(type = "string")), minorVersion = structure(logical(0), tags = list(type = "string")), recommendedMinorVersion = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_environment_template_version_output"]]))
 }
 
 .proton$create_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionArn = structure(logical(0), tags = list(type = "string")), encryptionKey = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_repository_input"]]))
 }
 
 .proton$create_repository_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repository = structure(list(arn = structure(logical(0), tags = list(type = "string")), connectionArn = structure(logical(0), tags = list(type = "string")), encryptionKey = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_repository_output"]]))
 }
 
 .proton$create_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(branchName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string")), repositoryConnectionArn = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_service_input"]]))
 }
 
 .proton$create_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(service = structure(list(arn = structure(logical(0), tags = list(type = "string")), branchName = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), pipeline = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), repositoryConnectionArn = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_service_output"]]))
 }
 
 .proton$create_service_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), name = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_service_instance_input"]]))
 }
 
 .proton$create_service_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceInstance = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentName = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastClientRequestToken = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_service_instance_output"]]))
 }
 
 .proton$create_service_sync_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(branch = structure(logical(0), tags = list(type = "string")), filePath = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_service_sync_config_input"]]))
 }
 
 .proton$create_service_sync_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceSyncConfig = structure(list(branch = structure(logical(0), tags = list(type = "string")), filePath = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_service_sync_config_output"]]))
 }
 
 .proton$create_service_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), encryptionKey = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), pipelineProvisioning = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_service_template_input"]]))
 }
 
 .proton$create_service_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceTemplate = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), encryptionKey = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), pipelineProvisioning = structure(logical(0), tags = list(type = "string")), recommendedVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_service_template_output"]]))
 }
 
 .proton$create_service_template_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), compatibleEnvironmentTemplates = structure(list(structure(list(majorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), majorVersion = structure(logical(0), tags = list(type = "string")), source = structure(list(s3 = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), supportedComponentSources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_service_template_version_input"]]))
 }
 
 .proton$create_service_template_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceTemplateVersion = structure(list(arn = structure(logical(0), tags = list(type = "string")), compatibleEnvironmentTemplates = structure(list(structure(list(majorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), majorVersion = structure(logical(0), tags = list(type = "string")), minorVersion = structure(logical(0), tags = list(type = "string")), recommendedMinorVersion = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), supportedComponentSources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_service_template_version_output"]]))
 }
 
 .proton$create_template_sync_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(branch = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), subdirectory = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string")), templateType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_template_sync_config_input"]]))
 }
 
 .proton$create_template_sync_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(templateSyncConfig = structure(list(branch = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), subdirectory = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string")), templateType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["create_template_sync_config_output"]]))
 }
 
 .proton$delete_component_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_component_input"]]))
 }
 
 .proton$delete_component_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(component = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentName = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastClientRequestToken = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), serviceSpec = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_component_output"]]))
 }
 
 .proton$delete_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_deployment_input"]]))
 }
 
 .proton$delete_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deployment = structure(list(arn = structure(logical(0), tags = list(type = "string")), completedAt = structure(logical(0), tags = list(type = "timestamp")), componentName = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), initialState = structure(list(component = structure(list(serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), serviceSpec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateFile = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), environment = structure(list(spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), serviceInstance = structure(list(lastSuccessfulComponentDeploymentIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), lastSuccessfulEnvironmentDeploymentId = structure(logical(0), tags = list(type = "string")), lastSuccessfulServicePipelineDeploymentId = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), servicePipeline = structure(list(spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), targetArn = structure(logical(0), tags = list(type = "string")), targetResourceCreatedAt = structure(logical(0), tags = list(type = "timestamp")), targetResourceType = structure(logical(0), tags = list(type = "string")), targetState = structure(list(component = structure(list(serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), serviceSpec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateFile = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), environment = structure(list(spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), serviceInstance = structure(list(lastSuccessfulComponentDeploymentIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), lastSuccessfulEnvironmentDeploymentId = structure(logical(0), tags = list(type = "string")), lastSuccessfulServicePipelineDeploymentId = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), servicePipeline = structure(list(spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_deployment_output"]]))
 }
 
 .proton$delete_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_environment_input"]]))
 }
 
 .proton$delete_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environment = structure(list(arn = structure(logical(0), tags = list(type = "string")), codebuildRoleArn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentAccountConnectionId = structure(logical(0), tags = list(type = "string")), environmentAccountId = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), protonServiceRoleArn = structure(logical(0), tags = list(type = "string")), provisioning = structure(logical(0), tags = list(type = "string")), provisioningRepository = structure(list(arn = structure(logical(0), tags = list(type = "string")), branch = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_environment_output"]]))
 }
 
 .proton$delete_environment_account_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_environment_account_connection_input"]]))
 }
 
 .proton$delete_environment_account_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentAccountConnection = structure(list(arn = structure(logical(0), tags = list(type = "string")), codebuildRoleArn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), environmentAccountId = structure(logical(0), tags = list(type = "string")), environmentName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), managementAccountId = structure(logical(0), tags = list(type = "string")), requestedAt = structure(logical(0), tags = list(type = "timestamp")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_environment_account_connection_output"]]))
 }
 
 .proton$delete_environment_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_environment_template_input"]]))
 }
 
 .proton$delete_environment_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentTemplate = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), encryptionKey = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), provisioning = structure(logical(0), tags = list(type = "string")), recommendedVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_environment_template_output"]]))
 }
 
 .proton$delete_environment_template_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(majorVersion = structure(logical(0), tags = list(type = "string")), minorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_environment_template_version_input"]]))
 }
 
 .proton$delete_environment_template_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentTemplateVersion = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), majorVersion = structure(logical(0), tags = list(type = "string")), minorVersion = structure(logical(0), tags = list(type = "string")), recommendedMinorVersion = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_environment_template_version_output"]]))
 }
 
 .proton$delete_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_repository_input"]]))
 }
 
 .proton$delete_repository_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repository = structure(list(arn = structure(logical(0), tags = list(type = "string")), connectionArn = structure(logical(0), tags = list(type = "string")), encryptionKey = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_repository_output"]]))
 }
 
 .proton$delete_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_service_input"]]))
 }
 
 .proton$delete_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(service = structure(list(arn = structure(logical(0), tags = list(type = "string")), branchName = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), pipeline = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), repositoryConnectionArn = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_service_output"]]))
 }
 
 .proton$delete_service_sync_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_service_sync_config_input"]]))
 }
 
 .proton$delete_service_sync_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceSyncConfig = structure(list(branch = structure(logical(0), tags = list(type = "string")), filePath = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_service_sync_config_output"]]))
 }
 
 .proton$delete_service_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_service_template_input"]]))
 }
 
 .proton$delete_service_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceTemplate = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), encryptionKey = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), pipelineProvisioning = structure(logical(0), tags = list(type = "string")), recommendedVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_service_template_output"]]))
 }
 
 .proton$delete_service_template_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(majorVersion = structure(logical(0), tags = list(type = "string")), minorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_service_template_version_input"]]))
 }
 
 .proton$delete_service_template_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceTemplateVersion = structure(list(arn = structure(logical(0), tags = list(type = "string")), compatibleEnvironmentTemplates = structure(list(structure(list(majorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), majorVersion = structure(logical(0), tags = list(type = "string")), minorVersion = structure(logical(0), tags = list(type = "string")), recommendedMinorVersion = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), supportedComponentSources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_service_template_version_output"]]))
 }
 
 .proton$delete_template_sync_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(templateName = structure(logical(0), tags = list(type = "string")), templateType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_template_sync_config_input"]]))
 }
 
 .proton$delete_template_sync_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(templateSyncConfig = structure(list(branch = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), subdirectory = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string")), templateType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["delete_template_sync_config_output"]]))
 }
 
 .proton$get_account_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_account_settings_input"]]))
 }
 
 .proton$get_account_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accountSettings = structure(list(pipelineCodebuildRoleArn = structure(logical(0), tags = list(type = "string")), pipelineProvisioningRepository = structure(list(arn = structure(logical(0), tags = list(type = "string")), branch = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pipelineServiceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_account_settings_output"]]))
 }
 
 .proton$get_component_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_component_input"]]))
 }
 
 .proton$get_component_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(component = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentName = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastClientRequestToken = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), serviceSpec = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_component_output"]]))
 }
 
 .proton$get_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(componentName = structure(logical(0), tags = list(type = "string")), environmentName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_deployment_input"]]))
 }
 
 .proton$get_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deployment = structure(list(arn = structure(logical(0), tags = list(type = "string")), completedAt = structure(logical(0), tags = list(type = "timestamp")), componentName = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), initialState = structure(list(component = structure(list(serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), serviceSpec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateFile = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), environment = structure(list(spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), serviceInstance = structure(list(lastSuccessfulComponentDeploymentIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), lastSuccessfulEnvironmentDeploymentId = structure(logical(0), tags = list(type = "string")), lastSuccessfulServicePipelineDeploymentId = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), servicePipeline = structure(list(spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), targetArn = structure(logical(0), tags = list(type = "string")), targetResourceCreatedAt = structure(logical(0), tags = list(type = "timestamp")), targetResourceType = structure(logical(0), tags = list(type = "string")), targetState = structure(list(component = structure(list(serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), serviceSpec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateFile = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), environment = structure(list(spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), serviceInstance = structure(list(lastSuccessfulComponentDeploymentIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), lastSuccessfulEnvironmentDeploymentId = structure(logical(0), tags = list(type = "string")), lastSuccessfulServicePipelineDeploymentId = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), servicePipeline = structure(list(spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_deployment_output"]]))
 }
 
 .proton$get_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_environment_input"]]))
 }
 
 .proton$get_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environment = structure(list(arn = structure(logical(0), tags = list(type = "string")), codebuildRoleArn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentAccountConnectionId = structure(logical(0), tags = list(type = "string")), environmentAccountId = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), protonServiceRoleArn = structure(logical(0), tags = list(type = "string")), provisioning = structure(logical(0), tags = list(type = "string")), provisioningRepository = structure(list(arn = structure(logical(0), tags = list(type = "string")), branch = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_environment_output"]]))
 }
 
 .proton$get_environment_account_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_environment_account_connection_input"]]))
 }
 
 .proton$get_environment_account_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentAccountConnection = structure(list(arn = structure(logical(0), tags = list(type = "string")), codebuildRoleArn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), environmentAccountId = structure(logical(0), tags = list(type = "string")), environmentName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), managementAccountId = structure(logical(0), tags = list(type = "string")), requestedAt = structure(logical(0), tags = list(type = "timestamp")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_environment_account_connection_output"]]))
 }
 
 .proton$get_environment_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_environment_template_input"]]))
 }
 
 .proton$get_environment_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentTemplate = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), encryptionKey = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), provisioning = structure(logical(0), tags = list(type = "string")), recommendedVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_environment_template_output"]]))
 }
 
 .proton$get_environment_template_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(majorVersion = structure(logical(0), tags = list(type = "string")), minorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_environment_template_version_input"]]))
 }
 
 .proton$get_environment_template_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentTemplateVersion = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), majorVersion = structure(logical(0), tags = list(type = "string")), minorVersion = structure(logical(0), tags = list(type = "string")), recommendedMinorVersion = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_environment_template_version_output"]]))
 }
 
 .proton$get_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_repository_input"]]))
 }
 
 .proton$get_repository_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repository = structure(list(arn = structure(logical(0), tags = list(type = "string")), connectionArn = structure(logical(0), tags = list(type = "string")), encryptionKey = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_repository_output"]]))
 }
 
 .proton$get_repository_sync_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(branch = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), syncType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_repository_sync_status_input"]]))
 }
 
 .proton$get_repository_sync_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(latestSync = structure(list(events = structure(list(structure(list(event = structure(logical(0), tags = list(type = "string")), externalId = structure(logical(0), tags = list(type = "string")), time = structure(logical(0), tags = list(type = "timestamp")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), startedAt = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_repository_sync_status_output"]]))
 }
 
 .proton$get_resources_summary_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_resources_summary_input"]]))
 }
 
 .proton$get_resources_summary_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(counts = structure(list(components = structure(list(behindMajor = structure(logical(0), tags = list(type = "integer", box = TRUE)), behindMinor = structure(logical(0), tags = list(type = "integer", box = TRUE)), failed = structure(logical(0), tags = list(type = "integer", box = TRUE)), total = structure(logical(0), tags = list(type = "integer", box = TRUE)), upToDate = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), environmentTemplates = structure(list(behindMajor = structure(logical(0), tags = list(type = "integer", box = TRUE)), behindMinor = structure(logical(0), tags = list(type = "integer", box = TRUE)), failed = structure(logical(0), tags = list(type = "integer", box = TRUE)), total = structure(logical(0), tags = list(type = "integer", box = TRUE)), upToDate = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), environments = structure(list(behindMajor = structure(logical(0), tags = list(type = "integer", box = TRUE)), behindMinor = structure(logical(0), tags = list(type = "integer", box = TRUE)), failed = structure(logical(0), tags = list(type = "integer", box = TRUE)), total = structure(logical(0), tags = list(type = "integer", box = TRUE)), upToDate = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), pipelines = structure(list(behindMajor = structure(logical(0), tags = list(type = "integer", box = TRUE)), behindMinor = structure(logical(0), tags = list(type = "integer", box = TRUE)), failed = structure(logical(0), tags = list(type = "integer", box = TRUE)), total = structure(logical(0), tags = list(type = "integer", box = TRUE)), upToDate = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), serviceInstances = structure(list(behindMajor = structure(logical(0), tags = list(type = "integer", box = TRUE)), behindMinor = structure(logical(0), tags = list(type = "integer", box = TRUE)), failed = structure(logical(0), tags = list(type = "integer", box = TRUE)), total = structure(logical(0), tags = list(type = "integer", box = TRUE)), upToDate = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), serviceTemplates = structure(list(behindMajor = structure(logical(0), tags = list(type = "integer", box = TRUE)), behindMinor = structure(logical(0), tags = list(type = "integer", box = TRUE)), failed = structure(logical(0), tags = list(type = "integer", box = TRUE)), total = structure(logical(0), tags = list(type = "integer", box = TRUE)), upToDate = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), services = structure(list(behindMajor = structure(logical(0), tags = list(type = "integer", box = TRUE)), behindMinor = structure(logical(0), tags = list(type = "integer", box = TRUE)), failed = structure(logical(0), tags = list(type = "integer", box = TRUE)), total = structure(logical(0), tags = list(type = "integer", box = TRUE)), upToDate = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_resources_summary_output"]]))
 }
 
 .proton$get_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_service_input"]]))
 }
 
 .proton$get_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(service = structure(list(arn = structure(logical(0), tags = list(type = "string")), branchName = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), pipeline = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), repositoryConnectionArn = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_service_output"]]))
 }
 
 .proton$get_service_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_service_instance_input"]]))
 }
 
 .proton$get_service_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceInstance = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentName = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastClientRequestToken = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_service_instance_output"]]))
 }
 
 .proton$get_service_instance_sync_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_service_instance_sync_status_input"]]))
 }
 
 .proton$get_service_instance_sync_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(desiredState = structure(list(branch = structure(logical(0), tags = list(type = "string")), directory = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), sha = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), latestSuccessfulSync = structure(list(events = structure(list(structure(list(event = structure(logical(0), tags = list(type = "string")), externalId = structure(logical(0), tags = list(type = "string")), time = structure(logical(0), tags = list(type = "timestamp")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), initialRevision = structure(list(branch = structure(logical(0), tags = list(type = "string")), directory = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), sha = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startedAt = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), target = structure(logical(0), tags = list(type = "string")), targetRevision = structure(list(branch = structure(logical(0), tags = list(type = "string")), directory = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), sha = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), latestSync = structure(list(events = structure(list(structure(list(event = structure(logical(0), tags = list(type = "string")), externalId = structure(logical(0), tags = list(type = "string")), time = structure(logical(0), tags = list(type = "timestamp")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), initialRevision = structure(list(branch = structure(logical(0), tags = list(type = "string")), directory = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), sha = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startedAt = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), target = structure(logical(0), tags = list(type = "string")), targetRevision = structure(list(branch = structure(logical(0), tags = list(type = "string")), directory = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), sha = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_service_instance_sync_status_output"]]))
 }
 
 .proton$get_service_sync_blocker_summary_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_service_sync_blocker_summary_input"]]))
 }
 
 .proton$get_service_sync_blocker_summary_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceSyncBlockerSummary = structure(list(latestBlockers = structure(list(structure(list(contexts = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), createdReason = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), resolvedAt = structure(logical(0), tags = list(type = "timestamp")), resolvedReason = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_service_sync_blocker_summary_output"]]))
 }
 
 .proton$get_service_sync_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_service_sync_config_input"]]))
 }
 
 .proton$get_service_sync_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceSyncConfig = structure(list(branch = structure(logical(0), tags = list(type = "string")), filePath = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_service_sync_config_output"]]))
 }
 
 .proton$get_service_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_service_template_input"]]))
 }
 
 .proton$get_service_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceTemplate = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), encryptionKey = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), pipelineProvisioning = structure(logical(0), tags = list(type = "string")), recommendedVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_service_template_output"]]))
 }
 
 .proton$get_service_template_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(majorVersion = structure(logical(0), tags = list(type = "string")), minorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_service_template_version_input"]]))
 }
 
 .proton$get_service_template_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceTemplateVersion = structure(list(arn = structure(logical(0), tags = list(type = "string")), compatibleEnvironmentTemplates = structure(list(structure(list(majorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), majorVersion = structure(logical(0), tags = list(type = "string")), minorVersion = structure(logical(0), tags = list(type = "string")), recommendedMinorVersion = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), supportedComponentSources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_service_template_version_output"]]))
 }
 
 .proton$get_template_sync_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(templateName = structure(logical(0), tags = list(type = "string")), templateType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_template_sync_config_input"]]))
 }
 
 .proton$get_template_sync_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(templateSyncConfig = structure(list(branch = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), subdirectory = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string")), templateType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_template_sync_config_output"]]))
 }
 
 .proton$get_template_sync_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(templateName = structure(logical(0), tags = list(type = "string")), templateType = structure(logical(0), tags = list(type = "string")), templateVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_template_sync_status_input"]]))
 }
 
 .proton$get_template_sync_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(desiredState = structure(list(branch = structure(logical(0), tags = list(type = "string")), directory = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), sha = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), latestSuccessfulSync = structure(list(events = structure(list(structure(list(event = structure(logical(0), tags = list(type = "string")), externalId = structure(logical(0), tags = list(type = "string")), time = structure(logical(0), tags = list(type = "timestamp")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), initialRevision = structure(list(branch = structure(logical(0), tags = list(type = "string")), directory = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), sha = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startedAt = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), target = structure(logical(0), tags = list(type = "string")), targetRevision = structure(list(branch = structure(logical(0), tags = list(type = "string")), directory = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), sha = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), latestSync = structure(list(events = structure(list(structure(list(event = structure(logical(0), tags = list(type = "string")), externalId = structure(logical(0), tags = list(type = "string")), time = structure(logical(0), tags = list(type = "timestamp")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), initialRevision = structure(list(branch = structure(logical(0), tags = list(type = "string")), directory = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), sha = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startedAt = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), target = structure(logical(0), tags = list(type = "string")), targetRevision = structure(list(branch = structure(logical(0), tags = list(type = "string")), directory = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), sha = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["get_template_sync_status_output"]]))
 }
 
 .proton$list_component_outputs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(componentName = structure(logical(0), tags = list(type = "string")), deploymentId = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_component_outputs_input"]]))
 }
 
 .proton$list_component_outputs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), outputs = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), valueString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_component_outputs_output"]]))
 }
 
 .proton$list_component_provisioned_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(componentName = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_component_provisioned_resources_input"]]))
 }
 
 .proton$list_component_provisioned_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), provisionedResources = structure(list(structure(list(identifier = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provisioningEngine = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_component_provisioned_resources_output"]]))
 }
 
 .proton$list_components_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentName = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_components_input"]]))
 }
 
 .proton$list_components_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(components = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentName = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_components_output"]]))
 }
 
 .proton$list_deployments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(componentName = structure(logical(0), tags = list(type = "string")), environmentName = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_deployments_input"]]))
 }
 
 .proton$list_deployments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deployments = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), completedAt = structure(logical(0), tags = list(type = "timestamp")), componentName = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), environmentName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), targetArn = structure(logical(0), tags = list(type = "string")), targetResourceCreatedAt = structure(logical(0), tags = list(type = "timestamp")), targetResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_deployments_output"]]))
 }
 
 .proton$list_environment_account_connections_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentName = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), requestedBy = structure(logical(0), tags = list(type = "string")), statuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_environment_account_connections_input"]]))
 }
 
 .proton$list_environment_account_connections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentAccountConnections = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), environmentAccountId = structure(logical(0), tags = list(type = "string")), environmentName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), managementAccountId = structure(logical(0), tags = list(type = "string")), requestedAt = structure(logical(0), tags = list(type = "timestamp")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_environment_account_connections_output"]]))
 }
 
 .proton$list_environment_outputs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), environmentName = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_environment_outputs_input"]]))
 }
 
 .proton$list_environment_outputs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), outputs = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), valueString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_environment_outputs_output"]]))
 }
 
 .proton$list_environment_provisioned_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentName = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_environment_provisioned_resources_input"]]))
 }
 
 .proton$list_environment_provisioned_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), provisionedResources = structure(list(structure(list(identifier = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provisioningEngine = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_environment_provisioned_resources_output"]]))
 }
 
 .proton$list_environment_template_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(majorVersion = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_environment_template_versions_input"]]))
 }
 
 .proton$list_environment_template_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), templateVersions = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), majorVersion = structure(logical(0), tags = list(type = "string")), minorVersion = structure(logical(0), tags = list(type = "string")), recommendedMinorVersion = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_environment_template_versions_output"]]))
 }
 
 .proton$list_environment_templates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_environment_templates_input"]]))
 }
 
 .proton$list_environment_templates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), templates = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), provisioning = structure(logical(0), tags = list(type = "string")), recommendedVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_environment_templates_output"]]))
 }
 
 .proton$list_environments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentTemplates = structure(list(structure(list(majorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_environments_input"]]))
 }
 
 .proton$list_environments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environments = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentAccountConnectionId = structure(logical(0), tags = list(type = "string")), environmentAccountId = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), protonServiceRoleArn = structure(logical(0), tags = list(type = "string")), provisioning = structure(logical(0), tags = list(type = "string")), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_environments_output"]]))
 }
 
 .proton$list_repositories_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_repositories_input"]]))
 }
 
 .proton$list_repositories_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), repositories = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), connectionArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_repositories_output"]]))
 }
 
 .proton$list_repository_sync_definitions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), syncType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_repository_sync_definitions_input"]]))
 }
 
 .proton$list_repository_sync_definitions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), syncDefinitions = structure(list(structure(list(branch = structure(logical(0), tags = list(type = "string")), directory = structure(logical(0), tags = list(type = "string")), parent = structure(logical(0), tags = list(type = "string")), target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_repository_sync_definitions_output"]]))
 }
 
 .proton$list_service_instance_outputs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_service_instance_outputs_input"]]))
 }
 
 .proton$list_service_instance_outputs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), outputs = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), valueString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_service_instance_outputs_output"]]))
 }
 
 .proton$list_service_instance_provisioned_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_service_instance_provisioned_resources_input"]]))
 }
 
 .proton$list_service_instance_provisioned_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), provisionedResources = structure(list(structure(list(identifier = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provisioningEngine = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_service_instance_provisioned_resources_output"]]))
 }
 
 .proton$list_service_instances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filters = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), sortBy = structure(logical(0), tags = list(type = "string")), sortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_service_instances_input"]]))
 }
 
 .proton$list_service_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), serviceInstances = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentName = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_service_instances_output"]]))
 }
 
 .proton$list_service_pipeline_outputs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_service_pipeline_outputs_input"]]))
 }
 
 .proton$list_service_pipeline_outputs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), outputs = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), valueString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_service_pipeline_outputs_output"]]))
 }
 
 .proton$list_service_pipeline_provisioned_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_service_pipeline_provisioned_resources_input"]]))
 }
 
 .proton$list_service_pipeline_provisioned_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), provisionedResources = structure(list(structure(list(identifier = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provisioningEngine = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_service_pipeline_provisioned_resources_output"]]))
 }
 
 .proton$list_service_template_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(majorVersion = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_service_template_versions_input"]]))
 }
 
 .proton$list_service_template_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), templateVersions = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), majorVersion = structure(logical(0), tags = list(type = "string")), minorVersion = structure(logical(0), tags = list(type = "string")), recommendedMinorVersion = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_service_template_versions_output"]]))
 }
 
 .proton$list_service_templates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_service_templates_input"]]))
 }
 
 .proton$list_service_templates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), templates = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), pipelineProvisioning = structure(logical(0), tags = list(type = "string")), recommendedVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_service_templates_output"]]))
 }
 
 .proton$list_services_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_services_input"]]))
 }
 
 .proton$list_services_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), services = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_services_output"]]))
 }
 
 .proton$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_tags_for_resource_input"]]))
 }
 
 .proton$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["list_tags_for_resource_output"]]))
 }
 
 .proton$notify_resource_deployment_status_change_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), outputs = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), valueString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), resourceArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["notify_resource_deployment_status_change_input"]]))
 }
 
 .proton$notify_resource_deployment_status_change_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["notify_resource_deployment_status_change_output"]]))
 }
 
 .proton$reject_environment_account_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["reject_environment_account_connection_input"]]))
 }
 
 .proton$reject_environment_account_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentAccountConnection = structure(list(arn = structure(logical(0), tags = list(type = "string")), codebuildRoleArn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), environmentAccountId = structure(logical(0), tags = list(type = "string")), environmentName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), managementAccountId = structure(logical(0), tags = list(type = "string")), requestedAt = structure(logical(0), tags = list(type = "timestamp")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["reject_environment_account_connection_output"]]))
 }
 
 .proton$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["tag_resource_input"]]))
 }
 
 .proton$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["tag_resource_output"]]))
 }
 
 .proton$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["untag_resource_input"]]))
 }
 
 .proton$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["untag_resource_output"]]))
 }
 
 .proton$update_account_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deletePipelineProvisioningRepository = structure(logical(0), tags = list(type = "boolean", box = TRUE)), pipelineCodebuildRoleArn = structure(logical(0), tags = list(type = "string")), pipelineProvisioningRepository = structure(list(branch = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pipelineServiceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_account_settings_input"]]))
 }
 
 .proton$update_account_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accountSettings = structure(list(pipelineCodebuildRoleArn = structure(logical(0), tags = list(type = "string")), pipelineProvisioningRepository = structure(list(arn = structure(logical(0), tags = list(type = "string")), branch = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pipelineServiceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_account_settings_output"]]))
 }
 
 .proton$update_component_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), deploymentType = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), serviceSpec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateFile = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_component_input"]]))
 }
 
 .proton$update_component_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(component = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentName = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastClientRequestToken = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), serviceSpec = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_component_output"]]))
 }
 
 .proton$update_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(codebuildRoleArn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), deploymentType = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentAccountConnectionId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), protonServiceRoleArn = structure(logical(0), tags = list(type = "string")), provisioningRepository = structure(list(branch = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_environment_input"]]))
 }
 
 .proton$update_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environment = structure(list(arn = structure(logical(0), tags = list(type = "string")), codebuildRoleArn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentAccountConnectionId = structure(logical(0), tags = list(type = "string")), environmentAccountId = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), protonServiceRoleArn = structure(logical(0), tags = list(type = "string")), provisioning = structure(logical(0), tags = list(type = "string")), provisioningRepository = structure(list(arn = structure(logical(0), tags = list(type = "string")), branch = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_environment_output"]]))
 }
 
 .proton$update_environment_account_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(codebuildRoleArn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_environment_account_connection_input"]]))
 }
 
 .proton$update_environment_account_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentAccountConnection = structure(list(arn = structure(logical(0), tags = list(type = "string")), codebuildRoleArn = structure(logical(0), tags = list(type = "string")), componentRoleArn = structure(logical(0), tags = list(type = "string")), environmentAccountId = structure(logical(0), tags = list(type = "string")), environmentName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), managementAccountId = structure(logical(0), tags = list(type = "string")), requestedAt = structure(logical(0), tags = list(type = "timestamp")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_environment_account_connection_output"]]))
 }
 
 .proton$update_environment_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_environment_template_input"]]))
 }
 
 .proton$update_environment_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentTemplate = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), encryptionKey = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), provisioning = structure(logical(0), tags = list(type = "string")), recommendedVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_environment_template_output"]]))
 }
 
 .proton$update_environment_template_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), majorVersion = structure(logical(0), tags = list(type = "string")), minorVersion = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_environment_template_version_input"]]))
 }
 
 .proton$update_environment_template_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentTemplateVersion = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), majorVersion = structure(logical(0), tags = list(type = "string")), minorVersion = structure(logical(0), tags = list(type = "string")), recommendedMinorVersion = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_environment_template_version_output"]]))
 }
 
 .proton$update_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_service_input"]]))
 }
 
 .proton$update_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(service = structure(list(arn = structure(logical(0), tags = list(type = "string")), branchName = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), pipeline = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), repositoryConnectionArn = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_service_output"]]))
 }
 
 .proton$update_service_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), deploymentType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_service_instance_input"]]))
 }
 
 .proton$update_service_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceInstance = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), environmentName = structure(logical(0), tags = list(type = "string")), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastClientRequestToken = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_service_instance_output"]]))
 }
 
 .proton$update_service_pipeline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentType = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_service_pipeline_input"]]))
 }
 
 .proton$update_service_pipeline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipeline = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), deploymentStatus = structure(logical(0), tags = list(type = "string")), deploymentStatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastAttemptedDeploymentId = structure(logical(0), tags = list(type = "string")), lastDeploymentAttemptedAt = structure(logical(0), tags = list(type = "timestamp")), lastDeploymentSucceededAt = structure(logical(0), tags = list(type = "timestamp")), lastSucceededDeploymentId = structure(logical(0), tags = list(type = "string")), spec = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), templateMajorVersion = structure(logical(0), tags = list(type = "string")), templateMinorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_service_pipeline_output"]]))
 }
 
 .proton$update_service_sync_blocker_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), resolvedReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_service_sync_blocker_input"]]))
 }
 
 .proton$update_service_sync_blocker_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceInstanceName = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), serviceSyncBlocker = structure(list(contexts = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), createdReason = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), resolvedAt = structure(logical(0), tags = list(type = "timestamp")), resolvedReason = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_service_sync_blocker_output"]]))
 }
 
 .proton$update_service_sync_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(branch = structure(logical(0), tags = list(type = "string")), filePath = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_service_sync_config_input"]]))
 }
 
 .proton$update_service_sync_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceSyncConfig = structure(list(branch = structure(logical(0), tags = list(type = "string")), filePath = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_service_sync_config_output"]]))
 }
 
 .proton$update_service_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_service_template_input"]]))
 }
 
 .proton$update_service_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceTemplate = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), encryptionKey = structure(logical(0), tags = list(type = "string")), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), pipelineProvisioning = structure(logical(0), tags = list(type = "string")), recommendedVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_service_template_output"]]))
 }
 
 .proton$update_service_template_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(compatibleEnvironmentTemplates = structure(list(structure(list(majorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), majorVersion = structure(logical(0), tags = list(type = "string")), minorVersion = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), supportedComponentSources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_service_template_version_input"]]))
 }
 
 .proton$update_service_template_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceTemplateVersion = structure(list(arn = structure(logical(0), tags = list(type = "string")), compatibleEnvironmentTemplates = structure(list(structure(list(majorVersion = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastModifiedAt = structure(logical(0), tags = list(type = "timestamp")), majorVersion = structure(logical(0), tags = list(type = "string")), minorVersion = structure(logical(0), tags = list(type = "string")), recommendedMinorVersion = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), supportedComponentSources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), templateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_service_template_version_output"]]))
 }
 
 .proton$update_template_sync_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(branch = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), subdirectory = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string")), templateType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_template_sync_config_input"]]))
 }
 
 .proton$update_template_sync_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(templateSyncConfig = structure(list(branch = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryProvider = structure(logical(0), tags = list(type = "string")), subdirectory = structure(logical(0), tags = list(type = "string")), templateName = structure(logical(0), tags = list(type = "string")), templateType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .proton_shapes[["update_template_sync_config_output"]]))
 }

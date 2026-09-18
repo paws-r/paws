@@ -5,20 +5,17 @@ NULL
 
 .kendraranking$create_rescore_execution_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CapacityUnits = structure(list(RescoreCapacityUnits = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kendraranking_shapes[["create_rescore_execution_plan_input"]]))
 }
 
 .kendraranking$create_rescore_execution_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kendraranking_shapes[["create_rescore_execution_plan_output"]]))
 }
 
 .kendraranking$delete_rescore_execution_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kendraranking_shapes[["delete_rescore_execution_plan_input"]]))
 }
 
 .kendraranking$delete_rescore_execution_plan_output <- function(...) {
@@ -27,80 +24,67 @@ NULL
 
 .kendraranking$describe_rescore_execution_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kendraranking_shapes[["describe_rescore_execution_plan_input"]]))
 }
 
 .kendraranking$describe_rescore_execution_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CapacityUnits = structure(list(RescoreCapacityUnits = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kendraranking_shapes[["describe_rescore_execution_plan_output"]]))
 }
 
 .kendraranking$list_rescore_execution_plans_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kendraranking_shapes[["list_rescore_execution_plans_input"]]))
 }
 
 .kendraranking$list_rescore_execution_plans_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SummaryItems = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kendraranking_shapes[["list_rescore_execution_plans_output"]]))
 }
 
 .kendraranking$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kendraranking_shapes[["list_tags_for_resource_input"]]))
 }
 
 .kendraranking$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kendraranking_shapes[["list_tags_for_resource_output"]]))
 }
 
 .kendraranking$rescore_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RescoreExecutionPlanId = structure(logical(0), tags = list(type = "string")), SearchQuery = structure(logical(0), tags = list(type = "string")), Documents = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Body = structure(logical(0), tags = list(type = "string")), TokenizedTitle = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TokenizedBody = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OriginalScore = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kendraranking_shapes[["rescore_input"]]))
 }
 
 .kendraranking$rescore_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RescoreId = structure(logical(0), tags = list(type = "string")), ResultItems = structure(list(structure(list(DocumentId = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kendraranking_shapes[["rescore_output"]]))
 }
 
 .kendraranking$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kendraranking_shapes[["tag_resource_input"]]))
 }
 
 .kendraranking$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kendraranking_shapes[["tag_resource_output"]]))
 }
 
 .kendraranking$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kendraranking_shapes[["untag_resource_input"]]))
 }
 
 .kendraranking$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kendraranking_shapes[["untag_resource_output"]]))
 }
 
 .kendraranking$update_rescore_execution_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CapacityUnits = structure(list(RescoreCapacityUnits = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kendraranking_shapes[["update_rescore_execution_plan_input"]]))
 }
 
 .kendraranking$update_rescore_execution_plan_output <- function(...) {

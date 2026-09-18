@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_update_dashboard}
 \alias{cloudtrail_update_dashboard}
-\title{Updates the specified dashboard}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_update_dashboard(
   DashboardId,
@@ -25,7 +26,7 @@ To remove widgets, pass in an array that includes the existing widgets minus the
 \item{TerminationProtectionEnabled}{Specifies whether termination protection is enabled for the dashboard. If termination protection is enabled, you cannot delete the dashboard until termination protection is disabled.}
 }
 \description{
-Updates the specified dashboard.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_update_dashboard/} for full documentation.
 }

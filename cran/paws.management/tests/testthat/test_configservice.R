@@ -84,6 +84,14 @@ test_that("list_conformance_pack_compliance_scores", {
   expect_error(svc$list_conformance_pack_compliance_scores(), NA)
 })
 
+test_that("list_connectors", {
+  expect_error(svc$list_connectors(), NA)
+})
+
+test_that("list_connectors", {
+  expect_error(svc$list_connectors(MaxResults = 20), NA)
+})
+
 test_that("list_resource_evaluations", {
   expect_error(svc$list_resource_evaluations(), NA)
 })

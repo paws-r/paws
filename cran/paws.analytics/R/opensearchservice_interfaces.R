@@ -5,44 +5,37 @@ NULL
 
 .opensearchservice$accept_inbound_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectionId = structure(logical(0), tags = list(location = "uri", locationName = "ConnectionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["accept_inbound_connection_input"]]))
 }
 
 .opensearchservice$accept_inbound_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Connection = structure(list(LocalDomainInfo = structure(list(AWSDomainInformation = structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), RemoteDomainInfo = structure(list(AWSDomainInformation = structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ConnectionId = structure(logical(0), tags = list(type = "string")), ConnectionStatus = structure(list(StatusCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConnectionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["accept_inbound_connection_output"]]))
 }
 
 .opensearchservice$add_data_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Name = structure(logical(0), tags = list(type = "string")), DataSourceType = structure(list(S3GlueDataCatalog = structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["add_data_source_input"]]))
 }
 
 .opensearchservice$add_data_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["add_data_source_output"]]))
 }
 
 .opensearchservice$add_direct_query_data_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DataSourceName = structure(logical(0), tags = list(type = "string")), DataSourceType = structure(list(CloudWatchLog = structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SecurityLake = structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Prometheus = structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), WorkspaceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Description = structure(logical(0), tags = list(type = "string")), OpenSearchArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DataSourceAccessPolicy = structure(logical(0), tags = list(type = "string")), TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["add_direct_query_data_source_input"]]))
 }
 
 .opensearchservice$add_direct_query_data_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DataSourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["add_direct_query_data_source_output"]]))
 }
 
 .opensearchservice$add_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["add_tags_input"]]))
 }
 
 .opensearchservice$add_tags_output <- function(...) {
@@ -51,164 +44,147 @@ NULL
 
 .opensearchservice$associate_package_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PackageID = structure(logical(0), tags = list(location = "uri", locationName = "PackageID", type = "string")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), PrerequisitePackageIDList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AssociationConfiguration = structure(list(KeyStoreAccessOption = structure(list(KeyAccessRoleArn = structure(logical(0), tags = list(type = "string")), KeyStoreAccessEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["associate_package_input"]]))
 }
 
 .opensearchservice$associate_package_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainPackageDetails = structure(list(PackageID = structure(logical(0), tags = list(type = "string")), PackageName = structure(logical(0), tags = list(type = "string")), PackageType = structure(logical(0), tags = list(type = "string")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), DomainName = structure(logical(0), tags = list(type = "string")), DomainPackageStatus = structure(logical(0), tags = list(type = "string")), PackageVersion = structure(logical(0), tags = list(type = "string")), PrerequisitePackageIDList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReferencePath = structure(logical(0), tags = list(type = "string")), ErrorDetails = structure(list(ErrorType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AssociationConfiguration = structure(list(KeyStoreAccessOption = structure(list(KeyAccessRoleArn = structure(logical(0), tags = list(type = "string")), KeyStoreAccessEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["associate_package_output"]]))
 }
 
 .opensearchservice$associate_packages_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PackageList = structure(list(structure(list(PackageID = structure(logical(0), tags = list(type = "string")), PrerequisitePackageIDList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AssociationConfiguration = structure(list(KeyStoreAccessOption = structure(list(KeyAccessRoleArn = structure(logical(0), tags = list(type = "string")), KeyStoreAccessEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), DomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["associate_packages_input"]]))
 }
 
 .opensearchservice$associate_packages_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainPackageDetailsList = structure(list(structure(list(PackageID = structure(logical(0), tags = list(type = "string")), PackageName = structure(logical(0), tags = list(type = "string")), PackageType = structure(logical(0), tags = list(type = "string")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), DomainName = structure(logical(0), tags = list(type = "string")), DomainPackageStatus = structure(logical(0), tags = list(type = "string")), PackageVersion = structure(logical(0), tags = list(type = "string")), PrerequisitePackageIDList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReferencePath = structure(logical(0), tags = list(type = "string")), ErrorDetails = structure(list(ErrorType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AssociationConfiguration = structure(list(KeyStoreAccessOption = structure(list(KeyAccessRoleArn = structure(logical(0), tags = list(type = "string")), KeyStoreAccessEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["associate_packages_output"]]))
+}
+
+.opensearchservice$attach_data_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .opensearchservice_shapes[["attach_data_source_input"]]))
+}
+
+.opensearchservice$attach_data_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .opensearchservice_shapes[["attach_data_source_output"]]))
 }
 
 .opensearchservice$authorize_vpc_endpoint_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Account = structure(logical(0), tags = list(type = "string")), Service = structure(logical(0), tags = list(type = "string")), ServiceOptions = structure(list(SupportedRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["authorize_vpc_endpoint_access_input"]]))
 }
 
 .opensearchservice$authorize_vpc_endpoint_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthorizedPrincipal = structure(list(PrincipalType = structure(logical(0), tags = list(type = "string")), Principal = structure(logical(0), tags = list(type = "string")), ServiceOptions = structure(list(SupportedRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["authorize_vpc_endpoint_access_output"]]))
 }
 
 .opensearchservice$cancel_domain_config_change_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["cancel_domain_config_change_input"]]))
 }
 
 .opensearchservice$cancel_domain_config_change_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CancelledChangeIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CancelledChangeProperties = structure(list(structure(list(PropertyName = structure(logical(0), tags = list(type = "string")), CancelledValue = structure(logical(0), tags = list(type = "string")), ActiveValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["cancel_domain_config_change_output"]]))
 }
 
 .opensearchservice$cancel_service_software_update_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["cancel_service_software_update_input"]]))
 }
 
 .opensearchservice$cancel_service_software_update_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceSoftwareOptions = structure(list(CurrentVersion = structure(logical(0), tags = list(type = "string")), NewVersion = structure(logical(0), tags = list(type = "string")), UpdateAvailable = structure(logical(0), tags = list(type = "boolean")), Cancellable = structure(logical(0), tags = list(type = "boolean")), UpdateStatus = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AutomatedUpdateDate = structure(logical(0), tags = list(type = "timestamp")), OptionalDeployment = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["cancel_service_software_update_output"]]))
 }
 
 .opensearchservice$create_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), name = structure(logical(0), tags = list(type = "string")), dataSources = structure(list(structure(list(dataSourceArn = structure(logical(0), tags = list(type = "string")), dataSourceDescription = structure(logical(0), tags = list(type = "string")), iamRoleForDataSourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), iamIdentityCenterOptions = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), iamIdentityCenterInstanceArn = structure(logical(0), tags = list(type = "string")), iamRoleForIdentityCenterApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), appConfigs = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["create_application_input"]]))
 }
 
 .opensearchservice$create_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), dataSources = structure(list(structure(list(dataSourceArn = structure(logical(0), tags = list(type = "string")), dataSourceDescription = structure(logical(0), tags = list(type = "string")), iamRoleForDataSourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), iamIdentityCenterOptions = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), iamIdentityCenterInstanceArn = structure(logical(0), tags = list(type = "string")), iamRoleForIdentityCenterApplicationArn = structure(logical(0), tags = list(type = "string")), iamIdentityCenterApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), appConfigs = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["create_application_output"]]))
 }
 
 .opensearchservice$create_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), ClusterConfig = structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), DedicatedMasterEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessConfig = structure(list(AvailabilityZoneCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DedicatedMasterType = structure(logical(0), tags = list(type = "string")), DedicatedMasterCount = structure(logical(0), tags = list(type = "integer")), WarmEnabled = structure(logical(0), tags = list(type = "boolean")), WarmType = structure(logical(0), tags = list(type = "string")), WarmCount = structure(logical(0), tags = list(type = "integer")), ColdStorageOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), MultiAZWithStandbyEnabled = structure(logical(0), tags = list(type = "boolean")), NodeOptions = structure(list(structure(list(NodeType = structure(logical(0), tags = list(type = "string")), NodeConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Type = structure(logical(0), tags = list(type = "string")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EBSOptions = structure(list(EBSEnabled = structure(logical(0), tags = list(type = "boolean")), VolumeType = structure(logical(0), tags = list(type = "string")), VolumeSize = structure(logical(0), tags = list(type = "integer")), Iops = structure(logical(0), tags = list(type = "integer")), Throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AccessPolicies = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string")), SnapshotOptions = structure(list(AutomatedSnapshotStartHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), VPCOptions = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EgressEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CognitoOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), UserPoolId = structure(logical(0), tags = list(type = "string")), IdentityPoolId = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionAtRestOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NodeToNodeEncryptionOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AdvancedOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), LogPublishingOptions = structure(list(structure(list(CloudWatchLogsLogGroupArn = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "map")), DomainEndpointOptions = structure(list(EnforceHTTPS = structure(logical(0), tags = list(type = "boolean")), TLSSecurityPolicy = structure(logical(0), tags = list(type = "string")), CustomEndpointEnabled = structure(logical(0), tags = list(type = "boolean")), CustomEndpoint = structure(logical(0), tags = list(type = "string")), CustomEndpointCertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AdvancedSecurityOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), InternalUserDatabaseEnabled = structure(logical(0), tags = list(type = "boolean")), MasterUserOptions = structure(list(MasterUserARN = structure(logical(0), tags = list(type = "string")), MasterUserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MasterUserPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), SAMLOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Idp = structure(list(MetadataContent = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MasterUserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MasterBackendRole = structure(logical(0), tags = list(type = "string")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), SessionTimeoutMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), JWTOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), JwksUrl = structure(logical(0), tags = list(type = "string")), PublicKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IAMFederationOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AnonymousAuthEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IdentityCenterOptions = structure(list(EnabledAPIAccess = structure(logical(0), tags = list(type = "boolean")), IdentityCenterInstanceARN = structure(logical(0), tags = list(type = "string")), IdentityCenterInstanceRegion = structure(logical(0), tags = list(type = "string")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AutoTuneOptions = structure(list(DesiredState = structure(logical(0), tags = list(type = "string")), MaintenanceSchedules = structure(list(structure(list(StartAt = structure(logical(0), tags = list(type = "timestamp")), Duration = structure(list(Value = structure(logical(0), tags = list(type = "long")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CronExpressionForRecurrence = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UseOffPeakWindow = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), OffPeakWindowOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), OffPeakWindow = structure(list(WindowStartTime = structure(list(Hours = structure(logical(0), tags = list(type = "long")), Minutes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), SoftwareUpdateOptions = structure(list(AutoSoftwareUpdateEnabled = structure(logical(0), tags = list(type = "boolean")), UseLatestServiceSoftwareForBlueGreen = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AIMLOptions = structure(list(NaturalLanguageQueryGenerationOptions = structure(list(DesiredState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3VectorsEngine = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ServerlessVectorAcceleration = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), DeploymentStrategyOptions = structure(list(DeploymentStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutomatedSnapshotPauseOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["create_domain_input"]]))
 }
 
 .opensearchservice$create_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainStatus = structure(list(DomainId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "boolean")), Deleted = structure(logical(0), tags = list(type = "boolean")), Endpoint = structure(logical(0), tags = list(type = "string")), EndpointV2 = structure(logical(0), tags = list(type = "string")), Endpoints = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DomainEndpointV2HostedZoneId = structure(logical(0), tags = list(type = "string")), Processing = structure(logical(0), tags = list(type = "boolean")), UpgradeProcessing = structure(logical(0), tags = list(type = "boolean")), EngineVersion = structure(logical(0), tags = list(type = "string")), ClusterConfig = structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), DedicatedMasterEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessConfig = structure(list(AvailabilityZoneCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DedicatedMasterType = structure(logical(0), tags = list(type = "string")), DedicatedMasterCount = structure(logical(0), tags = list(type = "integer")), WarmEnabled = structure(logical(0), tags = list(type = "boolean")), WarmType = structure(logical(0), tags = list(type = "string")), WarmCount = structure(logical(0), tags = list(type = "integer")), ColdStorageOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), MultiAZWithStandbyEnabled = structure(logical(0), tags = list(type = "boolean")), NodeOptions = structure(list(structure(list(NodeType = structure(logical(0), tags = list(type = "string")), NodeConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Type = structure(logical(0), tags = list(type = "string")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EBSOptions = structure(list(EBSEnabled = structure(logical(0), tags = list(type = "boolean")), VolumeType = structure(logical(0), tags = list(type = "string")), VolumeSize = structure(logical(0), tags = list(type = "integer")), Iops = structure(logical(0), tags = list(type = "integer")), Throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AccessPolicies = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string")), SnapshotOptions = structure(list(AutomatedSnapshotStartHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), VPCOptions = structure(list(VPCId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EgressEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CognitoOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), UserPoolId = structure(logical(0), tags = list(type = "string")), IdentityPoolId = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionAtRestOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NodeToNodeEncryptionOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AdvancedOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), LogPublishingOptions = structure(list(structure(list(CloudWatchLogsLogGroupArn = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "map")), ServiceSoftwareOptions = structure(list(CurrentVersion = structure(logical(0), tags = list(type = "string")), NewVersion = structure(logical(0), tags = list(type = "string")), UpdateAvailable = structure(logical(0), tags = list(type = "boolean")), Cancellable = structure(logical(0), tags = list(type = "boolean")), UpdateStatus = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AutomatedUpdateDate = structure(logical(0), tags = list(type = "timestamp")), OptionalDeployment = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DomainEndpointOptions = structure(list(EnforceHTTPS = structure(logical(0), tags = list(type = "boolean")), TLSSecurityPolicy = structure(logical(0), tags = list(type = "string")), CustomEndpointEnabled = structure(logical(0), tags = list(type = "boolean")), CustomEndpoint = structure(logical(0), tags = list(type = "string")), CustomEndpointCertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AdvancedSecurityOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), InternalUserDatabaseEnabled = structure(logical(0), tags = list(type = "boolean")), SAMLOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Idp = structure(list(MetadataContent = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), SessionTimeoutMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), JWTOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), JwksUrl = structure(logical(0), tags = list(type = "string")), PublicKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IAMFederationOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AnonymousAuthDisableDate = structure(logical(0), tags = list(type = "timestamp")), AnonymousAuthEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IdentityCenterOptions = structure(list(EnabledAPIAccess = structure(logical(0), tags = list(type = "boolean")), IdentityCenterInstanceARN = structure(logical(0), tags = list(type = "string")), IdentityCenterInstanceRegion = structure(logical(0), tags = list(type = "string")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), IdentityCenterApplicationARN = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoTuneOptions = structure(list(State = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), UseOffPeakWindow = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ChangeProgressDetails = structure(list(ChangeId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ConfigChangeStatus = structure(logical(0), tags = list(type = "string")), InitiatedBy = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), OffPeakWindowOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), OffPeakWindow = structure(list(WindowStartTime = structure(list(Hours = structure(logical(0), tags = list(type = "long")), Minutes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), SoftwareUpdateOptions = structure(list(AutoSoftwareUpdateEnabled = structure(logical(0), tags = list(type = "boolean")), UseLatestServiceSoftwareForBlueGreen = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DomainProcessingStatus = structure(logical(0), tags = list(type = "string")), ModifyingProperties = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ActiveValue = structure(logical(0), tags = list(type = "string")), PendingValue = structure(logical(0), tags = list(type = "string")), ValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AIMLOptions = structure(list(NaturalLanguageQueryGenerationOptions = structure(list(DesiredState = structure(logical(0), tags = list(type = "string")), CurrentState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3VectorsEngine = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ServerlessVectorAcceleration = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), DeploymentStrategyOptions = structure(list(DeploymentStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutomatedSnapshotPauseOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["create_domain_output"]]))
 }
 
 .opensearchservice$create_index_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), IndexName = structure(logical(0), tags = list(type = "string")), IndexSchema = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["create_index_input"]]))
 }
 
 .opensearchservice$create_index_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["create_index_output"]]))
 }
 
 .opensearchservice$create_outbound_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LocalDomainInfo = structure(list(AWSDomainInformation = structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), RemoteDomainInfo = structure(list(AWSDomainInformation = structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ConnectionAlias = structure(logical(0), tags = list(type = "string")), ConnectionMode = structure(logical(0), tags = list(type = "string")), ConnectionProperties = structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), CrossClusterSearch = structure(list(SkipUnavailable = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["create_outbound_connection_input"]]))
 }
 
 .opensearchservice$create_outbound_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LocalDomainInfo = structure(list(AWSDomainInformation = structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), RemoteDomainInfo = structure(list(AWSDomainInformation = structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ConnectionAlias = structure(logical(0), tags = list(type = "string")), ConnectionStatus = structure(list(StatusCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConnectionId = structure(logical(0), tags = list(type = "string")), ConnectionMode = structure(logical(0), tags = list(type = "string")), ConnectionProperties = structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), CrossClusterSearch = structure(list(SkipUnavailable = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["create_outbound_connection_output"]]))
 }
 
 .opensearchservice$create_package_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PackageName = structure(logical(0), tags = list(type = "string")), PackageType = structure(logical(0), tags = list(type = "string")), PackageDescription = structure(logical(0), tags = list(type = "string")), PackageSource = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PackageConfiguration = structure(list(LicenseRequirement = structure(logical(0), tags = list(type = "string")), LicenseFilepath = structure(logical(0), tags = list(type = "string")), ConfigurationRequirement = structure(logical(0), tags = list(type = "string")), RequiresRestartForConfigurationUpdate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), EngineVersion = structure(logical(0), tags = list(type = "string")), PackageVendingOptions = structure(list(VendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), PackageEncryptionOptions = structure(list(KmsKeyIdentifier = structure(logical(0), tags = list(type = "string")), EncryptionEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["create_package_input"]]))
 }
 
 .opensearchservice$create_package_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PackageDetails = structure(list(PackageID = structure(logical(0), tags = list(type = "string")), PackageName = structure(logical(0), tags = list(type = "string")), PackageType = structure(logical(0), tags = list(type = "string")), PackageDescription = structure(logical(0), tags = list(type = "string")), PackageStatus = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), AvailablePackageVersion = structure(logical(0), tags = list(type = "string")), ErrorDetails = structure(list(ErrorType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EngineVersion = structure(logical(0), tags = list(type = "string")), AvailablePluginProperties = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), ClassName = structure(logical(0), tags = list(type = "string")), UncompressedSizeInBytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), AvailablePackageConfiguration = structure(list(LicenseRequirement = structure(logical(0), tags = list(type = "string")), LicenseFilepath = structure(logical(0), tags = list(type = "string")), ConfigurationRequirement = structure(logical(0), tags = list(type = "string")), RequiresRestartForConfigurationUpdate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AllowListedUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PackageOwner = structure(logical(0), tags = list(type = "string")), PackageVendingOptions = structure(list(VendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), PackageEncryptionOptions = structure(list(KmsKeyIdentifier = structure(logical(0), tags = list(type = "string")), EncryptionEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["create_package_output"]]))
 }
 
 .opensearchservice$create_vpc_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainArn = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EgressEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["create_vpc_endpoint_input"]]))
 }
 
 .opensearchservice$create_vpc_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcEndpoint = structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcEndpointOwner = structure(logical(0), tags = list(type = "string")), DomainArn = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(VPCId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EgressEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["create_vpc_endpoint_output"]]))
 }
 
 .opensearchservice$delete_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_application_input"]]))
 }
 
 .opensearchservice$delete_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_application_output"]]))
 }
 
 .opensearchservice$delete_data_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "DataSourceName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_data_source_input"]]))
 }
 
 .opensearchservice$delete_data_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_data_source_output"]]))
 }
 
 .opensearchservice$delete_direct_query_data_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DataSourceName = structure(logical(0), tags = list(location = "uri", locationName = "DataSourceName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_direct_query_data_source_input"]]))
 }
 
 .opensearchservice$delete_direct_query_data_source_output <- function(...) {
@@ -217,668 +193,617 @@ NULL
 
 .opensearchservice$delete_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_domain_input"]]))
 }
 
 .opensearchservice$delete_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainStatus = structure(list(DomainId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "boolean")), Deleted = structure(logical(0), tags = list(type = "boolean")), Endpoint = structure(logical(0), tags = list(type = "string")), EndpointV2 = structure(logical(0), tags = list(type = "string")), Endpoints = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DomainEndpointV2HostedZoneId = structure(logical(0), tags = list(type = "string")), Processing = structure(logical(0), tags = list(type = "boolean")), UpgradeProcessing = structure(logical(0), tags = list(type = "boolean")), EngineVersion = structure(logical(0), tags = list(type = "string")), ClusterConfig = structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), DedicatedMasterEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessConfig = structure(list(AvailabilityZoneCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DedicatedMasterType = structure(logical(0), tags = list(type = "string")), DedicatedMasterCount = structure(logical(0), tags = list(type = "integer")), WarmEnabled = structure(logical(0), tags = list(type = "boolean")), WarmType = structure(logical(0), tags = list(type = "string")), WarmCount = structure(logical(0), tags = list(type = "integer")), ColdStorageOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), MultiAZWithStandbyEnabled = structure(logical(0), tags = list(type = "boolean")), NodeOptions = structure(list(structure(list(NodeType = structure(logical(0), tags = list(type = "string")), NodeConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Type = structure(logical(0), tags = list(type = "string")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EBSOptions = structure(list(EBSEnabled = structure(logical(0), tags = list(type = "boolean")), VolumeType = structure(logical(0), tags = list(type = "string")), VolumeSize = structure(logical(0), tags = list(type = "integer")), Iops = structure(logical(0), tags = list(type = "integer")), Throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AccessPolicies = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string")), SnapshotOptions = structure(list(AutomatedSnapshotStartHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), VPCOptions = structure(list(VPCId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EgressEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CognitoOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), UserPoolId = structure(logical(0), tags = list(type = "string")), IdentityPoolId = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionAtRestOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NodeToNodeEncryptionOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AdvancedOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), LogPublishingOptions = structure(list(structure(list(CloudWatchLogsLogGroupArn = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "map")), ServiceSoftwareOptions = structure(list(CurrentVersion = structure(logical(0), tags = list(type = "string")), NewVersion = structure(logical(0), tags = list(type = "string")), UpdateAvailable = structure(logical(0), tags = list(type = "boolean")), Cancellable = structure(logical(0), tags = list(type = "boolean")), UpdateStatus = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AutomatedUpdateDate = structure(logical(0), tags = list(type = "timestamp")), OptionalDeployment = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DomainEndpointOptions = structure(list(EnforceHTTPS = structure(logical(0), tags = list(type = "boolean")), TLSSecurityPolicy = structure(logical(0), tags = list(type = "string")), CustomEndpointEnabled = structure(logical(0), tags = list(type = "boolean")), CustomEndpoint = structure(logical(0), tags = list(type = "string")), CustomEndpointCertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AdvancedSecurityOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), InternalUserDatabaseEnabled = structure(logical(0), tags = list(type = "boolean")), SAMLOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Idp = structure(list(MetadataContent = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), SessionTimeoutMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), JWTOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), JwksUrl = structure(logical(0), tags = list(type = "string")), PublicKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IAMFederationOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AnonymousAuthDisableDate = structure(logical(0), tags = list(type = "timestamp")), AnonymousAuthEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IdentityCenterOptions = structure(list(EnabledAPIAccess = structure(logical(0), tags = list(type = "boolean")), IdentityCenterInstanceARN = structure(logical(0), tags = list(type = "string")), IdentityCenterInstanceRegion = structure(logical(0), tags = list(type = "string")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), IdentityCenterApplicationARN = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoTuneOptions = structure(list(State = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), UseOffPeakWindow = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ChangeProgressDetails = structure(list(ChangeId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ConfigChangeStatus = structure(logical(0), tags = list(type = "string")), InitiatedBy = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), OffPeakWindowOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), OffPeakWindow = structure(list(WindowStartTime = structure(list(Hours = structure(logical(0), tags = list(type = "long")), Minutes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), SoftwareUpdateOptions = structure(list(AutoSoftwareUpdateEnabled = structure(logical(0), tags = list(type = "boolean")), UseLatestServiceSoftwareForBlueGreen = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DomainProcessingStatus = structure(logical(0), tags = list(type = "string")), ModifyingProperties = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ActiveValue = structure(logical(0), tags = list(type = "string")), PendingValue = structure(logical(0), tags = list(type = "string")), ValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AIMLOptions = structure(list(NaturalLanguageQueryGenerationOptions = structure(list(DesiredState = structure(logical(0), tags = list(type = "string")), CurrentState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3VectorsEngine = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ServerlessVectorAcceleration = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), DeploymentStrategyOptions = structure(list(DeploymentStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutomatedSnapshotPauseOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_domain_output"]]))
 }
 
 .opensearchservice$delete_inbound_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectionId = structure(logical(0), tags = list(location = "uri", locationName = "ConnectionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_inbound_connection_input"]]))
 }
 
 .opensearchservice$delete_inbound_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Connection = structure(list(LocalDomainInfo = structure(list(AWSDomainInformation = structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), RemoteDomainInfo = structure(list(AWSDomainInformation = structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ConnectionId = structure(logical(0), tags = list(type = "string")), ConnectionStatus = structure(list(StatusCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConnectionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_inbound_connection_output"]]))
 }
 
 .opensearchservice$delete_index_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), IndexName = structure(logical(0), tags = list(location = "uri", locationName = "IndexName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_index_input"]]))
 }
 
 .opensearchservice$delete_index_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_index_output"]]))
 }
 
 .opensearchservice$delete_outbound_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectionId = structure(logical(0), tags = list(location = "uri", locationName = "ConnectionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_outbound_connection_input"]]))
 }
 
 .opensearchservice$delete_outbound_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Connection = structure(list(LocalDomainInfo = structure(list(AWSDomainInformation = structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), RemoteDomainInfo = structure(list(AWSDomainInformation = structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ConnectionId = structure(logical(0), tags = list(type = "string")), ConnectionAlias = structure(logical(0), tags = list(type = "string")), ConnectionStatus = structure(list(StatusCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConnectionMode = structure(logical(0), tags = list(type = "string")), ConnectionProperties = structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), CrossClusterSearch = structure(list(SkipUnavailable = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_outbound_connection_output"]]))
 }
 
 .opensearchservice$delete_package_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PackageID = structure(logical(0), tags = list(location = "uri", locationName = "PackageID", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_package_input"]]))
 }
 
 .opensearchservice$delete_package_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PackageDetails = structure(list(PackageID = structure(logical(0), tags = list(type = "string")), PackageName = structure(logical(0), tags = list(type = "string")), PackageType = structure(logical(0), tags = list(type = "string")), PackageDescription = structure(logical(0), tags = list(type = "string")), PackageStatus = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), AvailablePackageVersion = structure(logical(0), tags = list(type = "string")), ErrorDetails = structure(list(ErrorType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EngineVersion = structure(logical(0), tags = list(type = "string")), AvailablePluginProperties = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), ClassName = structure(logical(0), tags = list(type = "string")), UncompressedSizeInBytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), AvailablePackageConfiguration = structure(list(LicenseRequirement = structure(logical(0), tags = list(type = "string")), LicenseFilepath = structure(logical(0), tags = list(type = "string")), ConfigurationRequirement = structure(logical(0), tags = list(type = "string")), RequiresRestartForConfigurationUpdate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AllowListedUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PackageOwner = structure(logical(0), tags = list(type = "string")), PackageVendingOptions = structure(list(VendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), PackageEncryptionOptions = structure(list(KmsKeyIdentifier = structure(logical(0), tags = list(type = "string")), EncryptionEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_package_output"]]))
 }
 
 .opensearchservice$delete_vpc_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcEndpointId = structure(logical(0), tags = list(location = "uri", locationName = "VpcEndpointId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_vpc_endpoint_input"]]))
 }
 
 .opensearchservice$delete_vpc_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcEndpointSummary = structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcEndpointOwner = structure(logical(0), tags = list(type = "string")), DomainArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["delete_vpc_endpoint_output"]]))
 }
 
 .opensearchservice$deregister_capability_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "ApplicationId", type = "string")), capabilityName = structure(logical(0), tags = list(location = "uri", locationName = "CapabilityName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["deregister_capability_input"]]))
 }
 
 .opensearchservice$deregister_capability_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["deregister_capability_output"]]))
+}
+
+.opensearchservice$describe_data_source_attachment_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .opensearchservice_shapes[["describe_data_source_attachment_input"]]))
+}
+
+.opensearchservice$describe_data_source_attachment_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .opensearchservice_shapes[["describe_data_source_attachment_output"]]))
 }
 
 .opensearchservice$describe_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_domain_input"]]))
 }
 
 .opensearchservice$describe_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainStatus = structure(list(DomainId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "boolean")), Deleted = structure(logical(0), tags = list(type = "boolean")), Endpoint = structure(logical(0), tags = list(type = "string")), EndpointV2 = structure(logical(0), tags = list(type = "string")), Endpoints = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DomainEndpointV2HostedZoneId = structure(logical(0), tags = list(type = "string")), Processing = structure(logical(0), tags = list(type = "boolean")), UpgradeProcessing = structure(logical(0), tags = list(type = "boolean")), EngineVersion = structure(logical(0), tags = list(type = "string")), ClusterConfig = structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), DedicatedMasterEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessConfig = structure(list(AvailabilityZoneCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DedicatedMasterType = structure(logical(0), tags = list(type = "string")), DedicatedMasterCount = structure(logical(0), tags = list(type = "integer")), WarmEnabled = structure(logical(0), tags = list(type = "boolean")), WarmType = structure(logical(0), tags = list(type = "string")), WarmCount = structure(logical(0), tags = list(type = "integer")), ColdStorageOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), MultiAZWithStandbyEnabled = structure(logical(0), tags = list(type = "boolean")), NodeOptions = structure(list(structure(list(NodeType = structure(logical(0), tags = list(type = "string")), NodeConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Type = structure(logical(0), tags = list(type = "string")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EBSOptions = structure(list(EBSEnabled = structure(logical(0), tags = list(type = "boolean")), VolumeType = structure(logical(0), tags = list(type = "string")), VolumeSize = structure(logical(0), tags = list(type = "integer")), Iops = structure(logical(0), tags = list(type = "integer")), Throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AccessPolicies = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string")), SnapshotOptions = structure(list(AutomatedSnapshotStartHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), VPCOptions = structure(list(VPCId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EgressEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CognitoOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), UserPoolId = structure(logical(0), tags = list(type = "string")), IdentityPoolId = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionAtRestOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NodeToNodeEncryptionOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AdvancedOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), LogPublishingOptions = structure(list(structure(list(CloudWatchLogsLogGroupArn = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "map")), ServiceSoftwareOptions = structure(list(CurrentVersion = structure(logical(0), tags = list(type = "string")), NewVersion = structure(logical(0), tags = list(type = "string")), UpdateAvailable = structure(logical(0), tags = list(type = "boolean")), Cancellable = structure(logical(0), tags = list(type = "boolean")), UpdateStatus = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AutomatedUpdateDate = structure(logical(0), tags = list(type = "timestamp")), OptionalDeployment = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DomainEndpointOptions = structure(list(EnforceHTTPS = structure(logical(0), tags = list(type = "boolean")), TLSSecurityPolicy = structure(logical(0), tags = list(type = "string")), CustomEndpointEnabled = structure(logical(0), tags = list(type = "boolean")), CustomEndpoint = structure(logical(0), tags = list(type = "string")), CustomEndpointCertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AdvancedSecurityOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), InternalUserDatabaseEnabled = structure(logical(0), tags = list(type = "boolean")), SAMLOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Idp = structure(list(MetadataContent = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), SessionTimeoutMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), JWTOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), JwksUrl = structure(logical(0), tags = list(type = "string")), PublicKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IAMFederationOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AnonymousAuthDisableDate = structure(logical(0), tags = list(type = "timestamp")), AnonymousAuthEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IdentityCenterOptions = structure(list(EnabledAPIAccess = structure(logical(0), tags = list(type = "boolean")), IdentityCenterInstanceARN = structure(logical(0), tags = list(type = "string")), IdentityCenterInstanceRegion = structure(logical(0), tags = list(type = "string")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), IdentityCenterApplicationARN = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoTuneOptions = structure(list(State = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), UseOffPeakWindow = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ChangeProgressDetails = structure(list(ChangeId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ConfigChangeStatus = structure(logical(0), tags = list(type = "string")), InitiatedBy = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), OffPeakWindowOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), OffPeakWindow = structure(list(WindowStartTime = structure(list(Hours = structure(logical(0), tags = list(type = "long")), Minutes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), SoftwareUpdateOptions = structure(list(AutoSoftwareUpdateEnabled = structure(logical(0), tags = list(type = "boolean")), UseLatestServiceSoftwareForBlueGreen = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DomainProcessingStatus = structure(logical(0), tags = list(type = "string")), ModifyingProperties = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ActiveValue = structure(logical(0), tags = list(type = "string")), PendingValue = structure(logical(0), tags = list(type = "string")), ValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AIMLOptions = structure(list(NaturalLanguageQueryGenerationOptions = structure(list(DesiredState = structure(logical(0), tags = list(type = "string")), CurrentState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3VectorsEngine = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ServerlessVectorAcceleration = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), DeploymentStrategyOptions = structure(list(DeploymentStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutomatedSnapshotPauseOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_domain_output"]]))
 }
 
 .opensearchservice$describe_domain_auto_tunes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_domain_auto_tunes_input"]]))
 }
 
 .opensearchservice$describe_domain_auto_tunes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoTunes = structure(list(structure(list(AutoTuneType = structure(logical(0), tags = list(type = "string")), AutoTuneDetails = structure(list(ScheduledAutoTuneDetails = structure(list(Date = structure(logical(0), tags = list(type = "timestamp")), ActionType = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Severity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_domain_auto_tunes_output"]]))
 }
 
 .opensearchservice$describe_domain_change_progress_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ChangeId = structure(logical(0), tags = list(location = "querystring", locationName = "changeid", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_domain_change_progress_input"]]))
 }
 
 .opensearchservice$describe_domain_change_progress_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ChangeProgressStatus = structure(list(ChangeId = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), PendingProperties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CompletedProperties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TotalNumberOfStages = structure(logical(0), tags = list(type = "integer")), ChangeProgressStages = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LastUpdated = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), ConfigChangeStatus = structure(logical(0), tags = list(type = "string")), InitiatedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_domain_change_progress_output"]]))
 }
 
 .opensearchservice$describe_domain_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_domain_config_input"]]))
 }
 
 .opensearchservice$describe_domain_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainConfig = structure(list(EngineVersion = structure(list(Options = structure(logical(0), tags = list(type = "string")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), ClusterConfig = structure(list(Options = structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), DedicatedMasterEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessConfig = structure(list(AvailabilityZoneCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DedicatedMasterType = structure(logical(0), tags = list(type = "string")), DedicatedMasterCount = structure(logical(0), tags = list(type = "integer")), WarmEnabled = structure(logical(0), tags = list(type = "boolean")), WarmType = structure(logical(0), tags = list(type = "string")), WarmCount = structure(logical(0), tags = list(type = "integer")), ColdStorageOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), MultiAZWithStandbyEnabled = structure(logical(0), tags = list(type = "boolean")), NodeOptions = structure(list(structure(list(NodeType = structure(logical(0), tags = list(type = "string")), NodeConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Type = structure(logical(0), tags = list(type = "string")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), EBSOptions = structure(list(Options = structure(list(EBSEnabled = structure(logical(0), tags = list(type = "boolean")), VolumeType = structure(logical(0), tags = list(type = "string")), VolumeSize = structure(logical(0), tags = list(type = "integer")), Iops = structure(logical(0), tags = list(type = "integer")), Throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), AccessPolicies = structure(list(Options = structure(logical(0), tags = list(type = "string")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), IPAddressType = structure(list(Options = structure(logical(0), tags = list(type = "string")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), SnapshotOptions = structure(list(Options = structure(list(AutomatedSnapshotStartHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), VPCOptions = structure(list(Options = structure(list(VPCId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EgressEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), CognitoOptions = structure(list(Options = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), UserPoolId = structure(logical(0), tags = list(type = "string")), IdentityPoolId = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), EncryptionAtRestOptions = structure(list(Options = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), NodeToNodeEncryptionOptions = structure(list(Options = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), AdvancedOptions = structure(list(Options = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), LogPublishingOptions = structure(list(Options = structure(list(structure(list(CloudWatchLogsLogGroupArn = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "map")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), DomainEndpointOptions = structure(list(Options = structure(list(EnforceHTTPS = structure(logical(0), tags = list(type = "boolean")), TLSSecurityPolicy = structure(logical(0), tags = list(type = "string")), CustomEndpointEnabled = structure(logical(0), tags = list(type = "boolean")), CustomEndpoint = structure(logical(0), tags = list(type = "string")), CustomEndpointCertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), AdvancedSecurityOptions = structure(list(Options = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), InternalUserDatabaseEnabled = structure(logical(0), tags = list(type = "boolean")), SAMLOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Idp = structure(list(MetadataContent = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), SessionTimeoutMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), JWTOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), JwksUrl = structure(logical(0), tags = list(type = "string")), PublicKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IAMFederationOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AnonymousAuthDisableDate = structure(logical(0), tags = list(type = "timestamp")), AnonymousAuthEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), IdentityCenterOptions = structure(list(Options = structure(list(EnabledAPIAccess = structure(logical(0), tags = list(type = "boolean")), IdentityCenterInstanceARN = structure(logical(0), tags = list(type = "string")), IdentityCenterInstanceRegion = structure(logical(0), tags = list(type = "string")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), IdentityCenterApplicationARN = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), AutoTuneOptions = structure(list(Options = structure(list(DesiredState = structure(logical(0), tags = list(type = "string")), RollbackOnDisable = structure(logical(0), tags = list(type = "string")), MaintenanceSchedules = structure(list(structure(list(StartAt = structure(logical(0), tags = list(type = "timestamp")), Duration = structure(list(Value = structure(logical(0), tags = list(type = "long")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CronExpressionForRecurrence = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UseOffPeakWindow = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), ChangeProgressDetails = structure(list(ChangeId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ConfigChangeStatus = structure(logical(0), tags = list(type = "string")), InitiatedBy = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), OffPeakWindowOptions = structure(list(Options = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), OffPeakWindow = structure(list(WindowStartTime = structure(list(Hours = structure(logical(0), tags = list(type = "long")), Minutes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), SoftwareUpdateOptions = structure(list(Options = structure(list(AutoSoftwareUpdateEnabled = structure(logical(0), tags = list(type = "boolean")), UseLatestServiceSoftwareForBlueGreen = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), ModifyingProperties = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ActiveValue = structure(logical(0), tags = list(type = "string")), PendingValue = structure(logical(0), tags = list(type = "string")), ValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AIMLOptions = structure(list(Options = structure(list(NaturalLanguageQueryGenerationOptions = structure(list(DesiredState = structure(logical(0), tags = list(type = "string")), CurrentState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3VectorsEngine = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ServerlessVectorAcceleration = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), DeploymentStrategyOptions = structure(list(Options = structure(list(DeploymentStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), AutomatedSnapshotPauseOptions = structure(list(Options = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_domain_config_output"]]))
 }
 
 .opensearchservice$describe_domain_health_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_domain_health_input"]]))
 }
 
 .opensearchservice$describe_domain_health_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainState = structure(logical(0), tags = list(type = "string")), AvailabilityZoneCount = structure(logical(0), tags = list(type = "string")), ActiveAvailabilityZoneCount = structure(logical(0), tags = list(type = "string")), StandByAvailabilityZoneCount = structure(logical(0), tags = list(type = "string")), DataNodeCount = structure(logical(0), tags = list(type = "string")), DedicatedMaster = structure(logical(0), tags = list(type = "boolean")), MasterEligibleNodeCount = structure(logical(0), tags = list(type = "string")), WarmNodeCount = structure(logical(0), tags = list(type = "string")), MasterNode = structure(logical(0), tags = list(type = "string")), ClusterHealth = structure(logical(0), tags = list(type = "string")), TotalShards = structure(logical(0), tags = list(type = "string")), TotalUnAssignedShards = structure(logical(0), tags = list(type = "string")), EnvironmentInformation = structure(list(structure(list(AvailabilityZoneInformation = structure(list(structure(list(AvailabilityZoneName = structure(logical(0), tags = list(type = "string")), ZoneStatus = structure(logical(0), tags = list(type = "string")), ConfiguredDataNodeCount = structure(logical(0), tags = list(type = "string")), AvailableDataNodeCount = structure(logical(0), tags = list(type = "string")), TotalShards = structure(logical(0), tags = list(type = "string")), TotalUnAssignedShards = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_domain_health_output"]]))
 }
 
 .opensearchservice$describe_domain_nodes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_domain_nodes_input"]]))
 }
 
 .opensearchservice$describe_domain_nodes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainNodesStatusList = structure(list(structure(list(NodeId = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), NodeStatus = structure(logical(0), tags = list(type = "string")), StorageType = structure(logical(0), tags = list(type = "string")), StorageVolumeType = structure(logical(0), tags = list(type = "string")), StorageSize = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_domain_nodes_output"]]))
 }
 
 .opensearchservice$describe_domains_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_domains_input"]]))
 }
 
 .opensearchservice$describe_domains_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainStatusList = structure(list(structure(list(DomainId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "boolean")), Deleted = structure(logical(0), tags = list(type = "boolean")), Endpoint = structure(logical(0), tags = list(type = "string")), EndpointV2 = structure(logical(0), tags = list(type = "string")), Endpoints = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DomainEndpointV2HostedZoneId = structure(logical(0), tags = list(type = "string")), Processing = structure(logical(0), tags = list(type = "boolean")), UpgradeProcessing = structure(logical(0), tags = list(type = "boolean")), EngineVersion = structure(logical(0), tags = list(type = "string")), ClusterConfig = structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), DedicatedMasterEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessConfig = structure(list(AvailabilityZoneCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DedicatedMasterType = structure(logical(0), tags = list(type = "string")), DedicatedMasterCount = structure(logical(0), tags = list(type = "integer")), WarmEnabled = structure(logical(0), tags = list(type = "boolean")), WarmType = structure(logical(0), tags = list(type = "string")), WarmCount = structure(logical(0), tags = list(type = "integer")), ColdStorageOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), MultiAZWithStandbyEnabled = structure(logical(0), tags = list(type = "boolean")), NodeOptions = structure(list(structure(list(NodeType = structure(logical(0), tags = list(type = "string")), NodeConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Type = structure(logical(0), tags = list(type = "string")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EBSOptions = structure(list(EBSEnabled = structure(logical(0), tags = list(type = "boolean")), VolumeType = structure(logical(0), tags = list(type = "string")), VolumeSize = structure(logical(0), tags = list(type = "integer")), Iops = structure(logical(0), tags = list(type = "integer")), Throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AccessPolicies = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string")), SnapshotOptions = structure(list(AutomatedSnapshotStartHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), VPCOptions = structure(list(VPCId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EgressEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CognitoOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), UserPoolId = structure(logical(0), tags = list(type = "string")), IdentityPoolId = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionAtRestOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NodeToNodeEncryptionOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AdvancedOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), LogPublishingOptions = structure(list(structure(list(CloudWatchLogsLogGroupArn = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "map")), ServiceSoftwareOptions = structure(list(CurrentVersion = structure(logical(0), tags = list(type = "string")), NewVersion = structure(logical(0), tags = list(type = "string")), UpdateAvailable = structure(logical(0), tags = list(type = "boolean")), Cancellable = structure(logical(0), tags = list(type = "boolean")), UpdateStatus = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AutomatedUpdateDate = structure(logical(0), tags = list(type = "timestamp")), OptionalDeployment = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DomainEndpointOptions = structure(list(EnforceHTTPS = structure(logical(0), tags = list(type = "boolean")), TLSSecurityPolicy = structure(logical(0), tags = list(type = "string")), CustomEndpointEnabled = structure(logical(0), tags = list(type = "boolean")), CustomEndpoint = structure(logical(0), tags = list(type = "string")), CustomEndpointCertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AdvancedSecurityOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), InternalUserDatabaseEnabled = structure(logical(0), tags = list(type = "boolean")), SAMLOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Idp = structure(list(MetadataContent = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), SessionTimeoutMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), JWTOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), JwksUrl = structure(logical(0), tags = list(type = "string")), PublicKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IAMFederationOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AnonymousAuthDisableDate = structure(logical(0), tags = list(type = "timestamp")), AnonymousAuthEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IdentityCenterOptions = structure(list(EnabledAPIAccess = structure(logical(0), tags = list(type = "boolean")), IdentityCenterInstanceARN = structure(logical(0), tags = list(type = "string")), IdentityCenterInstanceRegion = structure(logical(0), tags = list(type = "string")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), IdentityCenterApplicationARN = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoTuneOptions = structure(list(State = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), UseOffPeakWindow = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ChangeProgressDetails = structure(list(ChangeId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ConfigChangeStatus = structure(logical(0), tags = list(type = "string")), InitiatedBy = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), OffPeakWindowOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), OffPeakWindow = structure(list(WindowStartTime = structure(list(Hours = structure(logical(0), tags = list(type = "long")), Minutes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), SoftwareUpdateOptions = structure(list(AutoSoftwareUpdateEnabled = structure(logical(0), tags = list(type = "boolean")), UseLatestServiceSoftwareForBlueGreen = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DomainProcessingStatus = structure(logical(0), tags = list(type = "string")), ModifyingProperties = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ActiveValue = structure(logical(0), tags = list(type = "string")), PendingValue = structure(logical(0), tags = list(type = "string")), ValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AIMLOptions = structure(list(NaturalLanguageQueryGenerationOptions = structure(list(DesiredState = structure(logical(0), tags = list(type = "string")), CurrentState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3VectorsEngine = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ServerlessVectorAcceleration = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), DeploymentStrategyOptions = structure(list(DeploymentStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutomatedSnapshotPauseOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_domains_output"]]))
 }
 
 .opensearchservice$describe_dry_run_progress_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), DryRunId = structure(logical(0), tags = list(location = "querystring", locationName = "dryRunId", type = "string")), LoadDryRunConfig = structure(logical(0), tags = list(location = "querystring", locationName = "loadDryRunConfig", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_dry_run_progress_input"]]))
 }
 
 .opensearchservice$describe_dry_run_progress_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DryRunProgressStatus = structure(list(DryRunId = structure(logical(0), tags = list(type = "string")), DryRunStatus = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "string")), UpdateDate = structure(logical(0), tags = list(type = "string")), ValidationFailures = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), DryRunConfig = structure(list(DomainId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "boolean")), Deleted = structure(logical(0), tags = list(type = "boolean")), Endpoint = structure(logical(0), tags = list(type = "string")), EndpointV2 = structure(logical(0), tags = list(type = "string")), Endpoints = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DomainEndpointV2HostedZoneId = structure(logical(0), tags = list(type = "string")), Processing = structure(logical(0), tags = list(type = "boolean")), UpgradeProcessing = structure(logical(0), tags = list(type = "boolean")), EngineVersion = structure(logical(0), tags = list(type = "string")), ClusterConfig = structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), DedicatedMasterEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessConfig = structure(list(AvailabilityZoneCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DedicatedMasterType = structure(logical(0), tags = list(type = "string")), DedicatedMasterCount = structure(logical(0), tags = list(type = "integer")), WarmEnabled = structure(logical(0), tags = list(type = "boolean")), WarmType = structure(logical(0), tags = list(type = "string")), WarmCount = structure(logical(0), tags = list(type = "integer")), ColdStorageOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), MultiAZWithStandbyEnabled = structure(logical(0), tags = list(type = "boolean")), NodeOptions = structure(list(structure(list(NodeType = structure(logical(0), tags = list(type = "string")), NodeConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Type = structure(logical(0), tags = list(type = "string")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EBSOptions = structure(list(EBSEnabled = structure(logical(0), tags = list(type = "boolean")), VolumeType = structure(logical(0), tags = list(type = "string")), VolumeSize = structure(logical(0), tags = list(type = "integer")), Iops = structure(logical(0), tags = list(type = "integer")), Throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AccessPolicies = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string")), SnapshotOptions = structure(list(AutomatedSnapshotStartHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), VPCOptions = structure(list(VPCId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EgressEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CognitoOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), UserPoolId = structure(logical(0), tags = list(type = "string")), IdentityPoolId = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionAtRestOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NodeToNodeEncryptionOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AdvancedOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), LogPublishingOptions = structure(list(structure(list(CloudWatchLogsLogGroupArn = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "map")), ServiceSoftwareOptions = structure(list(CurrentVersion = structure(logical(0), tags = list(type = "string")), NewVersion = structure(logical(0), tags = list(type = "string")), UpdateAvailable = structure(logical(0), tags = list(type = "boolean")), Cancellable = structure(logical(0), tags = list(type = "boolean")), UpdateStatus = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AutomatedUpdateDate = structure(logical(0), tags = list(type = "timestamp")), OptionalDeployment = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DomainEndpointOptions = structure(list(EnforceHTTPS = structure(logical(0), tags = list(type = "boolean")), TLSSecurityPolicy = structure(logical(0), tags = list(type = "string")), CustomEndpointEnabled = structure(logical(0), tags = list(type = "boolean")), CustomEndpoint = structure(logical(0), tags = list(type = "string")), CustomEndpointCertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AdvancedSecurityOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), InternalUserDatabaseEnabled = structure(logical(0), tags = list(type = "boolean")), SAMLOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Idp = structure(list(MetadataContent = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), SessionTimeoutMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), JWTOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), JwksUrl = structure(logical(0), tags = list(type = "string")), PublicKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IAMFederationOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AnonymousAuthDisableDate = structure(logical(0), tags = list(type = "timestamp")), AnonymousAuthEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IdentityCenterOptions = structure(list(EnabledAPIAccess = structure(logical(0), tags = list(type = "boolean")), IdentityCenterInstanceARN = structure(logical(0), tags = list(type = "string")), IdentityCenterInstanceRegion = structure(logical(0), tags = list(type = "string")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), IdentityCenterApplicationARN = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoTuneOptions = structure(list(State = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), UseOffPeakWindow = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ChangeProgressDetails = structure(list(ChangeId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ConfigChangeStatus = structure(logical(0), tags = list(type = "string")), InitiatedBy = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), OffPeakWindowOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), OffPeakWindow = structure(list(WindowStartTime = structure(list(Hours = structure(logical(0), tags = list(type = "long")), Minutes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), SoftwareUpdateOptions = structure(list(AutoSoftwareUpdateEnabled = structure(logical(0), tags = list(type = "boolean")), UseLatestServiceSoftwareForBlueGreen = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DomainProcessingStatus = structure(logical(0), tags = list(type = "string")), ModifyingProperties = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ActiveValue = structure(logical(0), tags = list(type = "string")), PendingValue = structure(logical(0), tags = list(type = "string")), ValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AIMLOptions = structure(list(NaturalLanguageQueryGenerationOptions = structure(list(DesiredState = structure(logical(0), tags = list(type = "string")), CurrentState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3VectorsEngine = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ServerlessVectorAcceleration = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), DeploymentStrategyOptions = structure(list(DeploymentStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutomatedSnapshotPauseOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), DryRunResults = structure(list(DeploymentType = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_dry_run_progress_output"]]))
 }
 
 .opensearchservice$describe_inbound_connections_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_inbound_connections_input"]]))
 }
 
 .opensearchservice$describe_inbound_connections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Connections = structure(list(structure(list(LocalDomainInfo = structure(list(AWSDomainInformation = structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), RemoteDomainInfo = structure(list(AWSDomainInformation = structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ConnectionId = structure(logical(0), tags = list(type = "string")), ConnectionStatus = structure(list(StatusCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConnectionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_inbound_connections_output"]]))
 }
 
 .opensearchservice$describe_insight_details_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entity = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InsightId = structure(logical(0), tags = list(type = "string")), ShowHtmlContent = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_insight_details_input"]]))
 }
 
 .opensearchservice$describe_insight_details_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Fields = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_insight_details_output"]]))
 }
 
 .opensearchservice$describe_instance_type_limits_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "querystring", locationName = "domainName", type = "string")), InstanceType = structure(logical(0), tags = list(location = "uri", locationName = "InstanceType", type = "string")), EngineVersion = structure(logical(0), tags = list(location = "uri", locationName = "EngineVersion", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_instance_type_limits_input"]]))
 }
 
 .opensearchservice$describe_instance_type_limits_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LimitsByRole = structure(list(structure(list(StorageTypes = structure(list(structure(list(StorageTypeName = structure(logical(0), tags = list(type = "string")), StorageSubTypeName = structure(logical(0), tags = list(type = "string")), StorageTypeLimits = structure(list(structure(list(LimitName = structure(logical(0), tags = list(type = "string")), LimitValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), InstanceLimits = structure(list(InstanceCountLimits = structure(list(MinimumInstanceCount = structure(logical(0), tags = list(type = "integer")), MaximumInstanceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), AdditionalLimits = structure(list(structure(list(LimitName = structure(logical(0), tags = list(type = "string")), LimitValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_instance_type_limits_output"]]))
 }
 
 .opensearchservice$describe_outbound_connections_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_outbound_connections_input"]]))
 }
 
 .opensearchservice$describe_outbound_connections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Connections = structure(list(structure(list(LocalDomainInfo = structure(list(AWSDomainInformation = structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), RemoteDomainInfo = structure(list(AWSDomainInformation = structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ConnectionId = structure(logical(0), tags = list(type = "string")), ConnectionAlias = structure(logical(0), tags = list(type = "string")), ConnectionStatus = structure(list(StatusCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConnectionMode = structure(logical(0), tags = list(type = "string")), ConnectionProperties = structure(list(Endpoint = structure(logical(0), tags = list(type = "string")), CrossClusterSearch = structure(list(SkipUnavailable = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_outbound_connections_output"]]))
 }
 
 .opensearchservice$describe_packages_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_packages_input"]]))
 }
 
 .opensearchservice$describe_packages_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PackageDetailsList = structure(list(structure(list(PackageID = structure(logical(0), tags = list(type = "string")), PackageName = structure(logical(0), tags = list(type = "string")), PackageType = structure(logical(0), tags = list(type = "string")), PackageDescription = structure(logical(0), tags = list(type = "string")), PackageStatus = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), AvailablePackageVersion = structure(logical(0), tags = list(type = "string")), ErrorDetails = structure(list(ErrorType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EngineVersion = structure(logical(0), tags = list(type = "string")), AvailablePluginProperties = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), ClassName = structure(logical(0), tags = list(type = "string")), UncompressedSizeInBytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), AvailablePackageConfiguration = structure(list(LicenseRequirement = structure(logical(0), tags = list(type = "string")), LicenseFilepath = structure(logical(0), tags = list(type = "string")), ConfigurationRequirement = structure(logical(0), tags = list(type = "string")), RequiresRestartForConfigurationUpdate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AllowListedUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PackageOwner = structure(logical(0), tags = list(type = "string")), PackageVendingOptions = structure(list(VendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), PackageEncryptionOptions = structure(list(KmsKeyIdentifier = structure(logical(0), tags = list(type = "string")), EncryptionEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_packages_output"]]))
 }
 
 .opensearchservice$describe_reserved_instance_offerings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReservedInstanceOfferingId = structure(logical(0), tags = list(location = "querystring", locationName = "offeringId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_reserved_instance_offerings_input"]]))
 }
 
 .opensearchservice$describe_reserved_instance_offerings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ReservedInstanceOfferings = structure(list(structure(list(ReservedInstanceOfferingId = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), Duration = structure(logical(0), tags = list(type = "integer")), FixedPrice = structure(logical(0), tags = list(type = "double")), UsagePrice = structure(logical(0), tags = list(type = "double")), CurrencyCode = structure(logical(0), tags = list(type = "string")), PaymentOption = structure(logical(0), tags = list(type = "string")), RecurringCharges = structure(list(structure(list(RecurringChargeAmount = structure(logical(0), tags = list(type = "double")), RecurringChargeFrequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_reserved_instance_offerings_output"]]))
 }
 
 .opensearchservice$describe_reserved_instances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReservedInstanceId = structure(logical(0), tags = list(location = "querystring", locationName = "reservationId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_reserved_instances_input"]]))
 }
 
 .opensearchservice$describe_reserved_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ReservedInstances = structure(list(structure(list(ReservationName = structure(logical(0), tags = list(type = "string")), ReservedInstanceId = structure(logical(0), tags = list(type = "string")), BillingSubscriptionId = structure(logical(0), tags = list(type = "long")), ReservedInstanceOfferingId = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), Duration = structure(logical(0), tags = list(type = "integer")), FixedPrice = structure(logical(0), tags = list(type = "double")), UsagePrice = structure(logical(0), tags = list(type = "double")), CurrencyCode = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PaymentOption = structure(logical(0), tags = list(type = "string")), RecurringCharges = structure(list(structure(list(RecurringChargeAmount = structure(logical(0), tags = list(type = "double")), RecurringChargeFrequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_reserved_instances_output"]]))
 }
 
 .opensearchservice$describe_vpc_endpoints_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_vpc_endpoints_input"]]))
 }
 
 .opensearchservice$describe_vpc_endpoints_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcEndpoints = structure(list(structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcEndpointOwner = structure(logical(0), tags = list(type = "string")), DomainArn = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(VPCId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EgressEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), VpcEndpointErrors = structure(list(structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["describe_vpc_endpoints_output"]]))
+}
+
+.opensearchservice$detach_data_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .opensearchservice_shapes[["detach_data_source_input"]]))
+}
+
+.opensearchservice$detach_data_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .opensearchservice_shapes[["detach_data_source_output"]]))
 }
 
 .opensearchservice$dissociate_package_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PackageID = structure(logical(0), tags = list(location = "uri", locationName = "PackageID", type = "string")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["dissociate_package_input"]]))
 }
 
 .opensearchservice$dissociate_package_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainPackageDetails = structure(list(PackageID = structure(logical(0), tags = list(type = "string")), PackageName = structure(logical(0), tags = list(type = "string")), PackageType = structure(logical(0), tags = list(type = "string")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), DomainName = structure(logical(0), tags = list(type = "string")), DomainPackageStatus = structure(logical(0), tags = list(type = "string")), PackageVersion = structure(logical(0), tags = list(type = "string")), PrerequisitePackageIDList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReferencePath = structure(logical(0), tags = list(type = "string")), ErrorDetails = structure(list(ErrorType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AssociationConfiguration = structure(list(KeyStoreAccessOption = structure(list(KeyAccessRoleArn = structure(logical(0), tags = list(type = "string")), KeyStoreAccessEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["dissociate_package_output"]]))
 }
 
 .opensearchservice$dissociate_packages_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PackageList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["dissociate_packages_input"]]))
 }
 
 .opensearchservice$dissociate_packages_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainPackageDetailsList = structure(list(structure(list(PackageID = structure(logical(0), tags = list(type = "string")), PackageName = structure(logical(0), tags = list(type = "string")), PackageType = structure(logical(0), tags = list(type = "string")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), DomainName = structure(logical(0), tags = list(type = "string")), DomainPackageStatus = structure(logical(0), tags = list(type = "string")), PackageVersion = structure(logical(0), tags = list(type = "string")), PrerequisitePackageIDList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReferencePath = structure(logical(0), tags = list(type = "string")), ErrorDetails = structure(list(ErrorType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AssociationConfiguration = structure(list(KeyStoreAccessOption = structure(list(KeyAccessRoleArn = structure(logical(0), tags = list(type = "string")), KeyStoreAccessEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["dissociate_packages_output"]]))
 }
 
 .opensearchservice$get_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_application_input"]]))
 }
 
 .opensearchservice$get_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), iamIdentityCenterOptions = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), iamIdentityCenterInstanceArn = structure(logical(0), tags = list(type = "string")), iamRoleForIdentityCenterApplicationArn = structure(logical(0), tags = list(type = "string")), iamIdentityCenterApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), dataSources = structure(list(structure(list(dataSourceArn = structure(logical(0), tags = list(type = "string")), dataSourceDescription = structure(logical(0), tags = list(type = "string")), iamRoleForDataSourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), appConfigs = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_application_output"]]))
 }
 
 .opensearchservice$get_capability_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "ApplicationId", type = "string")), capabilityName = structure(logical(0), tags = list(location = "uri", locationName = "CapabilityName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_capability_input"]]))
 }
 
 .opensearchservice$get_capability_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(capabilityName = structure(logical(0), tags = list(type = "string")), applicationId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), capabilityConfig = structure(list(aiConfig = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), failures = structure(list(structure(list(reason = structure(logical(0), tags = list(type = "string")), details = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_capability_output"]]))
 }
 
 .opensearchservice$get_compatible_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "querystring", locationName = "domainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_compatible_versions_input"]]))
 }
 
 .opensearchservice$get_compatible_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CompatibleVersions = structure(list(structure(list(SourceVersion = structure(logical(0), tags = list(type = "string")), TargetVersions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_compatible_versions_output"]]))
 }
 
 .opensearchservice$get_data_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "DataSourceName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_data_source_input"]]))
 }
 
 .opensearchservice$get_data_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DataSourceType = structure(list(S3GlueDataCatalog = structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_data_source_output"]]))
 }
 
 .opensearchservice$get_default_application_setting_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_default_application_setting_input"]]))
 }
 
 .opensearchservice$get_default_application_setting_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_default_application_setting_output"]]))
 }
 
 .opensearchservice$get_direct_query_data_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DataSourceName = structure(logical(0), tags = list(location = "uri", locationName = "DataSourceName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_direct_query_data_source_input"]]))
 }
 
 .opensearchservice$get_direct_query_data_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DataSourceName = structure(logical(0), tags = list(type = "string")), DataSourceType = structure(list(CloudWatchLog = structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SecurityLake = structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Prometheus = structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), WorkspaceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Description = structure(logical(0), tags = list(type = "string")), OpenSearchArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DataSourceAccessPolicy = structure(logical(0), tags = list(type = "string")), DataSourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_direct_query_data_source_output"]]))
 }
 
 .opensearchservice$get_domain_maintenance_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), MaintenanceId = structure(logical(0), tags = list(location = "querystring", locationName = "maintenanceId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_domain_maintenance_status_input"]]))
 }
 
 .opensearchservice$get_domain_maintenance_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), NodeId = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_domain_maintenance_status_output"]]))
 }
 
 .opensearchservice$get_index_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), IndexName = structure(logical(0), tags = list(location = "uri", locationName = "IndexName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_index_input"]]))
 }
 
 .opensearchservice$get_index_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IndexSchema = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_index_output"]]))
+}
+
+.opensearchservice$get_migration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .opensearchservice_shapes[["get_migration_input"]]))
+}
+
+.opensearchservice$get_migration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .opensearchservice_shapes[["get_migration_output"]]))
 }
 
 .opensearchservice$get_package_version_history_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PackageID = structure(logical(0), tags = list(location = "uri", locationName = "PackageID", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_package_version_history_input"]]))
 }
 
 .opensearchservice$get_package_version_history_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PackageID = structure(logical(0), tags = list(type = "string")), PackageVersionHistoryList = structure(list(structure(list(PackageVersion = structure(logical(0), tags = list(type = "string")), CommitMessage = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), PluginProperties = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), ClassName = structure(logical(0), tags = list(type = "string")), UncompressedSizeInBytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), PackageConfiguration = structure(list(LicenseRequirement = structure(logical(0), tags = list(type = "string")), LicenseFilepath = structure(logical(0), tags = list(type = "string")), ConfigurationRequirement = structure(logical(0), tags = list(type = "string")), RequiresRestartForConfigurationUpdate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_package_version_history_output"]]))
 }
 
 .opensearchservice$get_upgrade_history_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_upgrade_history_input"]]))
 }
 
 .opensearchservice$get_upgrade_history_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpgradeHistories = structure(list(structure(list(UpgradeName = structure(logical(0), tags = list(type = "string")), StartTimestamp = structure(logical(0), tags = list(type = "timestamp")), UpgradeStatus = structure(logical(0), tags = list(type = "string")), StepsList = structure(list(structure(list(UpgradeStep = structure(logical(0), tags = list(type = "string")), UpgradeStepStatus = structure(logical(0), tags = list(type = "string")), Issues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ProgressPercent = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_upgrade_history_output"]]))
 }
 
 .opensearchservice$get_upgrade_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_upgrade_status_input"]]))
 }
 
 .opensearchservice$get_upgrade_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpgradeStep = structure(logical(0), tags = list(type = "string")), StepStatus = structure(logical(0), tags = list(type = "string")), UpgradeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["get_upgrade_status_output"]]))
+}
+
+.opensearchservice$insight_feedback_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .opensearchservice_shapes[["insight_feedback_input"]]))
+}
+
+.opensearchservice$insight_feedback_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .opensearchservice_shapes[["insight_feedback_output"]]))
 }
 
 .opensearchservice$list_applications_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), statuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "statuses", type = "list")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_applications_input"]]))
 }
 
 .opensearchservice$list_applications_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationSummaries = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_applications_output"]]))
+}
+
+.opensearchservice$list_data_source_attachments_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .opensearchservice_shapes[["list_data_source_attachments_input"]]))
+}
+
+.opensearchservice$list_data_source_attachments_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .opensearchservice_shapes[["list_data_source_attachments_output"]]))
 }
 
 .opensearchservice$list_data_sources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_data_sources_input"]]))
 }
 
 .opensearchservice$list_data_sources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DataSources = structure(list(structure(list(DataSourceType = structure(list(S3GlueDataCatalog = structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_data_sources_output"]]))
 }
 
 .opensearchservice$list_direct_query_data_sources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nexttoken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_direct_query_data_sources_input"]]))
 }
 
 .opensearchservice$list_direct_query_data_sources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), DirectQueryDataSources = structure(list(structure(list(DataSourceName = structure(logical(0), tags = list(type = "string")), DataSourceType = structure(list(CloudWatchLog = structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SecurityLake = structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Prometheus = structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), WorkspaceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Description = structure(logical(0), tags = list(type = "string")), OpenSearchArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DataSourceArn = structure(logical(0), tags = list(type = "string")), TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_direct_query_data_sources_output"]]))
 }
 
 .opensearchservice$list_domain_maintenances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Action = structure(logical(0), tags = list(location = "querystring", locationName = "action", type = "string")), Status = structure(logical(0), tags = list(location = "querystring", locationName = "status", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_domain_maintenances_input"]]))
 }
 
 .opensearchservice$list_domain_maintenances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainMaintenances = structure(list(structure(list(MaintenanceId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), NodeId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_domain_maintenances_output"]]))
 }
 
 .opensearchservice$list_domain_names_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EngineType = structure(logical(0), tags = list(location = "querystring", locationName = "engineType", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_domain_names_input"]]))
 }
 
 .opensearchservice$list_domain_names_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainNames = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), EngineType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_domain_names_output"]]))
 }
 
 .opensearchservice$list_domains_for_package_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PackageID = structure(logical(0), tags = list(location = "uri", locationName = "PackageID", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_domains_for_package_input"]]))
 }
 
 .opensearchservice$list_domains_for_package_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainPackageDetailsList = structure(list(structure(list(PackageID = structure(logical(0), tags = list(type = "string")), PackageName = structure(logical(0), tags = list(type = "string")), PackageType = structure(logical(0), tags = list(type = "string")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), DomainName = structure(logical(0), tags = list(type = "string")), DomainPackageStatus = structure(logical(0), tags = list(type = "string")), PackageVersion = structure(logical(0), tags = list(type = "string")), PrerequisitePackageIDList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReferencePath = structure(logical(0), tags = list(type = "string")), ErrorDetails = structure(list(ErrorType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AssociationConfiguration = structure(list(KeyStoreAccessOption = structure(list(KeyAccessRoleArn = structure(logical(0), tags = list(type = "string")), KeyStoreAccessEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_domains_for_package_output"]]))
 }
 
 .opensearchservice$list_insights_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entity = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TimeRange = structure(list(From = structure(logical(0), tags = list(type = "long")), To = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), SortOrder = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_insights_input"]]))
 }
 
 .opensearchservice$list_insights_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Insights = structure(list(structure(list(InsightId = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), UpdateTime = structure(logical(0), tags = list(type = "timestamp")), IsExperimental = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_insights_output"]]))
 }
 
 .opensearchservice$list_instance_type_details_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EngineVersion = structure(logical(0), tags = list(location = "uri", locationName = "EngineVersion", type = "string")), DomainName = structure(logical(0), tags = list(location = "querystring", locationName = "domainName", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), RetrieveAZs = structure(logical(0), tags = list(location = "querystring", locationName = "retrieveAZs", type = "boolean")), InstanceType = structure(logical(0), tags = list(location = "querystring", locationName = "instanceType", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_instance_type_details_input"]]))
 }
 
 .opensearchservice$list_instance_type_details_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceTypeDetails = structure(list(structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), EncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), CognitoEnabled = structure(logical(0), tags = list(type = "boolean")), AppLogsEnabled = structure(logical(0), tags = list(type = "boolean")), AdvancedSecurityEnabled = structure(logical(0), tags = list(type = "boolean")), WarmEnabled = structure(logical(0), tags = list(type = "boolean")), InstanceRole = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_instance_type_details_output"]]))
+}
+
+.opensearchservice$list_migrations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .opensearchservice_shapes[["list_migrations_input"]]))
+}
+
+.opensearchservice$list_migrations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .opensearchservice_shapes[["list_migrations_output"]]))
 }
 
 .opensearchservice$list_packages_for_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_packages_for_domain_input"]]))
 }
 
 .opensearchservice$list_packages_for_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainPackageDetailsList = structure(list(structure(list(PackageID = structure(logical(0), tags = list(type = "string")), PackageName = structure(logical(0), tags = list(type = "string")), PackageType = structure(logical(0), tags = list(type = "string")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), DomainName = structure(logical(0), tags = list(type = "string")), DomainPackageStatus = structure(logical(0), tags = list(type = "string")), PackageVersion = structure(logical(0), tags = list(type = "string")), PrerequisitePackageIDList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReferencePath = structure(logical(0), tags = list(type = "string")), ErrorDetails = structure(list(ErrorType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AssociationConfiguration = structure(list(KeyStoreAccessOption = structure(list(KeyAccessRoleArn = structure(logical(0), tags = list(type = "string")), KeyStoreAccessEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_packages_for_domain_output"]]))
 }
 
 .opensearchservice$list_scheduled_actions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_scheduled_actions_input"]]))
 }
 
 .opensearchservice$list_scheduled_actions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScheduledActions = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Severity = structure(logical(0), tags = list(type = "string")), ScheduledTime = structure(logical(0), tags = list(type = "long")), Description = structure(logical(0), tags = list(type = "string")), ScheduledBy = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Mandatory = structure(logical(0), tags = list(type = "boolean")), Cancellable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_scheduled_actions_output"]]))
 }
 
 .opensearchservice$list_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(location = "querystring", locationName = "arn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_tags_input"]]))
 }
 
 .opensearchservice$list_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_tags_output"]]))
 }
 
 .opensearchservice$list_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_versions_input"]]))
 }
 
 .opensearchservice$list_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Versions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_versions_output"]]))
 }
 
 .opensearchservice$list_vpc_endpoint_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_vpc_endpoint_access_input"]]))
 }
 
 .opensearchservice$list_vpc_endpoint_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthorizedPrincipalList = structure(list(structure(list(PrincipalType = structure(logical(0), tags = list(type = "string")), Principal = structure(logical(0), tags = list(type = "string")), ServiceOptions = structure(list(SupportedRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_vpc_endpoint_access_output"]]))
 }
 
 .opensearchservice$list_vpc_endpoints_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_vpc_endpoints_input"]]))
 }
 
 .opensearchservice$list_vpc_endpoints_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcEndpointSummaryList = structure(list(structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcEndpointOwner = structure(logical(0), tags = list(type = "string")), DomainArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_vpc_endpoints_output"]]))
 }
 
 .opensearchservice$list_vpc_endpoints_for_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_vpc_endpoints_for_domain_input"]]))
 }
 
 .opensearchservice$list_vpc_endpoints_for_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcEndpointSummaryList = structure(list(structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcEndpointOwner = structure(logical(0), tags = list(type = "string")), DomainArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["list_vpc_endpoints_for_domain_output"]]))
 }
 
 .opensearchservice$purchase_reserved_instance_offering_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReservedInstanceOfferingId = structure(logical(0), tags = list(type = "string")), ReservationName = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["purchase_reserved_instance_offering_input"]]))
 }
 
 .opensearchservice$purchase_reserved_instance_offering_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReservedInstanceId = structure(logical(0), tags = list(type = "string")), ReservationName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["purchase_reserved_instance_offering_output"]]))
 }
 
 .opensearchservice$put_default_application_setting_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationArn = structure(logical(0), tags = list(type = "string")), setAsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["put_default_application_setting_input"]]))
 }
 
 .opensearchservice$put_default_application_setting_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["put_default_application_setting_output"]]))
 }
 
 .opensearchservice$register_capability_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "ApplicationId", type = "string")), capabilityName = structure(logical(0), tags = list(type = "string")), capabilityConfig = structure(list(aiConfig = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["register_capability_input"]]))
 }
 
 .opensearchservice$register_capability_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(capabilityName = structure(logical(0), tags = list(type = "string")), applicationId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), capabilityConfig = structure(list(aiConfig = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["register_capability_output"]]))
 }
 
 .opensearchservice$reject_inbound_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectionId = structure(logical(0), tags = list(location = "uri", locationName = "ConnectionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["reject_inbound_connection_input"]]))
 }
 
 .opensearchservice$reject_inbound_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Connection = structure(list(LocalDomainInfo = structure(list(AWSDomainInformation = structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), RemoteDomainInfo = structure(list(AWSDomainInformation = structure(list(OwnerId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ConnectionId = structure(logical(0), tags = list(type = "string")), ConnectionStatus = structure(list(StatusCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConnectionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["reject_inbound_connection_output"]]))
 }
 
 .opensearchservice$remove_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["remove_tags_input"]]))
 }
 
 .opensearchservice$remove_tags_output <- function(...) {
@@ -887,168 +812,150 @@ NULL
 
 .opensearchservice$revoke_vpc_endpoint_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Account = structure(logical(0), tags = list(type = "string")), Service = structure(logical(0), tags = list(type = "string")), ServiceOptions = structure(list(SupportedRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["revoke_vpc_endpoint_access_input"]]))
 }
 
 .opensearchservice$revoke_vpc_endpoint_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["revoke_vpc_endpoint_access_output"]]))
 }
 
 .opensearchservice$rollback_service_software_update_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["rollback_service_software_update_input"]]))
 }
 
 .opensearchservice$rollback_service_software_update_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RollbackServiceSoftwareOptions = structure(list(CurrentVersion = structure(logical(0), tags = list(type = "string")), NewVersion = structure(logical(0), tags = list(type = "string")), RollbackAvailable = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["rollback_service_software_update_output"]]))
 }
 
 .opensearchservice$start_domain_maintenance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Action = structure(logical(0), tags = list(type = "string")), NodeId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["start_domain_maintenance_input"]]))
 }
 
 .opensearchservice$start_domain_maintenance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaintenanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["start_domain_maintenance_output"]]))
+}
+
+.opensearchservice$start_migration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .opensearchservice_shapes[["start_migration_input"]]))
+}
+
+.opensearchservice$start_migration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .opensearchservice_shapes[["start_migration_output"]]))
 }
 
 .opensearchservice$start_service_software_update_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), ScheduleAt = structure(logical(0), tags = list(type = "string")), DesiredStartTime = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["start_service_software_update_input"]]))
 }
 
 .opensearchservice$start_service_software_update_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceSoftwareOptions = structure(list(CurrentVersion = structure(logical(0), tags = list(type = "string")), NewVersion = structure(logical(0), tags = list(type = "string")), UpdateAvailable = structure(logical(0), tags = list(type = "boolean")), Cancellable = structure(logical(0), tags = list(type = "boolean")), UpdateStatus = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AutomatedUpdateDate = structure(logical(0), tags = list(type = "timestamp")), OptionalDeployment = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["start_service_software_update_output"]]))
 }
 
 .opensearchservice$update_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), dataSources = structure(list(structure(list(dataSourceArn = structure(logical(0), tags = list(type = "string")), dataSourceDescription = structure(logical(0), tags = list(type = "string")), iamRoleForDataSourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), appConfigs = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_application_input"]]))
 }
 
 .opensearchservice$update_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), dataSources = structure(list(structure(list(dataSourceArn = structure(logical(0), tags = list(type = "string")), dataSourceDescription = structure(logical(0), tags = list(type = "string")), iamRoleForDataSourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), iamIdentityCenterOptions = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), iamIdentityCenterInstanceArn = structure(logical(0), tags = list(type = "string")), iamRoleForIdentityCenterApplicationArn = structure(logical(0), tags = list(type = "string")), iamIdentityCenterApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), appConfigs = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_application_output"]]))
 }
 
 .opensearchservice$update_data_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "DataSourceName", type = "string")), DataSourceType = structure(list(S3GlueDataCatalog = structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_data_source_input"]]))
 }
 
 .opensearchservice$update_data_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_data_source_output"]]))
 }
 
 .opensearchservice$update_direct_query_data_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DataSourceName = structure(logical(0), tags = list(location = "uri", locationName = "DataSourceName", type = "string")), DataSourceType = structure(list(CloudWatchLog = structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SecurityLake = structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Prometheus = structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), WorkspaceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Description = structure(logical(0), tags = list(type = "string")), OpenSearchArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DataSourceAccessPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_direct_query_data_source_input"]]))
 }
 
 .opensearchservice$update_direct_query_data_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DataSourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_direct_query_data_source_output"]]))
 }
 
 .opensearchservice$update_domain_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ClusterConfig = structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), DedicatedMasterEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessConfig = structure(list(AvailabilityZoneCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DedicatedMasterType = structure(logical(0), tags = list(type = "string")), DedicatedMasterCount = structure(logical(0), tags = list(type = "integer")), WarmEnabled = structure(logical(0), tags = list(type = "boolean")), WarmType = structure(logical(0), tags = list(type = "string")), WarmCount = structure(logical(0), tags = list(type = "integer")), ColdStorageOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), MultiAZWithStandbyEnabled = structure(logical(0), tags = list(type = "boolean")), NodeOptions = structure(list(structure(list(NodeType = structure(logical(0), tags = list(type = "string")), NodeConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Type = structure(logical(0), tags = list(type = "string")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EBSOptions = structure(list(EBSEnabled = structure(logical(0), tags = list(type = "boolean")), VolumeType = structure(logical(0), tags = list(type = "string")), VolumeSize = structure(logical(0), tags = list(type = "integer")), Iops = structure(logical(0), tags = list(type = "integer")), Throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), SnapshotOptions = structure(list(AutomatedSnapshotStartHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), VPCOptions = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EgressEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CognitoOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), UserPoolId = structure(logical(0), tags = list(type = "string")), IdentityPoolId = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AdvancedOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), AccessPolicies = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string")), LogPublishingOptions = structure(list(structure(list(CloudWatchLogsLogGroupArn = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "map")), EncryptionAtRestOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DomainEndpointOptions = structure(list(EnforceHTTPS = structure(logical(0), tags = list(type = "boolean")), TLSSecurityPolicy = structure(logical(0), tags = list(type = "string")), CustomEndpointEnabled = structure(logical(0), tags = list(type = "boolean")), CustomEndpoint = structure(logical(0), tags = list(type = "string")), CustomEndpointCertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NodeToNodeEncryptionOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AdvancedSecurityOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), InternalUserDatabaseEnabled = structure(logical(0), tags = list(type = "boolean")), MasterUserOptions = structure(list(MasterUserARN = structure(logical(0), tags = list(type = "string")), MasterUserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MasterUserPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), SAMLOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Idp = structure(list(MetadataContent = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MasterUserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MasterBackendRole = structure(logical(0), tags = list(type = "string")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), SessionTimeoutMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), JWTOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), JwksUrl = structure(logical(0), tags = list(type = "string")), PublicKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IAMFederationOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AnonymousAuthEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IdentityCenterOptions = structure(list(EnabledAPIAccess = structure(logical(0), tags = list(type = "boolean")), IdentityCenterInstanceARN = structure(logical(0), tags = list(type = "string")), IdentityCenterInstanceRegion = structure(logical(0), tags = list(type = "string")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoTuneOptions = structure(list(DesiredState = structure(logical(0), tags = list(type = "string")), RollbackOnDisable = structure(logical(0), tags = list(type = "string")), MaintenanceSchedules = structure(list(structure(list(StartAt = structure(logical(0), tags = list(type = "timestamp")), Duration = structure(list(Value = structure(logical(0), tags = list(type = "long")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CronExpressionForRecurrence = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UseOffPeakWindow = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DryRun = structure(logical(0), tags = list(type = "boolean")), DryRunMode = structure(logical(0), tags = list(type = "string")), OffPeakWindowOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), OffPeakWindow = structure(list(WindowStartTime = structure(list(Hours = structure(logical(0), tags = list(type = "long")), Minutes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), SoftwareUpdateOptions = structure(list(AutoSoftwareUpdateEnabled = structure(logical(0), tags = list(type = "boolean")), UseLatestServiceSoftwareForBlueGreen = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AIMLOptions = structure(list(NaturalLanguageQueryGenerationOptions = structure(list(DesiredState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3VectorsEngine = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ServerlessVectorAcceleration = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), DeploymentStrategyOptions = structure(list(DeploymentStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutomatedSnapshotPauseOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_domain_config_input"]]))
 }
 
 .opensearchservice$update_domain_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainConfig = structure(list(EngineVersion = structure(list(Options = structure(logical(0), tags = list(type = "string")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), ClusterConfig = structure(list(Options = structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), DedicatedMasterEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessEnabled = structure(logical(0), tags = list(type = "boolean")), ZoneAwarenessConfig = structure(list(AvailabilityZoneCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DedicatedMasterType = structure(logical(0), tags = list(type = "string")), DedicatedMasterCount = structure(logical(0), tags = list(type = "integer")), WarmEnabled = structure(logical(0), tags = list(type = "boolean")), WarmType = structure(logical(0), tags = list(type = "string")), WarmCount = structure(logical(0), tags = list(type = "integer")), ColdStorageOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), MultiAZWithStandbyEnabled = structure(logical(0), tags = list(type = "boolean")), NodeOptions = structure(list(structure(list(NodeType = structure(logical(0), tags = list(type = "string")), NodeConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Type = structure(logical(0), tags = list(type = "string")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), EBSOptions = structure(list(Options = structure(list(EBSEnabled = structure(logical(0), tags = list(type = "boolean")), VolumeType = structure(logical(0), tags = list(type = "string")), VolumeSize = structure(logical(0), tags = list(type = "integer")), Iops = structure(logical(0), tags = list(type = "integer")), Throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), AccessPolicies = structure(list(Options = structure(logical(0), tags = list(type = "string")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), IPAddressType = structure(list(Options = structure(logical(0), tags = list(type = "string")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), SnapshotOptions = structure(list(Options = structure(list(AutomatedSnapshotStartHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), VPCOptions = structure(list(Options = structure(list(VPCId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EgressEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), CognitoOptions = structure(list(Options = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), UserPoolId = structure(logical(0), tags = list(type = "string")), IdentityPoolId = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), EncryptionAtRestOptions = structure(list(Options = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), NodeToNodeEncryptionOptions = structure(list(Options = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), AdvancedOptions = structure(list(Options = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), LogPublishingOptions = structure(list(Options = structure(list(structure(list(CloudWatchLogsLogGroupArn = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "map")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), DomainEndpointOptions = structure(list(Options = structure(list(EnforceHTTPS = structure(logical(0), tags = list(type = "boolean")), TLSSecurityPolicy = structure(logical(0), tags = list(type = "string")), CustomEndpointEnabled = structure(logical(0), tags = list(type = "boolean")), CustomEndpoint = structure(logical(0), tags = list(type = "string")), CustomEndpointCertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), AdvancedSecurityOptions = structure(list(Options = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), InternalUserDatabaseEnabled = structure(logical(0), tags = list(type = "boolean")), SAMLOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Idp = structure(list(MetadataContent = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), SessionTimeoutMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), JWTOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), JwksUrl = structure(logical(0), tags = list(type = "string")), PublicKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IAMFederationOptions = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AnonymousAuthDisableDate = structure(logical(0), tags = list(type = "timestamp")), AnonymousAuthEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), IdentityCenterOptions = structure(list(Options = structure(list(EnabledAPIAccess = structure(logical(0), tags = list(type = "boolean")), IdentityCenterInstanceARN = structure(logical(0), tags = list(type = "string")), IdentityCenterInstanceRegion = structure(logical(0), tags = list(type = "string")), SubjectKey = structure(logical(0), tags = list(type = "string")), RolesKey = structure(logical(0), tags = list(type = "string")), IdentityCenterApplicationARN = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), AutoTuneOptions = structure(list(Options = structure(list(DesiredState = structure(logical(0), tags = list(type = "string")), RollbackOnDisable = structure(logical(0), tags = list(type = "string")), MaintenanceSchedules = structure(list(structure(list(StartAt = structure(logical(0), tags = list(type = "timestamp")), Duration = structure(list(Value = structure(logical(0), tags = list(type = "long")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CronExpressionForRecurrence = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UseOffPeakWindow = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), ChangeProgressDetails = structure(list(ChangeId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ConfigChangeStatus = structure(logical(0), tags = list(type = "string")), InitiatedBy = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), OffPeakWindowOptions = structure(list(Options = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), OffPeakWindow = structure(list(WindowStartTime = structure(list(Hours = structure(logical(0), tags = list(type = "long")), Minutes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), SoftwareUpdateOptions = structure(list(Options = structure(list(AutoSoftwareUpdateEnabled = structure(logical(0), tags = list(type = "boolean")), UseLatestServiceSoftwareForBlueGreen = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), ModifyingProperties = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ActiveValue = structure(logical(0), tags = list(type = "string")), PendingValue = structure(logical(0), tags = list(type = "string")), ValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AIMLOptions = structure(list(Options = structure(list(NaturalLanguageQueryGenerationOptions = structure(list(DesiredState = structure(logical(0), tags = list(type = "string")), CurrentState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3VectorsEngine = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ServerlessVectorAcceleration = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), DeploymentStrategyOptions = structure(list(Options = structure(list(DeploymentStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), AutomatedSnapshotPauseOptions = structure(list(Options = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateVersion = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PendingDeletion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), DryRunResults = structure(list(DeploymentType = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DryRunProgressStatus = structure(list(DryRunId = structure(logical(0), tags = list(type = "string")), DryRunStatus = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "string")), UpdateDate = structure(logical(0), tags = list(type = "string")), ValidationFailures = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_domain_config_output"]]))
 }
 
 .opensearchservice$update_index_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), IndexName = structure(logical(0), tags = list(location = "uri", locationName = "IndexName", type = "string")), IndexSchema = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_index_input"]]))
 }
 
 .opensearchservice$update_index_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_index_output"]]))
 }
 
 .opensearchservice$update_package_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PackageID = structure(logical(0), tags = list(type = "string")), PackageSource = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PackageDescription = structure(logical(0), tags = list(type = "string")), CommitMessage = structure(logical(0), tags = list(type = "string")), PackageConfiguration = structure(list(LicenseRequirement = structure(logical(0), tags = list(type = "string")), LicenseFilepath = structure(logical(0), tags = list(type = "string")), ConfigurationRequirement = structure(logical(0), tags = list(type = "string")), RequiresRestartForConfigurationUpdate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), PackageEncryptionOptions = structure(list(KmsKeyIdentifier = structure(logical(0), tags = list(type = "string")), EncryptionEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_package_input"]]))
 }
 
 .opensearchservice$update_package_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PackageDetails = structure(list(PackageID = structure(logical(0), tags = list(type = "string")), PackageName = structure(logical(0), tags = list(type = "string")), PackageType = structure(logical(0), tags = list(type = "string")), PackageDescription = structure(logical(0), tags = list(type = "string")), PackageStatus = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), AvailablePackageVersion = structure(logical(0), tags = list(type = "string")), ErrorDetails = structure(list(ErrorType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EngineVersion = structure(logical(0), tags = list(type = "string")), AvailablePluginProperties = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), ClassName = structure(logical(0), tags = list(type = "string")), UncompressedSizeInBytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), AvailablePackageConfiguration = structure(list(LicenseRequirement = structure(logical(0), tags = list(type = "string")), LicenseFilepath = structure(logical(0), tags = list(type = "string")), ConfigurationRequirement = structure(logical(0), tags = list(type = "string")), RequiresRestartForConfigurationUpdate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AllowListedUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PackageOwner = structure(logical(0), tags = list(type = "string")), PackageVendingOptions = structure(list(VendingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), PackageEncryptionOptions = structure(list(KmsKeyIdentifier = structure(logical(0), tags = list(type = "string")), EncryptionEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_package_output"]]))
 }
 
 .opensearchservice$update_package_scope_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PackageID = structure(logical(0), tags = list(type = "string")), Operation = structure(logical(0), tags = list(type = "string")), PackageUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_package_scope_input"]]))
 }
 
 .opensearchservice$update_package_scope_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PackageID = structure(logical(0), tags = list(type = "string")), Operation = structure(logical(0), tags = list(type = "string")), PackageUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_package_scope_output"]]))
 }
 
 .opensearchservice$update_scheduled_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ActionID = structure(logical(0), tags = list(type = "string")), ActionType = structure(logical(0), tags = list(type = "string")), ScheduleAt = structure(logical(0), tags = list(type = "string")), DesiredStartTime = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_scheduled_action_input"]]))
 }
 
 .opensearchservice$update_scheduled_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScheduledAction = structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Severity = structure(logical(0), tags = list(type = "string")), ScheduledTime = structure(logical(0), tags = list(type = "long")), Description = structure(logical(0), tags = list(type = "string")), ScheduledBy = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Mandatory = structure(logical(0), tags = list(type = "boolean")), Cancellable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_scheduled_action_output"]]))
 }
 
 .opensearchservice$update_vpc_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EgressEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_vpc_endpoint_input"]]))
 }
 
 .opensearchservice$update_vpc_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcEndpoint = structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcEndpointOwner = structure(logical(0), tags = list(type = "string")), DomainArn = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(VPCId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EgressEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["update_vpc_endpoint_output"]]))
 }
 
 .opensearchservice$upgrade_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), TargetVersion = structure(logical(0), tags = list(type = "string")), PerformCheckOnly = structure(logical(0), tags = list(type = "boolean")), AdvancedOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["upgrade_domain_input"]]))
 }
 
 .opensearchservice$upgrade_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpgradeId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), TargetVersion = structure(logical(0), tags = list(type = "string")), PerformCheckOnly = structure(logical(0), tags = list(type = "boolean")), AdvancedOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ChangeProgressDetails = structure(list(ChangeId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ConfigChangeStatus = structure(logical(0), tags = list(type = "string")), InitiatedBy = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchservice_shapes[["upgrade_domain_output"]]))
 }

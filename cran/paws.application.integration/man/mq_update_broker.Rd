@@ -14,7 +14,9 @@ mq_update_broker(
   LdapServerMetadata = NULL,
   Logs = NULL,
   MaintenanceWindowStartTime = NULL,
+  ResourceShareArns = NULL,
   SecurityGroups = NULL,
+  StorageSize = NULL,
   DataReplicationMode = NULL
 )
 }
@@ -41,7 +43,11 @@ When upgrading to ActiveMQ version 5.18 and above or RabbitMQ version 3.13 and a
 
 \item{MaintenanceWindowStartTime}{The parameters that determine the WeeklyStartTime.}
 
+\item{ResourceShareArns}{The list of resource shares to update on the broker}
+
 \item{SecurityGroups}{The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.}
+
+\item{StorageSize}{The broker's storage size in GB.}
 
 \item{DataReplicationMode}{Defines whether this broker is a part of a data replication pair.}
 }

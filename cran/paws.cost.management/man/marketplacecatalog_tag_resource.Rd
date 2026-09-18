@@ -12,7 +12,7 @@ marketplacecatalog_tag_resource(ResourceArn, Tags)
 \item{Tags}{[required] Required. A list of objects specifying each key name and value. Number of objects allowed: 1-50.}
 }
 \description{
-Tags a resource (either an \href{https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#catalog-api-entities}{entity} or \href{https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#working-with-change-sets}{change set}).
+Tags a resource (either an \href{https://docs.aws.amazon.com/marketplace/latest/developerguide/catalog-apis.html#catalog-api-entities}{entity} or \href{https://docs.aws.amazon.com/marketplace/latest/developerguide/catalog-apis.html#working-with-change-sets}{change set}).
 
 See \url{https://www.paws-r-sdk.com/docs/marketplacecatalog_tag_resource/} for full documentation.
 }

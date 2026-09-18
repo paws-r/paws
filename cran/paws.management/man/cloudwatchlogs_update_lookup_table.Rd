@@ -2,12 +2,14 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_update_lookup_table}
 \alias{cloudwatchlogs_update_lookup_table}
-\title{Updates an existing lookup table by replacing all of its CSV content}
+\title{Updates an existing lookup table by replacing all of its content with
+new CSV data or CloudWatch Logs query results}
 \usage{
 cloudwatchlogs_update_lookup_table(
   lookupTableArn,
   description = NULL,
-  tableBody,
+  tableBody = NULL,
+  queryId = NULL,
   kmsKeyId = NULL
 )
 }
@@ -16,12 +18,18 @@ cloudwatchlogs_update_lookup_table(
 
 \item{description}{An updated description of the lookup table.}
 
-\item{tableBody}{[required] The new CSV content to replace the existing data. The first row must be a header row with column names. The content must use UTF-8 encoding and not exceed 10 MB.}
+\item{tableBody}{The new CSV content to replace the existing data. The first row must be a header row with column names. The content must use UTF-8 encoding and not exceed 10 MB.
+
+You must specify either \code{tableBody} or \code{queryId}, but not both.}
+
+\item{queryId}{The ID of a completed or cancelled CloudWatch Logs query whose results replace the lookup table content. A cancelled query replaces the content with the partial results that were available when the query was stopped.
+
+You must specify either \code{tableBody} or \code{queryId}, but not both.}
 
 \item{kmsKeyId}{The ARN of the KMS key to use to encrypt the lookup table data. You can use this parameter to add, update, or remove the KMS key. To remove the KMS key and use an Amazon Web Services-owned key instead, specify an empty string.}
 }
 \description{
-Updates an existing lookup table by replacing all of its CSV content. After the update completes, queries that use this table will use the new data.
+Updates an existing lookup table by replacing all of its content with new CSV data or CloudWatch Logs query results. After the update completes, queries that use this table use the new data.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_update_lookup_table/} for full documentation.
 }

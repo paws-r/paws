@@ -5,168 +5,140 @@ NULL
 
 .pi$create_performance_analysis_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceType = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["create_performance_analysis_report_input"]]))
 }
 
 .pi$create_performance_analysis_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AnalysisReportId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["create_performance_analysis_report_output"]]))
 }
 
 .pi$delete_performance_analysis_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceType = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), AnalysisReportId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["delete_performance_analysis_report_input"]]))
 }
 
 .pi$delete_performance_analysis_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["delete_performance_analysis_report_output"]]))
 }
 
 .pi$describe_dimension_keys_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceType = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Metric = structure(logical(0), tags = list(type = "string")), PeriodInSeconds = structure(logical(0), tags = list(type = "integer")), GroupBy = structure(list(Group = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AdditionalMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PartitionBy = structure(list(Group = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Filter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["describe_dimension_keys_input"]]))
 }
 
 .pi$describe_dimension_keys_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlignedStartTime = structure(logical(0), tags = list(type = "timestamp")), AlignedEndTime = structure(logical(0), tags = list(type = "timestamp")), PartitionKeys = structure(list(structure(list(Dimensions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), Keys = structure(list(structure(list(Dimensions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Total = structure(logical(0), tags = list(type = "double")), AdditionalMetrics = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "map")), Partitions = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["describe_dimension_keys_output"]]))
 }
 
 .pi$get_dimension_key_details_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceType = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), Group = structure(logical(0), tags = list(type = "string")), GroupIdentifier = structure(logical(0), tags = list(type = "string")), RequestedDimensions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["get_dimension_key_details_input"]]))
 }
 
 .pi$get_dimension_key_details_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Dimensions = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Dimension = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["get_dimension_key_details_output"]]))
 }
 
 .pi$get_performance_analysis_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceType = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), AnalysisReportId = structure(logical(0), tags = list(type = "string")), TextFormat = structure(logical(0), tags = list(type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["get_performance_analysis_report_input"]]))
 }
 
 .pi$get_performance_analysis_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AnalysisReport = structure(list(AnalysisReportId = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), ServiceType = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), Insights = structure(list(structure(list(InsightId = structure(logical(0), tags = list(type = "string")), InsightType = structure(logical(0), tags = list(type = "string")), Context = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Severity = structure(logical(0), tags = list(type = "string")), SupportingInsights = structure(logical(0), tags = list(type = "list")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Recommendations = structure(list(structure(list(RecommendationId = structure(logical(0), tags = list(type = "string")), RecommendationDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RecommendationDetails = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), InsightData = structure(list(structure(list(PerformanceInsightsMetric = structure(list(Metric = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Filter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Value = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), BaselineData = structure(list(structure(list(PerformanceInsightsMetric = structure(list(Metric = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Filter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Value = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["get_performance_analysis_report_output"]]))
 }
 
 .pi$get_resource_metadata_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceType = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["get_resource_metadata_input"]]))
 }
 
 .pi$get_resource_metadata_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), Features = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["get_resource_metadata_output"]]))
 }
 
 .pi$get_resource_metrics_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceType = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), MetricQueries = structure(list(structure(list(Metric = structure(logical(0), tags = list(type = "string")), GroupBy = structure(list(Group = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Filter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), PeriodInSeconds = structure(logical(0), tags = list(type = "integer")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), PeriodAlignment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["get_resource_metrics_input"]]))
 }
 
 .pi$get_resource_metrics_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlignedStartTime = structure(logical(0), tags = list(type = "timestamp")), AlignedEndTime = structure(logical(0), tags = list(type = "timestamp")), Identifier = structure(logical(0), tags = list(type = "string")), MetricList = structure(list(structure(list(Key = structure(list(Metric = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), DataPoints = structure(list(structure(list(Timestamp = structure(logical(0), tags = list(type = "timestamp")), Value = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["get_resource_metrics_output"]]))
 }
 
 .pi$list_available_resource_dimensions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceType = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), Metrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), AuthorizedActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["list_available_resource_dimensions_input"]]))
 }
 
 .pi$list_available_resource_dimensions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MetricDimensions = structure(list(structure(list(Metric = structure(logical(0), tags = list(type = "string")), Groups = structure(list(structure(list(Group = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["list_available_resource_dimensions_output"]]))
 }
 
 .pi$list_available_resource_metrics_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceType = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), MetricTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["list_available_resource_metrics_input"]]))
 }
 
 .pi$list_available_resource_metrics_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Metrics = structure(list(structure(list(Metric = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["list_available_resource_metrics_output"]]))
 }
 
 .pi$list_performance_analysis_report_recommendations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceType = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), AnalysisReportId = structure(logical(0), tags = list(type = "string")), RecommendationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["list_performance_analysis_report_recommendations_input"]]))
 }
 
 .pi$list_performance_analysis_report_recommendations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Recommendations = structure(list(structure(list(RecommendationId = structure(logical(0), tags = list(type = "string")), RecommendationDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RecommendationDetails = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["list_performance_analysis_report_recommendations_output"]]))
 }
 
 .pi$list_performance_analysis_reports_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceType = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), ListTags = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["list_performance_analysis_reports_input"]]))
 }
 
 .pi$list_performance_analysis_reports_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AnalysisReports = structure(list(structure(list(AnalysisReportId = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["list_performance_analysis_reports_output"]]))
 }
 
 .pi$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceType = structure(logical(0), tags = list(type = "string")), ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["list_tags_for_resource_input"]]))
 }
 
 .pi$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["list_tags_for_resource_output"]]))
 }
 
 .pi$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceType = structure(logical(0), tags = list(type = "string")), ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["tag_resource_input"]]))
 }
 
 .pi$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["tag_resource_output"]]))
 }
 
 .pi$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceType = structure(logical(0), tags = list(type = "string")), ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["untag_resource_input"]]))
 }
 
 .pi$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pi_shapes[["untag_resource_output"]]))
 }

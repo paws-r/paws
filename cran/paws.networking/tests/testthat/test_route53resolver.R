@@ -32,6 +32,14 @@ test_that("list_firewall_rule_groups", {
   expect_error(svc$list_firewall_rule_groups(MaxResults = 20), NA)
 })
 
+test_that("list_firewall_rule_types", {
+  expect_error(svc$list_firewall_rule_types(), NA)
+})
+
+test_that("list_firewall_rule_types", {
+  expect_error(svc$list_firewall_rule_types(MaxResults = 20), NA)
+})
+
 test_that("list_outpost_resolvers", {
   expect_error(svc$list_outpost_resolvers(), NA)
 })

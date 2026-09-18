@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_update_infrastructure_configuration}
 \alias{imagebuilder_update_infrastructure_configuration}
-\title{Updates a new infrastructure configuration}
+\title{Updates an infrastructure configuration}
 \usage{
 imagebuilder_update_infrastructure_configuration(
   infrastructureConfigurationArn,
@@ -26,7 +26,7 @@ imagebuilder_update_infrastructure_configuration(
 
 \item{description}{The description of the infrastructure configuration.}
 
-\item{instanceTypes}{The instance types of the infrastructure configuration. You can specify one or more instance types to use for this build. The service will pick one of these instance types based on availability.}
+\item{instanceTypes}{The instance types of the infrastructure configuration. You can specify one or more instance types to use for this build. Image Builder picks one of these instance types based on availability.}
 
 \item{instanceProfileName}{[required] The instance profile to associate with the instance used to customize your Amazon EC2 AMI.}
 
@@ -38,9 +38,9 @@ imagebuilder_update_infrastructure_configuration(
 
 \item{keyPair}{The key pair of the infrastructure configuration. You can use this to log on to and debug the instance used to create your image.}
 
-\item{terminateInstanceOnFailure}{The terminate instance on failure setting of the infrastructure configuration. Set to false if you want Image Builder to retain the instance used to configure your AMI if the build or test phase of your workflow fails.}
+\item{terminateInstanceOnFailure}{Specifies whether to terminate the instance on failure. Set to false if you want Image Builder to retain the instance used to configure your AMI if the build or test phase of your workflow fails. Defaults to \code{true}.}
 
-\item{snsTopicArn}{The Amazon Resource Name (ARN) for the SNS topic to which we send image build event notifications.
+\item{snsTopicArn}{The Amazon Resource Name (ARN) of the SNS topic to which Image Builder sends image build event notifications.
 
 EC2 Image Builder is unable to send notifications to SNS topics that are encrypted using keys from other accounts. The key that is used to encrypt the SNS topic must reside in the account that the Image Builder service runs under.}
 
@@ -52,12 +52,12 @@ EC2 Image Builder is unable to send notifications to SNS topics that are encrypt
 \item \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html}{Configure the instance metadata options} in the \emph{Amazon EC2 Windows Guide} for Windows instances.
 }}
 
-\item{placement}{The instance placement settings that define where the instances that are launched from your image will run.}
+\item{placement}{The instance placement settings that define where the instances that are launched from your image run.}
 
-\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
-Updates a new infrastructure configuration. An infrastructure configuration defines the environment in which your image will be built and tested.
+Updates an infrastructure configuration. An infrastructure configuration defines the environment in which Image Builder builds and tests your image.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_update_infrastructure_configuration/} for full documentation.
 }

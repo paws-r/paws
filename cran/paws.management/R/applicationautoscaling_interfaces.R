@@ -5,168 +5,140 @@ NULL
 
 .applicationautoscaling$delete_scaling_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), ServiceNamespace = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["delete_scaling_policy_input"]]))
 }
 
 .applicationautoscaling$delete_scaling_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["delete_scaling_policy_output"]]))
 }
 
 .applicationautoscaling$delete_scheduled_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceNamespace = structure(logical(0), tags = list(type = "string")), ScheduledActionName = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["delete_scheduled_action_input"]]))
 }
 
 .applicationautoscaling$delete_scheduled_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["delete_scheduled_action_output"]]))
 }
 
 .applicationautoscaling$deregister_scalable_target_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceNamespace = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["deregister_scalable_target_input"]]))
 }
 
 .applicationautoscaling$deregister_scalable_target_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["deregister_scalable_target_output"]]))
 }
 
 .applicationautoscaling$describe_scalable_targets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceNamespace = structure(logical(0), tags = list(type = "string")), ResourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ScalableDimension = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["describe_scalable_targets_input"]]))
 }
 
 .applicationautoscaling$describe_scalable_targets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScalableTargets = structure(list(structure(list(ServiceNamespace = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string")), MinCapacity = structure(logical(0), tags = list(type = "integer")), MaxCapacity = structure(logical(0), tags = list(type = "integer")), PredictedCapacity = structure(logical(0), tags = list(type = "integer")), RoleARN = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), SuspendedState = structure(list(DynamicScalingInSuspended = structure(logical(0), tags = list(type = "boolean")), DynamicScalingOutSuspended = structure(logical(0), tags = list(type = "boolean")), ScheduledScalingSuspended = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ScalableTargetARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["describe_scalable_targets_output"]]))
 }
 
 .applicationautoscaling$describe_scaling_activities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceNamespace = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), IncludeNotScaledActivities = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["describe_scaling_activities_input"]]))
 }
 
 .applicationautoscaling$describe_scaling_activities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScalingActivities = structure(list(structure(list(ActivityId = structure(logical(0), tags = list(type = "string")), ServiceNamespace = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Cause = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), StatusCode = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), Details = structure(logical(0), tags = list(type = "string")), NotScaledReasons = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), MaxCapacity = structure(logical(0), tags = list(type = "integer")), MinCapacity = structure(logical(0), tags = list(type = "integer")), CurrentCapacity = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["describe_scaling_activities_output"]]))
 }
 
 .applicationautoscaling$describe_scaling_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceNamespace = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["describe_scaling_policies_input"]]))
 }
 
 .applicationautoscaling$describe_scaling_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScalingPolicies = structure(list(structure(list(PolicyARN = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), ServiceNamespace = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string")), PolicyType = structure(logical(0), tags = list(type = "string")), StepScalingPolicyConfiguration = structure(list(AdjustmentType = structure(logical(0), tags = list(type = "string")), StepAdjustments = structure(list(structure(list(MetricIntervalLowerBound = structure(logical(0), tags = list(type = "double")), MetricIntervalUpperBound = structure(logical(0), tags = list(type = "double")), ScalingAdjustment = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), MinAdjustmentMagnitude = structure(logical(0), tags = list(type = "integer")), Cooldown = structure(logical(0), tags = list(type = "integer")), MetricAggregationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TargetTrackingScalingPolicyConfiguration = structure(list(TargetValue = structure(logical(0), tags = list(type = "double")), PredefinedMetricSpecification = structure(list(PredefinedMetricType = structure(logical(0), tags = list(type = "string")), ResourceLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CustomizedMetricSpecification = structure(list(MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Statistic = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string")), Metrics = structure(list(structure(list(Expression = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReturnData = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ScaleOutCooldown = structure(logical(0), tags = list(type = "integer")), ScaleInCooldown = structure(logical(0), tags = list(type = "integer")), DisableScaleIn = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), PredictiveScalingPolicyConfiguration = structure(list(MetricSpecifications = structure(list(structure(list(TargetValue = structure(logical(0), tags = list(type = "double")), PredefinedMetricPairSpecification = structure(list(PredefinedMetricType = structure(logical(0), tags = list(type = "string")), ResourceLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PredefinedScalingMetricSpecification = structure(list(PredefinedMetricType = structure(logical(0), tags = list(type = "string")), ResourceLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PredefinedLoadMetricSpecification = structure(list(PredefinedMetricType = structure(logical(0), tags = list(type = "string")), ResourceLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CustomizedScalingMetricSpecification = structure(list(MetricDataQueries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Expression = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Label = structure(logical(0), tags = list(type = "string")), ReturnData = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CustomizedLoadMetricSpecification = structure(list(MetricDataQueries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Expression = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Label = structure(logical(0), tags = list(type = "string")), ReturnData = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CustomizedCapacityMetricSpecification = structure(list(MetricDataQueries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Expression = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Label = structure(logical(0), tags = list(type = "string")), ReturnData = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Mode = structure(logical(0), tags = list(type = "string")), SchedulingBufferTime = structure(logical(0), tags = list(type = "integer")), MaxCapacityBreachBehavior = structure(logical(0), tags = list(type = "string")), MaxCapacityBuffer = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Alarms = structure(list(structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), AlarmARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["describe_scaling_policies_output"]]))
 }
 
 .applicationautoscaling$describe_scheduled_actions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScheduledActionNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceNamespace = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["describe_scheduled_actions_input"]]))
 }
 
 .applicationautoscaling$describe_scheduled_actions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScheduledActions = structure(list(structure(list(ScheduledActionName = structure(logical(0), tags = list(type = "string")), ScheduledActionARN = structure(logical(0), tags = list(type = "string")), ServiceNamespace = structure(logical(0), tags = list(type = "string")), Schedule = structure(logical(0), tags = list(type = "string")), Timezone = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), ScalableTargetAction = structure(list(MinCapacity = structure(logical(0), tags = list(type = "integer")), MaxCapacity = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["describe_scheduled_actions_output"]]))
 }
 
 .applicationautoscaling$get_predictive_scaling_forecast_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceNamespace = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["get_predictive_scaling_forecast_input"]]))
 }
 
 .applicationautoscaling$get_predictive_scaling_forecast_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadForecast = structure(list(structure(list(Timestamps = structure(list(structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "list")), Values = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "list")), MetricSpecification = structure(list(TargetValue = structure(logical(0), tags = list(type = "double")), PredefinedMetricPairSpecification = structure(list(PredefinedMetricType = structure(logical(0), tags = list(type = "string")), ResourceLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PredefinedScalingMetricSpecification = structure(list(PredefinedMetricType = structure(logical(0), tags = list(type = "string")), ResourceLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PredefinedLoadMetricSpecification = structure(list(PredefinedMetricType = structure(logical(0), tags = list(type = "string")), ResourceLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CustomizedScalingMetricSpecification = structure(list(MetricDataQueries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Expression = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Label = structure(logical(0), tags = list(type = "string")), ReturnData = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CustomizedLoadMetricSpecification = structure(list(MetricDataQueries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Expression = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Label = structure(logical(0), tags = list(type = "string")), ReturnData = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CustomizedCapacityMetricSpecification = structure(list(MetricDataQueries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Expression = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Label = structure(logical(0), tags = list(type = "string")), ReturnData = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), CapacityForecast = structure(list(Timestamps = structure(list(structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "list")), Values = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "list"))), tags = list(type = "structure")), UpdateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["get_predictive_scaling_forecast_output"]]))
 }
 
 .applicationautoscaling$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["list_tags_for_resource_input"]]))
 }
 
 .applicationautoscaling$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["list_tags_for_resource_output"]]))
 }
 
 .applicationautoscaling$put_scaling_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), ServiceNamespace = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string")), PolicyType = structure(logical(0), tags = list(type = "string")), StepScalingPolicyConfiguration = structure(list(AdjustmentType = structure(logical(0), tags = list(type = "string")), StepAdjustments = structure(list(structure(list(MetricIntervalLowerBound = structure(logical(0), tags = list(type = "double")), MetricIntervalUpperBound = structure(logical(0), tags = list(type = "double")), ScalingAdjustment = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), MinAdjustmentMagnitude = structure(logical(0), tags = list(type = "integer")), Cooldown = structure(logical(0), tags = list(type = "integer")), MetricAggregationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TargetTrackingScalingPolicyConfiguration = structure(list(TargetValue = structure(logical(0), tags = list(type = "double")), PredefinedMetricSpecification = structure(list(PredefinedMetricType = structure(logical(0), tags = list(type = "string")), ResourceLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CustomizedMetricSpecification = structure(list(MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Statistic = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string")), Metrics = structure(list(structure(list(Expression = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReturnData = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ScaleOutCooldown = structure(logical(0), tags = list(type = "integer")), ScaleInCooldown = structure(logical(0), tags = list(type = "integer")), DisableScaleIn = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), PredictiveScalingPolicyConfiguration = structure(list(MetricSpecifications = structure(list(structure(list(TargetValue = structure(logical(0), tags = list(type = "double")), PredefinedMetricPairSpecification = structure(list(PredefinedMetricType = structure(logical(0), tags = list(type = "string")), ResourceLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PredefinedScalingMetricSpecification = structure(list(PredefinedMetricType = structure(logical(0), tags = list(type = "string")), ResourceLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PredefinedLoadMetricSpecification = structure(list(PredefinedMetricType = structure(logical(0), tags = list(type = "string")), ResourceLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CustomizedScalingMetricSpecification = structure(list(MetricDataQueries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Expression = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Label = structure(logical(0), tags = list(type = "string")), ReturnData = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CustomizedLoadMetricSpecification = structure(list(MetricDataQueries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Expression = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Label = structure(logical(0), tags = list(type = "string")), ReturnData = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CustomizedCapacityMetricSpecification = structure(list(MetricDataQueries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Expression = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Label = structure(logical(0), tags = list(type = "string")), ReturnData = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Mode = structure(logical(0), tags = list(type = "string")), SchedulingBufferTime = structure(logical(0), tags = list(type = "integer")), MaxCapacityBreachBehavior = structure(logical(0), tags = list(type = "string")), MaxCapacityBuffer = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["put_scaling_policy_input"]]))
 }
 
 .applicationautoscaling$put_scaling_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyARN = structure(logical(0), tags = list(type = "string")), Alarms = structure(list(structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), AlarmARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["put_scaling_policy_output"]]))
 }
 
 .applicationautoscaling$put_scheduled_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceNamespace = structure(logical(0), tags = list(type = "string")), Schedule = structure(logical(0), tags = list(type = "string")), Timezone = structure(logical(0), tags = list(type = "string")), ScheduledActionName = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), ScalableTargetAction = structure(list(MinCapacity = structure(logical(0), tags = list(type = "integer")), MaxCapacity = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["put_scheduled_action_input"]]))
 }
 
 .applicationautoscaling$put_scheduled_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["put_scheduled_action_output"]]))
 }
 
 .applicationautoscaling$register_scalable_target_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceNamespace = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ScalableDimension = structure(logical(0), tags = list(type = "string")), MinCapacity = structure(logical(0), tags = list(type = "integer")), MaxCapacity = structure(logical(0), tags = list(type = "integer")), RoleARN = structure(logical(0), tags = list(type = "string")), SuspendedState = structure(list(DynamicScalingInSuspended = structure(logical(0), tags = list(type = "boolean")), DynamicScalingOutSuspended = structure(logical(0), tags = list(type = "boolean")), ScheduledScalingSuspended = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["register_scalable_target_input"]]))
 }
 
 .applicationautoscaling$register_scalable_target_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScalableTargetARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["register_scalable_target_output"]]))
 }
 
 .applicationautoscaling$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["tag_resource_input"]]))
 }
 
 .applicationautoscaling$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["tag_resource_output"]]))
 }
 
 .applicationautoscaling$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["untag_resource_input"]]))
 }
 
 .applicationautoscaling$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationautoscaling_shapes[["untag_resource_output"]]))
 }

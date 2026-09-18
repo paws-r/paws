@@ -5,240 +5,200 @@ NULL
 
 .cloudwatchrum$batch_create_rum_metric_definitions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppMonitorName = structure(logical(0), tags = list(location = "uri", locationName = "AppMonitorName", type = "string")), Destination = structure(logical(0), tags = list(type = "string")), DestinationArn = structure(logical(0), tags = list(type = "string")), MetricDefinitions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ValueKey = structure(logical(0), tags = list(type = "string")), UnitLabel = structure(logical(0), tags = list(type = "string")), DimensionKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), EventPattern = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["batch_create_rum_metric_definitions_input"]]))
 }
 
 .cloudwatchrum$batch_create_rum_metric_definitions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Errors = structure(list(structure(list(MetricDefinition = structure(list(Name = structure(logical(0), tags = list(type = "string")), ValueKey = structure(logical(0), tags = list(type = "string")), UnitLabel = structure(logical(0), tags = list(type = "string")), DimensionKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), EventPattern = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricDefinitions = structure(list(structure(list(MetricDefinitionId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ValueKey = structure(logical(0), tags = list(type = "string")), UnitLabel = structure(logical(0), tags = list(type = "string")), DimensionKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), EventPattern = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["batch_create_rum_metric_definitions_output"]]))
 }
 
 .cloudwatchrum$batch_delete_rum_metric_definitions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppMonitorName = structure(logical(0), tags = list(location = "uri", locationName = "AppMonitorName", type = "string")), Destination = structure(logical(0), tags = list(location = "querystring", locationName = "destination", type = "string")), DestinationArn = structure(logical(0), tags = list(location = "querystring", locationName = "destinationArn", type = "string")), MetricDefinitionIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "metricDefinitionIds", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["batch_delete_rum_metric_definitions_input"]]))
 }
 
 .cloudwatchrum$batch_delete_rum_metric_definitions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Errors = structure(list(structure(list(MetricDefinitionId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricDefinitionIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["batch_delete_rum_metric_definitions_output"]]))
 }
 
 .cloudwatchrum$batch_get_rum_metric_definitions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppMonitorName = structure(logical(0), tags = list(location = "uri", locationName = "AppMonitorName", type = "string")), Destination = structure(logical(0), tags = list(location = "querystring", locationName = "destination", type = "string")), DestinationArn = structure(logical(0), tags = list(location = "querystring", locationName = "destinationArn", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["batch_get_rum_metric_definitions_input"]]))
 }
 
 .cloudwatchrum$batch_get_rum_metric_definitions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MetricDefinitions = structure(list(structure(list(MetricDefinitionId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ValueKey = structure(logical(0), tags = list(type = "string")), UnitLabel = structure(logical(0), tags = list(type = "string")), DimensionKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), EventPattern = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["batch_get_rum_metric_definitions_output"]]))
 }
 
 .cloudwatchrum$create_app_monitor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Domain = structure(logical(0), tags = list(type = "string")), DomainList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), AppMonitorConfiguration = structure(list(IdentityPoolId = structure(logical(0), tags = list(type = "string")), ExcludedPages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IncludedPages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FavoritePages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SessionSampleRate = structure(logical(0), tags = list(type = "double")), GuestRoleArn = structure(logical(0), tags = list(type = "string")), AllowCookies = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Telemetries = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EnableXRay = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), CwLogEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), CustomEvents = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeobfuscationConfiguration = structure(list(JavaScriptSourceMaps = structure(list(Status = structure(logical(0), tags = list(type = "string")), S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Platform = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["create_app_monitor_input"]]))
 }
 
 .cloudwatchrum$create_app_monitor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["create_app_monitor_output"]]))
 }
 
 .cloudwatchrum$delete_app_monitor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["delete_app_monitor_input"]]))
 }
 
 .cloudwatchrum$delete_app_monitor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["delete_app_monitor_output"]]))
 }
 
 .cloudwatchrum$delete_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string")), PolicyRevisionId = structure(logical(0), tags = list(location = "querystring", locationName = "policyRevisionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["delete_resource_policy_input"]]))
 }
 
 .cloudwatchrum$delete_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyRevisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["delete_resource_policy_output"]]))
 }
 
 .cloudwatchrum$delete_rum_metrics_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppMonitorName = structure(logical(0), tags = list(location = "uri", locationName = "AppMonitorName", type = "string")), Destination = structure(logical(0), tags = list(location = "querystring", locationName = "destination", type = "string")), DestinationArn = structure(logical(0), tags = list(location = "querystring", locationName = "destinationArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["delete_rum_metrics_destination_input"]]))
 }
 
 .cloudwatchrum$delete_rum_metrics_destination_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["delete_rum_metrics_destination_output"]]))
 }
 
 .cloudwatchrum$get_app_monitor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["get_app_monitor_input"]]))
 }
 
 .cloudwatchrum$get_app_monitor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppMonitor = structure(list(Name = structure(logical(0), tags = list(type = "string")), Domain = structure(logical(0), tags = list(type = "string")), DomainList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Id = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "string")), LastModified = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), State = structure(logical(0), tags = list(type = "string")), AppMonitorConfiguration = structure(list(IdentityPoolId = structure(logical(0), tags = list(type = "string")), ExcludedPages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IncludedPages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FavoritePages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SessionSampleRate = structure(logical(0), tags = list(type = "double")), GuestRoleArn = structure(logical(0), tags = list(type = "string")), AllowCookies = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Telemetries = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EnableXRay = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), DataStorage = structure(list(CwLog = structure(list(CwLogEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), CwLogGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), CustomEvents = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeobfuscationConfiguration = structure(list(JavaScriptSourceMaps = structure(list(Status = structure(logical(0), tags = list(type = "string")), S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Platform = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["get_app_monitor_output"]]))
 }
 
 .cloudwatchrum$get_app_monitor_data_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string")), TimeRange = structure(list(After = structure(logical(0), tags = list(type = "long")), Before = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["get_app_monitor_data_input"]]))
 }
 
 .cloudwatchrum$get_app_monitor_data_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["get_app_monitor_data_output"]]))
 }
 
 .cloudwatchrum$get_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["get_resource_policy_input"]]))
 }
 
 .cloudwatchrum$get_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyDocument = structure(logical(0), tags = list(type = "string")), PolicyRevisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["get_resource_policy_output"]]))
 }
 
 .cloudwatchrum$list_app_monitors_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["list_app_monitors_input"]]))
 }
 
 .cloudwatchrum$list_app_monitors_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), AppMonitorSummaries = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "string")), LastModified = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["list_app_monitors_output"]]))
 }
 
 .cloudwatchrum$list_rum_metrics_destinations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppMonitorName = structure(logical(0), tags = list(location = "uri", locationName = "AppMonitorName", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["list_rum_metrics_destinations_input"]]))
 }
 
 .cloudwatchrum$list_rum_metrics_destinations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Destinations = structure(list(structure(list(Destination = structure(logical(0), tags = list(type = "string")), DestinationArn = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["list_rum_metrics_destinations_output"]]))
 }
 
 .cloudwatchrum$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["list_tags_for_resource_input"]]))
 }
 
 .cloudwatchrum$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["list_tags_for_resource_output"]]))
 }
 
 .cloudwatchrum$put_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string")), PolicyDocument = structure(logical(0), tags = list(type = "string")), PolicyRevisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["put_resource_policy_input"]]))
 }
 
 .cloudwatchrum$put_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyDocument = structure(logical(0), tags = list(type = "string")), PolicyRevisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["put_resource_policy_output"]]))
 }
 
 .cloudwatchrum$put_rum_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), BatchId = structure(logical(0), tags = list(type = "string")), AppMonitorDetails = structure(list(name = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UserDetails = structure(list(userId = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RumEvents = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), timestamp = structure(logical(0), tags = list(type = "timestamp")), type = structure(logical(0), tags = list(type = "string")), metadata = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), details = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Alias = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["put_rum_events_input"]]))
 }
 
 .cloudwatchrum$put_rum_events_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["put_rum_events_output"]]))
 }
 
 .cloudwatchrum$put_rum_metrics_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppMonitorName = structure(logical(0), tags = list(location = "uri", locationName = "AppMonitorName", type = "string")), Destination = structure(logical(0), tags = list(type = "string")), DestinationArn = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["put_rum_metrics_destination_input"]]))
 }
 
 .cloudwatchrum$put_rum_metrics_destination_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["put_rum_metrics_destination_output"]]))
 }
 
 .cloudwatchrum$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["tag_resource_input"]]))
 }
 
 .cloudwatchrum$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["tag_resource_output"]]))
 }
 
 .cloudwatchrum$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["untag_resource_input"]]))
 }
 
 .cloudwatchrum$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["untag_resource_output"]]))
 }
 
 .cloudwatchrum$update_app_monitor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string")), Domain = structure(logical(0), tags = list(type = "string")), DomainList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AppMonitorConfiguration = structure(list(IdentityPoolId = structure(logical(0), tags = list(type = "string")), ExcludedPages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IncludedPages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FavoritePages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SessionSampleRate = structure(logical(0), tags = list(type = "double")), GuestRoleArn = structure(logical(0), tags = list(type = "string")), AllowCookies = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Telemetries = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EnableXRay = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), CwLogEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), CustomEvents = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeobfuscationConfiguration = structure(list(JavaScriptSourceMaps = structure(list(Status = structure(logical(0), tags = list(type = "string")), S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["update_app_monitor_input"]]))
 }
 
 .cloudwatchrum$update_app_monitor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["update_app_monitor_output"]]))
 }
 
 .cloudwatchrum$update_rum_metric_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppMonitorName = structure(logical(0), tags = list(location = "uri", locationName = "AppMonitorName", type = "string")), Destination = structure(logical(0), tags = list(type = "string")), DestinationArn = structure(logical(0), tags = list(type = "string")), MetricDefinition = structure(list(Name = structure(logical(0), tags = list(type = "string")), ValueKey = structure(logical(0), tags = list(type = "string")), UnitLabel = structure(logical(0), tags = list(type = "string")), DimensionKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), EventPattern = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricDefinitionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["update_rum_metric_definition_input"]]))
 }
 
 .cloudwatchrum$update_rum_metric_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchrum_shapes[["update_rum_metric_definition_output"]]))
 }

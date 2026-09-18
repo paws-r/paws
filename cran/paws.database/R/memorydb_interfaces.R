@@ -5,540 +5,450 @@ NULL
 
 .memorydb$batch_update_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceUpdate = structure(list(ServiceUpdateNameToApply = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["batch_update_cluster_input"]]))
 }
 
 .memorydb$batch_update_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProcessedClusters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), PendingUpdates = structure(list(Resharding = structure(list(SlotMigration = structure(list(ProgressPercentage = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure")), ACLs = structure(list(ACLToApply = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ServiceUpdates = structure(list(structure(list(ServiceUpdateName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MultiRegionClusterName = structure(logical(0), tags = list(type = "string")), NumberOfShards = structure(logical(0), tags = list(type = "integer")), Shards = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Slots = structure(logical(0), tags = list(type = "string")), Nodes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), Endpoint = structure(list(Address = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NumberOfNodes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), AvailabilityMode = structure(logical(0), tags = list(type = "string")), ClusterEndpoint = structure(list(Address = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), NodeType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), EnginePatchVersion = structure(logical(0), tags = list(type = "string")), ParameterGroupName = structure(logical(0), tags = list(type = "string")), ParameterGroupStatus = structure(logical(0), tags = list(type = "string")), SecurityGroups = structure(list(structure(list(SecurityGroupId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SubnetGroupName = structure(logical(0), tags = list(type = "string")), TLSEnabled = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), SnsTopicStatus = structure(logical(0), tags = list(type = "string")), SnapshotRetentionLimit = structure(logical(0), tags = list(type = "integer")), MaintenanceWindow = structure(logical(0), tags = list(type = "string")), SnapshotWindow = structure(logical(0), tags = list(type = "string")), ACLName = structure(logical(0), tags = list(type = "string")), AutoMinorVersionUpgrade = structure(logical(0), tags = list(type = "boolean")), DataTiering = structure(logical(0), tags = list(type = "string")), NetworkType = structure(logical(0), tags = list(type = "string")), IpDiscovery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UnprocessedClusters = structure(list(structure(list(ClusterName = structure(logical(0), tags = list(type = "string")), ErrorType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["batch_update_cluster_output"]]))
 }
 
 .memorydb$copy_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SourceSnapshotName = structure(logical(0), tags = list(type = "string")), TargetSnapshotName = structure(logical(0), tags = list(type = "string")), TargetBucket = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["copy_snapshot_input"]]))
 }
 
 .memorydb$copy_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Snapshot = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Source = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), ClusterConfiguration = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), MaintenanceWindow = structure(logical(0), tags = list(type = "string")), TopicArn = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), ParameterGroupName = structure(logical(0), tags = list(type = "string")), SubnetGroupName = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SnapshotRetentionLimit = structure(logical(0), tags = list(type = "integer")), SnapshotWindow = structure(logical(0), tags = list(type = "string")), NumShards = structure(logical(0), tags = list(type = "integer")), Shards = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(Slots = structure(logical(0), tags = list(type = "string")), ReplicaCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Size = structure(logical(0), tags = list(type = "string")), SnapshotCreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiRegionParameterGroupName = structure(logical(0), tags = list(type = "string")), MultiRegionClusterName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataTiering = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["copy_snapshot_output"]]))
 }
 
 .memorydb$create_acl_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ACLName = structure(logical(0), tags = list(type = "string")), UserNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["create_acl_input"]]))
 }
 
 .memorydb$create_acl_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ACL = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), UserNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MinimumEngineVersion = structure(logical(0), tags = list(type = "string")), PendingChanges = structure(list(UserNamesToRemove = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), UserNamesToAdd = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Clusters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["create_acl_output"]]))
 }
 
 .memorydb$create_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterName = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), MultiRegionClusterName = structure(logical(0), tags = list(type = "string")), ParameterGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), NumShards = structure(logical(0), tags = list(type = "integer")), NumReplicasPerShard = structure(logical(0), tags = list(type = "integer")), SubnetGroupName = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaintenanceWindow = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), TLSEnabled = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string")), SnapshotArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SnapshotName = structure(logical(0), tags = list(type = "string")), SnapshotRetentionLimit = structure(logical(0), tags = list(type = "integer")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SnapshotWindow = structure(logical(0), tags = list(type = "string")), ACLName = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), AutoMinorVersionUpgrade = structure(logical(0), tags = list(type = "boolean")), DataTiering = structure(logical(0), tags = list(type = "boolean")), NetworkType = structure(logical(0), tags = list(type = "string")), IpDiscovery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["create_cluster_input"]]))
 }
 
 .memorydb$create_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Cluster = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), PendingUpdates = structure(list(Resharding = structure(list(SlotMigration = structure(list(ProgressPercentage = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure")), ACLs = structure(list(ACLToApply = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ServiceUpdates = structure(list(structure(list(ServiceUpdateName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MultiRegionClusterName = structure(logical(0), tags = list(type = "string")), NumberOfShards = structure(logical(0), tags = list(type = "integer")), Shards = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Slots = structure(logical(0), tags = list(type = "string")), Nodes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), Endpoint = structure(list(Address = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NumberOfNodes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), AvailabilityMode = structure(logical(0), tags = list(type = "string")), ClusterEndpoint = structure(list(Address = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), NodeType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), EnginePatchVersion = structure(logical(0), tags = list(type = "string")), ParameterGroupName = structure(logical(0), tags = list(type = "string")), ParameterGroupStatus = structure(logical(0), tags = list(type = "string")), SecurityGroups = structure(list(structure(list(SecurityGroupId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SubnetGroupName = structure(logical(0), tags = list(type = "string")), TLSEnabled = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), SnsTopicStatus = structure(logical(0), tags = list(type = "string")), SnapshotRetentionLimit = structure(logical(0), tags = list(type = "integer")), MaintenanceWindow = structure(logical(0), tags = list(type = "string")), SnapshotWindow = structure(logical(0), tags = list(type = "string")), ACLName = structure(logical(0), tags = list(type = "string")), AutoMinorVersionUpgrade = structure(logical(0), tags = list(type = "boolean")), DataTiering = structure(logical(0), tags = list(type = "string")), NetworkType = structure(logical(0), tags = list(type = "string")), IpDiscovery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["create_cluster_output"]]))
 }
 
 .memorydb$create_multi_region_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MultiRegionClusterNameSuffix = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), MultiRegionParameterGroupName = structure(logical(0), tags = list(type = "string")), NumShards = structure(logical(0), tags = list(type = "integer")), TLSEnabled = structure(logical(0), tags = list(type = "boolean")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["create_multi_region_cluster_input"]]))
 }
 
 .memorydb$create_multi_region_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MultiRegionCluster = structure(list(MultiRegionClusterName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), NumberOfShards = structure(logical(0), tags = list(type = "integer")), Clusters = structure(list(structure(list(ClusterName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "list")), MultiRegionParameterGroupName = structure(logical(0), tags = list(type = "string")), TLSEnabled = structure(logical(0), tags = list(type = "boolean")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["create_multi_region_cluster_output"]]))
 }
 
 .memorydb$create_parameter_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ParameterGroupName = structure(logical(0), tags = list(type = "string")), Family = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["create_parameter_group_input"]]))
 }
 
 .memorydb$create_parameter_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ParameterGroup = structure(list(Name = structure(logical(0), tags = list(type = "string")), Family = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["create_parameter_group_output"]]))
 }
 
 .memorydb$create_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterName = structure(logical(0), tags = list(type = "string")), SnapshotName = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["create_snapshot_input"]]))
 }
 
 .memorydb$create_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Snapshot = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Source = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), ClusterConfiguration = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), MaintenanceWindow = structure(logical(0), tags = list(type = "string")), TopicArn = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), ParameterGroupName = structure(logical(0), tags = list(type = "string")), SubnetGroupName = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SnapshotRetentionLimit = structure(logical(0), tags = list(type = "integer")), SnapshotWindow = structure(logical(0), tags = list(type = "string")), NumShards = structure(logical(0), tags = list(type = "integer")), Shards = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(Slots = structure(logical(0), tags = list(type = "string")), ReplicaCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Size = structure(logical(0), tags = list(type = "string")), SnapshotCreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiRegionParameterGroupName = structure(logical(0), tags = list(type = "string")), MultiRegionClusterName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataTiering = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["create_snapshot_output"]]))
 }
 
 .memorydb$create_subnet_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SubnetGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["create_subnet_group_input"]]))
 }
 
 .memorydb$create_subnet_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SubnetGroup = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), Subnets = structure(list(structure(list(Identifier = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SupportedNetworkTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ARN = structure(logical(0), tags = list(type = "string")), SupportedNetworkTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["create_subnet_group_output"]]))
 }
 
 .memorydb$create_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string")), AuthenticationMode = structure(list(Type = structure(logical(0), tags = list(type = "string")), Passwords = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), AccessString = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["create_user_input"]]))
 }
 
 .memorydb$create_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(User = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AccessString = structure(logical(0), tags = list(type = "string")), ACLNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MinimumEngineVersion = structure(logical(0), tags = list(type = "string")), Authentication = structure(list(Type = structure(logical(0), tags = list(type = "string")), PasswordCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["create_user_output"]]))
 }
 
 .memorydb$delete_acl_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ACLName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["delete_acl_input"]]))
 }
 
 .memorydb$delete_acl_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ACL = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), UserNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MinimumEngineVersion = structure(logical(0), tags = list(type = "string")), PendingChanges = structure(list(UserNamesToRemove = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), UserNamesToAdd = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Clusters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["delete_acl_output"]]))
 }
 
 .memorydb$delete_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterName = structure(logical(0), tags = list(type = "string")), MultiRegionClusterName = structure(logical(0), tags = list(type = "string")), FinalSnapshotName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["delete_cluster_input"]]))
 }
 
 .memorydb$delete_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Cluster = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), PendingUpdates = structure(list(Resharding = structure(list(SlotMigration = structure(list(ProgressPercentage = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure")), ACLs = structure(list(ACLToApply = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ServiceUpdates = structure(list(structure(list(ServiceUpdateName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MultiRegionClusterName = structure(logical(0), tags = list(type = "string")), NumberOfShards = structure(logical(0), tags = list(type = "integer")), Shards = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Slots = structure(logical(0), tags = list(type = "string")), Nodes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), Endpoint = structure(list(Address = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NumberOfNodes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), AvailabilityMode = structure(logical(0), tags = list(type = "string")), ClusterEndpoint = structure(list(Address = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), NodeType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), EnginePatchVersion = structure(logical(0), tags = list(type = "string")), ParameterGroupName = structure(logical(0), tags = list(type = "string")), ParameterGroupStatus = structure(logical(0), tags = list(type = "string")), SecurityGroups = structure(list(structure(list(SecurityGroupId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SubnetGroupName = structure(logical(0), tags = list(type = "string")), TLSEnabled = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), SnsTopicStatus = structure(logical(0), tags = list(type = "string")), SnapshotRetentionLimit = structure(logical(0), tags = list(type = "integer")), MaintenanceWindow = structure(logical(0), tags = list(type = "string")), SnapshotWindow = structure(logical(0), tags = list(type = "string")), ACLName = structure(logical(0), tags = list(type = "string")), AutoMinorVersionUpgrade = structure(logical(0), tags = list(type = "boolean")), DataTiering = structure(logical(0), tags = list(type = "string")), NetworkType = structure(logical(0), tags = list(type = "string")), IpDiscovery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["delete_cluster_output"]]))
 }
 
 .memorydb$delete_multi_region_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MultiRegionClusterName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["delete_multi_region_cluster_input"]]))
 }
 
 .memorydb$delete_multi_region_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MultiRegionCluster = structure(list(MultiRegionClusterName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), NumberOfShards = structure(logical(0), tags = list(type = "integer")), Clusters = structure(list(structure(list(ClusterName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "list")), MultiRegionParameterGroupName = structure(logical(0), tags = list(type = "string")), TLSEnabled = structure(logical(0), tags = list(type = "boolean")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["delete_multi_region_cluster_output"]]))
 }
 
 .memorydb$delete_parameter_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ParameterGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["delete_parameter_group_input"]]))
 }
 
 .memorydb$delete_parameter_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ParameterGroup = structure(list(Name = structure(logical(0), tags = list(type = "string")), Family = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["delete_parameter_group_output"]]))
 }
 
 .memorydb$delete_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SnapshotName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["delete_snapshot_input"]]))
 }
 
 .memorydb$delete_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Snapshot = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Source = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), ClusterConfiguration = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), MaintenanceWindow = structure(logical(0), tags = list(type = "string")), TopicArn = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), ParameterGroupName = structure(logical(0), tags = list(type = "string")), SubnetGroupName = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SnapshotRetentionLimit = structure(logical(0), tags = list(type = "integer")), SnapshotWindow = structure(logical(0), tags = list(type = "string")), NumShards = structure(logical(0), tags = list(type = "integer")), Shards = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(Slots = structure(logical(0), tags = list(type = "string")), ReplicaCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Size = structure(logical(0), tags = list(type = "string")), SnapshotCreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiRegionParameterGroupName = structure(logical(0), tags = list(type = "string")), MultiRegionClusterName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataTiering = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["delete_snapshot_output"]]))
 }
 
 .memorydb$delete_subnet_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SubnetGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["delete_subnet_group_input"]]))
 }
 
 .memorydb$delete_subnet_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SubnetGroup = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), Subnets = structure(list(structure(list(Identifier = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SupportedNetworkTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ARN = structure(logical(0), tags = list(type = "string")), SupportedNetworkTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["delete_subnet_group_output"]]))
 }
 
 .memorydb$delete_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["delete_user_input"]]))
 }
 
 .memorydb$delete_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(User = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AccessString = structure(logical(0), tags = list(type = "string")), ACLNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MinimumEngineVersion = structure(logical(0), tags = list(type = "string")), Authentication = structure(list(Type = structure(logical(0), tags = list(type = "string")), PasswordCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["delete_user_output"]]))
 }
 
 .memorydb$describe_ac_ls_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ACLName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_ac_ls_input"]]))
 }
 
 .memorydb$describe_ac_ls_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ACLs = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), UserNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MinimumEngineVersion = structure(logical(0), tags = list(type = "string")), PendingChanges = structure(list(UserNamesToRemove = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), UserNamesToAdd = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Clusters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_ac_ls_output"]]))
 }
 
 .memorydb$describe_clusters_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), ShowShardDetails = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_clusters_input"]]))
 }
 
 .memorydb$describe_clusters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Clusters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), PendingUpdates = structure(list(Resharding = structure(list(SlotMigration = structure(list(ProgressPercentage = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure")), ACLs = structure(list(ACLToApply = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ServiceUpdates = structure(list(structure(list(ServiceUpdateName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MultiRegionClusterName = structure(logical(0), tags = list(type = "string")), NumberOfShards = structure(logical(0), tags = list(type = "integer")), Shards = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Slots = structure(logical(0), tags = list(type = "string")), Nodes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), Endpoint = structure(list(Address = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NumberOfNodes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), AvailabilityMode = structure(logical(0), tags = list(type = "string")), ClusterEndpoint = structure(list(Address = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), NodeType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), EnginePatchVersion = structure(logical(0), tags = list(type = "string")), ParameterGroupName = structure(logical(0), tags = list(type = "string")), ParameterGroupStatus = structure(logical(0), tags = list(type = "string")), SecurityGroups = structure(list(structure(list(SecurityGroupId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SubnetGroupName = structure(logical(0), tags = list(type = "string")), TLSEnabled = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), SnsTopicStatus = structure(logical(0), tags = list(type = "string")), SnapshotRetentionLimit = structure(logical(0), tags = list(type = "integer")), MaintenanceWindow = structure(logical(0), tags = list(type = "string")), SnapshotWindow = structure(logical(0), tags = list(type = "string")), ACLName = structure(logical(0), tags = list(type = "string")), AutoMinorVersionUpgrade = structure(logical(0), tags = list(type = "boolean")), DataTiering = structure(logical(0), tags = list(type = "string")), NetworkType = structure(logical(0), tags = list(type = "string")), IpDiscovery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_clusters_output"]]))
 }
 
 .memorydb$describe_engine_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), ParameterGroupFamily = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), DefaultOnly = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_engine_versions_input"]]))
 }
 
 .memorydb$describe_engine_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), EngineVersions = structure(list(structure(list(Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), EnginePatchVersion = structure(logical(0), tags = list(type = "string")), ParameterGroupFamily = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_engine_versions_output"]]))
 }
 
 .memorydb$describe_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SourceName = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Duration = structure(logical(0), tags = list(type = "integer")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_events_input"]]))
 }
 
 .memorydb$describe_events_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Events = structure(list(structure(list(SourceName = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), Date = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_events_output"]]))
 }
 
 .memorydb$describe_multi_region_clusters_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MultiRegionClusterName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), ShowClusterDetails = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_multi_region_clusters_input"]]))
 }
 
 .memorydb$describe_multi_region_clusters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MultiRegionClusters = structure(list(structure(list(MultiRegionClusterName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), NumberOfShards = structure(logical(0), tags = list(type = "integer")), Clusters = structure(list(structure(list(ClusterName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "list")), MultiRegionParameterGroupName = structure(logical(0), tags = list(type = "string")), TLSEnabled = structure(logical(0), tags = list(type = "boolean")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_multi_region_clusters_output"]]))
 }
 
 .memorydb$describe_multi_region_parameter_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MultiRegionParameterGroupName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_multi_region_parameter_groups_input"]]))
 }
 
 .memorydb$describe_multi_region_parameter_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MultiRegionParameterGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Family = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_multi_region_parameter_groups_output"]]))
 }
 
 .memorydb$describe_multi_region_parameters_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MultiRegionParameterGroupName = structure(logical(0), tags = list(type = "string")), Source = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_multi_region_parameters_input"]]))
 }
 
 .memorydb$describe_multi_region_parameters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MultiRegionParameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Source = structure(logical(0), tags = list(type = "string")), DataType = structure(logical(0), tags = list(type = "string")), AllowedValues = structure(logical(0), tags = list(type = "string")), MinimumEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_multi_region_parameters_output"]]))
 }
 
 .memorydb$describe_parameter_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ParameterGroupName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_parameter_groups_input"]]))
 }
 
 .memorydb$describe_parameter_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ParameterGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Family = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_parameter_groups_output"]]))
 }
 
 .memorydb$describe_parameters_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ParameterGroupName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_parameters_input"]]))
 }
 
 .memorydb$describe_parameters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DataType = structure(logical(0), tags = list(type = "string")), AllowedValues = structure(logical(0), tags = list(type = "string")), MinimumEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_parameters_output"]]))
 }
 
 .memorydb$describe_reserved_nodes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReservationId = structure(logical(0), tags = list(type = "string")), ReservedNodesOfferingId = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), Duration = structure(logical(0), tags = list(type = "string")), OfferingType = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_reserved_nodes_input"]]))
 }
 
 .memorydb$describe_reserved_nodes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ReservedNodes = structure(list(structure(list(ReservationId = structure(logical(0), tags = list(type = "string")), ReservedNodesOfferingId = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), Duration = structure(logical(0), tags = list(type = "integer")), FixedPrice = structure(logical(0), tags = list(type = "double")), NodeCount = structure(logical(0), tags = list(type = "integer")), OfferingType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), RecurringCharges = structure(list(structure(list(RecurringChargeAmount = structure(logical(0), tags = list(type = "double")), RecurringChargeFrequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_reserved_nodes_output"]]))
 }
 
 .memorydb$describe_reserved_nodes_offerings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReservedNodesOfferingId = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), Duration = structure(logical(0), tags = list(type = "string")), OfferingType = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_reserved_nodes_offerings_input"]]))
 }
 
 .memorydb$describe_reserved_nodes_offerings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ReservedNodesOfferings = structure(list(structure(list(ReservedNodesOfferingId = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), Duration = structure(logical(0), tags = list(type = "integer")), FixedPrice = structure(logical(0), tags = list(type = "double")), OfferingType = structure(logical(0), tags = list(type = "string")), RecurringCharges = structure(list(structure(list(RecurringChargeAmount = structure(logical(0), tags = list(type = "double")), RecurringChargeFrequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_reserved_nodes_offerings_output"]]))
 }
 
 .memorydb$describe_service_updates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceUpdateName = structure(logical(0), tags = list(type = "string")), ClusterNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Status = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_service_updates_input"]]))
 }
 
 .memorydb$describe_service_updates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ServiceUpdates = structure(list(structure(list(ClusterName = structure(logical(0), tags = list(type = "string")), ServiceUpdateName = structure(logical(0), tags = list(type = "string")), ReleaseDate = structure(logical(0), tags = list(type = "timestamp")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), NodesUpdated = structure(logical(0), tags = list(type = "string")), AutoUpdateStartDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_service_updates_output"]]))
 }
 
 .memorydb$describe_snapshots_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterName = structure(logical(0), tags = list(type = "string")), SnapshotName = structure(logical(0), tags = list(type = "string")), Source = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), ShowDetail = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_snapshots_input"]]))
 }
 
 .memorydb$describe_snapshots_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Snapshots = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Source = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), ClusterConfiguration = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), MaintenanceWindow = structure(logical(0), tags = list(type = "string")), TopicArn = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), ParameterGroupName = structure(logical(0), tags = list(type = "string")), SubnetGroupName = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SnapshotRetentionLimit = structure(logical(0), tags = list(type = "integer")), SnapshotWindow = structure(logical(0), tags = list(type = "string")), NumShards = structure(logical(0), tags = list(type = "integer")), Shards = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(Slots = structure(logical(0), tags = list(type = "string")), ReplicaCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Size = structure(logical(0), tags = list(type = "string")), SnapshotCreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiRegionParameterGroupName = structure(logical(0), tags = list(type = "string")), MultiRegionClusterName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataTiering = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_snapshots_output"]]))
 }
 
 .memorydb$describe_subnet_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SubnetGroupName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_subnet_groups_input"]]))
 }
 
 .memorydb$describe_subnet_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), SubnetGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), Subnets = structure(list(structure(list(Identifier = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SupportedNetworkTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ARN = structure(logical(0), tags = list(type = "string")), SupportedNetworkTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_subnet_groups_output"]]))
 }
 
 .memorydb$describe_users_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_users_input"]]))
 }
 
 .memorydb$describe_users_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Users = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AccessString = structure(logical(0), tags = list(type = "string")), ACLNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MinimumEngineVersion = structure(logical(0), tags = list(type = "string")), Authentication = structure(list(Type = structure(logical(0), tags = list(type = "string")), PasswordCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["describe_users_output"]]))
 }
 
 .memorydb$failover_shard_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterName = structure(logical(0), tags = list(type = "string")), ShardName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["failover_shard_input"]]))
 }
 
 .memorydb$failover_shard_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Cluster = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), PendingUpdates = structure(list(Resharding = structure(list(SlotMigration = structure(list(ProgressPercentage = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure")), ACLs = structure(list(ACLToApply = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ServiceUpdates = structure(list(structure(list(ServiceUpdateName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MultiRegionClusterName = structure(logical(0), tags = list(type = "string")), NumberOfShards = structure(logical(0), tags = list(type = "integer")), Shards = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Slots = structure(logical(0), tags = list(type = "string")), Nodes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), Endpoint = structure(list(Address = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NumberOfNodes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), AvailabilityMode = structure(logical(0), tags = list(type = "string")), ClusterEndpoint = structure(list(Address = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), NodeType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), EnginePatchVersion = structure(logical(0), tags = list(type = "string")), ParameterGroupName = structure(logical(0), tags = list(type = "string")), ParameterGroupStatus = structure(logical(0), tags = list(type = "string")), SecurityGroups = structure(list(structure(list(SecurityGroupId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SubnetGroupName = structure(logical(0), tags = list(type = "string")), TLSEnabled = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), SnsTopicStatus = structure(logical(0), tags = list(type = "string")), SnapshotRetentionLimit = structure(logical(0), tags = list(type = "integer")), MaintenanceWindow = structure(logical(0), tags = list(type = "string")), SnapshotWindow = structure(logical(0), tags = list(type = "string")), ACLName = structure(logical(0), tags = list(type = "string")), AutoMinorVersionUpgrade = structure(logical(0), tags = list(type = "boolean")), DataTiering = structure(logical(0), tags = list(type = "string")), NetworkType = structure(logical(0), tags = list(type = "string")), IpDiscovery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["failover_shard_output"]]))
 }
 
 .memorydb$list_allowed_multi_region_cluster_updates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MultiRegionClusterName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["list_allowed_multi_region_cluster_updates_input"]]))
 }
 
 .memorydb$list_allowed_multi_region_cluster_updates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScaleUpNodeTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ScaleDownNodeTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["list_allowed_multi_region_cluster_updates_output"]]))
 }
 
 .memorydb$list_allowed_node_type_updates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["list_allowed_node_type_updates_input"]]))
 }
 
 .memorydb$list_allowed_node_type_updates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScaleUpNodeTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ScaleDownNodeTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["list_allowed_node_type_updates_output"]]))
 }
 
 .memorydb$list_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["list_tags_input"]]))
 }
 
 .memorydb$list_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["list_tags_output"]]))
 }
 
 .memorydb$purchase_reserved_nodes_offering_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReservedNodesOfferingId = structure(logical(0), tags = list(type = "string")), ReservationId = structure(logical(0), tags = list(type = "string")), NodeCount = structure(logical(0), tags = list(type = "integer")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["purchase_reserved_nodes_offering_input"]]))
 }
 
 .memorydb$purchase_reserved_nodes_offering_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReservedNode = structure(list(ReservationId = structure(logical(0), tags = list(type = "string")), ReservedNodesOfferingId = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), Duration = structure(logical(0), tags = list(type = "integer")), FixedPrice = structure(logical(0), tags = list(type = "double")), NodeCount = structure(logical(0), tags = list(type = "integer")), OfferingType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), RecurringCharges = structure(list(structure(list(RecurringChargeAmount = structure(logical(0), tags = list(type = "double")), RecurringChargeFrequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["purchase_reserved_nodes_offering_output"]]))
 }
 
 .memorydb$reset_parameter_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ParameterGroupName = structure(logical(0), tags = list(type = "string")), AllParameters = structure(logical(0), tags = list(type = "boolean")), ParameterNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["reset_parameter_group_input"]]))
 }
 
 .memorydb$reset_parameter_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ParameterGroup = structure(list(Name = structure(logical(0), tags = list(type = "string")), Family = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["reset_parameter_group_output"]]))
 }
 
 .memorydb$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["tag_resource_input"]]))
 }
 
 .memorydb$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["tag_resource_output"]]))
 }
 
 .memorydb$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["untag_resource_input"]]))
 }
 
 .memorydb$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["untag_resource_output"]]))
 }
 
 .memorydb$update_acl_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ACLName = structure(logical(0), tags = list(type = "string")), UserNamesToAdd = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), UserNamesToRemove = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["update_acl_input"]]))
 }
 
 .memorydb$update_acl_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ACL = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), UserNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MinimumEngineVersion = structure(logical(0), tags = list(type = "string")), PendingChanges = structure(list(UserNamesToRemove = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), UserNamesToAdd = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Clusters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["update_acl_output"]]))
 }
 
 .memorydb$update_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaintenanceWindow = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), SnsTopicStatus = structure(logical(0), tags = list(type = "string")), ParameterGroupName = structure(logical(0), tags = list(type = "string")), SnapshotWindow = structure(logical(0), tags = list(type = "string")), SnapshotRetentionLimit = structure(logical(0), tags = list(type = "integer")), NodeType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), ReplicaConfiguration = structure(list(ReplicaCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ShardConfiguration = structure(list(ShardCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ACLName = structure(logical(0), tags = list(type = "string")), IpDiscovery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["update_cluster_input"]]))
 }
 
 .memorydb$update_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Cluster = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), PendingUpdates = structure(list(Resharding = structure(list(SlotMigration = structure(list(ProgressPercentage = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure")), ACLs = structure(list(ACLToApply = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ServiceUpdates = structure(list(structure(list(ServiceUpdateName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MultiRegionClusterName = structure(logical(0), tags = list(type = "string")), NumberOfShards = structure(logical(0), tags = list(type = "integer")), Shards = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Slots = structure(logical(0), tags = list(type = "string")), Nodes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), Endpoint = structure(list(Address = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NumberOfNodes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), AvailabilityMode = structure(logical(0), tags = list(type = "string")), ClusterEndpoint = structure(list(Address = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), NodeType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), EnginePatchVersion = structure(logical(0), tags = list(type = "string")), ParameterGroupName = structure(logical(0), tags = list(type = "string")), ParameterGroupStatus = structure(logical(0), tags = list(type = "string")), SecurityGroups = structure(list(structure(list(SecurityGroupId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SubnetGroupName = structure(logical(0), tags = list(type = "string")), TLSEnabled = structure(logical(0), tags = list(type = "boolean")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), SnsTopicStatus = structure(logical(0), tags = list(type = "string")), SnapshotRetentionLimit = structure(logical(0), tags = list(type = "integer")), MaintenanceWindow = structure(logical(0), tags = list(type = "string")), SnapshotWindow = structure(logical(0), tags = list(type = "string")), ACLName = structure(logical(0), tags = list(type = "string")), AutoMinorVersionUpgrade = structure(logical(0), tags = list(type = "boolean")), DataTiering = structure(logical(0), tags = list(type = "string")), NetworkType = structure(logical(0), tags = list(type = "string")), IpDiscovery = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["update_cluster_output"]]))
 }
 
 .memorydb$update_multi_region_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MultiRegionClusterName = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), ShardConfiguration = structure(list(ShardCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), MultiRegionParameterGroupName = structure(logical(0), tags = list(type = "string")), UpdateStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["update_multi_region_cluster_input"]]))
 }
 
 .memorydb$update_multi_region_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MultiRegionCluster = structure(list(MultiRegionClusterName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), NodeType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), NumberOfShards = structure(logical(0), tags = list(type = "integer")), Clusters = structure(list(structure(list(ClusterName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", wrapper = TRUE))), tags = list(type = "list")), MultiRegionParameterGroupName = structure(logical(0), tags = list(type = "string")), TLSEnabled = structure(logical(0), tags = list(type = "boolean")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["update_multi_region_cluster_output"]]))
 }
 
 .memorydb$update_parameter_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ParameterGroupName = structure(logical(0), tags = list(type = "string")), ParameterNameValues = structure(list(structure(list(ParameterName = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["update_parameter_group_input"]]))
 }
 
 .memorydb$update_parameter_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ParameterGroup = structure(list(Name = structure(logical(0), tags = list(type = "string")), Family = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["update_parameter_group_output"]]))
 }
 
 .memorydb$update_subnet_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SubnetGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["update_subnet_group_input"]]))
 }
 
 .memorydb$update_subnet_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SubnetGroup = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), Subnets = structure(list(structure(list(Identifier = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SupportedNetworkTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ARN = structure(logical(0), tags = list(type = "string")), SupportedNetworkTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["update_subnet_group_output"]]))
 }
 
 .memorydb$update_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string")), AuthenticationMode = structure(list(Type = structure(logical(0), tags = list(type = "string")), Passwords = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), AccessString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["update_user_input"]]))
 }
 
 .memorydb$update_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(User = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AccessString = structure(logical(0), tags = list(type = "string")), ACLNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MinimumEngineVersion = structure(logical(0), tags = list(type = "string")), Authentication = structure(list(Type = structure(logical(0), tags = list(type = "string")), PasswordCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .memorydb_shapes[["update_user_output"]]))
 }

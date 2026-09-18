@@ -5,44 +5,37 @@ NULL
 
 .sso$get_role_credentials_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(roleName = structure(logical(0), tags = list(location = "querystring", locationName = "role_name", type = "string")), accountId = structure(logical(0), tags = list(location = "querystring", locationName = "account_id", type = "string")), accessToken = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sso_bearer_token", type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sso_shapes[["get_role_credentials_input"]]))
 }
 
 .sso$get_role_credentials_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(roleCredentials = structure(list(accessKeyId = structure(logical(0), tags = list(type = "string")), secretAccessKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sessionToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), expiration = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sso_shapes[["get_role_credentials_output"]]))
 }
 
 .sso$list_account_roles_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next_token", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max_result", type = "integer", box = TRUE)), accessToken = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sso_bearer_token", type = "string", sensitive = TRUE)), accountId = structure(logical(0), tags = list(location = "querystring", locationName = "account_id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sso_shapes[["list_account_roles_input"]]))
 }
 
 .sso$list_account_roles_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), roleList = structure(list(structure(list(roleName = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sso_shapes[["list_account_roles_output"]]))
 }
 
 .sso$list_accounts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next_token", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max_result", type = "integer", box = TRUE)), accessToken = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sso_bearer_token", type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sso_shapes[["list_accounts_input"]]))
 }
 
 .sso$list_accounts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), accountList = structure(list(structure(list(accountId = structure(logical(0), tags = list(type = "string")), accountName = structure(logical(0), tags = list(type = "string")), emailAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sso_shapes[["list_accounts_output"]]))
 }
 
 .sso$logout_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accessToken = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sso_bearer_token", type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sso_shapes[["logout_input"]]))
 }
 
 .sso$logout_output <- function(...) {

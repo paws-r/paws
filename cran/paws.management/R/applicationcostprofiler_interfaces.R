@@ -5,72 +5,60 @@ NULL
 
 .applicationcostprofiler$delete_report_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(reportId = structure(logical(0), tags = list(location = "uri", locationName = "reportId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationcostprofiler_shapes[["delete_report_definition_input"]]))
 }
 
 .applicationcostprofiler$delete_report_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(reportId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationcostprofiler_shapes[["delete_report_definition_output"]]))
 }
 
 .applicationcostprofiler$get_report_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(reportId = structure(logical(0), tags = list(location = "uri", locationName = "reportId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationcostprofiler_shapes[["get_report_definition_input"]]))
 }
 
 .applicationcostprofiler$get_report_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(reportId = structure(logical(0), tags = list(type = "string")), reportDescription = structure(logical(0), tags = list(type = "string")), reportFrequency = structure(logical(0), tags = list(type = "string")), format = structure(logical(0), tags = list(type = "string")), destinationS3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationcostprofiler_shapes[["get_report_definition_output"]]))
 }
 
 .applicationcostprofiler$import_application_usage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceS3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationcostprofiler_shapes[["import_application_usage_input"]]))
 }
 
 .applicationcostprofiler$import_application_usage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(importId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationcostprofiler_shapes[["import_application_usage_output"]]))
 }
 
 .applicationcostprofiler$list_report_definitions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationcostprofiler_shapes[["list_report_definitions_input"]]))
 }
 
 .applicationcostprofiler$list_report_definitions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(reportDefinitions = structure(list(structure(list(reportId = structure(logical(0), tags = list(type = "string")), reportDescription = structure(logical(0), tags = list(type = "string")), reportFrequency = structure(logical(0), tags = list(type = "string")), format = structure(logical(0), tags = list(type = "string")), destinationS3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationcostprofiler_shapes[["list_report_definitions_output"]]))
 }
 
 .applicationcostprofiler$put_report_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(reportId = structure(logical(0), tags = list(type = "string")), reportDescription = structure(logical(0), tags = list(type = "string")), reportFrequency = structure(logical(0), tags = list(type = "string")), format = structure(logical(0), tags = list(type = "string")), destinationS3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationcostprofiler_shapes[["put_report_definition_input"]]))
 }
 
 .applicationcostprofiler$put_report_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(reportId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationcostprofiler_shapes[["put_report_definition_output"]]))
 }
 
 .applicationcostprofiler$update_report_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(reportId = structure(logical(0), tags = list(location = "uri", locationName = "reportId", type = "string")), reportDescription = structure(logical(0), tags = list(type = "string")), reportFrequency = structure(logical(0), tags = list(type = "string")), format = structure(logical(0), tags = list(type = "string")), destinationS3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationcostprofiler_shapes[["update_report_definition_input"]]))
 }
 
 .applicationcostprofiler$update_report_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(reportId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .applicationcostprofiler_shapes[["update_report_definition_output"]]))
 }

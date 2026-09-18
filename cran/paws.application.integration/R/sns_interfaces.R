@@ -5,8 +5,7 @@ NULL
 
 .sns$add_permission_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TopicArn = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), AWSAccountId = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ActionName = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["add_permission_input"]]))
 }
 
 .sns$add_permission_output <- function(...) {
@@ -15,80 +14,67 @@ NULL
 
 .sns$check_if_phone_number_is_opted_out_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(phoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["check_if_phone_number_is_opted_out_input"]]))
 }
 
 .sns$check_if_phone_number_is_opted_out_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(isOptedOut = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", resultWrapper = "CheckIfPhoneNumberIsOptedOutResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["check_if_phone_number_is_opted_out_output"]]))
 }
 
 .sns$confirm_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TopicArn = structure(logical(0), tags = list(type = "string")), Token = structure(logical(0), tags = list(type = "string")), AuthenticateOnUnsubscribe = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["confirm_subscription_input"]]))
 }
 
 .sns$confirm_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SubscriptionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ConfirmSubscriptionResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["confirm_subscription_output"]]))
 }
 
 .sns$create_platform_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["create_platform_application_input"]]))
 }
 
 .sns$create_platform_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PlatformApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "CreatePlatformApplicationResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["create_platform_application_output"]]))
 }
 
 .sns$create_platform_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PlatformApplicationArn = structure(logical(0), tags = list(type = "string")), Token = structure(logical(0), tags = list(type = "string")), CustomUserData = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["create_platform_endpoint_input"]]))
 }
 
 .sns$create_platform_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EndpointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "CreatePlatformEndpointResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["create_platform_endpoint_output"]]))
 }
 
 .sns$create_sms_sandbox_phone_number_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LanguageCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["create_sms_sandbox_phone_number_input"]]))
 }
 
 .sns$create_sms_sandbox_phone_number_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "CreateSMSSandboxPhoneNumberResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["create_sms_sandbox_phone_number_output"]]))
 }
 
 .sns$create_topic_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DataProtectionPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["create_topic_input"]]))
 }
 
 .sns$create_topic_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "CreateTopicResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["create_topic_output"]]))
 }
 
 .sns$delete_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EndpointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["delete_endpoint_input"]]))
 }
 
 .sns$delete_endpoint_output <- function(...) {
@@ -97,8 +83,7 @@ NULL
 
 .sns$delete_platform_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PlatformApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["delete_platform_application_input"]]))
 }
 
 .sns$delete_platform_application_output <- function(...) {
@@ -107,20 +92,17 @@ NULL
 
 .sns$delete_sms_sandbox_phone_number_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["delete_sms_sandbox_phone_number_input"]]))
 }
 
 .sns$delete_sms_sandbox_phone_number_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DeleteSMSSandboxPhoneNumberResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["delete_sms_sandbox_phone_number_output"]]))
 }
 
 .sns$delete_topic_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["delete_topic_input"]]))
 }
 
 .sns$delete_topic_output <- function(...) {
@@ -129,236 +111,197 @@ NULL
 
 .sns$get_data_protection_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["get_data_protection_policy_input"]]))
 }
 
 .sns$get_data_protection_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DataProtectionPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetDataProtectionPolicyResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["get_data_protection_policy_output"]]))
 }
 
 .sns$get_endpoint_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EndpointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["get_endpoint_attributes_input"]]))
 }
 
 .sns$get_endpoint_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure", resultWrapper = "GetEndpointAttributesResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["get_endpoint_attributes_output"]]))
 }
 
 .sns$get_platform_application_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PlatformApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["get_platform_application_attributes_input"]]))
 }
 
 .sns$get_platform_application_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure", resultWrapper = "GetPlatformApplicationAttributesResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["get_platform_application_attributes_output"]]))
 }
 
 .sns$get_sms_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["get_sms_attributes_input"]]))
 }
 
 .sns$get_sms_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure", resultWrapper = "GetSMSAttributesResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["get_sms_attributes_output"]]))
 }
 
 .sns$get_sms_sandbox_account_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["get_sms_sandbox_account_status_input"]]))
 }
 
 .sns$get_sms_sandbox_account_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IsInSandbox = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", resultWrapper = "GetSMSSandboxAccountStatusResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["get_sms_sandbox_account_status_output"]]))
 }
 
 .sns$get_subscription_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SubscriptionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["get_subscription_attributes_input"]]))
 }
 
 .sns$get_subscription_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure", resultWrapper = "GetSubscriptionAttributesResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["get_subscription_attributes_output"]]))
 }
 
 .sns$get_topic_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["get_topic_attributes_input"]]))
 }
 
 .sns$get_topic_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure", resultWrapper = "GetTopicAttributesResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["get_topic_attributes_output"]]))
 }
 
 .sns$list_endpoints_by_platform_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PlatformApplicationArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_endpoints_by_platform_application_input"]]))
 }
 
 .sns$list_endpoints_by_platform_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Endpoints = structure(list(structure(list(EndpointArn = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListEndpointsByPlatformApplicationResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_endpoints_by_platform_application_output"]]))
 }
 
 .sns$list_origination_numbers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_origination_numbers_input"]]))
 }
 
 .sns$list_origination_numbers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), PhoneNumbers = structure(list(structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string")), Iso2CountryCode = structure(logical(0), tags = list(type = "string")), RouteType = structure(logical(0), tags = list(type = "string")), NumberCapabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ListOriginationNumbersResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_origination_numbers_output"]]))
 }
 
 .sns$list_phone_numbers_opted_out_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_phone_numbers_opted_out_input"]]))
 }
 
 .sns$list_phone_numbers_opted_out_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(phoneNumbers = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListPhoneNumbersOptedOutResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_phone_numbers_opted_out_output"]]))
 }
 
 .sns$list_platform_applications_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_platform_applications_input"]]))
 }
 
 .sns$list_platform_applications_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PlatformApplications = structure(list(structure(list(PlatformApplicationArn = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListPlatformApplicationsResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_platform_applications_output"]]))
 }
 
 .sns$list_sms_sandbox_phone_numbers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_sms_sandbox_phone_numbers_input"]]))
 }
 
 .sns$list_sms_sandbox_phone_numbers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PhoneNumbers = structure(list(structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListSMSSandboxPhoneNumbersResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_sms_sandbox_phone_numbers_output"]]))
 }
 
 .sns$list_subscriptions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_subscriptions_input"]]))
 }
 
 .sns$list_subscriptions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Subscriptions = structure(list(structure(list(SubscriptionArn = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), Endpoint = structure(logical(0), tags = list(type = "string")), TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListSubscriptionsResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_subscriptions_output"]]))
 }
 
 .sns$list_subscriptions_by_topic_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TopicArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_subscriptions_by_topic_input"]]))
 }
 
 .sns$list_subscriptions_by_topic_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Subscriptions = structure(list(structure(list(SubscriptionArn = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), Endpoint = structure(logical(0), tags = list(type = "string")), TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListSubscriptionsByTopicResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_subscriptions_by_topic_output"]]))
 }
 
 .sns$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_tags_for_resource_input"]]))
 }
 
 .sns$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ListTagsForResourceResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_tags_for_resource_output"]]))
 }
 
 .sns$list_topics_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_topics_input"]]))
 }
 
 .sns$list_topics_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Topics = structure(list(structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListTopicsResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["list_topics_output"]]))
 }
 
 .sns$opt_in_phone_number_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(phoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["opt_in_phone_number_input"]]))
 }
 
 .sns$opt_in_phone_number_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "OptInPhoneNumberResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["opt_in_phone_number_output"]]))
 }
 
 .sns$publish_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TopicArn = structure(logical(0), tags = list(type = "string")), TargetArn = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Message = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), MessageStructure = structure(logical(0), tags = list(type = "string")), MessageAttributes = structure(list(structure(list(DataType = structure(logical(0), tags = list(type = "string")), StringValue = structure(logical(0), tags = list(type = "string")), BinaryValue = structure(logical(0), tags = list(type = "blob"))), tags = list(locationName = "Value", type = "structure"))), tags = list(locationNameKey = "Name", locationNameValue = "Value", type = "map")), MessageDeduplicationId = structure(logical(0), tags = list(type = "string")), MessageGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["publish_input"]]))
 }
 
 .sns$publish_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MessageId = structure(logical(0), tags = list(type = "string")), SequenceNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "PublishResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["publish_output"]]))
 }
 
 .sns$publish_batch_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TopicArn = structure(logical(0), tags = list(type = "string")), PublishBatchRequestEntries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), MessageStructure = structure(logical(0), tags = list(type = "string")), MessageAttributes = structure(list(structure(list(DataType = structure(logical(0), tags = list(type = "string")), StringValue = structure(logical(0), tags = list(type = "string")), BinaryValue = structure(logical(0), tags = list(type = "blob"))), tags = list(locationName = "Value", type = "structure"))), tags = list(locationNameKey = "Name", locationNameValue = "Value", type = "map")), MessageDeduplicationId = structure(logical(0), tags = list(type = "string")), MessageGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["publish_batch_input"]]))
 }
 
 .sns$publish_batch_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Successful = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), MessageId = structure(logical(0), tags = list(type = "string")), SequenceNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Failed = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), SenderFault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "PublishBatchResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["publish_batch_output"]]))
 }
 
 .sns$put_data_protection_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), DataProtectionPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["put_data_protection_policy_input"]]))
 }
 
 .sns$put_data_protection_policy_output <- function(...) {
@@ -367,8 +310,7 @@ NULL
 
 .sns$remove_permission_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TopicArn = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["remove_permission_input"]]))
 }
 
 .sns$remove_permission_output <- function(...) {
@@ -377,8 +319,7 @@ NULL
 
 .sns$set_endpoint_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EndpointArn = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["set_endpoint_attributes_input"]]))
 }
 
 .sns$set_endpoint_attributes_output <- function(...) {
@@ -387,8 +328,7 @@ NULL
 
 .sns$set_platform_application_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PlatformApplicationArn = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["set_platform_application_attributes_input"]]))
 }
 
 .sns$set_platform_application_attributes_output <- function(...) {
@@ -397,20 +337,17 @@ NULL
 
 .sns$set_sms_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["set_sms_attributes_input"]]))
 }
 
 .sns$set_sms_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "SetSMSAttributesResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["set_sms_attributes_output"]]))
 }
 
 .sns$set_subscription_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SubscriptionArn = structure(logical(0), tags = list(type = "string")), AttributeName = structure(logical(0), tags = list(type = "string")), AttributeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["set_subscription_attributes_input"]]))
 }
 
 .sns$set_subscription_attributes_output <- function(...) {
@@ -419,8 +356,7 @@ NULL
 
 .sns$set_topic_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TopicArn = structure(logical(0), tags = list(type = "string")), AttributeName = structure(logical(0), tags = list(type = "string")), AttributeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["set_topic_attributes_input"]]))
 }
 
 .sns$set_topic_attributes_output <- function(...) {
@@ -429,32 +365,27 @@ NULL
 
 .sns$subscribe_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TopicArn = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), Endpoint = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ReturnSubscriptionArn = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["subscribe_input"]]))
 }
 
 .sns$subscribe_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SubscriptionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "SubscribeResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["subscribe_output"]]))
 }
 
 .sns$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["tag_resource_input"]]))
 }
 
 .sns$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "TagResourceResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["tag_resource_output"]]))
 }
 
 .sns$unsubscribe_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SubscriptionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["unsubscribe_input"]]))
 }
 
 .sns$unsubscribe_output <- function(...) {
@@ -463,24 +394,20 @@ NULL
 
 .sns$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["untag_resource_input"]]))
 }
 
 .sns$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "UntagResourceResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["untag_resource_output"]]))
 }
 
 .sns$verify_sms_sandbox_phone_number_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), OneTimePassword = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["verify_sms_sandbox_phone_number_input"]]))
 }
 
 .sns$verify_sms_sandbox_phone_number_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "VerifySMSSandboxPhoneNumberResult"))
-  return(populate(args, shape))
+  return(populate(args, .sns_shapes[["verify_sms_sandbox_phone_number_output"]]))
 }

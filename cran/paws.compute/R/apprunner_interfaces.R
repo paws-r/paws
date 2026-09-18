@@ -5,444 +5,370 @@ NULL
 
 .apprunner$associate_custom_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceArn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), EnableWWWSubdomain = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["associate_custom_domain_input"]]))
 }
 
 .apprunner$associate_custom_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DNSTarget = structure(logical(0), tags = list(type = "string")), ServiceArn = structure(logical(0), tags = list(type = "string")), CustomDomain = structure(list(DomainName = structure(logical(0), tags = list(type = "string")), EnableWWWSubdomain = structure(logical(0), tags = list(type = "boolean")), CertificateValidationRecords = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), VpcDNSTargets = structure(list(structure(list(VpcIngressConnectionArn = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["associate_custom_domain_output"]]))
 }
 
 .apprunner$create_auto_scaling_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoScalingConfigurationName = structure(logical(0), tags = list(type = "string")), MaxConcurrency = structure(logical(0), tags = list(type = "integer")), MinSize = structure(logical(0), tags = list(type = "integer")), MaxSize = structure(logical(0), tags = list(type = "integer")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["create_auto_scaling_configuration_input"]]))
 }
 
 .apprunner$create_auto_scaling_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoScalingConfiguration = structure(list(AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationName = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationRevision = structure(logical(0), tags = list(type = "integer")), Latest = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), MaxConcurrency = structure(logical(0), tags = list(type = "integer")), MinSize = structure(logical(0), tags = list(type = "integer")), MaxSize = structure(logical(0), tags = list(type = "integer")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp")), HasAssociatedService = structure(logical(0), tags = list(type = "boolean")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["create_auto_scaling_configuration_output"]]))
 }
 
 .apprunner$create_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectionName = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["create_connection_input"]]))
 }
 
 .apprunner$create_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Connection = structure(list(ConnectionName = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["create_connection_output"]]))
 }
 
 .apprunner$create_observability_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ObservabilityConfigurationName = structure(logical(0), tags = list(type = "string")), TraceConfiguration = structure(list(Vendor = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["create_observability_configuration_input"]]))
 }
 
 .apprunner$create_observability_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ObservabilityConfiguration = structure(list(ObservabilityConfigurationArn = structure(logical(0), tags = list(type = "string")), ObservabilityConfigurationName = structure(logical(0), tags = list(type = "string")), TraceConfiguration = structure(list(Vendor = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObservabilityConfigurationRevision = structure(logical(0), tags = list(type = "integer")), Latest = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["create_observability_configuration_output"]]))
 }
 
 .apprunner$create_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), SourceConfiguration = structure(list(CodeRepository = structure(list(RepositoryUrl = structure(logical(0), tags = list(type = "string")), SourceCodeVersion = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CodeConfiguration = structure(list(ConfigurationSource = structure(logical(0), tags = list(type = "string")), CodeConfigurationValues = structure(list(Runtime = structure(logical(0), tags = list(type = "string")), BuildCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), StartCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Port = structure(logical(0), tags = list(type = "string")), RuntimeEnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), RuntimeEnvironmentSecrets = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), SourceDirectory = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImageRepository = structure(list(ImageIdentifier = structure(logical(0), tags = list(type = "string")), ImageConfiguration = structure(list(RuntimeEnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), StartCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Port = structure(logical(0), tags = list(type = "string")), RuntimeEnvironmentSecrets = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), ImageRepositoryType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoDeploymentsEnabled = structure(logical(0), tags = list(type = "boolean")), AuthenticationConfiguration = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), AccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), InstanceConfiguration = structure(list(Cpu = structure(logical(0), tags = list(type = "string")), Memory = structure(logical(0), tags = list(type = "string")), InstanceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EncryptionConfiguration = structure(list(KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HealthCheckConfiguration = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Interval = structure(logical(0), tags = list(type = "integer")), Timeout = structure(logical(0), tags = list(type = "integer")), HealthyThreshold = structure(logical(0), tags = list(type = "integer")), UnhealthyThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string")), NetworkConfiguration = structure(list(EgressConfiguration = structure(list(EgressType = structure(logical(0), tags = list(type = "string")), VpcConnectorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IngressConfiguration = structure(list(IsPubliclyAccessible = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IpAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObservabilityConfiguration = structure(list(ObservabilityEnabled = structure(logical(0), tags = list(type = "boolean")), ObservabilityConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["create_service_input"]]))
 }
 
 .apprunner$create_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Service = structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), ServiceId = structure(logical(0), tags = list(type = "string")), ServiceArn = structure(logical(0), tags = list(type = "string")), ServiceUrl = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), SourceConfiguration = structure(list(CodeRepository = structure(list(RepositoryUrl = structure(logical(0), tags = list(type = "string")), SourceCodeVersion = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CodeConfiguration = structure(list(ConfigurationSource = structure(logical(0), tags = list(type = "string")), CodeConfigurationValues = structure(list(Runtime = structure(logical(0), tags = list(type = "string")), BuildCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), StartCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Port = structure(logical(0), tags = list(type = "string")), RuntimeEnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), RuntimeEnvironmentSecrets = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), SourceDirectory = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImageRepository = structure(list(ImageIdentifier = structure(logical(0), tags = list(type = "string")), ImageConfiguration = structure(list(RuntimeEnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), StartCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Port = structure(logical(0), tags = list(type = "string")), RuntimeEnvironmentSecrets = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), ImageRepositoryType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoDeploymentsEnabled = structure(logical(0), tags = list(type = "boolean")), AuthenticationConfiguration = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), AccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), InstanceConfiguration = structure(list(Cpu = structure(logical(0), tags = list(type = "string")), Memory = structure(logical(0), tags = list(type = "string")), InstanceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionConfiguration = structure(list(KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HealthCheckConfiguration = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Interval = structure(logical(0), tags = list(type = "integer")), Timeout = structure(logical(0), tags = list(type = "integer")), HealthyThreshold = structure(logical(0), tags = list(type = "integer")), UnhealthyThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AutoScalingConfigurationSummary = structure(list(AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationName = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationRevision = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), HasAssociatedService = structure(logical(0), tags = list(type = "boolean")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), NetworkConfiguration = structure(list(EgressConfiguration = structure(list(EgressType = structure(logical(0), tags = list(type = "string")), VpcConnectorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IngressConfiguration = structure(list(IsPubliclyAccessible = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IpAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObservabilityConfiguration = structure(list(ObservabilityEnabled = structure(logical(0), tags = list(type = "boolean")), ObservabilityConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["create_service_output"]]))
 }
 
 .apprunner$create_vpc_connector_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcConnectorName = structure(logical(0), tags = list(type = "string")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["create_vpc_connector_input"]]))
 }
 
 .apprunner$create_vpc_connector_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcConnector = structure(list(VpcConnectorName = structure(logical(0), tags = list(type = "string")), VpcConnectorArn = structure(logical(0), tags = list(type = "string")), VpcConnectorRevision = structure(logical(0), tags = list(type = "integer")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["create_vpc_connector_output"]]))
 }
 
 .apprunner$create_vpc_ingress_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceArn = structure(logical(0), tags = list(type = "string")), VpcIngressConnectionName = structure(logical(0), tags = list(type = "string")), IngressVpcConfiguration = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["create_vpc_ingress_connection_input"]]))
 }
 
 .apprunner$create_vpc_ingress_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcIngressConnection = structure(list(VpcIngressConnectionArn = structure(logical(0), tags = list(type = "string")), VpcIngressConnectionName = structure(logical(0), tags = list(type = "string")), ServiceArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), IngressVpcConfiguration = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["create_vpc_ingress_connection_output"]]))
 }
 
 .apprunner$delete_auto_scaling_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string")), DeleteAllRevisions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["delete_auto_scaling_configuration_input"]]))
 }
 
 .apprunner$delete_auto_scaling_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoScalingConfiguration = structure(list(AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationName = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationRevision = structure(logical(0), tags = list(type = "integer")), Latest = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), MaxConcurrency = structure(logical(0), tags = list(type = "integer")), MinSize = structure(logical(0), tags = list(type = "integer")), MaxSize = structure(logical(0), tags = list(type = "integer")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp")), HasAssociatedService = structure(logical(0), tags = list(type = "boolean")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["delete_auto_scaling_configuration_output"]]))
 }
 
 .apprunner$delete_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["delete_connection_input"]]))
 }
 
 .apprunner$delete_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Connection = structure(list(ConnectionName = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["delete_connection_output"]]))
 }
 
 .apprunner$delete_observability_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ObservabilityConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["delete_observability_configuration_input"]]))
 }
 
 .apprunner$delete_observability_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ObservabilityConfiguration = structure(list(ObservabilityConfigurationArn = structure(logical(0), tags = list(type = "string")), ObservabilityConfigurationName = structure(logical(0), tags = list(type = "string")), TraceConfiguration = structure(list(Vendor = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObservabilityConfigurationRevision = structure(logical(0), tags = list(type = "integer")), Latest = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["delete_observability_configuration_output"]]))
 }
 
 .apprunner$delete_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["delete_service_input"]]))
 }
 
 .apprunner$delete_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Service = structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), ServiceId = structure(logical(0), tags = list(type = "string")), ServiceArn = structure(logical(0), tags = list(type = "string")), ServiceUrl = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), SourceConfiguration = structure(list(CodeRepository = structure(list(RepositoryUrl = structure(logical(0), tags = list(type = "string")), SourceCodeVersion = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CodeConfiguration = structure(list(ConfigurationSource = structure(logical(0), tags = list(type = "string")), CodeConfigurationValues = structure(list(Runtime = structure(logical(0), tags = list(type = "string")), BuildCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), StartCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Port = structure(logical(0), tags = list(type = "string")), RuntimeEnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), RuntimeEnvironmentSecrets = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), SourceDirectory = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImageRepository = structure(list(ImageIdentifier = structure(logical(0), tags = list(type = "string")), ImageConfiguration = structure(list(RuntimeEnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), StartCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Port = structure(logical(0), tags = list(type = "string")), RuntimeEnvironmentSecrets = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), ImageRepositoryType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoDeploymentsEnabled = structure(logical(0), tags = list(type = "boolean")), AuthenticationConfiguration = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), AccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), InstanceConfiguration = structure(list(Cpu = structure(logical(0), tags = list(type = "string")), Memory = structure(logical(0), tags = list(type = "string")), InstanceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionConfiguration = structure(list(KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HealthCheckConfiguration = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Interval = structure(logical(0), tags = list(type = "integer")), Timeout = structure(logical(0), tags = list(type = "integer")), HealthyThreshold = structure(logical(0), tags = list(type = "integer")), UnhealthyThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AutoScalingConfigurationSummary = structure(list(AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationName = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationRevision = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), HasAssociatedService = structure(logical(0), tags = list(type = "boolean")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), NetworkConfiguration = structure(list(EgressConfiguration = structure(list(EgressType = structure(logical(0), tags = list(type = "string")), VpcConnectorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IngressConfiguration = structure(list(IsPubliclyAccessible = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IpAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObservabilityConfiguration = structure(list(ObservabilityEnabled = structure(logical(0), tags = list(type = "boolean")), ObservabilityConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["delete_service_output"]]))
 }
 
 .apprunner$delete_vpc_connector_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcConnectorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["delete_vpc_connector_input"]]))
 }
 
 .apprunner$delete_vpc_connector_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcConnector = structure(list(VpcConnectorName = structure(logical(0), tags = list(type = "string")), VpcConnectorArn = structure(logical(0), tags = list(type = "string")), VpcConnectorRevision = structure(logical(0), tags = list(type = "integer")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["delete_vpc_connector_output"]]))
 }
 
 .apprunner$delete_vpc_ingress_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcIngressConnectionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["delete_vpc_ingress_connection_input"]]))
 }
 
 .apprunner$delete_vpc_ingress_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcIngressConnection = structure(list(VpcIngressConnectionArn = structure(logical(0), tags = list(type = "string")), VpcIngressConnectionName = structure(logical(0), tags = list(type = "string")), ServiceArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), IngressVpcConfiguration = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["delete_vpc_ingress_connection_output"]]))
 }
 
 .apprunner$describe_auto_scaling_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["describe_auto_scaling_configuration_input"]]))
 }
 
 .apprunner$describe_auto_scaling_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoScalingConfiguration = structure(list(AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationName = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationRevision = structure(logical(0), tags = list(type = "integer")), Latest = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), MaxConcurrency = structure(logical(0), tags = list(type = "integer")), MinSize = structure(logical(0), tags = list(type = "integer")), MaxSize = structure(logical(0), tags = list(type = "integer")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp")), HasAssociatedService = structure(logical(0), tags = list(type = "boolean")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["describe_auto_scaling_configuration_output"]]))
 }
 
 .apprunner$describe_custom_domains_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["describe_custom_domains_input"]]))
 }
 
 .apprunner$describe_custom_domains_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DNSTarget = structure(logical(0), tags = list(type = "string")), ServiceArn = structure(logical(0), tags = list(type = "string")), CustomDomains = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), EnableWWWSubdomain = structure(logical(0), tags = list(type = "boolean")), CertificateValidationRecords = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), VpcDNSTargets = structure(list(structure(list(VpcIngressConnectionArn = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["describe_custom_domains_output"]]))
 }
 
 .apprunner$describe_observability_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ObservabilityConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["describe_observability_configuration_input"]]))
 }
 
 .apprunner$describe_observability_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ObservabilityConfiguration = structure(list(ObservabilityConfigurationArn = structure(logical(0), tags = list(type = "string")), ObservabilityConfigurationName = structure(logical(0), tags = list(type = "string")), TraceConfiguration = structure(list(Vendor = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObservabilityConfigurationRevision = structure(logical(0), tags = list(type = "integer")), Latest = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["describe_observability_configuration_output"]]))
 }
 
 .apprunner$describe_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["describe_service_input"]]))
 }
 
 .apprunner$describe_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Service = structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), ServiceId = structure(logical(0), tags = list(type = "string")), ServiceArn = structure(logical(0), tags = list(type = "string")), ServiceUrl = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), SourceConfiguration = structure(list(CodeRepository = structure(list(RepositoryUrl = structure(logical(0), tags = list(type = "string")), SourceCodeVersion = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CodeConfiguration = structure(list(ConfigurationSource = structure(logical(0), tags = list(type = "string")), CodeConfigurationValues = structure(list(Runtime = structure(logical(0), tags = list(type = "string")), BuildCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), StartCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Port = structure(logical(0), tags = list(type = "string")), RuntimeEnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), RuntimeEnvironmentSecrets = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), SourceDirectory = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImageRepository = structure(list(ImageIdentifier = structure(logical(0), tags = list(type = "string")), ImageConfiguration = structure(list(RuntimeEnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), StartCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Port = structure(logical(0), tags = list(type = "string")), RuntimeEnvironmentSecrets = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), ImageRepositoryType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoDeploymentsEnabled = structure(logical(0), tags = list(type = "boolean")), AuthenticationConfiguration = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), AccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), InstanceConfiguration = structure(list(Cpu = structure(logical(0), tags = list(type = "string")), Memory = structure(logical(0), tags = list(type = "string")), InstanceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionConfiguration = structure(list(KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HealthCheckConfiguration = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Interval = structure(logical(0), tags = list(type = "integer")), Timeout = structure(logical(0), tags = list(type = "integer")), HealthyThreshold = structure(logical(0), tags = list(type = "integer")), UnhealthyThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AutoScalingConfigurationSummary = structure(list(AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationName = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationRevision = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), HasAssociatedService = structure(logical(0), tags = list(type = "boolean")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), NetworkConfiguration = structure(list(EgressConfiguration = structure(list(EgressType = structure(logical(0), tags = list(type = "string")), VpcConnectorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IngressConfiguration = structure(list(IsPubliclyAccessible = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IpAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObservabilityConfiguration = structure(list(ObservabilityEnabled = structure(logical(0), tags = list(type = "boolean")), ObservabilityConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["describe_service_output"]]))
 }
 
 .apprunner$describe_vpc_connector_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcConnectorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["describe_vpc_connector_input"]]))
 }
 
 .apprunner$describe_vpc_connector_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcConnector = structure(list(VpcConnectorName = structure(logical(0), tags = list(type = "string")), VpcConnectorArn = structure(logical(0), tags = list(type = "string")), VpcConnectorRevision = structure(logical(0), tags = list(type = "integer")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["describe_vpc_connector_output"]]))
 }
 
 .apprunner$describe_vpc_ingress_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcIngressConnectionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["describe_vpc_ingress_connection_input"]]))
 }
 
 .apprunner$describe_vpc_ingress_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcIngressConnection = structure(list(VpcIngressConnectionArn = structure(logical(0), tags = list(type = "string")), VpcIngressConnectionName = structure(logical(0), tags = list(type = "string")), ServiceArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), IngressVpcConfiguration = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["describe_vpc_ingress_connection_output"]]))
 }
 
 .apprunner$disassociate_custom_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceArn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["disassociate_custom_domain_input"]]))
 }
 
 .apprunner$disassociate_custom_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DNSTarget = structure(logical(0), tags = list(type = "string")), ServiceArn = structure(logical(0), tags = list(type = "string")), CustomDomain = structure(list(DomainName = structure(logical(0), tags = list(type = "string")), EnableWWWSubdomain = structure(logical(0), tags = list(type = "boolean")), CertificateValidationRecords = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), VpcDNSTargets = structure(list(structure(list(VpcIngressConnectionArn = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["disassociate_custom_domain_output"]]))
 }
 
 .apprunner$list_auto_scaling_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoScalingConfigurationName = structure(logical(0), tags = list(type = "string")), LatestOnly = structure(logical(0), tags = list(type = "boolean")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_auto_scaling_configurations_input"]]))
 }
 
 .apprunner$list_auto_scaling_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoScalingConfigurationSummaryList = structure(list(structure(list(AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationName = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationRevision = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), HasAssociatedService = structure(logical(0), tags = list(type = "boolean")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_auto_scaling_configurations_output"]]))
 }
 
 .apprunner$list_connections_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectionName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_connections_input"]]))
 }
 
 .apprunner$list_connections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectionSummaryList = structure(list(structure(list(ConnectionName = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_connections_output"]]))
 }
 
 .apprunner$list_observability_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ObservabilityConfigurationName = structure(logical(0), tags = list(type = "string")), LatestOnly = structure(logical(0), tags = list(type = "boolean")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_observability_configurations_input"]]))
 }
 
 .apprunner$list_observability_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ObservabilityConfigurationSummaryList = structure(list(structure(list(ObservabilityConfigurationArn = structure(logical(0), tags = list(type = "string")), ObservabilityConfigurationName = structure(logical(0), tags = list(type = "string")), ObservabilityConfigurationRevision = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_observability_configurations_output"]]))
 }
 
 .apprunner$list_operations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_operations_input"]]))
 }
 
 .apprunner$list_operations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OperationSummaryList = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), TargetArn = structure(logical(0), tags = list(type = "string")), StartedAt = structure(logical(0), tags = list(type = "timestamp")), EndedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_operations_output"]]))
 }
 
 .apprunner$list_services_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_services_input"]]))
 }
 
 .apprunner$list_services_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceSummaryList = structure(list(structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), ServiceId = structure(logical(0), tags = list(type = "string")), ServiceArn = structure(logical(0), tags = list(type = "string")), ServiceUrl = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_services_output"]]))
 }
 
 .apprunner$list_services_for_auto_scaling_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_services_for_auto_scaling_configuration_input"]]))
 }
 
 .apprunner$list_services_for_auto_scaling_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceArnList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_services_for_auto_scaling_configuration_output"]]))
 }
 
 .apprunner$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_tags_for_resource_input"]]))
 }
 
 .apprunner$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_tags_for_resource_output"]]))
 }
 
 .apprunner$list_vpc_connectors_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_vpc_connectors_input"]]))
 }
 
 .apprunner$list_vpc_connectors_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcConnectors = structure(list(structure(list(VpcConnectorName = structure(logical(0), tags = list(type = "string")), VpcConnectorArn = structure(logical(0), tags = list(type = "string")), VpcConnectorRevision = structure(logical(0), tags = list(type = "integer")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_vpc_connectors_output"]]))
 }
 
 .apprunner$list_vpc_ingress_connections_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filter = structure(list(ServiceArn = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_vpc_ingress_connections_input"]]))
 }
 
 .apprunner$list_vpc_ingress_connections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcIngressConnectionSummaryList = structure(list(structure(list(VpcIngressConnectionArn = structure(logical(0), tags = list(type = "string")), ServiceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["list_vpc_ingress_connections_output"]]))
 }
 
 .apprunner$pause_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["pause_service_input"]]))
 }
 
 .apprunner$pause_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Service = structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), ServiceId = structure(logical(0), tags = list(type = "string")), ServiceArn = structure(logical(0), tags = list(type = "string")), ServiceUrl = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), SourceConfiguration = structure(list(CodeRepository = structure(list(RepositoryUrl = structure(logical(0), tags = list(type = "string")), SourceCodeVersion = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CodeConfiguration = structure(list(ConfigurationSource = structure(logical(0), tags = list(type = "string")), CodeConfigurationValues = structure(list(Runtime = structure(logical(0), tags = list(type = "string")), BuildCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), StartCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Port = structure(logical(0), tags = list(type = "string")), RuntimeEnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), RuntimeEnvironmentSecrets = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), SourceDirectory = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImageRepository = structure(list(ImageIdentifier = structure(logical(0), tags = list(type = "string")), ImageConfiguration = structure(list(RuntimeEnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), StartCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Port = structure(logical(0), tags = list(type = "string")), RuntimeEnvironmentSecrets = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), ImageRepositoryType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoDeploymentsEnabled = structure(logical(0), tags = list(type = "boolean")), AuthenticationConfiguration = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), AccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), InstanceConfiguration = structure(list(Cpu = structure(logical(0), tags = list(type = "string")), Memory = structure(logical(0), tags = list(type = "string")), InstanceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionConfiguration = structure(list(KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HealthCheckConfiguration = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Interval = structure(logical(0), tags = list(type = "integer")), Timeout = structure(logical(0), tags = list(type = "integer")), HealthyThreshold = structure(logical(0), tags = list(type = "integer")), UnhealthyThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AutoScalingConfigurationSummary = structure(list(AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationName = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationRevision = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), HasAssociatedService = structure(logical(0), tags = list(type = "boolean")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), NetworkConfiguration = structure(list(EgressConfiguration = structure(list(EgressType = structure(logical(0), tags = list(type = "string")), VpcConnectorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IngressConfiguration = structure(list(IsPubliclyAccessible = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IpAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObservabilityConfiguration = structure(list(ObservabilityEnabled = structure(logical(0), tags = list(type = "boolean")), ObservabilityConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["pause_service_output"]]))
 }
 
 .apprunner$resume_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["resume_service_input"]]))
 }
 
 .apprunner$resume_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Service = structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), ServiceId = structure(logical(0), tags = list(type = "string")), ServiceArn = structure(logical(0), tags = list(type = "string")), ServiceUrl = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), SourceConfiguration = structure(list(CodeRepository = structure(list(RepositoryUrl = structure(logical(0), tags = list(type = "string")), SourceCodeVersion = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CodeConfiguration = structure(list(ConfigurationSource = structure(logical(0), tags = list(type = "string")), CodeConfigurationValues = structure(list(Runtime = structure(logical(0), tags = list(type = "string")), BuildCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), StartCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Port = structure(logical(0), tags = list(type = "string")), RuntimeEnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), RuntimeEnvironmentSecrets = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), SourceDirectory = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImageRepository = structure(list(ImageIdentifier = structure(logical(0), tags = list(type = "string")), ImageConfiguration = structure(list(RuntimeEnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), StartCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Port = structure(logical(0), tags = list(type = "string")), RuntimeEnvironmentSecrets = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), ImageRepositoryType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoDeploymentsEnabled = structure(logical(0), tags = list(type = "boolean")), AuthenticationConfiguration = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), AccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), InstanceConfiguration = structure(list(Cpu = structure(logical(0), tags = list(type = "string")), Memory = structure(logical(0), tags = list(type = "string")), InstanceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionConfiguration = structure(list(KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HealthCheckConfiguration = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Interval = structure(logical(0), tags = list(type = "integer")), Timeout = structure(logical(0), tags = list(type = "integer")), HealthyThreshold = structure(logical(0), tags = list(type = "integer")), UnhealthyThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AutoScalingConfigurationSummary = structure(list(AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationName = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationRevision = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), HasAssociatedService = structure(logical(0), tags = list(type = "boolean")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), NetworkConfiguration = structure(list(EgressConfiguration = structure(list(EgressType = structure(logical(0), tags = list(type = "string")), VpcConnectorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IngressConfiguration = structure(list(IsPubliclyAccessible = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IpAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObservabilityConfiguration = structure(list(ObservabilityEnabled = structure(logical(0), tags = list(type = "boolean")), ObservabilityConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["resume_service_output"]]))
 }
 
 .apprunner$start_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["start_deployment_input"]]))
 }
 
 .apprunner$start_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["start_deployment_output"]]))
 }
 
 .apprunner$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["tag_resource_input"]]))
 }
 
 .apprunner$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["tag_resource_output"]]))
 }
 
 .apprunner$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["untag_resource_input"]]))
 }
 
 .apprunner$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["untag_resource_output"]]))
 }
 
 .apprunner$update_default_auto_scaling_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["update_default_auto_scaling_configuration_input"]]))
 }
 
 .apprunner$update_default_auto_scaling_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoScalingConfiguration = structure(list(AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationName = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationRevision = structure(logical(0), tags = list(type = "integer")), Latest = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), MaxConcurrency = structure(logical(0), tags = list(type = "integer")), MinSize = structure(logical(0), tags = list(type = "integer")), MaxSize = structure(logical(0), tags = list(type = "integer")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp")), HasAssociatedService = structure(logical(0), tags = list(type = "boolean")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["update_default_auto_scaling_configuration_output"]]))
 }
 
 .apprunner$update_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceArn = structure(logical(0), tags = list(type = "string")), SourceConfiguration = structure(list(CodeRepository = structure(list(RepositoryUrl = structure(logical(0), tags = list(type = "string")), SourceCodeVersion = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CodeConfiguration = structure(list(ConfigurationSource = structure(logical(0), tags = list(type = "string")), CodeConfigurationValues = structure(list(Runtime = structure(logical(0), tags = list(type = "string")), BuildCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), StartCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Port = structure(logical(0), tags = list(type = "string")), RuntimeEnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), RuntimeEnvironmentSecrets = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), SourceDirectory = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImageRepository = structure(list(ImageIdentifier = structure(logical(0), tags = list(type = "string")), ImageConfiguration = structure(list(RuntimeEnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), StartCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Port = structure(logical(0), tags = list(type = "string")), RuntimeEnvironmentSecrets = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), ImageRepositoryType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoDeploymentsEnabled = structure(logical(0), tags = list(type = "boolean")), AuthenticationConfiguration = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), AccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), InstanceConfiguration = structure(list(Cpu = structure(logical(0), tags = list(type = "string")), Memory = structure(logical(0), tags = list(type = "string")), InstanceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string")), HealthCheckConfiguration = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Interval = structure(logical(0), tags = list(type = "integer")), Timeout = structure(logical(0), tags = list(type = "integer")), HealthyThreshold = structure(logical(0), tags = list(type = "integer")), UnhealthyThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), NetworkConfiguration = structure(list(EgressConfiguration = structure(list(EgressType = structure(logical(0), tags = list(type = "string")), VpcConnectorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IngressConfiguration = structure(list(IsPubliclyAccessible = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IpAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObservabilityConfiguration = structure(list(ObservabilityEnabled = structure(logical(0), tags = list(type = "boolean")), ObservabilityConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["update_service_input"]]))
 }
 
 .apprunner$update_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Service = structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), ServiceId = structure(logical(0), tags = list(type = "string")), ServiceArn = structure(logical(0), tags = list(type = "string")), ServiceUrl = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), SourceConfiguration = structure(list(CodeRepository = structure(list(RepositoryUrl = structure(logical(0), tags = list(type = "string")), SourceCodeVersion = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CodeConfiguration = structure(list(ConfigurationSource = structure(logical(0), tags = list(type = "string")), CodeConfigurationValues = structure(list(Runtime = structure(logical(0), tags = list(type = "string")), BuildCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), StartCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Port = structure(logical(0), tags = list(type = "string")), RuntimeEnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), RuntimeEnvironmentSecrets = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), SourceDirectory = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImageRepository = structure(list(ImageIdentifier = structure(logical(0), tags = list(type = "string")), ImageConfiguration = structure(list(RuntimeEnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), StartCommand = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Port = structure(logical(0), tags = list(type = "string")), RuntimeEnvironmentSecrets = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), ImageRepositoryType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoDeploymentsEnabled = structure(logical(0), tags = list(type = "boolean")), AuthenticationConfiguration = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), AccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), InstanceConfiguration = structure(list(Cpu = structure(logical(0), tags = list(type = "string")), Memory = structure(logical(0), tags = list(type = "string")), InstanceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionConfiguration = structure(list(KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HealthCheckConfiguration = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Interval = structure(logical(0), tags = list(type = "integer")), Timeout = structure(logical(0), tags = list(type = "integer")), HealthyThreshold = structure(logical(0), tags = list(type = "integer")), UnhealthyThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), AutoScalingConfigurationSummary = structure(list(AutoScalingConfigurationArn = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationName = structure(logical(0), tags = list(type = "string")), AutoScalingConfigurationRevision = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), HasAssociatedService = structure(logical(0), tags = list(type = "boolean")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), NetworkConfiguration = structure(list(EgressConfiguration = structure(list(EgressType = structure(logical(0), tags = list(type = "string")), VpcConnectorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IngressConfiguration = structure(list(IsPubliclyAccessible = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IpAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObservabilityConfiguration = structure(list(ObservabilityEnabled = structure(logical(0), tags = list(type = "boolean")), ObservabilityConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["update_service_output"]]))
 }
 
 .apprunner$update_vpc_ingress_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcIngressConnectionArn = structure(logical(0), tags = list(type = "string")), IngressVpcConfiguration = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["update_vpc_ingress_connection_input"]]))
 }
 
 .apprunner$update_vpc_ingress_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcIngressConnection = structure(list(VpcIngressConnectionArn = structure(logical(0), tags = list(type = "string")), VpcIngressConnectionName = structure(logical(0), tags = list(type = "string")), ServiceArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), IngressVpcConfiguration = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DeletedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apprunner_shapes[["update_vpc_ingress_connection_output"]]))
 }

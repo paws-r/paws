@@ -41,7 +41,8 @@ autoscaling_create_auto_scaling_group(
   AvailabilityZoneImpairmentPolicy = NULL,
   SkipZonalShiftValidation = NULL,
   CapacityReservationSpecification = NULL,
-  InstanceLifecyclePolicy = NULL
+  InstanceLifecyclePolicy = NULL,
+  Operator = NULL
 )
 }
 \arguments{
@@ -61,7 +62,7 @@ Conditional: You must specify either a launch template (\code{LaunchTemplate} or
 
 The launch template that is specified must be configured for use with an Auto Scaling group. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html}{Create a launch template for an Auto Scaling group} in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
-\item{MixedInstancesPolicy}{The mixed instances policy. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups.html}{Auto Scaling groups with multiple instance types and purchase options} in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+\item{MixedInstancesPolicy}{The mixed instances policy. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups.html}{Auto Scaling groups with multiple instance types and purchase options} in the \emph{Amazon EC2 Auto Scaling User Guide}. To learn how to prioritize multiple capacity types, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/use-distribution-segments.html}{Use Distribution Segments to target multiple capacity types} in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{InstanceId}{The ID of the instance used to base the launch configuration on. If specified, Amazon EC2 Auto Scaling uses the configuration values from the specified instance to create a new launch configuration. To get the instance ID, use the Amazon EC2 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html}{DescribeInstances} API operation. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html}{Create an Auto Scaling group using parameters from an existing instance} in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
@@ -160,6 +161,8 @@ Default: None}
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/instance-lifecycle-policy.html}{Control instance retention with instance lifecycle policies} in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 Instances in a Retained state will continue to incur standard EC2 charges until terminated.}
+
+\item{Operator}{The entity that manages the Auto Scaling group. If you specify this parameter, Amazon EC2 Auto Scaling passes the operator identity to EC2 for instance launches and only allows the designated operator to make changes to the Auto Scaling group. All mutating API calls from non-operator callers are rejected with an \code{AccessDenied} exception.}
 }
 \description{
 \strong{We strongly recommend using a launch template when calling this operation to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2.}

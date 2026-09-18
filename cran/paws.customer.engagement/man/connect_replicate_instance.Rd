@@ -10,7 +10,7 @@ connect_replicate_instance(
   InstanceId,
   ReplicaRegion,
   ClientToken = NULL,
-  ReplicaAlias
+  ReplicaAlias = NULL
 )
 }
 \arguments{
@@ -20,7 +20,7 @@ connect_replicate_instance(
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the idempotency of the request. If not provided, the Amazon Web Services SDK populates this field. For more information about idempotency, see \href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 
-\item{ReplicaAlias}{[required] The alias for the replicated instance. The \code{ReplicaAlias} must be unique.}
+\item{ReplicaAlias}{The alias for the replicated instance. The \code{ReplicaAlias} must be unique.}
 }
 \description{
 Replicates an Connect Customer instance in the specified Amazon Web Services Region and copies configuration information for Connect Customer resources across Amazon Web Services Regions.

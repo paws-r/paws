@@ -12,6 +12,7 @@ pinpointsmsvoicev2_request_phone_number(
   OptOutListName = NULL,
   PoolId = NULL,
   RegistrationId = NULL,
+  NumberPreference = NULL,
   InternationalSendingEnabled = NULL,
   DeletionProtectionEnabled = NULL,
   Tags = NULL,
@@ -38,6 +39,8 @@ If you are using a shared End User Messaging SMS resource then you must use the 
 If you are using a shared End User Messaging SMS resource then you must use the full Amazon Resource Name(ARN).}
 
 \item{RegistrationId}{Use this field to attach your phone number for an external registration process.}
+
+\item{NumberPreference}{An optional selection preference used to request a specific phone number, such as a number that starts with, ends with, or contains a particular digit pattern. You can specify at most one preference. Number preferences apply only to \code{TEN_DLC} requests in the \code{US}.}
 
 \item{InternationalSendingEnabled}{By default this is set to false. When set to true the international sending of phone number is Enabled.}
 

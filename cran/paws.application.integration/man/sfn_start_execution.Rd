@@ -33,7 +33,7 @@ Step Functions doesn't associate executions that you start with a version ARN wi
 Step Functions associates executions that you start with an alias ARN with that alias and the state machine version used for that execution.
 }}
 
-\item{name}{Optional name of the execution. This name must be unique for your Amazon Web Services account, Region, and state machine for 90 days. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions} in the \emph{Step Functions Developer Guide}.
+\item{name}{Optional name of the execution. For STANDARD workflows, this name must be unique for your Amazon Web Services account, region, and state machine. If a previous execution with the same name exists, you can reuse the name 90 days after it closes. For EXPRESS workflows, execution names can be reused immediately. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions} in the \emph{Step Functions Developer Guide}.
 
 If you don't provide a name for the execution, Step Functions automatically generates a universally unique identifier (UUID) as the execution name.
 

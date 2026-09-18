@@ -7,7 +7,7 @@
 sfn_create_activity(name, tags = NULL, encryptionConfiguration = NULL)
 }
 \arguments{
-\item{name}{[required] The name of the activity to create. This name must be unique for your Amazon Web Services account and region for 90 days. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions} in the \emph{Step Functions Developer Guide}.
+\item{name}{[required] The name of the activity to create. This name must be unique for your Amazon Web Services account and region.
 
 A name must \emph{not} contain:
 \itemize{

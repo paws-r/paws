@@ -22,7 +22,9 @@ elasticsearchservice_update_elasticsearch_domain_config(
   AutoTuneOptions = NULL,
   DryRun = NULL,
   DeploymentStrategyOptions = NULL,
-  AutomatedSnapshotPauseOptions = NULL
+  AutomatedSnapshotPauseOptions = NULL,
+  UseCase = NULL,
+  EngineMode = NULL
 )
 }
 \arguments{
@@ -63,6 +65,10 @@ elasticsearchservice_update_elasticsearch_domain_config(
 Suspending snapshots reduces data protection. You cannot restore your domain to points in time when snapshots are suspended. Use this feature only for short-term operational needs such as migrations or maintenance windows.
 
 Maximum suspension duration: 3 days.}
+
+\item{UseCase}{The primary use case for the domain. For valid values, see \code{DomainUseCase}.}
+
+\item{EngineMode}{The engine mode for the domain. For valid values and requirements, see \code{DomainEngineMode}.}
 }
 \description{
 Modifies the cluster configuration of the specified Elasticsearch domain, setting as setting the instance type and the number of instances.

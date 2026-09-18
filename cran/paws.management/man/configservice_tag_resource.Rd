@@ -18,6 +18,7 @@ configservice_tag_resource(ResourceArn, Tags)
 \item \code{ConfigurationAggregator}
 \item \code{AggregationAuthorization}
 \item \code{StoredQuery}
+\item \code{Connector}
 }}
 
 \item{Tags}{[required] An array of tag object.}

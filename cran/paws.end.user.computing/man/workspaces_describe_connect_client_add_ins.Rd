@@ -2,7 +2,8 @@
 % Please edit documentation in R/workspaces_operations.R
 \name{workspaces_describe_connect_client_add_ins}
 \alias{workspaces_describe_connect_client_add_ins}
-\title{Retrieves a list of Amazon Connect client add-ins that have been created}
+\title{Retrieves a list of Connect Customer client add-ins that have been
+created}
 \usage{
 workspaces_describe_connect_client_add_ins(
   ResourceId,
@@ -18,7 +19,7 @@ workspaces_describe_connect_client_add_ins(
 \item{MaxResults}{The maximum number of items to return.}
 }
 \description{
-Retrieves a list of Amazon Connect client add-ins that have been created.
+Retrieves a list of Connect Customer client add-ins that have been created.
 
 See \url{https://www.paws-r-sdk.com/docs/workspaces_describe_connect_client_add_ins/} for full documentation.
 }

@@ -6,12 +6,20 @@
 group size}
 \usage{
 autoscaling_terminate_instance_in_auto_scaling_group(
-  InstanceId,
+  InstanceId = NULL,
+  InstanceIds = NULL,
+  AutoScalingGroupName = NULL,
   ShouldDecrementDesiredCapacity
 )
 }
 \arguments{
-\item{InstanceId}{[required] The ID of the instance.}
+\item{InstanceId}{The ID of the instance.}
+
+\item{InstanceIds}{The IDs of the instances. You can specify up to 100 instances.
+
+This parameter requires that you also specify \code{AutoScalingGroupName}.}
+
+\item{AutoScalingGroupName}{The name of the Auto Scaling group. Required when using \code{InstanceIds}.}
 
 \item{ShouldDecrementDesiredCapacity}{[required] Indicates whether terminating the instance also decrements the size of the Auto Scaling group.}
 }

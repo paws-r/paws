@@ -3,6 +3,104 @@
 #' @include eks_service.R
 NULL
 
+#' Activates a successor certificate authority (CA) as the signing
+#' certificate authority for your cluster, completing a CA rotation
+#'
+#' @description
+#' Activates a successor certificate authority (CA) as the signing certificate authority for your cluster, completing a CA rotation.
+#' 
+#' When you activate a successor CA, Amazon EKS promotes it to be the cluster's signer (its `signingStatus` becomes `IN_USE`) and the outgoing CA is retired (`NOT_USED`). The outgoing CA remains in the cluster's trust bundle but no longer signs certificates. The successor CA you activate must already be present on the cluster and fully distributed (its `distributionStatus` must be `COMPLETE`). This is an asynchronous operation that returns an `update` object you can track with [`describe_update`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeUpdate.html) .
+#' 
+#' Before you activate the successor CA, make sure the worker nodes you manage and your external clients have been updated to trust it, so they maintain connectivity to the API server after activation. For a limited period after activation, CA rollback is available to revert to the outgoing CA if needed. If you don't activate the successor CA yourself, Amazon EKS activates it automatically as the expiration deadline approaches. For more information, see [Rotate the Amazon EKS cluster certificate authority](https://docs.aws.amazon.com/eks/latest/userguide/certificate-authority-rotation.html) in the *Amazon EKS User Guide*.
+#'
+#' @usage
+#' eks_activate_certificate_authority(clusterName, certificateAuthorityId,
+#'   clientRequestToken)
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param certificateAuthorityId &#91;required&#93; The ID of the certificate authority to activate as the cluster's signing certificate authority. This certificate authority must already exist on the cluster and have a `distributionStatus` of `COMPLETE`.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   update = list(
+#'     id = "string",
+#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"CapabilityUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate"|"ControlPlaneEgressUpdate"|"VersionRollback"|"ControlPlaneComponentConfigUpdate"|"CertificateAuthorityUpdate",
+#'     params = list(
+#'       list(
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"RoleArn"|"RoleMappingsToAddOrUpdate"|"RoleMappingsToRemove"|"NetworkAccess"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn"|"ControlPlaneEgressMode"|"KubeApiServerConfig"|"KubeSchedulerConfig"|"KubeControllerManagerConfig"|"ActiveCertificateAuthority"|"TrustedCertificateAuthorities"|"CertificateAuthorityId"|"SigningStatus",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     errors = list(
+#'       list(
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied"|"UnsupportedAddonModification"|"K8sResourceNotFound",
+#'         errorMessage = "string",
+#'         resourceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     cancellation = list(
+#'       status = "InProgress"|"Failed"|"Successful",
+#'       reason = "string"
+#'     )
+#'   ),
+#'   certificateAuthority = list(
+#'     id = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     createdBy = "EKS"|"CUSTOMER",
+#'     activatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     activatedBy = "EKS"|"CUSTOMER",
+#'     signingStatus = "NOT_USED"|"ACTIVATING"|"IN_USE",
+#'     distributionStatus = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"DELETING"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$activate_certificate_authority(
+#'   clusterName = "string",
+#'   certificateAuthorityId = "string",
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_activate_certificate_authority
+#'
+#' @aliases eks_activate_certificate_authority
+eks_activate_certificate_authority <- function(clusterName, certificateAuthorityId, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "ActivateCertificateAuthority",
+    http_method = "POST",
+    http_path = "/clusters/{name}/certificate-authorities/{certificateAuthorityId}/activate",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .eks$activate_certificate_authority_input(clusterName = clusterName, certificateAuthorityId = certificateAuthorityId, clientRequestToken = clientRequestToken)
+  output <- .eks$activate_certificate_authority_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$activate_certificate_authority <- eks_activate_certificate_authority
+
 #' Associates an access policy and its scope to an access entry
 #'
 #' @description
@@ -102,10 +200,10 @@ eks_associate_access_policy <- function(clusterName, principalArn, policyArn, ac
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"CapabilityUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate"|"ControlPlaneEgressUpdate"|"VersionRollback"|"ControlPlaneComponentConfigUpdate"|"CertificateAuthorityUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"RoleArn"|"RoleMappingsToAddOrUpdate"|"RoleMappingsToRemove"|"NetworkAccess"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn"|"ControlPlaneEgressMode"|"KubeApiServerConfig"|"KubeSchedulerConfig"|"KubeControllerManagerConfig"|"ActiveCertificateAuthority"|"TrustedCertificateAuthorities"|"CertificateAuthorityId"|"SigningStatus",
 #'         value = "string"
 #'       )
 #'     ),
@@ -120,6 +218,10 @@ eks_associate_access_policy <- function(clusterName, principalArn, policyArn, ac
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     cancellation = list(
+#'       status = "InProgress"|"Failed"|"Successful",
+#'       reason = "string"
 #'     )
 #'   )
 #' )
@@ -190,10 +292,10 @@ eks_associate_encryption_config <- function(clusterName, encryptionConfig, clien
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"CapabilityUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate"|"ControlPlaneEgressUpdate"|"VersionRollback"|"ControlPlaneComponentConfigUpdate"|"CertificateAuthorityUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"RoleArn"|"RoleMappingsToAddOrUpdate"|"RoleMappingsToRemove"|"NetworkAccess"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn"|"ControlPlaneEgressMode"|"KubeApiServerConfig"|"KubeSchedulerConfig"|"KubeControllerManagerConfig"|"ActiveCertificateAuthority"|"TrustedCertificateAuthorities"|"CertificateAuthorityId"|"SigningStatus",
 #'         value = "string"
 #'       )
 #'     ),
@@ -208,6 +310,10 @@ eks_associate_encryption_config <- function(clusterName, encryptionConfig, clien
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     cancellation = list(
+#'       status = "InProgress"|"Failed"|"Successful",
+#'       reason = "string"
 #'     )
 #'   ),
 #'   tags = list(
@@ -262,6 +368,88 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
   return(response)
 }
 .eks$operations$associate_identity_provider_config <- eks_associate_identity_provider_config
+
+#' Cancels an in-progress update to an Amazon EKS cluster on a best-effort
+#' basis
+#'
+#' @description
+#' Cancels an in-progress update to an Amazon EKS cluster on a best-effort basis. Cancellation is only performed if the update can be cancelled. Currently, this is supported for `VersionRollback` update types on EKS Auto Mode clusters when nodes are rolling back.
+#' 
+#' A successful cancellation stops the node rollback. After cancellation, nodes converge to the current cluster version honoring configured disruption controls. If the control plane rollback has already begun, the cancellation request fails.
+#'
+#' @usage
+#' eks_cancel_update(name, updateId, clientRequestToken)
+#'
+#' @param name &#91;required&#93; The name of the Amazon EKS cluster associated with the update.
+#' @param updateId &#91;required&#93; The ID of the update to cancel.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   update = list(
+#'     id = "string",
+#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"CapabilityUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate"|"ControlPlaneEgressUpdate"|"VersionRollback"|"ControlPlaneComponentConfigUpdate"|"CertificateAuthorityUpdate",
+#'     params = list(
+#'       list(
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"RoleArn"|"RoleMappingsToAddOrUpdate"|"RoleMappingsToRemove"|"NetworkAccess"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn"|"ControlPlaneEgressMode"|"KubeApiServerConfig"|"KubeSchedulerConfig"|"KubeControllerManagerConfig"|"ActiveCertificateAuthority"|"TrustedCertificateAuthorities"|"CertificateAuthorityId"|"SigningStatus",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     errors = list(
+#'       list(
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied"|"UnsupportedAddonModification"|"K8sResourceNotFound",
+#'         errorMessage = "string",
+#'         resourceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     cancellation = list(
+#'       status = "InProgress"|"Failed"|"Successful",
+#'       reason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_update(
+#'   name = "string",
+#'   updateId = "string",
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_cancel_update
+#'
+#' @aliases eks_cancel_update
+eks_cancel_update <- function(name, updateId, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "CancelUpdate",
+    http_method = "POST",
+    http_path = "/clusters/{name}/updates/{updateId}/cancel-update",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .eks$cancel_update_input(name = name, updateId = updateId, clientRequestToken = clientRequestToken)
+  output <- .eks$cancel_update_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$cancel_update <- eks_cancel_update
 
 #' Creates an access entry
 #'
@@ -670,6 +858,103 @@ eks_create_capability <- function(capabilityName, clusterName, clientRequestToke
 }
 .eks$operations$create_capability <- eks_create_capability
 
+#' Appends a successor certificate authority (CA) to your cluster,
+#' beginning the CA rotation process
+#'
+#' @description
+#' Appends a successor certificate authority (CA) to your cluster, beginning the CA rotation process.
+#' 
+#' A cluster certificate authority is the root of trust for your cluster's control plane. It signs the certificates that secure communication between the Kubernetes API server and its clients, and its public certificate is distributed to your cluster's trust bundle so that worker nodes and clients can verify the API server's identity. Each cluster can have at most two certificate authorities at a time: the outgoing CA that's currently signing (its `signingStatus` is `IN_USE`) and one successor CA (`signingStatus` of `NOT_USED`) that you can later activate to complete the rotation.
+#' 
+#' Appending a successor CA adds its public certificate to the cluster's trust bundle so that the cluster trusts both CAs simultaneously (the dual trust period), but it doesn't begin signing certificates. Amazon EKS then distributes the successor CA to the Amazon Web Services managed components in your cluster; you can track this through the CA's `distributionStatus`. The successor CA can't be activated until its `distributionStatus` is `COMPLETE`. To activate it as the cluster's signer, use [`activate_certificate_authority`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ActivateCertificateAuthority.html) . This is an asynchronous operation that returns an `update` object. If you don't append a successor CA yourself, Amazon EKS appends one automatically before the outgoing CA approaches expiration.
+#' 
+#' For more information, see [Rotate the Amazon EKS cluster certificate authority](https://docs.aws.amazon.com/eks/latest/userguide/certificate-authority-rotation.html) in the *Amazon EKS User Guide*.
+#'
+#' @usage
+#' eks_create_certificate_authority(clusterName, clientRequestToken)
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   update = list(
+#'     id = "string",
+#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"CapabilityUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate"|"ControlPlaneEgressUpdate"|"VersionRollback"|"ControlPlaneComponentConfigUpdate"|"CertificateAuthorityUpdate",
+#'     params = list(
+#'       list(
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"RoleArn"|"RoleMappingsToAddOrUpdate"|"RoleMappingsToRemove"|"NetworkAccess"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn"|"ControlPlaneEgressMode"|"KubeApiServerConfig"|"KubeSchedulerConfig"|"KubeControllerManagerConfig"|"ActiveCertificateAuthority"|"TrustedCertificateAuthorities"|"CertificateAuthorityId"|"SigningStatus",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     errors = list(
+#'       list(
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied"|"UnsupportedAddonModification"|"K8sResourceNotFound",
+#'         errorMessage = "string",
+#'         resourceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     cancellation = list(
+#'       status = "InProgress"|"Failed"|"Successful",
+#'       reason = "string"
+#'     )
+#'   ),
+#'   certificateAuthority = list(
+#'     id = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     createdBy = "EKS"|"CUSTOMER",
+#'     activatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     activatedBy = "EKS"|"CUSTOMER",
+#'     signingStatus = "NOT_USED"|"ACTIVATING"|"IN_USE",
+#'     distributionStatus = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"DELETING"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_certificate_authority(
+#'   clusterName = "string",
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_create_certificate_authority
+#'
+#' @aliases eks_create_certificate_authority
+eks_create_certificate_authority <- function(clusterName, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "CreateCertificateAuthority",
+    http_method = "POST",
+    http_path = "/clusters/{name}/certificate-authorities",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .eks$create_certificate_authority_input(clusterName = clusterName, clientRequestToken = clientRequestToken)
+  output <- .eks$create_certificate_authority_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$create_certificate_authority <- eks_create_certificate_authority
+
 #' Creates an Amazon EKS control plane
 #'
 #' @description
@@ -695,7 +980,8 @@ eks_create_capability <- function(capabilityName, clusterName, clientRequestToke
 #'   encryptionConfig, outpostConfig, accessConfig,
 #'   bootstrapSelfManagedAddons, upgradePolicy, zonalShiftConfig,
 #'   remoteNetworkConfig, computeConfig, storageConfig, deletionProtection,
-#'   controlPlaneScalingConfig)
+#'   controlPlaneScalingConfig, kubeApiServerConfig, kubeSchedulerConfig,
+#'   kubeControllerManagerConfig)
 #'
 #' @param name &#91;required&#93; The unique name to give to your cluster. The name can contain only alphanumeric characters (case-sensitive), hyphens, and underscores. It must start with an alphanumeric character and can't be longer than 100 characters. The name must be unique within the Amazon Web Services Region and Amazon Web Services account that you're creating the cluster in.
 #' @param version The desired Kubernetes version for your cluster. If you don't specify a value here, the default version available in Amazon EKS is used.
@@ -728,6 +1014,9 @@ eks_create_capability <- function(capabilityName, clusterName, clientRequestToke
 #' @param storageConfig Enable or disable the block storage capability of EKS Auto Mode when creating your EKS Auto Mode cluster. If the block storage capability is enabled, EKS Auto Mode will create and delete EBS volumes in your Amazon Web Services account.
 #' @param deletionProtection Indicates whether to enable deletion protection for the cluster. When enabled, the cluster cannot be deleted unless deletion protection is first disabled. This helps prevent accidental cluster deletion. Default value is `false`.
 #' @param controlPlaneScalingConfig The control plane scaling tier configuration. For more information, see EKS Provisioned Control Plane in the Amazon EKS User Guide.
+#' @param kubeApiServerConfig The Kubernetes API server configuration for the new cluster.
+#' @param kubeSchedulerConfig The Kubernetes scheduler configuration for the new cluster.
+#' @param kubeControllerManagerConfig The Kubernetes controller manager configuration for the new cluster.
 #'
 #' @return
 #' A list with the following syntax:
@@ -755,7 +1044,8 @@ eks_create_capability <- function(capabilityName, clusterName, clientRequestToke
 #'       endpointPrivateAccess = TRUE|FALSE,
 #'       publicAccessCidrs = list(
 #'         "string"
-#'       )
+#'       ),
+#'       controlPlaneEgressMode = "AWS_MANAGED"|"CUSTOMER_ROUTED"|"CUSTOMER_ISOLATED"
 #'     ),
 #'     kubernetesNetworkConfig = list(
 #'       serviceIpv4Cidr = "string",
@@ -782,7 +1072,11 @@ eks_create_capability <- function(capabilityName, clusterName, clientRequestToke
 #'     ),
 #'     status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED"|"UPDATING"|"PENDING",
 #'     certificateAuthority = list(
-#'       data = "string"
+#'       data = "string",
+#'       active = list(
+#'         id = "string",
+#'         activatedBy = "EKS"|"CUSTOMER"
+#'       )
 #'     ),
 #'     clientRequestToken = "string",
 #'     platformVersion = "string",
@@ -826,7 +1120,12 @@ eks_create_capability <- function(capabilityName, clusterName, clientRequestToke
 #'       ),
 #'       controlPlaneInstanceType = "string",
 #'       controlPlanePlacement = list(
-#'         groupName = "string"
+#'         groupName = "string",
+#'         spreadLevel = "host"|"rack"
+#'       ),
+#'       etcdInstanceType = "string",
+#'       etcdPlacement = list(
+#'         spreadLevel = "host"|"rack"
 #'       )
 #'     ),
 #'     accessConfig = list(
@@ -870,6 +1169,34 @@ eks_create_capability <- function(capabilityName, clusterName, clientRequestToke
 #'     deletionProtection = TRUE|FALSE,
 #'     controlPlaneScalingConfig = list(
 #'       tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"|"tier-8xl"
+#'     ),
+#'     kubeApiServerConfig = list(
+#'       eventTtl = "string",
+#'       serviceNodePortRange = list(
+#'         minPort = 123,
+#'         maxPort = 123
+#'       )
+#'     ),
+#'     kubeSchedulerConfig = list(
+#'       nodeResourcesFit = list(
+#'         scoringStrategy = list(
+#'           type = "LeastAllocated"|"MostAllocated",
+#'           resources = list(
+#'             list(
+#'               name = "string",
+#'               weight = 123
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     kubeControllerManagerConfig = list(
+#'       podGcControllerConfig = list(
+#'         terminatedPodGcThreshold = 123
+#'       ),
+#'       horizontalPodAutoscalerControllerConfig = list(
+#'         horizontalPodAutoscalerSyncPeriod = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -892,7 +1219,8 @@ eks_create_capability <- function(capabilityName, clusterName, clientRequestToke
 #'     endpointPrivateAccess = TRUE|FALSE,
 #'     publicAccessCidrs = list(
 #'       "string"
-#'     )
+#'     ),
+#'     controlPlaneEgressMode = "AWS_MANAGED"|"CUSTOMER_ROUTED"|"CUSTOMER_ISOLATED"
 #'   ),
 #'   kubernetesNetworkConfig = list(
 #'     serviceIpv4Cidr = "string",
@@ -931,7 +1259,12 @@ eks_create_capability <- function(capabilityName, clusterName, clientRequestToke
 #'     ),
 #'     controlPlaneInstanceType = "string",
 #'     controlPlanePlacement = list(
-#'       groupName = "string"
+#'       groupName = "string",
+#'       spreadLevel = "host"|"rack"
+#'     ),
+#'     etcdInstanceType = "string",
+#'     etcdPlacement = list(
+#'       spreadLevel = "host"|"rack"
 #'     )
 #'   ),
 #'   accessConfig = list(
@@ -976,6 +1309,34 @@ eks_create_capability <- function(capabilityName, clusterName, clientRequestToke
 #'   deletionProtection = TRUE|FALSE,
 #'   controlPlaneScalingConfig = list(
 #'     tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"|"tier-8xl"
+#'   ),
+#'   kubeApiServerConfig = list(
+#'     eventTtl = "string",
+#'     serviceNodePortRange = list(
+#'       minPort = 123,
+#'       maxPort = 123
+#'     )
+#'   ),
+#'   kubeSchedulerConfig = list(
+#'     nodeResourcesFit = list(
+#'       scoringStrategy = list(
+#'         type = "LeastAllocated"|"MostAllocated",
+#'         resources = list(
+#'           list(
+#'             name = "string",
+#'             weight = 123
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   kubeControllerManagerConfig = list(
+#'     podGcControllerConfig = list(
+#'       terminatedPodGcThreshold = 123
+#'     ),
+#'     horizontalPodAutoscalerControllerConfig = list(
+#'       horizontalPodAutoscalerSyncPeriod = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1005,7 +1366,7 @@ eks_create_capability <- function(capabilityName, clusterName, clientRequestToke
 #' @rdname eks_create_cluster
 #'
 #' @aliases eks_create_cluster
-eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL, outpostConfig = NULL, accessConfig = NULL, bootstrapSelfManagedAddons = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, remoteNetworkConfig = NULL, computeConfig = NULL, storageConfig = NULL, deletionProtection = NULL, controlPlaneScalingConfig = NULL) {
+eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL, outpostConfig = NULL, accessConfig = NULL, bootstrapSelfManagedAddons = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, remoteNetworkConfig = NULL, computeConfig = NULL, storageConfig = NULL, deletionProtection = NULL, controlPlaneScalingConfig = NULL, kubeApiServerConfig = NULL, kubeSchedulerConfig = NULL, kubeControllerManagerConfig = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -1014,7 +1375,7 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig, outpostConfig = outpostConfig, accessConfig = accessConfig, bootstrapSelfManagedAddons = bootstrapSelfManagedAddons, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, remoteNetworkConfig = remoteNetworkConfig, computeConfig = computeConfig, storageConfig = storageConfig, deletionProtection = deletionProtection, controlPlaneScalingConfig = controlPlaneScalingConfig)
+  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig, outpostConfig = outpostConfig, accessConfig = accessConfig, bootstrapSelfManagedAddons = bootstrapSelfManagedAddons, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, remoteNetworkConfig = remoteNetworkConfig, computeConfig = computeConfig, storageConfig = storageConfig, deletionProtection = deletionProtection, controlPlaneScalingConfig = controlPlaneScalingConfig, kubeApiServerConfig = kubeApiServerConfig, kubeSchedulerConfig = kubeSchedulerConfig, kubeControllerManagerConfig = kubeControllerManagerConfig)
   output <- .eks$create_cluster_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -1869,6 +2230,101 @@ eks_delete_capability <- function(clusterName, capabilityName) {
 }
 .eks$operations$delete_capability <- eks_delete_capability
 
+#' Deletes a certificate authority (CA) from your cluster
+#'
+#' @description
+#' Deletes a certificate authority (CA) from your cluster.
+#' 
+#' Deleting a certificate authority removes its public certificate from the cluster's trust bundle. You can't delete the certificate authority that's currently signing certificates for the cluster (its `signingStatus` is `IN_USE`) — to remove the outgoing CA, first activate the successor CA with [`activate_certificate_authority`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ActivateCertificateAuthority.html) . Amazon EKS also protects a successor CA from deletion in certain cases to keep a valid rotation path — for example, a successor that Amazon EKS appended can't be deleted while it's the only successor on the cluster. This is an asynchronous operation that returns an `update` object.
+#'
+#' @usage
+#' eks_delete_certificate_authority(clusterName, certificateAuthorityId,
+#'   clientRequestToken)
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param certificateAuthorityId &#91;required&#93; The ID of the certificate authority to delete. You can't delete the certificate authority that's currently signing certificates for the cluster.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   update = list(
+#'     id = "string",
+#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"CapabilityUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate"|"ControlPlaneEgressUpdate"|"VersionRollback"|"ControlPlaneComponentConfigUpdate"|"CertificateAuthorityUpdate",
+#'     params = list(
+#'       list(
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"RoleArn"|"RoleMappingsToAddOrUpdate"|"RoleMappingsToRemove"|"NetworkAccess"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn"|"ControlPlaneEgressMode"|"KubeApiServerConfig"|"KubeSchedulerConfig"|"KubeControllerManagerConfig"|"ActiveCertificateAuthority"|"TrustedCertificateAuthorities"|"CertificateAuthorityId"|"SigningStatus",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     errors = list(
+#'       list(
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict"|"AdmissionRequestDenied"|"UnsupportedAddonModification"|"K8sResourceNotFound",
+#'         errorMessage = "string",
+#'         resourceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     cancellation = list(
+#'       status = "InProgress"|"Failed"|"Successful",
+#'       reason = "string"
+#'     )
+#'   ),
+#'   certificateAuthority = list(
+#'     id = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     createdBy = "EKS"|"CUSTOMER",
+#'     activatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     activatedBy = "EKS"|"CUSTOMER",
+#'     signingStatus = "NOT_USED"|"ACTIVATING"|"IN_USE",
+#'     distributionStatus = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"DELETING"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_certificate_authority(
+#'   clusterName = "string",
+#'   certificateAuthorityId = "string",
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_delete_certificate_authority
+#'
+#' @aliases eks_delete_certificate_authority
+eks_delete_certificate_authority <- function(clusterName, certificateAuthorityId, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "DeleteCertificateAuthority",
+    http_method = "DELETE",
+    http_path = "/clusters/{name}/certificate-authorities/{certificateAuthorityId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .eks$delete_certificate_authority_input(clusterName = clusterName, certificateAuthorityId = certificateAuthorityId, clientRequestToken = clientRequestToken)
+  output <- .eks$delete_certificate_authority_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$delete_certificate_authority <- eks_delete_certificate_authority
+
 #' Deletes an Amazon EKS cluster control plane
 #'
 #' @description
@@ -1909,7 +2365,8 @@ eks_delete_capability <- function(clusterName, capabilityName) {
 #'       endpointPrivateAccess = TRUE|FALSE,
 #'       publicAccessCidrs = list(
 #'         "string"
-#'       )
+#'       ),
+#'       controlPlaneEgressMode = "AWS_MANAGED"|"CUSTOMER_ROUTED"|"CUSTOMER_ISOLATED"
 #'     ),
 #'     kubernetesNetworkConfig = list(
 #'       serviceIpv4Cidr = "string",
@@ -1936,7 +2393,11 @@ eks_delete_capability <- function(clusterName, capabilityName) {
 #'     ),
 #'     status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED"|"UPDATING"|"PENDING",
 #'     certificateAuthority = list(
-#'       data = "string"
+#'       data = "string",
+#'       active = list(
+#'         id = "string",
+#'         activatedBy = "EKS"|"CUSTOMER"
+#'       )
 #'     ),
 #'     clientRequestToken = "string",
 #'     platformVersion = "string",
@@ -1980,7 +2441,12 @@ eks_delete_capability <- function(clusterName, capabilityName) {
 #'       ),
 #'       controlPlaneInstanceType = "string",
 #'       controlPlanePlacement = list(
-#'         groupName = "string"
+#'         groupName = "string",
+#'         spreadLevel = "host"|"rack"
+#'       ),
+#'       etcdInstanceType = "string",
+#'       etcdPlacement = list(
+#'         spreadLevel = "host"|"rack"
 #'       )
 #'     ),
 #'     accessConfig = list(
@@ -2024,6 +2490,34 @@ eks_delete_capability <- function(clusterName, capabilityName) {
 #'     deletionProtection = TRUE|FALSE,
 #'     controlPlaneScalingConfig = list(
 #'       tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"|"tier-8xl"
+#'     ),
+#'     kubeApiServerConfig = list(
+#'       eventTtl = "string",
+#'       serviceNodePortRange = list(
+#'         minPort = 123,
+#'         maxPort = 123
+#'       )
+#'     ),
+#'     kubeSchedulerConfig = list(
+#'       nodeResourcesFit = list(
+#'         scoringStrategy = list(
+#'           type = "LeastAllocated"|"MostAllocated",
+#'           resources = list(
+#'             list(
+#'               name = "string",
+#'               weight = 123
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     kubeControllerManagerConfig = list(
+#'       podGcControllerConfig = list(
+#'         terminatedPodGcThreshold = 123
+#'       ),
+#'       horizontalPodAutoscalerControllerConfig = list(
+#'         horizontalPodAutoscalerSyncPeriod = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -2501,7 +2995,8 @@ eks_delete_pod_identity_association <- function(clusterName, associationId) {
 #'       endpointPrivateAccess = TRUE|FALSE,
 #'       publicAccessCidrs = list(
 #'         "string"
-#'       )
+#'       ),
+#'       controlPlaneEgressMode = "AWS_MANAGED"|"CUSTOMER_ROUTED"|"CUSTOMER_ISOLATED"
 #'     ),
 #'     kubernetesNetworkConfig = list(
 #'       serviceIpv4Cidr = "string",
@@ -2528,7 +3023,11 @@ eks_delete_pod_identity_association <- function(clusterName, associationId) {
 #'     ),
 #'     status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED"|"UPDATING"|"PENDING",
 #'     certificateAuthority = list(
-#'       data = "string"
+#'       data = "string",
+#'       active = list(
+#'         id = "string",
+#'         activatedBy = "EKS"|"CUSTOMER"
+#'       )
 #'     ),
 #'     clientRequestToken = "string",
 #'     platformVersion = "string",
@@ -2572,7 +3071,12 @@ eks_delete_pod_identity_association <- function(clusterName, associationId) {
 #'       ),
 #'       controlPlaneInstanceType = "string",
 #'       controlPlanePlacement = list(
-#'         groupName = "string"
+#'         groupName = "string",
+#'         spreadLevel = "host"|"rack"
+#'       ),
+#'       etcdInstanceType = "string",
+#'       etcdPlacement = list(
+#'         spreadLevel = "host"|"rack"
 #'       )
 #'     ),
 #'     accessConfig = list(
@@ -2616,6 +3120,34 @@ eks_delete_pod_identity_association <- function(clusterName, associationId) {
 #'     deletionProtection = TRUE|FALSE,
 #'     controlPlaneScalingConfig = list(
 #'       tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"|"tier-8xl"
+#'     ),
+#'     kubeApiServerConfig = list(
+#'       eventTtl = "string",
+#'       serviceNodePortRange = list(
+#'         minPort = 123,
+#'         maxPort = 123
+#'       )
+#'     ),
+#'     kubeSchedulerConfig = list(
+#'       nodeResourcesFit = list(
+#'         scoringStrategy = list(
+#'           type = "LeastAllocated"|"MostAllocated",
+#'           resources = list(
+#'             list(
+#'               name = "string",
+#'               weight = 123
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     kubeControllerManagerConfig = list(
+#'       podGcControllerConfig = list(
+#'         terminatedPodGcThreshold = 123
+#'       ),
+#'       horizontalPodAutoscalerControllerConfig = list(
+#'         horizontalPodAutoscalerSyncPeriod = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -3086,6 +3618,90 @@ eks_describe_capability <- function(clusterName, capabilityName) {
 }
 .eks$operations$describe_capability <- eks_describe_capability
 
+#' Returns detailed information about a certificate authority (CA) in your
+#' cluster, including its validity period, signing and distribution status,
+#' provenance, scheduled auto-activation events, and public certificate
+#' data
+#'
+#' @description
+#' Returns detailed information about a certificate authority (CA) in your cluster, including its validity period, signing and distribution status, provenance, scheduled auto-activation events, and public certificate data.
+#'
+#' @usage
+#' eks_describe_certificate_authority(clusterName, certificateAuthorityId)
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param certificateAuthorityId &#91;required&#93; The ID of the certificate authority to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   certificateAuthority = list(
+#'     id = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     createdBy = "EKS"|"CUSTOMER",
+#'     activatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     activatedBy = "EKS"|"CUSTOMER",
+#'     signingStatus = "NOT_USED"|"ACTIVATING"|"IN_USE",
+#'     distributionStatus = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"DELETING",
+#'     validity = list(
+#'       notBefore = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       notAfter = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     scheduledEvents = list(
+#'       firstAutoActivation = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       finalAutoActivation = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     rollbackAvailable = TRUE|FALSE,
+#'     data = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_certificate_authority(
+#'   clusterName = "string",
+#'   certificateAuthorityId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_describe_certificate_authority
+#'
+#' @aliases eks_describe_certificate_authority
+eks_describe_certificate_authority <- function(clusterName, certificateAuthorityId) {
+  op <- new_operation(
+    name = "DescribeCertificateAuthority",
+    http_method = "GET",
+    http_path = "/clusters/{name}/certificate-authorities/{certificateAuthorityId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .eks$describe_certificate_authority_input(clusterName = clusterName, certificateAuthorityId = certificateAuthorityId)
+  output <- .eks$describe_certificate_authority_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$describe_certificate_authority <- eks_describe_certificate_authority
+
 #' Describes an Amazon EKS cluster
 #'
 #' @description
@@ -3126,7 +3742,8 @@ eks_describe_capability <- function(clusterName, capabilityName) {
 #'       endpointPrivateAccess = TRUE|FALSE,
 #'       publicAccessCidrs = list(
 #'         "string"
-#'       )
+#'       ),
+#'       controlPlaneEgressMode = "AWS_MANAGED"|"CUSTOMER_ROUTED"|"CUSTOMER_ISOLATED"
 #'     ),
 #'     kubernetesNetworkConfig = list(
 #'       serviceIpv4Cidr = "string",
@@ -3153,7 +3770,11 @@ eks_describe_capability <- function(clusterName, capabilityName) {
 #'     ),
 #'     status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED"|"UPDATING"|"PENDING",
 #'     certificateAuthority = list(
-#'       data = "string"
+#'       data = "string",
+#'       active = list(
+#'         id = "string",
+#'         activatedBy = "EKS"|"CUSTOMER"
+#'       )
 #'     ),
 #'     clientRequestToken = "string",
 #'     platformVersion = "string",
@@ -3197,7 +3818,12 @@ eks_describe_capability <- function(clusterName, capabilityName) {
 #'       ),
 #'       controlPlaneInstanceType = "string",
 #'       controlPlanePlacement = list(
-#'         groupName = "string"
+#'         groupName = "string",
+#'         spreadLevel = "host"|"rack"
+#'       ),
+#'       etcdInstanceType = "string",
+#'       etcdPlacement = list(
+#'         spreadLevel = "host"|"rack"
 #'       )
 #'     ),
 #'     accessConfig = list(
@@ -3241,6 +3867,34 @@ eks_describe_capability <- function(clusterName, capabilityName) {
 #'     deletionProtection = TRUE|FALSE,
 #'     controlPlaneScalingConfig = list(
 #'       tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"|"tier-8xl"
+#'     ),
+#'     kubeApiServerConfig = list(
+#'       eventTtl = "string",
+#'       serviceNodePortRange = list(
+#'         minPort = 123,
+#'         maxPort = 123
+#'       )
+#'     ),
+#'     kubeSchedulerConfig = list(
+#'       nodeResourcesFit = list(
+#'         scoringStrategy = list(
+#'           type = "LeastAllocated"|"MostAllocated",
+#'           resources = list(
+#'             list(
+#'               name = "string",
+#'               weight = 123
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     kubeControllerManagerConfig = list(
+#'       podGcControllerConfig = list(
+#'         terminatedPodGcThreshold = 123
+#'       ),
+#'       horizontalPodAutoscalerControllerConfig = list(
+#'         horizontalPodAutoscalerSyncPeriod = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -3328,7 +3982,175 @@ eks_describe_cluster <- function(name) {
 #'       ),
 #'       status = "unsupported"|"standard-support"|"extended-support",
 #'       versionStatus = "UNSUPPORTED"|"STANDARD_SUPPORT"|"EXTENDED_SUPPORT",
-#'       kubernetesPatchVersion = "string"
+#'       kubernetesPatchVersion = "string",
+#'       controlPlaneScalingTiers = list(
+#'         list(
+#'           tierName = "string",
+#'           apiRequestConcurrency = 123,
+#'           podSchedulingRatePerSecond = 123,
+#'           clusterDatabaseSizeGb = 123,
+#'           controlPlaneComponentConfigOverrides = list(
+#'             kubeApiServerConfig = list(
+#'               eventTtl = list(
+#'                 defaultValue = "string",
+#'                 constraints = list(
+#'                   min = "string",
+#'                   max = "string"
+#'                 )
+#'               ),
+#'               serviceNodePortRange = list(
+#'                 defaultValue = list(
+#'                   minPort = 123,
+#'                   maxPort = 123
+#'                 ),
+#'                 constraints = list(
+#'                   minPort = list(
+#'                     min = 123,
+#'                     max = 123
+#'                   ),
+#'                   maxPort = list(
+#'                     min = 123,
+#'                     max = 123
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             kubeSchedulerConfig = list(
+#'               nodeResourcesFit = list(
+#'                 scoringStrategy = list(
+#'                   defaultValue = list(
+#'                     type = "LeastAllocated"|"MostAllocated",
+#'                     resources = list(
+#'                       list(
+#'                         name = "string",
+#'                         weight = 123
+#'                       )
+#'                     )
+#'                   ),
+#'                   constraints = list(
+#'                     scoringStrategy = list(
+#'                       allowedValues = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     resources = list(
+#'                       name = list(
+#'                         allowedValues = list(
+#'                           "string"
+#'                         )
+#'                       ),
+#'                       weight = list(
+#'                         min = 123,
+#'                         max = 123
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             kubeControllerManagerConfig = list(
+#'               podGcControllerConfig = list(
+#'                 terminatedPodGcThreshold = list(
+#'                   defaultValue = 123,
+#'                   constraints = list(
+#'                     min = 123,
+#'                     max = 123
+#'                   )
+#'                 )
+#'               ),
+#'               horizontalPodAutoscalerControllerConfig = list(
+#'                 horizontalPodAutoscalerSyncPeriod = list(
+#'                   defaultValue = "string",
+#'                   constraints = list(
+#'                     min = "string",
+#'                     max = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       controlPlaneComponentConfig = list(
+#'         kubeApiServerConfig = list(
+#'           eventTtl = list(
+#'             defaultValue = "string",
+#'             constraints = list(
+#'               min = "string",
+#'               max = "string"
+#'             )
+#'           ),
+#'           serviceNodePortRange = list(
+#'             defaultValue = list(
+#'               minPort = 123,
+#'               maxPort = 123
+#'             ),
+#'             constraints = list(
+#'               minPort = list(
+#'                 min = 123,
+#'                 max = 123
+#'               ),
+#'               maxPort = list(
+#'                 min = 123,
+#'                 max = 123
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         kubeSchedulerConfig = list(
+#'           nodeResourcesFit = list(
+#'             scoringStrategy = list(
+#'               defaultValue = list(
+#'                 type = "LeastAllocated"|"MostAllocated",
+#'                 resources = list(
+#'                   list(
+#'                     name = "string",
+#'                     weight = 123
+#'                   )
+#'                 )
+#'               ),
+#'               constraints = list(
+#'                 scoringStrategy = list(
+#'                   allowedValues = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 resources = list(
+#'                   name = list(
+#'                     allowedValues = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   weight = list(
+#'                     min = 123,
+#'                     max = 123
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         kubeControllerManagerConfig = list(
+#'           podGcControllerConfig = list(
+#'             terminatedPodGcThreshold = list(
+#'               defaultValue = 123,
+#'               constraints = list(
+#'                 min = 123,
+#'                 max = 123
+#'               )
+#'             )
+#'           ),
+#'           horizontalPodAutoscalerControllerConfig = list(
+#'             horizontalPodAutoscalerSyncPeriod = list(
+#'               defaultValue = "string",
+#'               constraints = list(
+#'                 min = "string",
+#'                 max = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -3632,7 +4454,7 @@ eks_describe_identity_provider_config <- function(clusterName, identityProviderC
 #'   insight = list(
 #'     id = "string",
 #'     name = "string",
-#'     category = "UPGRADE_READINESS"|"MISCONFIGURATION",
+#'     category = "UPGRADE_READINESS"|"MISCONFIGURATION"|"ROLLBACK_READINESS",
 #'     kubernetesVersion = "string",
 #'     lastRefreshTime = as.POSIXct(
 #'       "2015-01-01"
@@ -4026,10 +4848,10 @@ eks_describe_pod_identity_association <- function(clusterName, associationId) {
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"CapabilityUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate"|"ControlPlaneEgressUpdate"|"VersionRollback"|"ControlPlaneComponentConfigUpdate"|"CertificateAuthorityUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"RoleArn"|"RoleMappingsToAddOrUpdate"|"RoleMappingsToRemove"|"NetworkAccess"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn"|"ControlPlaneEgressMode"|"KubeApiServerConfig"|"KubeSchedulerConfig"|"KubeControllerManagerConfig"|"ActiveCertificateAuthority"|"TrustedCertificateAuthorities"|"CertificateAuthorityId"|"SigningStatus",
 #'         value = "string"
 #'       )
 #'     ),
@@ -4044,6 +4866,10 @@ eks_describe_pod_identity_association <- function(clusterName, associationId) {
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     cancellation = list(
+#'       status = "InProgress"|"Failed"|"Successful",
+#'       reason = "string"
 #'     )
 #'   )
 #' )
@@ -4154,10 +4980,10 @@ eks_disassociate_access_policy <- function(clusterName, principalArn, policyArn)
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"CapabilityUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate"|"ControlPlaneEgressUpdate"|"VersionRollback"|"ControlPlaneComponentConfigUpdate"|"CertificateAuthorityUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"RoleArn"|"RoleMappingsToAddOrUpdate"|"RoleMappingsToRemove"|"NetworkAccess"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn"|"ControlPlaneEgressMode"|"KubeApiServerConfig"|"KubeSchedulerConfig"|"KubeControllerManagerConfig"|"ActiveCertificateAuthority"|"TrustedCertificateAuthorities"|"CertificateAuthorityId"|"SigningStatus",
 #'         value = "string"
 #'       )
 #'     ),
@@ -4172,6 +4998,10 @@ eks_disassociate_access_policy <- function(clusterName, principalArn, policyArn)
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     cancellation = list(
+#'       status = "InProgress"|"Failed"|"Successful",
+#'       reason = "string"
 #'     )
 #'   )
 #' )
@@ -4536,6 +5366,76 @@ eks_list_capabilities <- function(clusterName, nextToken = NULL, maxResults = NU
 }
 .eks$operations$list_capabilities <- eks_list_capabilities
 
+#' Lists the certificate authorities (CAs) for your cluster
+#'
+#' @description
+#' Lists the certificate authorities (CAs) for your cluster. A cluster has at most two certificate authorities: the outgoing CA that's currently signing and, during a rotation, one successor CA.
+#'
+#' @usage
+#' eks_list_certificate_authorities(clusterName, maxResults, nextToken)
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param maxResults The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `nextToken` value. If you don't specify a value, the default is 100 results.
+#' @param nextToken The `nextToken` value returned from a previous paginated request, where `maxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `nextToken` value. This value is null when there are no more results to return.
+#' 
+#' This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   certificateAuthorities = list(
+#'     list(
+#'       id = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdBy = "EKS"|"CUSTOMER",
+#'       activatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       activatedBy = "EKS"|"CUSTOMER",
+#'       signingStatus = "NOT_USED"|"ACTIVATING"|"IN_USE",
+#'       distributionStatus = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"DELETING"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_certificate_authorities(
+#'   clusterName = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_list_certificate_authorities
+#'
+#' @aliases eks_list_certificate_authorities
+eks_list_certificate_authorities <- function(clusterName, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListCertificateAuthorities",
+    http_method = "GET",
+    http_path = "/clusters/{name}/certificate-authorities",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "certificateAuthorities"),
+    stream_api = FALSE
+  )
+  input <- .eks$list_certificate_authorities_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
+  output <- .eks$list_certificate_authorities_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$list_certificate_authorities <- eks_list_certificate_authorities
+
 #' Lists the Amazon EKS clusters in your Amazon Web Services account in the
 #' specified Amazon Web Services Region
 #'
@@ -4842,7 +5742,7 @@ eks_list_identity_provider_configs <- function(clusterName, maxResults = NULL, n
 #'     list(
 #'       id = "string",
 #'       name = "string",
-#'       category = "UPGRADE_READINESS"|"MISCONFIGURATION",
+#'       category = "UPGRADE_READINESS"|"MISCONFIGURATION"|"ROLLBACK_READINESS",
 #'       kubernetesVersion = "string",
 #'       lastRefreshTime = as.POSIXct(
 #'         "2015-01-01"
@@ -4867,7 +5767,7 @@ eks_list_identity_provider_configs <- function(clusterName, maxResults = NULL, n
 #'   clusterName = "string",
 #'   filter = list(
 #'     categories = list(
-#'       "UPGRADE_READINESS"|"MISCONFIGURATION"
+#'       "UPGRADE_READINESS"|"MISCONFIGURATION"|"ROLLBACK_READINESS"
 #'     ),
 #'     kubernetesVersions = list(
 #'       "string"
@@ -5207,7 +6107,8 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, capab
 #'       endpointPrivateAccess = TRUE|FALSE,
 #'       publicAccessCidrs = list(
 #'         "string"
-#'       )
+#'       ),
+#'       controlPlaneEgressMode = "AWS_MANAGED"|"CUSTOMER_ROUTED"|"CUSTOMER_ISOLATED"
 #'     ),
 #'     kubernetesNetworkConfig = list(
 #'       serviceIpv4Cidr = "string",
@@ -5234,7 +6135,11 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, capab
 #'     ),
 #'     status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED"|"UPDATING"|"PENDING",
 #'     certificateAuthority = list(
-#'       data = "string"
+#'       data = "string",
+#'       active = list(
+#'         id = "string",
+#'         activatedBy = "EKS"|"CUSTOMER"
+#'       )
 #'     ),
 #'     clientRequestToken = "string",
 #'     platformVersion = "string",
@@ -5278,7 +6183,12 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, capab
 #'       ),
 #'       controlPlaneInstanceType = "string",
 #'       controlPlanePlacement = list(
-#'         groupName = "string"
+#'         groupName = "string",
+#'         spreadLevel = "host"|"rack"
+#'       ),
+#'       etcdInstanceType = "string",
+#'       etcdPlacement = list(
+#'         spreadLevel = "host"|"rack"
 #'       )
 #'     ),
 #'     accessConfig = list(
@@ -5322,6 +6232,34 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, capab
 #'     deletionProtection = TRUE|FALSE,
 #'     controlPlaneScalingConfig = list(
 #'       tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"|"tier-8xl"
+#'     ),
+#'     kubeApiServerConfig = list(
+#'       eventTtl = "string",
+#'       serviceNodePortRange = list(
+#'         minPort = 123,
+#'         maxPort = 123
+#'       )
+#'     ),
+#'     kubeSchedulerConfig = list(
+#'       nodeResourcesFit = list(
+#'         scoringStrategy = list(
+#'           type = "LeastAllocated"|"MostAllocated",
+#'           resources = list(
+#'             list(
+#'               name = "string",
+#'               weight = 123
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     kubeControllerManagerConfig = list(
+#'       podGcControllerConfig = list(
+#'         terminatedPodGcThreshold = 123
+#'       ),
+#'       horizontalPodAutoscalerControllerConfig = list(
+#'         horizontalPodAutoscalerSyncPeriod = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -5632,10 +6570,10 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"CapabilityUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate"|"ControlPlaneEgressUpdate"|"VersionRollback"|"ControlPlaneComponentConfigUpdate"|"CertificateAuthorityUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"RoleArn"|"RoleMappingsToAddOrUpdate"|"RoleMappingsToRemove"|"NetworkAccess"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn"|"ControlPlaneEgressMode"|"KubeApiServerConfig"|"KubeSchedulerConfig"|"KubeControllerManagerConfig"|"ActiveCertificateAuthority"|"TrustedCertificateAuthorities"|"CertificateAuthorityId"|"SigningStatus",
 #'         value = "string"
 #'       )
 #'     ),
@@ -5650,6 +6588,10 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     cancellation = list(
+#'       status = "InProgress"|"Failed"|"Successful",
+#'       reason = "string"
 #'     )
 #'   )
 #' )
@@ -5724,10 +6666,10 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"CapabilityUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate"|"ControlPlaneEgressUpdate"|"VersionRollback"|"ControlPlaneComponentConfigUpdate"|"CertificateAuthorityUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"RoleArn"|"RoleMappingsToAddOrUpdate"|"RoleMappingsToRemove"|"NetworkAccess"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn"|"ControlPlaneEgressMode"|"KubeApiServerConfig"|"KubeSchedulerConfig"|"KubeControllerManagerConfig"|"ActiveCertificateAuthority"|"TrustedCertificateAuthorities"|"CertificateAuthorityId"|"SigningStatus",
 #'         value = "string"
 #'       )
 #'     ),
@@ -5742,6 +6684,10 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     cancellation = list(
+#'       status = "InProgress"|"Failed"|"Successful",
+#'       reason = "string"
 #'     )
 #'   )
 #' )
@@ -5840,10 +6786,11 @@ eks_update_capability <- function(clusterName, capabilityName, roleArn = NULL, c
 #' eks_update_cluster_config(name, resourcesVpcConfig, logging,
 #'   clientRequestToken, accessConfig, upgradePolicy, zonalShiftConfig,
 #'   computeConfig, kubernetesNetworkConfig, storageConfig,
-#'   remoteNetworkConfig, deletionProtection, controlPlaneScalingConfig)
+#'   remoteNetworkConfig, deletionProtection, controlPlaneScalingConfig,
+#'   kubeApiServerConfig, kubeSchedulerConfig, kubeControllerManagerConfig)
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
-#' @param resourcesVpcConfig An object representing the VPC configuration to use for an Amazon EKS cluster.
+#' @param resourcesVpcConfig An object representing the VPC configuration to use for the cluster update. You can use this parameter to update the control plane egress mode, the subnets used by the cluster, the security groups, and the endpoint access settings.
 #' @param logging Enable or disable exporting the Kubernetes control plane logs for your cluster to CloudWatch Logs . By default, cluster control plane logs aren't exported to CloudWatch Logs . For more information, see [Amazon EKS cluster control plane logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html) in the *Amazon EKS User Guide* .
 #' 
 #' CloudWatch Logs ingestion, archive storage, and data scanning rates apply to exported control plane logs. For more information, see [CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
@@ -5861,6 +6808,9 @@ eks_update_capability <- function(clusterName, capabilityName, roleArn = NULL, c
 #' @param remoteNetworkConfig The configuration in the cluster for EKS Hybrid Nodes. You can add, change, or remove this configuration after the cluster is created.
 #' @param deletionProtection Specifies whether to enable or disable deletion protection for the cluster. When enabled (`true`), the cluster cannot be deleted until deletion protection is explicitly disabled. When disabled (`false`), the cluster can be deleted normally.
 #' @param controlPlaneScalingConfig The control plane scaling tier configuration. For more information, see EKS Provisioned Control Plane in the Amazon EKS User Guide.
+#' @param kubeApiServerConfig The Kubernetes API server configuration for the updated cluster.
+#' @param kubeSchedulerConfig The Kubernetes scheduler configuration for the updated cluster.
+#' @param kubeControllerManagerConfig The Kubernetes controller manager configuration for the updated cluster.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5869,10 +6819,10 @@ eks_update_capability <- function(clusterName, capabilityName, roleArn = NULL, c
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"CapabilityUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate"|"ControlPlaneEgressUpdate"|"VersionRollback"|"ControlPlaneComponentConfigUpdate"|"CertificateAuthorityUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"RoleArn"|"RoleMappingsToAddOrUpdate"|"RoleMappingsToRemove"|"NetworkAccess"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn"|"ControlPlaneEgressMode"|"KubeApiServerConfig"|"KubeSchedulerConfig"|"KubeControllerManagerConfig"|"ActiveCertificateAuthority"|"TrustedCertificateAuthorities"|"CertificateAuthorityId"|"SigningStatus",
 #'         value = "string"
 #'       )
 #'     ),
@@ -5887,6 +6837,10 @@ eks_update_capability <- function(clusterName, capabilityName, roleArn = NULL, c
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     cancellation = list(
+#'       status = "InProgress"|"Failed"|"Successful",
+#'       reason = "string"
 #'     )
 #'   )
 #' )
@@ -5907,7 +6861,8 @@ eks_update_capability <- function(clusterName, capabilityName, roleArn = NULL, c
 #'     endpointPrivateAccess = TRUE|FALSE,
 #'     publicAccessCidrs = list(
 #'       "string"
-#'     )
+#'     ),
+#'     controlPlaneEgressMode = "AWS_MANAGED"|"CUSTOMER_ROUTED"|"CUSTOMER_ISOLATED"
 #'   ),
 #'   logging = list(
 #'     clusterLogging = list(
@@ -5967,6 +6922,34 @@ eks_update_capability <- function(clusterName, capabilityName, roleArn = NULL, c
 #'   deletionProtection = TRUE|FALSE,
 #'   controlPlaneScalingConfig = list(
 #'     tier = "standard"|"tier-xl"|"tier-2xl"|"tier-4xl"|"tier-8xl"
+#'   ),
+#'   kubeApiServerConfig = list(
+#'     eventTtl = "string",
+#'     serviceNodePortRange = list(
+#'       minPort = 123,
+#'       maxPort = 123
+#'     )
+#'   ),
+#'   kubeSchedulerConfig = list(
+#'     nodeResourcesFit = list(
+#'       scoringStrategy = list(
+#'         type = "LeastAllocated"|"MostAllocated",
+#'         resources = list(
+#'           list(
+#'             name = "string",
+#'             weight = 123
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   kubeControllerManagerConfig = list(
+#'     podGcControllerConfig = list(
+#'       terminatedPodGcThreshold = 123
+#'     ),
+#'     horizontalPodAutoscalerControllerConfig = list(
+#'       horizontalPodAutoscalerSyncPeriod = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -5976,7 +6959,7 @@ eks_update_capability <- function(clusterName, capabilityName, roleArn = NULL, c
 #' @rdname eks_update_cluster_config
 #'
 #' @aliases eks_update_cluster_config
-eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL, accessConfig = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, computeConfig = NULL, kubernetesNetworkConfig = NULL, storageConfig = NULL, remoteNetworkConfig = NULL, deletionProtection = NULL, controlPlaneScalingConfig = NULL) {
+eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL, accessConfig = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, computeConfig = NULL, kubernetesNetworkConfig = NULL, storageConfig = NULL, remoteNetworkConfig = NULL, deletionProtection = NULL, controlPlaneScalingConfig = NULL, kubeApiServerConfig = NULL, kubeSchedulerConfig = NULL, kubeControllerManagerConfig = NULL) {
   op <- new_operation(
     name = "UpdateClusterConfig",
     http_method = "POST",
@@ -5985,7 +6968,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, computeConfig = computeConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, storageConfig = storageConfig, remoteNetworkConfig = remoteNetworkConfig, deletionProtection = deletionProtection, controlPlaneScalingConfig = controlPlaneScalingConfig)
+  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, computeConfig = computeConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, storageConfig = storageConfig, remoteNetworkConfig = remoteNetworkConfig, deletionProtection = deletionProtection, controlPlaneScalingConfig = controlPlaneScalingConfig, kubeApiServerConfig = kubeApiServerConfig, kubeSchedulerConfig = kubeSchedulerConfig, kubeControllerManagerConfig = kubeControllerManagerConfig)
   output <- .eks$update_cluster_config_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -6005,12 +6988,14 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #' If your cluster has managed node groups attached to it, all of your node groups' Kubernetes versions must match the cluster's Kubernetes version in order to update the cluster to a new Kubernetes version.
 #'
 #' @usage
-#' eks_update_cluster_version(name, version, clientRequestToken, force)
+#' eks_update_cluster_version(name, version, clientRequestToken, force,
+#'   rollbackConfig)
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
 #' @param version &#91;required&#93; The desired Kubernetes version following a successful update.
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
-#' @param force Set this value to `true` to override upgrade-blocking readiness checks when updating a cluster.
+#' @param force Set this value to `true` to override upgrade-blocking or rollback-blocking readiness checks when updating a cluster.
+#' @param rollbackConfig The rollback configuration for the cluster version rollback.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6019,10 +7004,10 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"CapabilityUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate"|"ControlPlaneEgressUpdate"|"VersionRollback"|"ControlPlaneComponentConfigUpdate"|"CertificateAuthorityUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"RoleArn"|"RoleMappingsToAddOrUpdate"|"RoleMappingsToRemove"|"NetworkAccess"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn"|"ControlPlaneEgressMode"|"KubeApiServerConfig"|"KubeSchedulerConfig"|"KubeControllerManagerConfig"|"ActiveCertificateAuthority"|"TrustedCertificateAuthorities"|"CertificateAuthorityId"|"SigningStatus",
 #'         value = "string"
 #'       )
 #'     ),
@@ -6037,6 +7022,10 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     cancellation = list(
+#'       status = "InProgress"|"Failed"|"Successful",
+#'       reason = "string"
 #'     )
 #'   )
 #' )
@@ -6048,7 +7037,10 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #'   name = "string",
 #'   version = "string",
 #'   clientRequestToken = "string",
-#'   force = TRUE|FALSE
+#'   force = TRUE|FALSE,
+#'   rollbackConfig = list(
+#'     timeoutMinutes = 123
+#'   )
 #' )
 #' ```
 #'
@@ -6057,7 +7049,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #' @rdname eks_update_cluster_version
 #'
 #' @aliases eks_update_cluster_version
-eks_update_cluster_version <- function(name, version, clientRequestToken = NULL, force = NULL) {
+eks_update_cluster_version <- function(name, version, clientRequestToken = NULL, force = NULL, rollbackConfig = NULL) {
   op <- new_operation(
     name = "UpdateClusterVersion",
     http_method = "POST",
@@ -6066,7 +7058,7 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$update_cluster_version_input(name = name, version = version, clientRequestToken = clientRequestToken, force = force)
+  input <- .eks$update_cluster_version_input(name = name, version = version, clientRequestToken = clientRequestToken, force = force, rollbackConfig = rollbackConfig)
   output <- .eks$update_cluster_version_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -6188,10 +7180,10 @@ eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestTok
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"CapabilityUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate"|"ControlPlaneEgressUpdate"|"VersionRollback"|"ControlPlaneComponentConfigUpdate"|"CertificateAuthorityUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"RoleArn"|"RoleMappingsToAddOrUpdate"|"RoleMappingsToRemove"|"NetworkAccess"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn"|"ControlPlaneEgressMode"|"KubeApiServerConfig"|"KubeSchedulerConfig"|"KubeControllerManagerConfig"|"ActiveCertificateAuthority"|"TrustedCertificateAuthorities"|"CertificateAuthorityId"|"SigningStatus",
 #'         value = "string"
 #'       )
 #'     ),
@@ -6206,6 +7198,10 @@ eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestTok
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     cancellation = list(
+#'       status = "InProgress"|"Failed"|"Successful",
+#'       reason = "string"
 #'     )
 #'   )
 #' )
@@ -6337,10 +7333,10 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate"|"DeletionProtectionUpdate"|"CapabilityUpdate"|"ControlPlaneScalingConfigUpdate"|"VendedLogsUpdate"|"ControlPlaneEgressUpdate"|"VersionRollback"|"ControlPlaneComponentConfigUpdate"|"CertificateAuthorityUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig"|"DeletionProtection"|"NodeRepairConfig"|"RoleArn"|"RoleMappingsToAddOrUpdate"|"RoleMappingsToRemove"|"NetworkAccess"|"VendedLogs"|"UpdatedTier"|"PreviousTier"|"WarmPoolEnabled"|"WarmPoolMaxGroupPreparedCapacity"|"WarmPoolMinSize"|"WarmPoolState"|"WarmPoolReuseOnScaleIn"|"ControlPlaneEgressMode"|"KubeApiServerConfig"|"KubeSchedulerConfig"|"KubeControllerManagerConfig"|"ActiveCertificateAuthority"|"TrustedCertificateAuthorities"|"CertificateAuthorityId"|"SigningStatus",
 #'         value = "string"
 #'       )
 #'     ),
@@ -6355,6 +7351,10 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     cancellation = list(
+#'       status = "InProgress"|"Failed"|"Successful",
+#'       reason = "string"
 #'     )
 #'   )
 #' )

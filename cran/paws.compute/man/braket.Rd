@@ -50,10 +50,12 @@ Operations section.
 \description{
 The Amazon Braket API Reference provides information about the operations and structures supported by Amazon Braket.
 
-To learn about the permissions required to call an Amazon Braket API action, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonbraket.html}{Actions, resources, and condition keys for Amazon Braket}. \href{https://amazon-braket-sdk-python.readthedocs.io/en/latest/}{Amazon Braket Python SDK} and the \href{https://docs.aws.amazon.com/cli/latest/reference/braket/}{AWS Command Line Interface} can be used to make discovery and creation of API calls easier. For more information about Amazon Braket features, see \href{https://docs.aws.amazon.com/braket/latest/developerguide/what-is-braket.html}{What is Amazon Braket?} and important \href{https://docs.aws.amazon.com/braket/latest/developerguide/braket-terms.html}{terms and concepts} in the \emph{Amazon Braket Developer Guide}.
+To learn about the permissions required to call an Amazon Braket API action, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/}{Actions, resources, and condition keys for Amazon Braket}. \href{https://amazon-braket-sdk-python.readthedocs.io/en/latest/}{Amazon Braket Python SDK} and the \href{https://docs.aws.amazon.com/cli/latest/reference/braket/}{AWS Command Line Interface} can be used to make discovery and creation of API calls easier. For more information about Amazon Braket features, see \href{https://docs.aws.amazon.com/braket/latest/developerguide/what-is-braket.html}{What is Amazon Braket?} and important \href{https://docs.aws.amazon.com/braket/latest/developerguide/braket-terms.html}{terms and concepts} in the \emph{Amazon Braket Developer Guide}.
 
 \strong{In this guide:}
 \itemize{
+\item 
+\item 
 \item CommonParameters
 \item CommonErrors
 }

@@ -10,7 +10,9 @@ redshift_enable_logging(
   BucketName = NULL,
   S3KeyPrefix = NULL,
   LogDestinationType = NULL,
-  LogExports = NULL
+  LogExports = NULL,
+  S3TableKmsKeyId = NULL,
+  S3TableGranularity = NULL
 )
 }
 \arguments{
@@ -30,9 +32,13 @@ Constraints:
 
 Valid characters are any letter from any language, any whitespace character, any numeric character, and the following characters: underscore (\verb{_}), period (\code{.}), colon (\code{:}), slash (\code{/}), equal (\code{=}), plus (\code{+}), backslash (\verb{\\}), hyphen (\code{-}), at symbol (\code{@}).}
 
-\item{LogDestinationType}{The log destination type. An enum with possible values of \code{s3} and \code{cloudwatch}.}
+\item{LogDestinationType}{The log destination type. An enum with possible values of \code{s3}, \code{cloudwatch}, and \code{s3table}.}
 
-\item{LogExports}{The collection of exported log types. Possible values are \code{connectionlog}, \code{useractivitylog}, and \code{userlog}.}
+\item{LogExports}{The collection of exported log types. When \code{LogDestinationType} is \code{s3} or \code{cloudwatch}, possible values are \code{connectionlog}, \code{useractivitylog}, and \code{userlog}. When \code{LogDestinationType} is \code{s3table}, the values are the names of the system tables to publish. Omitting this parameter, passing an empty list, or including the value \code{all} publishes all current and future system tables.}
+
+\item{S3TableKmsKeyId}{The identifier of a customer managed KMS key used to encrypt the S3 tables. This parameter is valid only when \code{LogDestinationType} is \code{s3table}.}
+
+\item{S3TableGranularity}{The scope of system table publishing. Valid values are \code{cluster} and \code{account}. A value of \code{cluster} scopes publishing to the individual cluster. A value of \code{account} scopes publishing to the Amazon Web Services account. This parameter is valid only when \code{LogDestinationType} is \code{s3table}.}
 }
 \description{
 Starts logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster.

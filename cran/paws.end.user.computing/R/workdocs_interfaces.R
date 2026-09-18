@@ -5,8 +5,7 @@ NULL
 
 .workdocs$abort_document_version_upload_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), DocumentId = structure(logical(0), tags = list(location = "uri", locationName = "DocumentId", type = "string")), VersionId = structure(logical(0), tags = list(location = "uri", locationName = "VersionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["abort_document_version_upload_input"]]))
 }
 
 .workdocs$abort_document_version_upload_output <- function(...) {
@@ -15,104 +14,87 @@ NULL
 
 .workdocs$activate_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserId = structure(logical(0), tags = list(location = "uri", locationName = "UserId", type = "string")), AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["activate_user_input"]]))
 }
 
 .workdocs$activate_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(User = structure(list(Id = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Surname = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), OrganizationId = structure(logical(0), tags = list(type = "string")), RootFolderId = structure(logical(0), tags = list(type = "string")), RecycleBinFolderId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), TimeZoneId = structure(logical(0), tags = list(type = "string")), Locale = structure(logical(0), tags = list(type = "string")), Storage = structure(list(StorageUtilizedInBytes = structure(logical(0), tags = list(type = "long")), StorageRule = structure(list(StorageAllocatedInBytes = structure(logical(0), tags = list(type = "long")), StorageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["activate_user_output"]]))
 }
 
 .workdocs$add_resource_permissions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), ResourceId = structure(logical(0), tags = list(location = "uri", locationName = "ResourceId", type = "string")), Principals = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Role = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NotificationOptions = structure(list(SendEmail = structure(logical(0), tags = list(type = "boolean")), EmailMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["add_resource_permissions_input"]]))
 }
 
 .workdocs$add_resource_permissions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShareResults = structure(list(structure(list(PrincipalId = structure(logical(0), tags = list(type = "string")), InviteePrincipalId = structure(logical(0), tags = list(type = "string")), Role = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ShareId = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["add_resource_permissions_output"]]))
 }
 
 .workdocs$create_comment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), DocumentId = structure(logical(0), tags = list(location = "uri", locationName = "DocumentId", type = "string")), VersionId = structure(logical(0), tags = list(location = "uri", locationName = "VersionId", type = "string")), ParentId = structure(logical(0), tags = list(type = "string")), ThreadId = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Visibility = structure(logical(0), tags = list(type = "string")), NotifyCollaborators = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["create_comment_input"]]))
 }
 
 .workdocs$create_comment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Comment = structure(list(CommentId = structure(logical(0), tags = list(type = "string")), ParentId = structure(logical(0), tags = list(type = "string")), ThreadId = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Contributor = structure(list(Id = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Surname = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), OrganizationId = structure(logical(0), tags = list(type = "string")), RootFolderId = structure(logical(0), tags = list(type = "string")), RecycleBinFolderId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), TimeZoneId = structure(logical(0), tags = list(type = "string")), Locale = structure(logical(0), tags = list(type = "string")), Storage = structure(list(StorageUtilizedInBytes = structure(logical(0), tags = list(type = "long")), StorageRule = structure(list(StorageAllocatedInBytes = structure(logical(0), tags = list(type = "long")), StorageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), Visibility = structure(logical(0), tags = list(type = "string")), RecipientId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["create_comment_output"]]))
 }
 
 .workdocs$create_custom_metadata_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), ResourceId = structure(logical(0), tags = list(location = "uri", locationName = "ResourceId", type = "string")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionid", type = "string")), CustomMetadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["create_custom_metadata_input"]]))
 }
 
 .workdocs$create_custom_metadata_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["create_custom_metadata_output"]]))
 }
 
 .workdocs$create_folder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ParentFolderId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["create_folder_input"]]))
 }
 
 .workdocs$create_folder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Metadata = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreatorId = structure(logical(0), tags = list(type = "string")), ParentFolderId = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ResourceState = structure(logical(0), tags = list(type = "string")), Signature = structure(logical(0), tags = list(type = "string")), Labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Size = structure(logical(0), tags = list(type = "long")), LatestVersionSize = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["create_folder_output"]]))
 }
 
 .workdocs$create_labels_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceId = structure(logical(0), tags = list(location = "uri", locationName = "ResourceId", type = "string")), Labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["create_labels_input"]]))
 }
 
 .workdocs$create_labels_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["create_labels_output"]]))
 }
 
 .workdocs$create_notification_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(location = "uri", locationName = "OrganizationId", type = "string")), Endpoint = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), SubscriptionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["create_notification_subscription_input"]]))
 }
 
 .workdocs$create_notification_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Subscription = structure(list(SubscriptionId = structure(logical(0), tags = list(type = "string")), EndPoint = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["create_notification_subscription_output"]]))
 }
 
 .workdocs$create_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Surname = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), TimeZoneId = structure(logical(0), tags = list(type = "string")), StorageRule = structure(list(StorageAllocatedInBytes = structure(logical(0), tags = list(type = "long")), StorageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["create_user_input"]]))
 }
 
 .workdocs$create_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(User = structure(list(Id = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Surname = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), OrganizationId = structure(logical(0), tags = list(type = "string")), RootFolderId = structure(logical(0), tags = list(type = "string")), RecycleBinFolderId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), TimeZoneId = structure(logical(0), tags = list(type = "string")), Locale = structure(logical(0), tags = list(type = "string")), Storage = structure(list(StorageUtilizedInBytes = structure(logical(0), tags = list(type = "long")), StorageRule = structure(list(StorageAllocatedInBytes = structure(logical(0), tags = list(type = "long")), StorageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["create_user_output"]]))
 }
 
 .workdocs$deactivate_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserId = structure(logical(0), tags = list(location = "uri", locationName = "UserId", type = "string")), AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["deactivate_user_input"]]))
 }
 
 .workdocs$deactivate_user_output <- function(...) {
@@ -121,8 +103,7 @@ NULL
 
 .workdocs$delete_comment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), DocumentId = structure(logical(0), tags = list(location = "uri", locationName = "DocumentId", type = "string")), VersionId = structure(logical(0), tags = list(location = "uri", locationName = "VersionId", type = "string")), CommentId = structure(logical(0), tags = list(location = "uri", locationName = "CommentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["delete_comment_input"]]))
 }
 
 .workdocs$delete_comment_output <- function(...) {
@@ -131,20 +112,17 @@ NULL
 
 .workdocs$delete_custom_metadata_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), ResourceId = structure(logical(0), tags = list(location = "uri", locationName = "ResourceId", type = "string")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), Keys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "keys", type = "list")), DeleteAll = structure(logical(0), tags = list(location = "querystring", locationName = "deleteAll", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["delete_custom_metadata_input"]]))
 }
 
 .workdocs$delete_custom_metadata_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["delete_custom_metadata_output"]]))
 }
 
 .workdocs$delete_document_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), DocumentId = structure(logical(0), tags = list(location = "uri", locationName = "DocumentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["delete_document_input"]]))
 }
 
 .workdocs$delete_document_output <- function(...) {
@@ -153,8 +131,7 @@ NULL
 
 .workdocs$delete_document_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), DocumentId = structure(logical(0), tags = list(location = "uri", locationName = "DocumentId", type = "string")), VersionId = structure(logical(0), tags = list(location = "uri", locationName = "VersionId", type = "string")), DeletePriorVersions = structure(logical(0), tags = list(location = "querystring", locationName = "deletePriorVersions", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["delete_document_version_input"]]))
 }
 
 .workdocs$delete_document_version_output <- function(...) {
@@ -163,8 +140,7 @@ NULL
 
 .workdocs$delete_folder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), FolderId = structure(logical(0), tags = list(location = "uri", locationName = "FolderId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["delete_folder_input"]]))
 }
 
 .workdocs$delete_folder_output <- function(...) {
@@ -173,8 +149,7 @@ NULL
 
 .workdocs$delete_folder_contents_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), FolderId = structure(logical(0), tags = list(location = "uri", locationName = "FolderId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["delete_folder_contents_input"]]))
 }
 
 .workdocs$delete_folder_contents_output <- function(...) {
@@ -183,20 +158,17 @@ NULL
 
 .workdocs$delete_labels_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceId = structure(logical(0), tags = list(location = "uri", locationName = "ResourceId", type = "string")), AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), Labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "labels", type = "list")), DeleteAll = structure(logical(0), tags = list(location = "querystring", locationName = "deleteAll", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["delete_labels_input"]]))
 }
 
 .workdocs$delete_labels_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["delete_labels_output"]]))
 }
 
 .workdocs$delete_notification_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SubscriptionId = structure(logical(0), tags = list(location = "uri", locationName = "SubscriptionId", type = "string")), OrganizationId = structure(logical(0), tags = list(location = "uri", locationName = "OrganizationId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["delete_notification_subscription_input"]]))
 }
 
 .workdocs$delete_notification_subscription_output <- function(...) {
@@ -205,8 +177,7 @@ NULL
 
 .workdocs$delete_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), UserId = structure(logical(0), tags = list(location = "uri", locationName = "UserId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["delete_user_input"]]))
 }
 
 .workdocs$delete_user_output <- function(...) {
@@ -215,212 +186,177 @@ NULL
 
 .workdocs$describe_activities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), StartTime = structure(logical(0), tags = list(location = "querystring", locationName = "startTime", type = "timestamp")), EndTime = structure(logical(0), tags = list(location = "querystring", locationName = "endTime", type = "timestamp")), OrganizationId = structure(logical(0), tags = list(location = "querystring", locationName = "organizationId", type = "string")), ActivityTypes = structure(logical(0), tags = list(location = "querystring", locationName = "activityTypes", type = "string")), ResourceId = structure(logical(0), tags = list(location = "querystring", locationName = "resourceId", type = "string")), UserId = structure(logical(0), tags = list(location = "querystring", locationName = "userId", type = "string")), IncludeIndirectActivities = structure(logical(0), tags = list(location = "querystring", locationName = "includeIndirectActivities", type = "boolean")), Limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), Marker = structure(logical(0), tags = list(location = "querystring", locationName = "marker", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_activities_input"]]))
 }
 
 .workdocs$describe_activities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserActivities = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TimeStamp = structure(logical(0), tags = list(type = "timestamp")), IsIndirectActivity = structure(logical(0), tags = list(type = "boolean")), OrganizationId = structure(logical(0), tags = list(type = "string")), Initiator = structure(list(Id = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Surname = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), Participants = structure(list(Users = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Surname = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Groups = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ResourceMetadata = structure(list(Type = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), OriginalName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Id = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), Owner = structure(list(Id = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Surname = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), ParentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OriginalParent = structure(list(Type = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), OriginalName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Id = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), Owner = structure(list(Id = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Surname = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), ParentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CommentMetadata = structure(list(CommentId = structure(logical(0), tags = list(type = "string")), Contributor = structure(list(Id = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Surname = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), OrganizationId = structure(logical(0), tags = list(type = "string")), RootFolderId = structure(logical(0), tags = list(type = "string")), RecycleBinFolderId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), TimeZoneId = structure(logical(0), tags = list(type = "string")), Locale = structure(logical(0), tags = list(type = "string")), Storage = structure(list(StorageUtilizedInBytes = structure(logical(0), tags = list(type = "long")), StorageRule = structure(list(StorageAllocatedInBytes = structure(logical(0), tags = list(type = "long")), StorageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CommentStatus = structure(logical(0), tags = list(type = "string")), RecipientId = structure(logical(0), tags = list(type = "string")), ContributorId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_activities_output"]]))
 }
 
 .workdocs$describe_comments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), DocumentId = structure(logical(0), tags = list(location = "uri", locationName = "DocumentId", type = "string")), VersionId = structure(logical(0), tags = list(location = "uri", locationName = "VersionId", type = "string")), Limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), Marker = structure(logical(0), tags = list(location = "querystring", locationName = "marker", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_comments_input"]]))
 }
 
 .workdocs$describe_comments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Comments = structure(list(structure(list(CommentId = structure(logical(0), tags = list(type = "string")), ParentId = structure(logical(0), tags = list(type = "string")), ThreadId = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Contributor = structure(list(Id = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Surname = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), OrganizationId = structure(logical(0), tags = list(type = "string")), RootFolderId = structure(logical(0), tags = list(type = "string")), RecycleBinFolderId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), TimeZoneId = structure(logical(0), tags = list(type = "string")), Locale = structure(logical(0), tags = list(type = "string")), Storage = structure(list(StorageUtilizedInBytes = structure(logical(0), tags = list(type = "long")), StorageRule = structure(list(StorageAllocatedInBytes = structure(logical(0), tags = list(type = "long")), StorageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), Visibility = structure(logical(0), tags = list(type = "string")), RecipientId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_comments_output"]]))
 }
 
 .workdocs$describe_document_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), DocumentId = structure(logical(0), tags = list(location = "uri", locationName = "DocumentId", type = "string")), Marker = structure(logical(0), tags = list(location = "querystring", locationName = "marker", type = "string")), Limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), Include = structure(logical(0), tags = list(location = "querystring", locationName = "include", type = "string")), Fields = structure(logical(0), tags = list(location = "querystring", locationName = "fields", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_document_versions_input"]]))
 }
 
 .workdocs$describe_document_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DocumentVersions = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ContentType = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "long")), Signature = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentCreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CreatorId = structure(logical(0), tags = list(type = "string")), Thumbnail = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), Source = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_document_versions_output"]]))
 }
 
 .workdocs$describe_folder_contents_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), FolderId = structure(logical(0), tags = list(location = "uri", locationName = "FolderId", type = "string")), Sort = structure(logical(0), tags = list(location = "querystring", locationName = "sort", type = "string")), Order = structure(logical(0), tags = list(location = "querystring", locationName = "order", type = "string")), Limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), Marker = structure(logical(0), tags = list(location = "querystring", locationName = "marker", type = "string")), Type = structure(logical(0), tags = list(location = "querystring", locationName = "type", type = "string")), Include = structure(logical(0), tags = list(location = "querystring", locationName = "include", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_folder_contents_input"]]))
 }
 
 .workdocs$describe_folder_contents_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Folders = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreatorId = structure(logical(0), tags = list(type = "string")), ParentFolderId = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ResourceState = structure(logical(0), tags = list(type = "string")), Signature = structure(logical(0), tags = list(type = "string")), Labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Size = structure(logical(0), tags = list(type = "long")), LatestVersionSize = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), Documents = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorId = structure(logical(0), tags = list(type = "string")), ParentFolderId = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), LatestVersionMetadata = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ContentType = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "long")), Signature = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentCreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CreatorId = structure(logical(0), tags = list(type = "string")), Thumbnail = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), Source = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), ResourceState = structure(logical(0), tags = list(type = "string")), Labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_folder_contents_output"]]))
 }
 
 .workdocs$describe_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), SearchQuery = structure(logical(0), tags = list(location = "querystring", locationName = "searchQuery", type = "string", sensitive = TRUE)), OrganizationId = structure(logical(0), tags = list(location = "querystring", locationName = "organizationId", type = "string")), Marker = structure(logical(0), tags = list(location = "querystring", locationName = "marker", type = "string")), Limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_groups_input"]]))
 }
 
 .workdocs$describe_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Groups = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_groups_output"]]))
 }
 
 .workdocs$describe_notification_subscriptions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(location = "uri", locationName = "OrganizationId", type = "string")), Marker = structure(logical(0), tags = list(location = "querystring", locationName = "marker", type = "string")), Limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_notification_subscriptions_input"]]))
 }
 
 .workdocs$describe_notification_subscriptions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Subscriptions = structure(list(structure(list(SubscriptionId = structure(logical(0), tags = list(type = "string")), EndPoint = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_notification_subscriptions_output"]]))
 }
 
 .workdocs$describe_resource_permissions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), ResourceId = structure(logical(0), tags = list(location = "uri", locationName = "ResourceId", type = "string")), PrincipalId = structure(logical(0), tags = list(location = "querystring", locationName = "principalId", type = "string")), Limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), Marker = structure(logical(0), tags = list(location = "querystring", locationName = "marker", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_resource_permissions_input"]]))
 }
 
 .workdocs$describe_resource_permissions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Principals = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Roles = structure(list(structure(list(Role = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_resource_permissions_output"]]))
 }
 
 .workdocs$describe_root_folders_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), Limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), Marker = structure(logical(0), tags = list(location = "querystring", locationName = "marker", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_root_folders_input"]]))
 }
 
 .workdocs$describe_root_folders_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Folders = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreatorId = structure(logical(0), tags = list(type = "string")), ParentFolderId = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ResourceState = structure(logical(0), tags = list(type = "string")), Signature = structure(logical(0), tags = list(type = "string")), Labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Size = structure(logical(0), tags = list(type = "long")), LatestVersionSize = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_root_folders_output"]]))
 }
 
 .workdocs$describe_users_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), OrganizationId = structure(logical(0), tags = list(location = "querystring", locationName = "organizationId", type = "string")), UserIds = structure(logical(0), tags = list(location = "querystring", locationName = "userIds", type = "string")), Query = structure(logical(0), tags = list(location = "querystring", locationName = "query", type = "string", sensitive = TRUE)), Include = structure(logical(0), tags = list(location = "querystring", locationName = "include", type = "string")), Order = structure(logical(0), tags = list(location = "querystring", locationName = "order", type = "string")), Sort = structure(logical(0), tags = list(location = "querystring", locationName = "sort", type = "string")), Marker = structure(logical(0), tags = list(location = "querystring", locationName = "marker", type = "string")), Limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), Fields = structure(logical(0), tags = list(location = "querystring", locationName = "fields", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_users_input"]]))
 }
 
 .workdocs$describe_users_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Users = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Surname = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), OrganizationId = structure(logical(0), tags = list(type = "string")), RootFolderId = structure(logical(0), tags = list(type = "string")), RecycleBinFolderId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), TimeZoneId = structure(logical(0), tags = list(type = "string")), Locale = structure(logical(0), tags = list(type = "string")), Storage = structure(list(StorageUtilizedInBytes = structure(logical(0), tags = list(type = "long")), StorageRule = structure(list(StorageAllocatedInBytes = structure(logical(0), tags = list(type = "long")), StorageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), TotalNumberOfUsers = structure(logical(0), tags = list(deprecated = TRUE, type = "long")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["describe_users_output"]]))
 }
 
 .workdocs$get_current_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["get_current_user_input"]]))
 }
 
 .workdocs$get_current_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(User = structure(list(Id = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Surname = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), OrganizationId = structure(logical(0), tags = list(type = "string")), RootFolderId = structure(logical(0), tags = list(type = "string")), RecycleBinFolderId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), TimeZoneId = structure(logical(0), tags = list(type = "string")), Locale = structure(logical(0), tags = list(type = "string")), Storage = structure(list(StorageUtilizedInBytes = structure(logical(0), tags = list(type = "long")), StorageRule = structure(list(StorageAllocatedInBytes = structure(logical(0), tags = list(type = "long")), StorageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["get_current_user_output"]]))
 }
 
 .workdocs$get_document_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), DocumentId = structure(logical(0), tags = list(location = "uri", locationName = "DocumentId", type = "string")), IncludeCustomMetadata = structure(logical(0), tags = list(location = "querystring", locationName = "includeCustomMetadata", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["get_document_input"]]))
 }
 
 .workdocs$get_document_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Metadata = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorId = structure(logical(0), tags = list(type = "string")), ParentFolderId = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), LatestVersionMetadata = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ContentType = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "long")), Signature = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentCreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CreatorId = structure(logical(0), tags = list(type = "string")), Thumbnail = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), Source = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), ResourceState = structure(logical(0), tags = list(type = "string")), Labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), CustomMetadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["get_document_output"]]))
 }
 
 .workdocs$get_document_path_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), DocumentId = structure(logical(0), tags = list(location = "uri", locationName = "DocumentId", type = "string")), Limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), Fields = structure(logical(0), tags = list(location = "querystring", locationName = "fields", type = "string")), Marker = structure(logical(0), tags = list(location = "querystring", locationName = "marker", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["get_document_path_input"]]))
 }
 
 .workdocs$get_document_path_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Path = structure(list(Components = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["get_document_path_output"]]))
 }
 
 .workdocs$get_document_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), DocumentId = structure(logical(0), tags = list(location = "uri", locationName = "DocumentId", type = "string")), VersionId = structure(logical(0), tags = list(location = "uri", locationName = "VersionId", type = "string")), Fields = structure(logical(0), tags = list(location = "querystring", locationName = "fields", type = "string")), IncludeCustomMetadata = structure(logical(0), tags = list(location = "querystring", locationName = "includeCustomMetadata", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["get_document_version_input"]]))
 }
 
 .workdocs$get_document_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Metadata = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ContentType = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "long")), Signature = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentCreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CreatorId = structure(logical(0), tags = list(type = "string")), Thumbnail = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), Source = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), CustomMetadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["get_document_version_output"]]))
 }
 
 .workdocs$get_folder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), FolderId = structure(logical(0), tags = list(location = "uri", locationName = "FolderId", type = "string")), IncludeCustomMetadata = structure(logical(0), tags = list(location = "querystring", locationName = "includeCustomMetadata", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["get_folder_input"]]))
 }
 
 .workdocs$get_folder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Metadata = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreatorId = structure(logical(0), tags = list(type = "string")), ParentFolderId = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ResourceState = structure(logical(0), tags = list(type = "string")), Signature = structure(logical(0), tags = list(type = "string")), Labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Size = structure(logical(0), tags = list(type = "long")), LatestVersionSize = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), CustomMetadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["get_folder_output"]]))
 }
 
 .workdocs$get_folder_path_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), FolderId = structure(logical(0), tags = list(location = "uri", locationName = "FolderId", type = "string")), Limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), Fields = structure(logical(0), tags = list(location = "querystring", locationName = "fields", type = "string")), Marker = structure(logical(0), tags = list(location = "querystring", locationName = "marker", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["get_folder_path_input"]]))
 }
 
 .workdocs$get_folder_path_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Path = structure(list(Components = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["get_folder_path_output"]]))
 }
 
 .workdocs$get_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), UserId = structure(logical(0), tags = list(location = "querystring", locationName = "userId", type = "string")), CollectionType = structure(logical(0), tags = list(location = "querystring", locationName = "collectionType", type = "string")), Limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), Marker = structure(logical(0), tags = list(location = "querystring", locationName = "marker", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["get_resources_input"]]))
 }
 
 .workdocs$get_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Folders = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreatorId = structure(logical(0), tags = list(type = "string")), ParentFolderId = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ResourceState = structure(logical(0), tags = list(type = "string")), Signature = structure(logical(0), tags = list(type = "string")), Labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Size = structure(logical(0), tags = list(type = "long")), LatestVersionSize = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), Documents = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorId = structure(logical(0), tags = list(type = "string")), ParentFolderId = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), LatestVersionMetadata = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ContentType = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "long")), Signature = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentCreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CreatorId = structure(logical(0), tags = list(type = "string")), Thumbnail = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), Source = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), ResourceState = structure(logical(0), tags = list(type = "string")), Labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["get_resources_output"]]))
 }
 
 .workdocs$initiate_document_version_upload_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ContentCreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentType = structure(logical(0), tags = list(type = "string")), DocumentSizeInBytes = structure(logical(0), tags = list(type = "long")), ParentFolderId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["initiate_document_version_upload_input"]]))
 }
 
 .workdocs$initiate_document_version_upload_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Metadata = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorId = structure(logical(0), tags = list(type = "string")), ParentFolderId = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), LatestVersionMetadata = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ContentType = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "long")), Signature = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentCreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CreatorId = structure(logical(0), tags = list(type = "string")), Thumbnail = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), Source = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), ResourceState = structure(logical(0), tags = list(type = "string")), Labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), UploadMetadata = structure(list(UploadUrl = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SignedHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["initiate_document_version_upload_output"]]))
 }
 
 .workdocs$remove_all_resource_permissions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), ResourceId = structure(logical(0), tags = list(location = "uri", locationName = "ResourceId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["remove_all_resource_permissions_input"]]))
 }
 
 .workdocs$remove_all_resource_permissions_output <- function(...) {
@@ -429,8 +365,7 @@ NULL
 
 .workdocs$remove_resource_permission_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), ResourceId = structure(logical(0), tags = list(location = "uri", locationName = "ResourceId", type = "string")), PrincipalId = structure(logical(0), tags = list(location = "uri", locationName = "PrincipalId", type = "string")), PrincipalType = structure(logical(0), tags = list(location = "querystring", locationName = "type", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["remove_resource_permission_input"]]))
 }
 
 .workdocs$remove_resource_permission_output <- function(...) {
@@ -439,8 +374,7 @@ NULL
 
 .workdocs$restore_document_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), DocumentId = structure(logical(0), tags = list(location = "uri", locationName = "DocumentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["restore_document_versions_input"]]))
 }
 
 .workdocs$restore_document_versions_output <- function(...) {
@@ -449,20 +383,17 @@ NULL
 
 .workdocs$search_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), QueryText = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), QueryScopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OrganizationId = structure(logical(0), tags = list(type = "string")), AdditionalResponseFields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Filters = structure(list(TextLocales = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ContentCategories = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Principals = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Roles = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), AncestorIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SearchCollectionTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SizeRange = structure(list(StartValue = structure(logical(0), tags = list(type = "long")), EndValue = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), CreatedRange = structure(list(StartValue = structure(logical(0), tags = list(type = "timestamp")), EndValue = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ModifiedRange = structure(list(StartValue = structure(logical(0), tags = list(type = "timestamp")), EndValue = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), OrderBy = structure(list(structure(list(Field = structure(logical(0), tags = list(type = "string")), Order = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Limit = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["search_resources_input"]]))
 }
 
 .workdocs$search_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), WebUrl = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DocumentMetadata = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorId = structure(logical(0), tags = list(type = "string")), ParentFolderId = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), LatestVersionMetadata = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ContentType = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "long")), Signature = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentCreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CreatorId = structure(logical(0), tags = list(type = "string")), Thumbnail = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), Source = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), ResourceState = structure(logical(0), tags = list(type = "string")), Labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), FolderMetadata = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreatorId = structure(logical(0), tags = list(type = "string")), ParentFolderId = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ResourceState = structure(logical(0), tags = list(type = "string")), Signature = structure(logical(0), tags = list(type = "string")), Labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Size = structure(logical(0), tags = list(type = "long")), LatestVersionSize = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), CommentMetadata = structure(list(CommentId = structure(logical(0), tags = list(type = "string")), Contributor = structure(list(Id = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Surname = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), OrganizationId = structure(logical(0), tags = list(type = "string")), RootFolderId = structure(logical(0), tags = list(type = "string")), RecycleBinFolderId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), TimeZoneId = structure(logical(0), tags = list(type = "string")), Locale = structure(logical(0), tags = list(type = "string")), Storage = structure(list(StorageUtilizedInBytes = structure(logical(0), tags = list(type = "long")), StorageRule = structure(list(StorageAllocatedInBytes = structure(logical(0), tags = list(type = "long")), StorageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CommentStatus = structure(logical(0), tags = list(type = "string")), RecipientId = structure(logical(0), tags = list(type = "string")), ContributorId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DocumentVersionMetadata = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ContentType = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "long")), Signature = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentCreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ContentModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CreatorId = structure(logical(0), tags = list(type = "string")), Thumbnail = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), Source = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["search_resources_output"]]))
 }
 
 .workdocs$update_document_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), DocumentId = structure(logical(0), tags = list(location = "uri", locationName = "DocumentId", type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ParentFolderId = structure(logical(0), tags = list(type = "string")), ResourceState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["update_document_input"]]))
 }
 
 .workdocs$update_document_output <- function(...) {
@@ -471,8 +402,7 @@ NULL
 
 .workdocs$update_document_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), DocumentId = structure(logical(0), tags = list(location = "uri", locationName = "DocumentId", type = "string")), VersionId = structure(logical(0), tags = list(location = "uri", locationName = "VersionId", type = "string")), VersionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["update_document_version_input"]]))
 }
 
 .workdocs$update_document_version_output <- function(...) {
@@ -481,8 +411,7 @@ NULL
 
 .workdocs$update_folder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), FolderId = structure(logical(0), tags = list(location = "uri", locationName = "FolderId", type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ParentFolderId = structure(logical(0), tags = list(type = "string")), ResourceState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["update_folder_input"]]))
 }
 
 .workdocs$update_folder_output <- function(...) {
@@ -491,12 +420,10 @@ NULL
 
 .workdocs$update_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationToken = structure(logical(0), tags = list(location = "header", locationName = "Authentication", type = "string", sensitive = TRUE)), UserId = structure(logical(0), tags = list(location = "uri", locationName = "UserId", type = "string")), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Surname = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string")), StorageRule = structure(list(StorageAllocatedInBytes = structure(logical(0), tags = list(type = "long")), StorageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TimeZoneId = structure(logical(0), tags = list(type = "string")), Locale = structure(logical(0), tags = list(type = "string")), GrantPoweruserPrivileges = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["update_user_input"]]))
 }
 
 .workdocs$update_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(User = structure(list(Id = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Surname = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), OrganizationId = structure(logical(0), tags = list(type = "string")), RootFolderId = structure(logical(0), tags = list(type = "string")), RecycleBinFolderId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), TimeZoneId = structure(logical(0), tags = list(type = "string")), Locale = structure(logical(0), tags = list(type = "string")), Storage = structure(list(StorageUtilizedInBytes = structure(logical(0), tags = list(type = "long")), StorageRule = structure(list(StorageAllocatedInBytes = structure(logical(0), tags = list(type = "long")), StorageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workdocs_shapes[["update_user_output"]]))
 }

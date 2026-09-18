@@ -8,7 +8,8 @@ kinesis_get_records(
   ShardIterator,
   Limit = NULL,
   StreamARN = NULL,
-  StreamId = NULL
+  StreamId = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ kinesis_get_records(
 \item{StreamARN}{The ARN of the stream.}
 
 \item{StreamId}{Not Implemented. Reserved for future use.}
+
+\item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.}
 }
 \description{
 Gets data records from a Kinesis data stream's shard.

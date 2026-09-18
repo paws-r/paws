@@ -15,7 +15,8 @@ sagemaker_create_optimization_job(
   OutputConfig,
   StoppingCondition,
   Tags = NULL,
-  VpcConfig = NULL
+  VpcConfig = NULL,
+  TrainingPlanArns = NULL
 )
 }
 \arguments{
@@ -56,6 +57,12 @@ The Neural Topic Model (NTM) currently does not support saving intermediate mode
 \item{Tags}{A list of key-value pairs associated with the optimization job. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources} in the \emph{Amazon Web Services General Reference Guide}.}
 
 \item{VpcConfig}{A VPC in Amazon VPC that your optimized model has access to.}
+
+\item{TrainingPlanArns}{The Amazon Resource Name (ARN) of the training plan to use for this optimization job.
+
+When you use reserved capacity from a training plan, the optimization job runs on that reserved capacity instead of on-demand capacity. If you omit this field, the job uses on-demand capacity. You can specify at most one training plan.
+
+For more information about how to reserve GPU capacity for your optimization jobs using Amazon SageMaker Training Plans, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/reserve-capacity-with-training-plans.html}{Reserve capacity with training plans}.}
 }
 \description{
 Creates a job that optimizes a model for inference performance. To create the job, you provide the location of a source model, and you provide the settings for the optimization techniques that you want the job to apply. When the job completes successfully, SageMaker uploads the new optimized model to the output destination that you specify.

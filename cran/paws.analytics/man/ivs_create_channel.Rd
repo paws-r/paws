@@ -24,7 +24,7 @@ ivs_create_channel(
 
 \item{latencyMode}{Channel latency mode. Use \code{NORMAL} to broadcast and deliver live video up to Full HD. Use \code{LOW} for near-real-time interaction with viewers. Default: \code{LOW}.}
 
-\item{type}{Channel type, which determines the allowable resolution and bitrate. \emph{If you exceed the allowable input resolution or bitrate, the stream probably will disconnect immediately.} Default: \code{STANDARD}. For details, see \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/}{Channel Types}.}
+\item{type}{Channel type, which determines the allowable resolution and bitrate. \emph{If you exceed the allowable input resolution or bitrate, the stream probably will disconnect immediately.} Default: \code{STANDARD}. For details, see \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/channel-types.html}{Channel Types}.}
 
 \item{authorized}{Whether the channel is private (enabled for playback authorization). Default: \code{false}.}
 

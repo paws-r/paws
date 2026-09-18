@@ -5,72 +5,60 @@ NULL
 
 .rdsdataservice$batch_execute_statement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), secretArn = structure(logical(0), tags = list(type = "string")), sql = structure(logical(0), tags = list(type = "string")), database = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string")), parameterSets = structure(list(structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(list(isNull = structure(logical(0), tags = list(type = "boolean", box = TRUE)), booleanValue = structure(logical(0), tags = list(type = "boolean", box = TRUE)), longValue = structure(logical(0), tags = list(type = "long", box = TRUE)), doubleValue = structure(logical(0), tags = list(type = "double", box = TRUE)), stringValue = structure(logical(0), tags = list(type = "string")), blobValue = structure(logical(0), tags = list(type = "blob")), arrayValue = structure(list(booleanValues = structure(list(structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "list")), longValues = structure(list(structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "list")), doubleValues = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list")), stringValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), arrayValues = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure", union = TRUE)), typeHint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list")), transactionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .rdsdataservice_shapes[["batch_execute_statement_input"]]))
 }
 
 .rdsdataservice$batch_execute_statement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(updateResults = structure(list(structure(list(generatedFields = structure(list(structure(list(isNull = structure(logical(0), tags = list(type = "boolean", box = TRUE)), booleanValue = structure(logical(0), tags = list(type = "boolean", box = TRUE)), longValue = structure(logical(0), tags = list(type = "long", box = TRUE)), doubleValue = structure(logical(0), tags = list(type = "double", box = TRUE)), stringValue = structure(logical(0), tags = list(type = "string")), blobValue = structure(logical(0), tags = list(type = "blob")), arrayValue = structure(list(booleanValues = structure(list(structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "list")), longValues = structure(list(structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "list")), doubleValues = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list")), stringValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), arrayValues = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .rdsdataservice_shapes[["batch_execute_statement_output"]]))
 }
 
 .rdsdataservice$begin_transaction_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), secretArn = structure(logical(0), tags = list(type = "string")), database = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .rdsdataservice_shapes[["begin_transaction_input"]]))
 }
 
 .rdsdataservice$begin_transaction_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(transactionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .rdsdataservice_shapes[["begin_transaction_output"]]))
 }
 
 .rdsdataservice$commit_transaction_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), secretArn = structure(logical(0), tags = list(type = "string")), transactionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .rdsdataservice_shapes[["commit_transaction_input"]]))
 }
 
 .rdsdataservice$commit_transaction_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(transactionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .rdsdataservice_shapes[["commit_transaction_output"]]))
 }
 
 .rdsdataservice$execute_sql_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(dbClusterOrInstanceArn = structure(logical(0), tags = list(type = "string")), awsSecretStoreArn = structure(logical(0), tags = list(type = "string")), sqlStatements = structure(logical(0), tags = list(type = "string")), database = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .rdsdataservice_shapes[["execute_sql_input"]]))
 }
 
 .rdsdataservice$execute_sql_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sqlStatementResults = structure(list(structure(list(resultFrame = structure(list(resultSetMetadata = structure(list(columnCount = structure(logical(0), tags = list(type = "long")), columnMetadata = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "integer")), typeName = structure(logical(0), tags = list(type = "string")), label = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string")), tableName = structure(logical(0), tags = list(type = "string")), isAutoIncrement = structure(logical(0), tags = list(type = "boolean")), isSigned = structure(logical(0), tags = list(type = "boolean")), isCurrency = structure(logical(0), tags = list(type = "boolean")), isCaseSensitive = structure(logical(0), tags = list(type = "boolean")), nullable = structure(logical(0), tags = list(type = "integer")), precision = structure(logical(0), tags = list(type = "integer")), scale = structure(logical(0), tags = list(type = "integer")), arrayBaseColumnType = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), records = structure(list(structure(list(values = structure(list(structure(list(isNull = structure(logical(0), tags = list(type = "boolean", box = TRUE)), bitValue = structure(logical(0), tags = list(type = "boolean", box = TRUE)), bigIntValue = structure(logical(0), tags = list(type = "long", box = TRUE)), intValue = structure(logical(0), tags = list(type = "integer", box = TRUE)), doubleValue = structure(logical(0), tags = list(type = "double", box = TRUE)), realValue = structure(logical(0), tags = list(type = "float", box = TRUE)), stringValue = structure(logical(0), tags = list(type = "string")), blobValue = structure(logical(0), tags = list(type = "blob")), arrayValues = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), structValue = structure(list(attributes = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), numberOfRecordsUpdated = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .rdsdataservice_shapes[["execute_sql_output"]]))
 }
 
 .rdsdataservice$execute_statement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), secretArn = structure(logical(0), tags = list(type = "string")), sql = structure(logical(0), tags = list(type = "string")), database = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(list(isNull = structure(logical(0), tags = list(type = "boolean", box = TRUE)), booleanValue = structure(logical(0), tags = list(type = "boolean", box = TRUE)), longValue = structure(logical(0), tags = list(type = "long", box = TRUE)), doubleValue = structure(logical(0), tags = list(type = "double", box = TRUE)), stringValue = structure(logical(0), tags = list(type = "string")), blobValue = structure(logical(0), tags = list(type = "blob")), arrayValue = structure(list(booleanValues = structure(list(structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "list")), longValues = structure(list(structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "list")), doubleValues = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list")), stringValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), arrayValues = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure", union = TRUE)), typeHint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), transactionId = structure(logical(0), tags = list(type = "string")), includeResultMetadata = structure(logical(0), tags = list(type = "boolean")), continueAfterTimeout = structure(logical(0), tags = list(type = "boolean")), resultSetOptions = structure(list(decimalReturnType = structure(logical(0), tags = list(type = "string")), longReturnType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), formatRecordsAs = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .rdsdataservice_shapes[["execute_statement_input"]]))
 }
 
 .rdsdataservice$execute_statement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(records = structure(list(structure(list(structure(list(isNull = structure(logical(0), tags = list(type = "boolean", box = TRUE)), booleanValue = structure(logical(0), tags = list(type = "boolean", box = TRUE)), longValue = structure(logical(0), tags = list(type = "long", box = TRUE)), doubleValue = structure(logical(0), tags = list(type = "double", box = TRUE)), stringValue = structure(logical(0), tags = list(type = "string")), blobValue = structure(logical(0), tags = list(type = "blob")), arrayValue = structure(list(booleanValues = structure(list(structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "list")), longValues = structure(list(structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "list")), doubleValues = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list")), stringValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), arrayValues = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "list")), columnMetadata = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "integer")), typeName = structure(logical(0), tags = list(type = "string")), label = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string")), tableName = structure(logical(0), tags = list(type = "string")), isAutoIncrement = structure(logical(0), tags = list(type = "boolean")), isSigned = structure(logical(0), tags = list(type = "boolean")), isCurrency = structure(logical(0), tags = list(type = "boolean")), isCaseSensitive = structure(logical(0), tags = list(type = "boolean")), nullable = structure(logical(0), tags = list(type = "integer")), precision = structure(logical(0), tags = list(type = "integer")), scale = structure(logical(0), tags = list(type = "integer")), arrayBaseColumnType = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), numberOfRecordsUpdated = structure(logical(0), tags = list(type = "long")), generatedFields = structure(list(structure(list(isNull = structure(logical(0), tags = list(type = "boolean", box = TRUE)), booleanValue = structure(logical(0), tags = list(type = "boolean", box = TRUE)), longValue = structure(logical(0), tags = list(type = "long", box = TRUE)), doubleValue = structure(logical(0), tags = list(type = "double", box = TRUE)), stringValue = structure(logical(0), tags = list(type = "string")), blobValue = structure(logical(0), tags = list(type = "blob")), arrayValue = structure(list(booleanValues = structure(list(structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "list")), longValues = structure(list(structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "list")), doubleValues = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list")), stringValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), arrayValues = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), formattedRecords = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .rdsdataservice_shapes[["execute_statement_output"]]))
 }
 
 .rdsdataservice$rollback_transaction_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), secretArn = structure(logical(0), tags = list(type = "string")), transactionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .rdsdataservice_shapes[["rollback_transaction_input"]]))
 }
 
 .rdsdataservice$rollback_transaction_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(transactionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .rdsdataservice_shapes[["rollback_transaction_output"]]))
 }

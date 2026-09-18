@@ -19,7 +19,8 @@ wafv2_create_web_acl(
   TokenDomains = NULL,
   AssociationConfig = NULL,
   OnSourceDDoSProtectionConfig = NULL,
-  ApplicationConfig = NULL
+  ApplicationConfig = NULL,
+  MonetizationConfig = NULL
 )
 }
 \arguments{
@@ -74,6 +75,8 @@ For Application Load Balancer and AppSync, the limit is fixed at 8 KB (8,192 byt
 \item{OnSourceDDoSProtectionConfig}{Specifies the type of DDoS protection to apply to web request data for a web ACL. For most scenarios, it is recommended to use the default protection level, \code{ACTIVE_UNDER_DDOS}. If a web ACL is associated with multiple Application Load Balancers, the changes you make to DDoS protection in that web ACL will apply to all associated Application Load Balancers.}
 
 \item{ApplicationConfig}{Configures the ability for the WAF console to store and retrieve application attributes during the web ACL creation process. Application attributes help WAF give recommendations for protection packs.}
+
+\item{MonetizationConfig}{The monetization configuration for the web ACL. Provide this when any rule in the web ACL uses the \code{Monetize} action.}
 }
 \description{
 Creates a WebACL per the specifications provided.

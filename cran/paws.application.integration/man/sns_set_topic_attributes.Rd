@@ -14,7 +14,12 @@ sns_set_topic_attributes(TopicArn, AttributeName, AttributeValue = NULL)
 The following lists the names, descriptions, and values of the special request parameters that the \code{\link[=sns_set_topic_attributes]{set_topic_attributes}} action uses:
 \itemize{
 \item \code{DeliveryPolicy} – The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints.
-\item \code{DisplayName} – The display name to use for a topic with SMS subscriptions.
+\item \code{DisplayName} – The display name to use for a topic with SMS, \code{email}, and \code{email-json} subscriptions. For \code{email} and \code{email-json} subscriptions, the display name is used as the sender name for regular notification messages. Subscription confirmation and unsubscribe confirmation emails always use "Amazon Web Services Notifications" as the sender name.
+\item \code{MaximumMessageSize} – The maximum size, in bytes, of a message that can be published to the topic. Valid values are \code{1024} to \code{1048576} (1 MiB). The default is \code{262144} (256 KiB).
+
+A topic with a \code{MaximumMessageSize} above 256 KiB must have 100 or fewer subscriptions, and each subscription must be an Amazon SQS, Amazon Data Firehose, or Lambda subscription.
+
+You can increase or decrease this value at any time. If the topic doesn't meet these requirements when you set a value above 256 KiB, Amazon SNS returns an \code{InvalidParameter} error. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/large-message-payloads.html}{Large message payloads} in the \emph{Amazon SNS Developer Guide.}
 \item \code{Policy} – The policy that defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic.
 \item \code{TracingConfig} – Tracing mode of an Amazon SNS topic. By default \code{TracingConfig} is set to \code{PassThrough}, and the topic passes through the tracing header it receives from an Amazon SNS publisher to its subscriptions. If set to \code{Active}, Amazon SNS will vend X-Ray segment data to topic owner account if the sampled flag in the tracing header is true. This is only supported on standard topics.
 \item HTTP

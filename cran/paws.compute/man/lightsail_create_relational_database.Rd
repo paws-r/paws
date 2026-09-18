@@ -51,7 +51,7 @@ Constraints:
 \item Must begin with a letter. Subsequent characters can be letters, underscores, or digits (0- 9).
 \item Can't be a word reserved by the specified database engine.
 
-For more information about reserved words in MySQL, see the Keywords and Reserved Words articles for \href{https://dev.mysql.com/doc/refman/9.7/en/keywords.html}{MySQL 5.6}, \href{https://dev.mysql.com/doc/refman/5.7/en/keywords.html}{MySQL 5.7}, and \href{https://dev.mysql.com/doc/refman/8.0/en/keywords.html}{MySQL 8.0}.
+For more information about reserved words in MySQL, see the Keywords and Reserved Words articles for MySQL 5.6, MySQL 5.7, and MySQL 8.0.
 }
 
 \strong{PostgreSQL}
@@ -78,7 +78,7 @@ Constraints:
 \item First character must be a letter.
 \item Can't be a reserved word for the chosen database engine.
 
-For more information about reserved words in MySQL 5.6 or 5.7, see the Keywords and Reserved Words articles for \href{https://dev.mysql.com/doc/refman/9.7/en/keywords.html}{MySQL 5.6}, \href{https://dev.mysql.com/doc/refman/5.7/en/keywords.html}{MySQL 5.7}, or \href{https://dev.mysql.com/doc/refman/8.0/en/keywords.html}{MySQL 8.0}.
+For more information about reserved words in MySQL 5.6 or 5.7, see the Keywords and Reserved Words articles for MySQL 5.6, MySQL 5.7, or MySQL 8.0.
 }
 
 \strong{PostgreSQL}

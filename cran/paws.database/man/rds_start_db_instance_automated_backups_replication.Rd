@@ -24,7 +24,7 @@ rds_start_db_instance_automated_backups_replication(
 
 This setting applies only to Amazon Web Services GovCloud (US) Regions. It's ignored in other Amazon Web Services Regions.
 
-To learn how to generate a Signature Version 4 signed request, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
+To learn how to generate a Signature Version 4 signed request, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/}{Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
 
 If you are using an Amazon Web Services SDK tool or the CLI, you can specify \code{SourceRegion} (or \code{--source-region} for the CLI) instead of specifying \code{PreSignedUrl} manually. Specifying \code{SourceRegion} autogenerates a presigned URL that is a valid request for the operation that can run in the source Amazon Web Services Region.}
 

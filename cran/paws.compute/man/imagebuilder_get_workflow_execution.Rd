@@ -2,8 +2,8 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_get_workflow_execution}
 \alias{imagebuilder_get_workflow_execution}
-\title{Get the runtime information that was logged for a specific runtime
-instance of the workflow}
+\title{Retrieves runtime information for a specific runtime instance of the
+workflow}
 \usage{
 imagebuilder_get_workflow_execution(workflowExecutionId)
 }
@@ -11,7 +11,7 @@ imagebuilder_get_workflow_execution(workflowExecutionId)
 \item{workflowExecutionId}{[required] Use the unique identifier for a runtime instance of the workflow to get runtime details.}
 }
 \description{
-Get the runtime information that was logged for a specific runtime instance of the workflow.
+Retrieves runtime information for a specific runtime instance of the workflow.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_workflow_execution/} for full documentation.
 }

@@ -5,24 +5,20 @@ NULL
 
 .workmailmessageflow$get_raw_message_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(messageId = structure(logical(0), tags = list(location = "uri", locationName = "messageId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workmailmessageflow_shapes[["get_raw_message_content_input"]]))
 }
 
 .workmailmessageflow$get_raw_message_content_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(messageContent = structure(logical(0), tags = list(type = "blob", streaming = TRUE))), tags = list(type = "structure", payload = "messageContent"))
-  return(populate(args, shape))
+  return(populate(args, .workmailmessageflow_shapes[["get_raw_message_content_output"]]))
 }
 
 .workmailmessageflow$put_raw_message_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(messageId = structure(logical(0), tags = list(location = "uri", locationName = "messageId", type = "string")), content = structure(list(s3Reference = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), objectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workmailmessageflow_shapes[["put_raw_message_content_input"]]))
 }
 
 .workmailmessageflow$put_raw_message_content_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .workmailmessageflow_shapes[["put_raw_message_content_output"]]))
 }

@@ -25,7 +25,9 @@ cognitoidentityprovider_update_user_pool(
   UserPoolAddOns = NULL,
   AccountRecoverySetting = NULL,
   PoolName = NULL,
-  UserPoolTier = NULL
+  UserPoolTier = NULL,
+  KeyConfiguration = NULL,
+  IssuerConfiguration = NULL
 )
 }
 \arguments{
@@ -80,6 +82,10 @@ For more information, see \href{https://docs.aws.amazon.com/cognito/latest/devel
 \item{PoolName}{The updated name of your user pool.}
 
 \item{UserPoolTier}{The user pool \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-sign-in-feature-plans.html}{feature plan}, or tier. This parameter determines the eligibility of the user pool for features like managed login, access-token customization, and threat protection. Defaults to \code{ESSENTIALS}.}
+
+\item{KeyConfiguration}{The key configuration for the user pool. In secondary regions, this parameter must match the existing configuration and cannot be modified.}
+
+\item{IssuerConfiguration}{The issuer configuration for the user pool. In secondary regions, this parameter must match the existing configuration and cannot be modified.}
 }
 \description{
 Updates the configuration of a user pool. To avoid setting parameters to Amazon Cognito defaults, construct this API request to pass the existing configuration of your user pool, modified to include the changes that you want to make.

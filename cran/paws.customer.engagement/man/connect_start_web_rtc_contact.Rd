@@ -14,7 +14,8 @@ connect_start_web_rtc_contact(
   ParticipantDetails,
   RelatedContactId = NULL,
   References = NULL,
-  Description = NULL
+  Description = NULL,
+  SegmentAttributes = NULL
 )
 }
 \arguments{
@@ -34,13 +35,15 @@ arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
 
 \item{AllowedCapabilities}{Information about the video sharing capabilities of the participants (customer, agent).}
 
-\item{ParticipantDetails}{[required] The customer's details.}
+\item{ParticipantDetails}{[required] The details of the participant, including their display name.}
 
 \item{RelatedContactId}{The unique identifier for an Connect Customer contact. This identifier is related to the contact starting.}
 
 \item{References}{A formatted URL that is shown to an agent in the Contact Control Panel (CCP). Tasks can have the following reference types at the time of creation: \code{URL} | \code{NUMBER} | \code{STRING} | \code{DATE} | \code{EMAIL}. \code{ATTACHMENT} is not a supported reference type during task creation.}
 
 \item{Description}{A description of the task that is shown to an agent in the Contact Control Panel (CCP).}
+
+\item{SegmentAttributes}{A map of system-defined attributes for the WebRTC contact segment. Use the \code{connect:Subtype} attribute to specify the channel subtype, such as \code{connect:WebRTC}.}
 }
 \description{
 Places an inbound in-app, web, or video call to a contact, and then initiates the flow. It performs the actions in the flow that are specified (in ContactFlowId) and present in the Connect Customer instance (specified as InstanceId).

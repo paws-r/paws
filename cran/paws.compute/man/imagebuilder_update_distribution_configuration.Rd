@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_update_distribution_configuration}
 \alias{imagebuilder_update_distribution_configuration}
-\title{Updates a new distribution configuration}
+\title{Updates a distribution configuration}
 \usage{
 imagebuilder_update_distribution_configuration(
   distributionConfigurationArn,
@@ -18,10 +18,10 @@ imagebuilder_update_distribution_configuration(
 
 \item{distributions}{[required] The distributions of the distribution configuration.}
 
-\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
-Updates a new distribution configuration. Distribution configurations define and configure the outputs of your pipeline.
+Updates a distribution configuration. Distribution configurations define and configure the outputs of your pipeline.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_update_distribution_configuration/} for full documentation.
 }

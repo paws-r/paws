@@ -11,7 +11,7 @@ backupgateway_put_bandwidth_rate_limit_schedule(
 )
 }
 \arguments{
-\item{GatewayArn}{[required] The Amazon Resource Name (ARN) of the gateway. Use the \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BGW_ListGateways.html}{\code{list_gateways}} operation to return a list of gateways for your account and Amazon Web Services Region.}
+\item{GatewayArn}{[required] The Amazon Resource Name (ARN) of the gateway. Use the \href{https://docs.aws.amazon.com/aws-backup/latest/APIReference/API_BGW_ListGateways.html}{\code{list_gateways}} operation to return a list of gateways for your account and Amazon Web Services Region.}
 
 \item{BandwidthRateLimitIntervals}{[required] An array containing bandwidth rate limit schedule intervals for a gateway. When no bandwidth rate limit intervals have been scheduled, the array is empty.}
 }

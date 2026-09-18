@@ -9,7 +9,8 @@ support_describe_create_case_options(
   issueType,
   serviceCode,
   language,
-  categoryCode
+  categoryCode,
+  dryRun = NULL
 )
 }
 \arguments{
@@ -17,9 +18,11 @@ support_describe_create_case_options(
 
 \item{serviceCode}{[required] The code for the Amazon Web Services service. You can use the \code{\link[=support_describe_services]{describe_services}} operation to get the possible \code{serviceCode} values.}
 
-\item{language}{[required] The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the \code{language} parameter if you want support in that language.}
+\item{language}{[required] The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") , Chinese ("zh"), Spanish ("es"), Portuguese ("pt"), French ("fr"), Korean (“ko”), and Turkish ("tr"). You must specify the ISO 639-1 code for the \code{language} parameter if you want support in that language.}
 
 \item{categoryCode}{[required] The category of problem for the support case. You also use the \code{\link[=support_describe_services]{describe_services}} operation to get the category code for a service. Each Amazon Web Services service defines its own set of category codes.}
+
+\item{dryRun}{Specifies whether to validate the request without actually returning case option data. When set to \code{true}, the request is validated but no options are returned, and the operation returns a \code{DryRunOperationException}. When omitted or set to \code{false}, the request runs normally.}
 }
 \description{
 Returns a list of CreateCaseOption types along with the corresponding supported hours and language availability. You can specify the \code{language} \code{categoryCode}, \code{issueType} and \code{serviceCode} used to retrieve the CreateCaseOptions.

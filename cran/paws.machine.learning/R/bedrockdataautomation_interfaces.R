@@ -5,324 +5,270 @@ NULL
 
 .bedrockdataautomation$copy_blueprint_stage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(blueprintArn = structure(logical(0), tags = list(location = "uri", locationName = "blueprintArn", type = "string")), sourceStage = structure(logical(0), tags = list(type = "string")), targetStage = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["copy_blueprint_stage_input"]]))
 }
 
 .bedrockdataautomation$copy_blueprint_stage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["copy_blueprint_stage_output"]]))
 }
 
 .bedrockdataautomation$create_blueprint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(blueprintName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string")), blueprintStage = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["create_blueprint_input"]]))
 }
 
 .bedrockdataautomation$create_blueprint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(blueprint = structure(list(blueprintArn = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), blueprintName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), blueprintVersion = structure(logical(0), tags = list(type = "string")), blueprintStage = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), optimizationSamples = structure(list(structure(list(assetS3Object = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), groundTruthS3Object = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), optimizationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["create_blueprint_output"]]))
 }
 
 .bedrockdataautomation$create_blueprint_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(blueprintArn = structure(logical(0), tags = list(location = "uri", locationName = "blueprintArn", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["create_blueprint_version_input"]]))
 }
 
 .bedrockdataautomation$create_blueprint_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(blueprint = structure(list(blueprintArn = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), blueprintName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), blueprintVersion = structure(logical(0), tags = list(type = "string")), blueprintStage = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), optimizationSamples = structure(list(structure(list(assetS3Object = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), groundTruthS3Object = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), optimizationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["create_blueprint_version_output"]]))
 }
 
 .bedrockdataautomation$create_data_automation_library_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(libraryName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), libraryDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["create_data_automation_library_input"]]))
 }
 
 .bedrockdataautomation$create_data_automation_library_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(libraryArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["create_data_automation_library_output"]]))
 }
 
 .bedrockdataautomation$create_data_automation_project_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(projectName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), projectDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), projectStage = structure(logical(0), tags = list(type = "string")), projectType = structure(logical(0), tags = list(type = "string")), standardOutputConfiguration = structure(list(document = structure(list(extraction = structure(list(granularity = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), boundingBox = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), generativeField = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), outputFormat = structure(list(textFormat = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), additionalFileFormat = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), image = structure(list(extraction = structure(list(category = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), boundingBox = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), generativeField = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), video = structure(list(extraction = structure(list(category = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), boundingBox = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), generativeField = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), audio = structure(list(extraction = structure(list(category = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), typeConfiguration = structure(list(transcript = structure(list(speakerLabeling = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), channelLabeling = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), generativeField = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), customOutputConfiguration = structure(list(blueprints = structure(list(structure(list(blueprintArn = structure(logical(0), tags = list(type = "string")), blueprintVersion = structure(logical(0), tags = list(type = "string")), blueprintStage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), document = structure(list(fallbackBlueprints = structure(list(structure(list(blueprintArn = structure(logical(0), tags = list(type = "string")), blueprintVersion = structure(logical(0), tags = list(type = "string")), blueprintStage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), overrideConfiguration = structure(list(document = structure(list(splitter = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), modalityProcessing = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sensitiveDataConfiguration = structure(list(detectionMode = structure(logical(0), tags = list(type = "string")), detectionScope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), piiEntitiesConfiguration = structure(list(piiEntityTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redactionMaskMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), image = structure(list(modalityProcessing = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sensitiveDataConfiguration = structure(list(detectionMode = structure(logical(0), tags = list(type = "string")), detectionScope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), piiEntitiesConfiguration = structure(list(piiEntityTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redactionMaskMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), video = structure(list(modalityProcessing = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sensitiveDataConfiguration = structure(list(detectionMode = structure(logical(0), tags = list(type = "string")), detectionScope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), piiEntitiesConfiguration = structure(list(piiEntityTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redactionMaskMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), audio = structure(list(modalityProcessing = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), languageConfiguration = structure(list(inputLanguages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), generativeOutputLanguage = structure(logical(0), tags = list(type = "string")), identifyMultipleLanguages = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), sensitiveDataConfiguration = structure(list(detectionMode = structure(logical(0), tags = list(type = "string")), detectionScope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), piiEntitiesConfiguration = structure(list(piiEntityTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redactionMaskMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), modalityRouting = structure(list(jpeg = structure(logical(0), tags = list(type = "string")), png = structure(logical(0), tags = list(type = "string")), mp4 = structure(logical(0), tags = list(type = "string")), mov = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), dataAutomationLibraryConfiguration = structure(list(libraries = structure(list(structure(list(libraryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["create_data_automation_project_input"]]))
 }
 
 .bedrockdataautomation$create_data_automation_project_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(projectArn = structure(logical(0), tags = list(type = "string")), projectStage = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["create_data_automation_project_output"]]))
 }
 
 .bedrockdataautomation$delete_blueprint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(blueprintArn = structure(logical(0), tags = list(location = "uri", locationName = "blueprintArn", type = "string")), blueprintVersion = structure(logical(0), tags = list(location = "querystring", locationName = "blueprintVersion", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["delete_blueprint_input"]]))
 }
 
 .bedrockdataautomation$delete_blueprint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["delete_blueprint_output"]]))
 }
 
 .bedrockdataautomation$delete_data_automation_library_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(libraryArn = structure(logical(0), tags = list(location = "uri", locationName = "libraryArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["delete_data_automation_library_input"]]))
 }
 
 .bedrockdataautomation$delete_data_automation_library_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(libraryArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["delete_data_automation_library_output"]]))
 }
 
 .bedrockdataautomation$delete_data_automation_project_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(projectArn = structure(logical(0), tags = list(location = "uri", locationName = "projectArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["delete_data_automation_project_input"]]))
 }
 
 .bedrockdataautomation$delete_data_automation_project_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(projectArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["delete_data_automation_project_output"]]))
 }
 
 .bedrockdataautomation$get_blueprint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(blueprintArn = structure(logical(0), tags = list(location = "uri", locationName = "blueprintArn", type = "string")), blueprintVersion = structure(logical(0), tags = list(type = "string")), blueprintStage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["get_blueprint_input"]]))
 }
 
 .bedrockdataautomation$get_blueprint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(blueprint = structure(list(blueprintArn = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), blueprintName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), blueprintVersion = structure(logical(0), tags = list(type = "string")), blueprintStage = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), optimizationSamples = structure(list(structure(list(assetS3Object = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), groundTruthS3Object = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), optimizationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["get_blueprint_output"]]))
 }
 
 .bedrockdataautomation$get_blueprint_optimization_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(invocationArn = structure(logical(0), tags = list(location = "uri", locationName = "invocationArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["get_blueprint_optimization_status_input"]]))
 }
 
 .bedrockdataautomation$get_blueprint_optimization_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(status = structure(logical(0), tags = list(type = "string")), errorType = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), outputConfiguration = structure(list(s3Object = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["get_blueprint_optimization_status_output"]]))
 }
 
 .bedrockdataautomation$get_data_automation_library_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(libraryArn = structure(logical(0), tags = list(location = "uri", locationName = "libraryArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["get_data_automation_library_input"]]))
 }
 
 .bedrockdataautomation$get_data_automation_library_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(library = structure(list(libraryArn = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), libraryName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), libraryDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), entityTypes = structure(list(structure(list(entityType = structure(logical(0), tags = list(type = "string")), entityMetadata = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["get_data_automation_library_output"]]))
 }
 
 .bedrockdataautomation$get_data_automation_library_entity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(libraryArn = structure(logical(0), tags = list(location = "uri", locationName = "libraryArn", type = "string")), entityType = structure(logical(0), tags = list(location = "uri", locationName = "entityType", type = "string")), entityId = structure(logical(0), tags = list(location = "uri", locationName = "entityId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["get_data_automation_library_entity_input"]]))
 }
 
 .bedrockdataautomation$get_data_automation_library_entity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(entity = structure(list(vocabulary = structure(list(entityId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), language = structure(logical(0), tags = list(type = "string")), phrases = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayAsText = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["get_data_automation_library_entity_output"]]))
 }
 
 .bedrockdataautomation$get_data_automation_library_ingestion_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(libraryArn = structure(logical(0), tags = list(location = "uri", locationName = "libraryArn", type = "string")), jobArn = structure(logical(0), tags = list(location = "uri", locationName = "jobArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["get_data_automation_library_ingestion_job_input"]]))
 }
 
 .bedrockdataautomation$get_data_automation_library_ingestion_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(job = structure(list(jobArn = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), entityType = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), jobStatus = structure(logical(0), tags = list(type = "string")), outputConfiguration = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), completionTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), errorMessage = structure(logical(0), tags = list(type = "string")), errorType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["get_data_automation_library_ingestion_job_output"]]))
 }
 
 .bedrockdataautomation$get_data_automation_project_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(projectArn = structure(logical(0), tags = list(location = "uri", locationName = "projectArn", type = "string")), projectStage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["get_data_automation_project_input"]]))
 }
 
 .bedrockdataautomation$get_data_automation_project_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(project = structure(list(projectArn = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), projectName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), projectStage = structure(logical(0), tags = list(type = "string")), projectType = structure(logical(0), tags = list(type = "string")), projectDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), standardOutputConfiguration = structure(list(document = structure(list(extraction = structure(list(granularity = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), boundingBox = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), generativeField = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), outputFormat = structure(list(textFormat = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), additionalFileFormat = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), image = structure(list(extraction = structure(list(category = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), boundingBox = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), generativeField = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), video = structure(list(extraction = structure(list(category = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), boundingBox = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), generativeField = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), audio = structure(list(extraction = structure(list(category = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), typeConfiguration = structure(list(transcript = structure(list(speakerLabeling = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), channelLabeling = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), generativeField = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), customOutputConfiguration = structure(list(blueprints = structure(list(structure(list(blueprintArn = structure(logical(0), tags = list(type = "string")), blueprintVersion = structure(logical(0), tags = list(type = "string")), blueprintStage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), document = structure(list(fallbackBlueprints = structure(list(structure(list(blueprintArn = structure(logical(0), tags = list(type = "string")), blueprintVersion = structure(logical(0), tags = list(type = "string")), blueprintStage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), overrideConfiguration = structure(list(document = structure(list(splitter = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), modalityProcessing = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sensitiveDataConfiguration = structure(list(detectionMode = structure(logical(0), tags = list(type = "string")), detectionScope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), piiEntitiesConfiguration = structure(list(piiEntityTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redactionMaskMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), image = structure(list(modalityProcessing = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sensitiveDataConfiguration = structure(list(detectionMode = structure(logical(0), tags = list(type = "string")), detectionScope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), piiEntitiesConfiguration = structure(list(piiEntityTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redactionMaskMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), video = structure(list(modalityProcessing = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sensitiveDataConfiguration = structure(list(detectionMode = structure(logical(0), tags = list(type = "string")), detectionScope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), piiEntitiesConfiguration = structure(list(piiEntityTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redactionMaskMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), audio = structure(list(modalityProcessing = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), languageConfiguration = structure(list(inputLanguages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), generativeOutputLanguage = structure(logical(0), tags = list(type = "string")), identifyMultipleLanguages = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), sensitiveDataConfiguration = structure(list(detectionMode = structure(logical(0), tags = list(type = "string")), detectionScope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), piiEntitiesConfiguration = structure(list(piiEntityTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redactionMaskMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), modalityRouting = structure(list(jpeg = structure(logical(0), tags = list(type = "string")), png = structure(logical(0), tags = list(type = "string")), mp4 = structure(logical(0), tags = list(type = "string")), mov = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), dataAutomationLibraryConfiguration = structure(list(libraries = structure(list(structure(list(libraryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["get_data_automation_project_output"]]))
 }
 
 .bedrockdataautomation$invoke_blueprint_optimization_async_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(blueprint = structure(list(blueprintArn = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), samples = structure(list(structure(list(assetS3Object = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), groundTruthS3Object = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), outputConfiguration = structure(list(s3Object = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), dataAutomationProfileArn = structure(logical(0), tags = list(type = "string")), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["invoke_blueprint_optimization_async_input"]]))
 }
 
 .bedrockdataautomation$invoke_blueprint_optimization_async_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(invocationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["invoke_blueprint_optimization_async_output"]]))
 }
 
 .bedrockdataautomation$invoke_data_automation_library_ingestion_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(libraryArn = structure(logical(0), tags = list(location = "uri", locationName = "libraryArn", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), inputConfiguration = structure(list(s3Object = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), inlinePayload = structure(list(upsertEntitiesInfo = structure(list(structure(list(vocabulary = structure(list(entityId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), language = structure(logical(0), tags = list(type = "string")), phrases = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayAsText = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), deleteEntitiesInfo = structure(list(entityIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), entityType = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), outputConfiguration = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), notificationConfiguration = structure(list(eventBridgeConfiguration = structure(list(eventBridgeEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["invoke_data_automation_library_ingestion_job_input"]]))
 }
 
 .bedrockdataautomation$invoke_data_automation_library_ingestion_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["invoke_data_automation_library_ingestion_job_output"]]))
 }
 
 .bedrockdataautomation$list_blueprints_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(blueprintArn = structure(logical(0), tags = list(type = "string")), resourceOwner = structure(logical(0), tags = list(type = "string")), blueprintStageFilter = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), projectFilter = structure(list(projectArn = structure(logical(0), tags = list(type = "string")), projectStage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["list_blueprints_input"]]))
 }
 
 .bedrockdataautomation$list_blueprints_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(blueprints = structure(list(structure(list(blueprintArn = structure(logical(0), tags = list(type = "string")), blueprintVersion = structure(logical(0), tags = list(type = "string")), blueprintStage = structure(logical(0), tags = list(type = "string")), blueprintName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["list_blueprints_output"]]))
 }
 
 .bedrockdataautomation$list_data_automation_libraries_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), projectFilter = structure(list(projectArn = structure(logical(0), tags = list(type = "string")), projectStage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["list_data_automation_libraries_input"]]))
 }
 
 .bedrockdataautomation$list_data_automation_libraries_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(libraries = structure(list(structure(list(libraryArn = structure(logical(0), tags = list(type = "string")), libraryName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["list_data_automation_libraries_output"]]))
 }
 
 .bedrockdataautomation$list_data_automation_library_entities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(libraryArn = structure(logical(0), tags = list(location = "uri", locationName = "libraryArn", type = "string")), entityType = structure(logical(0), tags = list(location = "uri", locationName = "entityType", type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["list_data_automation_library_entities_input"]]))
 }
 
 .bedrockdataautomation$list_data_automation_library_entities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(entities = structure(list(structure(list(vocabulary = structure(list(entityId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), language = structure(logical(0), tags = list(type = "string")), numOfPhrases = structure(logical(0), tags = list(type = "integer", box = TRUE)), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["list_data_automation_library_entities_output"]]))
 }
 
 .bedrockdataautomation$list_data_automation_library_ingestion_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(libraryArn = structure(logical(0), tags = list(location = "uri", locationName = "libraryArn", type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["list_data_automation_library_ingestion_jobs_input"]]))
 }
 
 .bedrockdataautomation$list_data_automation_library_ingestion_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobs = structure(list(structure(list(jobArn = structure(logical(0), tags = list(type = "string")), jobStatus = structure(logical(0), tags = list(type = "string")), entityType = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), completionTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["list_data_automation_library_ingestion_jobs_output"]]))
 }
 
 .bedrockdataautomation$list_data_automation_projects_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), projectStageFilter = structure(logical(0), tags = list(type = "string")), blueprintFilter = structure(list(blueprintArn = structure(logical(0), tags = list(type = "string")), blueprintVersion = structure(logical(0), tags = list(type = "string")), blueprintStage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceOwner = structure(logical(0), tags = list(type = "string")), libraryFilter = structure(list(libraryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["list_data_automation_projects_input"]]))
 }
 
 .bedrockdataautomation$list_data_automation_projects_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(projects = structure(list(structure(list(projectArn = structure(logical(0), tags = list(type = "string")), projectStage = structure(logical(0), tags = list(type = "string")), projectType = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["list_data_automation_projects_output"]]))
 }
 
 .bedrockdataautomation$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["list_tags_for_resource_input"]]))
 }
 
 .bedrockdataautomation$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["list_tags_for_resource_output"]]))
 }
 
 .bedrockdataautomation$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceARN = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["tag_resource_input"]]))
 }
 
 .bedrockdataautomation$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["tag_resource_output"]]))
 }
 
 .bedrockdataautomation$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceARN = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["untag_resource_input"]]))
 }
 
 .bedrockdataautomation$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["untag_resource_output"]]))
 }
 
 .bedrockdataautomation$update_blueprint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(blueprintArn = structure(logical(0), tags = list(location = "uri", locationName = "blueprintArn", type = "string")), schema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), blueprintStage = structure(logical(0), tags = list(type = "string")), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["update_blueprint_input"]]))
 }
 
 .bedrockdataautomation$update_blueprint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(blueprint = structure(list(blueprintArn = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), blueprintName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), blueprintVersion = structure(logical(0), tags = list(type = "string")), blueprintStage = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), optimizationSamples = structure(list(structure(list(assetS3Object = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), groundTruthS3Object = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), optimizationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["update_blueprint_output"]]))
 }
 
 .bedrockdataautomation$update_data_automation_library_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(libraryArn = structure(logical(0), tags = list(location = "uri", locationName = "libraryArn", type = "string")), libraryDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["update_data_automation_library_input"]]))
 }
 
 .bedrockdataautomation$update_data_automation_library_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(libraryArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["update_data_automation_library_output"]]))
 }
 
 .bedrockdataautomation$update_data_automation_project_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(projectArn = structure(logical(0), tags = list(location = "uri", locationName = "projectArn", type = "string")), projectStage = structure(logical(0), tags = list(type = "string")), projectDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), standardOutputConfiguration = structure(list(document = structure(list(extraction = structure(list(granularity = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), boundingBox = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), generativeField = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), outputFormat = structure(list(textFormat = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), additionalFileFormat = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), image = structure(list(extraction = structure(list(category = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), boundingBox = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), generativeField = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), video = structure(list(extraction = structure(list(category = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), boundingBox = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), generativeField = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), audio = structure(list(extraction = structure(list(category = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), typeConfiguration = structure(list(transcript = structure(list(speakerLabeling = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), channelLabeling = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), generativeField = structure(list(state = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), customOutputConfiguration = structure(list(blueprints = structure(list(structure(list(blueprintArn = structure(logical(0), tags = list(type = "string")), blueprintVersion = structure(logical(0), tags = list(type = "string")), blueprintStage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), document = structure(list(fallbackBlueprints = structure(list(structure(list(blueprintArn = structure(logical(0), tags = list(type = "string")), blueprintVersion = structure(logical(0), tags = list(type = "string")), blueprintStage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), overrideConfiguration = structure(list(document = structure(list(splitter = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), modalityProcessing = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sensitiveDataConfiguration = structure(list(detectionMode = structure(logical(0), tags = list(type = "string")), detectionScope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), piiEntitiesConfiguration = structure(list(piiEntityTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redactionMaskMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), image = structure(list(modalityProcessing = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sensitiveDataConfiguration = structure(list(detectionMode = structure(logical(0), tags = list(type = "string")), detectionScope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), piiEntitiesConfiguration = structure(list(piiEntityTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redactionMaskMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), video = structure(list(modalityProcessing = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sensitiveDataConfiguration = structure(list(detectionMode = structure(logical(0), tags = list(type = "string")), detectionScope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), piiEntitiesConfiguration = structure(list(piiEntityTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redactionMaskMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), audio = structure(list(modalityProcessing = structure(list(state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), languageConfiguration = structure(list(inputLanguages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), generativeOutputLanguage = structure(logical(0), tags = list(type = "string")), identifyMultipleLanguages = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), sensitiveDataConfiguration = structure(list(detectionMode = structure(logical(0), tags = list(type = "string")), detectionScope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), piiEntitiesConfiguration = structure(list(piiEntityTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redactionMaskMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), modalityRouting = structure(list(jpeg = structure(logical(0), tags = list(type = "string")), png = structure(logical(0), tags = list(type = "string")), mp4 = structure(logical(0), tags = list(type = "string")), mov = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), dataAutomationLibraryConfiguration = structure(list(libraries = structure(list(structure(list(libraryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["update_data_automation_project_input"]]))
 }
 
 .bedrockdataautomation$update_data_automation_project_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(projectArn = structure(logical(0), tags = list(type = "string")), projectStage = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrockdataautomation_shapes[["update_data_automation_project_output"]]))
 }

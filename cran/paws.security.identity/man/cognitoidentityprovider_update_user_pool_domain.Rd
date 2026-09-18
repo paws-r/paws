@@ -9,7 +9,8 @@ cognitoidentityprovider_update_user_pool_domain(
   Domain,
   UserPoolId,
   ManagedLoginVersion = NULL,
-  CustomDomainConfig = NULL
+  CustomDomainConfig = NULL,
+  Routing = NULL
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ cognitoidentityprovider_update_user_pool_domain(
 \item{CustomDomainConfig}{The configuration for a custom domain that hosts managed login for your application. In an \code{\link[=cognitoidentityprovider_update_user_pool_domain]{update_user_pool_domain}} request, this parameter specifies an SSL certificate for the managed login hosted webserver. The certificate must be an ACM ARN in \code{us-east-1}.
 
 When you create a custom domain, the passkey RP ID defaults to the custom domain. If you had a prefix domain active, this will cause passkey integration for your prefix domain to stop working due to a mismatch in RP ID. To keep the prefix domain passkey integration working, you can explicitly set RP ID to the prefix domain.}
+
+\item{Routing}{The routing configuration for the user pool domain. Specifies failover settings for multi-region deployments.}
 }
 \description{
 A user pool domain hosts managed login, an authorization server and web server for authentication in your application. This operation updates the branding version for user pool domains between \code{1} for hosted UI (classic) and \code{2} for managed login. It also updates the SSL certificate for user pool custom domains.

@@ -11,7 +11,8 @@ batch_update_compute_environment(
   computeResources = NULL,
   serviceRole = NULL,
   updatePolicy = NULL,
-  context = NULL
+  context = NULL,
+  ecsSettings = NULL
 )
 }
 \arguments{
@@ -42,6 +43,8 @@ Depending on how you created your Batch service role, its ARN might contain the 
 \item{updatePolicy}{Specifies the updated infrastructure update policy for the compute environment. For more information about infrastructure updates, see \href{https://docs.aws.amazon.com/batch/latest/userguide/updating-compute-environments.html}{Updating compute environments} in the \emph{Batch User Guide}.}
 
 \item{context}{Reserved.}
+
+\item{ecsSettings}{The Amazon ECS settings for the compute environment. These settings control CloudWatch Container Insights collection for the compute environment.}
 }
 \description{
 Updates an Batch compute environment.

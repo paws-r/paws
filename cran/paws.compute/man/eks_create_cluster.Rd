@@ -23,7 +23,10 @@ eks_create_cluster(
   computeConfig = NULL,
   storageConfig = NULL,
   deletionProtection = NULL,
-  controlPlaneScalingConfig = NULL
+  controlPlaneScalingConfig = NULL,
+  kubeApiServerConfig = NULL,
+  kubeSchedulerConfig = NULL,
+  kubeControllerManagerConfig = NULL
 )
 }
 \arguments{
@@ -76,6 +79,12 @@ You can start a zonal shift for an Amazon EKS cluster, or you can allow Amazon W
 \item{deletionProtection}{Indicates whether to enable deletion protection for the cluster. When enabled, the cluster cannot be deleted unless deletion protection is first disabled. This helps prevent accidental cluster deletion. Default value is \code{false}.}
 
 \item{controlPlaneScalingConfig}{The control plane scaling tier configuration. For more information, see EKS Provisioned Control Plane in the Amazon EKS User Guide.}
+
+\item{kubeApiServerConfig}{The Kubernetes API server configuration for the new cluster.}
+
+\item{kubeSchedulerConfig}{The Kubernetes scheduler configuration for the new cluster.}
+
+\item{kubeControllerManagerConfig}{The Kubernetes controller manager configuration for the new cluster.}
 }
 \description{
 Creates an Amazon EKS control plane.

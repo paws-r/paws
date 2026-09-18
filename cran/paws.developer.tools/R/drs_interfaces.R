@@ -5,246 +5,266 @@ NULL
 
 .drs$associate_source_network_stack_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string")), cfnStackName = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["associate_source_network_stack_input"]]))
 }
 
 .drs$associate_source_network_stack_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(job = structure(list(jobID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), initiatedBy = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "string")), endDateTime = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), participatingServers = structure(list(structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), recoveryInstanceID = structure(logical(0), tags = list(type = "string")), launchStatus = structure(logical(0), tags = list(type = "string")), launchActionsStatus = structure(list(ssmAgentDiscoveryDatetime = structure(logical(0), tags = list(type = "string")), runs = structure(list(structure(list(action = structure(list(actionId = structure(logical(0), tags = list(type = "string")), actionCode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), active = structure(logical(0), tags = list(type = "boolean", box = TRUE)), order = structure(logical(0), tags = list(type = "integer", box = TRUE)), actionVersion = structure(logical(0), tags = list(type = "string")), optional = structure(logical(0), tags = list(type = "boolean", box = TRUE)), parameters = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), description = structure(logical(0), tags = list(type = "string")), category = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), runId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), participatingResources = structure(list(structure(list(participatingResourceID = structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), launchStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["associate_source_network_stack_output"]]))
+}
+
+.drs$cancel_recovery_plan_execution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["cancel_recovery_plan_execution_input"]]))
+}
+
+.drs$cancel_recovery_plan_execution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["cancel_recovery_plan_execution_output"]]))
 }
 
 .drs$create_extended_source_server_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["create_extended_source_server_input"]]))
 }
 
 .drs$create_extended_source_server_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServer = structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), recoveryInstanceId = structure(logical(0), tags = list(type = "string")), lastLaunchResult = structure(logical(0), tags = list(type = "string")), dataReplicationInfo = structure(list(lagDuration = structure(logical(0), tags = list(type = "string")), etaDateTime = structure(logical(0), tags = list(type = "string")), replicatedDisks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), totalStorageBytes = structure(logical(0), tags = list(type = "long")), replicatedStorageBytes = structure(logical(0), tags = list(type = "long")), rescannedStorageBytes = structure(logical(0), tags = list(type = "long")), backloggedStorageBytes = structure(logical(0), tags = list(type = "long")), volumeStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), dataReplicationState = structure(logical(0), tags = list(type = "string")), dataReplicationInitiation = structure(list(startDateTime = structure(logical(0), tags = list(type = "string")), nextAttemptDateTime = structure(logical(0), tags = list(type = "string")), steps = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), dataReplicationError = structure(list(error = structure(logical(0), tags = list(type = "string")), rawError = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), stagingAvailabilityZone = structure(logical(0), tags = list(type = "string")), stagingOutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lifeCycle = structure(list(addedToServiceDateTime = structure(logical(0), tags = list(type = "string")), firstByteDateTime = structure(logical(0), tags = list(type = "string")), elapsedReplicationDuration = structure(logical(0), tags = list(type = "string")), lastSeenByServiceDateTime = structure(logical(0), tags = list(type = "string")), lastLaunch = structure(list(initiated = structure(list(apiCallDateTime = structure(logical(0), tags = list(type = "string")), jobID = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), sourceProperties = structure(list(lastUpdatedDateTime = structure(logical(0), tags = list(type = "string")), recommendedInstanceType = structure(logical(0), tags = list(type = "string")), identificationHints = structure(list(fqdn = structure(logical(0), tags = list(type = "string")), hostname = structure(logical(0), tags = list(type = "string")), vmWareUuid = structure(logical(0), tags = list(type = "string")), awsInstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), networkInterfaces = structure(list(structure(list(macAddress = structure(logical(0), tags = list(type = "string")), ips = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), isPrimary = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), disks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), bytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), cpus = structure(list(structure(list(cores = structure(logical(0), tags = list(type = "long")), modelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ramBytes = structure(logical(0), tags = list(type = "long")), os = structure(list(fullString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), supportsNitroInstances = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), stagingArea = structure(list(status = structure(logical(0), tags = list(type = "string")), stagingAccountID = structure(logical(0), tags = list(type = "string")), stagingSourceServerArn = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceCloudProperties = structure(list(originAccountID = structure(logical(0), tags = list(type = "string")), originRegion = structure(logical(0), tags = list(type = "string")), originAvailabilityZone = structure(logical(0), tags = list(type = "string")), sourceOutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), replicationDirection = structure(logical(0), tags = list(type = "string")), reversedDirectionSourceServerArn = structure(logical(0), tags = list(type = "string")), sourceNetworkID = structure(logical(0), tags = list(type = "string")), agentVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["create_extended_source_server_output"]]))
 }
 
 .drs$create_launch_configuration_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), exportBucketArn = structure(logical(0), tags = list(type = "string")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoSourceInstance = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["create_launch_configuration_template_input"]]))
 }
 
 .drs$create_launch_configuration_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(launchConfigurationTemplate = structure(list(launchConfigurationTemplateID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), exportBucketArn = structure(logical(0), tags = list(type = "string")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoSourceInstance = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["create_launch_configuration_template_output"]]))
+}
+
+.drs$create_recovery_plan_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["create_recovery_plan_input"]]))
+}
+
+.drs$create_recovery_plan_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["create_recovery_plan_output"]]))
+}
+
+.drs$create_recovery_plan_step_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["create_recovery_plan_step_input"]]))
+}
+
+.drs$create_recovery_plan_step_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["create_recovery_plan_step_output"]]))
 }
 
 .drs$create_replication_configuration_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stagingAreaSubnetId = structure(logical(0), tags = list(type = "string")), associateDefaultSecurityGroup = structure(logical(0), tags = list(type = "boolean", box = TRUE)), replicationServersSecurityGroupsIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), replicationServerInstanceType = structure(logical(0), tags = list(type = "string")), useDedicatedReplicationServer = structure(logical(0), tags = list(type = "boolean", box = TRUE)), defaultLargeStagingDiskType = structure(logical(0), tags = list(type = "string")), ebsEncryption = structure(logical(0), tags = list(type = "string")), ebsEncryptionKeyArn = structure(logical(0), tags = list(type = "string")), bandwidthThrottling = structure(logical(0), tags = list(type = "long")), dataPlaneRouting = structure(logical(0), tags = list(type = "string")), createPublicIP = structure(logical(0), tags = list(type = "boolean", box = TRUE)), stagingAreaTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), pitPolicy = structure(list(structure(list(ruleID = structure(logical(0), tags = list(type = "long")), units = structure(logical(0), tags = list(type = "string")), interval = structure(logical(0), tags = list(type = "integer", box = TRUE)), retentionDuration = structure(logical(0), tags = list(type = "integer", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), autoReplicateNewDisks = structure(logical(0), tags = list(type = "boolean", box = TRUE)), internetProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["create_replication_configuration_template_input"]]))
 }
 
 .drs$create_replication_configuration_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(replicationConfigurationTemplateID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), stagingAreaSubnetId = structure(logical(0), tags = list(type = "string")), associateDefaultSecurityGroup = structure(logical(0), tags = list(type = "boolean", box = TRUE)), replicationServersSecurityGroupsIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), replicationServerInstanceType = structure(logical(0), tags = list(type = "string")), useDedicatedReplicationServer = structure(logical(0), tags = list(type = "boolean", box = TRUE)), defaultLargeStagingDiskType = structure(logical(0), tags = list(type = "string")), ebsEncryption = structure(logical(0), tags = list(type = "string")), ebsEncryptionKeyArn = structure(logical(0), tags = list(type = "string")), bandwidthThrottling = structure(logical(0), tags = list(type = "long")), dataPlaneRouting = structure(logical(0), tags = list(type = "string")), createPublicIP = structure(logical(0), tags = list(type = "boolean", box = TRUE)), stagingAreaTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), pitPolicy = structure(list(structure(list(ruleID = structure(logical(0), tags = list(type = "long")), units = structure(logical(0), tags = list(type = "string")), interval = structure(logical(0), tags = list(type = "integer", box = TRUE)), retentionDuration = structure(logical(0), tags = list(type = "integer", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), autoReplicateNewDisks = structure(logical(0), tags = list(type = "boolean", box = TRUE)), internetProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["create_replication_configuration_template_output"]]))
 }
 
 .drs$create_source_network_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(vpcID = structure(logical(0), tags = list(type = "string")), originAccountID = structure(logical(0), tags = list(type = "string")), originRegion = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["create_source_network_input"]]))
 }
 
 .drs$create_source_network_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["create_source_network_output"]]))
 }
 
 .drs$delete_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["delete_job_input"]]))
 }
 
 .drs$delete_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["delete_job_output"]]))
 }
 
 .drs$delete_launch_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceId = structure(logical(0), tags = list(type = "string")), actionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["delete_launch_action_input"]]))
 }
 
 .drs$delete_launch_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["delete_launch_action_output"]]))
 }
 
 .drs$delete_launch_configuration_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(launchConfigurationTemplateID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["delete_launch_configuration_template_input"]]))
 }
 
 .drs$delete_launch_configuration_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["delete_launch_configuration_template_output"]]))
 }
 
 .drs$delete_recovery_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recoveryInstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["delete_recovery_instance_input"]]))
 }
 
 .drs$delete_recovery_instance_output <- function(...) {
   list()
 }
 
+.drs$delete_recovery_plan_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["delete_recovery_plan_input"]]))
+}
+
+.drs$delete_recovery_plan_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["delete_recovery_plan_output"]]))
+}
+
+.drs$delete_recovery_plan_execution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["delete_recovery_plan_execution_input"]]))
+}
+
+.drs$delete_recovery_plan_execution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["delete_recovery_plan_execution_output"]]))
+}
+
+.drs$delete_recovery_plan_step_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["delete_recovery_plan_step_input"]]))
+}
+
+.drs$delete_recovery_plan_step_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["delete_recovery_plan_step_output"]]))
+}
+
 .drs$delete_replication_configuration_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(replicationConfigurationTemplateID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["delete_replication_configuration_template_input"]]))
 }
 
 .drs$delete_replication_configuration_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["delete_replication_configuration_template_output"]]))
 }
 
 .drs$delete_source_network_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["delete_source_network_input"]]))
 }
 
 .drs$delete_source_network_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["delete_source_network_output"]]))
 }
 
 .drs$delete_source_server_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["delete_source_server_input"]]))
 }
 
 .drs$delete_source_server_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["delete_source_server_output"]]))
 }
 
 .drs$describe_job_log_items_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobID = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["describe_job_log_items_input"]]))
 }
 
 .drs$describe_job_log_items_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(logDateTime = structure(logical(0), tags = list(type = "string")), event = structure(logical(0), tags = list(type = "string")), eventData = structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), conversionServerID = structure(logical(0), tags = list(type = "string")), targetInstanceID = structure(logical(0), tags = list(type = "string")), rawError = structure(logical(0), tags = list(type = "string")), conversionProperties = structure(list(volumeToConversionMap = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "map")), rootVolumeName = structure(logical(0), tags = list(type = "string")), forceUefi = structure(logical(0), tags = list(type = "boolean", box = TRUE)), dataTimestamp = structure(logical(0), tags = list(type = "string")), volumeToVolumeSize = structure(list(structure(logical(0), tags = list(type = "long"))), tags = list(type = "map")), volumeToProductCodes = structure(list(structure(list(structure(list(productCodeId = structure(logical(0), tags = list(type = "string")), productCodeMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), eventResourceData = structure(list(sourceNetworkData = structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string")), sourceVpc = structure(logical(0), tags = list(type = "string")), targetVpc = structure(logical(0), tags = list(type = "string")), stackName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), attemptCount = structure(logical(0), tags = list(type = "long")), maxAttemptsCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["describe_job_log_items_output"]]))
 }
 
 .drs$describe_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filters = structure(list(jobIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), fromDate = structure(logical(0), tags = list(type = "string")), toDate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["describe_jobs_input"]]))
 }
 
 .drs$describe_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(jobID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), initiatedBy = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "string")), endDateTime = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), participatingServers = structure(list(structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), recoveryInstanceID = structure(logical(0), tags = list(type = "string")), launchStatus = structure(logical(0), tags = list(type = "string")), launchActionsStatus = structure(list(ssmAgentDiscoveryDatetime = structure(logical(0), tags = list(type = "string")), runs = structure(list(structure(list(action = structure(list(actionId = structure(logical(0), tags = list(type = "string")), actionCode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), active = structure(logical(0), tags = list(type = "boolean", box = TRUE)), order = structure(logical(0), tags = list(type = "integer", box = TRUE)), actionVersion = structure(logical(0), tags = list(type = "string")), optional = structure(logical(0), tags = list(type = "boolean", box = TRUE)), parameters = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), description = structure(logical(0), tags = list(type = "string")), category = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), runId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), participatingResources = structure(list(structure(list(participatingResourceID = structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), launchStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["describe_jobs_output"]]))
 }
 
 .drs$describe_launch_configuration_templates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(launchConfigurationTemplateIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["describe_launch_configuration_templates_input"]]))
 }
 
 .drs$describe_launch_configuration_templates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(launchConfigurationTemplateID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), exportBucketArn = structure(logical(0), tags = list(type = "string")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoSourceInstance = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["describe_launch_configuration_templates_output"]]))
 }
 
 .drs$describe_recovery_instances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filters = structure(list(recoveryInstanceIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sourceServerIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["describe_recovery_instances_input"]]))
 }
 
 .drs$describe_recovery_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(ec2InstanceID = structure(logical(0), tags = list(type = "string")), ec2InstanceState = structure(logical(0), tags = list(type = "string")), jobID = structure(logical(0), tags = list(type = "string")), recoveryInstanceID = structure(logical(0), tags = list(type = "string")), sourceServerID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), failback = structure(list(failbackClientID = structure(logical(0), tags = list(type = "string")), failbackJobID = structure(logical(0), tags = list(type = "string")), failbackInitiationTime = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), agentLastSeenByServiceDateTime = structure(logical(0), tags = list(type = "string")), failbackClientLastSeenByServiceDateTime = structure(logical(0), tags = list(type = "string")), failbackToOriginalServer = structure(logical(0), tags = list(type = "boolean", box = TRUE)), firstByteDateTime = structure(logical(0), tags = list(type = "string")), elapsedReplicationDuration = structure(logical(0), tags = list(type = "string")), failbackLaunchType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), dataReplicationInfo = structure(list(lagDuration = structure(logical(0), tags = list(type = "string")), etaDateTime = structure(logical(0), tags = list(type = "string")), replicatedDisks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), totalStorageBytes = structure(logical(0), tags = list(type = "long")), replicatedStorageBytes = structure(logical(0), tags = list(type = "long")), rescannedStorageBytes = structure(logical(0), tags = list(type = "long")), backloggedStorageBytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), dataReplicationState = structure(logical(0), tags = list(type = "string")), dataReplicationInitiation = structure(list(startDateTime = structure(logical(0), tags = list(type = "string")), steps = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), dataReplicationError = structure(list(error = structure(logical(0), tags = list(type = "string")), rawError = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), stagingAvailabilityZone = structure(logical(0), tags = list(type = "string")), stagingOutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), recoveryInstanceProperties = structure(list(lastUpdatedDateTime = structure(logical(0), tags = list(type = "string")), identificationHints = structure(list(fqdn = structure(logical(0), tags = list(type = "string")), hostname = structure(logical(0), tags = list(type = "string")), vmWareUuid = structure(logical(0), tags = list(type = "string")), awsInstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), networkInterfaces = structure(list(structure(list(macAddress = structure(logical(0), tags = list(type = "string")), ips = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), isPrimary = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), disks = structure(list(structure(list(internalDeviceName = structure(logical(0), tags = list(type = "string")), bytes = structure(logical(0), tags = list(type = "long")), ebsVolumeID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), cpus = structure(list(structure(list(cores = structure(logical(0), tags = list(type = "long")), modelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ramBytes = structure(logical(0), tags = list(type = "long")), os = structure(list(fullString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), pointInTimeSnapshotDateTime = structure(logical(0), tags = list(type = "string")), isDrill = structure(logical(0), tags = list(type = "boolean", box = TRUE)), originEnvironment = structure(logical(0), tags = list(type = "string")), originAvailabilityZone = structure(logical(0), tags = list(type = "string")), agentVersion = structure(logical(0), tags = list(type = "string")), sourceOutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["describe_recovery_instances_output"]]))
 }
 
 .drs$describe_recovery_snapshots_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), filters = structure(list(fromDateTime = structure(logical(0), tags = list(type = "string")), toDateTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), order = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["describe_recovery_snapshots_input"]]))
 }
 
 .drs$describe_recovery_snapshots_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(snapshotID = structure(logical(0), tags = list(type = "string")), sourceServerID = structure(logical(0), tags = list(type = "string")), expectedTimestamp = structure(logical(0), tags = list(type = "string")), timestamp = structure(logical(0), tags = list(type = "string")), ebsSnapshots = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["describe_recovery_snapshots_output"]]))
 }
 
 .drs$describe_replication_configuration_templates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(replicationConfigurationTemplateIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["describe_replication_configuration_templates_input"]]))
 }
 
 .drs$describe_replication_configuration_templates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(replicationConfigurationTemplateID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), stagingAreaSubnetId = structure(logical(0), tags = list(type = "string")), associateDefaultSecurityGroup = structure(logical(0), tags = list(type = "boolean", box = TRUE)), replicationServersSecurityGroupsIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), replicationServerInstanceType = structure(logical(0), tags = list(type = "string")), useDedicatedReplicationServer = structure(logical(0), tags = list(type = "boolean", box = TRUE)), defaultLargeStagingDiskType = structure(logical(0), tags = list(type = "string")), ebsEncryption = structure(logical(0), tags = list(type = "string")), ebsEncryptionKeyArn = structure(logical(0), tags = list(type = "string")), bandwidthThrottling = structure(logical(0), tags = list(type = "long")), dataPlaneRouting = structure(logical(0), tags = list(type = "string")), createPublicIP = structure(logical(0), tags = list(type = "boolean", box = TRUE)), stagingAreaTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), pitPolicy = structure(list(structure(list(ruleID = structure(logical(0), tags = list(type = "long")), units = structure(logical(0), tags = list(type = "string")), interval = structure(logical(0), tags = list(type = "integer", box = TRUE)), retentionDuration = structure(logical(0), tags = list(type = "integer", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), autoReplicateNewDisks = structure(logical(0), tags = list(type = "boolean", box = TRUE)), internetProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["describe_replication_configuration_templates_output"]]))
 }
 
 .drs$describe_source_networks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filters = structure(list(sourceNetworkIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), originAccountID = structure(logical(0), tags = list(type = "string")), originRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["describe_source_networks_input"]]))
 }
 
 .drs$describe_source_networks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string")), sourceVpcID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), replicationStatus = structure(logical(0), tags = list(type = "string")), replicationStatusDetails = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cfnStackName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sourceRegion = structure(logical(0), tags = list(type = "string")), sourceAccountID = structure(logical(0), tags = list(type = "string")), lastRecovery = structure(list(apiCallDateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), jobID = structure(logical(0), tags = list(type = "string")), lastRecoveryResult = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), launchedVpcID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["describe_source_networks_output"]]))
 }
 
 .drs$describe_source_servers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filters = structure(list(sourceServerIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), hardwareId = structure(logical(0), tags = list(type = "string")), stagingAccountIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["describe_source_servers_input"]]))
 }
 
 .drs$describe_source_servers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), recoveryInstanceId = structure(logical(0), tags = list(type = "string")), lastLaunchResult = structure(logical(0), tags = list(type = "string")), dataReplicationInfo = structure(list(lagDuration = structure(logical(0), tags = list(type = "string")), etaDateTime = structure(logical(0), tags = list(type = "string")), replicatedDisks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), totalStorageBytes = structure(logical(0), tags = list(type = "long")), replicatedStorageBytes = structure(logical(0), tags = list(type = "long")), rescannedStorageBytes = structure(logical(0), tags = list(type = "long")), backloggedStorageBytes = structure(logical(0), tags = list(type = "long")), volumeStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), dataReplicationState = structure(logical(0), tags = list(type = "string")), dataReplicationInitiation = structure(list(startDateTime = structure(logical(0), tags = list(type = "string")), nextAttemptDateTime = structure(logical(0), tags = list(type = "string")), steps = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), dataReplicationError = structure(list(error = structure(logical(0), tags = list(type = "string")), rawError = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), stagingAvailabilityZone = structure(logical(0), tags = list(type = "string")), stagingOutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lifeCycle = structure(list(addedToServiceDateTime = structure(logical(0), tags = list(type = "string")), firstByteDateTime = structure(logical(0), tags = list(type = "string")), elapsedReplicationDuration = structure(logical(0), tags = list(type = "string")), lastSeenByServiceDateTime = structure(logical(0), tags = list(type = "string")), lastLaunch = structure(list(initiated = structure(list(apiCallDateTime = structure(logical(0), tags = list(type = "string")), jobID = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), sourceProperties = structure(list(lastUpdatedDateTime = structure(logical(0), tags = list(type = "string")), recommendedInstanceType = structure(logical(0), tags = list(type = "string")), identificationHints = structure(list(fqdn = structure(logical(0), tags = list(type = "string")), hostname = structure(logical(0), tags = list(type = "string")), vmWareUuid = structure(logical(0), tags = list(type = "string")), awsInstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), networkInterfaces = structure(list(structure(list(macAddress = structure(logical(0), tags = list(type = "string")), ips = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), isPrimary = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), disks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), bytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), cpus = structure(list(structure(list(cores = structure(logical(0), tags = list(type = "long")), modelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ramBytes = structure(logical(0), tags = list(type = "long")), os = structure(list(fullString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), supportsNitroInstances = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), stagingArea = structure(list(status = structure(logical(0), tags = list(type = "string")), stagingAccountID = structure(logical(0), tags = list(type = "string")), stagingSourceServerArn = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceCloudProperties = structure(list(originAccountID = structure(logical(0), tags = list(type = "string")), originRegion = structure(logical(0), tags = list(type = "string")), originAvailabilityZone = structure(logical(0), tags = list(type = "string")), sourceOutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), replicationDirection = structure(logical(0), tags = list(type = "string")), reversedDirectionSourceServerArn = structure(logical(0), tags = list(type = "string")), sourceNetworkID = structure(logical(0), tags = list(type = "string")), agentVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["describe_source_servers_output"]]))
 }
 
 .drs$disconnect_recovery_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recoveryInstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["disconnect_recovery_instance_input"]]))
 }
 
 .drs$disconnect_recovery_instance_output <- function(...) {
@@ -253,224 +273,297 @@ NULL
 
 .drs$disconnect_source_server_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["disconnect_source_server_input"]]))
 }
 
 .drs$disconnect_source_server_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), recoveryInstanceId = structure(logical(0), tags = list(type = "string")), lastLaunchResult = structure(logical(0), tags = list(type = "string")), dataReplicationInfo = structure(list(lagDuration = structure(logical(0), tags = list(type = "string")), etaDateTime = structure(logical(0), tags = list(type = "string")), replicatedDisks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), totalStorageBytes = structure(logical(0), tags = list(type = "long")), replicatedStorageBytes = structure(logical(0), tags = list(type = "long")), rescannedStorageBytes = structure(logical(0), tags = list(type = "long")), backloggedStorageBytes = structure(logical(0), tags = list(type = "long")), volumeStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), dataReplicationState = structure(logical(0), tags = list(type = "string")), dataReplicationInitiation = structure(list(startDateTime = structure(logical(0), tags = list(type = "string")), nextAttemptDateTime = structure(logical(0), tags = list(type = "string")), steps = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), dataReplicationError = structure(list(error = structure(logical(0), tags = list(type = "string")), rawError = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), stagingAvailabilityZone = structure(logical(0), tags = list(type = "string")), stagingOutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lifeCycle = structure(list(addedToServiceDateTime = structure(logical(0), tags = list(type = "string")), firstByteDateTime = structure(logical(0), tags = list(type = "string")), elapsedReplicationDuration = structure(logical(0), tags = list(type = "string")), lastSeenByServiceDateTime = structure(logical(0), tags = list(type = "string")), lastLaunch = structure(list(initiated = structure(list(apiCallDateTime = structure(logical(0), tags = list(type = "string")), jobID = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), sourceProperties = structure(list(lastUpdatedDateTime = structure(logical(0), tags = list(type = "string")), recommendedInstanceType = structure(logical(0), tags = list(type = "string")), identificationHints = structure(list(fqdn = structure(logical(0), tags = list(type = "string")), hostname = structure(logical(0), tags = list(type = "string")), vmWareUuid = structure(logical(0), tags = list(type = "string")), awsInstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), networkInterfaces = structure(list(structure(list(macAddress = structure(logical(0), tags = list(type = "string")), ips = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), isPrimary = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), disks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), bytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), cpus = structure(list(structure(list(cores = structure(logical(0), tags = list(type = "long")), modelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ramBytes = structure(logical(0), tags = list(type = "long")), os = structure(list(fullString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), supportsNitroInstances = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), stagingArea = structure(list(status = structure(logical(0), tags = list(type = "string")), stagingAccountID = structure(logical(0), tags = list(type = "string")), stagingSourceServerArn = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceCloudProperties = structure(list(originAccountID = structure(logical(0), tags = list(type = "string")), originRegion = structure(logical(0), tags = list(type = "string")), originAvailabilityZone = structure(logical(0), tags = list(type = "string")), sourceOutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), replicationDirection = structure(logical(0), tags = list(type = "string")), reversedDirectionSourceServerArn = structure(logical(0), tags = list(type = "string")), sourceNetworkID = structure(logical(0), tags = list(type = "string")), agentVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["disconnect_source_server_output"]]))
 }
 
 .drs$export_source_network_cfn_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["export_source_network_cfn_template_input"]]))
 }
 
 .drs$export_source_network_cfn_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(s3DestinationUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["export_source_network_cfn_template_output"]]))
 }
 
 .drs$get_failback_replication_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recoveryInstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["get_failback_replication_configuration_input"]]))
 }
 
 .drs$get_failback_replication_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recoveryInstanceID = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), bandwidthThrottling = structure(logical(0), tags = list(type = "long")), usePrivateIP = structure(logical(0), tags = list(type = "boolean", box = TRUE)), internetProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["get_failback_replication_configuration_output"]]))
 }
 
 .drs$get_launch_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["get_launch_configuration_input"]]))
 }
 
 .drs$get_launch_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), ec2LaunchTemplateID = structure(logical(0), tags = list(type = "string")), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoInstanceProperties = structure(list(launchIntoEC2InstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["get_launch_configuration_output"]]))
+}
+
+.drs$get_recovery_plan_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["get_recovery_plan_input"]]))
+}
+
+.drs$get_recovery_plan_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["get_recovery_plan_output"]]))
+}
+
+.drs$get_recovery_plan_execution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["get_recovery_plan_execution_input"]]))
+}
+
+.drs$get_recovery_plan_execution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["get_recovery_plan_execution_output"]]))
+}
+
+.drs$get_recovery_plan_execution_step_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["get_recovery_plan_execution_step_input"]]))
+}
+
+.drs$get_recovery_plan_execution_step_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["get_recovery_plan_execution_step_output"]]))
+}
+
+.drs$get_recovery_plan_step_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["get_recovery_plan_step_input"]]))
+}
+
+.drs$get_recovery_plan_step_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["get_recovery_plan_step_output"]]))
 }
 
 .drs$get_replication_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["get_replication_configuration_input"]]))
 }
 
 .drs$get_replication_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), stagingAreaSubnetId = structure(logical(0), tags = list(type = "string")), associateDefaultSecurityGroup = structure(logical(0), tags = list(type = "boolean", box = TRUE)), replicationServersSecurityGroupsIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), replicationServerInstanceType = structure(logical(0), tags = list(type = "string")), useDedicatedReplicationServer = structure(logical(0), tags = list(type = "boolean", box = TRUE)), defaultLargeStagingDiskType = structure(logical(0), tags = list(type = "string")), replicatedDisks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), isBootDisk = structure(logical(0), tags = list(type = "boolean", box = TRUE)), stagingDiskType = structure(logical(0), tags = list(type = "string")), iops = structure(logical(0), tags = list(type = "long")), throughput = structure(logical(0), tags = list(type = "long")), optimizedStagingDiskType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ebsEncryption = structure(logical(0), tags = list(type = "string")), ebsEncryptionKeyArn = structure(logical(0), tags = list(type = "string")), bandwidthThrottling = structure(logical(0), tags = list(type = "long")), dataPlaneRouting = structure(logical(0), tags = list(type = "string")), createPublicIP = structure(logical(0), tags = list(type = "boolean", box = TRUE)), stagingAreaTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), pitPolicy = structure(list(structure(list(ruleID = structure(logical(0), tags = list(type = "long")), units = structure(logical(0), tags = list(type = "string")), interval = structure(logical(0), tags = list(type = "integer", box = TRUE)), retentionDuration = structure(logical(0), tags = list(type = "integer", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), autoReplicateNewDisks = structure(logical(0), tags = list(type = "boolean", box = TRUE)), internetProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["get_replication_configuration_output"]]))
 }
 
 .drs$initialize_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["initialize_service_input"]]))
 }
 
 .drs$initialize_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["initialize_service_output"]]))
 }
 
 .drs$list_extensible_source_servers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stagingAccountID = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["list_extensible_source_servers_input"]]))
 }
 
 .drs$list_extensible_source_servers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(hostname = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["list_extensible_source_servers_output"]]))
 }
 
 .drs$list_launch_actions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceId = structure(logical(0), tags = list(type = "string")), filters = structure(list(actionIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["list_launch_actions_input"]]))
 }
 
 .drs$list_launch_actions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(actionId = structure(logical(0), tags = list(type = "string")), actionCode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), active = structure(logical(0), tags = list(type = "boolean", box = TRUE)), order = structure(logical(0), tags = list(type = "integer", box = TRUE)), actionVersion = structure(logical(0), tags = list(type = "string")), optional = structure(logical(0), tags = list(type = "boolean", box = TRUE)), parameters = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), description = structure(logical(0), tags = list(type = "string")), category = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["list_launch_actions_output"]]))
+}
+
+.drs$list_recovery_plan_execution_steps_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["list_recovery_plan_execution_steps_input"]]))
+}
+
+.drs$list_recovery_plan_execution_steps_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["list_recovery_plan_execution_steps_output"]]))
+}
+
+.drs$list_recovery_plan_executions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["list_recovery_plan_executions_input"]]))
+}
+
+.drs$list_recovery_plan_executions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["list_recovery_plan_executions_output"]]))
+}
+
+.drs$list_recovery_plan_steps_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["list_recovery_plan_steps_input"]]))
+}
+
+.drs$list_recovery_plan_steps_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["list_recovery_plan_steps_output"]]))
+}
+
+.drs$list_recovery_plans_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["list_recovery_plans_input"]]))
+}
+
+.drs$list_recovery_plans_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["list_recovery_plans_output"]]))
 }
 
 .drs$list_staging_accounts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["list_staging_accounts_input"]]))
 }
 
 .drs$list_staging_accounts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accounts = structure(list(structure(list(accountID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["list_staging_accounts_output"]]))
 }
 
 .drs$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["list_tags_for_resource_input"]]))
 }
 
 .drs$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["list_tags_for_resource_output"]]))
 }
 
 .drs$put_launch_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceId = structure(logical(0), tags = list(type = "string")), actionCode = structure(logical(0), tags = list(type = "string")), order = structure(logical(0), tags = list(type = "integer", box = TRUE)), actionId = structure(logical(0), tags = list(type = "string")), optional = structure(logical(0), tags = list(type = "boolean", box = TRUE)), active = structure(logical(0), tags = list(type = "boolean", box = TRUE)), name = structure(logical(0), tags = list(type = "string")), actionVersion = structure(logical(0), tags = list(type = "string")), category = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["put_launch_action_input"]]))
 }
 
 .drs$put_launch_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceId = structure(logical(0), tags = list(type = "string")), actionId = structure(logical(0), tags = list(type = "string")), actionCode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), active = structure(logical(0), tags = list(type = "boolean", box = TRUE)), order = structure(logical(0), tags = list(type = "integer", box = TRUE)), actionVersion = structure(logical(0), tags = list(type = "string")), optional = structure(logical(0), tags = list(type = "boolean", box = TRUE)), parameters = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), description = structure(logical(0), tags = list(type = "string")), category = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["put_launch_action_output"]]))
+}
+
+.drs$reorder_recovery_plan_steps_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["reorder_recovery_plan_steps_input"]]))
+}
+
+.drs$reorder_recovery_plan_steps_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["reorder_recovery_plan_steps_output"]]))
 }
 
 .drs$retry_data_replication_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "WARNING: RetryDataReplication is deprecated"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["retry_data_replication_input"]]))
 }
 
 .drs$retry_data_replication_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), recoveryInstanceId = structure(logical(0), tags = list(type = "string")), lastLaunchResult = structure(logical(0), tags = list(type = "string")), dataReplicationInfo = structure(list(lagDuration = structure(logical(0), tags = list(type = "string")), etaDateTime = structure(logical(0), tags = list(type = "string")), replicatedDisks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), totalStorageBytes = structure(logical(0), tags = list(type = "long")), replicatedStorageBytes = structure(logical(0), tags = list(type = "long")), rescannedStorageBytes = structure(logical(0), tags = list(type = "long")), backloggedStorageBytes = structure(logical(0), tags = list(type = "long")), volumeStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), dataReplicationState = structure(logical(0), tags = list(type = "string")), dataReplicationInitiation = structure(list(startDateTime = structure(logical(0), tags = list(type = "string")), nextAttemptDateTime = structure(logical(0), tags = list(type = "string")), steps = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), dataReplicationError = structure(list(error = structure(logical(0), tags = list(type = "string")), rawError = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), stagingAvailabilityZone = structure(logical(0), tags = list(type = "string")), stagingOutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lifeCycle = structure(list(addedToServiceDateTime = structure(logical(0), tags = list(type = "string")), firstByteDateTime = structure(logical(0), tags = list(type = "string")), elapsedReplicationDuration = structure(logical(0), tags = list(type = "string")), lastSeenByServiceDateTime = structure(logical(0), tags = list(type = "string")), lastLaunch = structure(list(initiated = structure(list(apiCallDateTime = structure(logical(0), tags = list(type = "string")), jobID = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), sourceProperties = structure(list(lastUpdatedDateTime = structure(logical(0), tags = list(type = "string")), recommendedInstanceType = structure(logical(0), tags = list(type = "string")), identificationHints = structure(list(fqdn = structure(logical(0), tags = list(type = "string")), hostname = structure(logical(0), tags = list(type = "string")), vmWareUuid = structure(logical(0), tags = list(type = "string")), awsInstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), networkInterfaces = structure(list(structure(list(macAddress = structure(logical(0), tags = list(type = "string")), ips = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), isPrimary = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), disks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), bytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), cpus = structure(list(structure(list(cores = structure(logical(0), tags = list(type = "long")), modelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ramBytes = structure(logical(0), tags = list(type = "long")), os = structure(list(fullString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), supportsNitroInstances = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), stagingArea = structure(list(status = structure(logical(0), tags = list(type = "string")), stagingAccountID = structure(logical(0), tags = list(type = "string")), stagingSourceServerArn = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceCloudProperties = structure(list(originAccountID = structure(logical(0), tags = list(type = "string")), originRegion = structure(logical(0), tags = list(type = "string")), originAvailabilityZone = structure(logical(0), tags = list(type = "string")), sourceOutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), replicationDirection = structure(logical(0), tags = list(type = "string")), reversedDirectionSourceServerArn = structure(logical(0), tags = list(type = "string")), sourceNetworkID = structure(logical(0), tags = list(type = "string")), agentVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["retry_data_replication_output"]]))
+}
+
+.drs$retry_recovery_plan_execution_step_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["retry_recovery_plan_execution_step_input"]]))
+}
+
+.drs$retry_recovery_plan_execution_step_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["retry_recovery_plan_execution_step_output"]]))
 }
 
 .drs$reverse_replication_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recoveryInstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["reverse_replication_input"]]))
 }
 
 .drs$reverse_replication_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(reversedDirectionSourceServerArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["reverse_replication_output"]]))
 }
 
 .drs$start_failback_launch_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recoveryInstanceIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["start_failback_launch_input"]]))
 }
 
 .drs$start_failback_launch_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(job = structure(list(jobID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), initiatedBy = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "string")), endDateTime = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), participatingServers = structure(list(structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), recoveryInstanceID = structure(logical(0), tags = list(type = "string")), launchStatus = structure(logical(0), tags = list(type = "string")), launchActionsStatus = structure(list(ssmAgentDiscoveryDatetime = structure(logical(0), tags = list(type = "string")), runs = structure(list(structure(list(action = structure(list(actionId = structure(logical(0), tags = list(type = "string")), actionCode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), active = structure(logical(0), tags = list(type = "boolean", box = TRUE)), order = structure(logical(0), tags = list(type = "integer", box = TRUE)), actionVersion = structure(logical(0), tags = list(type = "string")), optional = structure(logical(0), tags = list(type = "boolean", box = TRUE)), parameters = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), description = structure(logical(0), tags = list(type = "string")), category = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), runId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), participatingResources = structure(list(structure(list(participatingResourceID = structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), launchStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["start_failback_launch_output"]]))
 }
 
 .drs$start_recovery_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServers = structure(list(structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), recoverySnapshotID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), isDrill = structure(logical(0), tags = list(type = "boolean", box = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["start_recovery_input"]]))
 }
 
 .drs$start_recovery_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(job = structure(list(jobID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), initiatedBy = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "string")), endDateTime = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), participatingServers = structure(list(structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), recoveryInstanceID = structure(logical(0), tags = list(type = "string")), launchStatus = structure(logical(0), tags = list(type = "string")), launchActionsStatus = structure(list(ssmAgentDiscoveryDatetime = structure(logical(0), tags = list(type = "string")), runs = structure(list(structure(list(action = structure(list(actionId = structure(logical(0), tags = list(type = "string")), actionCode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), active = structure(logical(0), tags = list(type = "boolean", box = TRUE)), order = structure(logical(0), tags = list(type = "integer", box = TRUE)), actionVersion = structure(logical(0), tags = list(type = "string")), optional = structure(logical(0), tags = list(type = "boolean", box = TRUE)), parameters = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), description = structure(logical(0), tags = list(type = "string")), category = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), runId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), participatingResources = structure(list(structure(list(participatingResourceID = structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), launchStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["start_recovery_output"]]))
+}
+
+.drs$start_recovery_plan_execution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["start_recovery_plan_execution_input"]]))
+}
+
+.drs$start_recovery_plan_execution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["start_recovery_plan_execution_output"]]))
 }
 
 .drs$start_replication_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["start_replication_input"]]))
 }
 
 .drs$start_replication_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServer = structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), recoveryInstanceId = structure(logical(0), tags = list(type = "string")), lastLaunchResult = structure(logical(0), tags = list(type = "string")), dataReplicationInfo = structure(list(lagDuration = structure(logical(0), tags = list(type = "string")), etaDateTime = structure(logical(0), tags = list(type = "string")), replicatedDisks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), totalStorageBytes = structure(logical(0), tags = list(type = "long")), replicatedStorageBytes = structure(logical(0), tags = list(type = "long")), rescannedStorageBytes = structure(logical(0), tags = list(type = "long")), backloggedStorageBytes = structure(logical(0), tags = list(type = "long")), volumeStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), dataReplicationState = structure(logical(0), tags = list(type = "string")), dataReplicationInitiation = structure(list(startDateTime = structure(logical(0), tags = list(type = "string")), nextAttemptDateTime = structure(logical(0), tags = list(type = "string")), steps = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), dataReplicationError = structure(list(error = structure(logical(0), tags = list(type = "string")), rawError = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), stagingAvailabilityZone = structure(logical(0), tags = list(type = "string")), stagingOutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lifeCycle = structure(list(addedToServiceDateTime = structure(logical(0), tags = list(type = "string")), firstByteDateTime = structure(logical(0), tags = list(type = "string")), elapsedReplicationDuration = structure(logical(0), tags = list(type = "string")), lastSeenByServiceDateTime = structure(logical(0), tags = list(type = "string")), lastLaunch = structure(list(initiated = structure(list(apiCallDateTime = structure(logical(0), tags = list(type = "string")), jobID = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), sourceProperties = structure(list(lastUpdatedDateTime = structure(logical(0), tags = list(type = "string")), recommendedInstanceType = structure(logical(0), tags = list(type = "string")), identificationHints = structure(list(fqdn = structure(logical(0), tags = list(type = "string")), hostname = structure(logical(0), tags = list(type = "string")), vmWareUuid = structure(logical(0), tags = list(type = "string")), awsInstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), networkInterfaces = structure(list(structure(list(macAddress = structure(logical(0), tags = list(type = "string")), ips = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), isPrimary = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), disks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), bytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), cpus = structure(list(structure(list(cores = structure(logical(0), tags = list(type = "long")), modelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ramBytes = structure(logical(0), tags = list(type = "long")), os = structure(list(fullString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), supportsNitroInstances = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), stagingArea = structure(list(status = structure(logical(0), tags = list(type = "string")), stagingAccountID = structure(logical(0), tags = list(type = "string")), stagingSourceServerArn = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceCloudProperties = structure(list(originAccountID = structure(logical(0), tags = list(type = "string")), originRegion = structure(logical(0), tags = list(type = "string")), originAvailabilityZone = structure(logical(0), tags = list(type = "string")), sourceOutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), replicationDirection = structure(logical(0), tags = list(type = "string")), reversedDirectionSourceServerArn = structure(logical(0), tags = list(type = "string")), sourceNetworkID = structure(logical(0), tags = list(type = "string")), agentVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["start_replication_output"]]))
 }
 
 .drs$start_source_network_recovery_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceNetworks = structure(list(structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string")), cfnStackName = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), deployAsNew = structure(logical(0), tags = list(type = "boolean", box = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["start_source_network_recovery_input"]]))
 }
 
 .drs$start_source_network_recovery_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(job = structure(list(jobID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), initiatedBy = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "string")), endDateTime = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), participatingServers = structure(list(structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), recoveryInstanceID = structure(logical(0), tags = list(type = "string")), launchStatus = structure(logical(0), tags = list(type = "string")), launchActionsStatus = structure(list(ssmAgentDiscoveryDatetime = structure(logical(0), tags = list(type = "string")), runs = structure(list(structure(list(action = structure(list(actionId = structure(logical(0), tags = list(type = "string")), actionCode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), active = structure(logical(0), tags = list(type = "boolean", box = TRUE)), order = structure(logical(0), tags = list(type = "integer", box = TRUE)), actionVersion = structure(logical(0), tags = list(type = "string")), optional = structure(logical(0), tags = list(type = "boolean", box = TRUE)), parameters = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), description = structure(logical(0), tags = list(type = "string")), category = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), runId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), participatingResources = structure(list(structure(list(participatingResourceID = structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), launchStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["start_source_network_recovery_output"]]))
 }
 
 .drs$start_source_network_replication_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["start_source_network_replication_input"]]))
 }
 
 .drs$start_source_network_replication_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceNetwork = structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string")), sourceVpcID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), replicationStatus = structure(logical(0), tags = list(type = "string")), replicationStatusDetails = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cfnStackName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sourceRegion = structure(logical(0), tags = list(type = "string")), sourceAccountID = structure(logical(0), tags = list(type = "string")), lastRecovery = structure(list(apiCallDateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), jobID = structure(logical(0), tags = list(type = "string")), lastRecoveryResult = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), launchedVpcID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["start_source_network_replication_output"]]))
 }
 
 .drs$stop_failback_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recoveryInstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["stop_failback_input"]]))
 }
 
 .drs$stop_failback_output <- function(...) {
@@ -479,32 +572,27 @@ NULL
 
 .drs$stop_replication_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["stop_replication_input"]]))
 }
 
 .drs$stop_replication_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServer = structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), recoveryInstanceId = structure(logical(0), tags = list(type = "string")), lastLaunchResult = structure(logical(0), tags = list(type = "string")), dataReplicationInfo = structure(list(lagDuration = structure(logical(0), tags = list(type = "string")), etaDateTime = structure(logical(0), tags = list(type = "string")), replicatedDisks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), totalStorageBytes = structure(logical(0), tags = list(type = "long")), replicatedStorageBytes = structure(logical(0), tags = list(type = "long")), rescannedStorageBytes = structure(logical(0), tags = list(type = "long")), backloggedStorageBytes = structure(logical(0), tags = list(type = "long")), volumeStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), dataReplicationState = structure(logical(0), tags = list(type = "string")), dataReplicationInitiation = structure(list(startDateTime = structure(logical(0), tags = list(type = "string")), nextAttemptDateTime = structure(logical(0), tags = list(type = "string")), steps = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), dataReplicationError = structure(list(error = structure(logical(0), tags = list(type = "string")), rawError = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), stagingAvailabilityZone = structure(logical(0), tags = list(type = "string")), stagingOutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lifeCycle = structure(list(addedToServiceDateTime = structure(logical(0), tags = list(type = "string")), firstByteDateTime = structure(logical(0), tags = list(type = "string")), elapsedReplicationDuration = structure(logical(0), tags = list(type = "string")), lastSeenByServiceDateTime = structure(logical(0), tags = list(type = "string")), lastLaunch = structure(list(initiated = structure(list(apiCallDateTime = structure(logical(0), tags = list(type = "string")), jobID = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), sourceProperties = structure(list(lastUpdatedDateTime = structure(logical(0), tags = list(type = "string")), recommendedInstanceType = structure(logical(0), tags = list(type = "string")), identificationHints = structure(list(fqdn = structure(logical(0), tags = list(type = "string")), hostname = structure(logical(0), tags = list(type = "string")), vmWareUuid = structure(logical(0), tags = list(type = "string")), awsInstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), networkInterfaces = structure(list(structure(list(macAddress = structure(logical(0), tags = list(type = "string")), ips = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), isPrimary = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), disks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), bytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), cpus = structure(list(structure(list(cores = structure(logical(0), tags = list(type = "long")), modelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ramBytes = structure(logical(0), tags = list(type = "long")), os = structure(list(fullString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), supportsNitroInstances = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), stagingArea = structure(list(status = structure(logical(0), tags = list(type = "string")), stagingAccountID = structure(logical(0), tags = list(type = "string")), stagingSourceServerArn = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceCloudProperties = structure(list(originAccountID = structure(logical(0), tags = list(type = "string")), originRegion = structure(logical(0), tags = list(type = "string")), originAvailabilityZone = structure(logical(0), tags = list(type = "string")), sourceOutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), replicationDirection = structure(logical(0), tags = list(type = "string")), reversedDirectionSourceServerArn = structure(logical(0), tags = list(type = "string")), sourceNetworkID = structure(logical(0), tags = list(type = "string")), agentVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["stop_replication_output"]]))
 }
 
 .drs$stop_source_network_replication_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["stop_source_network_replication_input"]]))
 }
 
 .drs$stop_source_network_replication_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceNetwork = structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string")), sourceVpcID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), replicationStatus = structure(logical(0), tags = list(type = "string")), replicationStatusDetails = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cfnStackName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sourceRegion = structure(logical(0), tags = list(type = "string")), sourceAccountID = structure(logical(0), tags = list(type = "string")), lastRecovery = structure(list(apiCallDateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), jobID = structure(logical(0), tags = list(type = "string")), lastRecoveryResult = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), launchedVpcID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["stop_source_network_replication_output"]]))
 }
 
 .drs$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["tag_resource_input"]]))
 }
 
 .drs$tag_resource_output <- function(...) {
@@ -513,20 +601,17 @@ NULL
 
 .drs$terminate_recovery_instances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recoveryInstanceIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["terminate_recovery_instances_input"]]))
 }
 
 .drs$terminate_recovery_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(job = structure(list(jobID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), initiatedBy = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "string")), endDateTime = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), participatingServers = structure(list(structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), recoveryInstanceID = structure(logical(0), tags = list(type = "string")), launchStatus = structure(logical(0), tags = list(type = "string")), launchActionsStatus = structure(list(ssmAgentDiscoveryDatetime = structure(logical(0), tags = list(type = "string")), runs = structure(list(structure(list(action = structure(list(actionId = structure(logical(0), tags = list(type = "string")), actionCode = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), active = structure(logical(0), tags = list(type = "boolean", box = TRUE)), order = structure(logical(0), tags = list(type = "integer", box = TRUE)), actionVersion = structure(logical(0), tags = list(type = "string")), optional = structure(logical(0), tags = list(type = "boolean", box = TRUE)), parameters = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), description = structure(logical(0), tags = list(type = "string")), category = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), runId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), participatingResources = structure(list(structure(list(participatingResourceID = structure(list(sourceNetworkID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), launchStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["terminate_recovery_instances_output"]]))
 }
 
 .drs$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["untag_resource_input"]]))
 }
 
 .drs$untag_resource_output <- function(...) {
@@ -535,8 +620,7 @@ NULL
 
 .drs$update_failback_replication_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recoveryInstanceID = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), bandwidthThrottling = structure(logical(0), tags = list(type = "long")), usePrivateIP = structure(logical(0), tags = list(type = "boolean", box = TRUE)), internetProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["update_failback_replication_configuration_input"]]))
 }
 
 .drs$update_failback_replication_configuration_output <- function(...) {
@@ -545,48 +629,70 @@ NULL
 
 .drs$update_launch_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoInstanceProperties = structure(list(launchIntoEC2InstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["update_launch_configuration_input"]]))
 }
 
 .drs$update_launch_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), ec2LaunchTemplateID = structure(logical(0), tags = list(type = "string")), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoInstanceProperties = structure(list(launchIntoEC2InstanceID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["update_launch_configuration_output"]]))
 }
 
 .drs$update_launch_configuration_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(launchConfigurationTemplateID = structure(logical(0), tags = list(type = "string")), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), exportBucketArn = structure(logical(0), tags = list(type = "string")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoSourceInstance = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["update_launch_configuration_template_input"]]))
 }
 
 .drs$update_launch_configuration_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(launchConfigurationTemplate = structure(list(launchConfigurationTemplateID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), launchDisposition = structure(logical(0), tags = list(type = "string")), targetInstanceTypeRightSizingMethod = structure(logical(0), tags = list(type = "string")), copyPrivateIp = structure(logical(0), tags = list(type = "boolean", box = TRUE)), copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), licensing = structure(list(osByol = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), exportBucketArn = structure(logical(0), tags = list(type = "string")), postLaunchEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), launchIntoSourceInstance = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["update_launch_configuration_template_output"]]))
+}
+
+.drs$update_recovery_plan_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["update_recovery_plan_input"]]))
+}
+
+.drs$update_recovery_plan_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["update_recovery_plan_output"]]))
+}
+
+.drs$update_recovery_plan_execution_step_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["update_recovery_plan_execution_step_input"]]))
+}
+
+.drs$update_recovery_plan_execution_step_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["update_recovery_plan_execution_step_output"]]))
+}
+
+.drs$update_recovery_plan_step_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["update_recovery_plan_step_input"]]))
+}
+
+.drs$update_recovery_plan_step_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .drs_shapes[["update_recovery_plan_step_output"]]))
 }
 
 .drs$update_replication_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), stagingAreaSubnetId = structure(logical(0), tags = list(type = "string")), associateDefaultSecurityGroup = structure(logical(0), tags = list(type = "boolean", box = TRUE)), replicationServersSecurityGroupsIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), replicationServerInstanceType = structure(logical(0), tags = list(type = "string")), useDedicatedReplicationServer = structure(logical(0), tags = list(type = "boolean", box = TRUE)), defaultLargeStagingDiskType = structure(logical(0), tags = list(type = "string")), replicatedDisks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), isBootDisk = structure(logical(0), tags = list(type = "boolean", box = TRUE)), stagingDiskType = structure(logical(0), tags = list(type = "string")), iops = structure(logical(0), tags = list(type = "long")), throughput = structure(logical(0), tags = list(type = "long")), optimizedStagingDiskType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ebsEncryption = structure(logical(0), tags = list(type = "string")), ebsEncryptionKeyArn = structure(logical(0), tags = list(type = "string")), bandwidthThrottling = structure(logical(0), tags = list(type = "long")), dataPlaneRouting = structure(logical(0), tags = list(type = "string")), createPublicIP = structure(logical(0), tags = list(type = "boolean", box = TRUE)), stagingAreaTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), pitPolicy = structure(list(structure(list(ruleID = structure(logical(0), tags = list(type = "long")), units = structure(logical(0), tags = list(type = "string")), interval = structure(logical(0), tags = list(type = "integer", box = TRUE)), retentionDuration = structure(logical(0), tags = list(type = "integer", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), autoReplicateNewDisks = structure(logical(0), tags = list(type = "boolean", box = TRUE)), internetProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["update_replication_configuration_input"]]))
 }
 
 .drs$update_replication_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceServerID = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), stagingAreaSubnetId = structure(logical(0), tags = list(type = "string")), associateDefaultSecurityGroup = structure(logical(0), tags = list(type = "boolean", box = TRUE)), replicationServersSecurityGroupsIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), replicationServerInstanceType = structure(logical(0), tags = list(type = "string")), useDedicatedReplicationServer = structure(logical(0), tags = list(type = "boolean", box = TRUE)), defaultLargeStagingDiskType = structure(logical(0), tags = list(type = "string")), replicatedDisks = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), isBootDisk = structure(logical(0), tags = list(type = "boolean", box = TRUE)), stagingDiskType = structure(logical(0), tags = list(type = "string")), iops = structure(logical(0), tags = list(type = "long")), throughput = structure(logical(0), tags = list(type = "long")), optimizedStagingDiskType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ebsEncryption = structure(logical(0), tags = list(type = "string")), ebsEncryptionKeyArn = structure(logical(0), tags = list(type = "string")), bandwidthThrottling = structure(logical(0), tags = list(type = "long")), dataPlaneRouting = structure(logical(0), tags = list(type = "string")), createPublicIP = structure(logical(0), tags = list(type = "boolean", box = TRUE)), stagingAreaTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), pitPolicy = structure(list(structure(list(ruleID = structure(logical(0), tags = list(type = "long")), units = structure(logical(0), tags = list(type = "string")), interval = structure(logical(0), tags = list(type = "integer", box = TRUE)), retentionDuration = structure(logical(0), tags = list(type = "integer", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), autoReplicateNewDisks = structure(logical(0), tags = list(type = "boolean", box = TRUE)), internetProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["update_replication_configuration_output"]]))
 }
 
 .drs$update_replication_configuration_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(replicationConfigurationTemplateID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), stagingAreaSubnetId = structure(logical(0), tags = list(type = "string")), associateDefaultSecurityGroup = structure(logical(0), tags = list(type = "boolean", box = TRUE)), replicationServersSecurityGroupsIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), replicationServerInstanceType = structure(logical(0), tags = list(type = "string")), useDedicatedReplicationServer = structure(logical(0), tags = list(type = "boolean", box = TRUE)), defaultLargeStagingDiskType = structure(logical(0), tags = list(type = "string")), ebsEncryption = structure(logical(0), tags = list(type = "string")), ebsEncryptionKeyArn = structure(logical(0), tags = list(type = "string")), bandwidthThrottling = structure(logical(0), tags = list(type = "long")), dataPlaneRouting = structure(logical(0), tags = list(type = "string")), createPublicIP = structure(logical(0), tags = list(type = "boolean", box = TRUE)), stagingAreaTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), pitPolicy = structure(list(structure(list(ruleID = structure(logical(0), tags = list(type = "long")), units = structure(logical(0), tags = list(type = "string")), interval = structure(logical(0), tags = list(type = "integer", box = TRUE)), retentionDuration = structure(logical(0), tags = list(type = "integer", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), autoReplicateNewDisks = structure(logical(0), tags = list(type = "boolean", box = TRUE)), internetProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["update_replication_configuration_template_input"]]))
 }
 
 .drs$update_replication_configuration_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(replicationConfigurationTemplateID = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), stagingAreaSubnetId = structure(logical(0), tags = list(type = "string")), associateDefaultSecurityGroup = structure(logical(0), tags = list(type = "boolean", box = TRUE)), replicationServersSecurityGroupsIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), replicationServerInstanceType = structure(logical(0), tags = list(type = "string")), useDedicatedReplicationServer = structure(logical(0), tags = list(type = "boolean", box = TRUE)), defaultLargeStagingDiskType = structure(logical(0), tags = list(type = "string")), ebsEncryption = structure(logical(0), tags = list(type = "string")), ebsEncryptionKeyArn = structure(logical(0), tags = list(type = "string")), bandwidthThrottling = structure(logical(0), tags = list(type = "long")), dataPlaneRouting = structure(logical(0), tags = list(type = "string")), createPublicIP = structure(logical(0), tags = list(type = "boolean", box = TRUE)), stagingAreaTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), pitPolicy = structure(list(structure(list(ruleID = structure(logical(0), tags = list(type = "long")), units = structure(logical(0), tags = list(type = "string")), interval = structure(logical(0), tags = list(type = "integer", box = TRUE)), retentionDuration = structure(logical(0), tags = list(type = "integer", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), autoReplicateNewDisks = structure(logical(0), tags = list(type = "boolean", box = TRUE)), internetProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .drs_shapes[["update_replication_configuration_template_output"]]))
 }

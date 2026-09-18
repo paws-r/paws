@@ -7,7 +7,7 @@
 ec2_create_capacity_reservation_fleet(
   AllocationStrategy = NULL,
   ClientToken = NULL,
-  InstanceTypeSpecifications,
+  InstanceTypeSpecifications = NULL,
   Tenancy = NULL,
   TotalTargetCapacity,
   EndDate = NULL,
@@ -23,7 +23,7 @@ Valid values: \code{prioritized}}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensure Idempotency}.}
 
-\item{InstanceTypeSpecifications}{[required] Information about the instance types for which to reserve the capacity.}
+\item{InstanceTypeSpecifications}{Information about the instance types for which to reserve the capacity.}
 
 \item{Tenancy}{Indicates the tenancy of the Capacity Reservation Fleet. All Capacity Reservations in the Fleet inherit this tenancy. The Capacity Reservation Fleet can have one of the following tenancy settings:
 \itemize{

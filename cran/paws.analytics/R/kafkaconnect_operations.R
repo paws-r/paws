@@ -500,6 +500,38 @@ kafkaconnect_list_worker_configurations <- function(maxResults = NULL, nextToken
 }
 .kafkaconnect$operations$list_worker_configurations <- kafkaconnect_list_worker_configurations
 
+#' Restarts the specified connector
+#'
+#' @description
+#' Restarts the specified connector. By default, this operation restarts the connector and all of its tasks. This operation is asynchronous and returns a connector operation ARN that you can pass to [`describe_connector_operation`][kafkaconnect_describe_connector_operation] to track the state of the restart.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_restart_connector/](https://www.paws-r-sdk.com/docs/kafkaconnect_restart_connector/) for full documentation.
+#'
+#' @param connectorArn &#91;required&#93; The Amazon Resource Name (ARN) of the connector that you want to restart.
+#' @param onlyFailedTasks Specifies whether to restart only the connector's failed tasks. If `true`, the operation restarts only the tasks that are currently in a failed state, and healthy tasks continue running. If `false` or not specified, the operation restarts the connector and all of its tasks.
+#'
+#' @keywords internal
+#'
+#' @rdname kafkaconnect_restart_connector
+kafkaconnect_restart_connector <- function(connectorArn, onlyFailedTasks = NULL) {
+  op <- new_operation(
+    name = "RestartConnector",
+    http_method = "POST",
+    http_path = "/v1/connectors/{connectorArn}/restart",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kafkaconnect$restart_connector_input(connectorArn = connectorArn, onlyFailedTasks = onlyFailedTasks)
+  output <- .kafkaconnect$restart_connector_output()
+  config <- get_config()
+  svc <- .kafkaconnect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafkaconnect$operations$restart_connector <- kafkaconnect_restart_connector
+
 #' Attaches tags to the specified resource
 #'
 #' @description

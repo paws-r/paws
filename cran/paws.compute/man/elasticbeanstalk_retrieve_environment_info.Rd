@@ -15,13 +15,13 @@ elasticbeanstalk_retrieve_environment_info(
 
 If no such environment is found, returns an \code{InvalidParameterValue} error.
 
-Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
+Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 
 \item{EnvironmentName}{The name of the data's environment.
 
 If no such environment is found, returns an \code{InvalidParameterValue} error.
 
-Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
+Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 
 \item{InfoType}{[required] The type of information to retrieve.}
 }

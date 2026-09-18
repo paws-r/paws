@@ -1726,7 +1726,7 @@ kendra_list_query_suggestions_block_lists <- function(IndexId, NextToken = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/kendra_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/kendra_list_tags_for_resource/) for full documentation.
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the index, FAQ, data source, or other resource to get a list of tags for. For example, the ARN of an index is constructed as follows: *arn:aws:kendra:your-region:your-account-id:index/index-id* For information on how to construct an ARN for all types of Amazon Kendra resources, see [Resource types](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonkendra.html#amazonkendra-resources-for-iam-policies).
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the index, FAQ, data source, or other resource to get a list of tags for. For example, the ARN of an index is constructed as follows: *arn:aws:kendra:your-region:your-account-id:index/index-id* For information on how to construct an ARN for all types of Amazon Kendra resources, see [Resource types](https://docs.aws.amazon.com/service-authorization/latest/reference/#amazonkendra-resources-for-iam-policies).
 #'
 #' @keywords internal
 #'
@@ -2044,7 +2044,7 @@ kendra_submit_feedback <- function(IndexId, QueryId, ClickFeedbackItems = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/kendra_tag_resource/](https://www.paws-r-sdk.com/docs/kendra_tag_resource/) for full documentation.
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the index, FAQ, data source, or other resource to add a tag. For example, the ARN of an index is constructed as follows: *arn:aws:kendra:your-region:your-account-id:index/index-id* For information on how to construct an ARN for all types of Amazon Kendra resources, see [Resource types](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonkendra.html#amazonkendra-resources-for-iam-policies).
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the index, FAQ, data source, or other resource to add a tag. For example, the ARN of an index is constructed as follows: *arn:aws:kendra:your-region:your-account-id:index/index-id* For information on how to construct an ARN for all types of Amazon Kendra resources, see [Resource types](https://docs.aws.amazon.com/service-authorization/latest/reference/#amazonkendra-resources-for-iam-policies).
 #' @param Tags &#91;required&#93; A list of tag keys to add to the index, FAQ, data source, or other resource. If a tag already exists, the existing value is replaced with the new value.
 #'
 #' @keywords internal
@@ -2076,7 +2076,7 @@ kendra_tag_resource <- function(ResourceARN, Tags) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/kendra_untag_resource/](https://www.paws-r-sdk.com/docs/kendra_untag_resource/) for full documentation.
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the index, FAQ, data source, or other resource to remove a tag. For example, the ARN of an index is constructed as follows: *arn:aws:kendra:your-region:your-account-id:index/index-id* For information on how to construct an ARN for all types of Amazon Kendra resources, see [Resource types](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonkendra.html#amazonkendra-resources-for-iam-policies).
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the index, FAQ, data source, or other resource to remove a tag. For example, the ARN of an index is constructed as follows: *arn:aws:kendra:your-region:your-account-id:index/index-id* For information on how to construct an ARN for all types of Amazon Kendra resources, see [Resource types](https://docs.aws.amazon.com/service-authorization/latest/reference/#amazonkendra-resources-for-iam-policies).
 #' @param TagKeys &#91;required&#93; A list of tag keys to remove from the index, FAQ, data source, or other resource. If a tag key doesn't exist for the resource, it is ignored.
 #'
 #' @keywords internal

@@ -98,13 +98,21 @@ NULL
 #'  \link[=billing_create_billing_view]{create_billing_view} \tab Creates a billing view with the specified billing view attributes\cr
 #'  \link[=billing_delete_billing_view]{delete_billing_view} \tab Deletes the specified billing view\cr
 #'  \link[=billing_disassociate_source_views]{disassociate_source_views} \tab Removes the association between one or more source billing views and an existing billing view\cr
+#'  \link[=billing_get_billing_preferences]{get_billing_preferences} \tab Retrieves billing preferences for the specified feature\cr
 #'  \link[=billing_get_billing_view]{get_billing_view} \tab Returns the metadata associated to the specified billing view ARN\cr
+#'  \link[=billing_get_credit_allocation_history]{get_credit_allocation_history} \tab Returns the per-billing-month allocation history for credits applied to an Amazon Web Services account's bills\cr
+#'  \link[=billing_get_credits]{get_credits} \tab Returns the list of Amazon Web Services account credits for the specified account\cr
+#'  \link[=billing_get_enterprise_support_charge_summary]{get_enterprise_support_charge_summary} \tab Returns a summary of Enterprise Support data aggregated across all accounts in the Enterprise Support profile\cr
+#'  \link[=billing_get_enterprise_support_contract_details]{get_enterprise_support_contract_details} \tab Returns Enterprise Support contract details\cr
 #'  \link[=billing_get_resource_policy]{get_resource_policy} \tab Returns the resource-based policy document attached to the resource in JSON format\cr
 #'  \link[=billing_list_billing_views]{list_billing_views} \tab Lists the billing views available for a given time period\cr
+#'  \link[=billing_list_enterprise_support_linked_account_charges]{list_enterprise_support_linked_account_charges} \tab Returns Support-eligible spend broken down at linked account level\cr
 #'  \link[=billing_list_source_views_for_billing_view]{list_source_views_for_billing_view} \tab Lists the source views (managed Amazon Web Services billing views) associated with the billing view\cr
 #'  \link[=billing_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags associated with the billing view resource\cr
+#'  \link[=billing_redeem_credits]{redeem_credits} \tab Redeems an Amazon Web Services promotional credit code on behalf of the calling account\cr
 #'  \link[=billing_tag_resource]{tag_resource} \tab An API operation for adding one or more tags (key-value pairs) to a resource\cr
 #'  \link[=billing_untag_resource]{untag_resource} \tab Removes one or more tags from a resource\cr
+#'  \link[=billing_update_billing_preferences]{update_billing_preferences} \tab Updates billing preferences for the specified feature\cr
 #'  \link[=billing_update_billing_view]{update_billing_view} \tab An API to update the attributes of the billing view
 #' }
 #'

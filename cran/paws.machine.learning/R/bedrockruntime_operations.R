@@ -236,6 +236,38 @@ bedrockruntime_get_async_invoke <- function(invocationArn) {
 }
 .bedrockruntime$operations$get_async_invoke <- bedrockruntime_get_async_invoke
 
+#' Evaluates messages against inline guardrail checks
+#'
+#' @description
+#' Evaluates messages against inline guardrail checks. You specify the check configurations directly in the request, and Amazon Bedrock returns per-check results with severity or confidence scores.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockruntime_invoke_guardrail_checks/](https://www.paws-r-sdk.com/docs/bedrockruntime_invoke_guardrail_checks/) for full documentation.
+#'
+#' @param messages &#91;required&#93; The messages to evaluate against the specified guardrail checks. Each message includes a role and one or more content blocks.
+#' @param checks &#91;required&#93; The inline check configurations that specify which guardrail checks to run against the messages.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockruntime_invoke_guardrail_checks
+bedrockruntime_invoke_guardrail_checks <- function(messages, checks) {
+  op <- new_operation(
+    name = "InvokeGuardrailChecks",
+    http_method = "POST",
+    http_path = "/guardrail-checks/invoke",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockruntime$invoke_guardrail_checks_input(messages = messages, checks = checks)
+  output <- .bedrockruntime$invoke_guardrail_checks_output()
+  config <- get_config()
+  svc <- .bedrockruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockruntime$operations$invoke_guardrail_checks <- bedrockruntime_invoke_guardrail_checks
+
 #' Invokes the specified Amazon Bedrock model to run inference using the
 #' prompt and inference parameters provided in the request body
 #'

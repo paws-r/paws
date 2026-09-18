@@ -16,13 +16,13 @@ elasticbeanstalk_describe_environments(
 )
 }
 \arguments{
-\item{ApplicationName}{If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that are associated with this application.}
+\item{ApplicationName}{If specified, Elastic Beanstalk restricts the returned descriptions to include only those that are associated with this application.}
 
-\item{VersionLabel}{If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that are associated with this application version.}
+\item{VersionLabel}{If specified, Elastic Beanstalk restricts the returned descriptions to include only those that are associated with this application version.}
 
-\item{EnvironmentIds}{If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that have the specified IDs.}
+\item{EnvironmentIds}{If specified, Elastic Beanstalk restricts the returned descriptions to include only those that have the specified IDs.}
 
-\item{EnvironmentNames}{If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that have the specified names.}
+\item{EnvironmentNames}{If specified, Elastic Beanstalk restricts the returned descriptions to include only those that have the specified names.}
 
 \item{IncludeDeleted}{Indicates whether to include deleted environments:
 

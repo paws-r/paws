@@ -5,44 +5,37 @@ NULL
 
 .lexmodelbuildingservice$create_bot_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), checksum = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["create_bot_version_input"]]))
 }
 
 .lexmodelbuildingservice$create_bot_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), intents = structure(list(structure(list(intentName = structure(logical(0), tags = list(type = "string")), intentVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clarificationPrompt = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), maxAttempts = structure(logical(0), tags = list(type = "integer")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), abortStatement = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), idleSessionTTLInSeconds = structure(logical(0), tags = list(type = "integer")), voiceId = structure(logical(0), tags = list(type = "string")), checksum = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), locale = structure(logical(0), tags = list(type = "string")), childDirected = structure(logical(0), tags = list(type = "boolean")), enableModelImprovements = structure(logical(0), tags = list(type = "boolean")), detectSentiment = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["create_bot_version_output"]]))
 }
 
 .lexmodelbuildingservice$create_intent_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), checksum = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["create_intent_version_input"]]))
 }
 
 .lexmodelbuildingservice$create_intent_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), slots = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), slotConstraint = structure(logical(0), tags = list(type = "string")), slotType = structure(logical(0), tags = list(type = "string")), slotTypeVersion = structure(logical(0), tags = list(type = "string")), valueElicitationPrompt = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), maxAttempts = structure(logical(0), tags = list(type = "integer")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), priority = structure(logical(0), tags = list(type = "integer")), sampleUtterances = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string")), obfuscationSetting = structure(logical(0), tags = list(type = "string")), defaultValueSpec = structure(list(defaultValueList = structure(list(structure(list(defaultValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), sampleUtterances = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), confirmationPrompt = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), maxAttempts = structure(logical(0), tags = list(type = "integer")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), rejectionStatement = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), followUpPrompt = structure(list(prompt = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), maxAttempts = structure(logical(0), tags = list(type = "integer")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), rejectionStatement = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), conclusionStatement = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), dialogCodeHook = structure(list(uri = structure(logical(0), tags = list(type = "string")), messageVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), fulfillmentActivity = structure(list(type = structure(logical(0), tags = list(type = "string")), codeHook = structure(list(uri = structure(logical(0), tags = list(type = "string")), messageVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), parentIntentSignature = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), checksum = structure(logical(0), tags = list(type = "string")), kendraConfiguration = structure(list(kendraIndex = structure(logical(0), tags = list(type = "string")), queryFilterString = structure(logical(0), tags = list(type = "string")), role = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), inputContexts = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), outputContexts = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), timeToLiveInSeconds = structure(logical(0), tags = list(type = "integer")), turnsToLive = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["create_intent_version_output"]]))
 }
 
 .lexmodelbuildingservice$create_slot_type_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), checksum = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["create_slot_type_version_input"]]))
 }
 
 .lexmodelbuildingservice$create_slot_type_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), enumerationValues = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), synonyms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), checksum = structure(logical(0), tags = list(type = "string")), valueSelectionStrategy = structure(logical(0), tags = list(type = "string")), parentSlotTypeSignature = structure(logical(0), tags = list(type = "string")), slotTypeConfigurations = structure(list(structure(list(regexConfiguration = structure(list(pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["create_slot_type_version_output"]]))
 }
 
 .lexmodelbuildingservice$delete_bot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["delete_bot_input"]]))
 }
 
 .lexmodelbuildingservice$delete_bot_output <- function(...) {
@@ -51,8 +44,7 @@ NULL
 
 .lexmodelbuildingservice$delete_bot_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), botName = structure(logical(0), tags = list(location = "uri", locationName = "botName", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["delete_bot_alias_input"]]))
 }
 
 .lexmodelbuildingservice$delete_bot_alias_output <- function(...) {
@@ -61,8 +53,7 @@ NULL
 
 .lexmodelbuildingservice$delete_bot_channel_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), botName = structure(logical(0), tags = list(location = "uri", locationName = "botName", type = "string")), botAlias = structure(logical(0), tags = list(location = "uri", locationName = "aliasName", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["delete_bot_channel_association_input"]]))
 }
 
 .lexmodelbuildingservice$delete_bot_channel_association_output <- function(...) {
@@ -71,8 +62,7 @@ NULL
 
 .lexmodelbuildingservice$delete_bot_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), version = structure(logical(0), tags = list(location = "uri", locationName = "version", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["delete_bot_version_input"]]))
 }
 
 .lexmodelbuildingservice$delete_bot_version_output <- function(...) {
@@ -81,8 +71,7 @@ NULL
 
 .lexmodelbuildingservice$delete_intent_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["delete_intent_input"]]))
 }
 
 .lexmodelbuildingservice$delete_intent_output <- function(...) {
@@ -91,8 +80,7 @@ NULL
 
 .lexmodelbuildingservice$delete_intent_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), version = structure(logical(0), tags = list(location = "uri", locationName = "version", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["delete_intent_version_input"]]))
 }
 
 .lexmodelbuildingservice$delete_intent_version_output <- function(...) {
@@ -101,8 +89,7 @@ NULL
 
 .lexmodelbuildingservice$delete_slot_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["delete_slot_type_input"]]))
 }
 
 .lexmodelbuildingservice$delete_slot_type_output <- function(...) {
@@ -111,8 +98,7 @@ NULL
 
 .lexmodelbuildingservice$delete_slot_type_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), version = structure(logical(0), tags = list(location = "uri", locationName = "version", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["delete_slot_type_version_input"]]))
 }
 
 .lexmodelbuildingservice$delete_slot_type_version_output <- function(...) {
@@ -121,8 +107,7 @@ NULL
 
 .lexmodelbuildingservice$delete_utterances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(botName = structure(logical(0), tags = list(location = "uri", locationName = "botName", type = "string")), userId = structure(logical(0), tags = list(location = "uri", locationName = "userId", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["delete_utterances_input"]]))
 }
 
 .lexmodelbuildingservice$delete_utterances_output <- function(...) {
@@ -131,360 +116,300 @@ NULL
 
 .lexmodelbuildingservice$get_bot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), versionOrAlias = structure(logical(0), tags = list(location = "uri", locationName = "versionoralias", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_bot_input"]]))
 }
 
 .lexmodelbuildingservice$get_bot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), intents = structure(list(structure(list(intentName = structure(logical(0), tags = list(type = "string")), intentVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), enableModelImprovements = structure(logical(0), tags = list(type = "boolean")), nluIntentConfidenceThreshold = structure(logical(0), tags = list(type = "double")), clarificationPrompt = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), maxAttempts = structure(logical(0), tags = list(type = "integer")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), abortStatement = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), idleSessionTTLInSeconds = structure(logical(0), tags = list(type = "integer")), voiceId = structure(logical(0), tags = list(type = "string")), checksum = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), locale = structure(logical(0), tags = list(type = "string")), childDirected = structure(logical(0), tags = list(type = "boolean")), detectSentiment = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_bot_output"]]))
 }
 
 .lexmodelbuildingservice$get_bot_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), botName = structure(logical(0), tags = list(location = "uri", locationName = "botName", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_bot_alias_input"]]))
 }
 
 .lexmodelbuildingservice$get_bot_alias_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), botVersion = structure(logical(0), tags = list(type = "string")), botName = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), checksum = structure(logical(0), tags = list(type = "string")), conversationLogs = structure(list(logSettings = structure(list(structure(list(logType = structure(logical(0), tags = list(type = "string")), destination = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), resourcePrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), iamRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_bot_alias_output"]]))
 }
 
 .lexmodelbuildingservice$get_bot_aliases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(botName = structure(logical(0), tags = list(location = "uri", locationName = "botName", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_bot_aliases_input"]]))
 }
 
 .lexmodelbuildingservice$get_bot_aliases_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BotAliases = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), botVersion = structure(logical(0), tags = list(type = "string")), botName = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), checksum = structure(logical(0), tags = list(type = "string")), conversationLogs = structure(list(logSettings = structure(list(structure(list(logType = structure(logical(0), tags = list(type = "string")), destination = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), resourcePrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), iamRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_bot_aliases_output"]]))
 }
 
 .lexmodelbuildingservice$get_bot_channel_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), botName = structure(logical(0), tags = list(location = "uri", locationName = "botName", type = "string")), botAlias = structure(logical(0), tags = list(location = "uri", locationName = "aliasName", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_bot_channel_association_input"]]))
 }
 
 .lexmodelbuildingservice$get_bot_channel_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), botAlias = structure(logical(0), tags = list(type = "string")), botName = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), type = structure(logical(0), tags = list(type = "string")), botConfiguration = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_bot_channel_association_output"]]))
 }
 
 .lexmodelbuildingservice$get_bot_channel_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(botName = structure(logical(0), tags = list(location = "uri", locationName = "botName", type = "string")), botAlias = structure(logical(0), tags = list(location = "uri", locationName = "aliasName", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_bot_channel_associations_input"]]))
 }
 
 .lexmodelbuildingservice$get_bot_channel_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(botChannelAssociations = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), botAlias = structure(logical(0), tags = list(type = "string")), botName = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), type = structure(logical(0), tags = list(type = "string")), botConfiguration = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_bot_channel_associations_output"]]))
 }
 
 .lexmodelbuildingservice$get_bot_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_bot_versions_input"]]))
 }
 
 .lexmodelbuildingservice$get_bot_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(bots = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_bot_versions_output"]]))
 }
 
 .lexmodelbuildingservice$get_bots_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_bots_input"]]))
 }
 
 .lexmodelbuildingservice$get_bots_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(bots = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_bots_output"]]))
 }
 
 .lexmodelbuildingservice$get_builtin_intent_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(signature = structure(logical(0), tags = list(location = "uri", locationName = "signature", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_builtin_intent_input"]]))
 }
 
 .lexmodelbuildingservice$get_builtin_intent_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(signature = structure(logical(0), tags = list(type = "string")), supportedLocales = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), slots = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_builtin_intent_output"]]))
 }
 
 .lexmodelbuildingservice$get_builtin_intents_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(locale = structure(logical(0), tags = list(location = "querystring", locationName = "locale", type = "string")), signatureContains = structure(logical(0), tags = list(location = "querystring", locationName = "signatureContains", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_builtin_intents_input"]]))
 }
 
 .lexmodelbuildingservice$get_builtin_intents_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(intents = structure(list(structure(list(signature = structure(logical(0), tags = list(type = "string")), supportedLocales = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_builtin_intents_output"]]))
 }
 
 .lexmodelbuildingservice$get_builtin_slot_types_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(locale = structure(logical(0), tags = list(location = "querystring", locationName = "locale", type = "string")), signatureContains = structure(logical(0), tags = list(location = "querystring", locationName = "signatureContains", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_builtin_slot_types_input"]]))
 }
 
 .lexmodelbuildingservice$get_builtin_slot_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(slotTypes = structure(list(structure(list(signature = structure(logical(0), tags = list(type = "string")), supportedLocales = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_builtin_slot_types_output"]]))
 }
 
 .lexmodelbuildingservice$get_export_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "querystring", locationName = "name", type = "string")), version = structure(logical(0), tags = list(location = "querystring", locationName = "version", type = "string")), resourceType = structure(logical(0), tags = list(location = "querystring", locationName = "resourceType", type = "string")), exportType = structure(logical(0), tags = list(location = "querystring", locationName = "exportType", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_export_input"]]))
 }
 
 .lexmodelbuildingservice$get_export_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), exportType = structure(logical(0), tags = list(type = "string")), exportStatus = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_export_output"]]))
 }
 
 .lexmodelbuildingservice$get_import_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(importId = structure(logical(0), tags = list(location = "uri", locationName = "importId", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_import_input"]]))
 }
 
 .lexmodelbuildingservice$get_import_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), mergeStrategy = structure(logical(0), tags = list(type = "string")), importId = structure(logical(0), tags = list(type = "string")), importStatus = structure(logical(0), tags = list(type = "string")), failureReason = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_import_output"]]))
 }
 
 .lexmodelbuildingservice$get_intent_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), version = structure(logical(0), tags = list(location = "uri", locationName = "version", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_intent_input"]]))
 }
 
 .lexmodelbuildingservice$get_intent_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), slots = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), slotConstraint = structure(logical(0), tags = list(type = "string")), slotType = structure(logical(0), tags = list(type = "string")), slotTypeVersion = structure(logical(0), tags = list(type = "string")), valueElicitationPrompt = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), maxAttempts = structure(logical(0), tags = list(type = "integer")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), priority = structure(logical(0), tags = list(type = "integer")), sampleUtterances = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string")), obfuscationSetting = structure(logical(0), tags = list(type = "string")), defaultValueSpec = structure(list(defaultValueList = structure(list(structure(list(defaultValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), sampleUtterances = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), confirmationPrompt = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), maxAttempts = structure(logical(0), tags = list(type = "integer")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), rejectionStatement = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), followUpPrompt = structure(list(prompt = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), maxAttempts = structure(logical(0), tags = list(type = "integer")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), rejectionStatement = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), conclusionStatement = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), dialogCodeHook = structure(list(uri = structure(logical(0), tags = list(type = "string")), messageVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), fulfillmentActivity = structure(list(type = structure(logical(0), tags = list(type = "string")), codeHook = structure(list(uri = structure(logical(0), tags = list(type = "string")), messageVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), parentIntentSignature = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), checksum = structure(logical(0), tags = list(type = "string")), kendraConfiguration = structure(list(kendraIndex = structure(logical(0), tags = list(type = "string")), queryFilterString = structure(logical(0), tags = list(type = "string")), role = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), inputContexts = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), outputContexts = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), timeToLiveInSeconds = structure(logical(0), tags = list(type = "integer")), turnsToLive = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_intent_output"]]))
 }
 
 .lexmodelbuildingservice$get_intent_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_intent_versions_input"]]))
 }
 
 .lexmodelbuildingservice$get_intent_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(intents = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_intent_versions_output"]]))
 }
 
 .lexmodelbuildingservice$get_intents_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_intents_input"]]))
 }
 
 .lexmodelbuildingservice$get_intents_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(intents = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_intents_output"]]))
 }
 
 .lexmodelbuildingservice$get_migration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(migrationId = structure(logical(0), tags = list(location = "uri", locationName = "migrationId", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_migration_input"]]))
 }
 
 .lexmodelbuildingservice$get_migration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(migrationId = structure(logical(0), tags = list(type = "string")), v1BotName = structure(logical(0), tags = list(type = "string")), v1BotVersion = structure(logical(0), tags = list(type = "string")), v1BotLocale = structure(logical(0), tags = list(type = "string")), v2BotId = structure(logical(0), tags = list(type = "string")), v2BotRole = structure(logical(0), tags = list(type = "string")), migrationStatus = structure(logical(0), tags = list(type = "string")), migrationStrategy = structure(logical(0), tags = list(type = "string")), migrationTimestamp = structure(logical(0), tags = list(type = "timestamp")), alerts = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), details = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), referenceURLs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_migration_output"]]))
 }
 
 .lexmodelbuildingservice$get_migrations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sortByAttribute = structure(logical(0), tags = list(location = "querystring", locationName = "sortByAttribute", type = "string")), sortByOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortByOrder", type = "string")), v1BotNameContains = structure(logical(0), tags = list(location = "querystring", locationName = "v1BotNameContains", type = "string")), migrationStatusEquals = structure(logical(0), tags = list(location = "querystring", locationName = "migrationStatusEquals", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_migrations_input"]]))
 }
 
 .lexmodelbuildingservice$get_migrations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(migrationSummaries = structure(list(structure(list(migrationId = structure(logical(0), tags = list(type = "string")), v1BotName = structure(logical(0), tags = list(type = "string")), v1BotVersion = structure(logical(0), tags = list(type = "string")), v1BotLocale = structure(logical(0), tags = list(type = "string")), v2BotId = structure(logical(0), tags = list(type = "string")), v2BotRole = structure(logical(0), tags = list(type = "string")), migrationStatus = structure(logical(0), tags = list(type = "string")), migrationStrategy = structure(logical(0), tags = list(type = "string")), migrationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_migrations_output"]]))
 }
 
 .lexmodelbuildingservice$get_slot_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), version = structure(logical(0), tags = list(location = "uri", locationName = "version", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_slot_type_input"]]))
 }
 
 .lexmodelbuildingservice$get_slot_type_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), enumerationValues = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), synonyms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), checksum = structure(logical(0), tags = list(type = "string")), valueSelectionStrategy = structure(logical(0), tags = list(type = "string")), parentSlotTypeSignature = structure(logical(0), tags = list(type = "string")), slotTypeConfigurations = structure(list(structure(list(regexConfiguration = structure(list(pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_slot_type_output"]]))
 }
 
 .lexmodelbuildingservice$get_slot_type_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_slot_type_versions_input"]]))
 }
 
 .lexmodelbuildingservice$get_slot_type_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(slotTypes = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_slot_type_versions_output"]]))
 }
 
 .lexmodelbuildingservice$get_slot_types_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_slot_types_input"]]))
 }
 
 .lexmodelbuildingservice$get_slot_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(slotTypes = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_slot_types_output"]]))
 }
 
 .lexmodelbuildingservice$get_utterances_view_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(botName = structure(logical(0), tags = list(location = "uri", locationName = "botname", type = "string")), botVersions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "bot_versions", type = "list")), statusType = structure(logical(0), tags = list(location = "querystring", locationName = "status_type", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_utterances_view_input"]]))
 }
 
 .lexmodelbuildingservice$get_utterances_view_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(botName = structure(logical(0), tags = list(type = "string")), utterances = structure(list(structure(list(botVersion = structure(logical(0), tags = list(type = "string")), utterances = structure(list(structure(list(utteranceString = structure(logical(0), tags = list(type = "string")), count = structure(logical(0), tags = list(type = "integer")), distinctUsers = structure(logical(0), tags = list(type = "integer")), firstUtteredDate = structure(logical(0), tags = list(type = "timestamp")), lastUtteredDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["get_utterances_view_output"]]))
 }
 
 .lexmodelbuildingservice$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["list_tags_for_resource_input"]]))
 }
 
 .lexmodelbuildingservice$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["list_tags_for_resource_output"]]))
 }
 
 .lexmodelbuildingservice$put_bot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), description = structure(logical(0), tags = list(type = "string")), intents = structure(list(structure(list(intentName = structure(logical(0), tags = list(type = "string")), intentVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), enableModelImprovements = structure(logical(0), tags = list(type = "boolean")), nluIntentConfidenceThreshold = structure(logical(0), tags = list(type = "double")), clarificationPrompt = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), maxAttempts = structure(logical(0), tags = list(type = "integer")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), abortStatement = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), idleSessionTTLInSeconds = structure(logical(0), tags = list(type = "integer")), voiceId = structure(logical(0), tags = list(type = "string")), checksum = structure(logical(0), tags = list(type = "string")), processBehavior = structure(logical(0), tags = list(type = "string")), locale = structure(logical(0), tags = list(type = "string")), childDirected = structure(logical(0), tags = list(type = "boolean")), detectSentiment = structure(logical(0), tags = list(type = "boolean")), createVersion = structure(logical(0), tags = list(type = "boolean")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["put_bot_input"]]))
 }
 
 .lexmodelbuildingservice$put_bot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), intents = structure(list(structure(list(intentName = structure(logical(0), tags = list(type = "string")), intentVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), enableModelImprovements = structure(logical(0), tags = list(type = "boolean")), nluIntentConfidenceThreshold = structure(logical(0), tags = list(type = "double")), clarificationPrompt = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), maxAttempts = structure(logical(0), tags = list(type = "integer")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), abortStatement = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), idleSessionTTLInSeconds = structure(logical(0), tags = list(type = "integer")), voiceId = structure(logical(0), tags = list(type = "string")), checksum = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), locale = structure(logical(0), tags = list(type = "string")), childDirected = structure(logical(0), tags = list(type = "boolean")), createVersion = structure(logical(0), tags = list(type = "boolean")), detectSentiment = structure(logical(0), tags = list(type = "boolean")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["put_bot_output"]]))
 }
 
 .lexmodelbuildingservice$put_bot_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), description = structure(logical(0), tags = list(type = "string")), botVersion = structure(logical(0), tags = list(type = "string")), botName = structure(logical(0), tags = list(location = "uri", locationName = "botName", type = "string")), checksum = structure(logical(0), tags = list(type = "string")), conversationLogs = structure(list(logSettings = structure(list(structure(list(logType = structure(logical(0), tags = list(type = "string")), destination = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), iamRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["put_bot_alias_input"]]))
 }
 
 .lexmodelbuildingservice$put_bot_alias_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), botVersion = structure(logical(0), tags = list(type = "string")), botName = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), checksum = structure(logical(0), tags = list(type = "string")), conversationLogs = structure(list(logSettings = structure(list(structure(list(logType = structure(logical(0), tags = list(type = "string")), destination = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), resourcePrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), iamRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["put_bot_alias_output"]]))
 }
 
 .lexmodelbuildingservice$put_intent_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), description = structure(logical(0), tags = list(type = "string")), slots = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), slotConstraint = structure(logical(0), tags = list(type = "string")), slotType = structure(logical(0), tags = list(type = "string")), slotTypeVersion = structure(logical(0), tags = list(type = "string")), valueElicitationPrompt = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), maxAttempts = structure(logical(0), tags = list(type = "integer")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), priority = structure(logical(0), tags = list(type = "integer")), sampleUtterances = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string")), obfuscationSetting = structure(logical(0), tags = list(type = "string")), defaultValueSpec = structure(list(defaultValueList = structure(list(structure(list(defaultValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), sampleUtterances = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), confirmationPrompt = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), maxAttempts = structure(logical(0), tags = list(type = "integer")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), rejectionStatement = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), followUpPrompt = structure(list(prompt = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), maxAttempts = structure(logical(0), tags = list(type = "integer")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), rejectionStatement = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), conclusionStatement = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), dialogCodeHook = structure(list(uri = structure(logical(0), tags = list(type = "string")), messageVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), fulfillmentActivity = structure(list(type = structure(logical(0), tags = list(type = "string")), codeHook = structure(list(uri = structure(logical(0), tags = list(type = "string")), messageVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), parentIntentSignature = structure(logical(0), tags = list(type = "string")), checksum = structure(logical(0), tags = list(type = "string")), createVersion = structure(logical(0), tags = list(type = "boolean")), kendraConfiguration = structure(list(kendraIndex = structure(logical(0), tags = list(type = "string")), queryFilterString = structure(logical(0), tags = list(type = "string")), role = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), inputContexts = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), outputContexts = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), timeToLiveInSeconds = structure(logical(0), tags = list(type = "integer")), turnsToLive = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["put_intent_input"]]))
 }
 
 .lexmodelbuildingservice$put_intent_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), slots = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), slotConstraint = structure(logical(0), tags = list(type = "string")), slotType = structure(logical(0), tags = list(type = "string")), slotTypeVersion = structure(logical(0), tags = list(type = "string")), valueElicitationPrompt = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), maxAttempts = structure(logical(0), tags = list(type = "integer")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), priority = structure(logical(0), tags = list(type = "integer")), sampleUtterances = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string")), obfuscationSetting = structure(logical(0), tags = list(type = "string")), defaultValueSpec = structure(list(defaultValueList = structure(list(structure(list(defaultValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), sampleUtterances = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), confirmationPrompt = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), maxAttempts = structure(logical(0), tags = list(type = "integer")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), rejectionStatement = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), followUpPrompt = structure(list(prompt = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), maxAttempts = structure(logical(0), tags = list(type = "integer")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), rejectionStatement = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), conclusionStatement = structure(list(messages = structure(list(structure(list(contentType = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), groupNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), responseCard = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), dialogCodeHook = structure(list(uri = structure(logical(0), tags = list(type = "string")), messageVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), fulfillmentActivity = structure(list(type = structure(logical(0), tags = list(type = "string")), codeHook = structure(list(uri = structure(logical(0), tags = list(type = "string")), messageVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), parentIntentSignature = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), checksum = structure(logical(0), tags = list(type = "string")), createVersion = structure(logical(0), tags = list(type = "boolean")), kendraConfiguration = structure(list(kendraIndex = structure(logical(0), tags = list(type = "string")), queryFilterString = structure(logical(0), tags = list(type = "string")), role = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), inputContexts = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), outputContexts = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), timeToLiveInSeconds = structure(logical(0), tags = list(type = "integer")), turnsToLive = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["put_intent_output"]]))
 }
 
 .lexmodelbuildingservice$put_slot_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), description = structure(logical(0), tags = list(type = "string")), enumerationValues = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), synonyms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), checksum = structure(logical(0), tags = list(type = "string")), valueSelectionStrategy = structure(logical(0), tags = list(type = "string")), createVersion = structure(logical(0), tags = list(type = "boolean")), parentSlotTypeSignature = structure(logical(0), tags = list(type = "string")), slotTypeConfigurations = structure(list(structure(list(regexConfiguration = structure(list(pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["put_slot_type_input"]]))
 }
 
 .lexmodelbuildingservice$put_slot_type_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), enumerationValues = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), synonyms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), checksum = structure(logical(0), tags = list(type = "string")), valueSelectionStrategy = structure(logical(0), tags = list(type = "string")), createVersion = structure(logical(0), tags = list(type = "boolean")), parentSlotTypeSignature = structure(logical(0), tags = list(type = "string")), slotTypeConfigurations = structure(list(structure(list(regexConfiguration = structure(list(pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["put_slot_type_output"]]))
 }
 
 .lexmodelbuildingservice$start_import_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(payload = structure(logical(0), tags = list(type = "blob")), resourceType = structure(logical(0), tags = list(type = "string")), mergeStrategy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["start_import_input"]]))
 }
 
 .lexmodelbuildingservice$start_import_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), mergeStrategy = structure(logical(0), tags = list(type = "string")), importId = structure(logical(0), tags = list(type = "string")), importStatus = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["start_import_output"]]))
 }
 
 .lexmodelbuildingservice$start_migration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(v1BotName = structure(logical(0), tags = list(type = "string")), v1BotVersion = structure(logical(0), tags = list(type = "string")), v2BotName = structure(logical(0), tags = list(type = "string")), v2BotRole = structure(logical(0), tags = list(type = "string")), migrationStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["start_migration_input"]]))
 }
 
 .lexmodelbuildingservice$start_migration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(v1BotName = structure(logical(0), tags = list(type = "string")), v1BotVersion = structure(logical(0), tags = list(type = "string")), v1BotLocale = structure(logical(0), tags = list(type = "string")), v2BotId = structure(logical(0), tags = list(type = "string")), v2BotRole = structure(logical(0), tags = list(type = "string")), migrationId = structure(logical(0), tags = list(type = "string")), migrationStrategy = structure(logical(0), tags = list(type = "string")), migrationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["start_migration_output"]]))
 }
 
 .lexmodelbuildingservice$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["tag_resource_input"]]))
 }
 
 .lexmodelbuildingservice$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["tag_resource_output"]]))
 }
 
 .lexmodelbuildingservice$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["untag_resource_input"]]))
 }
 
 .lexmodelbuildingservice$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Amazon Lex V1 is deprecated. Use Amazon Lex V2 instead.", deprecatedSince = "2025-09-08"))
-  return(populate(args, shape))
+  return(populate(args, .lexmodelbuildingservice_shapes[["untag_resource_output"]]))
 }

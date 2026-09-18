@@ -9,6 +9,7 @@ resources to determine the policies' effective permissions}
 iam_simulate_custom_policy(
   PolicyInputList,
   PermissionsBoundaryPolicyInputList = NULL,
+  OrderedOrganizationPolicyInputList = NULL,
   ActionNames,
   ResourceArns = NULL,
   ResourcePolicy = NULL,
@@ -43,6 +44,12 @@ The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to validate t
 \item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return (\verb{U+000D})
 }}
 
+\item{OrderedOrganizationPolicyInputList}{An ordered list of service control policies (SCPs) to include in the simulation. Each element represents one level of an Organizations hierarchy, from the organization root to the account.
+
+The simulator evaluates SCPs in the order that you provide, consistent with how Organizations enforces SCPs. The first element must represent the organization root, and the last element must represent the account. Any elements between them represent organizational units (OUs) in descending order.
+
+Use this parameter to simulate the effect of an SCP hierarchy without calling \code{\link[=iam_simulate_principal_policy]{simulate_principal_policy}}.}
+
 \item{ActionNames}{[required] A list of names of API operations to evaluate in the simulation. Each operation is evaluated against each resource. Each operation must include the service identifier, such as \code{iam:CreateUser}. This operation does not support using wildcards (*) in an action name.}
 
 \item{ResourceArns}{A list of ARNs of Amazon Web Services resources to include in the simulation. If this parameter is not provided, then the value defaults to \code{*} (all resources). Each API in the \code{ActionNames} parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response. You can simulate resources that don't exist in your account.
@@ -72,9 +79,9 @@ Simulation of resource-based policies isn't supported for IAM roles.}
 
 The ARN for an account uses the following syntax: \code{arn:aws:iam::AWS-account-ID:root}. For example, to represent the account with the 112233445566 ID, use the following ARN: \verb{arn:aws:iam::112233445566-ID:root}.}
 
-\item{CallerArn}{The ARN of the IAM user that you want to use as the simulated caller of the API operations. \code{CallerArn} is required if you include a \code{ResourcePolicy} so that the policy's \code{Principal} element has a value to use in evaluating the policy.
+\item{CallerArn}{The ARN of the IAM user, group, or role that you want to use as the simulated caller of the API operations. \code{CallerArn} is required if you include a \code{ResourcePolicy} so that the policy's \code{Principal} element has a value to use in evaluating the policy.
 
-You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed role, federated user, or a service principal.}
+You cannot specify the ARN of an assumed role, federated user, or a service principal.}
 
 \item{ContextEntries}{A list of context keys and corresponding values for the simulation to use. Whenever a context key is evaluated in one of the simulated IAM permissions policies, the corresponding value is supplied.}
 

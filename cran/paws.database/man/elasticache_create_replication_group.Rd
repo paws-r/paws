@@ -44,7 +44,8 @@ elasticache_create_replication_group(
   IpDiscovery = NULL,
   TransitEncryptionMode = NULL,
   ClusterMode = NULL,
-  ServerlessCacheSnapshotName = NULL
+  ServerlessCacheSnapshotName = NULL,
+  Durability = NULL
 )
 }
 \arguments{
@@ -245,7 +246,7 @@ Password constraints:
 \item The only permitted printable special characters are !, &, #, $, ^, \<, \>, and -. Other printable special characters cannot be used in the AUTH token.
 }
 
-For more information, see AUTH password at http://redis.io/commands/AUTH.}
+For more information, see \href{https://redis.io/docs/latest/commands/AUTH/}{AUTH password} at http://redis.io/commands/AUTH.}
 
 \item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to \code{true}.
 
@@ -259,11 +260,9 @@ Default: \code{false}
 
 For HIPAA compliance, you must specify \code{TransitEncryptionEnabled} as \code{true}, an \code{AuthToken}, and a \code{CacheSubnetGroup}.}
 
-\item{AtRestEncryptionEnabled}{A flag that enables encryption at rest when set to \code{true}.
+\item{AtRestEncryptionEnabled}{A flag that enables encryption at-rest on the replication group when set to \code{true}. In some cases, encryption at-rest may be enabled even when this value is false. Use \code{StorageEncryptionType} to view the effective encryption state of a cluster.
 
-You cannot modify the value of \code{AtRestEncryptionEnabled} after the replication group is created. To enable encryption at rest on a replication group you must set \code{AtRestEncryptionEnabled} to \code{true} when you create the replication group.
-
-\strong{Required:} Only available when creating a replication group in an Amazon VPC using Valkey \code{7.2} and later, Redis OSS version \verb{3.2.6}, or Redis OSS \verb{4.x} and later.
+You cannot modify the value of \code{AtRestEncryptionEnabled} after the replication group is created.
 
 Default: \code{true} when using Valkey, \code{false} when using Redis OSS}
 
@@ -290,6 +289,8 @@ This process will not trigger the replacement of the replication group.}
 \item{ClusterMode}{Enabled or Disabled. To modify cluster mode from Disabled to Enabled, you must first set the cluster mode to Compatible. Compatible mode allows your Valkey or Redis OSS clients to connect using both cluster mode enabled and cluster mode disabled. After you migrate all Valkey or Redis OSS clients to use cluster mode enabled, you can then complete cluster mode configuration and set the cluster mode to Enabled.}
 
 \item{ServerlessCacheSnapshotName}{The name of the snapshot used to create a replication group. Available for Valkey, Redis OSS only.}
+
+\item{Durability}{Specifies the durability setting for the replication group. When set to \code{default}, the service determines the effective durability based on the engine version, cluster mode, and other parameters. The resolved setting is reflected in the \code{EffectiveDurability} property of the replication group. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/durability.html}{Durability}.}
 }
 \description{
 Creates a Valkey or Redis OSS (cluster mode disabled) or a Valkey or Redis OSS (cluster mode enabled) replication group.

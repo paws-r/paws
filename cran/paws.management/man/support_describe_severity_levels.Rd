@@ -5,10 +5,12 @@
 \title{Returns the list of severity levels that you can assign to a support
 case}
 \usage{
-support_describe_severity_levels(language = NULL)
+support_describe_severity_levels(language = NULL, dryRun = NULL)
 }
 \arguments{
-\item{language}{The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the \code{language} parameter if you want support in that language.}
+\item{language}{The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") , Chinese ("zh"), Spanish ("es"), Portuguese ("pt"), French ("fr"), Korean (“ko”), and Turkish ("tr"). You must specify the ISO 639-1 code for the \code{language} parameter if you want support in that language.}
+
+\item{dryRun}{Specifies whether to validate the request without actually returning severity levels. When set to \code{true}, the request is validated but no severity levels are returned, and the operation returns a \code{DryRunOperationException}. When omitted or set to \code{false}, the request runs normally.}
 }
 \description{
 Returns the list of severity levels that you can assign to a support case. The severity level for a case is also a field in the CaseDetails data type that you include for a \code{\link[=support_create_case]{create_case}} request.

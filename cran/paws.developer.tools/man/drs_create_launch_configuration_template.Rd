@@ -13,7 +13,8 @@ drs_create_launch_configuration_template(
   licensing = NULL,
   exportBucketArn = NULL,
   postLaunchEnabled = NULL,
-  launchIntoSourceInstance = NULL
+  launchIntoSourceInstance = NULL,
+  recoveryMode = NULL
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ drs_create_launch_configuration_template(
 \item{postLaunchEnabled}{Whether we want to activate post-launch actions.}
 
 \item{launchIntoSourceInstance}{DRS will set the 'launch into instance ID' of any source server when performing a drill, recovery or failback to the previous region or availability zone, using the instance ID of the source instance.}
+
+\item{recoveryMode}{Recovery mode.}
 }
 \description{
 Creates a new Launch Configuration Template.

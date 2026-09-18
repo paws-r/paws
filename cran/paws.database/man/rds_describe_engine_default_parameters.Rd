@@ -27,6 +27,7 @@ Valid Values:
 \item \code{custom-oracle-ee-19}
 \item \code{custom-oracle-ee-cdb-19}
 \item \code{db2-ae}
+\item \code{db2-ce}
 \item \code{db2-se}
 \item \code{mariadb10.2}
 \item \code{mariadb10.3}

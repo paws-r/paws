@@ -12,6 +12,7 @@ sagemaker_create_partner_app(
   MaintenanceConfig = NULL,
   Tier,
   ApplicationConfig = NULL,
+  IdcConfig = NULL,
   AuthType,
   EnableIamSessionBasedIdentity = NULL,
   EnableAutoMinorVersionUpgrade = NULL,
@@ -34,7 +35,13 @@ sagemaker_create_partner_app(
 
 \item{ApplicationConfig}{Configuration settings for the SageMaker Partner AI App.}
 
-\item{AuthType}{[required] The authorization type that users use to access the SageMaker Partner AI App.}
+\item{IdcConfig}{Specifies the Amazon Web Services IAM Identity Center configuration for the SageMaker Partner AI App. Specify this parameter when \code{AuthType} is \code{IDC}. Apps that use \code{IAM} authorization don't use this parameter.}
+
+\item{AuthType}{[required] The authorization type that users use to access the SageMaker Partner AI App. Valid values:
+\itemize{
+\item \code{IAM}: Users access the SageMaker Partner AI App with their Amazon Web Services IAM identity.
+\item \code{IDC}: Users access the SageMaker Partner AI App with their Amazon Web Services IAM Identity Center identity. Specify the Identity Center instance to use in \code{IdcConfig}.
+}}
 
 \item{EnableIamSessionBasedIdentity}{When set to \code{TRUE}, the SageMaker Partner AI App sets the Amazon Web Services IAM session name or the authenticated IAM user as the identity of the SageMaker Partner AI App user.}
 

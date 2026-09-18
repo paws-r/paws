@@ -8,7 +8,8 @@ account or IAM user}
 sts_get_session_token(
   DurationSeconds = NULL,
   SerialNumber = NULL,
-  TokenCode = NULL
+  TokenCode = NULL,
+  MinimumSessionTokenSize = NULL
 )
 }
 \arguments{
@@ -21,6 +22,8 @@ The regex used to validate this parameter is a string of characters consisting o
 \item{TokenCode}{The value provided by the MFA device, if MFA is required. If any policy requires the IAM user to submit an MFA code, specify this value. If MFA authentication is required, the user must provide a code when requesting a set of temporary security credentials. A user who fails to provide the code receives an "access denied" response when requesting resources that require MFA authentication.
 
 The format for this parameter, as described by its regex pattern, is a sequence of six numeric digits.}
+
+\item{MinimumSessionTokenSize}{The minimum size, in bytes, of the session token that STS issues for the request. STS increases the session token to at least this size, regardless of its actual content. The value must not exceed 4,096 bytes. When set to 0 or not specified, the session token size is unchanged.}
 }
 \description{
 Returns a set of temporary credentials for an Amazon Web Services account or IAM user. The credentials consist of an access key ID, a secret access key, and a security token. Typically, you use \code{\link[=sts_get_session_token]{get_session_token}} if you want to use MFA to protect programmatic calls to specific Amazon Web Services API operations like Amazon EC2 \code{StopInstances}.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_get_image_recipe}
 \alias{imagebuilder_get_image_recipe}
-\title{Gets an image recipe}
+\title{Retrieves an image recipe}
 \usage{
 imagebuilder_get_image_recipe(imageRecipeArn)
 }
@@ -10,7 +10,7 @@ imagebuilder_get_image_recipe(imageRecipeArn)
 \item{imageRecipeArn}{[required] The Amazon Resource Name (ARN) of the image recipe that you want to retrieve.}
 }
 \description{
-Gets an image recipe.
+Retrieves an image recipe.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_image_recipe/} for full documentation.
 }

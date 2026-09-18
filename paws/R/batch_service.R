@@ -97,6 +97,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=batch_cancel_job]{cancel_job} \tab Cancels a job in an Batch job queue\cr
+#'  \link[=batch_cancel_jobs]{cancel_jobs} \tab Cancels up to 50 jobs in an Batch job queue\cr
 #'  \link[=batch_create_compute_environment]{create_compute_environment} \tab Creates an Batch compute environment\cr
 #'  \link[=batch_create_consumable_resource]{create_consumable_resource} \tab Creates an Batch consumable resource\cr
 #'  \link[=batch_create_job_queue]{create_job_queue} \tab Creates an Batch job queue\cr
@@ -132,7 +133,9 @@ NULL
 #'  \link[=batch_submit_service_job]{submit_service_job} \tab Submits a service job to a specified job queue to run on SageMaker AI\cr
 #'  \link[=batch_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
 #'  \link[=batch_terminate_job]{terminate_job} \tab Terminates a job in a job queue\cr
+#'  \link[=batch_terminate_jobs]{terminate_jobs} \tab Terminates up to 50 jobs in a job queue\cr
 #'  \link[=batch_terminate_service_job]{terminate_service_job} \tab Terminates a service job in a job queue\cr
+#'  \link[=batch_terminate_service_jobs]{terminate_service_jobs} \tab Terminates up to 50 service jobs in a job queue\cr
 #'  \link[=batch_untag_resource]{untag_resource} \tab Deletes specified tags from an Batch resource\cr
 #'  \link[=batch_update_compute_environment]{update_compute_environment} \tab Updates an Batch compute environment\cr
 #'  \link[=batch_update_consumable_resource]{update_consumable_resource} \tab Updates a consumable resource\cr

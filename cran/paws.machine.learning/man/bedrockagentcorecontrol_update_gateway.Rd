@@ -14,9 +14,11 @@ bedrockagentcorecontrol_update_gateway(
   authorizerType,
   authorizerConfiguration = NULL,
   kmsKeyArn = NULL,
+  customTransformConfiguration = NULL,
   interceptorConfigurations = NULL,
   policyEngineConfiguration = NULL,
-  exceptionLevel = NULL
+  exceptionLevel = NULL,
+  wafConfiguration = NULL
 )
 }
 \arguments{
@@ -38,6 +40,8 @@ bedrockagentcorecontrol_update_gateway(
 
 \item{kmsKeyArn}{The updated ARN of the KMS key used to encrypt the gateway.}
 
+\item{customTransformConfiguration}{The updated custom transformation configuration for the gateway. This configuration defines how the gateway transforms requests and responses.}
+
 \item{interceptorConfigurations}{The updated interceptor configurations for the gateway.}
 
 \item{policyEngineConfiguration}{The updated policy engine configuration for the gateway. A policy engine is a collection of policies that evaluates and authorizes agent tool calls. When associated with a gateway, the policy engine intercepts all agent requests and determines whether to allow or deny each action based on the defined policies.}
@@ -47,6 +51,8 @@ bedrockagentcorecontrol_update_gateway(
 \item If the value is \code{DEBUG}, granular exception messages are returned to help a user debug the gateway.
 \item If the value is omitted, a generic error message is returned to the end user.
 }}
+
+\item{wafConfiguration}{The updated Amazon Web Services WAF configuration for the gateway.}
 }
 \description{
 Updates an existing gateway.

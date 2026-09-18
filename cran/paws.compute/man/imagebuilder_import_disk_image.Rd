@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_import_disk_image}
 \alias{imagebuilder_import_disk_image}
-\title{Import a Windows operating system image from a verified Microsoft ISO
+\title{Imports a Windows operating system image from a verified Microsoft ISO
 disk file}
 \usage{
 imagebuilder_import_disk_image(
@@ -38,7 +38,7 @@ imagebuilder_import_disk_image(
 
 \item{uri}{[required] The \code{uri} of the ISO disk file that's stored in Amazon S3.}
 
-\item{loggingConfiguration}{Define logging configuration for the image build process.}
+\item{loggingConfiguration}{The logging configuration for the image build process.}
 
 \item{tags}{Tags that are attached to image resources created from the import.}
 
@@ -46,10 +46,10 @@ imagebuilder_import_disk_image(
 
 \item{windowsConfiguration}{Specifies Windows settings for ISO imports.}
 
-\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
-Import a Windows operating system image from a verified Microsoft ISO disk file. The following disk images are supported:
+Imports a Windows operating system image from a verified Microsoft ISO disk file. The following disk images are supported:
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_import_disk_image/} for full documentation.
 }

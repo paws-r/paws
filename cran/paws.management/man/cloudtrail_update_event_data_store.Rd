@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_update_event_data_store}
 \alias{cloudtrail_update_event_data_store}
-\title{Updates an event data store}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_update_event_data_store(
   EventDataStore,
@@ -64,7 +65,7 @@ The following are the possible values:
 For more information about CloudTrail pricing, see \href{https://aws.amazon.com/cloudtrail/pricing/}{CloudTrail Pricing} and \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html}{Managing CloudTrail Lake costs}.}
 }
 \description{
-Updates an event data store. The required \code{EventDataStore} value is an ARN or the ID portion of the ARN. Other parameters are optional, but at least one optional parameter must be specified, or CloudTrail throws an error. \code{RetentionPeriod} is in days, and valid values are integers between 7 and 3653 if the \code{BillingMode} is set to \code{EXTENDABLE_RETENTION_PRICING}, or between 7 and 2557 if \code{BillingMode} is set to \code{FIXED_RETENTION_PRICING}. By default, \code{TerminationProtection} is enabled.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_update_event_data_store/} for full documentation.
 }

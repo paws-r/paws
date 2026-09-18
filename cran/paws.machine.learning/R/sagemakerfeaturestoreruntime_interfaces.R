@@ -5,20 +5,27 @@ NULL
 
 .sagemakerfeaturestoreruntime$batch_get_record_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifiers = structure(list(structure(list(FeatureGroupName = structure(logical(0), tags = list(type = "string")), RecordIdentifiersValueAsString = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FeatureNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ExpirationTimeResponse = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sagemakerfeaturestoreruntime_shapes[["batch_get_record_input"]]))
 }
 
 .sagemakerfeaturestoreruntime$batch_get_record_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Records = structure(list(structure(list(FeatureGroupName = structure(logical(0), tags = list(type = "string")), RecordIdentifierValueAsString = structure(logical(0), tags = list(type = "string")), Record = structure(list(structure(list(FeatureName = structure(logical(0), tags = list(type = "string")), ValueAsString = structure(logical(0), tags = list(type = "string")), ValueAsStringList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ExpiresAt = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Errors = structure(list(structure(list(FeatureGroupName = structure(logical(0), tags = list(type = "string")), RecordIdentifierValueAsString = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UnprocessedIdentifiers = structure(list(structure(list(FeatureGroupName = structure(logical(0), tags = list(type = "string")), RecordIdentifiersValueAsString = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FeatureNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sagemakerfeaturestoreruntime_shapes[["batch_get_record_output"]]))
+}
+
+.sagemakerfeaturestoreruntime$batch_write_record_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .sagemakerfeaturestoreruntime_shapes[["batch_write_record_input"]]))
+}
+
+.sagemakerfeaturestoreruntime$batch_write_record_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .sagemakerfeaturestoreruntime_shapes[["batch_write_record_output"]]))
 }
 
 .sagemakerfeaturestoreruntime$delete_record_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FeatureGroupName = structure(logical(0), tags = list(location = "uri", locationName = "FeatureGroupName", type = "string")), RecordIdentifierValueAsString = structure(logical(0), tags = list(location = "querystring", locationName = "RecordIdentifierValueAsString", type = "string")), EventTime = structure(logical(0), tags = list(location = "querystring", locationName = "EventTime", type = "string")), TargetStores = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "TargetStores", type = "list")), DeletionMode = structure(logical(0), tags = list(location = "querystring", locationName = "DeletionMode", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sagemakerfeaturestoreruntime_shapes[["delete_record_input"]]))
 }
 
 .sagemakerfeaturestoreruntime$delete_record_output <- function(...) {
@@ -27,22 +34,38 @@ NULL
 
 .sagemakerfeaturestoreruntime$get_record_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FeatureGroupName = structure(logical(0), tags = list(location = "uri", locationName = "FeatureGroupName", type = "string")), RecordIdentifierValueAsString = structure(logical(0), tags = list(location = "querystring", locationName = "RecordIdentifierValueAsString", type = "string")), FeatureNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "FeatureName", type = "list")), ExpirationTimeResponse = structure(logical(0), tags = list(location = "querystring", locationName = "ExpirationTimeResponse", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sagemakerfeaturestoreruntime_shapes[["get_record_input"]]))
 }
 
 .sagemakerfeaturestoreruntime$get_record_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Record = structure(list(structure(list(FeatureName = structure(logical(0), tags = list(type = "string")), ValueAsString = structure(logical(0), tags = list(type = "string")), ValueAsStringList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ExpiresAt = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sagemakerfeaturestoreruntime_shapes[["get_record_output"]]))
+}
+
+.sagemakerfeaturestoreruntime$list_records_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .sagemakerfeaturestoreruntime_shapes[["list_records_input"]]))
+}
+
+.sagemakerfeaturestoreruntime$list_records_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .sagemakerfeaturestoreruntime_shapes[["list_records_output"]]))
 }
 
 .sagemakerfeaturestoreruntime$put_record_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FeatureGroupName = structure(logical(0), tags = list(location = "uri", locationName = "FeatureGroupName", type = "string")), Record = structure(list(structure(list(FeatureName = structure(logical(0), tags = list(type = "string")), ValueAsString = structure(logical(0), tags = list(type = "string")), ValueAsStringList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), TargetStores = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TtlDuration = structure(list(Unit = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sagemakerfeaturestoreruntime_shapes[["put_record_input"]]))
 }
 
 .sagemakerfeaturestoreruntime$put_record_output <- function(...) {
+  list()
+}
+
+.sagemakerfeaturestoreruntime$update_record_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .sagemakerfeaturestoreruntime_shapes[["update_record_input"]]))
+}
+
+.sagemakerfeaturestoreruntime$update_record_output <- function(...) {
   list()
 }

@@ -116,6 +116,8 @@ NULL
 #'  \link[=emr_get_managed_scaling_policy]{get_managed_scaling_policy} \tab Fetches the attached managed scaling policy for an Amazon EMR cluster\cr
 #'  \link[=emr_get_on_cluster_app_ui_presigned_url]{get_on_cluster_app_ui_presigned_url} \tab The presigned URL properties for the cluster's application user interface\cr
 #'  \link[=emr_get_persistent_app_ui_presigned_url]{get_persistent_app_ui_presigned_url} \tab The presigned URL properties for the cluster's application user interface\cr
+#'  \link[=emr_get_session]{get_session} \tab Returns detailed information about a session\cr
+#'  \link[=emr_get_session_endpoint]{get_session_endpoint} \tab Returns the Spark Connect endpoint URL and a time-limited authentication token for the specified session\cr
 #'  \link[=emr_get_studio_session_mapping]{get_studio_session_mapping} \tab Fetches mapping details for the specified Amazon EMR Studio and identity (user or group)\cr
 #'  \link[=emr_list_bootstrap_actions]{list_bootstrap_actions} \tab Provides information about the bootstrap actions associated with a cluster\cr
 #'  \link[=emr_list_clusters]{list_clusters} \tab Provides the status of all clusters visible to this Amazon Web Services account\cr
@@ -125,6 +127,7 @@ NULL
 #'  \link[=emr_list_notebook_executions]{list_notebook_executions} \tab Provides summaries of all notebook executions\cr
 #'  \link[=emr_list_release_labels]{list_release_labels} \tab Retrieves release labels of Amazon EMR services in the Region where the API is called\cr
 #'  \link[=emr_list_security_configurations]{list_security_configurations} \tab Lists all the security configurations visible to this account, providing their creation dates and times, and their names\cr
+#'  \link[=emr_list_sessions]{list_sessions} \tab Lists the sessions on a cluster\cr
 #'  \link[=emr_list_steps]{list_steps} \tab Provides a list of steps for the cluster in reverse order unless you specify stepIds with the request or filter by StepStates\cr
 #'  \link[=emr_list_studios]{list_studios} \tab Returns a list of all Amazon EMR Studios associated with the Amazon Web Services account\cr
 #'  \link[=emr_list_studio_session_mappings]{list_studio_session_mappings} \tab Returns a list of all user or group session mappings for the Amazon EMR Studio specified by StudioId\cr
@@ -146,8 +149,10 @@ NULL
 #'  \link[=emr_set_unhealthy_node_replacement]{set_unhealthy_node_replacement} \tab Specify whether to enable unhealthy node replacement, which lets Amazon EMR gracefully replace core nodes on a cluster if any nodes become unhealthy\cr
 #'  \link[=emr_set_visible_to_all_users]{set_visible_to_all_users} \tab The SetVisibleToAllUsers parameter is no longer supported\cr
 #'  \link[=emr_start_notebook_execution]{start_notebook_execution} \tab Starts a notebook execution\cr
+#'  \link[=emr_start_session]{start_session} \tab Creates and starts a new Spark Connect session on the specified cluster\cr
 #'  \link[=emr_stop_notebook_execution]{stop_notebook_execution} \tab Stops a notebook execution\cr
 #'  \link[=emr_terminate_job_flows]{terminate_job_flows} \tab TerminateJobFlows shuts a list of clusters (job flows) down\cr
+#'  \link[=emr_terminate_session]{terminate_session} \tab Terminates an active session\cr
 #'  \link[=emr_update_studio]{update_studio} \tab Updates an Amazon EMR Studio configuration, including attributes such as name, description, and subnets\cr
 #'  \link[=emr_update_studio_session_mapping]{update_studio_session_mapping} \tab Updates the session policy attached to the user or group for the specified Amazon EMR Studio
 #' }

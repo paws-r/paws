@@ -77,11 +77,12 @@ NULL
 #' The following is an example of a `ProvidedContext` value that includes a single trusted context assertion and the ARN of the context provider from which the trusted context assertion was generated.
 #' 
 #' `[{"ProviderArn":"arn:aws:iam::aws:contextProvider/IdentityCenter","ContextAssertion":"trusted-context-assertion"}]`
+#' @param MinimumSessionTokenSize The minimum size, in bytes, of the session token that STS issues for the request. STS increases the session token to at least this size, regardless of its actual content. The value must not exceed 4,096 bytes. When set to 0 or not specified, the session token size is unchanged.
 #'
 #' @keywords internal
 #'
 #' @rdname sts_assume_role
-sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy = NULL, DurationSeconds = NULL, Tags = NULL, TransitiveTagKeys = NULL, ExternalId = NULL, SerialNumber = NULL, TokenCode = NULL, SourceIdentity = NULL, ProvidedContexts = NULL) {
+sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy = NULL, DurationSeconds = NULL, Tags = NULL, TransitiveTagKeys = NULL, ExternalId = NULL, SerialNumber = NULL, TokenCode = NULL, SourceIdentity = NULL, ProvidedContexts = NULL, MinimumSessionTokenSize = NULL) {
   op <- new_operation(
     name = "AssumeRole",
     http_method = "POST",
@@ -90,7 +91,7 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sts$assume_role_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds, Tags = Tags, TransitiveTagKeys = TransitiveTagKeys, ExternalId = ExternalId, SerialNumber = SerialNumber, TokenCode = TokenCode, SourceIdentity = SourceIdentity, ProvidedContexts = ProvidedContexts)
+  input <- .sts$assume_role_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds, Tags = Tags, TransitiveTagKeys = TransitiveTagKeys, ExternalId = ExternalId, SerialNumber = SerialNumber, TokenCode = TokenCode, SourceIdentity = SourceIdentity, ProvidedContexts = ProvidedContexts, MinimumSessionTokenSize = MinimumSessionTokenSize)
   output <- .sts$assume_role_output()
   config <- get_config()
   svc <- .sts$service(config, op)
@@ -134,11 +135,12 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' By default, the value is set to `3600` seconds.
 #' 
 #' The `DurationSeconds` parameter is separate from the duration of a console session that you might request using the returned credentials. The request to the federation endpoint for a console sign-in token takes a `SessionDuration` parameter that specifies the maximum length of the console session. For more information, see [Creating a URL that Enables Federated Users to Access the Amazon Web Services Management Console](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html) in the *IAM User Guide*.
+#' @param MinimumSessionTokenSize The minimum size, in bytes, of the session token that STS issues for the request. STS increases the session token to at least this size, regardless of its actual content. The value must not exceed 4,096 bytes. When set to 0 or not specified, the session token size is unchanged.
 #'
 #' @keywords internal
 #'
 #' @rdname sts_assume_role_with_saml
-sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, PolicyArns = NULL, Policy = NULL, DurationSeconds = NULL) {
+sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, PolicyArns = NULL, Policy = NULL, DurationSeconds = NULL, MinimumSessionTokenSize = NULL) {
   op <- new_operation(
     name = "AssumeRoleWithSAML",
     http_method = "POST",
@@ -147,7 +149,7 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sts$assume_role_with_saml_input(RoleArn = RoleArn, PrincipalArn = PrincipalArn, SAMLAssertion = SAMLAssertion, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds)
+  input <- .sts$assume_role_with_saml_input(RoleArn = RoleArn, PrincipalArn = PrincipalArn, SAMLAssertion = SAMLAssertion, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds, MinimumSessionTokenSize = MinimumSessionTokenSize)
   output <- .sts$assume_role_with_saml_output()
   config <- get_config()
   svc <- .sts$service(config, op)
@@ -201,11 +203,12 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' By default, the value is set to `3600` seconds.
 #' 
 #' The `DurationSeconds` parameter is separate from the duration of a console session that you might request using the returned credentials. The request to the federation endpoint for a console sign-in token takes a `SessionDuration` parameter that specifies the maximum length of the console session. For more information, see [Creating a URL that Enables Federated Users to Access the Amazon Web Services Management Console](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html) in the *IAM User Guide*.
+#' @param MinimumSessionTokenSize The minimum size, in bytes, of the session token that STS issues for the request. STS increases the session token to at least this size, regardless of its actual content. The value must not exceed 4,096 bytes. When set to 0 or not specified, the session token size is unchanged.
 #'
 #' @keywords internal
 #'
 #' @rdname sts_assume_role_with_web_identity
-sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdentityToken, ProviderId = NULL, PolicyArns = NULL, Policy = NULL, DurationSeconds = NULL) {
+sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdentityToken, ProviderId = NULL, PolicyArns = NULL, Policy = NULL, DurationSeconds = NULL, MinimumSessionTokenSize = NULL) {
   op <- new_operation(
     name = "AssumeRoleWithWebIdentity",
     http_method = "POST",
@@ -214,7 +217,7 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sts$assume_role_with_web_identity_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, WebIdentityToken = WebIdentityToken, ProviderId = ProviderId, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds)
+  input <- .sts$assume_role_with_web_identity_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, WebIdentityToken = WebIdentityToken, ProviderId = ProviderId, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds, MinimumSessionTokenSize = MinimumSessionTokenSize)
   output <- .sts$assume_role_with_web_identity_output()
   config <- get_config()
   svc <- .sts$service(config, op)
@@ -247,11 +250,12 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
 #' @param DurationSeconds The duration, in seconds, of the privileged session. The value can range from 0 seconds up to the maximum session duration of 900 seconds (15 minutes). If you specify a value higher than this setting, the operation fails.
 #' 
 #' By default, the value is set to `900` seconds.
+#' @param MinimumSessionTokenSize The minimum size, in bytes, of the session token that STS issues for the request. STS increases the session token to at least this size, regardless of its actual content. The value must not exceed 4,096 bytes. When set to 0 or not specified, the session token size is unchanged.
 #'
 #' @keywords internal
 #'
 #' @rdname sts_assume_root
-sts_assume_root <- function(TargetPrincipal, TaskPolicyArn, DurationSeconds = NULL) {
+sts_assume_root <- function(TargetPrincipal, TaskPolicyArn, DurationSeconds = NULL, MinimumSessionTokenSize = NULL) {
   op <- new_operation(
     name = "AssumeRoot",
     http_method = "POST",
@@ -260,7 +264,7 @@ sts_assume_root <- function(TargetPrincipal, TaskPolicyArn, DurationSeconds = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sts$assume_root_input(TargetPrincipal = TargetPrincipal, TaskPolicyArn = TaskPolicyArn, DurationSeconds = DurationSeconds)
+  input <- .sts$assume_root_input(TargetPrincipal = TargetPrincipal, TaskPolicyArn = TaskPolicyArn, DurationSeconds = DurationSeconds, MinimumSessionTokenSize = MinimumSessionTokenSize)
   output <- .sts$assume_root_output()
   config <- get_config()
   svc <- .sts$service(config, op)
@@ -445,11 +449,12 @@ sts_get_delegated_access_token <- function(TradeInToken) {
 #' You can pass a session tag with the same key as a tag that is already attached to the user you are federating. When you do, session tags override a user tag with the same key.
 #' 
 #' Tag key–value pairs are not case sensitive, but case is preserved. This means that you cannot have separate `Department` and `department` tag keys. Assume that the role has the `Department`=`Marketing` tag and you pass the `department`=`engineering` session tag. `Department` and `department` are not saved as separate tags, and the session tag passed in the request takes precedence over the role tag.
+#' @param MinimumSessionTokenSize The minimum size, in bytes, of the session token that STS issues for the request. STS increases the session token to at least this size, regardless of its actual content. The value must not exceed 4,096 bytes. When set to 0 or not specified, the session token size is unchanged.
 #'
 #' @keywords internal
 #'
 #' @rdname sts_get_federation_token
-sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, DurationSeconds = NULL, Tags = NULL) {
+sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, DurationSeconds = NULL, Tags = NULL, MinimumSessionTokenSize = NULL) {
   op <- new_operation(
     name = "GetFederationToken",
     http_method = "POST",
@@ -458,7 +463,7 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sts$get_federation_token_input(Name = Name, Policy = Policy, PolicyArns = PolicyArns, DurationSeconds = DurationSeconds, Tags = Tags)
+  input <- .sts$get_federation_token_input(Name = Name, Policy = Policy, PolicyArns = PolicyArns, DurationSeconds = DurationSeconds, Tags = Tags, MinimumSessionTokenSize = MinimumSessionTokenSize)
   output <- .sts$get_federation_token_output()
   config <- get_config()
   svc <- .sts$service(config, op)
@@ -483,11 +488,12 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
 #' @param TokenCode The value provided by the MFA device, if MFA is required. If any policy requires the IAM user to submit an MFA code, specify this value. If MFA authentication is required, the user must provide a code when requesting a set of temporary security credentials. A user who fails to provide the code receives an "access denied" response when requesting resources that require MFA authentication.
 #' 
 #' The format for this parameter, as described by its regex pattern, is a sequence of six numeric digits.
+#' @param MinimumSessionTokenSize The minimum size, in bytes, of the session token that STS issues for the request. STS increases the session token to at least this size, regardless of its actual content. The value must not exceed 4,096 bytes. When set to 0 or not specified, the session token size is unchanged.
 #'
 #' @keywords internal
 #'
 #' @rdname sts_get_session_token
-sts_get_session_token <- function(DurationSeconds = NULL, SerialNumber = NULL, TokenCode = NULL) {
+sts_get_session_token <- function(DurationSeconds = NULL, SerialNumber = NULL, TokenCode = NULL, MinimumSessionTokenSize = NULL) {
   op <- new_operation(
     name = "GetSessionToken",
     http_method = "POST",
@@ -496,7 +502,7 @@ sts_get_session_token <- function(DurationSeconds = NULL, SerialNumber = NULL, T
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sts$get_session_token_input(DurationSeconds = DurationSeconds, SerialNumber = SerialNumber, TokenCode = TokenCode)
+  input <- .sts$get_session_token_input(DurationSeconds = DurationSeconds, SerialNumber = SerialNumber, TokenCode = TokenCode, MinimumSessionTokenSize = MinimumSessionTokenSize)
   output <- .sts$get_session_token_output()
   config <- get_config()
   svc <- .sts$service(config, op)

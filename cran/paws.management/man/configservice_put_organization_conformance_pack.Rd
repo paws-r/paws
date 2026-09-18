@@ -12,7 +12,8 @@ configservice_put_organization_conformance_pack(
   DeliveryS3Bucket = NULL,
   DeliveryS3KeyPrefix = NULL,
   ConformancePackInputParameters = NULL,
-  ExcludedAccounts = NULL
+  ExcludedAccounts = NULL,
+  Tags = NULL
 )
 }
 \arguments{
@@ -35,6 +36,8 @@ This field is optional.}
 \item{ConformancePackInputParameters}{A list of \code{ConformancePackInputParameter} objects.}
 
 \item{ExcludedAccounts}{A list of Amazon Web Services accounts to be excluded from an organization conformance pack while deploying a conformance pack.}
+
+\item{Tags}{The tags for the organization conformance pack. Each tag consists of a key and an optional value, both of which you define.}
 }
 \description{
 Deploys conformance packs across member accounts in an Amazon Web Services Organization. For information on how many organization conformance packs and how many Config rules you can have per account, see \href{https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html}{\strong{Service Limits}} in the \emph{Config Developer Guide}.

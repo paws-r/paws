@@ -25,7 +25,7 @@ Amazon RDS requires a value of at least 20.}
 
 If this is set to \code{TRUE}, the response will contain recovery points associated with the selected resources that are managed by Backup.
 
-If this is set to \code{FALSE}, the response will contain all recovery points associated with the selected resource.
+If this is set to \code{FALSE}, the response will contain all recovery points associated with the selected resource, except for EBS snapshots copied within the same Region and account.
 
 Type: Boolean}
 }

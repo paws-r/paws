@@ -2,13 +2,13 @@
 % Please edit documentation in R/elasticbeanstalk_operations.R
 \name{elasticbeanstalk_describe_account_attributes}
 \alias{elasticbeanstalk_describe_account_attributes}
-\title{Returns attributes related to AWS Elastic Beanstalk that are associated
-with the calling AWS account}
+\title{Returns attributes related to Elastic Beanstalk that are associated with
+the calling Amazon Web Services account}
 \usage{
 elasticbeanstalk_describe_account_attributes()
 }
 \description{
-Returns attributes related to AWS Elastic Beanstalk that are associated with the calling AWS account.
+Returns attributes related to Elastic Beanstalk that are associated with the calling Amazon Web Services account.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_account_attributes/} for full documentation.
 }

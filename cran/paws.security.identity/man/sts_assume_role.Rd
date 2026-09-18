@@ -17,7 +17,8 @@ sts_assume_role(
   SerialNumber = NULL,
   TokenCode = NULL,
   SourceIdentity = NULL,
-  ProvidedContexts = NULL
+  ProvidedContexts = NULL,
+  MinimumSessionTokenSize = NULL
 )
 }
 \arguments{
@@ -98,6 +99,8 @@ The regex used to validate this parameter is a string of characters consisting o
 The following is an example of a \code{ProvidedContext} value that includes a single trusted context assertion and the ARN of the context provider from which the trusted context assertion was generated.
 
 \verb{[\{"ProviderArn":"arn:aws:iam::aws:contextProvider/IdentityCenter","ContextAssertion":"trusted-context-assertion"\}]}}
+
+\item{MinimumSessionTokenSize}{The minimum size, in bytes, of the session token that STS issues for the request. STS increases the session token to at least this size, regardless of its actual content. The value must not exceed 4,096 bytes. When set to 0 or not specified, the session token size is unchanged.}
 }
 \description{
 Returns a set of temporary security credentials that you can use to access Amazon Web Services resources. These temporary credentials consist of an access key ID, a secret access key, and a security token. Typically, you use \code{\link[=sts_assume_role]{assume_role}} within your account or for cross-account access. For a comparison of \code{\link[=sts_assume_role]{assume_role}} with other API operations that produce temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_sts-comparison.html}{Compare STS credentials} in the \emph{IAM User Guide}.

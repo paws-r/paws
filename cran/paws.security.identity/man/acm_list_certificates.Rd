@@ -6,6 +6,7 @@
 \usage{
 acm_list_certificates(
   CertificateStatuses = NULL,
+  CertificateKeyPairOrigins = NULL,
   Includes = NULL,
   NextToken = NULL,
   MaxItems = NULL,
@@ -15,6 +16,8 @@ acm_list_certificates(
 }
 \arguments{
 \item{CertificateStatuses}{Filter the certificate list by status value.}
+
+\item{CertificateKeyPairOrigins}{Filter the certificate list by certificate key pair origin. Specify one or more \code{CertificateKeyPairOrigin} values. Default filtering returns only certificates with key pair origin of \code{AWS_MANAGED} and \code{CUSTOMER_PROVIDED}.}
 
 \item{Includes}{Filter the certificate list. For more information, see the Filters structure.}
 

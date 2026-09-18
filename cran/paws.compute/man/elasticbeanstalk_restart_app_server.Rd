@@ -13,11 +13,11 @@ elasticbeanstalk_restart_app_server(
 \arguments{
 \item{EnvironmentId}{The ID of the environment to restart the server for.
 
-Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
+Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 
 \item{EnvironmentName}{The name of the environment to restart the server for.
 
-Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
+Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 }
 \description{
 Causes the environment to restart the application container server running on each Amazon EC2 instance.

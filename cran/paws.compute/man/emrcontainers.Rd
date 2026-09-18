@@ -108,6 +108,7 @@ Amazon EMR on EKS provides a deployment option for Amazon EMR that allows you to
 \link[=emrcontainers_create_virtual_cluster]{create_virtual_cluster} \tab Creates a virtual cluster\cr
 \link[=emrcontainers_delete_job_template]{delete_job_template} \tab Deletes a job template\cr
 \link[=emrcontainers_delete_managed_endpoint]{delete_managed_endpoint} \tab Deletes a managed endpoint\cr
+\link[=emrcontainers_delete_security_configuration]{delete_security_configuration} \tab Deletes a security configuration\cr
 \link[=emrcontainers_delete_virtual_cluster]{delete_virtual_cluster} \tab Deletes a virtual cluster\cr
 \link[=emrcontainers_describe_job_run]{describe_job_run} \tab Displays detailed information about a job run\cr
 \link[=emrcontainers_describe_job_template]{describe_job_template} \tab Displays detailed information about a specified job template\cr
@@ -123,7 +124,8 @@ Amazon EMR on EKS provides a deployment option for Amazon EMR that allows you to
 \link[=emrcontainers_list_virtual_clusters]{list_virtual_clusters} \tab Lists information about the specified virtual cluster\cr
 \link[=emrcontainers_start_job_run]{start_job_run} \tab Starts a job run\cr
 \link[=emrcontainers_tag_resource]{tag_resource} \tab Assigns tags to resources\cr
-\link[=emrcontainers_untag_resource]{untag_resource} \tab Removes tags from resources
+\link[=emrcontainers_untag_resource]{untag_resource} \tab Removes tags from resources\cr
+\link[=emrcontainers_update_virtual_cluster]{update_virtual_cluster} \tab Updates a virtual cluster
 }
 }
 

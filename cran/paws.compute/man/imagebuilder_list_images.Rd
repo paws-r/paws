@@ -14,7 +14,7 @@ imagebuilder_list_images(
 )
 }
 \arguments{
-\item{owner}{The owner defines which images you want to list. By default, this request will only show images owned by your account. You can use this field to specify if you want to view images owned by yourself, by Amazon, or those images that have been shared with you by other customers.}
+\item{owner}{Filters the list to images owned by you, by Amazon, or shared with you by other accounts. By default, only your account's images are returned.}
 
 \item{filters}{Use the following filters to streamline results:
 \itemize{
@@ -27,9 +27,9 @@ imagebuilder_list_images(
 
 \item{byName}{Requests a list of images with a specific recipe name.}
 
-\item{maxResults}{Specify the maximum number of items to return in a request.}
+\item{maxResults}{The maximum number of items to return in a single request.}
 
-\item{nextToken}{A token to specify where to start paginating. This is the nextToken from a previously truncated response.}
+\item{nextToken}{A token to specify where to start paginating. Use the \code{nextToken} value from a previously truncated response.}
 
 \item{includeDeprecated}{Includes deprecated images in the response list.}
 }

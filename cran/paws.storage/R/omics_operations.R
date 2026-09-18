@@ -572,7 +572,7 @@ omics_create_sequence_store <- function(name, description = NULL, sseConfig = NU
 #' Creates a cross-account shared resource
 #'
 #' @description
-#' Creates a cross-account shared resource. The resource owner makes an offer to share the resource with the principal subscriber (an AWS user with a different account than the resource owner).
+#' Creates a cross-account shared resource. The resource owner makes an offer to share the resource with the principal subscriber (an Amazon Web Services user with a different account than the resource owner).
 #'
 #' See [https://www.paws-r-sdk.com/docs/omics_create_share/](https://www.paws-r-sdk.com/docs/omics_create_share/) for full documentation.
 #'
@@ -3049,7 +3049,7 @@ omics_start_annotation_import_job <- function(destinationName, roleArn, items, v
 #' formatted output
 #'
 #' @description
-#' Activates an archived read set and returns its metadata in a JSON formatted output. AWS HealthOmics automatically archives unused read sets after 30 days. To monitor the status of your read set activation job, use the [`get_read_set_activation_job`][omics_get_read_set_activation_job] operation.
+#' Activates an archived read set and returns its metadata in a JSON formatted output. Amazon Web Services HealthOmics automatically archives unused read sets after 30 days. To monitor the status of your read set activation job, use the [`get_read_set_activation_job`][omics_get_read_set_activation_job] operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/omics_start_read_set_activation_job/](https://www.paws-r-sdk.com/docs/omics_start_read_set_activation_job/) for full documentation.
 #'
@@ -3194,7 +3194,7 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' @param workflowId The run's workflow ID. The `workflowId` is not the UUID.
 #' @param workflowType The run's workflow type. The `workflowType` must be specified if you are running a `READY2RUN` workflow. If you are running a `PRIVATE` workflow (default), you do not need to include the workflow type.
 #' @param runId The ID of a run to duplicate.
-#' @param roleArn &#91;required&#93; A service role for the run. The `roleArn` requires access to Amazon Web Services HealthOmics, S3, Cloudwatch logs, and EC2. An example `roleArn` is `arn:aws:iam::123456789012:role/omics-service-role-serviceRole-W8O1XMPL7QZ`. In this example, the AWS account ID is `123456789012` and the role name is `omics-service-role-serviceRole-W8O1XMPL7QZ`.
+#' @param roleArn &#91;required&#93; A service role for the run. The `roleArn` requires access to Amazon Web Services HealthOmics, S3, Cloudwatch logs, and EC2. An example `roleArn` is `arn:aws:iam::123456789012:role/omics-service-role-serviceRole-W8O1XMPL7QZ`. In this example, the Amazon Web Services account ID is `123456789012` and the role name is `omics-service-role-serviceRole-W8O1XMPL7QZ`.
 #' @param name A name for the run. This is recommended to view and organize runs in the Amazon Web Services HealthOmics console and CloudWatch logs.
 #' @param cacheId Identifier of the cache associated with this run. If you don't specify a cache ID, no task outputs are cached for this run.
 #' @param cacheBehavior The cache behavior for the run. You specify this value if you want to override the default behavior for the cache. You had set the default value when you created the cache. For more information, see [Run cache behavior](https://docs.aws.amazon.com/omics/latest/dev/how-run-cache.html#run-cache-behavior) in the *Amazon Web Services HealthOmics User Guide*.
@@ -3215,12 +3215,15 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' @param workflowOwnerId The 12-digit account ID of the workflow owner that is used for running a shared workflow. The workflow owner ID can be retrieved using the [`get_share`][omics_get_share] API operation. If you are the workflow owner, you do not need to include this ID.
 #' @param workflowVersionName The name of the workflow version. Use workflow versions to track and organize changes to the workflow. If your workflow has multiple versions, the run uses the default version unless you specify a version name. To learn more, see [Workflow versioning](https://docs.aws.amazon.com/omics/latest/dev/workflow-versions.html) in the *Amazon Web Services HealthOmics User Guide*.
 #' @param networkingMode Optional configuration for run networking behavior. If not specified, this will default to RESTRICTED.
+#' @param scratchStorageMode Optional configuration for enabling scratch ephemeral storage mounted at /tmp. If not specified, this will default to SHARED. This configuration is applicable only for CPU tasks. For tasks using GPUs, scratch storage is always LOCAL.
 #' @param configurationName Optional configuration name to use for the workflow run.
+#' @param sessionPolicy Optional inline policy json for scoping down permissions via a session policy on the IAM role provided in the roleArn parameter.
+#' @param engineSettings Engine-specific settings for the workflow run. Use this field to specify configuration options that are specific to the workflow engine (for example, Nextflow profiles).
 #'
 #' @keywords internal
 #'
 #' @rdname omics_start_run
-omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL, roleArn, name = NULL, cacheId = NULL, cacheBehavior = NULL, runGroupId = NULL, priority = NULL, parameters = NULL, storageCapacity = NULL, outputUri, logLevel = NULL, tags = NULL, requestId, retentionMode = NULL, storageType = NULL, workflowOwnerId = NULL, workflowVersionName = NULL, networkingMode = NULL, configurationName = NULL) {
+omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL, roleArn, name = NULL, cacheId = NULL, cacheBehavior = NULL, runGroupId = NULL, priority = NULL, parameters = NULL, storageCapacity = NULL, outputUri, logLevel = NULL, tags = NULL, requestId, retentionMode = NULL, storageType = NULL, workflowOwnerId = NULL, workflowVersionName = NULL, networkingMode = NULL, scratchStorageMode = NULL, configurationName = NULL, sessionPolicy = NULL, engineSettings = NULL) {
   op <- new_operation(
     name = "StartRun",
     http_method = "POST",
@@ -3229,7 +3232,7 @@ omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .omics$start_run_input(workflowId = workflowId, workflowType = workflowType, runId = runId, roleArn = roleArn, name = name, cacheId = cacheId, cacheBehavior = cacheBehavior, runGroupId = runGroupId, priority = priority, parameters = parameters, storageCapacity = storageCapacity, outputUri = outputUri, logLevel = logLevel, tags = tags, requestId = requestId, retentionMode = retentionMode, storageType = storageType, workflowOwnerId = workflowOwnerId, workflowVersionName = workflowVersionName, networkingMode = networkingMode, configurationName = configurationName)
+  input <- .omics$start_run_input(workflowId = workflowId, workflowType = workflowType, runId = runId, roleArn = roleArn, name = name, cacheId = cacheId, cacheBehavior = cacheBehavior, runGroupId = runGroupId, priority = priority, parameters = parameters, storageCapacity = storageCapacity, outputUri = outputUri, logLevel = logLevel, tags = tags, requestId = requestId, retentionMode = retentionMode, storageType = storageType, workflowOwnerId = workflowOwnerId, workflowVersionName = workflowVersionName, networkingMode = networkingMode, scratchStorageMode = scratchStorageMode, configurationName = configurationName, sessionPolicy = sessionPolicy, engineSettings = engineSettings)
   output <- .omics$start_run_output()
   config <- get_config()
   svc <- .omics$service(config, op)
@@ -3248,7 +3251,7 @@ omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL
 #'
 #' @param batchName An optional user-friendly name for the run batch.
 #' @param requestId &#91;required&#93; A client token used to deduplicate retry requests and prevent duplicate batches from being created.
-#' @param tags AWS tags to associate with the batch resource. These tags are not inherited by individual runs. To tag individual runs, use `defaultRunSetting.runTags`.
+#' @param tags Amazon Web Services tags to associate with the batch resource. These tags are not inherited by individual runs. To tag individual runs, use `defaultRunSetting.runTags`.
 #' @param defaultRunSetting &#91;required&#93; Shared configuration applied to all runs in the batch. See `DefaultRunSetting`.
 #' @param batchRunSettings &#91;required&#93; The individual run configurations. Specify exactly one of `inlineSettings` or `s3UriSettings`. See `BatchRunSettings`.
 #'

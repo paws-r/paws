@@ -143,7 +143,7 @@ Valid values: \code{active} | \code{inactive}}
 
 If \code{false}, changes to the cluster are applied on the next maintenance reboot, or the next failure reboot, whichever occurs first.
 
-If you perform a \code{\link[=elasticache_modify_cache_cluster]{modify_cache_cluster}} before a pending modification is applied, the pending modification is replaced by the newer modification.
+If you perform a \code{\link[=elasticache_modify_cache_cluster]{modify_cache_cluster}} before a pending modification is applied, the pending modification is replaced by the newer modification. However, a pending node-count increase on Memcached clusters cannot be superseded by a request to add fewer nodes. To change a pending node addition, first cancel it by setting \code{NumCacheNodes} equal to the current number of nodes in the cluster, then submit the new request. See the \code{NumCacheNodes} parameter for details on node scaling behavior.
 
 Valid values: \code{true} | \code{false}
 
@@ -172,7 +172,7 @@ If the value of \code{SnapshotRetentionLimit} is set to zero (0), backups are tu
 \item Cannot contain any of the following characters: '/', '"', or '@', '\%'
 }
 
-For more information, see AUTH password at AUTH.}
+For more information, see AUTH password at \href{https://redis.io/docs/latest/commands/AUTH/}{AUTH}.}
 
 \item{AuthTokenUpdateStrategy}{Specifies the strategy to use to update the AUTH token. This parameter must be specified with the \code{auth-token} parameter. Possible values:
 \itemize{

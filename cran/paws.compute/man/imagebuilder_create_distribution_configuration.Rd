@@ -9,7 +9,8 @@ imagebuilder_create_distribution_configuration(
   description = NULL,
   distributions,
   tags = NULL,
-  clientToken
+  clientToken,
+  dryRun = NULL
 )
 }
 \arguments{
@@ -21,7 +22,9 @@ imagebuilder_create_distribution_configuration(
 
 \item{tags}{The tags of the distribution configuration.}
 
-\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+
+\item{dryRun}{Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a \code{DryRunOperationException} error response.}
 }
 \description{
 Creates a new distribution configuration. Distribution configurations define and configure the outputs of your pipeline.

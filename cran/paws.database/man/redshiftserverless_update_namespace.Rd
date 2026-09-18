@@ -11,9 +11,14 @@ redshiftserverless_update_namespace(
   defaultIamRoleArn = NULL,
   iamRoles = NULL,
   kmsKeyId = NULL,
+  logDestinationType = NULL,
   logExports = NULL,
   manageAdminPassword = NULL,
-  namespaceName
+  namespaceName,
+  s3TableAction = NULL,
+  s3TableGranularity = NULL,
+  s3TableKmsKeyId = NULL,
+  s3TableNames = NULL
 )
 }
 \arguments{
@@ -21,7 +26,9 @@ redshiftserverless_update_namespace(
 
 \item{adminUserPassword}{The password of the administrator for the first database created in the namespace. This parameter must be updated together with \code{adminUsername}.
 
-You can't use \code{adminUserPassword} if \code{manageAdminPassword} is true.}
+You can't use \code{adminUserPassword} if \code{manageAdminPassword} is true.
+
+If your admin user account is locked, this operation also unlocks your account and resets the failed-login counter. This option is available only when account lockout security is enabled for the namespace.}
 
 \item{adminUsername}{The username of the administrator for the first database created in the namespace. This parameter must be updated together with \code{adminUserPassword}.}
 
@@ -31,11 +38,33 @@ You can't use \code{adminUserPassword} if \code{manageAdminPassword} is true.}
 
 \item{kmsKeyId}{The ID of the Amazon Web Services Key Management Service key used to encrypt your data.}
 
+\item{logDestinationType}{The destination for the log data. Valid values are \code{s3table} and \code{cloudwatch}.
+
+Set this to \code{s3table} to manage Amazon S3 Tables system-table publishing for the namespace.}
+
 \item{logExports}{The types of logs the namespace can export. The export types are \code{userlog}, \code{connectionlog}, and \code{useractivitylog}.}
 
 \item{manageAdminPassword}{If \code{true}, Amazon Redshift uses Secrets Manager to manage the namespace's admin credentials. You can't use \code{adminUserPassword} if \code{manageAdminPassword} is true. If \code{manageAdminPassword} is false or not set, Amazon Redshift uses \code{adminUserPassword} for the admin user account's password.}
 
 \item{namespaceName}{[required] The name of the namespace to update. You can't update the name of a namespace once it is created.}
+
+\item{s3TableAction}{Whether to enable or disable Amazon S3 Tables publishing. Valid values are \code{Enable} and \code{Disable}, matched case-insensitively.
+
+When omitted, defaults to \code{Enable}. Valid only when \code{logDestinationType} is \code{s3table}.}
+
+\item{s3TableGranularity}{The scope of the Amazon S3 Tables destination. Valid values are \code{namespace} and \code{account}, matched case-insensitively. \code{namespace} scopes the published tables to this namespace; \code{account} scopes them to the Amazon Web Services account.
+
+Required when enabling. Omitting this parameter or passing a blank value fails with \code{ValidationException}. Valid only when \code{logDestinationType} is \code{s3table}.}
+
+\item{s3TableKmsKeyId}{The identifier of the Key Management Service key used to encrypt the published Amazon S3 Tables data. When omitted, the data is encrypted with SSE-S3 (Amazon S3 managed keys).
+
+Valid only when \code{logDestinationType} is \code{s3table}.}
+
+\item{s3TableNames}{The system tables to publish (on enable) or to stop publishing (on disable). Each value is either a system table view name that begins with \code{sys_} or the keyword \code{all}.
+
+Omitting this parameter, passing an empty list, or including \code{all} each select every current and future system table. Each name must be 1-128 characters, and the list can contain up to 256 names.
+
+Valid only when \code{logDestinationType} is \code{s3table}.}
 }
 \description{
 Updates a namespace with the specified settings. Unless required, you can't update multiple parameters in one request. For example, you must specify both \code{adminUsername} and \code{adminUserPassword} to update either field, but you can't update both \code{kmsKeyId} and \code{logExports} in a single request.

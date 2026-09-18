@@ -5,744 +5,620 @@ NULL
 
 .licensemanager$accept_grant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GrantArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["accept_grant_input"]]))
 }
 
 .licensemanager$accept_grant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GrantArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["accept_grant_output"]]))
 }
 
 .licensemanager$check_in_license_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConsumptionToken = structure(logical(0), tags = list(type = "string")), Beneficiary = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["check_in_license_input"]]))
 }
 
 .licensemanager$check_in_license_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["check_in_license_output"]]))
 }
 
 .licensemanager$checkout_borrow_license_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseArn = structure(logical(0), tags = list(type = "string")), Entitlements = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DigitalSignatureMethod = structure(logical(0), tags = list(type = "string")), NodeId = structure(logical(0), tags = list(type = "string")), CheckoutMetadata = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["checkout_borrow_license_input"]]))
 }
 
 .licensemanager$checkout_borrow_license_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseArn = structure(logical(0), tags = list(type = "string")), LicenseConsumptionToken = structure(logical(0), tags = list(type = "string")), EntitlementsAllowed = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NodeId = structure(logical(0), tags = list(type = "string")), SignedToken = structure(logical(0), tags = list(type = "string")), IssuedAt = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "string")), CheckoutMetadata = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["checkout_borrow_license_output"]]))
 }
 
 .licensemanager$checkout_license_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProductSKU = structure(logical(0), tags = list(type = "string")), CheckoutType = structure(logical(0), tags = list(type = "string")), KeyFingerprint = structure(logical(0), tags = list(type = "string")), Entitlements = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(type = "string")), Beneficiary = structure(logical(0), tags = list(type = "string")), NodeId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["checkout_license_input"]]))
 }
 
 .licensemanager$checkout_license_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CheckoutType = structure(logical(0), tags = list(type = "string")), LicenseConsumptionToken = structure(logical(0), tags = list(type = "string")), EntitlementsAllowed = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SignedToken = structure(logical(0), tags = list(type = "string")), NodeId = structure(logical(0), tags = list(type = "string")), IssuedAt = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "string")), LicenseArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["checkout_license_output"]]))
 }
 
 .licensemanager$create_grant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientToken = structure(logical(0), tags = list(type = "string")), GrantName = structure(logical(0), tags = list(type = "string")), LicenseArn = structure(logical(0), tags = list(type = "string")), Principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HomeRegion = structure(logical(0), tags = list(type = "string")), AllowedOperations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_grant_input"]]))
 }
 
 .licensemanager$create_grant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GrantArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_grant_output"]]))
 }
 
 .licensemanager$create_grant_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientToken = structure(logical(0), tags = list(type = "string")), GrantArn = structure(logical(0), tags = list(type = "string")), GrantName = structure(logical(0), tags = list(type = "string")), AllowedOperations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), SourceVersion = structure(logical(0), tags = list(type = "string")), Options = structure(list(ActivationOverrideBehavior = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_grant_version_input"]]))
 }
 
 .licensemanager$create_grant_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GrantArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_grant_version_output"]]))
 }
 
 .licensemanager$create_license_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseName = structure(logical(0), tags = list(type = "string")), ProductName = structure(logical(0), tags = list(type = "string")), ProductSKU = structure(logical(0), tags = list(type = "string")), Issuer = structure(list(Name = structure(logical(0), tags = list(type = "string")), SignKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HomeRegion = structure(logical(0), tags = list(type = "string")), Validity = structure(list(Begin = structure(logical(0), tags = list(type = "string")), End = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Entitlements = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), MaxCount = structure(logical(0), tags = list(type = "long")), Overage = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), AllowCheckIn = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), Beneficiary = structure(logical(0), tags = list(type = "string")), ConsumptionConfiguration = structure(list(RenewType = structure(logical(0), tags = list(type = "string")), ProvisionalConfiguration = structure(list(MaxTimeToLiveInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), BorrowConfiguration = structure(list(AllowEarlyCheckIn = structure(logical(0), tags = list(type = "boolean")), MaxTimeToLiveInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), LicenseMetadata = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_license_input"]]))
 }
 
 .licensemanager$create_license_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_license_output"]]))
 }
 
 .licensemanager$create_license_asset_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LicenseAssetGroupConfigurations = structure(list(structure(list(UsageDimension = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AssociatedLicenseAssetRulesetARNs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Properties = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_license_asset_group_input"]]))
 }
 
 .licensemanager$create_license_asset_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseAssetGroupArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_license_asset_group_output"]]))
 }
 
 .licensemanager$create_license_asset_ruleset_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Rules = structure(list(structure(list(RuleStatement = structure(list(LicenseConfigurationRuleStatement = structure(list(AndRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), OrRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MatchingRuleStatement = structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), LicenseRuleStatement = structure(list(AndRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), OrRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MatchingRuleStatement = structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), InstanceRuleStatement = structure(list(AndRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), OrRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MatchingRuleStatement = structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ScriptRuleStatement = structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_license_asset_ruleset_input"]]))
 }
 
 .licensemanager$create_license_asset_ruleset_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseAssetRulesetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_license_asset_ruleset_output"]]))
 }
 
 .licensemanager$create_license_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LicenseCountingType = structure(logical(0), tags = list(type = "string")), LicenseCount = structure(logical(0), tags = list(type = "long")), LicenseCountHardLimit = structure(logical(0), tags = list(type = "boolean")), LicenseRules = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DisassociateWhenNotFound = structure(logical(0), tags = list(type = "boolean")), ProductInformationList = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ProductInformationFilterList = structure(list(structure(list(ProductInformationFilterName = structure(logical(0), tags = list(type = "string")), ProductInformationFilterValue = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ProductInformationFilterComparator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), LicenseExpiry = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_license_configuration_input"]]))
 }
 
 .licensemanager$create_license_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_license_configuration_output"]]))
 }
 
 .licensemanager$create_license_conversion_task_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), SourceLicenseContext = structure(list(UsageOperation = structure(logical(0), tags = list(type = "string")), ProductCodes = structure(list(structure(list(ProductCodeId = structure(logical(0), tags = list(type = "string")), ProductCodeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), DestinationLicenseContext = structure(list(UsageOperation = structure(logical(0), tags = list(type = "string")), ProductCodes = structure(list(structure(list(ProductCodeId = structure(logical(0), tags = list(type = "string")), ProductCodeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_license_conversion_task_for_resource_input"]]))
 }
 
 .licensemanager$create_license_conversion_task_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConversionTaskId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_license_conversion_task_for_resource_output"]]))
 }
 
 .licensemanager$create_license_manager_report_generator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportGeneratorName = structure(logical(0), tags = list(type = "string")), Type = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReportContext = structure(list(licenseConfigurationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), licenseAssetGroupArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), reportStartDate = structure(logical(0), tags = list(type = "timestamp")), reportEndDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ReportFrequency = structure(list(value = structure(logical(0), tags = list(type = "integer")), period = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_license_manager_report_generator_input"]]))
 }
 
 .licensemanager$create_license_manager_report_generator_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseManagerReportGeneratorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_license_manager_report_generator_output"]]))
 }
 
 .licensemanager$create_license_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseArn = structure(logical(0), tags = list(type = "string")), LicenseName = structure(logical(0), tags = list(type = "string")), ProductName = structure(logical(0), tags = list(type = "string")), Issuer = structure(list(Name = structure(logical(0), tags = list(type = "string")), SignKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HomeRegion = structure(logical(0), tags = list(type = "string")), Validity = structure(list(Begin = structure(logical(0), tags = list(type = "string")), End = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LicenseMetadata = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Entitlements = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), MaxCount = structure(logical(0), tags = list(type = "long")), Overage = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), AllowCheckIn = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ConsumptionConfiguration = structure(list(RenewType = structure(logical(0), tags = list(type = "string")), ProvisionalConfiguration = structure(list(MaxTimeToLiveInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), BorrowConfiguration = structure(list(AllowEarlyCheckIn = structure(logical(0), tags = list(type = "boolean")), MaxTimeToLiveInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(type = "string")), SourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_license_version_input"]]))
 }
 
 .licensemanager$create_license_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseArn = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_license_version_output"]]))
 }
 
 .licensemanager$create_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseArn = structure(logical(0), tags = list(type = "string")), RoleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ExpirationInDays = structure(logical(0), tags = list(type = "integer")), TokenProperties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_token_input"]]))
 }
 
 .licensemanager$create_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TokenId = structure(logical(0), tags = list(type = "string")), TokenType = structure(logical(0), tags = list(type = "string")), Token = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["create_token_output"]]))
 }
 
 .licensemanager$delete_grant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GrantArn = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["delete_grant_input"]]))
 }
 
 .licensemanager$delete_grant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GrantArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["delete_grant_output"]]))
 }
 
 .licensemanager$delete_license_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseArn = structure(logical(0), tags = list(type = "string")), SourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["delete_license_input"]]))
 }
 
 .licensemanager$delete_license_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string")), DeletionDate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["delete_license_output"]]))
 }
 
 .licensemanager$delete_license_asset_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseAssetGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["delete_license_asset_group_input"]]))
 }
 
 .licensemanager$delete_license_asset_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["delete_license_asset_group_output"]]))
 }
 
 .licensemanager$delete_license_asset_ruleset_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseAssetRulesetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["delete_license_asset_ruleset_input"]]))
 }
 
 .licensemanager$delete_license_asset_ruleset_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["delete_license_asset_ruleset_output"]]))
 }
 
 .licensemanager$delete_license_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["delete_license_configuration_input"]]))
 }
 
 .licensemanager$delete_license_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["delete_license_configuration_output"]]))
 }
 
 .licensemanager$delete_license_manager_report_generator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseManagerReportGeneratorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["delete_license_manager_report_generator_input"]]))
 }
 
 .licensemanager$delete_license_manager_report_generator_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["delete_license_manager_report_generator_output"]]))
 }
 
 .licensemanager$delete_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TokenId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["delete_token_input"]]))
 }
 
 .licensemanager$delete_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["delete_token_output"]]))
 }
 
 .licensemanager$extend_license_consumption_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConsumptionToken = structure(logical(0), tags = list(type = "string")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["extend_license_consumption_input"]]))
 }
 
 .licensemanager$extend_license_consumption_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConsumptionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["extend_license_consumption_output"]]))
 }
 
 .licensemanager$get_access_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Token = structure(logical(0), tags = list(type = "string")), TokenProperties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_access_token_input"]]))
 }
 
 .licensemanager$get_access_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccessToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_access_token_output"]]))
 }
 
 .licensemanager$get_grant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GrantArn = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_grant_input"]]))
 }
 
 .licensemanager$get_grant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Grant = structure(list(GrantArn = structure(logical(0), tags = list(type = "string")), GrantName = structure(logical(0), tags = list(type = "string")), ParentArn = structure(logical(0), tags = list(type = "string")), LicenseArn = structure(logical(0), tags = list(type = "string")), GranteePrincipalArn = structure(logical(0), tags = list(type = "string")), HomeRegion = structure(logical(0), tags = list(type = "string")), GrantStatus = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), GrantedOperations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Options = structure(list(ActivationOverrideBehavior = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_grant_output"]]))
 }
 
 .licensemanager$get_license_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseArn = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_license_input"]]))
 }
 
 .licensemanager$get_license_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(License = structure(list(LicenseArn = structure(logical(0), tags = list(type = "string")), LicenseName = structure(logical(0), tags = list(type = "string")), ProductName = structure(logical(0), tags = list(type = "string")), ProductSKU = structure(logical(0), tags = list(type = "string")), Issuer = structure(list(Name = structure(logical(0), tags = list(type = "string")), SignKey = structure(logical(0), tags = list(type = "string")), KeyFingerprint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HomeRegion = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Validity = structure(list(Begin = structure(logical(0), tags = list(type = "string")), End = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Beneficiary = structure(logical(0), tags = list(type = "string")), Entitlements = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), MaxCount = structure(logical(0), tags = list(type = "long")), Overage = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), AllowCheckIn = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ConsumptionConfiguration = structure(list(RenewType = structure(logical(0), tags = list(type = "string")), ProvisionalConfiguration = structure(list(MaxTimeToLiveInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), BorrowConfiguration = structure(list(AllowEarlyCheckIn = structure(logical(0), tags = list(type = "boolean")), MaxTimeToLiveInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), LicenseMetadata = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreateTime = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_license_output"]]))
 }
 
 .licensemanager$get_license_asset_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseAssetGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_license_asset_group_input"]]))
 }
 
 .licensemanager$get_license_asset_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseAssetGroup = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LicenseAssetGroupConfigurations = structure(list(structure(list(UsageDimension = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AssociatedLicenseAssetRulesetARNs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Properties = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LicenseAssetGroupArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), LatestUsageAnalysisTime = structure(logical(0), tags = list(type = "timestamp")), LatestResourceDiscoveryTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_license_asset_group_output"]]))
 }
 
 .licensemanager$get_license_asset_ruleset_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseAssetRulesetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_license_asset_ruleset_input"]]))
 }
 
 .licensemanager$get_license_asset_ruleset_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseAssetRuleset = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Rules = structure(list(structure(list(RuleStatement = structure(list(LicenseConfigurationRuleStatement = structure(list(AndRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), OrRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MatchingRuleStatement = structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), LicenseRuleStatement = structure(list(AndRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), OrRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MatchingRuleStatement = structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), InstanceRuleStatement = structure(list(AndRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), OrRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MatchingRuleStatement = structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ScriptRuleStatement = structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), LicenseAssetRulesetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_license_asset_ruleset_output"]]))
 }
 
 .licensemanager$get_license_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_license_configuration_input"]]))
 }
 
 .licensemanager$get_license_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConfigurationId = structure(logical(0), tags = list(type = "string")), LicenseConfigurationArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LicenseCountingType = structure(logical(0), tags = list(type = "string")), LicenseRules = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LicenseCount = structure(logical(0), tags = list(type = "long")), LicenseCountHardLimit = structure(logical(0), tags = list(type = "boolean")), ConsumedLicenses = structure(logical(0), tags = list(type = "long")), Status = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), ConsumedLicenseSummaryList = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ConsumedLicenses = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), ManagedResourceSummaryList = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), AssociationCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProductInformationList = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ProductInformationFilterList = structure(list(structure(list(ProductInformationFilterName = structure(logical(0), tags = list(type = "string")), ProductInformationFilterValue = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ProductInformationFilterComparator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), AutomatedDiscoveryInformation = structure(list(LastRunTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), DisassociateWhenNotFound = structure(logical(0), tags = list(type = "boolean")), LicenseExpiry = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_license_configuration_output"]]))
 }
 
 .licensemanager$get_license_conversion_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConversionTaskId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_license_conversion_task_input"]]))
 }
 
 .licensemanager$get_license_conversion_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConversionTaskId = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), SourceLicenseContext = structure(list(UsageOperation = structure(logical(0), tags = list(type = "string")), ProductCodes = structure(list(structure(list(ProductCodeId = structure(logical(0), tags = list(type = "string")), ProductCodeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), DestinationLicenseContext = structure(list(UsageOperation = structure(logical(0), tags = list(type = "string")), ProductCodes = structure(list(structure(list(ProductCodeId = structure(logical(0), tags = list(type = "string")), ProductCodeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), StatusMessage = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), LicenseConversionTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_license_conversion_task_output"]]))
 }
 
 .licensemanager$get_license_manager_report_generator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseManagerReportGeneratorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_license_manager_report_generator_input"]]))
 }
 
 .licensemanager$get_license_manager_report_generator_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportGenerator = structure(list(ReportGeneratorName = structure(logical(0), tags = list(type = "string")), ReportType = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReportContext = structure(list(licenseConfigurationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), licenseAssetGroupArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), reportStartDate = structure(logical(0), tags = list(type = "timestamp")), reportEndDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ReportFrequency = structure(list(value = structure(logical(0), tags = list(type = "integer")), period = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LicenseManagerReportGeneratorArn = structure(logical(0), tags = list(type = "string")), LastRunStatus = structure(logical(0), tags = list(type = "string")), LastRunFailureReason = structure(logical(0), tags = list(type = "string")), LastReportGenerationTime = structure(logical(0), tags = list(type = "string")), ReportCreatorAccount = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), S3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), keyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreateTime = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_license_manager_report_generator_output"]]))
 }
 
 .licensemanager$get_license_usage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_license_usage_input"]]))
 }
 
 .licensemanager$get_license_usage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseUsage = structure(list(EntitlementUsages = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ConsumedValue = structure(logical(0), tags = list(type = "string")), MaxCount = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_license_usage_output"]]))
 }
 
 .licensemanager$get_service_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_service_settings_input"]]))
 }
 
 .licensemanager$get_service_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(S3BucketArn = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), OrganizationConfiguration = structure(list(EnableIntegration = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), EnableCrossAccountsDiscovery = structure(logical(0), tags = list(type = "boolean")), LicenseManagerResourceShareArn = structure(logical(0), tags = list(type = "string")), CrossRegionDiscoveryHomeRegion = structure(logical(0), tags = list(type = "string")), CrossRegionDiscoverySourceRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceStatus = structure(list(CrossAccountDiscovery = structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CrossRegionDiscovery = structure(list(Message = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["get_service_settings_output"]]))
 }
 
 .licensemanager$list_assets_for_license_asset_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseAssetGroupArn = structure(logical(0), tags = list(type = "string")), AssetType = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_assets_for_license_asset_group_input"]]))
 }
 
 .licensemanager$list_assets_for_license_asset_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Assets = structure(list(structure(list(AssetArn = structure(logical(0), tags = list(type = "string")), LatestAssetDiscoveryTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_assets_for_license_asset_group_output"]]))
 }
 
 .licensemanager$list_associations_for_license_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConfigurationArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_associations_for_license_configuration_input"]]))
 }
 
 .licensemanager$list_associations_for_license_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConfigurationAssociations = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceOwnerId = structure(logical(0), tags = list(type = "string")), AssociationTime = structure(logical(0), tags = list(type = "timestamp")), AmiAssociationScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_associations_for_license_configuration_output"]]))
 }
 
 .licensemanager$list_distributed_grants_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GrantArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_distributed_grants_input"]]))
 }
 
 .licensemanager$list_distributed_grants_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Grants = structure(list(structure(list(GrantArn = structure(logical(0), tags = list(type = "string")), GrantName = structure(logical(0), tags = list(type = "string")), ParentArn = structure(logical(0), tags = list(type = "string")), LicenseArn = structure(logical(0), tags = list(type = "string")), GranteePrincipalArn = structure(logical(0), tags = list(type = "string")), HomeRegion = structure(logical(0), tags = list(type = "string")), GrantStatus = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), GrantedOperations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Options = structure(list(ActivationOverrideBehavior = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_distributed_grants_output"]]))
 }
 
 .licensemanager$list_failures_for_license_configuration_operations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConfigurationArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_failures_for_license_configuration_operations_input"]]))
 }
 
 .licensemanager$list_failures_for_license_configuration_operations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseOperationFailureList = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), FailureTime = structure(logical(0), tags = list(type = "timestamp")), OperationName = structure(logical(0), tags = list(type = "string")), ResourceOwnerId = structure(logical(0), tags = list(type = "string")), OperationRequestedBy = structure(logical(0), tags = list(type = "string")), MetadataList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_failures_for_license_configuration_operations_output"]]))
 }
 
 .licensemanager$list_license_asset_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_license_asset_groups_input"]]))
 }
 
 .licensemanager$list_license_asset_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseAssetGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LicenseAssetGroupConfigurations = structure(list(structure(list(UsageDimension = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AssociatedLicenseAssetRulesetARNs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Properties = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LicenseAssetGroupArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), LatestUsageAnalysisTime = structure(logical(0), tags = list(type = "timestamp")), LatestResourceDiscoveryTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_license_asset_groups_output"]]))
 }
 
 .licensemanager$list_license_asset_rulesets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ShowAWSManagedLicenseAssetRulesets = structure(logical(0), tags = list(type = "boolean")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_license_asset_rulesets_input"]]))
 }
 
 .licensemanager$list_license_asset_rulesets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseAssetRulesets = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Rules = structure(list(structure(list(RuleStatement = structure(list(LicenseConfigurationRuleStatement = structure(list(AndRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), OrRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MatchingRuleStatement = structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), LicenseRuleStatement = structure(list(AndRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), OrRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MatchingRuleStatement = structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), InstanceRuleStatement = structure(list(AndRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), OrRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MatchingRuleStatement = structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ScriptRuleStatement = structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), LicenseAssetRulesetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_license_asset_rulesets_output"]]))
 }
 
 .licensemanager$list_license_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConfigurationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_license_configurations_input"]]))
 }
 
 .licensemanager$list_license_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConfigurations = structure(list(structure(list(LicenseConfigurationId = structure(logical(0), tags = list(type = "string")), LicenseConfigurationArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LicenseCountingType = structure(logical(0), tags = list(type = "string")), LicenseRules = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LicenseCount = structure(logical(0), tags = list(type = "long")), LicenseCountHardLimit = structure(logical(0), tags = list(type = "boolean")), DisassociateWhenNotFound = structure(logical(0), tags = list(type = "boolean")), ConsumedLicenses = structure(logical(0), tags = list(type = "long")), Status = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), ConsumedLicenseSummaryList = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ConsumedLicenses = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), ManagedResourceSummaryList = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), AssociationCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), ProductInformationList = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ProductInformationFilterList = structure(list(structure(list(ProductInformationFilterName = structure(logical(0), tags = list(type = "string")), ProductInformationFilterValue = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ProductInformationFilterComparator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), AutomatedDiscoveryInformation = structure(list(LastRunTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), LicenseExpiry = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_license_configurations_output"]]))
 }
 
 .licensemanager$list_license_configurations_for_organization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConfigurationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_license_configurations_for_organization_input"]]))
 }
 
 .licensemanager$list_license_configurations_for_organization_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConfigurations = structure(list(structure(list(LicenseConfigurationId = structure(logical(0), tags = list(type = "string")), LicenseConfigurationArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LicenseCountingType = structure(logical(0), tags = list(type = "string")), LicenseRules = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LicenseCount = structure(logical(0), tags = list(type = "long")), LicenseCountHardLimit = structure(logical(0), tags = list(type = "boolean")), DisassociateWhenNotFound = structure(logical(0), tags = list(type = "boolean")), ConsumedLicenses = structure(logical(0), tags = list(type = "long")), Status = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), ConsumedLicenseSummaryList = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ConsumedLicenses = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), ManagedResourceSummaryList = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), AssociationCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), ProductInformationList = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ProductInformationFilterList = structure(list(structure(list(ProductInformationFilterName = structure(logical(0), tags = list(type = "string")), ProductInformationFilterValue = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ProductInformationFilterComparator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), AutomatedDiscoveryInformation = structure(list(LastRunTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), LicenseExpiry = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_license_configurations_for_organization_output"]]))
 }
 
 .licensemanager$list_license_conversion_tasks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_license_conversion_tasks_input"]]))
 }
 
 .licensemanager$list_license_conversion_tasks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConversionTasks = structure(list(structure(list(LicenseConversionTaskId = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), SourceLicenseContext = structure(list(UsageOperation = structure(logical(0), tags = list(type = "string")), ProductCodes = structure(list(structure(list(ProductCodeId = structure(logical(0), tags = list(type = "string")), ProductCodeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), DestinationLicenseContext = structure(list(UsageOperation = structure(logical(0), tags = list(type = "string")), ProductCodes = structure(list(structure(list(ProductCodeId = structure(logical(0), tags = list(type = "string")), ProductCodeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), LicenseConversionTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_license_conversion_tasks_output"]]))
 }
 
 .licensemanager$list_license_manager_report_generators_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_license_manager_report_generators_input"]]))
 }
 
 .licensemanager$list_license_manager_report_generators_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportGenerators = structure(list(structure(list(ReportGeneratorName = structure(logical(0), tags = list(type = "string")), ReportType = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReportContext = structure(list(licenseConfigurationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), licenseAssetGroupArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), reportStartDate = structure(logical(0), tags = list(type = "timestamp")), reportEndDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ReportFrequency = structure(list(value = structure(logical(0), tags = list(type = "integer")), period = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LicenseManagerReportGeneratorArn = structure(logical(0), tags = list(type = "string")), LastRunStatus = structure(logical(0), tags = list(type = "string")), LastRunFailureReason = structure(logical(0), tags = list(type = "string")), LastReportGenerationTime = structure(logical(0), tags = list(type = "string")), ReportCreatorAccount = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), S3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), keyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreateTime = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_license_manager_report_generators_output"]]))
 }
 
 .licensemanager$list_license_specifications_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_license_specifications_for_resource_input"]]))
 }
 
 .licensemanager$list_license_specifications_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseSpecifications = structure(list(structure(list(LicenseConfigurationArn = structure(logical(0), tags = list(type = "string")), AmiAssociationScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_license_specifications_for_resource_output"]]))
 }
 
 .licensemanager$list_license_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_license_versions_input"]]))
 }
 
 .licensemanager$list_license_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Licenses = structure(list(structure(list(LicenseArn = structure(logical(0), tags = list(type = "string")), LicenseName = structure(logical(0), tags = list(type = "string")), ProductName = structure(logical(0), tags = list(type = "string")), ProductSKU = structure(logical(0), tags = list(type = "string")), Issuer = structure(list(Name = structure(logical(0), tags = list(type = "string")), SignKey = structure(logical(0), tags = list(type = "string")), KeyFingerprint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HomeRegion = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Validity = structure(list(Begin = structure(logical(0), tags = list(type = "string")), End = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Beneficiary = structure(logical(0), tags = list(type = "string")), Entitlements = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), MaxCount = structure(logical(0), tags = list(type = "long")), Overage = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), AllowCheckIn = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ConsumptionConfiguration = structure(list(RenewType = structure(logical(0), tags = list(type = "string")), ProvisionalConfiguration = structure(list(MaxTimeToLiveInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), BorrowConfiguration = structure(list(AllowEarlyCheckIn = structure(logical(0), tags = list(type = "boolean")), MaxTimeToLiveInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), LicenseMetadata = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreateTime = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_license_versions_output"]]))
 }
 
 .licensemanager$list_licenses_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_licenses_input"]]))
 }
 
 .licensemanager$list_licenses_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Licenses = structure(list(structure(list(LicenseArn = structure(logical(0), tags = list(type = "string")), LicenseName = structure(logical(0), tags = list(type = "string")), ProductName = structure(logical(0), tags = list(type = "string")), ProductSKU = structure(logical(0), tags = list(type = "string")), Issuer = structure(list(Name = structure(logical(0), tags = list(type = "string")), SignKey = structure(logical(0), tags = list(type = "string")), KeyFingerprint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HomeRegion = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Validity = structure(list(Begin = structure(logical(0), tags = list(type = "string")), End = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Beneficiary = structure(logical(0), tags = list(type = "string")), Entitlements = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), MaxCount = structure(logical(0), tags = list(type = "long")), Overage = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), AllowCheckIn = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ConsumptionConfiguration = structure(list(RenewType = structure(logical(0), tags = list(type = "string")), ProvisionalConfiguration = structure(list(MaxTimeToLiveInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), BorrowConfiguration = structure(list(AllowEarlyCheckIn = structure(logical(0), tags = list(type = "boolean")), MaxTimeToLiveInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), LicenseMetadata = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreateTime = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_licenses_output"]]))
 }
 
 .licensemanager$list_received_grants_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GrantArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_received_grants_input"]]))
 }
 
 .licensemanager$list_received_grants_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Grants = structure(list(structure(list(GrantArn = structure(logical(0), tags = list(type = "string")), GrantName = structure(logical(0), tags = list(type = "string")), ParentArn = structure(logical(0), tags = list(type = "string")), LicenseArn = structure(logical(0), tags = list(type = "string")), GranteePrincipalArn = structure(logical(0), tags = list(type = "string")), HomeRegion = structure(logical(0), tags = list(type = "string")), GrantStatus = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), GrantedOperations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Options = structure(list(ActivationOverrideBehavior = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_received_grants_output"]]))
 }
 
 .licensemanager$list_received_grants_for_organization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseArn = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_received_grants_for_organization_input"]]))
 }
 
 .licensemanager$list_received_grants_for_organization_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Grants = structure(list(structure(list(GrantArn = structure(logical(0), tags = list(type = "string")), GrantName = structure(logical(0), tags = list(type = "string")), ParentArn = structure(logical(0), tags = list(type = "string")), LicenseArn = structure(logical(0), tags = list(type = "string")), GranteePrincipalArn = structure(logical(0), tags = list(type = "string")), HomeRegion = structure(logical(0), tags = list(type = "string")), GrantStatus = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), GrantedOperations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Options = structure(list(ActivationOverrideBehavior = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_received_grants_for_organization_output"]]))
 }
 
 .licensemanager$list_received_licenses_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_received_licenses_input"]]))
 }
 
 .licensemanager$list_received_licenses_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Licenses = structure(list(structure(list(LicenseArn = structure(logical(0), tags = list(type = "string")), LicenseName = structure(logical(0), tags = list(type = "string")), ProductName = structure(logical(0), tags = list(type = "string")), ProductSKU = structure(logical(0), tags = list(type = "string")), Issuer = structure(list(Name = structure(logical(0), tags = list(type = "string")), SignKey = structure(logical(0), tags = list(type = "string")), KeyFingerprint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HomeRegion = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Validity = structure(list(Begin = structure(logical(0), tags = list(type = "string")), End = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Beneficiary = structure(logical(0), tags = list(type = "string")), Entitlements = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), MaxCount = structure(logical(0), tags = list(type = "long")), Overage = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), AllowCheckIn = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ConsumptionConfiguration = structure(list(RenewType = structure(logical(0), tags = list(type = "string")), ProvisionalConfiguration = structure(list(MaxTimeToLiveInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), BorrowConfiguration = structure(list(AllowEarlyCheckIn = structure(logical(0), tags = list(type = "boolean")), MaxTimeToLiveInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), LicenseMetadata = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreateTime = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), ReceivedMetadata = structure(list(ReceivedStatus = structure(logical(0), tags = list(type = "string")), ReceivedStatusReason = structure(logical(0), tags = list(type = "string")), AllowedOperations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_received_licenses_output"]]))
 }
 
 .licensemanager$list_received_licenses_for_organization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_received_licenses_for_organization_input"]]))
 }
 
 .licensemanager$list_received_licenses_for_organization_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Licenses = structure(list(structure(list(LicenseArn = structure(logical(0), tags = list(type = "string")), LicenseName = structure(logical(0), tags = list(type = "string")), ProductName = structure(logical(0), tags = list(type = "string")), ProductSKU = structure(logical(0), tags = list(type = "string")), Issuer = structure(list(Name = structure(logical(0), tags = list(type = "string")), SignKey = structure(logical(0), tags = list(type = "string")), KeyFingerprint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HomeRegion = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Validity = structure(list(Begin = structure(logical(0), tags = list(type = "string")), End = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Beneficiary = structure(logical(0), tags = list(type = "string")), Entitlements = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), MaxCount = structure(logical(0), tags = list(type = "long")), Overage = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string")), AllowCheckIn = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ConsumptionConfiguration = structure(list(RenewType = structure(logical(0), tags = list(type = "string")), ProvisionalConfiguration = structure(list(MaxTimeToLiveInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), BorrowConfiguration = structure(list(AllowEarlyCheckIn = structure(logical(0), tags = list(type = "boolean")), MaxTimeToLiveInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), LicenseMetadata = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreateTime = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), ReceivedMetadata = structure(list(ReceivedStatus = structure(logical(0), tags = list(type = "string")), ReceivedStatusReason = structure(logical(0), tags = list(type = "string")), AllowedOperations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_received_licenses_for_organization_output"]]))
 }
 
 .licensemanager$list_resource_inventory_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Condition = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_resource_inventory_input"]]))
 }
 
 .licensemanager$list_resource_inventory_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceInventoryList = structure(list(structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), PlatformVersion = structure(logical(0), tags = list(type = "string")), ResourceOwningAccountId = structure(logical(0), tags = list(type = "string")), MarketplaceProductCodes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), UsageOperation = structure(logical(0), tags = list(type = "string")), AmiId = structure(logical(0), tags = list(type = "string")), HostId = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_resource_inventory_output"]]))
 }
 
 .licensemanager$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_tags_for_resource_input"]]))
 }
 
 .licensemanager$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_tags_for_resource_output"]]))
 }
 
 .licensemanager$list_tokens_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TokenIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_tokens_input"]]))
 }
 
 .licensemanager$list_tokens_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tokens = structure(list(structure(list(TokenId = structure(logical(0), tags = list(type = "string")), TokenType = structure(logical(0), tags = list(type = "string")), LicenseArn = structure(logical(0), tags = list(type = "string")), ExpirationTime = structure(logical(0), tags = list(type = "string")), TokenProperties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RoleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_tokens_output"]]))
 }
 
 .licensemanager$list_usage_for_license_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConfigurationArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_usage_for_license_configuration_input"]]))
 }
 
 .licensemanager$list_usage_for_license_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConfigurationUsageList = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceStatus = structure(logical(0), tags = list(type = "string")), ResourceOwnerId = structure(logical(0), tags = list(type = "string")), AssociationTime = structure(logical(0), tags = list(type = "timestamp")), ConsumedLicenses = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["list_usage_for_license_configuration_output"]]))
 }
 
 .licensemanager$reject_grant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GrantArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["reject_grant_input"]]))
 }
 
 .licensemanager$reject_grant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GrantArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["reject_grant_output"]]))
 }
 
 .licensemanager$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["tag_resource_input"]]))
 }
 
 .licensemanager$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["tag_resource_output"]]))
 }
 
 .licensemanager$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["untag_resource_input"]]))
 }
 
 .licensemanager$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["untag_resource_output"]]))
 }
 
 .licensemanager$update_license_asset_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LicenseAssetGroupConfigurations = structure(list(structure(list(UsageDimension = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AssociatedLicenseAssetRulesetARNs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Properties = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LicenseAssetGroupArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["update_license_asset_group_input"]]))
 }
 
 .licensemanager$update_license_asset_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseAssetGroupArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["update_license_asset_group_output"]]))
 }
 
 .licensemanager$update_license_asset_ruleset_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Rules = structure(list(structure(list(RuleStatement = structure(list(LicenseConfigurationRuleStatement = structure(list(AndRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), OrRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MatchingRuleStatement = structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), LicenseRuleStatement = structure(list(AndRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), OrRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MatchingRuleStatement = structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), InstanceRuleStatement = structure(list(AndRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), OrRuleStatement = structure(list(MatchingRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScriptRuleStatements = structure(list(structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MatchingRuleStatement = structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Constraint = structure(logical(0), tags = list(type = "string")), ValueToMatch = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ScriptRuleStatement = structure(list(KeyToMatch = structure(logical(0), tags = list(type = "string")), Script = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), LicenseAssetRulesetArn = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["update_license_asset_ruleset_input"]]))
 }
 
 .licensemanager$update_license_asset_ruleset_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseAssetRulesetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["update_license_asset_ruleset_output"]]))
 }
 
 .licensemanager$update_license_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseConfigurationArn = structure(logical(0), tags = list(type = "string")), LicenseConfigurationStatus = structure(logical(0), tags = list(type = "string")), LicenseRules = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LicenseCount = structure(logical(0), tags = list(type = "long")), LicenseCountHardLimit = structure(logical(0), tags = list(type = "boolean")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ProductInformationList = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ProductInformationFilterList = structure(list(structure(list(ProductInformationFilterName = structure(logical(0), tags = list(type = "string")), ProductInformationFilterValue = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ProductInformationFilterComparator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), DisassociateWhenNotFound = structure(logical(0), tags = list(type = "boolean")), LicenseExpiry = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["update_license_configuration_input"]]))
 }
 
 .licensemanager$update_license_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["update_license_configuration_output"]]))
 }
 
 .licensemanager$update_license_manager_report_generator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LicenseManagerReportGeneratorArn = structure(logical(0), tags = list(type = "string")), ReportGeneratorName = structure(logical(0), tags = list(type = "string")), Type = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReportContext = structure(list(licenseConfigurationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), licenseAssetGroupArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), reportStartDate = structure(logical(0), tags = list(type = "timestamp")), reportEndDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ReportFrequency = structure(list(value = structure(logical(0), tags = list(type = "integer")), period = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["update_license_manager_report_generator_input"]]))
 }
 
 .licensemanager$update_license_manager_report_generator_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["update_license_manager_report_generator_output"]]))
 }
 
 .licensemanager$update_license_specifications_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), AddLicenseSpecifications = structure(list(structure(list(LicenseConfigurationArn = structure(logical(0), tags = list(type = "string")), AmiAssociationScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RemoveLicenseSpecifications = structure(list(structure(list(LicenseConfigurationArn = structure(logical(0), tags = list(type = "string")), AmiAssociationScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["update_license_specifications_for_resource_input"]]))
 }
 
 .licensemanager$update_license_specifications_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["update_license_specifications_for_resource_output"]]))
 }
 
 .licensemanager$update_service_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(S3BucketArn = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), OrganizationConfiguration = structure(list(EnableIntegration = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), EnableCrossAccountsDiscovery = structure(logical(0), tags = list(type = "boolean")), EnabledDiscoverySourceRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["update_service_settings_input"]]))
 }
 
 .licensemanager$update_service_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .licensemanager_shapes[["update_service_settings_output"]]))
 }

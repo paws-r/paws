@@ -9,9 +9,9 @@ batch_cancel_job(jobId, reason)
 \arguments{
 \item{jobId}{[required] The Batch job ID of the job to cancel.}
 
-\item{reason}{[required] A message to attach to the job that explains the reason for canceling it. This message is returned by future \code{\link[=batch_describe_jobs]{describe_jobs}} operations on the job. It is also recorded in the Batch activity logs.
+\item{reason}{[required] A message to attach to the job that explains the reason for cancelling it. This message is returned by future \code{\link[=batch_describe_jobs]{describe_jobs}} operations on the job. It is also recorded in the Batch activity logs.
 
-This parameter has as limit of 1024 characters.}
+This parameter has a limit of 1024 characters.}
 }
 \description{
 Cancels a job in an Batch job queue. Jobs that are in a \code{SUBMITTED}, \code{PENDING}, or \code{RUNNABLE} state are cancelled and the job status is updated to \code{FAILED}.

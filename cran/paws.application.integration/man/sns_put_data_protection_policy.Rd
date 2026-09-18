@@ -2,8 +2,8 @@
 % Please edit documentation in R/sns_operations.R
 \name{sns_put_data_protection_policy}
 \alias{sns_put_data_protection_policy}
-\title{Adds or updates an inline policy document that is stored in the
-specified Amazon SNS topic}
+\title{Amazon SNS message data protection is no longer available to new
+customers}
 \usage{
 sns_put_data_protection_policy(ResourceArn, DataProtectionPolicy)
 }
@@ -19,7 +19,7 @@ The \code{DataProtectionPolicy} must be in JSON string format.
 Length Constraints: Maximum length of 30,720.}
 }
 \description{
-Adds or updates an inline policy document that is stored in the specified Amazon SNS topic.
+Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-message-data-protection-availability-change.html}{Amazon SNS message data protection availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/sns_put_data_protection_policy/} for full documentation.
 }

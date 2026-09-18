@@ -17,11 +17,11 @@ elasticbeanstalk_describe_configuration_settings(
 
 \item{TemplateName}{The name of the configuration template to describe.
 
-Conditional: You must specify either this parameter or an EnvironmentName, but not both. If you specify both, AWS Elastic Beanstalk returns an \code{InvalidParameterCombination} error. If you do not specify either, AWS Elastic Beanstalk returns a \code{MissingRequiredParameter} error.}
+Conditional: You must specify either this parameter or an EnvironmentName, but not both. If you specify both, Elastic Beanstalk returns an \code{InvalidParameterCombination} error. If you do not specify either, Elastic Beanstalk returns a \code{MissingRequiredParameter} error.}
 
 \item{EnvironmentName}{The name of the environment to describe.
 
-Condition: You must specify either this or a TemplateName, but not both. If you specify both, AWS Elastic Beanstalk returns an \code{InvalidParameterCombination} error. If you do not specify either, AWS Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
+Condition: You must specify either this or a TemplateName, but not both. If you specify both, Elastic Beanstalk returns an \code{InvalidParameterCombination} error. If you do not specify either, Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 }
 \description{
 Returns a description of the settings for the specified configuration set, that is, either a configuration template or the configuration set associated with a running environment.

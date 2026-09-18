@@ -5,24 +5,20 @@ NULL
 
 .ec2instanceconnect$send_ssh_public_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), InstanceOSUser = structure(logical(0), tags = list(type = "string")), SSHPublicKey = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ec2instanceconnect_shapes[["send_ssh_public_key_input"]]))
 }
 
 .ec2instanceconnect$send_ssh_public_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestId = structure(logical(0), tags = list(type = "string")), Success = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ec2instanceconnect_shapes[["send_ssh_public_key_output"]]))
 }
 
 .ec2instanceconnect$send_serial_console_ssh_public_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), SerialPort = structure(logical(0), tags = list(type = "integer")), SSHPublicKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ec2instanceconnect_shapes[["send_serial_console_ssh_public_key_input"]]))
 }
 
 .ec2instanceconnect$send_serial_console_ssh_public_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestId = structure(logical(0), tags = list(type = "string")), Success = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ec2instanceconnect_shapes[["send_serial_console_ssh_public_key_output"]]))
 }

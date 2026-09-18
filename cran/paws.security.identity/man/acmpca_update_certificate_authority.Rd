@@ -22,7 +22,7 @@ The following requirements apply to revocation configurations.
 \itemize{
 \item A configuration disabling CRLs or OCSP must contain only the \code{Enabled=False} parameter, and will fail if other parameters such as \code{CustomCname} or \code{ExpirationInDays} are included.
 \item In a CRL configuration, the \code{S3BucketName} parameter must conform to \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html}{Amazon S3 bucket naming rules}.
-\item A configuration containing a custom Canonical Name (CNAME) parameter for CRLs or OCSP must conform to \href{https://www.ietf.org/rfc/rfc2396.txt}{RFC2396} restrictions on the use of special characters in a CNAME.
+\item A configuration containing a custom Canonical Name (CNAME) parameter for CRLs or OCSP must conform to \href{https://www.rfc-editor.org/rfc/rfc2396.txt}{RFC2396} restrictions on the use of special characters in a CNAME.
 \item In a CRL or OCSP configuration, the value of a CNAME parameter must not include a protocol prefix such as "http://" or "https://".
 }
 

@@ -39,7 +39,7 @@ The following organization namespaces are reserved and can't be used in your ext
 
 For information about generating a schema handler package for the extension you want to register, see \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-cli-submit.html}{submit} in the \emph{CloudFormation Command Line Interface (CLI) User Guide}.
 
-The user registering the extension must be able to access the package in the S3 bucket. That's, the user needs to have \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject} permissions for the schema handler package. For more information, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html}{Actions, Resources, and Condition Keys for Amazon S3} in the \emph{Identity and Access Management User Guide}.}
+The user registering the extension must be able to access the package in the S3 bucket. That's, the user needs to have \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject} permissions for the schema handler package. For more information, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/}{Actions, Resources, and Condition Keys for Amazon S3} in the \emph{Identity and Access Management User Guide}.}
 
 \item{LoggingConfig}{Specifies logging configuration information for an extension.}
 

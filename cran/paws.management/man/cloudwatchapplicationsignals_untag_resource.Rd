@@ -11,7 +11,7 @@ cloudwatchapplicationsignals_untag_resource(ResourceArn, TagKeys)
 
 The ARN format of an Application Signals SLO is \code{arn:aws:cloudwatch:Region:account-id:slo:slo-name }
 
-For more information about ARN format, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies}{Resource Types Defined by Amazon CloudWatch} in the \emph{Amazon Web Services General Reference}.}
+For more information about ARN format, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/#amazoncloudwatch-resources-for-iam-policies}{Resource Types Defined by Amazon CloudWatch} in the \emph{Amazon Web Services General Reference}.}
 
 \item{TagKeys}{[required] The list of tag keys to remove from the resource.}
 }

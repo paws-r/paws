@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_enable_federation}
 \alias{cloudtrail_enable_federation}
-\title{Enables Lake query federation on the specified event data store}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_enable_federation(EventDataStore, FederationRoleArn)
 }
@@ -12,7 +13,7 @@ cloudtrail_enable_federation(EventDataStore, FederationRoleArn)
 \item{FederationRoleArn}{[required] The ARN of the federation role to use for the event data store. Amazon Web Services services like Lake Formation use this federation role to access data for the federated event data store. The federation role must exist in your account and provide the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-federation.html#query-federation-permissions-role}{required minimum permissions}.}
 }
 \description{
-Enables Lake query federation on the specified event data store. Federating an event data store lets you view the metadata associated with the event data store in the Glue \href{https://docs.aws.amazon.com/glue/latest/dg/components-overview.html#data-catalog-intro}{Data Catalog} and run SQL queries against your event data using Amazon Athena. The table metadata stored in the Glue Data Catalog lets the Athena query engine know how to find, read, and process the data that you want to query.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_enable_federation/} for full documentation.
 }

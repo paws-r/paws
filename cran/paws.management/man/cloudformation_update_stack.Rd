@@ -22,7 +22,9 @@ cloudformation_update_stack(
   Tags = NULL,
   DisableRollback = NULL,
   ClientRequestToken = NULL,
-  RetainExceptOnCreate = NULL
+  RetainExceptOnCreate = NULL,
+  DeploymentConfig = NULL,
+  DisableValidation = NULL
 )
 }
 \arguments{
@@ -134,6 +136,12 @@ All events triggered by a given stack operation are assigned the same client req
 In the console, stack operations display the client request token on the Events tab. Stack operations that are initiated from the console use the token format \emph{Console-StackOperation-ID}, which helps you easily identify the stack operation . For example, if you create a stack using the console, each stack event would be assigned the same token in the following format: \verb{Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002}.}
 
 \item{RetainExceptOnCreate}{When set to \code{true}, newly created resources are deleted when the operation rolls back. This includes newly created resources marked with a deletion policy of \code{Retain}.
+
+Default: \code{false}}
+
+\item{DeploymentConfig}{The deployment configuration for this stack operation, including the deployment mode.}
+
+\item{DisableValidation}{Set to \code{true} to disable pre-deployment validations in changeset or stack operations.
 
 Default: \code{false}}
 }

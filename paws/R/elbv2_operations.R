@@ -733,9 +733,9 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #' Creates a rule for the specified listener
 #'
 #' @description
-#' Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer.
+#' Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer or a dual-stack Network Load Balancer.
 #' 
-#' Each rule consists of a priority, one or more actions, one or more conditions, and up to two optional transforms. Rules are evaluated in priority order, from the lowest value to the highest value. When the conditions for a rule are met, its actions are performed. If the conditions for no rules are met, the actions for the default rule are performed. For more information, see [Listener rules](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules) in the *Application Load Balancers Guide*.
+#' Each rule consists of a priority, one or more actions, and one or more conditions. Rules are evaluated in priority order, from the lowest value to the highest value. When the conditions for a rule are met, its actions are performed. If the conditions for no rules are met, the actions for the default rule are performed. For more information, see [Listener rules](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules) in the *Application Load Balancers Guide* or [Listener rules](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html#listener-rules) in the *Network Load Balancers Guide*.
 #'
 #' @usage
 #' elbv2_create_rule(ListenerArn, Conditions, Priority, Actions, Tags,
@@ -803,7 +803,8 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #'           SourceIpConfig = list(
 #'             Values = list(
 #'               "string"
-#'             )
+#'             ),
+#'             IpAddressType = "ipv4"|"ipv6"
 #'           ),
 #'           RegexValues = list(
 #'             "string"
@@ -961,7 +962,8 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #'       SourceIpConfig = list(
 #'         Values = list(
 #'           "string"
-#'         )
+#'         ),
+#'         IpAddressType = "ipv4"|"ipv6"
 #'       ),
 #'       RegexValues = list(
 #'         "string"
@@ -2415,7 +2417,8 @@ elbv2_describe_load_balancers <- function(LoadBalancerArns = NULL, Names = NULL,
 #'           SourceIpConfig = list(
 #'             Values = list(
 #'               "string"
-#'             )
+#'             ),
+#'             IpAddressType = "ipv4"|"ipv6"
 #'           ),
 #'           RegexValues = list(
 #'             "string"
@@ -4020,7 +4023,8 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #'           SourceIpConfig = list(
 #'             Values = list(
 #'               "string"
-#'             )
+#'             ),
+#'             IpAddressType = "ipv4"|"ipv6"
 #'           ),
 #'           RegexValues = list(
 #'             "string"
@@ -4178,7 +4182,8 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #'       SourceIpConfig = list(
 #'         Values = list(
 #'           "string"
-#'         )
+#'         ),
+#'         IpAddressType = "ipv4"|"ipv6"
 #'       ),
 #'       RegexValues = list(
 #'         "string"
@@ -4969,7 +4974,8 @@ elbv2_set_ip_address_type <- function(LoadBalancerArn, IpAddressType) {
 #'           SourceIpConfig = list(
 #'             Values = list(
 #'               "string"
-#'             )
+#'             ),
+#'             IpAddressType = "ipv4"|"ipv6"
 #'           ),
 #'           RegexValues = list(
 #'             "string"

@@ -20,7 +20,7 @@ For a record to match a filter, all specified filter attributes must match. When
 \item{maxResults}{You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.}
 }
 \description{
-Lists the ARNs of the assessment targets within this AWS account. For more information about assessment targets, see \href{https://docs.aws.amazon.com/inspector/v1/userguide/inspector_applications.html}{Amazon Inspector Assessment Targets}.
+Lists the ARNs of the assessment targets within this AWS account. For more information about assessment targets, see Amazon Inspector Assessment Targets.
 
 See \url{https://www.paws-r-sdk.com/docs/inspector_list_assessment_targets/} for full documentation.
 }

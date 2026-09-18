@@ -29,6 +29,7 @@ Example: \code{myoptiongroup}}
 Valid Values:
 \itemize{
 \item \code{db2-ae}
+\item \code{db2-ce}
 \item \code{db2-se}
 \item \code{mariadb}
 \item \code{mysql}

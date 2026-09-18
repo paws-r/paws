@@ -35,7 +35,7 @@ ec2_create_traffic_mirror_filter_rule(
 
 \item{Protocol}{The protocol, for example UDP, to assign to the Traffic Mirror rule.
 
-For information about the protocol value, see \href{https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml}{Protocol Numbers} on the Internet Assigned Numbers Authority (IANA) website.}
+For information about the protocol value, see \href{https://www.iana.org/assignments/protocol-numbers}{Protocol Numbers} on the Internet Assigned Numbers Authority (IANA) website.}
 
 \item{DestinationCidrBlock}{[required] The destination CIDR block to assign to the Traffic Mirror rule.}
 

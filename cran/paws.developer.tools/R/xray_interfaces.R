@@ -5,456 +5,380 @@ NULL
 
 .xray$batch_get_traces_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TraceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["batch_get_traces_input"]]))
 }
 
 .xray$batch_get_traces_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Traces = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Duration = structure(logical(0), tags = list(type = "double")), LimitExceeded = structure(logical(0), tags = list(type = "boolean")), Segments = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Document = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), UnprocessedTraceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["batch_get_traces_output"]]))
 }
 
 .xray$cancel_trace_retrieval_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RetrievalToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["cancel_trace_retrieval_input"]]))
 }
 
 .xray$cancel_trace_retrieval_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["cancel_trace_retrieval_output"]]))
 }
 
 .xray$create_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupName = structure(logical(0), tags = list(type = "string")), FilterExpression = structure(logical(0), tags = list(type = "string")), InsightsConfiguration = structure(list(InsightsEnabled = structure(logical(0), tags = list(type = "boolean")), NotificationsEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["create_group_input"]]))
 }
 
 .xray$create_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(list(GroupName = structure(logical(0), tags = list(type = "string")), GroupARN = structure(logical(0), tags = list(type = "string")), FilterExpression = structure(logical(0), tags = list(type = "string")), InsightsConfiguration = structure(list(InsightsEnabled = structure(logical(0), tags = list(type = "boolean")), NotificationsEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["create_group_output"]]))
 }
 
 .xray$create_sampling_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SamplingRule = structure(list(RuleName = structure(logical(0), tags = list(type = "string")), RuleARN = structure(logical(0), tags = list(type = "string")), ResourceARN = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), FixedRate = structure(logical(0), tags = list(type = "double")), ReservoirSize = structure(logical(0), tags = list(type = "integer")), ServiceName = structure(logical(0), tags = list(type = "string")), ServiceType = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), HTTPMethod = structure(logical(0), tags = list(type = "string")), URLPath = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "integer")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SamplingRateBoost = structure(list(MaxRate = structure(logical(0), tags = list(type = "double")), CooldownWindowMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["create_sampling_rule_input"]]))
 }
 
 .xray$create_sampling_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SamplingRuleRecord = structure(list(SamplingRule = structure(list(RuleName = structure(logical(0), tags = list(type = "string")), RuleARN = structure(logical(0), tags = list(type = "string")), ResourceARN = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), FixedRate = structure(logical(0), tags = list(type = "double")), ReservoirSize = structure(logical(0), tags = list(type = "integer")), ServiceName = structure(logical(0), tags = list(type = "string")), ServiceType = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), HTTPMethod = structure(logical(0), tags = list(type = "string")), URLPath = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "integer")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SamplingRateBoost = structure(list(MaxRate = structure(logical(0), tags = list(type = "double")), CooldownWindowMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ModifiedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["create_sampling_rule_output"]]))
 }
 
 .xray$delete_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupName = structure(logical(0), tags = list(type = "string")), GroupARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["delete_group_input"]]))
 }
 
 .xray$delete_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["delete_group_output"]]))
 }
 
 .xray$delete_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyRevisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["delete_resource_policy_input"]]))
 }
 
 .xray$delete_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["delete_resource_policy_output"]]))
 }
 
 .xray$delete_sampling_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleName = structure(logical(0), tags = list(type = "string")), RuleARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["delete_sampling_rule_input"]]))
 }
 
 .xray$delete_sampling_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SamplingRuleRecord = structure(list(SamplingRule = structure(list(RuleName = structure(logical(0), tags = list(type = "string")), RuleARN = structure(logical(0), tags = list(type = "string")), ResourceARN = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), FixedRate = structure(logical(0), tags = list(type = "double")), ReservoirSize = structure(logical(0), tags = list(type = "integer")), ServiceName = structure(logical(0), tags = list(type = "string")), ServiceType = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), HTTPMethod = structure(logical(0), tags = list(type = "string")), URLPath = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "integer")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SamplingRateBoost = structure(list(MaxRate = structure(logical(0), tags = list(type = "double")), CooldownWindowMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ModifiedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["delete_sampling_rule_output"]]))
 }
 
 .xray$get_encryption_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_encryption_config_input"]]))
 }
 
 .xray$get_encryption_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EncryptionConfig = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_encryption_config_output"]]))
 }
 
 .xray$get_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupName = structure(logical(0), tags = list(type = "string")), GroupARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_group_input"]]))
 }
 
 .xray$get_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(list(GroupName = structure(logical(0), tags = list(type = "string")), GroupARN = structure(logical(0), tags = list(type = "string")), FilterExpression = structure(logical(0), tags = list(type = "string")), InsightsConfiguration = structure(list(InsightsEnabled = structure(logical(0), tags = list(type = "boolean")), NotificationsEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_group_output"]]))
 }
 
 .xray$get_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_groups_input"]]))
 }
 
 .xray$get_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Groups = structure(list(structure(list(GroupName = structure(logical(0), tags = list(type = "string")), GroupARN = structure(logical(0), tags = list(type = "string")), FilterExpression = structure(logical(0), tags = list(type = "string")), InsightsConfiguration = structure(list(InsightsEnabled = structure(logical(0), tags = list(type = "boolean")), NotificationsEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_groups_output"]]))
 }
 
 .xray$get_indexing_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_indexing_rules_input"]]))
 }
 
 .xray$get_indexing_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IndexingRules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ModifiedAt = structure(logical(0), tags = list(type = "timestamp")), Rule = structure(list(Probabilistic = structure(list(DesiredSamplingPercentage = structure(logical(0), tags = list(type = "double")), ActualSamplingPercentage = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_indexing_rules_output"]]))
 }
 
 .xray$get_insight_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InsightId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_insight_input"]]))
 }
 
 .xray$get_insight_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Insight = structure(list(InsightId = structure(logical(0), tags = list(type = "string")), GroupARN = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), RootCauseServiceId = structure(list(Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AccountId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Categories = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), State = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Summary = structure(logical(0), tags = list(type = "string")), ClientRequestImpactStatistics = structure(list(FaultCount = structure(logical(0), tags = list(type = "long")), OkCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), RootCauseServiceRequestImpactStatistics = structure(list(FaultCount = structure(logical(0), tags = list(type = "long")), OkCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), TopAnomalousServices = structure(list(structure(list(ServiceId = structure(list(Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AccountId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_insight_output"]]))
 }
 
 .xray$get_insight_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InsightId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_insight_events_input"]]))
 }
 
 .xray$get_insight_events_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InsightEvents = structure(list(structure(list(Summary = structure(logical(0), tags = list(type = "string")), EventTime = structure(logical(0), tags = list(type = "timestamp")), ClientRequestImpactStatistics = structure(list(FaultCount = structure(logical(0), tags = list(type = "long")), OkCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), RootCauseServiceRequestImpactStatistics = structure(list(FaultCount = structure(logical(0), tags = list(type = "long")), OkCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), TopAnomalousServices = structure(list(structure(list(ServiceId = structure(list(Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AccountId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_insight_events_output"]]))
 }
 
 .xray$get_insight_impact_graph_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InsightId = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_insight_impact_graph_input"]]))
 }
 
 .xray$get_insight_impact_graph_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InsightId = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), ServiceGraphStartTime = structure(logical(0), tags = list(type = "timestamp")), ServiceGraphEndTime = structure(logical(0), tags = list(type = "timestamp")), Services = structure(list(structure(list(ReferenceId = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AccountId = structure(logical(0), tags = list(type = "string")), Edges = structure(list(structure(list(ReferenceId = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_insight_impact_graph_output"]]))
 }
 
 .xray$get_insight_summaries_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(States = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), GroupARN = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_insight_summaries_input"]]))
 }
 
 .xray$get_insight_summaries_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InsightSummaries = structure(list(structure(list(InsightId = structure(logical(0), tags = list(type = "string")), GroupARN = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), RootCauseServiceId = structure(list(Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AccountId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Categories = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), State = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Summary = structure(logical(0), tags = list(type = "string")), ClientRequestImpactStatistics = structure(list(FaultCount = structure(logical(0), tags = list(type = "long")), OkCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), RootCauseServiceRequestImpactStatistics = structure(list(FaultCount = structure(logical(0), tags = list(type = "long")), OkCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), TopAnomalousServices = structure(list(structure(list(ServiceId = structure(list(Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AccountId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_insight_summaries_output"]]))
 }
 
 .xray$get_retrieved_traces_graph_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RetrievalToken = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_retrieved_traces_graph_input"]]))
 }
 
 .xray$get_retrieved_traces_graph_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RetrievalStatus = structure(logical(0), tags = list(type = "string")), Services = structure(list(structure(list(Service = structure(list(ReferenceId = structure(logical(0), tags = list(type = "integer")), Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Root = structure(logical(0), tags = list(type = "boolean")), AccountId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Edges = structure(list(structure(list(ReferenceId = structure(logical(0), tags = list(type = "integer")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), SummaryStatistics = structure(list(OkCount = structure(logical(0), tags = list(type = "long")), ErrorStatistics = structure(list(ThrottleCount = structure(logical(0), tags = list(type = "long")), OtherCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), FaultStatistics = structure(list(OtherCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), TotalCount = structure(logical(0), tags = list(type = "long")), TotalResponseTime = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), ResponseTimeHistogram = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "double")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Aliases = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EdgeType = structure(logical(0), tags = list(type = "string")), ReceivedEventAgeHistogram = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "double")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SummaryStatistics = structure(list(OkCount = structure(logical(0), tags = list(type = "long")), ErrorStatistics = structure(list(ThrottleCount = structure(logical(0), tags = list(type = "long")), OtherCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), FaultStatistics = structure(list(OtherCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), TotalCount = structure(logical(0), tags = list(type = "long")), TotalResponseTime = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), DurationHistogram = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "double")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ResponseTimeHistogram = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "double")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Links = structure(list(structure(list(ReferenceType = structure(logical(0), tags = list(type = "string")), SourceTraceId = structure(logical(0), tags = list(type = "string")), DestinationTraceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_retrieved_traces_graph_output"]]))
 }
 
 .xray$get_sampling_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_sampling_rules_input"]]))
 }
 
 .xray$get_sampling_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SamplingRuleRecords = structure(list(structure(list(SamplingRule = structure(list(RuleName = structure(logical(0), tags = list(type = "string")), RuleARN = structure(logical(0), tags = list(type = "string")), ResourceARN = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), FixedRate = structure(logical(0), tags = list(type = "double")), ReservoirSize = structure(logical(0), tags = list(type = "integer")), ServiceName = structure(logical(0), tags = list(type = "string")), ServiceType = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), HTTPMethod = structure(logical(0), tags = list(type = "string")), URLPath = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "integer")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SamplingRateBoost = structure(list(MaxRate = structure(logical(0), tags = list(type = "double")), CooldownWindowMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ModifiedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_sampling_rules_output"]]))
 }
 
 .xray$get_sampling_statistic_summaries_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_sampling_statistic_summaries_input"]]))
 }
 
 .xray$get_sampling_statistic_summaries_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SamplingStatisticSummaries = structure(list(structure(list(RuleName = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), RequestCount = structure(logical(0), tags = list(type = "integer")), BorrowCount = structure(logical(0), tags = list(type = "integer")), SampledCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_sampling_statistic_summaries_output"]]))
 }
 
 .xray$get_sampling_targets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SamplingStatisticsDocuments = structure(list(structure(list(RuleName = structure(logical(0), tags = list(type = "string")), ClientID = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), RequestCount = structure(logical(0), tags = list(type = "integer")), SampledCount = structure(logical(0), tags = list(type = "integer")), BorrowCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), SamplingBoostStatisticsDocuments = structure(list(structure(list(RuleName = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), AnomalyCount = structure(logical(0), tags = list(type = "integer")), TotalCount = structure(logical(0), tags = list(type = "integer")), SampledAnomalyCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_sampling_targets_input"]]))
 }
 
 .xray$get_sampling_targets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SamplingTargetDocuments = structure(list(structure(list(RuleName = structure(logical(0), tags = list(type = "string")), FixedRate = structure(logical(0), tags = list(type = "double")), ReservoirQuota = structure(logical(0), tags = list(type = "integer")), ReservoirQuotaTTL = structure(logical(0), tags = list(type = "timestamp")), Interval = structure(logical(0), tags = list(type = "integer")), SamplingBoost = structure(list(BoostRate = structure(logical(0), tags = list(type = "double")), BoostRateTTL = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), LastRuleModification = structure(logical(0), tags = list(type = "timestamp")), UnprocessedStatistics = structure(list(structure(list(RuleName = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UnprocessedBoostStatistics = structure(list(structure(list(RuleName = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_sampling_targets_output"]]))
 }
 
 .xray$get_service_graph_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), GroupName = structure(logical(0), tags = list(type = "string")), GroupARN = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_service_graph_input"]]))
 }
 
 .xray$get_service_graph_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Services = structure(list(structure(list(ReferenceId = structure(logical(0), tags = list(type = "integer")), Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Root = structure(logical(0), tags = list(type = "boolean")), AccountId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Edges = structure(list(structure(list(ReferenceId = structure(logical(0), tags = list(type = "integer")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), SummaryStatistics = structure(list(OkCount = structure(logical(0), tags = list(type = "long")), ErrorStatistics = structure(list(ThrottleCount = structure(logical(0), tags = list(type = "long")), OtherCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), FaultStatistics = structure(list(OtherCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), TotalCount = structure(logical(0), tags = list(type = "long")), TotalResponseTime = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), ResponseTimeHistogram = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "double")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Aliases = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EdgeType = structure(logical(0), tags = list(type = "string")), ReceivedEventAgeHistogram = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "double")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SummaryStatistics = structure(list(OkCount = structure(logical(0), tags = list(type = "long")), ErrorStatistics = structure(list(ThrottleCount = structure(logical(0), tags = list(type = "long")), OtherCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), FaultStatistics = structure(list(OtherCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), TotalCount = structure(logical(0), tags = list(type = "long")), TotalResponseTime = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), DurationHistogram = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "double")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ResponseTimeHistogram = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "double")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ContainsOldGroupVersions = structure(logical(0), tags = list(type = "boolean")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_service_graph_output"]]))
 }
 
 .xray$get_time_series_service_statistics_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), GroupName = structure(logical(0), tags = list(type = "string")), GroupARN = structure(logical(0), tags = list(type = "string")), EntitySelectorExpression = structure(logical(0), tags = list(type = "string")), Period = structure(logical(0), tags = list(type = "integer")), ForecastStatistics = structure(logical(0), tags = list(type = "boolean")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_time_series_service_statistics_input"]]))
 }
 
 .xray$get_time_series_service_statistics_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TimeSeriesServiceStatistics = structure(list(structure(list(Timestamp = structure(logical(0), tags = list(type = "timestamp")), EdgeSummaryStatistics = structure(list(OkCount = structure(logical(0), tags = list(type = "long")), ErrorStatistics = structure(list(ThrottleCount = structure(logical(0), tags = list(type = "long")), OtherCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), FaultStatistics = structure(list(OtherCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), TotalCount = structure(logical(0), tags = list(type = "long")), TotalResponseTime = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), ServiceSummaryStatistics = structure(list(OkCount = structure(logical(0), tags = list(type = "long")), ErrorStatistics = structure(list(ThrottleCount = structure(logical(0), tags = list(type = "long")), OtherCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), FaultStatistics = structure(list(OtherCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), TotalCount = structure(logical(0), tags = list(type = "long")), TotalResponseTime = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), ServiceForecastStatistics = structure(list(FaultCountHigh = structure(logical(0), tags = list(type = "long")), FaultCountLow = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), ResponseTimeHistogram = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "double")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ContainsOldGroupVersions = structure(logical(0), tags = list(type = "boolean")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_time_series_service_statistics_output"]]))
 }
 
 .xray$get_trace_graph_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TraceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_trace_graph_input"]]))
 }
 
 .xray$get_trace_graph_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Services = structure(list(structure(list(ReferenceId = structure(logical(0), tags = list(type = "integer")), Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Root = structure(logical(0), tags = list(type = "boolean")), AccountId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Edges = structure(list(structure(list(ReferenceId = structure(logical(0), tags = list(type = "integer")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), SummaryStatistics = structure(list(OkCount = structure(logical(0), tags = list(type = "long")), ErrorStatistics = structure(list(ThrottleCount = structure(logical(0), tags = list(type = "long")), OtherCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), FaultStatistics = structure(list(OtherCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), TotalCount = structure(logical(0), tags = list(type = "long")), TotalResponseTime = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), ResponseTimeHistogram = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "double")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Aliases = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EdgeType = structure(logical(0), tags = list(type = "string")), ReceivedEventAgeHistogram = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "double")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SummaryStatistics = structure(list(OkCount = structure(logical(0), tags = list(type = "long")), ErrorStatistics = structure(list(ThrottleCount = structure(logical(0), tags = list(type = "long")), OtherCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), FaultStatistics = structure(list(OtherCount = structure(logical(0), tags = list(type = "long")), TotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), TotalCount = structure(logical(0), tags = list(type = "long")), TotalResponseTime = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), DurationHistogram = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "double")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ResponseTimeHistogram = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "double")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_trace_graph_output"]]))
 }
 
 .xray$get_trace_segment_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_trace_segment_destination_input"]]))
 }
 
 .xray$get_trace_segment_destination_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Destination = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_trace_segment_destination_output"]]))
 }
 
 .xray$get_trace_summaries_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), TimeRangeType = structure(logical(0), tags = list(type = "string")), Sampling = structure(logical(0), tags = list(type = "boolean")), SamplingStrategy = structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), FilterExpression = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_trace_summaries_input"]]))
 }
 
 .xray$get_trace_summaries_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TraceSummaries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), Duration = structure(logical(0), tags = list(type = "double")), ResponseTime = structure(logical(0), tags = list(type = "double")), HasFault = structure(logical(0), tags = list(type = "boolean")), HasError = structure(logical(0), tags = list(type = "boolean")), HasThrottle = structure(logical(0), tags = list(type = "boolean")), IsPartial = structure(logical(0), tags = list(type = "boolean")), Http = structure(list(HttpURL = structure(logical(0), tags = list(type = "string")), HttpStatus = structure(logical(0), tags = list(type = "integer")), HttpMethod = structure(logical(0), tags = list(type = "string")), UserAgent = structure(logical(0), tags = list(type = "string")), ClientIp = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Annotations = structure(list(structure(list(structure(list(AnnotationValue = structure(list(NumberValue = structure(logical(0), tags = list(type = "double")), BooleanValue = structure(logical(0), tags = list(type = "boolean")), StringValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ServiceIds = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AccountId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map")), Users = structure(list(structure(list(UserName = structure(logical(0), tags = list(type = "string")), ServiceIds = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AccountId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ServiceIds = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AccountId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ResourceARNs = structure(list(structure(list(ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), InstanceIds = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EntryPoint = structure(list(Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AccountId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FaultRootCauses = structure(list(structure(list(Services = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Type = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), EntityPath = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Exceptions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Remote = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), Inferred = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientImpacting = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ErrorRootCauses = structure(list(structure(list(Services = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Type = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), EntityPath = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Exceptions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Remote = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), Inferred = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientImpacting = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ResponseTimeRootCauses = structure(list(structure(list(Services = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Type = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), EntityPath = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Coverage = structure(logical(0), tags = list(type = "double")), Remote = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), Inferred = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientImpacting = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), Revision = structure(logical(0), tags = list(type = "integer")), MatchedEventTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), ApproximateTime = structure(logical(0), tags = list(type = "timestamp")), TracesProcessedCount = structure(logical(0), tags = list(type = "long")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["get_trace_summaries_output"]]))
 }
 
 .xray$list_resource_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["list_resource_policies_input"]]))
 }
 
 .xray$list_resource_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourcePolicies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyDocument = structure(logical(0), tags = list(type = "string")), PolicyRevisionId = structure(logical(0), tags = list(type = "string")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["list_resource_policies_output"]]))
 }
 
 .xray$list_retrieved_traces_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RetrievalToken = structure(logical(0), tags = list(type = "string")), TraceFormat = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["list_retrieved_traces_input"]]))
 }
 
 .xray$list_retrieved_traces_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RetrievalStatus = structure(logical(0), tags = list(type = "string")), TraceFormat = structure(logical(0), tags = list(type = "string")), Traces = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Duration = structure(logical(0), tags = list(type = "double")), Spans = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Document = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["list_retrieved_traces_output"]]))
 }
 
 .xray$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["list_tags_for_resource_input"]]))
 }
 
 .xray$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["list_tags_for_resource_output"]]))
 }
 
 .xray$put_encryption_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["put_encryption_config_input"]]))
 }
 
 .xray$put_encryption_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EncryptionConfig = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["put_encryption_config_output"]]))
 }
 
 .xray$put_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyDocument = structure(logical(0), tags = list(type = "string")), PolicyRevisionId = structure(logical(0), tags = list(type = "string")), BypassPolicyLockoutCheck = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["put_resource_policy_input"]]))
 }
 
 .xray$put_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourcePolicy = structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyDocument = structure(logical(0), tags = list(type = "string")), PolicyRevisionId = structure(logical(0), tags = list(type = "string")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["put_resource_policy_output"]]))
 }
 
 .xray$put_telemetry_records_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TelemetryRecords = structure(list(structure(list(Timestamp = structure(logical(0), tags = list(type = "timestamp")), SegmentsReceivedCount = structure(logical(0), tags = list(type = "integer")), SegmentsSentCount = structure(logical(0), tags = list(type = "integer")), SegmentsSpilloverCount = structure(logical(0), tags = list(type = "integer")), SegmentsRejectedCount = structure(logical(0), tags = list(type = "integer")), BackendConnectionErrors = structure(list(TimeoutCount = structure(logical(0), tags = list(type = "integer")), ConnectionRefusedCount = structure(logical(0), tags = list(type = "integer")), HTTPCode4XXCount = structure(logical(0), tags = list(type = "integer")), HTTPCode5XXCount = structure(logical(0), tags = list(type = "integer")), UnknownHostCount = structure(logical(0), tags = list(type = "integer")), OtherCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), EC2InstanceId = structure(logical(0), tags = list(type = "string")), Hostname = structure(logical(0), tags = list(type = "string")), ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["put_telemetry_records_input"]]))
 }
 
 .xray$put_telemetry_records_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["put_telemetry_records_output"]]))
 }
 
 .xray$put_trace_segments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TraceSegmentDocuments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["put_trace_segments_input"]]))
 }
 
 .xray$put_trace_segments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UnprocessedTraceSegments = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["put_trace_segments_output"]]))
 }
 
 .xray$start_trace_retrieval_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TraceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["start_trace_retrieval_input"]]))
 }
 
 .xray$start_trace_retrieval_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RetrievalToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["start_trace_retrieval_output"]]))
 }
 
 .xray$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["tag_resource_input"]]))
 }
 
 .xray$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["tag_resource_output"]]))
 }
 
 .xray$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["untag_resource_input"]]))
 }
 
 .xray$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["untag_resource_output"]]))
 }
 
 .xray$update_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupName = structure(logical(0), tags = list(type = "string")), GroupARN = structure(logical(0), tags = list(type = "string")), FilterExpression = structure(logical(0), tags = list(type = "string")), InsightsConfiguration = structure(list(InsightsEnabled = structure(logical(0), tags = list(type = "boolean")), NotificationsEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["update_group_input"]]))
 }
 
 .xray$update_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(list(GroupName = structure(logical(0), tags = list(type = "string")), GroupARN = structure(logical(0), tags = list(type = "string")), FilterExpression = structure(logical(0), tags = list(type = "string")), InsightsConfiguration = structure(list(InsightsEnabled = structure(logical(0), tags = list(type = "boolean")), NotificationsEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["update_group_output"]]))
 }
 
 .xray$update_indexing_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Rule = structure(list(Probabilistic = structure(list(DesiredSamplingPercentage = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["update_indexing_rule_input"]]))
 }
 
 .xray$update_indexing_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IndexingRule = structure(list(Name = structure(logical(0), tags = list(type = "string")), ModifiedAt = structure(logical(0), tags = list(type = "timestamp")), Rule = structure(list(Probabilistic = structure(list(DesiredSamplingPercentage = structure(logical(0), tags = list(type = "double")), ActualSamplingPercentage = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["update_indexing_rule_output"]]))
 }
 
 .xray$update_sampling_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SamplingRuleUpdate = structure(list(RuleName = structure(logical(0), tags = list(type = "string")), RuleARN = structure(logical(0), tags = list(type = "string")), ResourceARN = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), FixedRate = structure(logical(0), tags = list(type = "double")), ReservoirSize = structure(logical(0), tags = list(type = "integer")), Host = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), ServiceType = structure(logical(0), tags = list(type = "string")), HTTPMethod = structure(logical(0), tags = list(type = "string")), URLPath = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SamplingRateBoost = structure(list(MaxRate = structure(logical(0), tags = list(type = "double")), CooldownWindowMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["update_sampling_rule_input"]]))
 }
 
 .xray$update_sampling_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SamplingRuleRecord = structure(list(SamplingRule = structure(list(RuleName = structure(logical(0), tags = list(type = "string")), RuleARN = structure(logical(0), tags = list(type = "string")), ResourceARN = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), FixedRate = structure(logical(0), tags = list(type = "double")), ReservoirSize = structure(logical(0), tags = list(type = "integer")), ServiceName = structure(logical(0), tags = list(type = "string")), ServiceType = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), HTTPMethod = structure(logical(0), tags = list(type = "string")), URLPath = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "integer")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SamplingRateBoost = structure(list(MaxRate = structure(logical(0), tags = list(type = "double")), CooldownWindowMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ModifiedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["update_sampling_rule_output"]]))
 }
 
 .xray$update_trace_segment_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Destination = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["update_trace_segment_destination_input"]]))
 }
 
 .xray$update_trace_segment_destination_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Destination = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .xray_shapes[["update_trace_segment_destination_output"]]))
 }

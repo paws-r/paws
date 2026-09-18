@@ -5,132 +5,120 @@ NULL
 
 .redshiftdataapiservice$batch_execute_statement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Sqls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ClusterIdentifier = structure(logical(0), tags = list(type = "string")), SecretArn = structure(logical(0), tags = list(type = "string")), DbUser = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), WithEvent = structure(logical(0), tags = list(type = "boolean", box = TRUE)), StatementName = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), WorkgroupName = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ResultFormat = structure(logical(0), tags = list(type = "string")), SessionKeepAliveSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), SessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["batch_execute_statement_input"]]))
 }
 
 .redshiftdataapiservice$batch_execute_statement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ClusterIdentifier = structure(logical(0), tags = list(type = "string")), DbUser = structure(logical(0), tags = list(type = "string")), DbGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Database = structure(logical(0), tags = list(type = "string")), SecretArn = structure(logical(0), tags = list(type = "string")), WorkgroupName = structure(logical(0), tags = list(type = "string")), SessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["batch_execute_statement_output"]]))
 }
 
 .redshiftdataapiservice$cancel_statement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["cancel_statement_input"]]))
 }
 
 .redshiftdataapiservice$cancel_statement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Status = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["cancel_statement_output"]]))
 }
 
 .redshiftdataapiservice$describe_statement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["describe_statement_input"]]))
 }
 
 .redshiftdataapiservice$describe_statement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), SecretArn = structure(logical(0), tags = list(type = "string")), DbUser = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), ClusterIdentifier = structure(logical(0), tags = list(type = "string")), Duration = structure(logical(0), tags = list(type = "long")), Error = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), RedshiftPid = structure(logical(0), tags = list(type = "long")), HasResultSet = structure(logical(0), tags = list(type = "boolean", box = TRUE)), QueryString = structure(logical(0), tags = list(type = "string")), ResultRows = structure(logical(0), tags = list(type = "long")), ResultSize = structure(logical(0), tags = list(type = "long")), RedshiftQueryId = structure(logical(0), tags = list(type = "long")), QueryParameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SubStatements = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Duration = structure(logical(0), tags = list(type = "long")), Error = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), QueryString = structure(logical(0), tags = list(type = "string")), ResultRows = structure(logical(0), tags = list(type = "long")), ResultSize = structure(logical(0), tags = list(type = "long")), RedshiftQueryId = structure(logical(0), tags = list(type = "long")), HasResultSet = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), WorkgroupName = structure(logical(0), tags = list(type = "string")), ResultFormat = structure(logical(0), tags = list(type = "string")), SessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["describe_statement_output"]]))
 }
 
 .redshiftdataapiservice$describe_table_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterIdentifier = structure(logical(0), tags = list(type = "string")), SecretArn = structure(logical(0), tags = list(type = "string")), DbUser = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), ConnectedDatabase = structure(logical(0), tags = list(type = "string")), Schema = structure(logical(0), tags = list(type = "string")), Table = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), WorkgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["describe_table_input"]]))
 }
 
 .redshiftdataapiservice$describe_table_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TableName = structure(logical(0), tags = list(type = "string")), ColumnList = structure(list(structure(list(isCaseSensitive = structure(logical(0), tags = list(type = "boolean")), isCurrency = structure(logical(0), tags = list(type = "boolean")), isSigned = structure(logical(0), tags = list(type = "boolean")), label = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), nullable = structure(logical(0), tags = list(type = "integer")), precision = structure(logical(0), tags = list(type = "integer")), scale = structure(logical(0), tags = list(type = "integer")), schemaName = structure(logical(0), tags = list(type = "string")), tableName = structure(logical(0), tags = list(type = "string")), typeName = structure(logical(0), tags = list(type = "string")), length = structure(logical(0), tags = list(type = "integer")), columnDefault = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["describe_table_output"]]))
 }
 
 .redshiftdataapiservice$execute_statement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Sql = structure(logical(0), tags = list(type = "string")), ClusterIdentifier = structure(logical(0), tags = list(type = "string")), SecretArn = structure(logical(0), tags = list(type = "string")), DbUser = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), WithEvent = structure(logical(0), tags = list(type = "boolean", box = TRUE)), StatementName = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), WorkgroupName = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ResultFormat = structure(logical(0), tags = list(type = "string")), SessionKeepAliveSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), SessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["execute_statement_input"]]))
 }
 
 .redshiftdataapiservice$execute_statement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ClusterIdentifier = structure(logical(0), tags = list(type = "string")), DbUser = structure(logical(0), tags = list(type = "string")), DbGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Database = structure(logical(0), tags = list(type = "string")), SecretArn = structure(logical(0), tags = list(type = "string")), WorkgroupName = structure(logical(0), tags = list(type = "string")), SessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["execute_statement_output"]]))
 }
 
 .redshiftdataapiservice$get_statement_result_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["get_statement_result_input"]]))
 }
 
 .redshiftdataapiservice$get_statement_result_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Records = structure(list(structure(list(structure(list(isNull = structure(logical(0), tags = list(type = "boolean", box = TRUE)), booleanValue = structure(logical(0), tags = list(type = "boolean", box = TRUE)), longValue = structure(logical(0), tags = list(type = "long", box = TRUE)), doubleValue = structure(logical(0), tags = list(type = "double", box = TRUE)), stringValue = structure(logical(0), tags = list(type = "string")), blobValue = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "list")), ColumnMetadata = structure(list(structure(list(isCaseSensitive = structure(logical(0), tags = list(type = "boolean")), isCurrency = structure(logical(0), tags = list(type = "boolean")), isSigned = structure(logical(0), tags = list(type = "boolean")), label = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), nullable = structure(logical(0), tags = list(type = "integer")), precision = structure(logical(0), tags = list(type = "integer")), scale = structure(logical(0), tags = list(type = "integer")), schemaName = structure(logical(0), tags = list(type = "string")), tableName = structure(logical(0), tags = list(type = "string")), typeName = structure(logical(0), tags = list(type = "string")), length = structure(logical(0), tags = list(type = "integer")), columnDefault = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TotalNumRows = structure(logical(0), tags = list(type = "long")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["get_statement_result_output"]]))
 }
 
 .redshiftdataapiservice$get_statement_result_v2_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["get_statement_result_v2_input"]]))
 }
 
 .redshiftdataapiservice$get_statement_result_v2_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Records = structure(list(structure(list(CSVRecords = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), ColumnMetadata = structure(list(structure(list(isCaseSensitive = structure(logical(0), tags = list(type = "boolean")), isCurrency = structure(logical(0), tags = list(type = "boolean")), isSigned = structure(logical(0), tags = list(type = "boolean")), label = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), nullable = structure(logical(0), tags = list(type = "integer")), precision = structure(logical(0), tags = list(type = "integer")), scale = structure(logical(0), tags = list(type = "integer")), schemaName = structure(logical(0), tags = list(type = "string")), tableName = structure(logical(0), tags = list(type = "string")), typeName = structure(logical(0), tags = list(type = "string")), length = structure(logical(0), tags = list(type = "integer")), columnDefault = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TotalNumRows = structure(logical(0), tags = list(type = "long")), ResultFormat = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["get_statement_result_v2_output"]]))
 }
 
 .redshiftdataapiservice$list_databases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterIdentifier = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), SecretArn = structure(logical(0), tags = list(type = "string")), DbUser = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), WorkgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["list_databases_input"]]))
 }
 
 .redshiftdataapiservice$list_databases_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Databases = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["list_databases_output"]]))
 }
 
 .redshiftdataapiservice$list_schemas_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterIdentifier = structure(logical(0), tags = list(type = "string")), SecretArn = structure(logical(0), tags = list(type = "string")), DbUser = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), ConnectedDatabase = structure(logical(0), tags = list(type = "string")), SchemaPattern = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), WorkgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["list_schemas_input"]]))
 }
 
 .redshiftdataapiservice$list_schemas_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Schemas = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["list_schemas_output"]]))
+}
+
+.redshiftdataapiservice$list_sessions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .redshiftdataapiservice_shapes[["list_sessions_input"]]))
+}
+
+.redshiftdataapiservice$list_sessions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .redshiftdataapiservice_shapes[["list_sessions_output"]]))
 }
 
 .redshiftdataapiservice$list_statements_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), StatementName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), RoleLevel = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Database = structure(logical(0), tags = list(type = "string")), ClusterIdentifier = structure(logical(0), tags = list(type = "string")), WorkgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["list_statements_input"]]))
 }
 
 .redshiftdataapiservice$list_statements_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Statements = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), QueryString = structure(logical(0), tags = list(type = "string")), QueryStrings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecretArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatementName = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), QueryParameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsBatchStatement = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ResultFormat = structure(logical(0), tags = list(type = "string")), SessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["list_statements_output"]]))
 }
 
 .redshiftdataapiservice$list_tables_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterIdentifier = structure(logical(0), tags = list(type = "string")), SecretArn = structure(logical(0), tags = list(type = "string")), DbUser = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), ConnectedDatabase = structure(logical(0), tags = list(type = "string")), SchemaPattern = structure(logical(0), tags = list(type = "string")), TablePattern = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), WorkgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["list_tables_input"]]))
 }
 
 .redshiftdataapiservice$list_tables_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tables = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftdataapiservice_shapes[["list_tables_output"]]))
 }

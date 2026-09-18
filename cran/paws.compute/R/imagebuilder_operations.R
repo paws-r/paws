@@ -3,15 +3,15 @@
 #' @include imagebuilder_service.R
 NULL
 
-#' CancelImageCreation cancels the creation of Image
+#' Cancels the creation of an image
 #'
 #' @description
-#' CancelImageCreation cancels the creation of Image. This operation can only be used on images in a non-terminal state.
+#' Cancels the creation of an image. This operation can only be used on images in a non-terminal state.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_cancel_image_creation/](https://www.paws-r-sdk.com/docs/imagebuilder_cancel_image_creation/) for full documentation.
 #'
 #' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image that you want to cancel creation for.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
 #'
@@ -35,15 +35,15 @@ imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken
 }
 .imagebuilder$operations$cancel_image_creation <- imagebuilder_cancel_image_creation
 
-#' Cancel a specific image lifecycle policy runtime instance
+#' Cancels a specific image lifecycle policy runtime instance
 #'
 #' @description
-#' Cancel a specific image lifecycle policy runtime instance.
+#' Cancels a specific image lifecycle policy runtime instance.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_cancel_lifecycle_execution/](https://www.paws-r-sdk.com/docs/imagebuilder_cancel_lifecycle_execution/) for full documentation.
 #'
 #' @param lifecycleExecutionId &#91;required&#93; Identifies the specific runtime instance of the image lifecycle to cancel.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
 #'
@@ -80,7 +80,7 @@ imagebuilder_cancel_lifecycle_execution <- function(lifecycleExecutionId, client
 #' 
 #' The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the first three, and can filter on all of them.
 #' 
-#' **Assignment:** For the first three nodes you can assign any positive integer value, including zero, with an upper limit of 2^30-1, or 1073741823 for each node. Image Builder automatically assigns the build number to the fourth node.
+#' **Assignment:** For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node.
 #' 
 #' **Patterns:** You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01.
 #' @param description Describes the contents of the component.
@@ -88,13 +88,13 @@ imagebuilder_cancel_lifecycle_execution <- function(lifecycleExecutionId, client
 #' @param platform &#91;required&#93; The operating system platform of the component.
 #' @param supportedOsVersions The operating system (OS) version supported by the component. If the OS information is available, a prefix match is performed against the base image OS version during image recipe creation.
 #' @param data Component `data` contains inline YAML document content for the component. Alternatively, you can specify the `uri` of a YAML document file stored in Amazon S3. However, you cannot specify both properties.
-#' @param uri The `uri` of a YAML component document file. This must be an S3 URL (`s3://bucket/key`), and the requester must have permission to access the S3 bucket it points to. If you use Amazon S3, you can specify component content up to your service quota.
+#' @param uri The `uri` of a YAML component document file. This must be an S3 URL (`s3://bucket/key`), and you must have permission to access the S3 bucket it points to. If you use Amazon S3, you can specify component content up to your service quota.
 #' 
 #' Alternatively, you can specify the YAML document inline, using the component `data` property. You cannot specify both properties.
 #' @param kmsKeyId The Amazon Resource Name (ARN) that uniquely identifies the KMS key used to encrypt this component. This can be either the Key ARN or the Alias ARN. For more information, see [Key identifiers (KeyId)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN) in the *Key Management Service Developer Guide*.
 #' @param tags The tags that apply to the component.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
-#' @param dryRun Validates the required permissions for the operation and the request parameters, without actually making the request, and provides an error response. Upon a successful request, the error response is `DryRunOperationException`.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param dryRun Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a `DryRunOperationException` error response.
 #'
 #' @keywords internal
 #'
@@ -132,13 +132,13 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #' 
 #' The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the first three, and can filter on all of them.
 #' 
-#' **Assignment:** For the first three nodes you can assign any positive integer value, including zero, with an upper limit of 2^30-1, or 1073741823 for each node. Image Builder automatically assigns the build number to the fourth node.
+#' **Assignment:** For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node.
 #' 
 #' **Patterns:** You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01.
 #' @param components The components included in the container recipe.
 #' @param instanceConfiguration A group of options that can be used to configure an instance for building and testing container images.
 #' @param dockerfileTemplateData The Dockerfile template used to build your image as an inline data blob.
-#' @param dockerfileTemplateUri The Amazon S3 URI for the Dockerfile that will be used to build your container image.
+#' @param dockerfileTemplateUri The Amazon S3 URI for the Dockerfile that is used to build your container image.
 #' @param platformOverride Specifies the operating system platform when you use a custom base image.
 #' @param imageOsVersionOverride Specifies the operating system version for the base image.
 #' @param parentImage &#91;required&#93; The base image for the container recipe.
@@ -146,12 +146,13 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #' @param workingDirectory The working directory for use during build and test workflows.
 #' @param targetRepository &#91;required&#93; The destination repository for the container image.
 #' @param kmsKeyId The Amazon Resource Name (ARN) that uniquely identifies which KMS key is used to encrypt the Dockerfile template. This can be either the Key ARN or the Alias ARN. For more information, see [Key identifiers (KeyId)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN) in the *Key Management Service Developer Guide*.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param dryRun Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a `DryRunOperationException` error response.
 #'
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_container_recipe
-imagebuilder_create_container_recipe <- function(containerType, name, description = NULL, semanticVersion, components = NULL, instanceConfiguration = NULL, dockerfileTemplateData = NULL, dockerfileTemplateUri = NULL, platformOverride = NULL, imageOsVersionOverride = NULL, parentImage, tags = NULL, workingDirectory = NULL, targetRepository, kmsKeyId = NULL, clientToken) {
+imagebuilder_create_container_recipe <- function(containerType, name, description = NULL, semanticVersion, components = NULL, instanceConfiguration = NULL, dockerfileTemplateData = NULL, dockerfileTemplateUri = NULL, platformOverride = NULL, imageOsVersionOverride = NULL, parentImage, tags = NULL, workingDirectory = NULL, targetRepository, kmsKeyId = NULL, clientToken, dryRun = NULL) {
   op <- new_operation(
     name = "CreateContainerRecipe",
     http_method = "PUT",
@@ -160,7 +161,7 @@ imagebuilder_create_container_recipe <- function(containerType, name, descriptio
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .imagebuilder$create_container_recipe_input(containerType = containerType, name = name, description = description, semanticVersion = semanticVersion, components = components, instanceConfiguration = instanceConfiguration, dockerfileTemplateData = dockerfileTemplateData, dockerfileTemplateUri = dockerfileTemplateUri, platformOverride = platformOverride, imageOsVersionOverride = imageOsVersionOverride, parentImage = parentImage, tags = tags, workingDirectory = workingDirectory, targetRepository = targetRepository, kmsKeyId = kmsKeyId, clientToken = clientToken)
+  input <- .imagebuilder$create_container_recipe_input(containerType = containerType, name = name, description = description, semanticVersion = semanticVersion, components = components, instanceConfiguration = instanceConfiguration, dockerfileTemplateData = dockerfileTemplateData, dockerfileTemplateUri = dockerfileTemplateUri, platformOverride = platformOverride, imageOsVersionOverride = imageOsVersionOverride, parentImage = parentImage, tags = tags, workingDirectory = workingDirectory, targetRepository = targetRepository, kmsKeyId = kmsKeyId, clientToken = clientToken, dryRun = dryRun)
   output <- .imagebuilder$create_container_recipe_output()
   config <- get_config()
   svc <- .imagebuilder$service(config, op)
@@ -181,12 +182,13 @@ imagebuilder_create_container_recipe <- function(containerType, name, descriptio
 #' @param description The description of the distribution configuration.
 #' @param distributions &#91;required&#93; The distributions of the distribution configuration.
 #' @param tags The tags of the distribution configuration.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param dryRun Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a `DryRunOperationException` error response.
 #'
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_distribution_configuration
-imagebuilder_create_distribution_configuration <- function(name, description = NULL, distributions, tags = NULL, clientToken) {
+imagebuilder_create_distribution_configuration <- function(name, description = NULL, distributions, tags = NULL, clientToken, dryRun = NULL) {
   op <- new_operation(
     name = "CreateDistributionConfiguration",
     http_method = "PUT",
@@ -195,7 +197,7 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .imagebuilder$create_distribution_configuration_input(name = name, description = description, distributions = distributions, tags = tags, clientToken = clientToken)
+  input <- .imagebuilder$create_distribution_configuration_input(name = name, description = description, distributions = distributions, tags = tags, clientToken = clientToken, dryRun = dryRun)
   output <- .imagebuilder$create_distribution_configuration_output()
   config <- get_config()
   svc <- .imagebuilder$service(config, op)
@@ -205,10 +207,11 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 }
 .imagebuilder$operations$create_distribution_configuration <- imagebuilder_create_distribution_configuration
 
-#' Creates a new image
+#' Creates a new image along with all configured output resources defined
+#' in the distribution configuration
 #'
 #' @description
-#' Creates a new image. This request will create a new image along with all of the configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.
+#' Creates a new image along with all configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_create_image/](https://www.paws-r-sdk.com/docs/imagebuilder_create_image/) for full documentation.
 #'
@@ -217,13 +220,13 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #' @param distributionConfigurationArn The Amazon Resource Name (ARN) of the distribution configuration that defines and configures the outputs of your pipeline.
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that defines the environment in which your image will be built and tested.
 #' @param imageTestsConfiguration The image tests configuration of the image.
-#' @param enhancedImageMetadataEnabled Collects additional information about the image being created, including the operating system (OS) version and package list. This information is used to enhance the overall experience of using EC2 Image Builder. Enabled by default.
+#' @param enhancedImageMetadataEnabled Specifies whether to collect additional information about the image being created, including the operating system (OS) version and package list. Defaults to `true`.
 #' @param tags The tags of the image.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #' @param imageScanningConfiguration Contains settings for vulnerability scans.
 #' @param workflows Contains an array of workflow configuration objects.
 #' @param executionRole The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions.
-#' @param loggingConfiguration Define logging configuration for the image build process.
+#' @param loggingConfiguration The logging configuration for the image build process.
 #'
 #' @keywords internal
 #'
@@ -250,32 +253,33 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #' Creates a new image pipeline
 #'
 #' @description
-#' Creates a new image pipeline. Image pipelines enable you to automate the creation and distribution of images.
+#' Creates a new image pipeline. Use image pipelines to automate the creation and distribution of images.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_create_image_pipeline/](https://www.paws-r-sdk.com/docs/imagebuilder_create_image_pipeline/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the image pipeline.
 #' @param description The description of the image pipeline.
-#' @param imageRecipeArn The Amazon Resource Name (ARN) of the image recipe that will be used to configure images created by this image pipeline.
+#' @param imageRecipeArn The Amazon Resource Name (ARN) of the image recipe that configures images created by this image pipeline.
 #' @param containerRecipeArn The Amazon Resource Name (ARN) of the container recipe that is used to configure images created by this container pipeline.
-#' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that will be used to build images created by this image pipeline.
-#' @param distributionConfigurationArn The Amazon Resource Name (ARN) of the distribution configuration that will be used to configure and distribute images created by this image pipeline.
+#' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that builds images created by this image pipeline.
+#' @param distributionConfigurationArn The Amazon Resource Name (ARN) of the distribution configuration that configures and distributes images created by this image pipeline.
 #' @param imageTestsConfiguration The image test configuration of the image pipeline.
-#' @param enhancedImageMetadataEnabled Collects additional information about the image being created, including the operating system (OS) version and package list. This information is used to enhance the overall experience of using EC2 Image Builder. Enabled by default.
+#' @param enhancedImageMetadataEnabled Specifies whether to collect additional information about the image being created, including the operating system (OS) version and package list. Defaults to `true`.
 #' @param schedule The schedule of the image pipeline.
 #' @param status The status of the image pipeline.
 #' @param tags The tags of the image pipeline.
 #' @param imageTags The tags to be applied to the images produced by this pipeline.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #' @param imageScanningConfiguration Contains settings for vulnerability scans.
 #' @param workflows Contains an array of workflow configuration objects.
 #' @param executionRole The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions.
-#' @param loggingConfiguration Define logging configuration for the image build process.
+#' @param loggingConfiguration Specifies the logging configuration for the image pipeline. Use this to define custom CloudWatch Logs log groups for your pipeline execution logs and image build logs. The service manages log groups with names starting with `/aws/imagebuilder/` using the service-linked role. For custom log group names outside of this prefix, you must also provide an `executionRole`.
+#' @param dryRun Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a `DryRunOperationException` error response.
 #'
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_image_pipeline
-imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRecipeArn = NULL, containerRecipeArn = NULL, infrastructureConfigurationArn, distributionConfigurationArn = NULL, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, schedule = NULL, status = NULL, tags = NULL, imageTags = NULL, clientToken, imageScanningConfiguration = NULL, workflows = NULL, executionRole = NULL, loggingConfiguration = NULL) {
+imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRecipeArn = NULL, containerRecipeArn = NULL, infrastructureConfigurationArn, distributionConfigurationArn = NULL, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, schedule = NULL, status = NULL, tags = NULL, imageTags = NULL, clientToken, imageScanningConfiguration = NULL, workflows = NULL, executionRole = NULL, loggingConfiguration = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "CreateImagePipeline",
     http_method = "PUT",
@@ -284,7 +288,7 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .imagebuilder$create_image_pipeline_input(name = name, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, tags = tags, imageTags = imageTags, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration, workflows = workflows, executionRole = executionRole, loggingConfiguration = loggingConfiguration)
+  input <- .imagebuilder$create_image_pipeline_input(name = name, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, tags = tags, imageTags = imageTags, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration, workflows = workflows, executionRole = executionRole, loggingConfiguration = loggingConfiguration, dryRun = dryRun)
   output <- .imagebuilder$create_image_pipeline_output()
   config <- get_config()
   svc <- .imagebuilder$service(config, op)
@@ -307,7 +311,7 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' 
 #' The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the first three, and can filter on all of them.
 #' 
-#' **Assignment:** For the first three nodes you can assign any positive integer value, including zero, with an upper limit of 2^30-1, or 1073741823 for each node. Image Builder automatically assigns the build number to the fourth node.
+#' **Assignment:** For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node.
 #' 
 #' **Patterns:** You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01.
 #' @param components The components included in the image recipe.
@@ -325,14 +329,18 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' @param blockDeviceMappings The block device mappings of the image recipe.
 #' @param tags The tags of the image recipe.
 #' @param workingDirectory The working directory used during build and test workflows.
-#' @param additionalInstanceConfiguration Specify additional settings and launch scripts for your build instances.
+#' @param additionalInstanceConfiguration The additional settings and launch scripts for your build instances.
 #' @param amiTags Tags that are applied to the AMI that Image Builder creates during the Build phase prior to image distribution.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param amiWatermarks The AMI watermark names to attach to the output AMI from this recipe. AMI watermarks are lineage markers. They automatically propagate to derivative AMIs when the source AMI is copied or distributed across Regions or accounts.
+#' 
+#' AMI watermarks are supported only for image recipes. AMIs with watermarks cannot be made public.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param dryRun Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a `DryRunOperationException` error response.
 #'
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_image_recipe
-imagebuilder_create_image_recipe <- function(name, description = NULL, semanticVersion, components = NULL, parentImage, blockDeviceMappings = NULL, tags = NULL, workingDirectory = NULL, additionalInstanceConfiguration = NULL, amiTags = NULL, clientToken) {
+imagebuilder_create_image_recipe <- function(name, description = NULL, semanticVersion, components = NULL, parentImage, blockDeviceMappings = NULL, tags = NULL, workingDirectory = NULL, additionalInstanceConfiguration = NULL, amiTags = NULL, amiWatermarks = NULL, clientToken, dryRun = NULL) {
   op <- new_operation(
     name = "CreateImageRecipe",
     http_method = "PUT",
@@ -341,7 +349,7 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .imagebuilder$create_image_recipe_input(name = name, description = description, semanticVersion = semanticVersion, components = components, parentImage = parentImage, blockDeviceMappings = blockDeviceMappings, tags = tags, workingDirectory = workingDirectory, additionalInstanceConfiguration = additionalInstanceConfiguration, amiTags = amiTags, clientToken = clientToken)
+  input <- .imagebuilder$create_image_recipe_input(name = name, description = description, semanticVersion = semanticVersion, components = components, parentImage = parentImage, blockDeviceMappings = blockDeviceMappings, tags = tags, workingDirectory = workingDirectory, additionalInstanceConfiguration = additionalInstanceConfiguration, amiTags = amiTags, amiWatermarks = amiWatermarks, clientToken = clientToken, dryRun = dryRun)
   output <- .imagebuilder$create_image_recipe_output()
   config <- get_config()
   svc <- .imagebuilder$service(config, op)
@@ -360,26 +368,27 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
 #'
 #' @param name &#91;required&#93; The name of the infrastructure configuration.
 #' @param description The description of the infrastructure configuration.
-#' @param instanceTypes The instance types of the infrastructure configuration. You can specify one or more instance types to use for this build. The service will pick one of these instance types based on availability.
+#' @param instanceTypes The instance types of the infrastructure configuration. You can specify one or more instance types to use for this build. Image Builder picks one of these instance types based on availability.
 #' @param instanceProfileName &#91;required&#93; The instance profile to associate with the instance used to customize your Amazon EC2 AMI.
 #' @param securityGroupIds The security group IDs to associate with the instance used to customize your Amazon EC2 AMI.
 #' @param subnetId The subnet ID in which to place the instance used to customize your Amazon EC2 AMI.
 #' @param logging The logging configuration of the infrastructure configuration.
 #' @param keyPair The key pair of the infrastructure configuration. You can use this to log on to and debug the instance used to create your image.
-#' @param terminateInstanceOnFailure The terminate instance on failure setting of the infrastructure configuration. Set to false if you want Image Builder to retain the instance used to configure your AMI if the build or test phase of your workflow fails.
-#' @param snsTopicArn The Amazon Resource Name (ARN) for the SNS topic to which we send image build event notifications.
+#' @param terminateInstanceOnFailure Specifies whether to terminate the instance on failure. Set to false if you want Image Builder to retain the instance used to configure your AMI if the build or test phase of your workflow fails. Defaults to `true`.
+#' @param snsTopicArn The Amazon Resource Name (ARN) of the SNS topic to which Image Builder sends image build event notifications.
 #' 
 #' EC2 Image Builder is unable to send notifications to SNS topics that are encrypted using keys from other accounts. The key that is used to encrypt the SNS topic must reside in the account that the Image Builder service runs under.
 #' @param resourceTags The metadata tags to assign to the Amazon EC2 instance that Image Builder launches during the build process. Tags are formatted as key value pairs.
 #' @param instanceMetadataOptions The instance metadata options that you can set for the HTTP requests that pipeline builds use to launch EC2 build and test instances.
 #' @param tags The metadata tags to assign to the infrastructure configuration resource that Image Builder creates as output. Tags are formatted as key value pairs.
-#' @param placement The instance placement settings that define where the instances that are launched from your image will run.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param placement The instance placement settings that define where the instances that are launched from your image run.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param dryRun Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a `DryRunOperationException` error response.
 #'
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_infrastructure_configuration
-imagebuilder_create_infrastructure_configuration <- function(name, description = NULL, instanceTypes = NULL, instanceProfileName, securityGroupIds = NULL, subnetId = NULL, logging = NULL, keyPair = NULL, terminateInstanceOnFailure = NULL, snsTopicArn = NULL, resourceTags = NULL, instanceMetadataOptions = NULL, tags = NULL, placement = NULL, clientToken) {
+imagebuilder_create_infrastructure_configuration <- function(name, description = NULL, instanceTypes = NULL, instanceProfileName, securityGroupIds = NULL, subnetId = NULL, logging = NULL, keyPair = NULL, terminateInstanceOnFailure = NULL, snsTopicArn = NULL, resourceTags = NULL, instanceMetadataOptions = NULL, tags = NULL, placement = NULL, clientToken, dryRun = NULL) {
   op <- new_operation(
     name = "CreateInfrastructureConfiguration",
     http_method = "PUT",
@@ -388,7 +397,7 @@ imagebuilder_create_infrastructure_configuration <- function(name, description =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .imagebuilder$create_infrastructure_configuration_input(name = name, description = description, instanceTypes = instanceTypes, instanceProfileName = instanceProfileName, securityGroupIds = securityGroupIds, subnetId = subnetId, logging = logging, keyPair = keyPair, terminateInstanceOnFailure = terminateInstanceOnFailure, snsTopicArn = snsTopicArn, resourceTags = resourceTags, instanceMetadataOptions = instanceMetadataOptions, tags = tags, placement = placement, clientToken = clientToken)
+  input <- .imagebuilder$create_infrastructure_configuration_input(name = name, description = description, instanceTypes = instanceTypes, instanceProfileName = instanceProfileName, securityGroupIds = securityGroupIds, subnetId = subnetId, logging = logging, keyPair = keyPair, terminateInstanceOnFailure = terminateInstanceOnFailure, snsTopicArn = snsTopicArn, resourceTags = resourceTags, instanceMetadataOptions = instanceMetadataOptions, tags = tags, placement = placement, clientToken = clientToken, dryRun = dryRun)
   output <- .imagebuilder$create_infrastructure_configuration_output()
   config <- get_config()
   svc <- .imagebuilder$service(config, op)
@@ -398,10 +407,10 @@ imagebuilder_create_infrastructure_configuration <- function(name, description =
 }
 .imagebuilder$operations$create_infrastructure_configuration <- imagebuilder_create_infrastructure_configuration
 
-#' Create a lifecycle policy resource
+#' Creates a lifecycle policy resource
 #'
 #' @description
-#' Create a lifecycle policy resource.
+#' Creates a lifecycle policy resource.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_create_lifecycle_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_create_lifecycle_policy/) for full documentation.
 #'
@@ -413,12 +422,13 @@ imagebuilder_create_infrastructure_configuration <- function(name, description =
 #' @param policyDetails &#91;required&#93; Configuration details for the lifecycle policy rules.
 #' @param resourceSelection &#91;required&#93; Selection criteria for the resources that the lifecycle policy applies to.
 #' @param tags Tags to apply to the lifecycle policy resource.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param dryRun Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a `DryRunOperationException` error response.
 #'
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_lifecycle_policy
-imagebuilder_create_lifecycle_policy <- function(name, description = NULL, status = NULL, executionRole, resourceType, policyDetails, resourceSelection, tags = NULL, clientToken) {
+imagebuilder_create_lifecycle_policy <- function(name, description = NULL, status = NULL, executionRole, resourceType, policyDetails, resourceSelection, tags = NULL, clientToken, dryRun = NULL) {
   op <- new_operation(
     name = "CreateLifecyclePolicy",
     http_method = "PUT",
@@ -427,7 +437,7 @@ imagebuilder_create_lifecycle_policy <- function(name, description = NULL, statu
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .imagebuilder$create_lifecycle_policy_input(name = name, description = description, status = status, executionRole = executionRole, resourceType = resourceType, policyDetails = policyDetails, resourceSelection = resourceSelection, tags = tags, clientToken = clientToken)
+  input <- .imagebuilder$create_lifecycle_policy_input(name = name, description = description, status = status, executionRole = executionRole, resourceType = resourceType, policyDetails = policyDetails, resourceSelection = resourceSelection, tags = tags, clientToken = clientToken, dryRun = dryRun)
   output <- .imagebuilder$create_lifecycle_policy_output()
   config <- get_config()
   svc <- .imagebuilder$service(config, op)
@@ -437,10 +447,10 @@ imagebuilder_create_lifecycle_policy <- function(name, description = NULL, statu
 }
 .imagebuilder$operations$create_lifecycle_policy <- imagebuilder_create_lifecycle_policy
 
-#' Create a new workflow or a new version of an existing workflow
+#' Creates a new workflow or a new version of an existing workflow
 #'
 #' @description
-#' Create a new workflow or a new version of an existing workflow.
+#' Creates a new workflow or a new version of an existing workflow.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_create_workflow/](https://www.paws-r-sdk.com/docs/imagebuilder_create_workflow/) for full documentation.
 #'
@@ -449,20 +459,20 @@ imagebuilder_create_lifecycle_policy <- function(name, description = NULL, statu
 #' 
 #' The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the first three, and can filter on all of them.
 #' 
-#' **Assignment:** For the first three nodes you can assign any positive integer value, including zero, with an upper limit of 2^30-1, or 1073741823 for each node. Image Builder automatically assigns the build number to the fourth node.
+#' **Assignment:** For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node.
 #' 
 #' **Patterns:** You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01.
 #' @param description Describes the workflow.
 #' @param changeDescription Describes what change has been made in this version of the workflow, or what makes this version different from other versions of the workflow.
 #' @param data Contains the UTF-8 encoded YAML document content for the workflow. Alternatively, you can specify the `uri` of a YAML document file stored in Amazon S3. However, you cannot specify both properties.
-#' @param uri The `uri` of a YAML component document file. This must be an S3 URL (`s3://bucket/key`), and the requester must have permission to access the S3 bucket it points to. If you use Amazon S3, you can specify component content up to your service quota.
+#' @param uri The `uri` of a YAML component document file. This must be an S3 URL (`s3://bucket/key`), and you must have permission to access the S3 bucket it points to. If you use Amazon S3, you can specify component content up to your service quota.
 #' 
 #' Alternatively, you can specify the YAML document inline, using the component `data` property. You cannot specify both properties.
 #' @param kmsKeyId The Amazon Resource Name (ARN) that uniquely identifies the KMS key used to encrypt this workflow resource. This can be either the Key ARN or the Alias ARN. For more information, see [Key identifiers (KeyId)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN) in the *Key Management Service Developer Guide*.
 #' @param tags Tags that apply to the workflow resource.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #' @param type &#91;required&#93; The phase in the image build process for which the workflow resource is responsible.
-#' @param dryRun Validates the required permissions for the operation and the request parameters, without actually making the request, and provides an error response. Upon a successful request, the error response is `DryRunOperationException`.
+#' @param dryRun Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a `DryRunOperationException` error response.
 #'
 #' @keywords internal
 #'
@@ -703,10 +713,10 @@ imagebuilder_delete_infrastructure_configuration <- function(infrastructureConfi
 }
 .imagebuilder$operations$delete_infrastructure_configuration <- imagebuilder_delete_infrastructure_configuration
 
-#' Delete the specified lifecycle policy resource
+#' Deletes the specified lifecycle policy resource
 #'
 #' @description
-#' Delete the specified lifecycle policy resource.
+#' Deletes the specified lifecycle policy resource.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_delete_lifecycle_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_delete_lifecycle_policy/) for full documentation.
 #'
@@ -765,19 +775,19 @@ imagebuilder_delete_workflow <- function(workflowBuildVersionArn) {
 }
 .imagebuilder$operations$delete_workflow <- imagebuilder_delete_workflow
 
-#' DistributeImage distributes existing AMIs to additional regions and
-#' accounts without rebuilding the image
+#' Distributes an existing AMI to target Regions and accounts without
+#' running the full image build process
 #'
 #' @description
-#' DistributeImage distributes existing AMIs to additional regions and accounts without rebuilding the image.
+#' Distributes an existing AMI to target Regions and accounts without running the full image build process. This operation only runs the distribution phase on an image that has already been built.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_distribute_image/](https://www.paws-r-sdk.com/docs/imagebuilder_distribute_image/) for full documentation.
 #'
-#' @param sourceImage &#91;required&#93; The source image Amazon Resource Name (ARN) to distribute.
-#' @param distributionConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the distribution configuration to use.
-#' @param executionRole &#91;required&#93; The IAM role to use for the distribution.
+#' @param sourceImage &#91;required&#93; The source image to distribute. Specify an AMI identifier, SSM parameter path, or Image Builder image Amazon Resource Name (ARN). When you specify an Image Builder image Amazon Resource Name (ARN), the image must be in the `AVAILABLE` state.
+#' @param distributionConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the distribution configuration. The configuration defines target Regions, accounts, and AMI settings. The distribution configuration must be in the same Region as this operation.
+#' @param executionRole &#91;required&#93; The name or Amazon Resource Name (ARN) of the IAM role that Image Builder assumes to distribute the image.
 #' @param tags The tags to apply to the distributed image.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #' @param loggingConfiguration The logging configuration for the distribution.
 #'
 #' @keywords internal
@@ -802,10 +812,10 @@ imagebuilder_distribute_image <- function(sourceImage, distributionConfiguration
 }
 .imagebuilder$operations$distribute_image <- imagebuilder_distribute_image
 
-#' Gets a component object
+#' Retrieves a component object
 #'
 #' @description
-#' Gets a component object.
+#' Retrieves a component object.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_component/](https://www.paws-r-sdk.com/docs/imagebuilder_get_component/) for full documentation.
 #'
@@ -833,10 +843,10 @@ imagebuilder_get_component <- function(componentBuildVersionArn) {
 }
 .imagebuilder$operations$get_component <- imagebuilder_get_component
 
-#' Gets a component policy
+#' Retrieves a component policy
 #'
 #' @description
-#' Gets a component policy.
+#' Retrieves a component policy.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_component_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_get_component_policy/) for full documentation.
 #'
@@ -926,10 +936,10 @@ imagebuilder_get_container_recipe_policy <- function(containerRecipeArn) {
 }
 .imagebuilder$operations$get_container_recipe_policy <- imagebuilder_get_container_recipe_policy
 
-#' Gets a distribution configuration
+#' Retrieves a distribution configuration
 #'
 #' @description
-#' Gets a distribution configuration.
+#' Retrieves a distribution configuration.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_distribution_configuration/](https://www.paws-r-sdk.com/docs/imagebuilder_get_distribution_configuration/) for full documentation.
 #'
@@ -957,10 +967,10 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 }
 .imagebuilder$operations$get_distribution_configuration <- imagebuilder_get_distribution_configuration
 
-#' Gets an image
+#' Retrieves an image
 #'
 #' @description
-#' Gets an image.
+#' Retrieves an image.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_image/](https://www.paws-r-sdk.com/docs/imagebuilder_get_image/) for full documentation.
 #'
@@ -988,10 +998,10 @@ imagebuilder_get_image <- function(imageBuildVersionArn) {
 }
 .imagebuilder$operations$get_image <- imagebuilder_get_image
 
-#' Gets an image pipeline
+#' Retrieves an image pipeline
 #'
 #' @description
-#' Gets an image pipeline.
+#' Retrieves an image pipeline.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_image_pipeline/](https://www.paws-r-sdk.com/docs/imagebuilder_get_image_pipeline/) for full documentation.
 #'
@@ -1019,10 +1029,10 @@ imagebuilder_get_image_pipeline <- function(imagePipelineArn) {
 }
 .imagebuilder$operations$get_image_pipeline <- imagebuilder_get_image_pipeline
 
-#' Gets an image policy
+#' Retrieves an image policy
 #'
 #' @description
-#' Gets an image policy.
+#' Retrieves an image policy.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_image_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_get_image_policy/) for full documentation.
 #'
@@ -1050,10 +1060,10 @@ imagebuilder_get_image_policy <- function(imageArn) {
 }
 .imagebuilder$operations$get_image_policy <- imagebuilder_get_image_policy
 
-#' Gets an image recipe
+#' Retrieves an image recipe
 #'
 #' @description
-#' Gets an image recipe.
+#' Retrieves an image recipe.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_image_recipe/](https://www.paws-r-sdk.com/docs/imagebuilder_get_image_recipe/) for full documentation.
 #'
@@ -1081,10 +1091,10 @@ imagebuilder_get_image_recipe <- function(imageRecipeArn) {
 }
 .imagebuilder$operations$get_image_recipe <- imagebuilder_get_image_recipe
 
-#' Gets an image recipe policy
+#' Retrieves an image recipe policy
 #'
 #' @description
-#' Gets an image recipe policy.
+#' Retrieves an image recipe policy.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_image_recipe_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_get_image_recipe_policy/) for full documentation.
 #'
@@ -1112,10 +1122,10 @@ imagebuilder_get_image_recipe_policy <- function(imageRecipeArn) {
 }
 .imagebuilder$operations$get_image_recipe_policy <- imagebuilder_get_image_recipe_policy
 
-#' Gets an infrastructure configuration
+#' Retrieves an infrastructure configuration
 #'
 #' @description
-#' Gets an infrastructure configuration.
+#' Retrieves an infrastructure configuration.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_infrastructure_configuration/](https://www.paws-r-sdk.com/docs/imagebuilder_get_infrastructure_configuration/) for full documentation.
 #'
@@ -1143,15 +1153,15 @@ imagebuilder_get_infrastructure_configuration <- function(infrastructureConfigur
 }
 .imagebuilder$operations$get_infrastructure_configuration <- imagebuilder_get_infrastructure_configuration
 
-#' Get the runtime information that was logged for a specific runtime
-#' instance of the lifecycle policy
+#' Retrieves the runtime information for a specific runtime instance of the
+#' lifecycle policy
 #'
 #' @description
-#' Get the runtime information that was logged for a specific runtime instance of the lifecycle policy.
+#' Retrieves the runtime information for a specific runtime instance of the lifecycle policy.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_lifecycle_execution/](https://www.paws-r-sdk.com/docs/imagebuilder_get_lifecycle_execution/) for full documentation.
 #'
-#' @param lifecycleExecutionId &#91;required&#93; Use the unique identifier for a runtime instance of the lifecycle policy to get runtime details.
+#' @param lifecycleExecutionId &#91;required&#93; The unique identifier for a runtime instance of the lifecycle policy.
 #'
 #' @keywords internal
 #'
@@ -1175,10 +1185,10 @@ imagebuilder_get_lifecycle_execution <- function(lifecycleExecutionId) {
 }
 .imagebuilder$operations$get_lifecycle_execution <- imagebuilder_get_lifecycle_execution
 
-#' Get details for the specified image lifecycle policy
+#' Retrieves details for the specified image lifecycle policy
 #'
 #' @description
-#' Get details for the specified image lifecycle policy.
+#' Retrieves details for the specified image lifecycle policy.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_lifecycle_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_get_lifecycle_policy/) for full documentation.
 #'
@@ -1206,11 +1216,11 @@ imagebuilder_get_lifecycle_policy <- function(lifecyclePolicyArn) {
 }
 .imagebuilder$operations$get_lifecycle_policy <- imagebuilder_get_lifecycle_policy
 
-#' Verify the subscription and perform resource dependency checks on the
+#' Verifies the subscription and performs resource dependency checks on the
 #' requested Amazon Web Services Marketplace resource
 #'
 #' @description
-#' Verify the subscription and perform resource dependency checks on the requested Amazon Web Services Marketplace resource. For Amazon Web Services Marketplace components, the response contains fields to download the components and their artifacts.
+#' Verifies the subscription and performs resource dependency checks on the requested Amazon Web Services Marketplace resource. For Amazon Web Services Marketplace components, the response contains fields to download the components and their artifacts.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_marketplace_resource/](https://www.paws-r-sdk.com/docs/imagebuilder_get_marketplace_resource/) for full documentation.
 #'
@@ -1240,10 +1250,10 @@ imagebuilder_get_marketplace_resource <- function(resourceType, resourceArn, res
 }
 .imagebuilder$operations$get_marketplace_resource <- imagebuilder_get_marketplace_resource
 
-#' Get a workflow resource object
+#' Retrieves a workflow resource object
 #'
 #' @description
-#' Get a workflow resource object.
+#' Retrieves a workflow resource object.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_workflow/](https://www.paws-r-sdk.com/docs/imagebuilder_get_workflow/) for full documentation.
 #'
@@ -1271,11 +1281,11 @@ imagebuilder_get_workflow <- function(workflowBuildVersionArn) {
 }
 .imagebuilder$operations$get_workflow <- imagebuilder_get_workflow
 
-#' Get the runtime information that was logged for a specific runtime
-#' instance of the workflow
+#' Retrieves runtime information for a specific runtime instance of the
+#' workflow
 #'
 #' @description
-#' Get the runtime information that was logged for a specific runtime instance of the workflow.
+#' Retrieves runtime information for a specific runtime instance of the workflow.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_workflow_execution/](https://www.paws-r-sdk.com/docs/imagebuilder_get_workflow_execution/) for full documentation.
 #'
@@ -1303,11 +1313,11 @@ imagebuilder_get_workflow_execution <- function(workflowExecutionId) {
 }
 .imagebuilder$operations$get_workflow_execution <- imagebuilder_get_workflow_execution
 
-#' Get the runtime information that was logged for a specific runtime
-#' instance of the workflow step
+#' Retrieves runtime information for a specific runtime instance of the
+#' workflow step
 #'
 #' @description
-#' Get the runtime information that was logged for a specific runtime instance of the workflow step.
+#' Retrieves runtime information for a specific runtime instance of the workflow step.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_workflow_step_execution/](https://www.paws-r-sdk.com/docs/imagebuilder_get_workflow_step_execution/) for full documentation.
 #'
@@ -1347,17 +1357,17 @@ imagebuilder_get_workflow_step_execution <- function(stepExecutionId) {
 #' 
 #' The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the first three, and can filter on all of them.
 #' 
-#' **Filtering:** With semantic versioning, you have the flexibility to use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards.
+#' **Filtering:** You can use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards.
 #' @param description The description of the component. Describes the contents of the component.
 #' @param changeDescription The change description of the component. This description indicates the change that has been made in this version, or what makes this version different from other versions of the component.
 #' @param type &#91;required&#93; The type of the component denotes whether the component is used to build the image, or only to test it.
 #' @param format &#91;required&#93; The format of the resource that you want to import as a component.
 #' @param platform &#91;required&#93; The platform of the component.
 #' @param data The data of the component. Used to specify the data inline. Either `data` or `uri` can be used to specify the data within the component.
-#' @param uri The uri of the component. Must be an Amazon S3 URL and the requester must have permission to access the Amazon S3 bucket. If you use Amazon S3, you can specify component content up to your service quota. Either `data` or `uri` can be used to specify the data within the component.
+#' @param uri The uri of the component. Must be an Amazon S3 URL and you must have permission to access the Amazon S3 bucket. If you use Amazon S3, you can specify component content up to your service quota. Either `data` or `uri` can be used to specify the data within the component.
 #' @param kmsKeyId The Amazon Resource Name (ARN) that uniquely identifies the KMS key used to encrypt this component. This can be either the Key ARN or the Alias ARN. For more information, see [Key identifiers (KeyId)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN) in the *Key Management Service Developer Guide*.
 #' @param tags The tags of the component.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
 #'
@@ -1381,11 +1391,11 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
 }
 .imagebuilder$operations$import_component <- imagebuilder_import_component
 
-#' Import a Windows operating system image from a verified Microsoft ISO
+#' Imports a Windows operating system image from a verified Microsoft ISO
 #' disk file
 #'
 #' @description
-#' Import a Windows operating system image from a verified Microsoft ISO disk file. The following disk images are supported:
+#' Imports a Windows operating system image from a verified Microsoft ISO disk file. The following disk images are supported:
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_import_disk_image/](https://www.paws-r-sdk.com/docs/imagebuilder_import_disk_image/) for full documentation.
 #'
@@ -1397,11 +1407,11 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
 #' @param executionRole The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions to import an image from a Microsoft ISO file.
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration resource that's used for launching the EC2 instance on which the ISO image is built.
 #' @param uri &#91;required&#93; The `uri` of the ISO disk file that's stored in Amazon S3.
-#' @param loggingConfiguration Define logging configuration for the image build process.
+#' @param loggingConfiguration The logging configuration for the image build process.
 #' @param tags Tags that are attached to image resources created from the import.
 #' @param registerImageOptions Configures Secure Boot and UEFI settings for the imported image.
 #' @param windowsConfiguration Specifies Windows settings for ISO imports.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
 #'
@@ -1439,16 +1449,16 @@ imagebuilder_import_disk_image <- function(name, semanticVersion, description = 
 #' 
 #' The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the first three, and can filter on all of them.
 #' 
-#' **Assignment:** For the first three nodes you can assign any positive integer value, including zero, with an upper limit of 2^30-1, or 1073741823 for each node. Image Builder automatically assigns the build number to the fourth node.
+#' **Assignment:** For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node.
 #' 
 #' **Patterns:** You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01.
 #' @param description The description for the base image that is created by the import process.
 #' @param platform &#91;required&#93; The operating system platform for the imported VM.
 #' @param osVersion The operating system version for the imported VM.
 #' @param vmImportTaskId &#91;required&#93; The `importTaskId` (API) or `ImportTaskId` (CLI) from the Amazon EC2 VM import process. Image Builder retrieves information from the import process to pull in the AMI that is created from the VM source as the base image for your recipe.
-#' @param loggingConfiguration Define logging configuration for the image build process.
+#' @param loggingConfiguration The logging configuration for the image build process.
 #' @param tags Tags that are attached to the import resources.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
 #'
@@ -1481,8 +1491,8 @@ imagebuilder_import_vm_image <- function(name, semanticVersion, description = NU
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_component_build_versions/](https://www.paws-r-sdk.com/docs/imagebuilder_list_component_build_versions/) for full documentation.
 #'
 #' @param componentVersionArn The component version Amazon Resource Name (ARN) whose versions you want to list.
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -1529,8 +1539,8 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn = NUL
 #' 
 #' -   `version`
 #' @param byName Returns the list of components for the specified name.
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -1571,8 +1581,8 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
 #' -   `parentImage`
 #' 
 #' -   `platform`
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -1604,8 +1614,8 @@ imagebuilder_list_container_recipes <- function(owner = NULL, filters = NULL, ma
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_distribution_configurations/](https://www.paws-r-sdk.com/docs/imagebuilder_list_distribution_configurations/) for full documentation.
 #'
 #' @param filters You can filter on `name` to streamline results.
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -1648,8 +1658,8 @@ imagebuilder_list_distribution_configurations <- function(filters = NULL, maxRes
 #' -   `type`
 #' 
 #' -   `version`
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -1673,18 +1683,18 @@ imagebuilder_list_image_build_versions <- function(imageVersionArn = NULL, filte
 }
 .imagebuilder$operations$list_image_build_versions <- imagebuilder_list_image_build_versions
 
-#' List the Packages that are associated with an Image Build Version, as
+#' Lists the packages that are associated with an image build version, as
 #' determined by Amazon Web Services Systems Manager Inventory at build
 #' time
 #'
 #' @description
-#' List the Packages that are associated with an Image Build Version, as determined by Amazon Web Services Systems Manager Inventory at build time.
+#' Lists the packages that are associated with an image build version, as determined by Amazon Web Services Systems Manager Inventory at build time.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_image_packages/](https://www.paws-r-sdk.com/docs/imagebuilder_list_image_packages/) for full documentation.
 #'
 #' @param imageBuildVersionArn &#91;required&#93; Filter results for the ListImagePackages request by the Image Build Version ARN
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -1721,8 +1731,8 @@ imagebuilder_list_image_packages <- function(imageBuildVersionArn, maxResults = 
 #' -   `name`
 #' 
 #' -   `version`
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -1766,8 +1776,8 @@ imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = 
 #' -   `name`
 #' 
 #' -   `status`
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -1806,8 +1816,8 @@ imagebuilder_list_image_pipelines <- function(filters = NULL, maxResults = NULL,
 #' -   `parentImage`
 #' 
 #' -   `platform`
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -1839,7 +1849,7 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_image_scan_finding_aggregations/](https://www.paws-r-sdk.com/docs/imagebuilder_list_image_scan_finding_aggregations/) for full documentation.
 #'
 #' @param filter A filter name and value pair that is used to return a more specific list of results from a list operation. Filters can be used to match a set of resources by specific criteria, such as tags, attributes, or IDs.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -1881,8 +1891,8 @@ imagebuilder_list_image_scan_finding_aggregations <- function(filter = NULL, nex
 #' -   `severity`
 #' 
 #' If you don't request a filter, then all findings in your account are listed.
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -1913,7 +1923,7 @@ imagebuilder_list_image_scan_findings <- function(filters = NULL, maxResults = N
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_images/](https://www.paws-r-sdk.com/docs/imagebuilder_list_images/) for full documentation.
 #'
-#' @param owner The owner defines which images you want to list. By default, this request will only show images owned by your account. You can use this field to specify if you want to view images owned by yourself, by Amazon, or those images that have been shared with you by other customers.
+#' @param owner Filters the list to images owned by you, by Amazon, or shared with you by other accounts. By default, only your account's images are returned.
 #' @param filters Use the following filters to streamline results:
 #' 
 #' -   `name`
@@ -1926,8 +1936,8 @@ imagebuilder_list_image_scan_findings <- function(filters = NULL, maxResults = N
 #' 
 #' -   `version`
 #' @param byName Requests a list of images with a specific recipe name.
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #' @param includeDeprecated Includes deprecated images in the response list.
 #'
 #' @keywords internal
@@ -1960,8 +1970,8 @@ imagebuilder_list_images <- function(owner = NULL, filters = NULL, byName = NULL
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_infrastructure_configurations/](https://www.paws-r-sdk.com/docs/imagebuilder_list_infrastructure_configurations/) for full documentation.
 #'
 #' @param filters You can filter on `name` to streamline results.
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -1985,20 +1995,20 @@ imagebuilder_list_infrastructure_configurations <- function(filters = NULL, maxR
 }
 .imagebuilder$operations$list_infrastructure_configurations <- imagebuilder_list_infrastructure_configurations
 
-#' List resources that the runtime instance of the image lifecycle
+#' Lists resources that the runtime instance of the image lifecycle
 #' identified for lifecycle actions
 #'
 #' @description
-#' List resources that the runtime instance of the image lifecycle identified for lifecycle actions.
+#' Lists resources that the runtime instance of the image lifecycle identified for lifecycle actions.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_lifecycle_execution_resources/](https://www.paws-r-sdk.com/docs/imagebuilder_list_lifecycle_execution_resources/) for full documentation.
 #'
-#' @param lifecycleExecutionId &#91;required&#93; Use the unique identifier for a runtime instance of the lifecycle policy to get runtime details.
+#' @param lifecycleExecutionId &#91;required&#93; The unique identifier for a runtime instance of the lifecycle policy.
 #' @param parentResourceId You can leave this empty to get a list of Image Builder resources that were identified for lifecycle actions.
 #' 
 #' To get a list of associated resources that are impacted for an individual resource (the parent), specify its Amazon Resource Name (ARN). Associated resources are produced from your image and distributed when you run a build, such as AMIs or container images stored in ECR repositories.
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -2022,15 +2032,15 @@ imagebuilder_list_lifecycle_execution_resources <- function(lifecycleExecutionId
 }
 .imagebuilder$operations$list_lifecycle_execution_resources <- imagebuilder_list_lifecycle_execution_resources
 
-#' Get the lifecycle runtime history for the specified resource
+#' Retrieves the lifecycle runtime history for the specified resource
 #'
 #' @description
-#' Get the lifecycle runtime history for the specified resource.
+#' Retrieves the lifecycle runtime history for the specified resource.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_lifecycle_executions/](https://www.paws-r-sdk.com/docs/imagebuilder_list_lifecycle_executions/) for full documentation.
 #'
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which to get a list of lifecycle runtime instances.
 #'
 #' @keywords internal
@@ -2055,16 +2065,17 @@ imagebuilder_list_lifecycle_executions <- function(maxResults = NULL, nextToken 
 }
 .imagebuilder$operations$list_lifecycle_executions <- imagebuilder_list_lifecycle_executions
 
-#' Get a list of lifecycle policies in your Amazon Web Services account
+#' Retrieves a list of lifecycle policies in your Amazon Web Services
+#' account
 #'
 #' @description
-#' Get a list of lifecycle policies in your Amazon Web Services account.
+#' Retrieves a list of lifecycle policies in your Amazon Web Services account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_lifecycle_policies/](https://www.paws-r-sdk.com/docs/imagebuilder_list_lifecycle_policies/) for full documentation.
 #'
 #' @param filters Streamline results based on one of the following values: `Name`, `Status`.
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -2119,16 +2130,16 @@ imagebuilder_list_tags_for_resource <- function(resourceArn) {
 }
 .imagebuilder$operations$list_tags_for_resource <- imagebuilder_list_tags_for_resource
 
-#' Get a list of workflow steps that are waiting for action for workflows
-#' in your Amazon Web Services account
+#' Retrieves a list of workflow steps that are waiting for action for
+#' workflows in your Amazon Web Services account
 #'
 #' @description
-#' Get a list of workflow steps that are waiting for action for workflows in your Amazon Web Services account.
+#' Retrieves a list of workflow steps that are waiting for action for workflows in your Amazon Web Services account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_waiting_workflow_steps/](https://www.paws-r-sdk.com/docs/imagebuilder_list_waiting_workflow_steps/) for full documentation.
 #'
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -2160,8 +2171,8 @@ imagebuilder_list_waiting_workflow_steps <- function(maxResults = NULL, nextToke
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_workflow_build_versions/](https://www.paws-r-sdk.com/docs/imagebuilder_list_workflow_build_versions/) for full documentation.
 #'
 #' @param workflowVersionArn The Amazon Resource Name (ARN) of the workflow resource for which to get a list of build versions.
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -2193,8 +2204,8 @@ imagebuilder_list_workflow_build_versions <- function(workflowVersionArn = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_workflow_executions/](https://www.paws-r-sdk.com/docs/imagebuilder_list_workflow_executions/) for full documentation.
 #'
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #' @param imageBuildVersionArn &#91;required&#93; List all workflow runtime instances for the specified image build version resource ARN.
 #'
 #' @keywords internal
@@ -2227,8 +2238,8 @@ imagebuilder_list_workflow_executions <- function(maxResults = NULL, nextToken =
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_workflow_step_executions/](https://www.paws-r-sdk.com/docs/imagebuilder_list_workflow_step_executions/) for full documentation.
 #'
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #' @param workflowExecutionId &#91;required&#93; The unique identifier that Image Builder assigned to keep track of runtime details when it ran the workflow.
 #'
 #' @keywords internal
@@ -2263,8 +2274,8 @@ imagebuilder_list_workflow_step_executions <- function(maxResults = NULL, nextTo
 #' @param owner Used to get a list of workflow build version filtered by the identity of the creator.
 #' @param filters Used to streamline search results.
 #' @param byName Specify all or part of the workflow name to streamline results.
-#' @param maxResults Specify the maximum number of items to return in a request.
-#' @param nextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param maxResults The maximum number of items to return in a single request.
+#' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -2291,7 +2302,7 @@ imagebuilder_list_workflows <- function(owner = NULL, filters = NULL, byName = N
 #' Applies a policy to a component
 #'
 #' @description
-#' Applies a policy to a component. We recommend that you call the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html) to share resources. If you call the Image Builder API [`put_component_policy`][imagebuilder_put_component_policy], you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) in order for the resource to be visible to all principals with whom the resource is shared.
+#' Applies a policy to a component. To share resources, call the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html). If you call this API, you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) so that the resource is visible to all principals with whom the resource is shared.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_put_component_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_put_component_policy/) for full documentation.
 #'
@@ -2323,7 +2334,7 @@ imagebuilder_put_component_policy <- function(componentArn, policy) {
 #' Applies a policy to a container image
 #'
 #' @description
-#' Applies a policy to a container image. We recommend that you call the RAM API CreateResourceShare (https://docs.aws.amazon.com//ram/latest/APIReference/API_CreateResourceShare.html) to share resources. If you call the Image Builder API `PutContainerImagePolicy`, you must also call the RAM API PromoteResourceShareCreatedFromPolicy (https://docs.aws.amazon.com//ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) in order for the resource to be visible to all principals with whom the resource is shared.
+#' Applies a policy to a container image. To share resources, call the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html). If you call this API, you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) so that the resource is visible to all principals with whom the resource is shared.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_put_container_recipe_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_put_container_recipe_policy/) for full documentation.
 #'
@@ -2355,7 +2366,7 @@ imagebuilder_put_container_recipe_policy <- function(containerRecipeArn, policy)
 #' Applies a policy to an image
 #'
 #' @description
-#' Applies a policy to an image. We recommend that you call the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html) to share resources. If you call the Image Builder API [`put_image_policy`][imagebuilder_put_image_policy], you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) in order for the resource to be visible to all principals with whom the resource is shared.
+#' Applies a policy to an image. To share resources, call the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html). If you call this API, you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) so that the resource is visible to all principals with whom the resource is shared.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_put_image_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_put_image_policy/) for full documentation.
 #'
@@ -2387,7 +2398,7 @@ imagebuilder_put_image_policy <- function(imageArn, policy) {
 #' Applies a policy to an image recipe
 #'
 #' @description
-#' Applies a policy to an image recipe. We recommend that you call the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html) to share resources. If you call the Image Builder API [`put_image_recipe_policy`][imagebuilder_put_image_recipe_policy], you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) in order for the resource to be visible to all principals with whom the resource is shared.
+#' Applies a policy to an image recipe. To share resources, call the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html). If you call this API, you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) so that the resource is visible to all principals with whom the resource is shared.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_put_image_recipe_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_put_image_recipe_policy/) for full documentation.
 #'
@@ -2416,15 +2427,15 @@ imagebuilder_put_image_recipe_policy <- function(imageRecipeArn, policy) {
 }
 .imagebuilder$operations$put_image_recipe_policy <- imagebuilder_put_image_recipe_policy
 
-#' RetryImage retries an image distribution without rebuilding the image
+#' Retries an image distribution or test without rebuilding the image
 #'
 #' @description
-#' RetryImage retries an image distribution without rebuilding the image.
+#' Retries an image distribution or test without rebuilding the image.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_retry_image/](https://www.paws-r-sdk.com/docs/imagebuilder_retry_image/) for full documentation.
 #'
 #' @param imageBuildVersionArn &#91;required&#93; The source image Amazon Resource Name (ARN) to retry.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
 #'
@@ -2457,10 +2468,10 @@ imagebuilder_retry_image <- function(imageBuildVersionArn, clientToken) {
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_send_workflow_step_action/](https://www.paws-r-sdk.com/docs/imagebuilder_send_workflow_step_action/) for full documentation.
 #'
 #' @param stepExecutionId &#91;required&#93; Uniquely identifies the workflow step that sent the step action.
-#' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image build version to send action for.
-#' @param action &#91;required&#93; The action for the image creation process to take while a workflow `WaitForAction` step waits for an asynchronous action to complete.
-#' @param reason The reason why this action is sent.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image build version associated with the workflow step execution. This value must match the image that owns the waiting step. If the ARN does not correspond to the image running the workflow, then the request fails with a validation error.
+#' @param action &#91;required&#93; The action to perform on the paused workflow step. The workflow step must be in a waiting state to accept an action. The request fails if the step has already timed out or been actioned.
+#' @param reason The reason for the action. This value is stored with the step execution record and is accessible in subsequent workflow steps via step output references.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
 #'
@@ -2492,8 +2503,8 @@ imagebuilder_send_workflow_step_action <- function(stepExecutionId, imageBuildVe
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_start_image_pipeline_execution/](https://www.paws-r-sdk.com/docs/imagebuilder_start_image_pipeline_execution/) for full documentation.
 #'
 #' @param imagePipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the image pipeline that you want to manually invoke.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
-#' @param tags Specify tags for Image Builder to apply to the image resource that's created When it starts pipeline execution.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param tags The tags for Image Builder to apply to the image resource that's created when pipeline execution starts.
 #'
 #' @keywords internal
 #'
@@ -2517,21 +2528,21 @@ imagebuilder_start_image_pipeline_execution <- function(imagePipelineArn, client
 }
 .imagebuilder$operations$start_image_pipeline_execution <- imagebuilder_start_image_pipeline_execution
 
-#' Begin asynchronous resource state update for lifecycle changes to the
-#' specified image resources
+#' Begins an asynchronous resource state update for lifecycle changes to
+#' the specified image resources
 #'
 #' @description
-#' Begin asynchronous resource state update for lifecycle changes to the specified image resources.
+#' Begins an asynchronous resource state update for lifecycle changes to the specified image resources.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_start_resource_state_update/](https://www.paws-r-sdk.com/docs/imagebuilder_start_resource_state_update/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Image Builder resource that is updated. The state update might also impact associated resources.
-#' @param state &#91;required&#93; Indicates the lifecycle action to take for this request.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the image build version to update. The image must be in one of these terminal states: `AVAILABLE`, `DEPRECATED`, `DISABLED`, `FAILED`, or `CANCELLED`. Images with `FAILED` or `CANCELLED` status can transition only to `DELETED`.
+#' @param state &#91;required&#93; Specifies the lifecycle action to take for this request. For AMI-based images, valid values are `AVAILABLE`, `DEPRECATED`, `DISABLED`, and `DELETED`. For container-based images, only `DELETED` is supported.
 #' @param executionRole The name or Amazon Resource Name (ARN) of the IAM role that’s used to update image state.
-#' @param includeResources A list of image resources to update state for.
+#' @param includeResources Specifies which image resources to include in the state update. When specified, the lifecycle action applies to underlying resources. These resources include AMIs, snapshots, and containers in addition to the Image Builder image resource. Requires `executionRole` to also be specified. To delete an image and its underlying resources, you must specify `includeResources`. To delete only the Image Builder image record without affecting underlying resources, use the [`delete_image`][imagebuilder_delete_image] API instead.
 #' @param exclusionRules Skip action on the image resource and associated resources if specified exclusion rules are met.
-#' @param updateAt The timestamp that indicates when resources are updated by a lifecycle action.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param updateAt Specifies the timestamp when the state transition takes effect. Use this parameter only when the target status is `DEPRECATED`. The value must be a future time.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
 #'
@@ -2619,17 +2630,17 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
 }
 .imagebuilder$operations$untag_resource <- imagebuilder_untag_resource
 
-#' Updates a new distribution configuration
+#' Updates a distribution configuration
 #'
 #' @description
-#' Updates a new distribution configuration. Distribution configurations define and configure the outputs of your pipeline.
+#' Updates a distribution configuration. Distribution configurations define and configure the outputs of your pipeline.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_update_distribution_configuration/](https://www.paws-r-sdk.com/docs/imagebuilder_update_distribution_configuration/) for full documentation.
 #'
 #' @param distributionConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the distribution configuration that you want to update.
 #' @param description The description of the distribution configuration.
 #' @param distributions &#91;required&#93; The distributions of the distribution configuration.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
 #'
@@ -2656,21 +2667,21 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #' Updates an image pipeline
 #'
 #' @description
-#' Updates an image pipeline. Image pipelines enable you to automate the creation and distribution of images. You must specify exactly one recipe for your image, using either a `containerRecipeArn` or an `imageRecipeArn`.
+#' Updates an image pipeline. Use image pipelines to automate the creation and distribution of images. You must specify exactly one recipe for your image, using either a `containerRecipeArn` or an `imageRecipeArn`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_update_image_pipeline/](https://www.paws-r-sdk.com/docs/imagebuilder_update_image_pipeline/) for full documentation.
 #'
 #' @param imagePipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the image pipeline that you want to update.
 #' @param description The description of the image pipeline.
-#' @param imageRecipeArn The Amazon Resource Name (ARN) of the image recipe that will be used to configure images updated by this image pipeline.
+#' @param imageRecipeArn The Amazon Resource Name (ARN) of the image recipe that configures images updated by this image pipeline.
 #' @param containerRecipeArn The Amazon Resource Name (ARN) of the container pipeline to update.
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that Image Builder uses to build images that this image pipeline has updated.
 #' @param distributionConfigurationArn The Amazon Resource Name (ARN) of the distribution configuration that Image Builder uses to configure and distribute images that this image pipeline has updated.
 #' @param imageTestsConfiguration The image test configuration of the image pipeline.
-#' @param enhancedImageMetadataEnabled Collects additional information about the image being created, including the operating system (OS) version and package list. This information is used to enhance the overall experience of using EC2 Image Builder. Enabled by default.
+#' @param enhancedImageMetadataEnabled Specifies whether to collect additional information about the image being created, including the operating system (OS) version and package list. Defaults to `true`.
 #' @param schedule The schedule of the image pipeline.
 #' @param status The status of the image pipeline.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #' @param imageScanningConfiguration Contains settings for vulnerability scans.
 #' @param workflows Contains the workflows to run for the pipeline.
 #' @param loggingConfiguration Update logging configuration for the output image that's created when the pipeline runs.
@@ -2699,23 +2710,23 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 }
 .imagebuilder$operations$update_image_pipeline <- imagebuilder_update_image_pipeline
 
-#' Updates a new infrastructure configuration
+#' Updates an infrastructure configuration
 #'
 #' @description
-#' Updates a new infrastructure configuration. An infrastructure configuration defines the environment in which your image will be built and tested.
+#' Updates an infrastructure configuration. An infrastructure configuration defines the environment in which Image Builder builds and tests your image.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_update_infrastructure_configuration/](https://www.paws-r-sdk.com/docs/imagebuilder_update_infrastructure_configuration/) for full documentation.
 #'
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that you want to update.
 #' @param description The description of the infrastructure configuration.
-#' @param instanceTypes The instance types of the infrastructure configuration. You can specify one or more instance types to use for this build. The service will pick one of these instance types based on availability.
+#' @param instanceTypes The instance types of the infrastructure configuration. You can specify one or more instance types to use for this build. Image Builder picks one of these instance types based on availability.
 #' @param instanceProfileName &#91;required&#93; The instance profile to associate with the instance used to customize your Amazon EC2 AMI.
 #' @param securityGroupIds The security group IDs to associate with the instance used to customize your Amazon EC2 AMI.
 #' @param subnetId The subnet ID to place the instance used to customize your Amazon EC2 AMI in.
 #' @param logging The logging configuration of the infrastructure configuration.
 #' @param keyPair The key pair of the infrastructure configuration. You can use this to log on to and debug the instance used to create your image.
-#' @param terminateInstanceOnFailure The terminate instance on failure setting of the infrastructure configuration. Set to false if you want Image Builder to retain the instance used to configure your AMI if the build or test phase of your workflow fails.
-#' @param snsTopicArn The Amazon Resource Name (ARN) for the SNS topic to which we send image build event notifications.
+#' @param terminateInstanceOnFailure Specifies whether to terminate the instance on failure. Set to false if you want Image Builder to retain the instance used to configure your AMI if the build or test phase of your workflow fails. Defaults to `true`.
+#' @param snsTopicArn The Amazon Resource Name (ARN) of the SNS topic to which Image Builder sends image build event notifications.
 #' 
 #' EC2 Image Builder is unable to send notifications to SNS topics that are encrypted using keys from other accounts. The key that is used to encrypt the SNS topic must reside in the account that the Image Builder service runs under.
 #' @param resourceTags The tags attached to the resource created by Image Builder.
@@ -2724,8 +2735,8 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #' -   [Configure the instance metadata options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html) in the *Amazon EC2 User Guide* for Linux instances.
 #' 
 #' -   [Configure the instance metadata options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html) in the *Amazon EC2 Windows Guide* for Windows instances.
-#' @param placement The instance placement settings that define where the instances that are launched from your image will run.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param placement The instance placement settings that define where the instances that are launched from your image run.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
 #'
@@ -2749,10 +2760,10 @@ imagebuilder_update_infrastructure_configuration <- function(infrastructureConfi
 }
 .imagebuilder$operations$update_infrastructure_configuration <- imagebuilder_update_infrastructure_configuration
 
-#' Update the specified lifecycle policy
+#' Updates the specified lifecycle policy
 #'
 #' @description
-#' Update the specified lifecycle policy.
+#' Updates the specified lifecycle policy.
 #'
 #' See [https://www.paws-r-sdk.com/docs/imagebuilder_update_lifecycle_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_update_lifecycle_policy/) for full documentation.
 #'
@@ -2763,7 +2774,7 @@ imagebuilder_update_infrastructure_configuration <- function(infrastructureConfi
 #' @param resourceType &#91;required&#93; The type of image resource that the lifecycle policy applies to.
 #' @param policyDetails &#91;required&#93; The configuration details for a lifecycle policy resource.
 #' @param resourceSelection &#91;required&#93; Selection criteria for resources that the lifecycle policy applies to.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
 #'

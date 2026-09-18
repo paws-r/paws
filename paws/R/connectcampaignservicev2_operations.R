@@ -52,7 +52,17 @@ NULL
 #'           bandwidthAllocation = 123.0
 #'         ),
 #'         predictive = list(
-#'           bandwidthAllocation = 123.0
+#'           bandwidthAllocation = 123.0,
+#'           pacingStrategies = list(
+#'             list(
+#'               abandonmentRate = list(
+#'                 targetRate = 123.0,
+#'                 connectionStartPoint = "CONNECTED_TO_SYSTEM"|"GREETING_START"|"GREETING_END",
+#'                 connectionThresholdSeconds = 123,
+#'                 evaluationWindow = "string"
+#'               )
+#'             )
+#'           )
 #'         ),
 #'         agentless = list(),
 #'         preview = list(
@@ -669,7 +679,17 @@ connectcampaignservicev2_delete_instance_onboarding_job <- function(connectInsta
 #'             bandwidthAllocation = 123.0
 #'           ),
 #'           predictive = list(
-#'             bandwidthAllocation = 123.0
+#'             bandwidthAllocation = 123.0,
+#'             pacingStrategies = list(
+#'               list(
+#'                 abandonmentRate = list(
+#'                   targetRate = 123.0,
+#'                   connectionStartPoint = "CONNECTED_TO_SYSTEM"|"GREETING_START"|"GREETING_END",
+#'                   connectionThresholdSeconds = 123,
+#'                   evaluationWindow = "string"
+#'                 )
+#'               )
+#'             )
 #'           ),
 #'           agentless = list(),
 #'           preview = list(
@@ -1691,6 +1711,15 @@ connectcampaignservicev2_put_outbound_request_batch <- function(id, outboundRequ
 #'       profileId = "string",
 #'       expirationTime = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       eventTriggerContext = list(
+#'         sourceEvent = "string",
+#'         channelContext = list(
+#'           webNotificationContext = list(
+#'             sessionId = "string",
+#'             browserId = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   )
@@ -2037,7 +2066,17 @@ connectcampaignservicev2_untag_resource <- function(arn, tagKeys) {
 #'           bandwidthAllocation = 123.0
 #'         ),
 #'         predictive = list(
-#'           bandwidthAllocation = 123.0
+#'           bandwidthAllocation = 123.0,
+#'           pacingStrategies = list(
+#'             list(
+#'               abandonmentRate = list(
+#'                 targetRate = 123.0,
+#'                 connectionStartPoint = "CONNECTED_TO_SYSTEM"|"GREETING_START"|"GREETING_END",
+#'                 connectionThresholdSeconds = 123,
+#'                 evaluationWindow = "string"
+#'               )
+#'             )
+#'           )
 #'         ),
 #'         agentless = list(),
 #'         preview = list(

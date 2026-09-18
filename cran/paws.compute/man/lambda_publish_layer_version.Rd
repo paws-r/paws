@@ -8,9 +8,9 @@ lambda_publish_layer_version(
   LayerName,
   Description = NULL,
   Content,
+  CompatibleArchitectures = NULL,
   CompatibleRuntimes = NULL,
-  LicenseInfo = NULL,
-  CompatibleArchitectures = NULL
+  LicenseInfo = NULL
 )
 }
 \arguments{
@@ -19,6 +19,8 @@ lambda_publish_layer_version(
 \item{Description}{The description of the version.}
 
 \item{Content}{[required] The function layer archive.}
+
+\item{CompatibleArchitectures}{A list of compatible \href{https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html}{instruction set architectures}.}
 
 \item{CompatibleRuntimes}{A list of compatible \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{function runtimes}. Used for filtering with \code{\link[=lambda_list_layers]{list_layers}} and \code{\link[=lambda_list_layer_versions]{list_layer_versions}}.
 
@@ -30,8 +32,6 @@ The following list includes deprecated runtimes. For more information, see \href
 \item The URL of a license hosted on the internet. For example, \verb{https://opensource.org/licenses/MIT}.
 \item The full text of the license.
 }}
-
-\item{CompatibleArchitectures}{A list of compatible \href{https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html}{instruction set architectures}.}
 }
 \description{
 Creates an \href{https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html}{Lambda layer} from a ZIP archive. Each time you call \code{\link[=lambda_publish_layer_version]{publish_layer_version}} with the same layer name, a new version is created.

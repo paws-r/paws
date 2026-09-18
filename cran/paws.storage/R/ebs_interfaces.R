@@ -5,72 +5,60 @@ NULL
 
 .ebs$complete_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SnapshotId = structure(logical(0), tags = list(location = "uri", locationName = "snapshotId", type = "string")), ChangedBlocksCount = structure(logical(0), tags = list(location = "header", locationName = "x-amz-ChangedBlocksCount", type = "integer")), Checksum = structure(logical(0), tags = list(location = "header", locationName = "x-amz-Checksum", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-Checksum-Algorithm", type = "string")), ChecksumAggregationMethod = structure(logical(0), tags = list(location = "header", locationName = "x-amz-Checksum-Aggregation-Method", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ebs_shapes[["complete_snapshot_input"]]))
 }
 
 .ebs$complete_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ebs_shapes[["complete_snapshot_output"]]))
 }
 
 .ebs$get_snapshot_block_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SnapshotId = structure(logical(0), tags = list(location = "uri", locationName = "snapshotId", type = "string")), BlockIndex = structure(logical(0), tags = list(location = "uri", locationName = "blockIndex", type = "integer")), BlockToken = structure(logical(0), tags = list(location = "querystring", locationName = "blockToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ebs_shapes[["get_snapshot_block_input"]]))
 }
 
 .ebs$get_snapshot_block_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DataLength = structure(logical(0), tags = list(location = "header", locationName = "x-amz-Data-Length", type = "integer")), BlockData = structure(logical(0), tags = list(type = "blob", sensitive = TRUE, streaming = TRUE)), Checksum = structure(logical(0), tags = list(location = "header", locationName = "x-amz-Checksum", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-Checksum-Algorithm", type = "string"))), tags = list(type = "structure", payload = "BlockData"))
-  return(populate(args, shape))
+  return(populate(args, .ebs_shapes[["get_snapshot_block_output"]]))
 }
 
 .ebs$list_changed_blocks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirstSnapshotId = structure(logical(0), tags = list(location = "querystring", locationName = "firstSnapshotId", type = "string")), SecondSnapshotId = structure(logical(0), tags = list(location = "uri", locationName = "secondSnapshotId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "pageToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), StartingBlockIndex = structure(logical(0), tags = list(location = "querystring", locationName = "startingBlockIndex", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ebs_shapes[["list_changed_blocks_input"]]))
 }
 
 .ebs$list_changed_blocks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ChangedBlocks = structure(list(structure(list(BlockIndex = structure(logical(0), tags = list(type = "integer")), FirstBlockToken = structure(logical(0), tags = list(type = "string")), SecondBlockToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), ExpiryTime = structure(logical(0), tags = list(type = "timestamp")), VolumeSize = structure(logical(0), tags = list(type = "long")), BlockSize = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ebs_shapes[["list_changed_blocks_output"]]))
 }
 
 .ebs$list_snapshot_blocks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SnapshotId = structure(logical(0), tags = list(location = "uri", locationName = "snapshotId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "pageToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), StartingBlockIndex = structure(logical(0), tags = list(location = "querystring", locationName = "startingBlockIndex", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ebs_shapes[["list_snapshot_blocks_input"]]))
 }
 
 .ebs$list_snapshot_blocks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Blocks = structure(list(structure(list(BlockIndex = structure(logical(0), tags = list(type = "integer")), BlockToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), ExpiryTime = structure(logical(0), tags = list(type = "timestamp")), VolumeSize = structure(logical(0), tags = list(type = "long")), BlockSize = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ebs_shapes[["list_snapshot_blocks_output"]]))
 }
 
 .ebs$put_snapshot_block_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SnapshotId = structure(logical(0), tags = list(location = "uri", locationName = "snapshotId", type = "string")), BlockIndex = structure(logical(0), tags = list(location = "uri", locationName = "blockIndex", type = "integer")), BlockData = structure(logical(0), tags = list(type = "blob", sensitive = TRUE, streaming = TRUE)), DataLength = structure(logical(0), tags = list(location = "header", locationName = "x-amz-Data-Length", type = "integer")), Progress = structure(logical(0), tags = list(location = "header", locationName = "x-amz-Progress", type = "integer")), Checksum = structure(logical(0), tags = list(location = "header", locationName = "x-amz-Checksum", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-Checksum-Algorithm", type = "string"))), tags = list(type = "structure", payload = "BlockData"))
-  return(populate(args, shape))
+  return(populate(args, .ebs_shapes[["put_snapshot_block_input"]]))
 }
 
 .ebs$put_snapshot_block_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Checksum = structure(logical(0), tags = list(location = "header", locationName = "x-amz-Checksum", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-Checksum-Algorithm", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ebs_shapes[["put_snapshot_block_output"]]))
 }
 
 .ebs$start_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VolumeSize = structure(logical(0), tags = list(type = "long")), ParentSnapshotId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Description = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Encrypted = structure(logical(0), tags = list(type = "boolean")), KmsKeyArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Timeout = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ebs_shapes[["start_snapshot_input"]]))
 }
 
 .ebs$start_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string")), SnapshotId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), VolumeSize = structure(logical(0), tags = list(type = "long")), BlockSize = structure(logical(0), tags = list(type = "integer")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ParentSnapshotId = structure(logical(0), tags = list(type = "string")), KmsKeyArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SseType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ebs_shapes[["start_snapshot_output"]]))
 }

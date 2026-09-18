@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_list_lifecycle_executions}
 \alias{imagebuilder_list_lifecycle_executions}
-\title{Get the lifecycle runtime history for the specified resource}
+\title{Retrieves the lifecycle runtime history for the specified resource}
 \usage{
 imagebuilder_list_lifecycle_executions(
   maxResults = NULL,
@@ -11,14 +11,14 @@ imagebuilder_list_lifecycle_executions(
 )
 }
 \arguments{
-\item{maxResults}{Specify the maximum number of items to return in a request.}
+\item{maxResults}{The maximum number of items to return in a single request.}
 
-\item{nextToken}{A token to specify where to start paginating. This is the nextToken from a previously truncated response.}
+\item{nextToken}{A token to specify where to start paginating. Use the \code{nextToken} value from a previously truncated response.}
 
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource for which to get a list of lifecycle runtime instances.}
 }
 \description{
-Get the lifecycle runtime history for the specified resource.
+Retrieves the lifecycle runtime history for the specified resource.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_lifecycle_executions/} for full documentation.
 }

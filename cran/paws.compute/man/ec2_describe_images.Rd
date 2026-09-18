@@ -56,6 +56,7 @@ Default: No disabled AMIs are included in the response.}
 \item \code{block-device-mapping.volume-size} - The volume size of the Amazon EBS volume, in GiB.
 \item \code{block-device-mapping.volume-type} - The volume type of the Amazon EBS volume (\code{io1} | \code{io2} | \code{gp2} | \code{gp3} | \code{sc1 }| \code{st1} | \code{standard}).
 \item \code{block-device-mapping.encrypted} - A Boolean that indicates whether the Amazon EBS volume is encrypted.
+\item \code{boot-mode} – The boot mode of the image (\code{legacy-bios} | \code{uefi} | \code{uefi-preferred}).
 \item \code{creation-date} - The time when the image was created, in the ISO 8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for example, \verb{2021-09-29T11:04:43.305Z}. You can use a wildcard (\code{*}), for example, \verb{2021-09-29T*}, which matches an entire day.
 \item \code{description} - The description of the image (provided during image creation).
 \item \code{ena-support} - A Boolean that indicates whether enhanced networking with ENA is enabled.
@@ -63,7 +64,14 @@ Default: No disabled AMIs are included in the response.}
 \item \code{hypervisor} - The hypervisor type (\code{ovm} | \code{xen}).
 \item \code{image-allowed} - A Boolean that indicates whether the image meets the criteria specified for Allowed AMIs.
 \item \code{image-id} - The ID of the image.
+\item \code{image-watermark.source-image-creation-time} - The creation date of the source AMI, in the ISO 8601 format in the UTC time zone (\code{YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM}). You can use a wildcard (\code{*}), for example, \verb{2021-09-29T*}, which matches an entire day.
+\item \code{image-watermark.source-image-id} - The ID of the AMI to which the watermark was originally attached.
+\item \code{image-watermark.source-image-region} - The Region where the watermark was originally attached.
+\item \code{image-watermark.watermark-creation-time} - The date and time the watermark was attached to the AMI, in the ISO 8601 format in the UTC time zone (\code{YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM}). You can use a wildcard (\code{*}), for example, \verb{2021-09-29T*}, which matches an entire day.
+\item \code{image-watermark.watermark-key} - The watermark identifier, in \code{accountId:watermarkName} format (for example, \code{123456789012:approvedAmi}).
 \item \code{image-type} - The image type (\code{machine} | \code{kernel} | \code{ramdisk}).
+\item \code{instance-type-specification.supported-instance-type} – The instance types that are compatible with the AMI, as specified by the AMI owner. Values can be individual instance types (for example, \code{t3.micro}) or wildcard patterns that match multiple instance types (for example, \verb{t3.*}).
+\item \code{instance-type-specification.unsupported-instance-type} – The instance types that are not compatible with the AMI, as specified by the AMI owner. Values can be individual instance types (for example, \code{t3.micro}) or wildcard patterns that match multiple instance types (for example, \verb{t3.*}).
 \item \code{is-public} - A Boolean that indicates whether the image is public.
 \item \code{kernel-id} - The kernel ID.
 \item \code{manifest-location} - The location of the image manifest.
@@ -73,6 +81,7 @@ Default: No disabled AMIs are included in the response.}
 \item \code{platform} - The platform. The only supported value is \code{windows}.
 \item \code{product-code} - The product code.
 \item \code{product-code.type} - The type of the product code (\code{marketplace}).
+\item \code{public-ssm-parameter-name} - The name of a public Systems Manager parameter associated with the AMI. The parameter must be in a trusted Amazon Web Services namespace under \verb{aws/service/}. Returns all AMIs that have ever been associated with the parameter, including previous versions.
 \item \code{ramdisk-id} - The RAM disk ID.
 \item \code{root-device-name} - The device name of the root device volume (for example, \verb{/dev/sda1}).
 \item \code{root-device-type} - The type of the root device volume (\code{ebs} | \code{instance-store}).

@@ -9,7 +9,8 @@ bedrockagentruntime_retrieve(
   knowledgeBaseId,
   nextToken = NULL,
   retrievalConfiguration = NULL,
-  retrievalQuery
+  retrievalQuery,
+  userContext = NULL
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ bedrockagentruntime_retrieve(
 \item{retrievalConfiguration}{Contains configurations for the knowledge base query and retrieval process. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-config.html}{Query configurations}.}
 
 \item{retrievalQuery}{[required] Contains the query to send the knowledge base.}
+
+\item{userContext}{Contains information about the user making the request. This is used for access control filtering to ensure that retrieval results only include documents the user is authorized to access.}
 }
 \description{
 Queries a knowledge base and retrieves information from it.

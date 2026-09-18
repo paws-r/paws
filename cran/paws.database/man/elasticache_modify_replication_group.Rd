@@ -34,7 +34,8 @@ elasticache_modify_replication_group(
   IpDiscovery = NULL,
   TransitEncryptionEnabled = NULL,
   TransitEncryptionMode = NULL,
-  ClusterMode = NULL
+  ClusterMode = NULL,
+  Durability = NULL
 )
 }
 \arguments{
@@ -124,7 +125,7 @@ If you do not specify this parameter, ElastiCache automatically chooses an appro
 \item Cannot contain any of the following characters: '/', '"', or '@', '\%'
 }
 
-For more information, see AUTH password at AUTH.}
+For more information, see AUTH password at \href{https://redis.io/docs/latest/commands/AUTH/}{AUTH}.}
 
 \item{AuthTokenUpdateStrategy}{Specifies the strategy to use to update the AUTH token. This parameter must be specified with the \code{auth-token} parameter. Possible values:
 \itemize{
@@ -154,6 +155,8 @@ You must set \code{TransitEncryptionEnabled} to \code{true}, for your existing c
 Setting \code{TransitEncryptionMode} to \code{required} is a two-step process that requires you to first set the \code{TransitEncryptionMode} to \code{preferred}, after that you can set \code{TransitEncryptionMode} to \code{required}.}
 
 \item{ClusterMode}{Enabled or Disabled. To modify cluster mode from Disabled to Enabled, you must first set the cluster mode to Compatible. Compatible mode allows your Valkey or Redis OSS clients to connect using both cluster mode enabled and cluster mode disabled. After you migrate all Valkey or Redis OSS clients to use cluster mode enabled, you can then complete cluster mode configuration and set the cluster mode to Enabled.}
+
+\item{Durability}{Specifies the durability setting for the replication group. Use this parameter to change the durability mode of an existing replication group, for example from \code{sync} to \code{async} or vice versa. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/durability.html}{Durability}.}
 }
 \description{
 Modifies the settings for a replication group. This is limited to Valkey and Redis OSS 7 and above.

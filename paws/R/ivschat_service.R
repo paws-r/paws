@@ -55,7 +55,7 @@ NULL
 #' 
 #' For more information:
 #' 
-#' -   Authentication and generating signatures — See [Authenticating Requests (Amazon Web Services Signature Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) in the *Amazon Web Services General Reference*.
+#' -   Authentication and generating signatures — See [Authenticating Requests (Amazon Web Services Signature Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/) in the *Amazon Web Services General Reference*.
 #' 
 #' -   Managing Amazon IVS permissions — See [Identity and Access Management](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/security-iam.html) on the Security page of the *Amazon IVS User Guide*.
 #' 

@@ -25,7 +25,7 @@ imagebuilder_import_vm_image(
 
 The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the first three, and can filter on all of them.
 
-\strong{Assignment:} For the first three nodes you can assign any positive integer value, including zero, with an upper limit of 2^30-1, or 1073741823 for each node. Image Builder automatically assigns the build number to the fourth node.
+\strong{Assignment:} For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node.
 
 \strong{Patterns:} You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01.}
 
@@ -37,11 +37,11 @@ The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. Yo
 
 \item{vmImportTaskId}{[required] The \code{importTaskId} (API) or \code{ImportTaskId} (CLI) from the Amazon EC2 VM import process. Image Builder retrieves information from the import process to pull in the AMI that is created from the VM source as the base image for your recipe.}
 
-\item{loggingConfiguration}{Define logging configuration for the image build process.}
+\item{loggingConfiguration}{The logging configuration for the image build process.}
 
 \item{tags}{Tags that are attached to the import resources.}
 
-\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
 When you export your virtual machine (VM) from its virtualization environment, that process creates a set of one or more disk container files that act as snapshots of your VM’s environment, settings, and data. The Amazon EC2 API \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html}{ImportImage} action uses those files to import your VM and create an AMI. To import using the CLI command, see \href{https://docs.aws.amazon.com/cli/latest/reference/ec2/import-image.html}{import-image}

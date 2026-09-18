@@ -2,8 +2,8 @@
 % Please edit documentation in R/elasticbeanstalk_operations.R
 \name{elasticbeanstalk_create_configuration_template}
 \alias{elasticbeanstalk_create_configuration_template}
-\title{Creates an AWS Elastic Beanstalk configuration template, associated with
-a specific Elastic Beanstalk application}
+\title{Creates an Elastic Beanstalk configuration template, associated with a
+specific Elastic Beanstalk application}
 \usage{
 elasticbeanstalk_create_configuration_template(
   ApplicationName,
@@ -24,13 +24,13 @@ elasticbeanstalk_create_configuration_template(
 
 Constraint: This name must be unique per application.}
 
-\item{SolutionStackName}{The name of an Elastic Beanstalk solution stack (platform version) that this configuration uses. For example, \verb{64bit Amazon Linux 2013.09 running Tomcat 7 Java 7}. A solution stack specifies the operating system, runtime, and application server for a configuration template. It also determines the set of configuration options as well as the possible and default values. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html}{Supported Platforms} in the \emph{AWS Elastic Beanstalk Developer Guide}.
+\item{SolutionStackName}{The name of an Elastic Beanstalk solution stack (platform version) that this configuration uses. For example, \verb{64bit Amazon Linux 2013.09 running Tomcat 7 Java 7}. A solution stack specifies the operating system, runtime, and application server for a configuration template. It also determines the set of configuration options as well as the possible and default values. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html}{Supported Platforms} in the \emph{Elastic Beanstalk Developer Guide}.
 
 You must specify \code{SolutionStackName} if you don't specify \code{PlatformArn}, \code{EnvironmentId}, or \code{SourceConfiguration}.
 
 Use the \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/api/API_ListAvailableSolutionStacks.html}{\code{list_available_solution_stacks}} API to obtain a list of available solution stacks.}
 
-\item{PlatformArn}{The Amazon Resource Name (ARN) of the custom platform. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/custom-platforms.html}{Custom Platforms} in the \emph{AWS Elastic Beanstalk Developer Guide}.
+\item{PlatformArn}{The Amazon Resource Name (ARN) of the custom platform. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/custom-platforms.html}{Custom Platforms} in the \emph{Elastic Beanstalk Developer Guide}.
 
 If you specify \code{PlatformArn}, then don't specify \code{SolutionStackName}.}
 
@@ -46,12 +46,12 @@ Constraint: If both solution stack name and source configuration are specified, 
 
 \item{Description}{An optional description for this configuration.}
 
-\item{OptionSettings}{Option values for the Elastic Beanstalk configuration, such as the instance type. If specified, these values override the values obtained from the solution stack or the source configuration template. For a complete list of Elastic Beanstalk configuration options, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options.html}{Option Values} in the \emph{AWS Elastic Beanstalk Developer Guide}.}
+\item{OptionSettings}{Option values for the Elastic Beanstalk configuration, such as the instance type. If specified, these values override the values obtained from the solution stack or the source configuration template. For a complete list of Elastic Beanstalk configuration options, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options.html}{Option Values} in the \emph{Elastic Beanstalk Developer Guide}.}
 
 \item{Tags}{Specifies the tags applied to the configuration template.}
 }
 \description{
-Creates an AWS Elastic Beanstalk configuration template, associated with a specific Elastic Beanstalk application. You define application configuration settings in a configuration template. You can then use the configuration template to deploy different versions of the application with the same configuration settings.
+Creates an Elastic Beanstalk configuration template, associated with a specific Elastic Beanstalk application. You define application configuration settings in a configuration template. You can then use the configuration template to deploy different versions of the application with the same configuration settings.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_configuration_template/} for full documentation.
 }

@@ -38,7 +38,9 @@ You can append a version number or alias to any of the formats. The length const
 
 \item{ClientContext}{Up to 3,583 bytes of base64-encoded data about the invoking client to pass to the function in the context object. Lambda passes the \code{ClientContext} object to your function for synchronous invocations only.}
 
-\item{DurableExecutionName}{Optional unique name for the durable execution. When you start your special function, you can give it a unique name to identify this specific execution. It's like giving a nickname to a task.}
+\item{DurableExecutionName}{A unique name for the durable execution. If you invoke a durable function using a name that already exists with the same payload, Lambda returns the existing execution instead of creating a duplicate. If the payload differs, Lambda returns a \code{DurableExecutionAlreadyStartedException} error.
+
+If not specified, Lambda generates a unique identifier automatically. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/durable-execution-idempotency.html#durable-idempotency-execution-names}{Execution names}.}
 
 \item{Payload}{The JSON that you want to provide to your Lambda function as input. The maximum payload size is 6 MB for synchronous invocations and 1 MB for asynchronous invocations.
 

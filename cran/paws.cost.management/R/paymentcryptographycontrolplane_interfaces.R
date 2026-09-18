@@ -5,384 +5,320 @@ NULL
 
 .paymentcryptographycontrolplane$add_key_replication_regions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyIdentifier = structure(logical(0), tags = list(type = "string")), ReplicationRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["add_key_replication_regions_input"]]))
 }
 
 .paymentcryptographycontrolplane$add_key_replication_regions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Key = structure(list(KeyArn = structure(logical(0), tags = list(type = "string")), KeyAttributes = structure(list(KeyUsage = structure(logical(0), tags = list(type = "string")), KeyClass = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), KeyCheckValue = structure(logical(0), tags = list(type = "string")), KeyCheckValueAlgorithm = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Exportable = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KeyState = structure(logical(0), tags = list(type = "string")), KeyOrigin = structure(logical(0), tags = list(type = "string")), CreateTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStartTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStopTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeletePendingTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeleteTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeriveKeyUsage = structure(logical(0), tags = list(type = "string")), MultiRegionKeyType = structure(logical(0), tags = list(type = "string")), PrimaryRegion = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), UsingDefaultReplicationRegions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), MpaStatus = structure(list(MpaSessionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["add_key_replication_regions_output"]]))
 }
 
 .paymentcryptographycontrolplane$associate_mpa_team_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Action = structure(logical(0), tags = list(type = "string")), MpaTeamArn = structure(logical(0), tags = list(type = "string")), RequesterComment = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["associate_mpa_team_input"]]))
 }
 
 .paymentcryptographycontrolplane$associate_mpa_team_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MpaTeamAssociation = structure(list(Action = structure(logical(0), tags = list(type = "string")), MpaTeamArn = structure(logical(0), tags = list(type = "string")), AssociationState = structure(logical(0), tags = list(type = "string")), MpaStatus = structure(list(MpaSessionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["associate_mpa_team_output"]]))
 }
 
 .paymentcryptographycontrolplane$create_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AliasName = structure(logical(0), tags = list(type = "string")), KeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["create_alias_input"]]))
 }
 
 .paymentcryptographycontrolplane$create_alias_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Alias = structure(list(AliasName = structure(logical(0), tags = list(type = "string")), KeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["create_alias_output"]]))
 }
 
 .paymentcryptographycontrolplane$create_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyAttributes = structure(list(KeyUsage = structure(logical(0), tags = list(type = "string")), KeyClass = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), KeyCheckValueAlgorithm = structure(logical(0), tags = list(type = "string")), Exportable = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DeriveKeyUsage = structure(logical(0), tags = list(type = "string")), ReplicationRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["create_key_input"]]))
 }
 
 .paymentcryptographycontrolplane$create_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Key = structure(list(KeyArn = structure(logical(0), tags = list(type = "string")), KeyAttributes = structure(list(KeyUsage = structure(logical(0), tags = list(type = "string")), KeyClass = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), KeyCheckValue = structure(logical(0), tags = list(type = "string")), KeyCheckValueAlgorithm = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Exportable = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KeyState = structure(logical(0), tags = list(type = "string")), KeyOrigin = structure(logical(0), tags = list(type = "string")), CreateTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStartTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStopTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeletePendingTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeleteTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeriveKeyUsage = structure(logical(0), tags = list(type = "string")), MultiRegionKeyType = structure(logical(0), tags = list(type = "string")), PrimaryRegion = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), UsingDefaultReplicationRegions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), MpaStatus = structure(list(MpaSessionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["create_key_output"]]))
 }
 
 .paymentcryptographycontrolplane$delete_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AliasName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["delete_alias_input"]]))
 }
 
 .paymentcryptographycontrolplane$delete_alias_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["delete_alias_output"]]))
 }
 
 .paymentcryptographycontrolplane$delete_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyIdentifier = structure(logical(0), tags = list(type = "string")), DeleteKeyInDays = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["delete_key_input"]]))
 }
 
 .paymentcryptographycontrolplane$delete_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Key = structure(list(KeyArn = structure(logical(0), tags = list(type = "string")), KeyAttributes = structure(list(KeyUsage = structure(logical(0), tags = list(type = "string")), KeyClass = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), KeyCheckValue = structure(logical(0), tags = list(type = "string")), KeyCheckValueAlgorithm = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Exportable = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KeyState = structure(logical(0), tags = list(type = "string")), KeyOrigin = structure(logical(0), tags = list(type = "string")), CreateTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStartTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStopTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeletePendingTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeleteTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeriveKeyUsage = structure(logical(0), tags = list(type = "string")), MultiRegionKeyType = structure(logical(0), tags = list(type = "string")), PrimaryRegion = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), UsingDefaultReplicationRegions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), MpaStatus = structure(list(MpaSessionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["delete_key_output"]]))
 }
 
 .paymentcryptographycontrolplane$delete_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["delete_resource_policy_input"]]))
 }
 
 .paymentcryptographycontrolplane$delete_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["delete_resource_policy_output"]]))
 }
 
 .paymentcryptographycontrolplane$disable_default_key_replication_regions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReplicationRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["disable_default_key_replication_regions_input"]]))
 }
 
 .paymentcryptographycontrolplane$disable_default_key_replication_regions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EnabledReplicationRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["disable_default_key_replication_regions_output"]]))
 }
 
 .paymentcryptographycontrolplane$disassociate_mpa_team_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Action = structure(logical(0), tags = list(type = "string")), RequesterComment = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["disassociate_mpa_team_input"]]))
 }
 
 .paymentcryptographycontrolplane$disassociate_mpa_team_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MpaTeamAssociation = structure(list(Action = structure(logical(0), tags = list(type = "string")), MpaTeamArn = structure(logical(0), tags = list(type = "string")), AssociationState = structure(logical(0), tags = list(type = "string")), MpaStatus = structure(list(MpaSessionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["disassociate_mpa_team_output"]]))
 }
 
 .paymentcryptographycontrolplane$enable_default_key_replication_regions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReplicationRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["enable_default_key_replication_regions_input"]]))
 }
 
 .paymentcryptographycontrolplane$enable_default_key_replication_regions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EnabledReplicationRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["enable_default_key_replication_regions_output"]]))
 }
 
 .paymentcryptographycontrolplane$export_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyMaterial = structure(list(Tr31KeyBlock = structure(list(WrappingKeyIdentifier = structure(logical(0), tags = list(type = "string")), KeyBlockHeaders = structure(list(KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), KeyExportability = structure(logical(0), tags = list(type = "string")), KeyVersion = structure(logical(0), tags = list(type = "string")), OptionalBlocks = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), Tr34KeyBlock = structure(list(CertificateAuthorityPublicKeyIdentifier = structure(logical(0), tags = list(type = "string")), WrappingKeyCertificate = structure(logical(0), tags = list(type = "string")), ExportToken = structure(logical(0), tags = list(type = "string")), SigningKeyIdentifier = structure(logical(0), tags = list(type = "string")), SigningKeyCertificate = structure(logical(0), tags = list(type = "string")), KeyBlockFormat = structure(logical(0), tags = list(type = "string")), RandomNonce = structure(logical(0), tags = list(type = "string")), KeyBlockHeaders = structure(list(KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), KeyExportability = structure(logical(0), tags = list(type = "string")), KeyVersion = structure(logical(0), tags = list(type = "string")), OptionalBlocks = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), KeyCryptogram = structure(list(CertificateAuthorityPublicKeyIdentifier = structure(logical(0), tags = list(type = "string")), WrappingKeyCertificate = structure(logical(0), tags = list(type = "string")), WrappingSpec = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DiffieHellmanTr31KeyBlock = structure(list(PrivateKeyIdentifier = structure(logical(0), tags = list(type = "string")), CertificateAuthorityPublicKeyIdentifier = structure(logical(0), tags = list(type = "string")), PublicKeyCertificate = structure(logical(0), tags = list(type = "string")), DeriveKeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyDerivationFunction = structure(logical(0), tags = list(type = "string")), KeyDerivationHashAlgorithm = structure(logical(0), tags = list(type = "string")), DerivationData = structure(list(SharedInformation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), KeyBlockHeaders = structure(list(KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), KeyExportability = structure(logical(0), tags = list(type = "string")), KeyVersion = structure(logical(0), tags = list(type = "string")), OptionalBlocks = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), As2805KeyCryptogram = structure(list(WrappingKeyIdentifier = structure(logical(0), tags = list(type = "string")), As2805KeyVariant = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), ExportKeyIdentifier = structure(logical(0), tags = list(type = "string")), ExportAttributes = structure(list(ExportDukptInitialKey = structure(list(KeySerialNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KeyCheckValueAlgorithm = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["export_key_input"]]))
 }
 
 .paymentcryptographycontrolplane$export_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WrappedKey = structure(list(WrappingKeyArn = structure(logical(0), tags = list(type = "string")), WrappedKeyMaterialFormat = structure(logical(0), tags = list(type = "string")), KeyMaterial = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), KeyCheckValue = structure(logical(0), tags = list(type = "string")), KeyCheckValueAlgorithm = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["export_key_output"]]))
 }
 
 .paymentcryptographycontrolplane$get_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AliasName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_alias_input"]]))
 }
 
 .paymentcryptographycontrolplane$get_alias_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Alias = structure(list(AliasName = structure(logical(0), tags = list(type = "string")), KeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_alias_output"]]))
 }
 
 .paymentcryptographycontrolplane$get_certificate_signing_request_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyIdentifier = structure(logical(0), tags = list(type = "string")), SigningAlgorithm = structure(logical(0), tags = list(type = "string")), CertificateSubject = structure(list(CommonName = structure(logical(0), tags = list(type = "string")), OrganizationUnit = structure(logical(0), tags = list(type = "string")), Organization = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), StateOrProvince = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_certificate_signing_request_input"]]))
 }
 
 .paymentcryptographycontrolplane$get_certificate_signing_request_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateSigningRequest = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_certificate_signing_request_output"]]))
 }
 
 .paymentcryptographycontrolplane$get_default_key_replication_regions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_default_key_replication_regions_input"]]))
 }
 
 .paymentcryptographycontrolplane$get_default_key_replication_regions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EnabledReplicationRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_default_key_replication_regions_output"]]))
 }
 
 .paymentcryptographycontrolplane$get_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_key_input"]]))
 }
 
 .paymentcryptographycontrolplane$get_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Key = structure(list(KeyArn = structure(logical(0), tags = list(type = "string")), KeyAttributes = structure(list(KeyUsage = structure(logical(0), tags = list(type = "string")), KeyClass = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), KeyCheckValue = structure(logical(0), tags = list(type = "string")), KeyCheckValueAlgorithm = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Exportable = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KeyState = structure(logical(0), tags = list(type = "string")), KeyOrigin = structure(logical(0), tags = list(type = "string")), CreateTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStartTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStopTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeletePendingTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeleteTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeriveKeyUsage = structure(logical(0), tags = list(type = "string")), MultiRegionKeyType = structure(logical(0), tags = list(type = "string")), PrimaryRegion = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), UsingDefaultReplicationRegions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), MpaStatus = structure(list(MpaSessionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_key_output"]]))
 }
 
 .paymentcryptographycontrolplane$get_mpa_team_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Action = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_mpa_team_association_input"]]))
 }
 
 .paymentcryptographycontrolplane$get_mpa_team_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MpaTeamAssociation = structure(list(Action = structure(logical(0), tags = list(type = "string")), MpaTeamArn = structure(logical(0), tags = list(type = "string")), AssociationState = structure(logical(0), tags = list(type = "string")), MpaStatus = structure(list(MpaSessionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_mpa_team_association_output"]]))
 }
 
 .paymentcryptographycontrolplane$get_parameters_for_export_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyMaterialType = structure(logical(0), tags = list(type = "string")), SigningKeyAlgorithm = structure(logical(0), tags = list(type = "string")), ReuseLastGeneratedToken = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_parameters_for_export_input"]]))
 }
 
 .paymentcryptographycontrolplane$get_parameters_for_export_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SigningKeyCertificate = structure(logical(0), tags = list(type = "string")), SigningKeyCertificateChain = structure(logical(0), tags = list(type = "string")), SigningKeyAlgorithm = structure(logical(0), tags = list(type = "string")), ExportToken = structure(logical(0), tags = list(type = "string")), ParametersValidUntilTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_parameters_for_export_output"]]))
 }
 
 .paymentcryptographycontrolplane$get_parameters_for_import_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyMaterialType = structure(logical(0), tags = list(type = "string")), WrappingKeyAlgorithm = structure(logical(0), tags = list(type = "string")), ReuseLastGeneratedToken = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_parameters_for_import_input"]]))
 }
 
 .paymentcryptographycontrolplane$get_parameters_for_import_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WrappingKeyCertificate = structure(logical(0), tags = list(type = "string")), WrappingKeyCertificateChain = structure(logical(0), tags = list(type = "string")), WrappingKeyAlgorithm = structure(logical(0), tags = list(type = "string")), ImportToken = structure(logical(0), tags = list(type = "string")), ParametersValidUntilTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_parameters_for_import_output"]]))
 }
 
 .paymentcryptographycontrolplane$get_public_key_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_public_key_certificate_input"]]))
 }
 
 .paymentcryptographycontrolplane$get_public_key_certificate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyCertificate = structure(logical(0), tags = list(type = "string")), KeyCertificateChain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_public_key_certificate_output"]]))
 }
 
 .paymentcryptographycontrolplane$get_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_resource_policy_input"]]))
 }
 
 .paymentcryptographycontrolplane$get_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["get_resource_policy_output"]]))
 }
 
 .paymentcryptographycontrolplane$import_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyMaterial = structure(list(RootCertificatePublicKey = structure(list(KeyAttributes = structure(list(KeyUsage = structure(logical(0), tags = list(type = "string")), KeyClass = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), PublicKeyCertificate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TrustedCertificatePublicKey = structure(list(KeyAttributes = structure(list(KeyUsage = structure(logical(0), tags = list(type = "string")), KeyClass = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), PublicKeyCertificate = structure(logical(0), tags = list(type = "string")), CertificateAuthorityPublicKeyIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tr31KeyBlock = structure(list(WrappingKeyIdentifier = structure(logical(0), tags = list(type = "string")), WrappedKeyBlock = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), Tr34KeyBlock = structure(list(CertificateAuthorityPublicKeyIdentifier = structure(logical(0), tags = list(type = "string")), SigningKeyCertificate = structure(logical(0), tags = list(type = "string")), ImportToken = structure(logical(0), tags = list(type = "string")), WrappingKeyIdentifier = structure(logical(0), tags = list(type = "string")), WrappingKeyCertificate = structure(logical(0), tags = list(type = "string")), WrappedKeyBlock = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), KeyBlockFormat = structure(logical(0), tags = list(type = "string")), RandomNonce = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KeyCryptogram = structure(list(KeyAttributes = structure(list(KeyUsage = structure(logical(0), tags = list(type = "string")), KeyClass = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), Exportable = structure(logical(0), tags = list(type = "boolean", box = TRUE)), WrappedKeyCryptogram = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ImportToken = structure(logical(0), tags = list(type = "string")), WrappingSpec = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DiffieHellmanTr31KeyBlock = structure(list(PrivateKeyIdentifier = structure(logical(0), tags = list(type = "string")), CertificateAuthorityPublicKeyIdentifier = structure(logical(0), tags = list(type = "string")), PublicKeyCertificate = structure(logical(0), tags = list(type = "string")), DeriveKeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyDerivationFunction = structure(logical(0), tags = list(type = "string")), KeyDerivationHashAlgorithm = structure(logical(0), tags = list(type = "string")), DerivationData = structure(list(SharedInformation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), WrappedKeyBlock = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), As2805KeyCryptogram = structure(list(As2805KeyVariant = structure(logical(0), tags = list(type = "string")), KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), Exportable = structure(logical(0), tags = list(type = "boolean", box = TRUE)), WrappingKeyIdentifier = structure(logical(0), tags = list(type = "string")), WrappedKeyCryptogram = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), KeyCheckValueAlgorithm = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ReplicationRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RequesterComment = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["import_key_input"]]))
 }
 
 .paymentcryptographycontrolplane$import_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Key = structure(list(KeyArn = structure(logical(0), tags = list(type = "string")), KeyAttributes = structure(list(KeyUsage = structure(logical(0), tags = list(type = "string")), KeyClass = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), KeyCheckValue = structure(logical(0), tags = list(type = "string")), KeyCheckValueAlgorithm = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Exportable = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KeyState = structure(logical(0), tags = list(type = "string")), KeyOrigin = structure(logical(0), tags = list(type = "string")), CreateTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStartTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStopTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeletePendingTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeleteTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeriveKeyUsage = structure(logical(0), tags = list(type = "string")), MultiRegionKeyType = structure(logical(0), tags = list(type = "string")), PrimaryRegion = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), UsingDefaultReplicationRegions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), MpaStatus = structure(list(MpaSessionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["import_key_output"]]))
 }
 
 .paymentcryptographycontrolplane$list_aliases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["list_aliases_input"]]))
 }
 
 .paymentcryptographycontrolplane$list_aliases_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Aliases = structure(list(structure(list(AliasName = structure(logical(0), tags = list(type = "string")), KeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["list_aliases_output"]]))
 }
 
 .paymentcryptographycontrolplane$list_keys_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyState = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["list_keys_input"]]))
 }
 
 .paymentcryptographycontrolplane$list_keys_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Keys = structure(list(structure(list(KeyArn = structure(logical(0), tags = list(type = "string")), KeyState = structure(logical(0), tags = list(type = "string")), KeyAttributes = structure(list(KeyUsage = structure(logical(0), tags = list(type = "string")), KeyClass = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), KeyCheckValue = structure(logical(0), tags = list(type = "string")), Exportable = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), MultiRegionKeyType = structure(logical(0), tags = list(type = "string")), PrimaryRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["list_keys_output"]]))
 }
 
 .paymentcryptographycontrolplane$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["list_tags_for_resource_input"]]))
 }
 
 .paymentcryptographycontrolplane$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["list_tags_for_resource_output"]]))
 }
 
 .paymentcryptographycontrolplane$put_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["put_resource_policy_input"]]))
 }
 
 .paymentcryptographycontrolplane$put_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["put_resource_policy_output"]]))
 }
 
 .paymentcryptographycontrolplane$remove_key_replication_regions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyIdentifier = structure(logical(0), tags = list(type = "string")), ReplicationRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["remove_key_replication_regions_input"]]))
 }
 
 .paymentcryptographycontrolplane$remove_key_replication_regions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Key = structure(list(KeyArn = structure(logical(0), tags = list(type = "string")), KeyAttributes = structure(list(KeyUsage = structure(logical(0), tags = list(type = "string")), KeyClass = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), KeyCheckValue = structure(logical(0), tags = list(type = "string")), KeyCheckValueAlgorithm = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Exportable = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KeyState = structure(logical(0), tags = list(type = "string")), KeyOrigin = structure(logical(0), tags = list(type = "string")), CreateTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStartTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStopTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeletePendingTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeleteTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeriveKeyUsage = structure(logical(0), tags = list(type = "string")), MultiRegionKeyType = structure(logical(0), tags = list(type = "string")), PrimaryRegion = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), UsingDefaultReplicationRegions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), MpaStatus = structure(list(MpaSessionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["remove_key_replication_regions_output"]]))
 }
 
 .paymentcryptographycontrolplane$restore_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["restore_key_input"]]))
 }
 
 .paymentcryptographycontrolplane$restore_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Key = structure(list(KeyArn = structure(logical(0), tags = list(type = "string")), KeyAttributes = structure(list(KeyUsage = structure(logical(0), tags = list(type = "string")), KeyClass = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), KeyCheckValue = structure(logical(0), tags = list(type = "string")), KeyCheckValueAlgorithm = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Exportable = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KeyState = structure(logical(0), tags = list(type = "string")), KeyOrigin = structure(logical(0), tags = list(type = "string")), CreateTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStartTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStopTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeletePendingTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeleteTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeriveKeyUsage = structure(logical(0), tags = list(type = "string")), MultiRegionKeyType = structure(logical(0), tags = list(type = "string")), PrimaryRegion = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), UsingDefaultReplicationRegions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), MpaStatus = structure(list(MpaSessionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["restore_key_output"]]))
 }
 
 .paymentcryptographycontrolplane$start_key_usage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["start_key_usage_input"]]))
 }
 
 .paymentcryptographycontrolplane$start_key_usage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Key = structure(list(KeyArn = structure(logical(0), tags = list(type = "string")), KeyAttributes = structure(list(KeyUsage = structure(logical(0), tags = list(type = "string")), KeyClass = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), KeyCheckValue = structure(logical(0), tags = list(type = "string")), KeyCheckValueAlgorithm = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Exportable = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KeyState = structure(logical(0), tags = list(type = "string")), KeyOrigin = structure(logical(0), tags = list(type = "string")), CreateTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStartTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStopTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeletePendingTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeleteTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeriveKeyUsage = structure(logical(0), tags = list(type = "string")), MultiRegionKeyType = structure(logical(0), tags = list(type = "string")), PrimaryRegion = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), UsingDefaultReplicationRegions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), MpaStatus = structure(list(MpaSessionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["start_key_usage_output"]]))
 }
 
 .paymentcryptographycontrolplane$stop_key_usage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["stop_key_usage_input"]]))
 }
 
 .paymentcryptographycontrolplane$stop_key_usage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Key = structure(list(KeyArn = structure(logical(0), tags = list(type = "string")), KeyAttributes = structure(list(KeyUsage = structure(logical(0), tags = list(type = "string")), KeyClass = structure(logical(0), tags = list(type = "string")), KeyAlgorithm = structure(logical(0), tags = list(type = "string")), KeyModesOfUse = structure(list(Encrypt = structure(logical(0), tags = list(type = "boolean")), Decrypt = structure(logical(0), tags = list(type = "boolean")), Wrap = structure(logical(0), tags = list(type = "boolean")), Unwrap = structure(logical(0), tags = list(type = "boolean")), Generate = structure(logical(0), tags = list(type = "boolean")), Sign = structure(logical(0), tags = list(type = "boolean")), Verify = structure(logical(0), tags = list(type = "boolean")), DeriveKey = structure(logical(0), tags = list(type = "boolean")), NoRestrictions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), KeyCheckValue = structure(logical(0), tags = list(type = "string")), KeyCheckValueAlgorithm = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Exportable = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KeyState = structure(logical(0), tags = list(type = "string")), KeyOrigin = structure(logical(0), tags = list(type = "string")), CreateTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStartTimestamp = structure(logical(0), tags = list(type = "timestamp")), UsageStopTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeletePendingTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeleteTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeriveKeyUsage = structure(logical(0), tags = list(type = "string")), MultiRegionKeyType = structure(logical(0), tags = list(type = "string")), PrimaryRegion = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), UsingDefaultReplicationRegions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), MpaStatus = structure(list(MpaSessionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["stop_key_usage_output"]]))
 }
 
 .paymentcryptographycontrolplane$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["tag_resource_input"]]))
 }
 
 .paymentcryptographycontrolplane$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["tag_resource_output"]]))
 }
 
 .paymentcryptographycontrolplane$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["untag_resource_input"]]))
 }
 
 .paymentcryptographycontrolplane$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["untag_resource_output"]]))
 }
 
 .paymentcryptographycontrolplane$update_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AliasName = structure(logical(0), tags = list(type = "string")), KeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["update_alias_input"]]))
 }
 
 .paymentcryptographycontrolplane$update_alias_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Alias = structure(list(AliasName = structure(logical(0), tags = list(type = "string")), KeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .paymentcryptographycontrolplane_shapes[["update_alias_output"]]))
 }

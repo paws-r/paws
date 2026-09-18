@@ -5,1272 +5,1150 @@ NULL
 
 .customerprofiles$add_profile_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileId = structure(logical(0), tags = list(type = "string")), KeyName = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["add_profile_key_input"]]))
 }
 
 .customerprofiles$add_profile_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyName = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["add_profile_key_output"]]))
+}
+
+.customerprofiles$associate_stream_for_segments_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["associate_stream_for_segments_input"]]))
+}
+
+.customerprofiles$associate_stream_for_segments_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["associate_stream_for_segments_output"]]))
 }
 
 .customerprofiles$batch_get_calculated_attribute_for_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CalculatedAttributeName = structure(logical(0), tags = list(location = "uri", locationName = "CalculatedAttributeName", type = "string")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ProfileIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ConditionOverrides = structure(list(Range = structure(list(Start = structure(logical(0), tags = list(type = "integer")), End = structure(logical(0), tags = list(type = "integer")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["batch_get_calculated_attribute_for_profile_input"]]))
 }
 
 .customerprofiles$batch_get_calculated_attribute_for_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Errors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CalculatedAttributeValues = structure(list(structure(list(CalculatedAttributeName = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), IsDataPartial = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), LastObjectTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), ConditionOverrides = structure(list(Range = structure(list(Start = structure(logical(0), tags = list(type = "integer")), End = structure(logical(0), tags = list(type = "integer")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["batch_get_calculated_attribute_for_profile_output"]]))
 }
 
 .customerprofiles$batch_get_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ProfileIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["batch_get_profile_input"]]))
 }
 
 .customerprofiles$batch_get_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Errors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Profiles = structure(list(structure(list(ProfileId = structure(logical(0), tags = list(type = "string")), AccountNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AdditionalInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PartyType = structure(logical(0), tags = list(type = "string", deprecated = TRUE, sensitive = TRUE)), BusinessName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), FirstName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MiddleName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LastName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BirthDate = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Gender = structure(logical(0), tags = list(type = "string", deprecated = TRUE, sensitive = TRUE)), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MobilePhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), HomePhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BusinessPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PersonalEmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BusinessEmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Address = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), ShippingAddress = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), MailingAddress = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), BillingAddress = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), FoundByItems = structure(list(structure(list(KeyName = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PartyTypeString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GenderString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProfileType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EngagementPreferences = structure(list(Phone = structure(list(structure(list(KeyName = structure(logical(0), tags = list(type = "string")), KeyValue = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ContactType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Email = structure(list(structure(list(KeyName = structure(logical(0), tags = list(type = "string")), KeyValue = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ContactType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["batch_get_profile_output"]]))
+}
+
+.customerprofiles$batch_put_profile_object_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["batch_put_profile_object_input"]]))
+}
+
+.customerprofiles$batch_put_profile_object_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["batch_put_profile_object_output"]]))
 }
 
 .customerprofiles$create_calculated_attribute_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), CalculatedAttributeName = structure(logical(0), tags = list(location = "uri", locationName = "CalculatedAttributeName", type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AttributeDetails = structure(list(Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Expression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), Conditions = structure(list(Range = structure(list(Value = structure(logical(0), tags = list(type = "integer")), Unit = structure(logical(0), tags = list(type = "string")), ValueRange = structure(list(Start = structure(logical(0), tags = list(type = "integer")), End = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), TimestampSource = structure(logical(0), tags = list(type = "string")), TimestampFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObjectCount = structure(logical(0), tags = list(type = "integer")), Threshold = structure(list(Value = structure(logical(0), tags = list(type = "string")), Operator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", sensitive = TRUE)), Filter = structure(list(Include = structure(logical(0), tags = list(type = "string")), Groups = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Attributes = structure(list(structure(list(DimensionType = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Statistic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), UseHistoricalData = structure(logical(0), tags = list(type = "boolean")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_calculated_attribute_definition_input"]]))
 }
 
 .customerprofiles$create_calculated_attribute_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CalculatedAttributeName = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AttributeDetails = structure(list(Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Expression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), Conditions = structure(list(Range = structure(list(Value = structure(logical(0), tags = list(type = "integer")), Unit = structure(logical(0), tags = list(type = "string")), ValueRange = structure(list(Start = structure(logical(0), tags = list(type = "integer")), End = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), TimestampSource = structure(logical(0), tags = list(type = "string")), TimestampFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObjectCount = structure(logical(0), tags = list(type = "integer")), Threshold = structure(list(Value = structure(logical(0), tags = list(type = "string")), Operator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", sensitive = TRUE)), Filter = structure(list(Include = structure(logical(0), tags = list(type = "string")), Groups = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Attributes = structure(list(structure(list(DimensionType = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Statistic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), UseHistoricalData = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Readiness = structure(list(ProgressPercentage = structure(logical(0), tags = list(type = "integer")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_calculated_attribute_definition_output"]]))
 }
 
 .customerprofiles$create_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), DefaultExpirationDays = structure(logical(0), tags = list(type = "integer")), DefaultEncryptionKey = structure(logical(0), tags = list(type = "string")), DeadLetterQueueUrl = structure(logical(0), tags = list(type = "string")), Matching = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), JobSchedule = structure(list(DayOfTheWeek = structure(logical(0), tags = list(type = "string")), Time = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoMerging = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Consolidation = structure(list(MatchingAttributesList = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), ConflictResolution = structure(list(ConflictResolvingModel = structure(logical(0), tags = list(type = "string")), SourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MinAllowedConfidenceScoreForMerging = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), ExportingConfig = structure(list(S3Exporting = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), RuleBasedMatching = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), MatchingRules = structure(list(structure(list(Rule = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxAllowedRuleLevelForMerging = structure(logical(0), tags = list(type = "integer")), MaxAllowedRuleLevelForMatching = structure(logical(0), tags = list(type = "integer")), AttributeTypesSelector = structure(list(AttributeMatchingModel = structure(logical(0), tags = list(type = "string")), Address = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PhoneNumber = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EmailAddress = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ConflictResolution = structure(list(ConflictResolvingModel = structure(logical(0), tags = list(type = "string")), SourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExportingConfig = structure(list(S3Exporting = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), DataStore = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_domain_input"]]))
 }
 
 .customerprofiles$create_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), DefaultExpirationDays = structure(logical(0), tags = list(type = "integer")), DefaultEncryptionKey = structure(logical(0), tags = list(type = "string")), DeadLetterQueueUrl = structure(logical(0), tags = list(type = "string")), Matching = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), JobSchedule = structure(list(DayOfTheWeek = structure(logical(0), tags = list(type = "string")), Time = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoMerging = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Consolidation = structure(list(MatchingAttributesList = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), ConflictResolution = structure(list(ConflictResolvingModel = structure(logical(0), tags = list(type = "string")), SourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MinAllowedConfidenceScoreForMerging = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), ExportingConfig = structure(list(S3Exporting = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), RuleBasedMatching = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), MatchingRules = structure(list(structure(list(Rule = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), MaxAllowedRuleLevelForMerging = structure(logical(0), tags = list(type = "integer")), MaxAllowedRuleLevelForMatching = structure(logical(0), tags = list(type = "integer")), AttributeTypesSelector = structure(list(AttributeMatchingModel = structure(logical(0), tags = list(type = "string")), Address = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PhoneNumber = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EmailAddress = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ConflictResolution = structure(list(ConflictResolvingModel = structure(logical(0), tags = list(type = "string")), SourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExportingConfig = structure(list(S3Exporting = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), DataStore = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Readiness = structure(list(ProgressPercentage = structure(logical(0), tags = list(type = "integer")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_domain_output"]]))
 }
 
 .customerprofiles$create_domain_layout_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), LayoutDefinitionName = structure(logical(0), tags = list(location = "uri", locationName = "LayoutDefinitionName", type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisplayName = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean")), LayoutType = structure(logical(0), tags = list(type = "string")), Layout = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_domain_layout_input"]]))
 }
 
 .customerprofiles$create_domain_layout_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LayoutDefinitionName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisplayName = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean")), LayoutType = structure(logical(0), tags = list(type = "string")), Layout = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Version = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_domain_layout_output"]]))
 }
 
 .customerprofiles$create_event_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Uri = structure(logical(0), tags = list(type = "string")), EventStreamName = structure(logical(0), tags = list(location = "uri", locationName = "EventStreamName", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_event_stream_input"]]))
 }
 
 .customerprofiles$create_event_stream_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EventStreamArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_event_stream_output"]]))
 }
 
 .customerprofiles$create_event_trigger_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), EventTriggerName = structure(logical(0), tags = list(location = "uri", locationName = "EventTriggerName", type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EventTriggerConditions = structure(list(structure(list(EventTriggerDimensions = structure(list(structure(list(ObjectAttributes = structure(list(structure(list(Source = structure(logical(0), tags = list(type = "string")), FieldName = structure(logical(0), tags = list(type = "string")), ComparisonOperator = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), LogicalOperator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), SegmentFilter = structure(logical(0), tags = list(type = "string")), EventTriggerLimits = structure(list(EventExpiration = structure(logical(0), tags = list(type = "long")), Periods = structure(list(structure(list(Unit = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "integer")), MaxInvocationsPerProfile = structure(logical(0), tags = list(type = "integer")), Unlimited = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_event_trigger_input"]]))
 }
 
 .customerprofiles$create_event_trigger_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EventTriggerName = structure(logical(0), tags = list(type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EventTriggerConditions = structure(list(structure(list(EventTriggerDimensions = structure(list(structure(list(ObjectAttributes = structure(list(structure(list(Source = structure(logical(0), tags = list(type = "string")), FieldName = structure(logical(0), tags = list(type = "string")), ComparisonOperator = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), LogicalOperator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), SegmentFilter = structure(logical(0), tags = list(type = "string")), EventTriggerLimits = structure(list(EventExpiration = structure(logical(0), tags = list(type = "long")), Periods = structure(list(structure(list(Unit = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "integer")), MaxInvocationsPerProfile = structure(logical(0), tags = list(type = "integer")), Unlimited = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_event_trigger_output"]]))
 }
 
 .customerprofiles$create_integration_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), WorkflowType = structure(logical(0), tags = list(type = "string")), IntegrationConfig = structure(list(AppflowIntegration = structure(list(FlowDefinition = structure(list(Description = structure(logical(0), tags = list(type = "string")), FlowName = structure(logical(0), tags = list(type = "string")), KmsArn = structure(logical(0), tags = list(type = "string")), SourceFlowConfig = structure(list(ConnectorProfileName = structure(logical(0), tags = list(type = "string")), ConnectorType = structure(logical(0), tags = list(type = "string")), IncrementalPullConfig = structure(list(DatetimeTypeFieldName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourceConnectorProperties = structure(list(Marketo = structure(list(Object = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3 = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), BucketPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Salesforce = structure(list(Object = structure(logical(0), tags = list(type = "string")), EnableDynamicFieldUpdate = structure(logical(0), tags = list(type = "boolean")), IncludeDeletedRecords = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ServiceNow = structure(list(Object = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Zendesk = structure(list(Object = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Tasks = structure(list(structure(list(ConnectorOperator = structure(list(Marketo = structure(logical(0), tags = list(type = "string")), S3 = structure(logical(0), tags = list(type = "string")), Salesforce = structure(logical(0), tags = list(type = "string")), ServiceNow = structure(logical(0), tags = list(type = "string")), Zendesk = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationField = structure(logical(0), tags = list(type = "string")), SourceFields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TaskProperties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), TaskType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TriggerConfig = structure(list(TriggerType = structure(logical(0), tags = list(type = "string")), TriggerProperties = structure(list(Scheduled = structure(list(ScheduleExpression = structure(logical(0), tags = list(type = "string")), DataPullMode = structure(logical(0), tags = list(type = "string")), ScheduleStartTime = structure(logical(0), tags = list(type = "timestamp")), ScheduleEndTime = structure(logical(0), tags = list(type = "timestamp")), Timezone = structure(logical(0), tags = list(type = "string")), ScheduleOffset = structure(logical(0), tags = list(box = TRUE, type = "long")), FirstExecutionFrom = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", sensitive = TRUE)), Batches = structure(list(structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_integration_workflow_input"]]))
 }
 
 .customerprofiles$create_integration_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkflowId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_integration_workflow_output"]]))
 }
 
 .customerprofiles$create_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), AccountNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AdditionalInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PartyType = structure(logical(0), tags = list(type = "string", deprecated = TRUE, sensitive = TRUE)), BusinessName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), FirstName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MiddleName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LastName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BirthDate = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Gender = structure(logical(0), tags = list(type = "string", deprecated = TRUE, sensitive = TRUE)), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MobilePhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), HomePhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BusinessPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PersonalEmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BusinessEmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Address = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), ShippingAddress = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), MailingAddress = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), BillingAddress = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), PartyTypeString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GenderString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProfileType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EngagementPreferences = structure(list(Phone = structure(list(structure(list(KeyName = structure(logical(0), tags = list(type = "string")), KeyValue = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ContactType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Email = structure(list(structure(list(KeyName = structure(logical(0), tags = list(type = "string")), KeyValue = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ContactType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_profile_input"]]))
 }
 
 .customerprofiles$create_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_profile_output"]]))
 }
 
 .customerprofiles$create_recommender_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), RecommenderName = structure(logical(0), tags = list(location = "uri", locationName = "RecommenderName", type = "string")), RecommenderRecipeName = structure(logical(0), tags = list(type = "string")), RecommenderConfig = structure(list(EventsConfig = structure(list(EventParametersList = structure(list(structure(list(EventType = structure(logical(0), tags = list(type = "string")), EventValueThreshold = structure(logical(0), tags = list(type = "double")), EventWeight = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), TrainingFrequency = structure(logical(0), tags = list(type = "integer", box = TRUE)), InferenceConfig = structure(list(MinProvisionedTPS = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), IncludedColumns = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), ExcludedColumns = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RecommenderSchemaName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_recommender_input"]]))
 }
 
 .customerprofiles$create_recommender_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecommenderArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_recommender_output"]]))
 }
 
 .customerprofiles$create_recommender_filter_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), RecommenderFilterName = structure(logical(0), tags = list(location = "uri", locationName = "RecommenderFilterName", type = "string")), RecommenderFilterExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RecommenderSchemaName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_recommender_filter_input"]]))
 }
 
 .customerprofiles$create_recommender_filter_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecommenderFilterArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_recommender_filter_output"]]))
 }
 
 .customerprofiles$create_recommender_schema_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), RecommenderSchemaName = structure(logical(0), tags = list(location = "uri", locationName = "RecommenderSchemaName", type = "string")), Fields = structure(list(structure(list(structure(list(TargetFieldName = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string")), FeatureType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_recommender_schema_input"]]))
 }
 
 .customerprofiles$create_recommender_schema_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecommenderSchemaArn = structure(logical(0), tags = list(type = "string")), RecommenderSchemaName = structure(logical(0), tags = list(type = "string")), Fields = structure(list(structure(list(structure(list(TargetFieldName = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string")), FeatureType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_recommender_schema_output"]]))
 }
 
 .customerprofiles$create_segment_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), SegmentDefinitionName = structure(logical(0), tags = list(location = "uri", locationName = "SegmentDefinitionName", type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SegmentGroups = structure(list(Groups = structure(list(structure(list(Dimensions = structure(list(structure(list(ProfileAttributes = structure(list(AccountNumber = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "AccountNumber", type = "structure")), AdditionalInformation = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "AdditionalInformation", type = "structure")), FirstName = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "FirstName", type = "structure")), LastName = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "LastName", type = "structure")), MiddleName = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "MiddleName", type = "structure")), GenderString = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "GenderString", type = "structure")), PartyTypeString = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PartyTypeString", type = "structure")), BirthDate = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "BirthDate", type = "structure")), PhoneNumber = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PhoneNumber", type = "structure")), BusinessName = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "BusinessName", type = "structure")), BusinessPhoneNumber = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "BusinessPhoneNumber", type = "structure")), HomePhoneNumber = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "HomePhoneNumber", type = "structure")), MobilePhoneNumber = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "MobilePhoneNumber", type = "structure")), EmailAddress = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "EmailAddress", type = "structure")), PersonalEmailAddress = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PersonalEmailAddress", type = "structure")), BusinessEmailAddress = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "BusinessEmailAddress", type = "structure")), Address = structure(list(City = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "City", type = "structure")), Country = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Country", type = "structure")), County = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "County", type = "structure")), PostalCode = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PostalCode", type = "structure")), Province = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Province", type = "structure")), State = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "State", type = "structure"))), tags = list(locationName = "Address", type = "structure")), ShippingAddress = structure(list(City = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "City", type = "structure")), Country = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Country", type = "structure")), County = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "County", type = "structure")), PostalCode = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PostalCode", type = "structure")), Province = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Province", type = "structure")), State = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "State", type = "structure"))), tags = list(locationName = "ShippingAddress", type = "structure")), MailingAddress = structure(list(City = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "City", type = "structure")), Country = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Country", type = "structure")), County = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "County", type = "structure")), PostalCode = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PostalCode", type = "structure")), Province = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Province", type = "structure")), State = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "State", type = "structure"))), tags = list(locationName = "MailingAddress", type = "structure")), BillingAddress = structure(list(City = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "City", type = "structure")), Country = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Country", type = "structure")), County = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "County", type = "structure")), PostalCode = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PostalCode", type = "structure")), Province = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Province", type = "structure")), State = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "State", type = "structure"))), tags = list(locationName = "BillingAddress", type = "structure")), Attributes = structure(list(structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(type = "structure"))), tags = list(locationName = "Attributes", type = "map")), ProfileType = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "ProfileType", type = "structure"))), tags = list(locationName = "ProfileAttributes", type = "structure", sensitive = TRUE)), CalculatedAttributes = structure(list(structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list")), ConditionOverrides = structure(list(Range = structure(list(Start = structure(logical(0), tags = list(type = "integer")), End = structure(logical(0), tags = list(type = "integer")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "ConditionOverrides", type = "structure", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(locationName = "CalculatedAttributes", type = "map"))), tags = list(type = "structure", union = TRUE))), tags = list(locationName = "Dimensions", type = "list")), SourceSegments = structure(list(structure(list(SegmentDefinitionName = structure(logical(0), tags = list(locationName = "SegmentDefinitionName", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "SourceSegments", type = "list")), SourceType = structure(logical(0), tags = list(locationName = "SourceType", type = "string")), Type = structure(logical(0), tags = list(locationName = "Type", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Groups", type = "list")), Include = structure(logical(0), tags = list(locationName = "Include", type = "string"))), tags = list(type = "structure", sensitive = TRUE)), SegmentSqlQuery = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SegmentSort = structure(list(Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(locationName = "Name", type = "string")), DataType = structure(logical(0), tags = list(locationName = "DataType", type = "string")), Order = structure(logical(0), tags = list(locationName = "Order", type = "string")), Type = structure(logical(0), tags = list(locationName = "Type", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Attributes", type = "list"))), tags = list(type = "structure", sensitive = TRUE)), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_segment_definition_input"]]))
 }
 
 .customerprofiles$create_segment_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SegmentDefinitionName = structure(logical(0), tags = list(locationName = "SegmentDefinitionName", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "DisplayName", type = "string")), Description = structure(logical(0), tags = list(locationName = "Description", type = "string", sensitive = TRUE)), CreatedAt = structure(logical(0), tags = list(locationName = "CreatedAt", type = "timestamp")), SegmentDefinitionArn = structure(logical(0), tags = list(locationName = "SegmentDefinitionArn", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_segment_definition_output"]]))
 }
 
 .customerprofiles$create_segment_estimate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), SegmentQuery = structure(list(Groups = structure(list(structure(list(Dimensions = structure(list(structure(list(ProfileAttributes = structure(list(AccountNumber = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "AccountNumber", type = "structure")), AdditionalInformation = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "AdditionalInformation", type = "structure")), FirstName = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "FirstName", type = "structure")), LastName = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "LastName", type = "structure")), MiddleName = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "MiddleName", type = "structure")), GenderString = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "GenderString", type = "structure")), PartyTypeString = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PartyTypeString", type = "structure")), BirthDate = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "BirthDate", type = "structure")), PhoneNumber = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PhoneNumber", type = "structure")), BusinessName = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "BusinessName", type = "structure")), BusinessPhoneNumber = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "BusinessPhoneNumber", type = "structure")), HomePhoneNumber = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "HomePhoneNumber", type = "structure")), MobilePhoneNumber = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "MobilePhoneNumber", type = "structure")), EmailAddress = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "EmailAddress", type = "structure")), PersonalEmailAddress = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PersonalEmailAddress", type = "structure")), BusinessEmailAddress = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "BusinessEmailAddress", type = "structure")), Address = structure(list(City = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "City", type = "structure")), Country = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Country", type = "structure")), County = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "County", type = "structure")), PostalCode = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PostalCode", type = "structure")), Province = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Province", type = "structure")), State = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "State", type = "structure"))), tags = list(locationName = "Address", type = "structure")), ShippingAddress = structure(list(City = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "City", type = "structure")), Country = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Country", type = "structure")), County = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "County", type = "structure")), PostalCode = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PostalCode", type = "structure")), Province = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Province", type = "structure")), State = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "State", type = "structure"))), tags = list(locationName = "ShippingAddress", type = "structure")), MailingAddress = structure(list(City = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "City", type = "structure")), Country = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Country", type = "structure")), County = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "County", type = "structure")), PostalCode = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PostalCode", type = "structure")), Province = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Province", type = "structure")), State = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "State", type = "structure"))), tags = list(locationName = "MailingAddress", type = "structure")), BillingAddress = structure(list(City = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "City", type = "structure")), Country = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Country", type = "structure")), County = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "County", type = "structure")), PostalCode = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PostalCode", type = "structure")), Province = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Province", type = "structure")), State = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "State", type = "structure"))), tags = list(locationName = "BillingAddress", type = "structure")), Attributes = structure(list(structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(type = "structure"))), tags = list(locationName = "Attributes", type = "map")), ProfileType = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "ProfileType", type = "structure"))), tags = list(locationName = "ProfileAttributes", type = "structure", sensitive = TRUE)), CalculatedAttributes = structure(list(structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list")), ConditionOverrides = structure(list(Range = structure(list(Start = structure(logical(0), tags = list(type = "integer")), End = structure(logical(0), tags = list(type = "integer")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "ConditionOverrides", type = "structure", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(locationName = "CalculatedAttributes", type = "map"))), tags = list(type = "structure", union = TRUE))), tags = list(locationName = "Dimensions", type = "list")), SourceSegments = structure(list(structure(list(SegmentDefinitionName = structure(logical(0), tags = list(locationName = "SegmentDefinitionName", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "SourceSegments", type = "list")), SourceType = structure(logical(0), tags = list(locationName = "SourceType", type = "string")), Type = structure(logical(0), tags = list(locationName = "Type", type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Include = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SegmentSqlQuery = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_segment_estimate_input"]]))
 }
 
 .customerprofiles$create_segment_estimate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), EstimateId = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_segment_estimate_output"]]))
 }
 
 .customerprofiles$create_segment_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), SegmentDefinitionName = structure(logical(0), tags = list(location = "uri", locationName = "SegmentDefinitionName", type = "string")), DataFormat = structure(logical(0), tags = list(type = "string")), EncryptionKey = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), DestinationUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_segment_snapshot_input"]]))
 }
 
 .customerprofiles$create_segment_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SnapshotId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_segment_snapshot_output"]]))
 }
 
 .customerprofiles$create_upload_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Fields = structure(list(structure(list(Source = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map", sensitive = TRUE)), UniqueKey = structure(logical(0), tags = list(type = "string")), DataExpiry = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_upload_job_input"]]))
 }
 
 .customerprofiles$create_upload_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobId = structure(logical(0), tags = list(locationName = "JobId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["create_upload_job_output"]]))
 }
 
 .customerprofiles$delete_calculated_attribute_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), CalculatedAttributeName = structure(logical(0), tags = list(location = "uri", locationName = "CalculatedAttributeName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_calculated_attribute_definition_input"]]))
 }
 
 .customerprofiles$delete_calculated_attribute_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_calculated_attribute_definition_output"]]))
 }
 
 .customerprofiles$delete_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_domain_input"]]))
 }
 
 .customerprofiles$delete_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_domain_output"]]))
 }
 
 .customerprofiles$delete_domain_layout_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), LayoutDefinitionName = structure(logical(0), tags = list(location = "uri", locationName = "LayoutDefinitionName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_domain_layout_input"]]))
 }
 
 .customerprofiles$delete_domain_layout_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_domain_layout_output"]]))
 }
 
 .customerprofiles$delete_domain_object_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ObjectTypeName = structure(logical(0), tags = list(location = "uri", locationName = "ObjectTypeName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_domain_object_type_input"]]))
 }
 
 .customerprofiles$delete_domain_object_type_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_domain_object_type_output"]]))
 }
 
 .customerprofiles$delete_event_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), EventStreamName = structure(logical(0), tags = list(location = "uri", locationName = "EventStreamName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_event_stream_input"]]))
 }
 
 .customerprofiles$delete_event_stream_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_event_stream_output"]]))
 }
 
 .customerprofiles$delete_event_trigger_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), EventTriggerName = structure(logical(0), tags = list(location = "uri", locationName = "EventTriggerName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_event_trigger_input"]]))
 }
 
 .customerprofiles$delete_event_trigger_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_event_trigger_output"]]))
 }
 
 .customerprofiles$delete_integration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_integration_input"]]))
 }
 
 .customerprofiles$delete_integration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_integration_output"]]))
 }
 
 .customerprofiles$delete_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileId = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_profile_input"]]))
 }
 
 .customerprofiles$delete_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_profile_output"]]))
 }
 
 .customerprofiles$delete_profile_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileId = structure(logical(0), tags = list(type = "string")), KeyName = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_profile_key_input"]]))
 }
 
 .customerprofiles$delete_profile_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_profile_key_output"]]))
 }
 
 .customerprofiles$delete_profile_object_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileId = structure(logical(0), tags = list(type = "string")), ProfileObjectUniqueKey = structure(logical(0), tags = list(type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_profile_object_input"]]))
 }
 
 .customerprofiles$delete_profile_object_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_profile_object_output"]]))
 }
 
 .customerprofiles$delete_profile_object_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ObjectTypeName = structure(logical(0), tags = list(location = "uri", locationName = "ObjectTypeName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_profile_object_type_input"]]))
 }
 
 .customerprofiles$delete_profile_object_type_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_profile_object_type_output"]]))
 }
 
 .customerprofiles$delete_recommender_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), RecommenderName = structure(logical(0), tags = list(location = "uri", locationName = "RecommenderName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_recommender_input"]]))
 }
 
 .customerprofiles$delete_recommender_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_recommender_output"]]))
 }
 
 .customerprofiles$delete_recommender_filter_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), RecommenderFilterName = structure(logical(0), tags = list(location = "uri", locationName = "RecommenderFilterName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_recommender_filter_input"]]))
 }
 
 .customerprofiles$delete_recommender_filter_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_recommender_filter_output"]]))
 }
 
 .customerprofiles$delete_recommender_schema_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), RecommenderSchemaName = structure(logical(0), tags = list(location = "uri", locationName = "RecommenderSchemaName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_recommender_schema_input"]]))
 }
 
 .customerprofiles$delete_recommender_schema_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_recommender_schema_output"]]))
 }
 
 .customerprofiles$delete_segment_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), SegmentDefinitionName = structure(logical(0), tags = list(location = "uri", locationName = "SegmentDefinitionName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_segment_definition_input"]]))
 }
 
 .customerprofiles$delete_segment_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(locationName = "Message", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_segment_definition_output"]]))
+}
+
+.customerprofiles$delete_segment_subscription_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["delete_segment_subscription_input"]]))
+}
+
+.customerprofiles$delete_segment_subscription_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["delete_segment_subscription_output"]]))
 }
 
 .customerprofiles$delete_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), WorkflowId = structure(logical(0), tags = list(location = "uri", locationName = "WorkflowId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_workflow_input"]]))
 }
 
 .customerprofiles$delete_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["delete_workflow_output"]]))
 }
 
 .customerprofiles$detect_profile_object_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Objects = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list", sensitive = TRUE)), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["detect_profile_object_type_input"]]))
 }
 
 .customerprofiles$detect_profile_object_type_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DetectedProfileObjectTypes = structure(list(structure(list(SourceLastUpdatedTimestampFormat = structure(logical(0), tags = list(type = "string")), Fields = structure(list(structure(list(Source = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map", sensitive = TRUE)), Keys = structure(list(structure(list(structure(list(StandardIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FieldNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["detect_profile_object_type_output"]]))
+}
+
+.customerprofiles$disassociate_stream_for_segments_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["disassociate_stream_for_segments_input"]]))
+}
+
+.customerprofiles$disassociate_stream_for_segments_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["disassociate_stream_for_segments_output"]]))
 }
 
 .customerprofiles$get_auto_merging_preview_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Consolidation = structure(list(MatchingAttributesList = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), ConflictResolution = structure(list(ConflictResolvingModel = structure(logical(0), tags = list(type = "string")), SourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MinAllowedConfidenceScoreForMerging = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_auto_merging_preview_input"]]))
 }
 
 .customerprofiles$get_auto_merging_preview_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), NumberOfMatchesInSample = structure(logical(0), tags = list(type = "long")), NumberOfProfilesInSample = structure(logical(0), tags = list(type = "long")), NumberOfProfilesWillBeMerged = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_auto_merging_preview_output"]]))
 }
 
 .customerprofiles$get_calculated_attribute_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), CalculatedAttributeName = structure(logical(0), tags = list(location = "uri", locationName = "CalculatedAttributeName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_calculated_attribute_definition_input"]]))
 }
 
 .customerprofiles$get_calculated_attribute_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CalculatedAttributeName = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Statistic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Filter = structure(list(Include = structure(logical(0), tags = list(type = "string")), Groups = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Attributes = structure(list(structure(list(DimensionType = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Conditions = structure(list(Range = structure(list(Value = structure(logical(0), tags = list(type = "integer")), Unit = structure(logical(0), tags = list(type = "string")), ValueRange = structure(list(Start = structure(logical(0), tags = list(type = "integer")), End = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), TimestampSource = structure(logical(0), tags = list(type = "string")), TimestampFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObjectCount = structure(logical(0), tags = list(type = "integer")), Threshold = structure(list(Value = structure(logical(0), tags = list(type = "string")), Operator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", sensitive = TRUE)), AttributeDetails = structure(list(Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Expression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), UseHistoricalData = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Readiness = structure(list(ProgressPercentage = structure(logical(0), tags = list(type = "integer")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_calculated_attribute_definition_output"]]))
 }
 
 .customerprofiles$get_calculated_attribute_for_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ProfileId = structure(logical(0), tags = list(location = "uri", locationName = "ProfileId", type = "string")), CalculatedAttributeName = structure(logical(0), tags = list(location = "uri", locationName = "CalculatedAttributeName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_calculated_attribute_for_profile_input"]]))
 }
 
 .customerprofiles$get_calculated_attribute_for_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CalculatedAttributeName = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), IsDataPartial = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), LastObjectTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_calculated_attribute_for_profile_output"]]))
 }
 
 .customerprofiles$get_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_domain_input"]]))
 }
 
 .customerprofiles$get_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), DefaultExpirationDays = structure(logical(0), tags = list(type = "integer")), DefaultEncryptionKey = structure(logical(0), tags = list(type = "string")), DeadLetterQueueUrl = structure(logical(0), tags = list(type = "string")), Stats = structure(list(ProfileCount = structure(logical(0), tags = list(type = "long")), MeteringProfileCount = structure(logical(0), tags = list(type = "long")), ObjectCount = structure(logical(0), tags = list(type = "long")), TotalSize = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), Matching = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), JobSchedule = structure(list(DayOfTheWeek = structure(logical(0), tags = list(type = "string")), Time = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoMerging = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Consolidation = structure(list(MatchingAttributesList = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), ConflictResolution = structure(list(ConflictResolvingModel = structure(logical(0), tags = list(type = "string")), SourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MinAllowedConfidenceScoreForMerging = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), ExportingConfig = structure(list(S3Exporting = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), RuleBasedMatching = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), MatchingRules = structure(list(structure(list(Rule = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), MaxAllowedRuleLevelForMerging = structure(logical(0), tags = list(type = "integer")), MaxAllowedRuleLevelForMatching = structure(logical(0), tags = list(type = "integer")), AttributeTypesSelector = structure(list(AttributeMatchingModel = structure(logical(0), tags = list(type = "string")), Address = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PhoneNumber = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EmailAddress = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ConflictResolution = structure(list(ConflictResolvingModel = structure(logical(0), tags = list(type = "string")), SourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExportingConfig = structure(list(S3Exporting = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), DataStore = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Readiness = structure(list(ProgressPercentage = structure(logical(0), tags = list(type = "integer")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_domain_output"]]))
 }
 
 .customerprofiles$get_domain_layout_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), LayoutDefinitionName = structure(logical(0), tags = list(location = "uri", locationName = "LayoutDefinitionName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_domain_layout_input"]]))
 }
 
 .customerprofiles$get_domain_layout_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LayoutDefinitionName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisplayName = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean")), LayoutType = structure(logical(0), tags = list(type = "string")), Layout = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Version = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_domain_layout_output"]]))
 }
 
 .customerprofiles$get_domain_object_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ObjectTypeName = structure(logical(0), tags = list(location = "uri", locationName = "ObjectTypeName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_domain_object_type_input"]]))
 }
 
 .customerprofiles$get_domain_object_type_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ObjectTypeName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EncryptionKey = structure(logical(0), tags = list(type = "string")), Fields = structure(list(structure(list(Source = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string")), FeatureType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_domain_object_type_output"]]))
 }
 
 .customerprofiles$get_event_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), EventStreamName = structure(logical(0), tags = list(location = "uri", locationName = "EventStreamName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_event_stream_input"]]))
 }
 
 .customerprofiles$get_event_stream_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), EventStreamArn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StoppedSince = structure(logical(0), tags = list(type = "timestamp")), DestinationDetails = structure(list(Uri = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), UnhealthySince = structure(logical(0), tags = list(type = "timestamp")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_event_stream_output"]]))
 }
 
 .customerprofiles$get_event_trigger_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), EventTriggerName = structure(logical(0), tags = list(location = "uri", locationName = "EventTriggerName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_event_trigger_input"]]))
 }
 
 .customerprofiles$get_event_trigger_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EventTriggerName = structure(logical(0), tags = list(type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EventTriggerConditions = structure(list(structure(list(EventTriggerDimensions = structure(list(structure(list(ObjectAttributes = structure(list(structure(list(Source = structure(logical(0), tags = list(type = "string")), FieldName = structure(logical(0), tags = list(type = "string")), ComparisonOperator = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), LogicalOperator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), SegmentFilter = structure(logical(0), tags = list(type = "string")), EventTriggerLimits = structure(list(EventExpiration = structure(logical(0), tags = list(type = "long")), Periods = structure(list(structure(list(Unit = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "integer")), MaxInvocationsPerProfile = structure(logical(0), tags = list(type = "integer")), Unlimited = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_event_trigger_output"]]))
 }
 
 .customerprofiles$get_identity_resolution_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), JobId = structure(logical(0), tags = list(location = "uri", locationName = "JobId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_identity_resolution_job_input"]]))
 }
 
 .customerprofiles$get_identity_resolution_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), JobId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), JobStartTime = structure(logical(0), tags = list(type = "timestamp")), JobEndTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), JobExpirationTime = structure(logical(0), tags = list(type = "timestamp")), AutoMerging = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Consolidation = structure(list(MatchingAttributesList = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), ConflictResolution = structure(list(ConflictResolvingModel = structure(logical(0), tags = list(type = "string")), SourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MinAllowedConfidenceScoreForMerging = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), ExportingLocation = structure(list(S3Exporting = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), JobStats = structure(list(NumberOfProfilesReviewed = structure(logical(0), tags = list(type = "long")), NumberOfMatchesFound = structure(logical(0), tags = list(type = "long")), NumberOfMergesDone = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_identity_resolution_job_output"]]))
 }
 
 .customerprofiles$get_integration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_integration_input"]]))
 }
 
 .customerprofiles$get_integration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), Uri = structure(logical(0), tags = list(type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ObjectTypeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), WorkflowId = structure(logical(0), tags = list(type = "string")), IsUnstructured = structure(logical(0), tags = list(type = "boolean")), RoleArn = structure(logical(0), tags = list(type = "string")), EventTriggerNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Scope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_integration_output"]]))
 }
 
 .customerprofiles$get_matches_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_matches_input"]]))
 }
 
 .customerprofiles$get_matches_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MatchGenerationDate = structure(logical(0), tags = list(type = "timestamp")), PotentialMatches = structure(logical(0), tags = list(type = "integer")), Matches = structure(list(structure(list(MatchId = structure(logical(0), tags = list(type = "string")), ProfileIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ConfidenceScore = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_matches_output"]]))
 }
 
 .customerprofiles$get_object_type_attribute_statistics_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ObjectTypeName = structure(logical(0), tags = list(location = "uri", locationName = "ObjectTypeName", type = "string")), AttributeName = structure(logical(0), tags = list(location = "uri", locationName = "AttributeName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_object_type_attribute_statistics_input"]]))
 }
 
 .customerprofiles$get_object_type_attribute_statistics_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Statistics = structure(list(Maximum = structure(logical(0), tags = list(type = "double")), Minimum = structure(logical(0), tags = list(type = "double")), Average = structure(logical(0), tags = list(type = "double")), StandardDeviation = structure(logical(0), tags = list(type = "double")), Percentiles = structure(list(P5 = structure(logical(0), tags = list(type = "double")), P25 = structure(logical(0), tags = list(type = "double")), P50 = structure(logical(0), tags = list(type = "double")), P75 = structure(logical(0), tags = list(type = "double")), P95 = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure")), CalculatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_object_type_attribute_statistics_output"]]))
 }
 
 .customerprofiles$get_profile_history_record_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ProfileId = structure(logical(0), tags = list(location = "uri", locationName = "ProfileId", type = "string")), Id = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_profile_history_record_input"]]))
 }
 
 .customerprofiles$get_profile_history_record_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), ActionType = structure(logical(0), tags = list(type = "string")), ProfileObjectUniqueKey = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PerformedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_profile_history_record_output"]]))
 }
 
 .customerprofiles$get_profile_object_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ObjectTypeName = structure(logical(0), tags = list(location = "uri", locationName = "ObjectTypeName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_profile_object_type_input"]]))
 }
 
 .customerprofiles$get_profile_object_type_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ObjectTypeName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), TemplateId = structure(logical(0), tags = list(type = "string")), ExpirationDays = structure(logical(0), tags = list(type = "integer")), EncryptionKey = structure(logical(0), tags = list(type = "string")), AllowProfileCreation = structure(logical(0), tags = list(type = "boolean")), SourceLastUpdatedTimestampFormat = structure(logical(0), tags = list(type = "string")), MaxAvailableProfileObjectCount = structure(logical(0), tags = list(type = "integer")), MaxProfileObjectCount = structure(logical(0), tags = list(type = "integer")), SourcePriority = structure(logical(0), tags = list(type = "integer")), Fields = structure(list(structure(list(Source = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map", sensitive = TRUE)), Keys = structure(list(structure(list(structure(list(StandardIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FieldNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map", sensitive = TRUE)), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_profile_object_type_output"]]))
 }
 
 .customerprofiles$get_profile_object_type_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateId = structure(logical(0), tags = list(location = "uri", locationName = "TemplateId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_profile_object_type_template_input"]]))
 }
 
 .customerprofiles$get_profile_object_type_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateId = structure(logical(0), tags = list(type = "string")), SourceName = structure(logical(0), tags = list(type = "string")), SourceObject = structure(logical(0), tags = list(type = "string")), AllowProfileCreation = structure(logical(0), tags = list(type = "boolean")), SourceLastUpdatedTimestampFormat = structure(logical(0), tags = list(type = "string")), Fields = structure(list(structure(list(Source = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map", sensitive = TRUE)), Keys = structure(list(structure(list(structure(list(StandardIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FieldNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_profile_object_type_template_output"]]))
 }
 
 .customerprofiles$get_profile_recommendations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ProfileId = structure(logical(0), tags = list(location = "uri", locationName = "ProfileId", type = "string")), RecommenderName = structure(logical(0), tags = list(type = "string")), Context = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), RecommenderFilters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), RecommenderPromotionalFilters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), PromotionName = structure(logical(0), tags = list(type = "string")), PercentPromotedItems = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), CandidateIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), MetadataConfig = structure(list(MetadataColumns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_profile_recommendations_input"]]))
 }
 
 .customerprofiles$get_profile_recommendations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Recommendations = structure(list(structure(list(CatalogItem = structure(list(Id = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Code = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Category = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AdditionalInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ImageLink = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Link = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Price = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure")), Score = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_profile_recommendations_output"]]))
 }
 
 .customerprofiles$get_recommender_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), RecommenderName = structure(logical(0), tags = list(location = "uri", locationName = "RecommenderName", type = "string")), TrainingMetricsCount = structure(logical(0), tags = list(location = "querystring", locationName = "training-metrics-count", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_recommender_input"]]))
 }
 
 .customerprofiles$get_recommender_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecommenderName = structure(logical(0), tags = list(type = "string")), RecommenderRecipeName = structure(logical(0), tags = list(type = "string")), RecommenderSchemaName = structure(logical(0), tags = list(type = "string")), RecommenderConfig = structure(list(EventsConfig = structure(list(EventParametersList = structure(list(structure(list(EventType = structure(logical(0), tags = list(type = "string")), EventValueThreshold = structure(logical(0), tags = list(type = "double")), EventWeight = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), TrainingFrequency = structure(logical(0), tags = list(type = "integer", box = TRUE)), InferenceConfig = structure(list(MinProvisionedTPS = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), IncludedColumns = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), ExcludedColumns = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), FailureReason = structure(logical(0), tags = list(type = "string")), LatestRecommenderUpdate = structure(list(RecommenderConfig = structure(list(EventsConfig = structure(list(EventParametersList = structure(list(structure(list(EventType = structure(logical(0), tags = list(type = "string")), EventValueThreshold = structure(logical(0), tags = list(type = "double")), EventWeight = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), TrainingFrequency = structure(logical(0), tags = list(type = "integer", box = TRUE)), InferenceConfig = structure(list(MinProvisionedTPS = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), IncludedColumns = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), ExcludedColumns = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TrainingMetrics = structure(list(structure(list(Time = structure(logical(0), tags = list(type = "timestamp")), Metrics = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_recommender_output"]]))
 }
 
 .customerprofiles$get_recommender_filter_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), RecommenderFilterName = structure(logical(0), tags = list(location = "uri", locationName = "RecommenderFilterName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_recommender_filter_input"]]))
 }
 
 .customerprofiles$get_recommender_filter_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecommenderFilterName = structure(logical(0), tags = list(type = "string")), RecommenderFilterExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RecommenderSchemaName = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), FailureReason = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_recommender_filter_output"]]))
 }
 
 .customerprofiles$get_recommender_schema_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), RecommenderSchemaName = structure(logical(0), tags = list(location = "uri", locationName = "RecommenderSchemaName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_recommender_schema_input"]]))
 }
 
 .customerprofiles$get_recommender_schema_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecommenderSchemaName = structure(logical(0), tags = list(type = "string")), Fields = structure(list(structure(list(structure(list(TargetFieldName = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string")), FeatureType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_recommender_schema_output"]]))
 }
 
 .customerprofiles$get_segment_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), SegmentDefinitionName = structure(logical(0), tags = list(location = "uri", locationName = "SegmentDefinitionName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_segment_definition_input"]]))
 }
 
 .customerprofiles$get_segment_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SegmentDefinitionName = structure(logical(0), tags = list(locationName = "SegmentDefinitionName", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "DisplayName", type = "string")), Description = structure(logical(0), tags = list(locationName = "Description", type = "string", sensitive = TRUE)), SegmentGroups = structure(list(Groups = structure(list(structure(list(Dimensions = structure(list(structure(list(ProfileAttributes = structure(list(AccountNumber = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "AccountNumber", type = "structure")), AdditionalInformation = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "AdditionalInformation", type = "structure")), FirstName = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "FirstName", type = "structure")), LastName = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "LastName", type = "structure")), MiddleName = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "MiddleName", type = "structure")), GenderString = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "GenderString", type = "structure")), PartyTypeString = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PartyTypeString", type = "structure")), BirthDate = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "BirthDate", type = "structure")), PhoneNumber = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PhoneNumber", type = "structure")), BusinessName = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "BusinessName", type = "structure")), BusinessPhoneNumber = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "BusinessPhoneNumber", type = "structure")), HomePhoneNumber = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "HomePhoneNumber", type = "structure")), MobilePhoneNumber = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "MobilePhoneNumber", type = "structure")), EmailAddress = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "EmailAddress", type = "structure")), PersonalEmailAddress = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PersonalEmailAddress", type = "structure")), BusinessEmailAddress = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "BusinessEmailAddress", type = "structure")), Address = structure(list(City = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "City", type = "structure")), Country = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Country", type = "structure")), County = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "County", type = "structure")), PostalCode = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PostalCode", type = "structure")), Province = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Province", type = "structure")), State = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "State", type = "structure"))), tags = list(locationName = "Address", type = "structure")), ShippingAddress = structure(list(City = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "City", type = "structure")), Country = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Country", type = "structure")), County = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "County", type = "structure")), PostalCode = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PostalCode", type = "structure")), Province = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Province", type = "structure")), State = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "State", type = "structure"))), tags = list(locationName = "ShippingAddress", type = "structure")), MailingAddress = structure(list(City = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "City", type = "structure")), Country = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Country", type = "structure")), County = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "County", type = "structure")), PostalCode = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PostalCode", type = "structure")), Province = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Province", type = "structure")), State = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "State", type = "structure"))), tags = list(locationName = "MailingAddress", type = "structure")), BillingAddress = structure(list(City = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "City", type = "structure")), Country = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Country", type = "structure")), County = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "County", type = "structure")), PostalCode = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "PostalCode", type = "structure")), Province = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "Province", type = "structure")), State = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "State", type = "structure"))), tags = list(locationName = "BillingAddress", type = "structure")), Attributes = structure(list(structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list"))), tags = list(type = "structure"))), tags = list(locationName = "Attributes", type = "map")), ProfileType = structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(locationName = "Values", type = "list"))), tags = list(locationName = "ProfileType", type = "structure"))), tags = list(locationName = "ProfileAttributes", type = "structure", sensitive = TRUE)), CalculatedAttributes = structure(list(structure(list(DimensionType = structure(logical(0), tags = list(locationName = "DimensionType", type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Values", type = "list")), ConditionOverrides = structure(list(Range = structure(list(Start = structure(logical(0), tags = list(type = "integer")), End = structure(logical(0), tags = list(type = "integer")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "ConditionOverrides", type = "structure", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(locationName = "CalculatedAttributes", type = "map"))), tags = list(type = "structure", union = TRUE))), tags = list(locationName = "Dimensions", type = "list")), SourceSegments = structure(list(structure(list(SegmentDefinitionName = structure(logical(0), tags = list(locationName = "SegmentDefinitionName", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "SourceSegments", type = "list")), SourceType = structure(logical(0), tags = list(locationName = "SourceType", type = "string")), Type = structure(logical(0), tags = list(locationName = "Type", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Groups", type = "list")), Include = structure(logical(0), tags = list(locationName = "Include", type = "string"))), tags = list(locationName = "SegmentGroups", type = "structure", sensitive = TRUE)), SegmentSort = structure(list(Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(locationName = "Name", type = "string")), DataType = structure(logical(0), tags = list(locationName = "DataType", type = "string")), Order = structure(logical(0), tags = list(locationName = "Order", type = "string")), Type = structure(logical(0), tags = list(locationName = "Type", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Attributes", type = "list"))), tags = list(locationName = "SegmentSort", type = "structure", sensitive = TRUE)), SegmentDefinitionArn = structure(logical(0), tags = list(locationName = "SegmentDefinitionArn", type = "string")), CreatedAt = structure(logical(0), tags = list(locationName = "CreatedAt", type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tags", type = "map")), SegmentSqlQuery = structure(logical(0), tags = list(locationName = "SegmentSqlQuery", type = "string", sensitive = TRUE)), SegmentType = structure(logical(0), tags = list(locationName = "SegmentType", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_segment_definition_output"]]))
 }
 
 .customerprofiles$get_segment_estimate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), EstimateId = structure(logical(0), tags = list(location = "uri", locationName = "EstimateId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_segment_estimate_input"]]))
 }
 
 .customerprofiles$get_segment_estimate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), EstimateId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Estimate = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_segment_estimate_output"]]))
 }
 
 .customerprofiles$get_segment_membership_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), SegmentDefinitionName = structure(logical(0), tags = list(location = "uri", locationName = "SegmentDefinitionName", type = "string")), ProfileIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "ProfileIds", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_segment_membership_input"]]))
 }
 
 .customerprofiles$get_segment_membership_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SegmentDefinitionName = structure(logical(0), tags = list(locationName = "SegmentDefinitionName", type = "string")), Profiles = structure(list(structure(list(ProfileId = structure(logical(0), tags = list(locationName = "ProfileId", type = "string")), QueryResult = structure(logical(0), tags = list(locationName = "QueryResult", type = "string")), Profile = structure(list(ProfileId = structure(logical(0), tags = list(type = "string")), AccountNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AdditionalInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PartyType = structure(logical(0), tags = list(type = "string", deprecated = TRUE, sensitive = TRUE)), BusinessName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), FirstName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MiddleName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LastName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BirthDate = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Gender = structure(logical(0), tags = list(type = "string", deprecated = TRUE, sensitive = TRUE)), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MobilePhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), HomePhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BusinessPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PersonalEmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BusinessEmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Address = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), ShippingAddress = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), MailingAddress = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), BillingAddress = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), FoundByItems = structure(list(structure(list(KeyName = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PartyTypeString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GenderString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProfileType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EngagementPreferences = structure(list(Phone = structure(list(structure(list(KeyName = structure(logical(0), tags = list(type = "string")), KeyValue = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ContactType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Email = structure(list(structure(list(KeyName = structure(logical(0), tags = list(type = "string")), KeyValue = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ContactType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(locationName = "Profile", type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "Profiles", type = "list")), Failures = structure(list(structure(list(ProfileId = structure(logical(0), tags = list(locationName = "ProfileId", type = "string")), Message = structure(logical(0), tags = list(locationName = "Message", type = "string")), Status = structure(logical(0), tags = list(locationName = "Status", type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(locationName = "Failures", type = "list")), LastComputedAt = structure(logical(0), tags = list(locationName = "LastComputedAt", type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_segment_membership_output"]]))
 }
 
 .customerprofiles$get_segment_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), SegmentDefinitionName = structure(logical(0), tags = list(location = "uri", locationName = "SegmentDefinitionName", type = "string")), SnapshotId = structure(logical(0), tags = list(location = "uri", locationName = "SnapshotId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_segment_snapshot_input"]]))
 }
 
 .customerprofiles$get_segment_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SnapshotId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), DataFormat = structure(logical(0), tags = list(type = "string")), EncryptionKey = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), DestinationUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_segment_snapshot_output"]]))
+}
+
+.customerprofiles$get_segment_subscription_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["get_segment_subscription_input"]]))
+}
+
+.customerprofiles$get_segment_subscription_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["get_segment_subscription_output"]]))
 }
 
 .customerprofiles$get_similar_profiles_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), MatchType = structure(logical(0), tags = list(type = "string")), SearchKey = structure(logical(0), tags = list(type = "string")), SearchValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_similar_profiles_input"]]))
 }
 
 .customerprofiles$get_similar_profiles_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MatchId = structure(logical(0), tags = list(type = "string")), MatchType = structure(logical(0), tags = list(type = "string")), RuleLevel = structure(logical(0), tags = list(type = "integer")), ConfidenceScore = structure(logical(0), tags = list(type = "double")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_similar_profiles_output"]]))
+}
+
+.customerprofiles$get_stream_for_segments_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["get_stream_for_segments_input"]]))
+}
+
+.customerprofiles$get_stream_for_segments_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["get_stream_for_segments_output"]]))
 }
 
 .customerprofiles$get_upload_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), JobId = structure(logical(0), tags = list(location = "uri", locationName = "JobId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_upload_job_input"]]))
 }
 
 .customerprofiles$get_upload_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobId = structure(logical(0), tags = list(locationName = "JobId", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "DisplayName", type = "string")), Status = structure(logical(0), tags = list(locationName = "Status", type = "string")), StatusReason = structure(logical(0), tags = list(locationName = "StatusReason", type = "string")), CreatedAt = structure(logical(0), tags = list(locationName = "CreatedAt", type = "timestamp")), CompletedAt = structure(logical(0), tags = list(locationName = "CompletedAt", type = "timestamp")), Fields = structure(list(structure(list(Source = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Fields", type = "map", sensitive = TRUE)), UniqueKey = structure(logical(0), tags = list(locationName = "UniqueKey", type = "string")), ResultsSummary = structure(list(UpdatedRecords = structure(logical(0), tags = list(locationName = "UpdatedRecords", type = "long")), CreatedRecords = structure(logical(0), tags = list(locationName = "CreatedRecords", type = "long")), FailedRecords = structure(logical(0), tags = list(locationName = "FailedRecords", type = "long"))), tags = list(locationName = "ResultsSummary", type = "structure")), DataExpiry = structure(logical(0), tags = list(locationName = "DataExpiry", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_upload_job_output"]]))
 }
 
 .customerprofiles$get_upload_job_path_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), JobId = structure(logical(0), tags = list(location = "uri", locationName = "JobId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_upload_job_path_input"]]))
 }
 
 .customerprofiles$get_upload_job_path_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Url = structure(logical(0), tags = list(locationName = "Url", type = "string")), ClientToken = structure(logical(0), tags = list(locationName = "ClientToken", type = "string")), ValidUntil = structure(logical(0), tags = list(locationName = "ValidUntil", type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_upload_job_path_output"]]))
 }
 
 .customerprofiles$get_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), WorkflowId = structure(logical(0), tags = list(location = "uri", locationName = "WorkflowId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_workflow_input"]]))
 }
 
 .customerprofiles$get_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkflowId = structure(logical(0), tags = list(type = "string")), WorkflowType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ErrorDescription = structure(logical(0), tags = list(type = "string")), StartDate = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Attributes = structure(list(AppflowIntegration = structure(list(SourceConnectorType = structure(logical(0), tags = list(type = "string")), ConnectorProfileName = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Metrics = structure(list(AppflowIntegration = structure(list(RecordsProcessed = structure(logical(0), tags = list(type = "long")), StepsCompleted = structure(logical(0), tags = list(type = "long")), TotalSteps = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_workflow_output"]]))
 }
 
 .customerprofiles$get_workflow_steps_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), WorkflowId = structure(logical(0), tags = list(location = "uri", locationName = "WorkflowId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_workflow_steps_input"]]))
 }
 
 .customerprofiles$get_workflow_steps_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkflowId = structure(logical(0), tags = list(type = "string")), WorkflowType = structure(logical(0), tags = list(type = "string")), Items = structure(list(structure(list(AppflowIntegration = structure(list(FlowName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ExecutionMessage = structure(logical(0), tags = list(type = "string")), RecordsProcessed = structure(logical(0), tags = list(type = "long")), BatchRecordsStartTime = structure(logical(0), tags = list(type = "string")), BatchRecordsEndTime = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["get_workflow_steps_output"]]))
 }
 
 .customerprofiles$list_account_integrations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Uri = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), IncludeHidden = structure(logical(0), tags = list(location = "querystring", locationName = "include-hidden", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_account_integrations_input"]]))
 }
 
 .customerprofiles$list_account_integrations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), Uri = structure(logical(0), tags = list(type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ObjectTypeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), WorkflowId = structure(logical(0), tags = list(type = "string")), IsUnstructured = structure(logical(0), tags = list(type = "boolean")), RoleArn = structure(logical(0), tags = list(type = "string")), EventTriggerNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Scope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_account_integrations_output"]]))
 }
 
 .customerprofiles$list_calculated_attribute_definitions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_calculated_attribute_definitions_input"]]))
 }
 
 .customerprofiles$list_calculated_attribute_definitions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(CalculatedAttributeName = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), UseHistoricalData = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_calculated_attribute_definitions_output"]]))
 }
 
 .customerprofiles$list_calculated_attributes_for_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ProfileId = structure(logical(0), tags = list(location = "uri", locationName = "ProfileId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_calculated_attributes_for_profile_input"]]))
 }
 
 .customerprofiles$list_calculated_attributes_for_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(CalculatedAttributeName = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), IsDataPartial = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), LastObjectTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_calculated_attributes_for_profile_output"]]))
 }
 
 .customerprofiles$list_domain_layouts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_domain_layouts_input"]]))
 }
 
 .customerprofiles$list_domain_layouts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(LayoutDefinitionName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisplayName = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean")), LayoutType = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_domain_layouts_output"]]))
 }
 
 .customerprofiles$list_domain_object_types_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_domain_object_types_input"]]))
 }
 
 .customerprofiles$list_domain_object_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(ObjectTypeName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_domain_object_types_output"]]))
 }
 
 .customerprofiles$list_domains_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_domains_input"]]))
 }
 
 .customerprofiles$list_domains_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_domains_output"]]))
 }
 
 .customerprofiles$list_event_streams_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_event_streams_input"]]))
 }
 
 .customerprofiles$list_event_streams_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), EventStreamName = structure(logical(0), tags = list(type = "string")), EventStreamArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StoppedSince = structure(logical(0), tags = list(type = "timestamp")), DestinationSummary = structure(list(Uri = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), UnhealthySince = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_event_streams_output"]]))
 }
 
 .customerprofiles$list_event_triggers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_event_triggers_input"]]))
 }
 
 .customerprofiles$list_event_triggers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(ObjectTypeName = structure(logical(0), tags = list(type = "string")), EventTriggerName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_event_triggers_output"]]))
 }
 
 .customerprofiles$list_identity_resolution_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_identity_resolution_jobs_input"]]))
 }
 
 .customerprofiles$list_identity_resolution_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityResolutionJobsList = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), JobId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), JobStartTime = structure(logical(0), tags = list(type = "timestamp")), JobEndTime = structure(logical(0), tags = list(type = "timestamp")), JobStats = structure(list(NumberOfProfilesReviewed = structure(logical(0), tags = list(type = "long")), NumberOfMatchesFound = structure(logical(0), tags = list(type = "long")), NumberOfMergesDone = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), ExportingLocation = structure(list(S3Exporting = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_identity_resolution_jobs_output"]]))
 }
 
 .customerprofiles$list_integrations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), IncludeHidden = structure(logical(0), tags = list(location = "querystring", locationName = "include-hidden", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_integrations_input"]]))
 }
 
 .customerprofiles$list_integrations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), Uri = structure(logical(0), tags = list(type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ObjectTypeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), WorkflowId = structure(logical(0), tags = list(type = "string")), IsUnstructured = structure(logical(0), tags = list(type = "boolean")), RoleArn = structure(logical(0), tags = list(type = "string")), EventTriggerNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Scope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_integrations_output"]]))
 }
 
 .customerprofiles$list_object_type_attribute_values_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ObjectTypeName = structure(logical(0), tags = list(location = "uri", locationName = "ObjectTypeName", type = "string")), AttributeName = structure(logical(0), tags = list(location = "uri", locationName = "AttributeName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_object_type_attribute_values_input"]]))
 }
 
 .customerprofiles$list_object_type_attribute_values_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_object_type_attribute_values_output"]]))
 }
 
 .customerprofiles$list_object_type_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ObjectTypeName = structure(logical(0), tags = list(location = "uri", locationName = "ObjectTypeName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_object_type_attributes_input"]]))
 }
 
 .customerprofiles$list_object_type_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(AttributeName = structure(logical(0), tags = list(type = "string")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_object_type_attributes_output"]]))
 }
 
 .customerprofiles$list_profile_attribute_values_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), AttributeName = structure(logical(0), tags = list(location = "uri", locationName = "AttributeName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_profile_attribute_values_input"]]))
 }
 
 .customerprofiles$list_profile_attribute_values_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), AttributeName = structure(logical(0), tags = list(type = "string")), Items = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), StatusCode = structure(logical(0), tags = list(location = "statusCode", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_profile_attribute_values_output"]]))
 }
 
 .customerprofiles$list_profile_history_records_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), ActionType = structure(logical(0), tags = list(type = "string")), PerformedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_profile_history_records_input"]]))
 }
 
 .customerprofiles$list_profile_history_records_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileHistoryRecords = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), ActionType = structure(logical(0), tags = list(type = "string")), ProfileObjectUniqueKey = structure(logical(0), tags = list(type = "string")), PerformedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_profile_history_records_output"]]))
 }
 
 .customerprofiles$list_profile_object_type_templates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_profile_object_type_templates_input"]]))
 }
 
 .customerprofiles$list_profile_object_type_templates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(TemplateId = structure(logical(0), tags = list(type = "string")), SourceName = structure(logical(0), tags = list(type = "string")), SourceObject = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_profile_object_type_templates_output"]]))
 }
 
 .customerprofiles$list_profile_object_types_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_profile_object_types_input"]]))
 }
 
 .customerprofiles$list_profile_object_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(ObjectTypeName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), MaxProfileObjectCount = structure(logical(0), tags = list(type = "integer")), MaxAvailableProfileObjectCount = structure(logical(0), tags = list(type = "integer")), SourcePriority = structure(logical(0), tags = list(type = "integer")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_profile_object_types_output"]]))
 }
 
 .customerprofiles$list_profile_objects_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ObjectFilter = structure(list(KeyName = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_profile_objects_input"]]))
 }
 
 .customerprofiles$list_profile_objects_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(ObjectTypeName = structure(logical(0), tags = list(type = "string")), ProfileObjectUniqueKey = structure(logical(0), tags = list(type = "string")), Object = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_profile_objects_output"]]))
 }
 
 .customerprofiles$list_recommender_filters_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_recommender_filters_input"]]))
 }
 
 .customerprofiles$list_recommender_filters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), RecommenderFilters = structure(list(structure(list(RecommenderFilterName = structure(logical(0), tags = list(type = "string")), RecommenderSchemaName = structure(logical(0), tags = list(type = "string")), RecommenderFilterExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_recommender_filters_output"]]))
 }
 
 .customerprofiles$list_recommender_recipes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_recommender_recipes_input"]]))
 }
 
 .customerprofiles$list_recommender_recipes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), RecommenderRecipes = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_recommender_recipes_output"]]))
 }
 
 .customerprofiles$list_recommender_schemas_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_recommender_schemas_input"]]))
 }
 
 .customerprofiles$list_recommender_schemas_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), RecommenderSchemas = structure(list(structure(list(RecommenderSchemaName = structure(logical(0), tags = list(type = "string")), Fields = structure(list(structure(list(structure(list(TargetFieldName = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string")), FeatureType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_recommender_schemas_output"]]))
 }
 
 .customerprofiles$list_recommenders_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_recommenders_input"]]))
 }
 
 .customerprofiles$list_recommenders_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Recommenders = structure(list(structure(list(RecommenderName = structure(logical(0), tags = list(type = "string")), RecipeName = structure(logical(0), tags = list(type = "string")), RecommenderSchemaName = structure(logical(0), tags = list(type = "string")), RecommenderConfig = structure(list(EventsConfig = structure(list(EventParametersList = structure(list(structure(list(EventType = structure(logical(0), tags = list(type = "string")), EventValueThreshold = structure(logical(0), tags = list(type = "double")), EventWeight = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), TrainingFrequency = structure(logical(0), tags = list(type = "integer", box = TRUE)), InferenceConfig = structure(list(MinProvisionedTPS = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), IncludedColumns = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), ExcludedColumns = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), FailureReason = structure(logical(0), tags = list(type = "string")), LatestRecommenderUpdate = structure(list(RecommenderConfig = structure(list(EventsConfig = structure(list(EventParametersList = structure(list(structure(list(EventType = structure(logical(0), tags = list(type = "string")), EventValueThreshold = structure(logical(0), tags = list(type = "double")), EventWeight = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), TrainingFrequency = structure(logical(0), tags = list(type = "integer", box = TRUE)), InferenceConfig = structure(list(MinProvisionedTPS = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), IncludedColumns = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), ExcludedColumns = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_recommenders_output"]]))
 }
 
 .customerprofiles$list_rule_based_matches_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_rule_based_matches_input"]]))
 }
 
 .customerprofiles$list_rule_based_matches_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MatchIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_rule_based_matches_output"]]))
 }
 
 .customerprofiles$list_segment_definitions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_segment_definitions_input"]]))
 }
 
 .customerprofiles$list_segment_definitions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(locationName = "NextToken", type = "string")), Items = structure(list(structure(list(SegmentDefinitionName = structure(logical(0), tags = list(locationName = "SegmentDefinitionName", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "DisplayName", type = "string")), Description = structure(logical(0), tags = list(locationName = "Description", type = "string", sensitive = TRUE)), SegmentDefinitionArn = structure(logical(0), tags = list(locationName = "SegmentDefinitionArn", type = "string")), CreatedAt = structure(logical(0), tags = list(locationName = "CreatedAt", type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tags", type = "map")), SegmentType = structure(logical(0), tags = list(locationName = "SegmentType", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Items", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_segment_definitions_output"]]))
+}
+
+.customerprofiles$list_segment_subscription_events_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["list_segment_subscription_events_input"]]))
+}
+
+.customerprofiles$list_segment_subscription_events_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["list_segment_subscription_events_output"]]))
 }
 
 .customerprofiles$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_tags_for_resource_input"]]))
 }
 
 .customerprofiles$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_tags_for_resource_output"]]))
 }
 
 .customerprofiles$list_upload_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_upload_jobs_input"]]))
 }
 
 .customerprofiles$list_upload_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(locationName = "NextToken", type = "string")), Items = structure(list(structure(list(JobId = structure(logical(0), tags = list(locationName = "JobId", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "DisplayName", type = "string")), Status = structure(logical(0), tags = list(locationName = "Status", type = "string")), StatusReason = structure(logical(0), tags = list(locationName = "StatusReason", type = "string")), CreatedAt = structure(logical(0), tags = list(locationName = "CreatedAt", type = "timestamp")), CompletedAt = structure(logical(0), tags = list(locationName = "CompletedAt", type = "timestamp")), DataExpiry = structure(logical(0), tags = list(locationName = "DataExpiry", type = "integer"))), tags = list(type = "structure"))), tags = list(locationName = "Items", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_upload_jobs_output"]]))
 }
 
 .customerprofiles$list_workflows_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), WorkflowType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), QueryStartDate = structure(logical(0), tags = list(type = "timestamp")), QueryEndDate = structure(logical(0), tags = list(type = "timestamp")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_workflows_input"]]))
 }
 
 .customerprofiles$list_workflows_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(WorkflowType = structure(logical(0), tags = list(type = "string")), WorkflowId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusDescription = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["list_workflows_output"]]))
 }
 
 .customerprofiles$merge_profiles_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), MainProfileId = structure(logical(0), tags = list(type = "string")), ProfileIdsToBeMerged = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FieldSourceProfileIds = structure(list(AccountNumber = structure(logical(0), tags = list(type = "string")), AdditionalInformation = structure(logical(0), tags = list(type = "string")), PartyType = structure(logical(0), tags = list(type = "string")), BusinessName = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), MiddleName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), BirthDate = structure(logical(0), tags = list(type = "string")), Gender = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string")), MobilePhoneNumber = structure(logical(0), tags = list(type = "string")), HomePhoneNumber = structure(logical(0), tags = list(type = "string")), BusinessPhoneNumber = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), PersonalEmailAddress = structure(logical(0), tags = list(type = "string")), BusinessEmailAddress = structure(logical(0), tags = list(type = "string")), Address = structure(logical(0), tags = list(type = "string")), ShippingAddress = structure(logical(0), tags = list(type = "string")), MailingAddress = structure(logical(0), tags = list(type = "string")), BillingAddress = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ProfileType = structure(logical(0), tags = list(type = "string")), EngagementPreferences = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["merge_profiles_input"]]))
 }
 
 .customerprofiles$merge_profiles_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["merge_profiles_output"]]))
 }
 
 .customerprofiles$put_domain_object_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ObjectTypeName = structure(logical(0), tags = list(location = "uri", locationName = "ObjectTypeName", type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EncryptionKey = structure(logical(0), tags = list(type = "string")), Fields = structure(list(structure(list(Source = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string")), FeatureType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["put_domain_object_type_input"]]))
 }
 
 .customerprofiles$put_domain_object_type_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ObjectTypeName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EncryptionKey = structure(logical(0), tags = list(type = "string")), Fields = structure(list(structure(list(Source = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string")), FeatureType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["put_domain_object_type_output"]]))
 }
 
 .customerprofiles$put_integration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Uri = structure(logical(0), tags = list(type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), ObjectTypeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), FlowDefinition = structure(list(Description = structure(logical(0), tags = list(type = "string")), FlowName = structure(logical(0), tags = list(type = "string")), KmsArn = structure(logical(0), tags = list(type = "string")), SourceFlowConfig = structure(list(ConnectorProfileName = structure(logical(0), tags = list(type = "string")), ConnectorType = structure(logical(0), tags = list(type = "string")), IncrementalPullConfig = structure(list(DatetimeTypeFieldName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourceConnectorProperties = structure(list(Marketo = structure(list(Object = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), S3 = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), BucketPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Salesforce = structure(list(Object = structure(logical(0), tags = list(type = "string")), EnableDynamicFieldUpdate = structure(logical(0), tags = list(type = "boolean")), IncludeDeletedRecords = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ServiceNow = structure(list(Object = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Zendesk = structure(list(Object = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Tasks = structure(list(structure(list(ConnectorOperator = structure(list(Marketo = structure(logical(0), tags = list(type = "string")), S3 = structure(logical(0), tags = list(type = "string")), Salesforce = structure(logical(0), tags = list(type = "string")), ServiceNow = structure(logical(0), tags = list(type = "string")), Zendesk = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationField = structure(logical(0), tags = list(type = "string")), SourceFields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TaskProperties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), TaskType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TriggerConfig = structure(list(TriggerType = structure(logical(0), tags = list(type = "string")), TriggerProperties = structure(list(Scheduled = structure(list(ScheduleExpression = structure(logical(0), tags = list(type = "string")), DataPullMode = structure(logical(0), tags = list(type = "string")), ScheduleStartTime = structure(logical(0), tags = list(type = "timestamp")), ScheduleEndTime = structure(logical(0), tags = list(type = "timestamp")), Timezone = structure(logical(0), tags = list(type = "string")), ScheduleOffset = structure(logical(0), tags = list(box = TRUE, type = "long")), FirstExecutionFrom = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", sensitive = TRUE)), RoleArn = structure(logical(0), tags = list(type = "string")), EventTriggerNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Scope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["put_integration_input"]]))
 }
 
 .customerprofiles$put_integration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), Uri = structure(logical(0), tags = list(type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ObjectTypeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), WorkflowId = structure(logical(0), tags = list(type = "string")), IsUnstructured = structure(logical(0), tags = list(type = "boolean")), RoleArn = structure(logical(0), tags = list(type = "string")), EventTriggerNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Scope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["put_integration_output"]]))
 }
 
 .customerprofiles$put_profile_object_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ObjectTypeName = structure(logical(0), tags = list(type = "string")), Object = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["put_profile_object_input"]]))
 }
 
 .customerprofiles$put_profile_object_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileObjectUniqueKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["put_profile_object_output"]]))
 }
 
 .customerprofiles$put_profile_object_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ObjectTypeName = structure(logical(0), tags = list(location = "uri", locationName = "ObjectTypeName", type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), TemplateId = structure(logical(0), tags = list(type = "string")), ExpirationDays = structure(logical(0), tags = list(type = "integer")), EncryptionKey = structure(logical(0), tags = list(type = "string")), AllowProfileCreation = structure(logical(0), tags = list(type = "boolean")), SourceLastUpdatedTimestampFormat = structure(logical(0), tags = list(type = "string")), MaxProfileObjectCount = structure(logical(0), tags = list(type = "integer")), SourcePriority = structure(logical(0), tags = list(type = "integer")), Fields = structure(list(structure(list(Source = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map", sensitive = TRUE)), Keys = structure(list(structure(list(structure(list(StandardIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FieldNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map", sensitive = TRUE)), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["put_profile_object_type_input"]]))
 }
 
 .customerprofiles$put_profile_object_type_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ObjectTypeName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), TemplateId = structure(logical(0), tags = list(type = "string")), ExpirationDays = structure(logical(0), tags = list(type = "integer")), EncryptionKey = structure(logical(0), tags = list(type = "string")), AllowProfileCreation = structure(logical(0), tags = list(type = "boolean")), SourceLastUpdatedTimestampFormat = structure(logical(0), tags = list(type = "string")), MaxProfileObjectCount = structure(logical(0), tags = list(type = "integer")), MaxAvailableProfileObjectCount = structure(logical(0), tags = list(type = "integer")), SourcePriority = structure(logical(0), tags = list(type = "integer")), Fields = structure(list(structure(list(Source = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map", sensitive = TRUE)), Keys = structure(list(structure(list(structure(list(StandardIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FieldNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map", sensitive = TRUE)), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["put_profile_object_type_output"]]))
+}
+
+.customerprofiles$put_segment_subscription_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["put_segment_subscription_input"]]))
+}
+
+.customerprofiles$put_segment_subscription_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["put_segment_subscription_output"]]))
 }
 
 .customerprofiles$search_profiles_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), KeyName = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AdditionalSearchKeys = structure(list(structure(list(KeyName = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), LogicalOperator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["search_profiles_input"]]))
 }
 
 .customerprofiles$search_profiles_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(ProfileId = structure(logical(0), tags = list(type = "string")), AccountNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AdditionalInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PartyType = structure(logical(0), tags = list(type = "string", deprecated = TRUE, sensitive = TRUE)), BusinessName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), FirstName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MiddleName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LastName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BirthDate = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Gender = structure(logical(0), tags = list(type = "string", deprecated = TRUE, sensitive = TRUE)), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MobilePhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), HomePhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BusinessPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PersonalEmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BusinessEmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Address = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), ShippingAddress = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), MailingAddress = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), BillingAddress = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), FoundByItems = structure(list(structure(list(KeyName = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PartyTypeString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GenderString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProfileType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EngagementPreferences = structure(list(Phone = structure(list(structure(list(KeyName = structure(logical(0), tags = list(type = "string")), KeyValue = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ContactType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Email = structure(list(structure(list(KeyName = structure(logical(0), tags = list(type = "string")), KeyValue = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ContactType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["search_profiles_output"]]))
+}
+
+.customerprofiles$search_recommendations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["search_recommendations_input"]]))
+}
+
+.customerprofiles$search_recommendations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .customerprofiles_shapes[["search_recommendations_output"]]))
 }
 
 .customerprofiles$start_recommender_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), RecommenderName = structure(logical(0), tags = list(location = "uri", locationName = "RecommenderName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["start_recommender_input"]]))
 }
 
 .customerprofiles$start_recommender_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["start_recommender_output"]]))
 }
 
 .customerprofiles$start_upload_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), JobId = structure(logical(0), tags = list(location = "uri", locationName = "JobId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["start_upload_job_input"]]))
 }
 
 .customerprofiles$start_upload_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["start_upload_job_output"]]))
 }
 
 .customerprofiles$stop_recommender_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), RecommenderName = structure(logical(0), tags = list(location = "uri", locationName = "RecommenderName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["stop_recommender_input"]]))
 }
 
 .customerprofiles$stop_recommender_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["stop_recommender_output"]]))
 }
 
 .customerprofiles$stop_upload_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), JobId = structure(logical(0), tags = list(location = "uri", locationName = "JobId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["stop_upload_job_input"]]))
 }
 
 .customerprofiles$stop_upload_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["stop_upload_job_output"]]))
 }
 
 .customerprofiles$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["tag_resource_input"]]))
 }
 
 .customerprofiles$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["tag_resource_output"]]))
 }
 
 .customerprofiles$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["untag_resource_input"]]))
 }
 
 .customerprofiles$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["untag_resource_output"]]))
 }
 
 .customerprofiles$update_calculated_attribute_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), CalculatedAttributeName = structure(logical(0), tags = list(location = "uri", locationName = "CalculatedAttributeName", type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Conditions = structure(list(Range = structure(list(Value = structure(logical(0), tags = list(type = "integer")), Unit = structure(logical(0), tags = list(type = "string")), ValueRange = structure(list(Start = structure(logical(0), tags = list(type = "integer")), End = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), TimestampSource = structure(logical(0), tags = list(type = "string")), TimestampFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObjectCount = structure(logical(0), tags = list(type = "integer")), Threshold = structure(list(Value = structure(logical(0), tags = list(type = "string")), Operator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["update_calculated_attribute_definition_input"]]))
 }
 
 .customerprofiles$update_calculated_attribute_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CalculatedAttributeName = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Statistic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Conditions = structure(list(Range = structure(list(Value = structure(logical(0), tags = list(type = "integer")), Unit = structure(logical(0), tags = list(type = "string")), ValueRange = structure(list(Start = structure(logical(0), tags = list(type = "integer")), End = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), TimestampSource = structure(logical(0), tags = list(type = "string")), TimestampFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObjectCount = structure(logical(0), tags = list(type = "integer")), Threshold = structure(list(Value = structure(logical(0), tags = list(type = "string")), Operator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", sensitive = TRUE)), AttributeDetails = structure(list(Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Expression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), UseHistoricalData = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Readiness = structure(list(ProgressPercentage = structure(logical(0), tags = list(type = "integer")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["update_calculated_attribute_definition_output"]]))
 }
 
 .customerprofiles$update_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), DefaultExpirationDays = structure(logical(0), tags = list(type = "integer")), DefaultEncryptionKey = structure(logical(0), tags = list(type = "string")), DeadLetterQueueUrl = structure(logical(0), tags = list(type = "string")), Matching = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), JobSchedule = structure(list(DayOfTheWeek = structure(logical(0), tags = list(type = "string")), Time = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoMerging = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Consolidation = structure(list(MatchingAttributesList = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), ConflictResolution = structure(list(ConflictResolvingModel = structure(logical(0), tags = list(type = "string")), SourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MinAllowedConfidenceScoreForMerging = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), ExportingConfig = structure(list(S3Exporting = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), RuleBasedMatching = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), MatchingRules = structure(list(structure(list(Rule = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxAllowedRuleLevelForMerging = structure(logical(0), tags = list(type = "integer")), MaxAllowedRuleLevelForMatching = structure(logical(0), tags = list(type = "integer")), AttributeTypesSelector = structure(list(AttributeMatchingModel = structure(logical(0), tags = list(type = "string")), Address = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PhoneNumber = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EmailAddress = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ConflictResolution = structure(list(ConflictResolvingModel = structure(logical(0), tags = list(type = "string")), SourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExportingConfig = structure(list(S3Exporting = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), DataStore = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["update_domain_input"]]))
 }
 
 .customerprofiles$update_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), DefaultExpirationDays = structure(logical(0), tags = list(type = "integer")), DefaultEncryptionKey = structure(logical(0), tags = list(type = "string")), DeadLetterQueueUrl = structure(logical(0), tags = list(type = "string")), Matching = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), JobSchedule = structure(list(DayOfTheWeek = structure(logical(0), tags = list(type = "string")), Time = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AutoMerging = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Consolidation = structure(list(MatchingAttributesList = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), ConflictResolution = structure(list(ConflictResolvingModel = structure(logical(0), tags = list(type = "string")), SourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MinAllowedConfidenceScoreForMerging = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), ExportingConfig = structure(list(S3Exporting = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), RuleBasedMatching = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), MatchingRules = structure(list(structure(list(Rule = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), MaxAllowedRuleLevelForMerging = structure(logical(0), tags = list(type = "integer")), MaxAllowedRuleLevelForMatching = structure(logical(0), tags = list(type = "integer")), AttributeTypesSelector = structure(list(AttributeMatchingModel = structure(logical(0), tags = list(type = "string")), Address = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PhoneNumber = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EmailAddress = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ConflictResolution = structure(list(ConflictResolvingModel = structure(logical(0), tags = list(type = "string")), SourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExportingConfig = structure(list(S3Exporting = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), DataStore = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), Readiness = structure(list(ProgressPercentage = structure(logical(0), tags = list(type = "integer")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["update_domain_output"]]))
 }
 
 .customerprofiles$update_domain_layout_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), LayoutDefinitionName = structure(logical(0), tags = list(location = "uri", locationName = "LayoutDefinitionName", type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisplayName = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean")), LayoutType = structure(logical(0), tags = list(type = "string")), Layout = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["update_domain_layout_input"]]))
 }
 
 .customerprofiles$update_domain_layout_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LayoutDefinitionName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DisplayName = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean")), LayoutType = structure(logical(0), tags = list(type = "string")), Layout = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Version = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["update_domain_layout_output"]]))
 }
 
 .customerprofiles$update_event_trigger_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), EventTriggerName = structure(logical(0), tags = list(location = "uri", locationName = "EventTriggerName", type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EventTriggerConditions = structure(list(structure(list(EventTriggerDimensions = structure(list(structure(list(ObjectAttributes = structure(list(structure(list(Source = structure(logical(0), tags = list(type = "string")), FieldName = structure(logical(0), tags = list(type = "string")), ComparisonOperator = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), LogicalOperator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), SegmentFilter = structure(logical(0), tags = list(type = "string")), EventTriggerLimits = structure(list(EventExpiration = structure(logical(0), tags = list(type = "long")), Periods = structure(list(structure(list(Unit = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "integer")), MaxInvocationsPerProfile = structure(logical(0), tags = list(type = "integer")), Unlimited = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["update_event_trigger_input"]]))
 }
 
 .customerprofiles$update_event_trigger_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EventTriggerName = structure(logical(0), tags = list(type = "string")), ObjectTypeName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EventTriggerConditions = structure(list(structure(list(EventTriggerDimensions = structure(list(structure(list(ObjectAttributes = structure(list(structure(list(Source = structure(logical(0), tags = list(type = "string")), FieldName = structure(logical(0), tags = list(type = "string")), ComparisonOperator = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), LogicalOperator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), SegmentFilter = structure(logical(0), tags = list(type = "string")), EventTriggerLimits = structure(list(EventExpiration = structure(logical(0), tags = list(type = "long")), Periods = structure(list(structure(list(Unit = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "integer")), MaxInvocationsPerProfile = structure(logical(0), tags = list(type = "integer")), Unlimited = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["update_event_trigger_output"]]))
 }
 
 .customerprofiles$update_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), AdditionalInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PartyType = structure(logical(0), tags = list(type = "string", deprecated = TRUE, sensitive = TRUE)), BusinessName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), FirstName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MiddleName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LastName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BirthDate = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Gender = structure(logical(0), tags = list(type = "string", deprecated = TRUE, sensitive = TRUE)), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MobilePhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), HomePhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BusinessPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PersonalEmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BusinessEmailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Address = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), ShippingAddress = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), MailingAddress = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), BillingAddress = structure(list(Address1 = structure(logical(0), tags = list(type = "string")), Address2 = structure(logical(0), tags = list(type = "string")), Address3 = structure(logical(0), tags = list(type = "string")), Address4 = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), County = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Province = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), PartyTypeString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GenderString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProfileType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), EngagementPreferences = structure(list(Phone = structure(list(structure(list(KeyName = structure(logical(0), tags = list(type = "string")), KeyValue = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ContactType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Email = structure(list(structure(list(KeyName = structure(logical(0), tags = list(type = "string")), KeyValue = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ContactType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["update_profile_input"]]))
 }
 
 .customerprofiles$update_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["update_profile_output"]]))
 }
 
 .customerprofiles$update_recommender_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), RecommenderName = structure(logical(0), tags = list(location = "uri", locationName = "RecommenderName", type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RecommenderConfig = structure(list(EventsConfig = structure(list(EventParametersList = structure(list(structure(list(EventType = structure(logical(0), tags = list(type = "string")), EventValueThreshold = structure(logical(0), tags = list(type = "double")), EventWeight = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), TrainingFrequency = structure(logical(0), tags = list(type = "integer", box = TRUE)), InferenceConfig = structure(list(MinProvisionedTPS = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), IncludedColumns = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), ExcludedColumns = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["update_recommender_input"]]))
 }
 
 .customerprofiles$update_recommender_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecommenderName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .customerprofiles_shapes[["update_recommender_output"]]))
 }

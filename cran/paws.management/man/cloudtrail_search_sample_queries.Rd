@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_search_sample_queries}
 \alias{cloudtrail_search_sample_queries}
-\title{Searches sample queries and returns a list of sample queries that are
-sorted by relevance}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_search_sample_queries(
   SearchPhrase,
@@ -19,7 +19,7 @@ cloudtrail_search_sample_queries(
 \item{NextToken}{A token you can use to get the next page of results. The length constraint is in characters, not words.}
 }
 \description{
-Searches sample queries and returns a list of sample queries that are sorted by relevance. To search for sample queries, provide a natural language \code{SearchPhrase} in English.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_search_sample_queries/} for full documentation.
 }

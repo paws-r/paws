@@ -5,84 +5,70 @@ NULL
 
 .costandusagereportservice$delete_report_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .costandusagereportservice_shapes[["delete_report_definition_input"]]))
 }
 
 .costandusagereportservice$delete_report_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResponseMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .costandusagereportservice_shapes[["delete_report_definition_output"]]))
 }
 
 .costandusagereportservice$describe_report_definitions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .costandusagereportservice_shapes[["describe_report_definitions_input"]]))
 }
 
 .costandusagereportservice$describe_report_definitions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportDefinitions = structure(list(structure(list(ReportName = structure(logical(0), tags = list(type = "string")), TimeUnit = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string")), Compression = structure(logical(0), tags = list(type = "string")), AdditionalSchemaElements = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), S3Bucket = structure(logical(0), tags = list(type = "string")), S3Prefix = structure(logical(0), tags = list(type = "string")), S3Region = structure(logical(0), tags = list(type = "string")), AdditionalArtifacts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RefreshClosedReports = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ReportVersioning = structure(logical(0), tags = list(type = "string")), BillingViewArn = structure(logical(0), tags = list(type = "string")), ReportStatus = structure(list(lastDelivery = structure(logical(0), tags = list(type = "string")), lastStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .costandusagereportservice_shapes[["describe_report_definitions_output"]]))
 }
 
 .costandusagereportservice$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .costandusagereportservice_shapes[["list_tags_for_resource_input"]]))
 }
 
 .costandusagereportservice$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .costandusagereportservice_shapes[["list_tags_for_resource_output"]]))
 }
 
 .costandusagereportservice$modify_report_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportName = structure(logical(0), tags = list(type = "string")), ReportDefinition = structure(list(ReportName = structure(logical(0), tags = list(type = "string")), TimeUnit = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string")), Compression = structure(logical(0), tags = list(type = "string")), AdditionalSchemaElements = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), S3Bucket = structure(logical(0), tags = list(type = "string")), S3Prefix = structure(logical(0), tags = list(type = "string")), S3Region = structure(logical(0), tags = list(type = "string")), AdditionalArtifacts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RefreshClosedReports = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ReportVersioning = structure(logical(0), tags = list(type = "string")), BillingViewArn = structure(logical(0), tags = list(type = "string")), ReportStatus = structure(list(lastDelivery = structure(logical(0), tags = list(type = "string")), lastStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .costandusagereportservice_shapes[["modify_report_definition_input"]]))
 }
 
 .costandusagereportservice$modify_report_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .costandusagereportservice_shapes[["modify_report_definition_output"]]))
 }
 
 .costandusagereportservice$put_report_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportDefinition = structure(list(ReportName = structure(logical(0), tags = list(type = "string")), TimeUnit = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string")), Compression = structure(logical(0), tags = list(type = "string")), AdditionalSchemaElements = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), S3Bucket = structure(logical(0), tags = list(type = "string")), S3Prefix = structure(logical(0), tags = list(type = "string")), S3Region = structure(logical(0), tags = list(type = "string")), AdditionalArtifacts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RefreshClosedReports = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ReportVersioning = structure(logical(0), tags = list(type = "string")), BillingViewArn = structure(logical(0), tags = list(type = "string")), ReportStatus = structure(list(lastDelivery = structure(logical(0), tags = list(type = "string")), lastStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .costandusagereportservice_shapes[["put_report_definition_input"]]))
 }
 
 .costandusagereportservice$put_report_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .costandusagereportservice_shapes[["put_report_definition_output"]]))
 }
 
 .costandusagereportservice$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .costandusagereportservice_shapes[["tag_resource_input"]]))
 }
 
 .costandusagereportservice$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .costandusagereportservice_shapes[["tag_resource_output"]]))
 }
 
 .costandusagereportservice$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportName = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .costandusagereportservice_shapes[["untag_resource_input"]]))
 }
 
 .costandusagereportservice$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .costandusagereportservice_shapes[["untag_resource_output"]]))
 }

@@ -13,7 +13,8 @@ bedrockagentcore_create_ab_test(
   evaluationConfig,
   roleArn,
   enableOnCreate = NULL,
-  clientToken = NULL
+  clientToken = NULL,
+  tags = NULL
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ bedrockagentcore_create_ab_test(
 \item{enableOnCreate}{Whether to enable the A/B test immediately upon creation. If true, traffic splitting begins automatically.}
 
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error.}
+
+\item{tags}{A map of tag keys and values to associate with the A/B test.}
 }
 \description{
 Creates an A/B test for comparing agent configurations. A/B tests split traffic between a control variant and a treatment variant through a gateway, then evaluate performance using online evaluation configurations to determine which variant performs better.

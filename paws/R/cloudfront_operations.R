@@ -3646,7 +3646,7 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
 #'     OriginAccessControlConfig = list(
 #'       Name = "string",
 #'       Description = "string",
-#'       SigningProtocol = "sigv4",
+#'       SigningProtocol = "sigv4"|"sigv4a",
 #'       SigningBehavior = "never"|"always"|"no-override",
 #'       OriginAccessControlOriginType = "s3"|"mediastore"|"mediapackagev2"|"lambda"
 #'     )
@@ -3662,7 +3662,7 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
 #'   OriginAccessControlConfig = list(
 #'     Name = "string",
 #'     Description = "string",
-#'     SigningProtocol = "sigv4",
+#'     SigningProtocol = "sigv4"|"sigv4a",
 #'     SigningBehavior = "never"|"always"|"no-override",
 #'     OriginAccessControlOriginType = "s3"|"mediastore"|"mediapackagev2"|"lambda"
 #'   )
@@ -8611,7 +8611,7 @@ cloudfront_get_monitoring_subscription <- function(DistributionId) {
 #'     OriginAccessControlConfig = list(
 #'       Name = "string",
 #'       Description = "string",
-#'       SigningProtocol = "sigv4",
+#'       SigningProtocol = "sigv4"|"sigv4a",
 #'       SigningBehavior = "never"|"always"|"no-override",
 #'       OriginAccessControlOriginType = "s3"|"mediastore"|"mediapackagev2"|"lambda"
 #'     )
@@ -8668,7 +8668,7 @@ cloudfront_get_origin_access_control <- function(Id) {
 #'   OriginAccessControlConfig = list(
 #'     Name = "string",
 #'     Description = "string",
-#'     SigningProtocol = "sigv4",
+#'     SigningProtocol = "sigv4"|"sigv4a",
 #'     SigningBehavior = "never"|"always"|"no-override",
 #'     OriginAccessControlOriginType = "s3"|"mediastore"|"mediapackagev2"|"lambda"
 #'   ),
@@ -14276,7 +14276,7 @@ cloudfront_list_key_value_stores <- function(Marker = NULL, MaxItems = NULL, Sta
 #'         Id = "string",
 #'         Description = "string",
 #'         Name = "string",
-#'         SigningProtocol = "sigv4",
+#'         SigningProtocol = "sigv4"|"sigv4a",
 #'         SigningBehavior = "never"|"always"|"no-override",
 #'         OriginAccessControlOriginType = "s3"|"mediastore"|"mediapackagev2"|"lambda"
 #'       )
@@ -18020,7 +18020,7 @@ cloudfront_update_key_value_store <- function(Name, Comment, IfMatch) {
 #'     OriginAccessControlConfig = list(
 #'       Name = "string",
 #'       Description = "string",
-#'       SigningProtocol = "sigv4",
+#'       SigningProtocol = "sigv4"|"sigv4a",
 #'       SigningBehavior = "never"|"always"|"no-override",
 #'       OriginAccessControlOriginType = "s3"|"mediastore"|"mediapackagev2"|"lambda"
 #'     )
@@ -18035,7 +18035,7 @@ cloudfront_update_key_value_store <- function(Name, Comment, IfMatch) {
 #'   OriginAccessControlConfig = list(
 #'     Name = "string",
 #'     Description = "string",
-#'     SigningProtocol = "sigv4",
+#'     SigningProtocol = "sigv4"|"sigv4a",
 #'     SigningBehavior = "never"|"always"|"no-override",
 #'     OriginAccessControlOriginType = "s3"|"mediastore"|"mediapackagev2"|"lambda"
 #'   ),

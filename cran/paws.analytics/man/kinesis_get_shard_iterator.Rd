@@ -11,7 +11,8 @@ kinesis_get_shard_iterator(
   StartingSequenceNumber = NULL,
   Timestamp = NULL,
   StreamARN = NULL,
-  StreamId = NULL
+  StreamId = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -37,6 +38,8 @@ The following are the valid Amazon Kinesis shard iterator types:
 \item{StreamARN}{The ARN of the stream.}
 
 \item{StreamId}{Not Implemented. Reserved for future use.}
+
+\item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.}
 }
 \description{
 Gets an Amazon Kinesis shard iterator. A shard iterator expires 5 minutes after it is returned to the requester.

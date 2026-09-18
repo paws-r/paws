@@ -49,6 +49,8 @@ NULL
 #' -   For an Amazon Web Services Verified Access instance: `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
 #' 
 #' -   For an Amplify application: `arn:partition:amplify:region:account-id:apps/app-id `
+#' 
+#' -   For an Amazon Bedrock AgentCore Gateway: `arn:partition:bedrock-agentcore:region:account-id:gateway/gateway-id `
 #'
 #' @return
 #' An empty list.
@@ -191,7 +193,13 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           ),
 #'           PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -264,7 +272,13 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           ),
 #'           SensitivityLevel = "LOW"|"HIGH"
@@ -337,7 +351,13 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -411,7 +431,13 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -486,6 +512,9 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'                       )
 #'                     )
 #'                   )
+#'                 ),
+#'                 Monetize = list(
+#'                   PriceMultiplier = "string"
 #'                 )
 #'               )
 #'             )
@@ -568,7 +597,13 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -588,7 +623,7 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -597,7 +632,7 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -606,7 +641,7 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -614,7 +649,7 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -628,7 +663,7 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -862,6 +897,9 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'                       )
 #'                     )
 #'                   )
+#'                 ),
+#'                 Monetize = list(
+#'                   PriceMultiplier = "string"
 #'                 )
 #'               )
 #'             )
@@ -940,7 +978,13 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -1006,6 +1050,9 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         Monetize = list(
+#'           PriceMultiplier = "string"
 #'         )
 #'       ),
 #'       OverrideAction = list(
@@ -1329,7 +1376,7 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'
 #' @usage
 #' wafv2_create_rule_group(Name, Scope, Capacity, Description, Rules,
-#'   VisibilityConfig, Tags, CustomResponseBodies)
+#'   VisibilityConfig, Tags, CustomResponseBodies, MonetizationConfig)
 #'
 #' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group after you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
@@ -1353,6 +1400,7 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' For information about customizing web requests and responses, see [Customizing web requests and responses in WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html) in the *WAF Developer Guide*.
 #' 
 #' For information about the limits on count and size for custom request and response settings, see [WAF quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html) in the *WAF Developer Guide*.
+#' @param MonetizationConfig The monetization configuration for the rule group. Provide this when any rule in the rule group uses the `Monetize` action.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1449,7 +1497,13 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           ),
 #'           PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -1522,7 +1576,13 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           ),
 #'           SensitivityLevel = "LOW"|"HIGH"
@@ -1595,7 +1655,13 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -1669,7 +1735,13 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -1744,6 +1816,9 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'                       )
 #'                     )
 #'                   )
+#'                 ),
+#'                 Monetize = list(
+#'                   PriceMultiplier = "string"
 #'                 )
 #'               )
 #'             )
@@ -1826,7 +1901,13 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -1846,7 +1927,7 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -1855,7 +1936,7 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -1864,7 +1945,7 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -1872,7 +1953,7 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -1886,7 +1967,7 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -2120,6 +2201,9 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'                       )
 #'                     )
 #'                   )
+#'                 ),
+#'                 Monetize = list(
+#'                   PriceMultiplier = "string"
 #'                 )
 #'               )
 #'             )
@@ -2198,7 +2282,13 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -2264,6 +2354,9 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         Monetize = list(
+#'           PriceMultiplier = "string"
 #'         )
 #'       ),
 #'       OverrideAction = list(
@@ -2317,6 +2410,23 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'       ContentType = "TEXT_PLAIN"|"TEXT_HTML"|"APPLICATION_JSON",
 #'       Content = "string"
 #'     )
+#'   ),
+#'   MonetizationConfig = list(
+#'     CryptoConfig = list(
+#'       PaymentNetworks = list(
+#'         list(
+#'           Chain = "BASE"|"SOLANA"|"BASE_SEPOLIA"|"SOLANA_DEVNET",
+#'           WalletAddress = "string",
+#'           Prices = list(
+#'             list(
+#'               Amount = "string",
+#'               Currency = "USDC"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CurrencyMode = "REAL"|"TEST"
 #'   )
 #' )
 #' ```
@@ -2326,7 +2436,7 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' @rdname wafv2_create_rule_group
 #'
 #' @aliases wafv2_create_rule_group
-wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL, CustomResponseBodies = NULL) {
+wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL, CustomResponseBodies = NULL, MonetizationConfig = NULL) {
   op <- new_operation(
     name = "CreateRuleGroup",
     http_method = "POST",
@@ -2335,7 +2445,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .wafv2$create_rule_group_input(Name = Name, Scope = Scope, Capacity = Capacity, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies)
+  input <- .wafv2$create_rule_group_input(Name = Name, Scope = Scope, Capacity = Capacity, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, MonetizationConfig = MonetizationConfig)
   output <- .wafv2$create_rule_group_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)
@@ -2350,13 +2460,13 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' @description
 #' Creates a WebACL per the specifications provided.
 #' 
-#' A web ACL defines a collection of rules to use to inspect and control web requests. Each rule has a statement that defines what to look for in web requests and an action that WAF applies to requests that match the statement. In the web ACL, you assign a default action to take (allow, block) for any request that does not match any of the rules. The rules in a web ACL can be a combination of the types Rule, RuleGroup, and managed rule group. You can associate a web ACL with one or more Amazon Web Services resources to protect. The resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, and Amazon Web Services Verified Access instance.
+#' A web ACL defines a collection of rules to use to inspect and control web requests. Each rule has a statement that defines what to look for in web requests and an action that WAF applies to requests that match the statement. In the web ACL, you assign a default action to take (allow, block) for any request that does not match any of the rules. The rules in a web ACL can be a combination of the types Rule, RuleGroup, and managed rule group. You can associate a web ACL with one or more Amazon Web Services resources to protect. The resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, Amazon Web Services Verified Access instance, and Amazon Bedrock AgentCore Gateway.
 #'
 #' @usage
 #' wafv2_create_web_acl(Name, Scope, DefaultAction, Description, Rules,
 #'   VisibilityConfig, DataProtectionConfig, Tags, CustomResponseBodies,
 #'   CaptchaConfig, ChallengeConfig, TokenDomains, AssociationConfig,
-#'   OnSourceDDoSProtectionConfig, ApplicationConfig)
+#'   OnSourceDDoSProtectionConfig, ApplicationConfig, MonetizationConfig)
 #'
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
@@ -2395,6 +2505,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' For Application Load Balancer and AppSync, the limit is fixed at 8 KB (8,192 bytes).
 #' @param OnSourceDDoSProtectionConfig Specifies the type of DDoS protection to apply to web request data for a web ACL. For most scenarios, it is recommended to use the default protection level, `ACTIVE_UNDER_DDOS`. If a web ACL is associated with multiple Application Load Balancers, the changes you make to DDoS protection in that web ACL will apply to all associated Application Load Balancers.
 #' @param ApplicationConfig Configures the ability for the WAF console to store and retrieve application attributes during the web ACL creation process. Application attributes help WAF give recommendations for protection packs.
+#' @param MonetizationConfig The monetization configuration for the web ACL. Provide this when any rule in the web ACL uses the `Monetize` action.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2514,7 +2625,13 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           ),
 #'           PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -2587,7 +2704,13 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           ),
 #'           SensitivityLevel = "LOW"|"HIGH"
@@ -2660,7 +2783,13 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -2734,7 +2863,13 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -2809,6 +2944,9 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'                       )
 #'                     )
 #'                   )
+#'                 ),
+#'                 Monetize = list(
+#'                   PriceMultiplier = "string"
 #'                 )
 #'               )
 #'             )
@@ -2891,7 +3029,13 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -2911,7 +3055,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -2920,7 +3064,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -2929,7 +3073,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -2937,7 +3081,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -2951,7 +3095,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -3185,6 +3329,9 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'                       )
 #'                     )
 #'                   )
+#'                 ),
+#'                 Monetize = list(
+#'                   PriceMultiplier = "string"
 #'                 )
 #'               )
 #'             )
@@ -3263,7 +3410,13 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -3329,6 +3482,9 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         Monetize = list(
+#'           PriceMultiplier = "string"
 #'         )
 #'       ),
 #'       OverrideAction = list(
@@ -3430,6 +3586,23 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'         )
 #'       )
 #'     )
+#'   ),
+#'   MonetizationConfig = list(
+#'     CryptoConfig = list(
+#'       PaymentNetworks = list(
+#'         list(
+#'           Chain = "BASE"|"SOLANA"|"BASE_SEPOLIA"|"SOLANA_DEVNET",
+#'           WalletAddress = "string",
+#'           Prices = list(
+#'             list(
+#'               Amount = "string",
+#'               Currency = "USDC"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CurrencyMode = "REAL"|"TEST"
 #'   )
 #' )
 #' ```
@@ -3439,7 +3612,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' @rdname wafv2_create_web_acl
 #'
 #' @aliases wafv2_create_web_acl
-wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, Tags = NULL, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL, OnSourceDDoSProtectionConfig = NULL, ApplicationConfig = NULL) {
+wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, Tags = NULL, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL, OnSourceDDoSProtectionConfig = NULL, ApplicationConfig = NULL, MonetizationConfig = NULL) {
   op <- new_operation(
     name = "CreateWebACL",
     http_method = "POST",
@@ -3448,7 +3621,7 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig, OnSourceDDoSProtectionConfig = OnSourceDDoSProtectionConfig, ApplicationConfig = ApplicationConfig)
+  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig, OnSourceDDoSProtectionConfig = OnSourceDDoSProtectionConfig, ApplicationConfig = ApplicationConfig, MonetizationConfig = MonetizationConfig)
   output <- .wafv2$create_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)
@@ -4131,6 +4304,9 @@ wafv2_describe_managed_products_by_vendor <- function(VendorName, Scope) {
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         Monetize = list(
+#'           PriceMultiplier = "string"
 #'         )
 #'       )
 #'     )
@@ -4215,6 +4391,8 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionNa
 #' -   For an Amazon Web Services Verified Access instance: `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
 #' 
 #' -   For an Amplify application: `arn:partition:amplify:region:account-id:apps/app-id `
+#' 
+#' -   For an Amazon Bedrock AgentCore Gateway: `arn:partition:bedrock-agentcore:region:account-id:gateway/gateway-id `
 #'
 #' @return
 #' An empty list.
@@ -4541,7 +4719,7 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 #'           Conditions = list(
 #'             list(
 #'               ActionCondition = list(
-#'                 Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"CHALLENGE"|"EXCLUDED_AS_COUNT"
+#'                 Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"CHALLENGE"|"MONETIZE"|"EXCLUDED_AS_COUNT"
 #'               ),
 #'               LabelNameCondition = list(
 #'                 LabelName = "string"
@@ -4949,6 +5127,280 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 }
 .wafv2$operations$get_regex_pattern_set <- wafv2_get_regex_pattern_set
 
+#' Retrieves ranked monetization statistics
+#'
+#' @description
+#' Retrieves ranked monetization statistics. Use the `StatisticType` parameter to specify the ranking: `TOP_SOURCES_BY_REVENUE` for top sources by revenue, or `TOP_PATHS_BY_REVENUE` for top content paths by revenue. This operation is only available for `CLOUDFRONT` scope. The maximum supported time window is 90 days. When no `CurrencyMode` filter is provided, results default to `REAL`. To retrieve test data, include a `CurrencyMode` filter with the value `TEST`.
+#'
+#' @usage
+#' wafv2_get_revenue_statistics(StatisticType, TimeWindow, Scope, Currency,
+#'   GroupBy, Filters, NextMarker, Limit, SortBy, SortOrder)
+#'
+#' @param StatisticType &#91;required&#93; `TOP_SOURCES_BY_REVENUE` ranks revenue from AI bot traffic, grouped by the dimension you specify in the `GroupBy` parameter (`NAME`, `CATEGORY`, `INTENT`, `ORGANIZATION`, or `WEBACL`); `GroupBy` is required for this statistic type. `TOP_PATHS_BY_REVENUE` ranks revenue by path.
+#' @param TimeWindow &#91;required&#93; The time range for the query. Specify start and end timestamps.
+#' @param Scope &#91;required&#93; Specifies whether this is for a Amazon CloudFront distribution (`CLOUDFRONT`) or for a regional application (`REGIONAL`).
+#' @param Currency &#91;required&#93; The currency for the revenue amounts in the response.
+#' @param GroupBy The dimension to group results by: `NAME`, `CATEGORY`, `INTENT`, `ORGANIZATION`, or `WEBACL`. Required when `StatisticType` is `TOP_SOURCES_BY_REVENUE`. Not required for `TOP_PATHS_BY_REVENUE`, where results are grouped by content path. If `StatisticType` is `TOP_SOURCES_BY_REVENUE` and `GroupBy` is omitted, the request is rejected with a `WAFInvalidParameterException`.
+#' @param Filters Optional filters to narrow the results.
+#' @param NextMarker When you get a paginated response, this marker indicates that additional results are available. Use it in a subsequent request to retrieve the next page of results.
+#' @param Limit The maximum number of results to return.
+#' @param SortBy The field to sort results by: `REVENUE`, `PERCENTAGE`, or `NAME`.
+#' @param SortOrder The sort order: `ASC` for ascending or `DESC` for descending.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SourceStatistics = list(
+#'     list(
+#'       SourceName = "string",
+#'       Percentage = 123.0,
+#'       Amount = "string",
+#'       RequestCount = 123,
+#'       SourceCategory = "string",
+#'       Intent = "string",
+#'       Organization = "string",
+#'       Verified = TRUE|FALSE,
+#'       GroupByValue = "string"
+#'     )
+#'   ),
+#'   RevenuePathStatistics = list(
+#'     list(
+#'       Path = "string",
+#'       Percentage = 123.0,
+#'       Amount = "string",
+#'       RequestCount = 123
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_revenue_statistics(
+#'   StatisticType = "TOP_SOURCES_BY_REVENUE"|"TOP_PATHS_BY_REVENUE",
+#'   TimeWindow = list(
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Scope = "CLOUDFRONT"|"REGIONAL",
+#'   Currency = "USDC",
+#'   GroupBy = "NAME"|"CATEGORY"|"INTENT"|"ORGANIZATION"|"WEBACL",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextMarker = "string",
+#'   Limit = 123,
+#'   SortBy = "REVENUE"|"PERCENTAGE"|"NAME",
+#'   SortOrder = "ASC"|"DESC"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_get_revenue_statistics
+#'
+#' @aliases wafv2_get_revenue_statistics
+wafv2_get_revenue_statistics <- function(StatisticType, TimeWindow, Scope, Currency, GroupBy = NULL, Filters = NULL, NextMarker = NULL, Limit = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "GetRevenueStatistics",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wafv2$get_revenue_statistics_input(StatisticType = StatisticType, TimeWindow = TimeWindow, Scope = Scope, Currency = Currency, GroupBy = GroupBy, Filters = Filters, NextMarker = NextMarker, Limit = Limit, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .wafv2$get_revenue_statistics_output()
+  config <- get_config()
+  svc <- .wafv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$get_revenue_statistics <- wafv2_get_revenue_statistics
+
+#' Retrieves a summary of monetization revenue for the specified time
+#' window
+#'
+#' @description
+#' Retrieves a summary of monetization revenue for the specified time window. Returns total revenue, revenue by verification tier, total settlements, and total HTTP 402 responses served. This operation is only available for `CLOUDFRONT` scope. The maximum supported time window is 90 days. When no `CurrencyMode` filter is provided, results default to `REAL`. To retrieve test data, include a `CurrencyMode` filter with the value `TEST`.
+#'
+#' @usage
+#' wafv2_get_revenue_statistics_summary(TimeWindow, Scope, Currency,
+#'   Filters)
+#'
+#' @param TimeWindow &#91;required&#93; The time range for the revenue summary query. Specify start and end timestamps.
+#' @param Scope &#91;required&#93; Specifies whether this is for a Amazon CloudFront distribution (`CLOUDFRONT`) or for a regional application (`REGIONAL`). AI bot monetization is only available for `CLOUDFRONT` scope.
+#' @param Currency &#91;required&#93; The currency for the revenue amounts in the response. Currently only `USDC` is supported.
+#' @param Filters Optional filters to narrow the results. You can filter by source name, category, organization, intent, verified status, content path, web ACL ARN, or currency mode.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RevenueBreakdown = list(
+#'     TotalAmount = "string",
+#'     VerifiedAmount = "string",
+#'     UnverifiedAmount = "string",
+#'     Currency = "USDC",
+#'     TotalSettled = 123,
+#'     TotalMonetizeServed = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_revenue_statistics_summary(
+#'   TimeWindow = list(
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Scope = "CLOUDFRONT"|"REGIONAL",
+#'   Currency = "USDC",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_get_revenue_statistics_summary
+#'
+#' @aliases wafv2_get_revenue_statistics_summary
+wafv2_get_revenue_statistics_summary <- function(TimeWindow, Scope, Currency, Filters = NULL) {
+  op <- new_operation(
+    name = "GetRevenueStatisticsSummary",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wafv2$get_revenue_statistics_summary_input(TimeWindow = TimeWindow, Scope = Scope, Currency = Currency, Filters = Filters)
+  output <- .wafv2$get_revenue_statistics_summary_output()
+  config <- get_config()
+  svc <- .wafv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$get_revenue_statistics_summary <- wafv2_get_revenue_statistics_summary
+
+#' Retrieves time series data for monetization revenue
+#'
+#' @description
+#' Retrieves time series data for monetization revenue. Returns data points aggregated at the specified interval for the given time window. This operation is only available for `CLOUDFRONT` scope. The maximum supported time window is 90 days. When no `CurrencyMode` filter is provided, results default to `REAL`. To retrieve test data, include a `CurrencyMode` filter with the value `TEST`.
+#'
+#' @usage
+#' wafv2_get_revenue_statistics_time_series(StatisticType, TimeWindow,
+#'   Scope, Interval, Currency, GroupBy, Filters, Limit, NextMarker)
+#'
+#' @param StatisticType &#91;required&#93; The type of time series data to retrieve: `DATE_HISTOGRAM` for revenue over time, or `PAYMENT_TRAFFIC` for payment traffic patterns.
+#' @param TimeWindow &#91;required&#93; The time range for the query. Specify start and end timestamps.
+#' @param Scope &#91;required&#93; Specifies whether this is for a Amazon CloudFront distribution (`CLOUDFRONT`) or for a regional application (`REGIONAL`).
+#' @param Interval &#91;required&#93; The time interval for aggregating data points: `MINUTELY`, `FIVE_MINUTELY`, `HOURLY`, or `DAILY`.
+#' @param Currency &#91;required&#93; The currency for the amounts in the response.
+#' @param GroupBy The dimension to group results by.
+#' @param Filters Optional filters to narrow the results.
+#' @param Limit The maximum number of data points to return. Minimum: 1. Maximum: 10000.
+#' @param NextMarker When you get a paginated response, this marker indicates that additional results are available.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataPoints = list(
+#'     list(
+#'       Date = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       MonetizeServedCount = 123,
+#'       SettledCount = 123,
+#'       TotalAmount = "string",
+#'       Category = "string",
+#'       Intent = "string",
+#'       GroupByValue = "string"
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_revenue_statistics_time_series(
+#'   StatisticType = "DATE_HISTOGRAM"|"PAYMENT_TRAFFIC",
+#'   TimeWindow = list(
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Scope = "CLOUDFRONT"|"REGIONAL",
+#'   Interval = "MINUTELY"|"FIVE_MINUTELY"|"HOURLY"|"DAILY",
+#'   Currency = "USDC",
+#'   GroupBy = "NAME"|"CATEGORY"|"INTENT"|"ORGANIZATION"|"WEBACL",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Limit = 123,
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_get_revenue_statistics_time_series
+#'
+#' @aliases wafv2_get_revenue_statistics_time_series
+wafv2_get_revenue_statistics_time_series <- function(StatisticType, TimeWindow, Scope, Interval, Currency, GroupBy = NULL, Filters = NULL, Limit = NULL, NextMarker = NULL) {
+  op <- new_operation(
+    name = "GetRevenueStatisticsTimeSeries",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wafv2$get_revenue_statistics_time_series_input(StatisticType = StatisticType, TimeWindow = TimeWindow, Scope = Scope, Interval = Interval, Currency = Currency, GroupBy = GroupBy, Filters = Filters, Limit = Limit, NextMarker = NextMarker)
+  output <- .wafv2$get_revenue_statistics_time_series_output()
+  config <- get_config()
+  svc <- .wafv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$get_revenue_statistics_time_series <- wafv2_get_revenue_statistics_time_series
+
 #' Retrieves the specified RuleGroup
 #'
 #' @description
@@ -5052,7 +5504,13 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             ),
 #'             PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -5125,7 +5583,13 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             ),
 #'             SensitivityLevel = "LOW"|"HIGH"
@@ -5198,7 +5662,13 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             )
 #'           ),
@@ -5272,7 +5742,13 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             )
 #'           ),
@@ -5347,6 +5823,9 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                         )
 #'                       )
 #'                     )
+#'                   ),
+#'                   Monetize = list(
+#'                     PriceMultiplier = "string"
 #'                   )
 #'                 )
 #'               )
@@ -5429,7 +5908,13 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             )
 #'           ),
@@ -5449,7 +5934,7 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                   TextTransformations = list(
 #'                     list(
 #'                       Priority = 123,
-#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                     )
 #'                   )
 #'                 ),
@@ -5458,7 +5943,7 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                   TextTransformations = list(
 #'                     list(
 #'                       Priority = 123,
-#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                     )
 #'                   )
 #'                 ),
@@ -5467,7 +5952,7 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                   TextTransformations = list(
 #'                     list(
 #'                       Priority = 123,
-#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                     )
 #'                   )
 #'                 ),
@@ -5475,7 +5960,7 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                   TextTransformations = list(
 #'                     list(
 #'                       Priority = 123,
-#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                     )
 #'                   )
 #'                 ),
@@ -5489,7 +5974,7 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                   TextTransformations = list(
 #'                     list(
 #'                       Priority = 123,
-#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                     )
 #'                   )
 #'                 ),
@@ -5723,6 +6208,9 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                         )
 #'                       )
 #'                     )
+#'                   ),
+#'                   Monetize = list(
+#'                     PriceMultiplier = "string"
 #'                   )
 #'                 )
 #'               )
@@ -5801,7 +6289,13 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             )
 #'           ),
@@ -5867,6 +6361,9 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                 )
 #'               )
 #'             )
+#'           ),
+#'           Monetize = list(
+#'             PriceMultiplier = "string"
 #'           )
 #'         ),
 #'         OverrideAction = list(
@@ -5925,6 +6422,23 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'       list(
 #'         Name = "string"
 #'       )
+#'     ),
+#'     MonetizationConfig = list(
+#'       CryptoConfig = list(
+#'         PaymentNetworks = list(
+#'           list(
+#'             Chain = "BASE"|"SOLANA"|"BASE_SEPOLIA"|"SOLANA_DEVNET",
+#'             WalletAddress = "string",
+#'             Prices = list(
+#'               list(
+#'                 Amount = "string",
+#'                 Currency = "USDC"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       CurrencyMode = "REAL"|"TEST"
 #'     )
 #'   ),
 #'   LockToken = "string"
@@ -6337,7 +6851,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             ),
 #'             PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -6410,7 +6930,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             ),
 #'             SensitivityLevel = "LOW"|"HIGH"
@@ -6483,7 +7009,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             )
 #'           ),
@@ -6557,7 +7089,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             )
 #'           ),
@@ -6632,6 +7170,9 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                         )
 #'                       )
 #'                     )
+#'                   ),
+#'                   Monetize = list(
+#'                     PriceMultiplier = "string"
 #'                   )
 #'                 )
 #'               )
@@ -6714,7 +7255,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             )
 #'           ),
@@ -6734,7 +7281,7 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                   TextTransformations = list(
 #'                     list(
 #'                       Priority = 123,
-#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                     )
 #'                   )
 #'                 ),
@@ -6743,7 +7290,7 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                   TextTransformations = list(
 #'                     list(
 #'                       Priority = 123,
-#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                     )
 #'                   )
 #'                 ),
@@ -6752,7 +7299,7 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                   TextTransformations = list(
 #'                     list(
 #'                       Priority = 123,
-#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                     )
 #'                   )
 #'                 ),
@@ -6760,7 +7307,7 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                   TextTransformations = list(
 #'                     list(
 #'                       Priority = 123,
-#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                     )
 #'                   )
 #'                 ),
@@ -6774,7 +7321,7 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                   TextTransformations = list(
 #'                     list(
 #'                       Priority = 123,
-#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                     )
 #'                   )
 #'                 ),
@@ -7008,6 +7555,9 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                         )
 #'                       )
 #'                     )
+#'                   ),
+#'                   Monetize = list(
+#'                     PriceMultiplier = "string"
 #'                   )
 #'                 )
 #'               )
@@ -7086,7 +7636,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             )
 #'           ),
@@ -7152,6 +7708,9 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                 )
 #'               )
 #'             )
+#'           ),
+#'           Monetize = list(
+#'             PriceMultiplier = "string"
 #'           )
 #'         ),
 #'         OverrideAction = list(
@@ -7294,7 +7853,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 ),
 #'                 PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -7367,7 +7932,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 ),
 #'                 SensitivityLevel = "LOW"|"HIGH"
@@ -7440,7 +8011,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 )
 #'               ),
@@ -7514,7 +8091,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 )
 #'               ),
@@ -7589,6 +8172,9 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                             )
 #'                           )
 #'                         )
+#'                       ),
+#'                       Monetize = list(
+#'                         PriceMultiplier = "string"
 #'                       )
 #'                     )
 #'                   )
@@ -7671,7 +8257,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 )
 #'               ),
@@ -7691,7 +8283,7 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -7700,7 +8292,7 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -7709,7 +8301,7 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -7717,7 +8309,7 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -7731,7 +8323,7 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -7832,7 +8424,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 )
 #'               ),
@@ -8043,6 +8641,9 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                         )
 #'                       )
 #'                     )
+#'                   ),
+#'                   Monetize = list(
+#'                     PriceMultiplier = "string"
 #'                   )
 #'                 )
 #'               )
@@ -8110,6 +8711,9 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                         )
 #'                       )
 #'                     )
+#'                   ),
+#'                   Monetize = list(
+#'                     PriceMultiplier = "string"
 #'                   )
 #'                 )
 #'               )
@@ -8220,7 +8824,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 ),
 #'                 PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -8293,7 +8903,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 ),
 #'                 SensitivityLevel = "LOW"|"HIGH"
@@ -8366,7 +8982,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 )
 #'               ),
@@ -8440,7 +9062,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 )
 #'               ),
@@ -8515,6 +9143,9 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                             )
 #'                           )
 #'                         )
+#'                       ),
+#'                       Monetize = list(
+#'                         PriceMultiplier = "string"
 #'                       )
 #'                     )
 #'                   )
@@ -8597,7 +9228,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 )
 #'               ),
@@ -8617,7 +9254,7 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -8626,7 +9263,7 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -8635,7 +9272,7 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -8643,7 +9280,7 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -8657,7 +9294,7 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -8758,7 +9395,13 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 )
 #'               ),
@@ -8969,6 +9612,9 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                         )
 #'                       )
 #'                     )
+#'                   ),
+#'                   Monetize = list(
+#'                     PriceMultiplier = "string"
 #'                   )
 #'                 )
 #'               )
@@ -9036,6 +9682,9 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'                         )
 #'                       )
 #'                     )
+#'                   ),
+#'                   Monetize = list(
+#'                     PriceMultiplier = "string"
 #'                   )
 #'                 )
 #'               )
@@ -9103,6 +9752,23 @@ wafv2_get_top_path_statistics_by_traffic <- function(WebAclArn, Scope, UriPathPr
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     MonetizationConfig = list(
+#'       CryptoConfig = list(
+#'         PaymentNetworks = list(
+#'           list(
+#'             Chain = "BASE"|"SOLANA"|"BASE_SEPOLIA"|"SOLANA_DEVNET",
+#'             WalletAddress = "string",
+#'             Prices = list(
+#'               list(
+#'                 Amount = "string",
+#'                 Currency = "USDC"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       CurrencyMode = "REAL"|"TEST"
 #'     )
 #'   ),
 #'   LockToken = "string",
@@ -9177,6 +9843,8 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #' -   For an Amazon Web Services Verified Access instance: `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
 #' 
 #' -   For an Amplify application: `arn:partition:amplify:region:account-id:apps/app-id `
+#' 
+#' -   For an Amazon Bedrock AgentCore Gateway: `arn:partition:bedrock-agentcore:region:account-id:gateway/gateway-id `
 #'
 #' @return
 #' A list with the following syntax:
@@ -9285,7 +9953,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             ),
 #'             PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -9358,7 +10032,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             ),
 #'             SensitivityLevel = "LOW"|"HIGH"
@@ -9431,7 +10111,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             )
 #'           ),
@@ -9505,7 +10191,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             )
 #'           ),
@@ -9580,6 +10272,9 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                         )
 #'                       )
 #'                     )
+#'                   ),
+#'                   Monetize = list(
+#'                     PriceMultiplier = "string"
 #'                   )
 #'                 )
 #'               )
@@ -9662,7 +10357,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             )
 #'           ),
@@ -9682,7 +10383,7 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                   TextTransformations = list(
 #'                     list(
 #'                       Priority = 123,
-#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                     )
 #'                   )
 #'                 ),
@@ -9691,7 +10392,7 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                   TextTransformations = list(
 #'                     list(
 #'                       Priority = 123,
-#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                     )
 #'                   )
 #'                 ),
@@ -9700,7 +10401,7 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                   TextTransformations = list(
 #'                     list(
 #'                       Priority = 123,
-#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                     )
 #'                   )
 #'                 ),
@@ -9708,7 +10409,7 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                   TextTransformations = list(
 #'                     list(
 #'                       Priority = 123,
-#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                     )
 #'                   )
 #'                 ),
@@ -9722,7 +10423,7 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                   TextTransformations = list(
 #'                     list(
 #'                       Priority = 123,
-#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                     )
 #'                   )
 #'                 ),
@@ -9956,6 +10657,9 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                         )
 #'                       )
 #'                     )
+#'                   ),
+#'                   Monetize = list(
+#'                     PriceMultiplier = "string"
 #'                   )
 #'                 )
 #'               )
@@ -10034,7 +10738,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'               )
+#'             ),
+#'             PreParseTextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'               )
 #'             )
 #'           ),
@@ -10100,6 +10810,9 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                 )
 #'               )
 #'             )
+#'           ),
+#'           Monetize = list(
+#'             PriceMultiplier = "string"
 #'           )
 #'         ),
 #'         OverrideAction = list(
@@ -10242,7 +10955,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 ),
 #'                 PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -10315,7 +11034,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 ),
 #'                 SensitivityLevel = "LOW"|"HIGH"
@@ -10388,7 +11113,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 )
 #'               ),
@@ -10462,7 +11193,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 )
 #'               ),
@@ -10537,6 +11274,9 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                             )
 #'                           )
 #'                         )
+#'                       ),
+#'                       Monetize = list(
+#'                         PriceMultiplier = "string"
 #'                       )
 #'                     )
 #'                   )
@@ -10619,7 +11359,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 )
 #'               ),
@@ -10639,7 +11385,7 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -10648,7 +11394,7 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -10657,7 +11403,7 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -10665,7 +11411,7 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -10679,7 +11425,7 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -10780,7 +11526,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 )
 #'               ),
@@ -10991,6 +11743,9 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                         )
 #'                       )
 #'                     )
+#'                   ),
+#'                   Monetize = list(
+#'                     PriceMultiplier = "string"
 #'                   )
 #'                 )
 #'               )
@@ -11058,6 +11813,9 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                         )
 #'                       )
 #'                     )
+#'                   ),
+#'                   Monetize = list(
+#'                     PriceMultiplier = "string"
 #'                   )
 #'                 )
 #'               )
@@ -11168,7 +11926,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 ),
 #'                 PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -11241,7 +12005,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 ),
 #'                 SensitivityLevel = "LOW"|"HIGH"
@@ -11314,7 +12084,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 )
 #'               ),
@@ -11388,7 +12164,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 )
 #'               ),
@@ -11463,6 +12245,9 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                             )
 #'                           )
 #'                         )
+#'                       ),
+#'                       Monetize = list(
+#'                         PriceMultiplier = "string"
 #'                       )
 #'                     )
 #'                   )
@@ -11545,7 +12330,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 )
 #'               ),
@@ -11565,7 +12356,7 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -11574,7 +12365,7 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -11583,7 +12374,7 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -11591,7 +12382,7 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -11605,7 +12396,7 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                       TextTransformations = list(
 #'                         list(
 #'                           Priority = 123,
-#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                         )
 #'                       )
 #'                     ),
@@ -11706,7 +12497,13 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'                   )
+#'                 ),
+#'                 PreParseTextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'                   )
 #'                 )
 #'               ),
@@ -11917,6 +12714,9 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                         )
 #'                       )
 #'                     )
+#'                   ),
+#'                   Monetize = list(
+#'                     PriceMultiplier = "string"
 #'                   )
 #'                 )
 #'               )
@@ -11984,6 +12784,9 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'                         )
 #'                       )
 #'                     )
+#'                   ),
+#'                   Monetize = list(
+#'                     PriceMultiplier = "string"
 #'                   )
 #'                 )
 #'               )
@@ -12051,6 +12854,23 @@ wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) 
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     MonetizationConfig = list(
+#'       CryptoConfig = list(
+#'         PaymentNetworks = list(
+#'           list(
+#'             Chain = "BASE"|"SOLANA"|"BASE_SEPOLIA"|"SOLANA_DEVNET",
+#'             WalletAddress = "string",
+#'             Prices = list(
+#'               list(
+#'                 Amount = "string",
+#'                 Currency = "USDC"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       CurrencyMode = "REAL"|"TEST"
 #'     )
 #'   )
 #' )
@@ -12483,7 +13303,7 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'             Conditions = list(
 #'               list(
 #'                 ActionCondition = list(
-#'                   Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"CHALLENGE"|"EXCLUDED_AS_COUNT"
+#'                   Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"CHALLENGE"|"MONETIZE"|"EXCLUDED_AS_COUNT"
 #'                 ),
 #'                 LabelNameCondition = list(
 #'                   LabelName = "string"
@@ -12780,7 +13600,7 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
 #' ```
 #' svc$list_resources_for_web_acl(
 #'   WebACLArn = "string",
-#'   ResourceType = "APPLICATION_LOAD_BALANCER"|"API_GATEWAY"|"APPSYNC"|"COGNITO_USER_POOL"|"APP_RUNNER_SERVICE"|"VERIFIED_ACCESS_INSTANCE"|"AMPLIFY"
+#'   ResourceType = "APPLICATION_LOAD_BALANCER"|"API_GATEWAY"|"APPSYNC"|"COGNITO_USER_POOL"|"APP_RUNNER_SERVICE"|"VERIFIED_ACCESS_INSTANCE"|"AMPLIFY"|"AGENTCORE_GATEWAY"
 #' )
 #' ```
 #'
@@ -12876,6 +13696,109 @@ wafv2_list_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
   return(response)
 }
 .wafv2$operations$list_rule_groups <- wafv2_list_rule_groups
+
+#' Retrieves individual settlement transaction records for monetization
+#'
+#' @description
+#' Retrieves individual settlement transaction records for monetization. Each record represents a single payment transaction between a client and your protected resource. This operation is only available for `CLOUDFRONT` scope. The maximum supported time window is 90 days. When no `CurrencyMode` filter is provided, results default to `REAL`. To retrieve test data, include a `CurrencyMode` filter with the value `TEST`.
+#'
+#' @usage
+#' wafv2_list_settlement_records(TimeWindow, Scope, Currency, Filters,
+#'   SortBy, SortOrder, Limit, NextMarker)
+#'
+#' @param TimeWindow &#91;required&#93; The time range for the query. Specify start and end timestamps.
+#' @param Scope &#91;required&#93; Specifies whether this is for a Amazon CloudFront distribution (`CLOUDFRONT`) or for a regional application (`REGIONAL`).
+#' @param Currency &#91;required&#93; The currency for the amounts in the response.
+#' @param Filters Optional filters to narrow the results. You can filter by payer address, status, source name, network, or other settlement fields.
+#' @param SortBy The field to sort settlement records by: `TIMESTAMP`, `AMOUNT`, `NAME`, or `STATUS`.
+#' @param SortOrder The sort order: `ASC` for ascending or `DESC` for descending.
+#' @param Limit The maximum number of settlement records to return. Minimum: 1. Maximum: 100.
+#' @param NextMarker When you get a paginated response, this marker indicates that additional results are available.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Settlements = list(
+#'     list(
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PayerAddress = "string",
+#'       WalletAddress = "string",
+#'       Status = "SETTLED"|"PENDING"|"FAILED"|"SERVICE_ERROR"|"SKIPPED_ORIGIN_ERROR"|"DUPLICATE",
+#'       Amount = "string",
+#'       Currency = "USDC",
+#'       Network = "string",
+#'       TransactionId = "string",
+#'       RequestId = "string",
+#'       SourceName = "string",
+#'       Organization = "string",
+#'       SourceCategory = "string",
+#'       Intent = "string",
+#'       Verified = TRUE|FALSE,
+#'       ContentPath = "string",
+#'       WebAclArn = "string",
+#'       RequestTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_settlement_records(
+#'   TimeWindow = list(
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Scope = "CLOUDFRONT"|"REGIONAL",
+#'   Currency = "USDC",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   SortBy = "TIMESTAMP"|"AMOUNT"|"NAME"|"STATUS",
+#'   SortOrder = "ASC"|"DESC",
+#'   Limit = 123,
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_list_settlement_records
+#'
+#' @aliases wafv2_list_settlement_records
+wafv2_list_settlement_records <- function(TimeWindow, Scope, Currency, Filters = NULL, SortBy = NULL, SortOrder = NULL, Limit = NULL, NextMarker = NULL) {
+  op <- new_operation(
+    name = "ListSettlementRecords",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .wafv2$list_settlement_records_input(TimeWindow = TimeWindow, Scope = Scope, Currency = Currency, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder, Limit = Limit, NextMarker = NextMarker)
+  output <- .wafv2$list_settlement_records_output()
+  config <- get_config()
+  svc <- .wafv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$list_settlement_records <- wafv2_list_settlement_records
 
 #' Retrieves the TagInfoForResource for the specified resource
 #'
@@ -13133,7 +14056,7 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'           Conditions = list(
 #'             list(
 #'               ActionCondition = list(
-#'                 Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"CHALLENGE"|"EXCLUDED_AS_COUNT"
+#'                 Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"CHALLENGE"|"MONETIZE"|"EXCLUDED_AS_COUNT"
 #'               ),
 #'               LabelNameCondition = list(
 #'                 LabelName = "string"
@@ -13233,7 +14156,7 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'           Conditions = list(
 #'             list(
 #'               ActionCondition = list(
-#'                 Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"CHALLENGE"|"EXCLUDED_AS_COUNT"
+#'                 Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"CHALLENGE"|"MONETIZE"|"EXCLUDED_AS_COUNT"
 #'               ),
 #'               LabelNameCondition = list(
 #'                 LabelName = "string"
@@ -13849,7 +14772,7 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'
 #' @usage
 #' wafv2_update_rule_group(Name, Scope, Id, Description, Rules,
-#'   VisibilityConfig, LockToken, CustomResponseBodies)
+#'   VisibilityConfig, LockToken, CustomResponseBodies, MonetizationConfig)
 #'
 #' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group after you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
@@ -13869,6 +14792,7 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' For information about customizing web requests and responses, see [Customizing web requests and responses in WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html) in the *WAF Developer Guide*.
 #' 
 #' For information about the limits on count and size for custom request and response settings, see [WAF quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html) in the *WAF Developer Guide*.
+#' @param MonetizationConfig The monetization configuration for the rule group. Provide this when any rule in the rule group uses the `Monetize` action.
 #'
 #' @return
 #' A list with the following syntax:
@@ -13959,7 +14883,13 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           ),
 #'           PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -14032,7 +14962,13 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           ),
 #'           SensitivityLevel = "LOW"|"HIGH"
@@ -14105,7 +15041,13 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -14179,7 +15121,13 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -14254,6 +15202,9 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'                       )
 #'                     )
 #'                   )
+#'                 ),
+#'                 Monetize = list(
+#'                   PriceMultiplier = "string"
 #'                 )
 #'               )
 #'             )
@@ -14336,7 +15287,13 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -14356,7 +15313,7 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -14365,7 +15322,7 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -14374,7 +15331,7 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -14382,7 +15339,7 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -14396,7 +15353,7 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -14630,6 +15587,9 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'                       )
 #'                     )
 #'                   )
+#'                 ),
+#'                 Monetize = list(
+#'                   PriceMultiplier = "string"
 #'                 )
 #'               )
 #'             )
@@ -14708,7 +15668,13 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -14774,6 +15740,9 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         Monetize = list(
+#'           PriceMultiplier = "string"
 #'         )
 #'       ),
 #'       OverrideAction = list(
@@ -14822,6 +15791,23 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'       ContentType = "TEXT_PLAIN"|"TEXT_HTML"|"APPLICATION_JSON",
 #'       Content = "string"
 #'     )
+#'   ),
+#'   MonetizationConfig = list(
+#'     CryptoConfig = list(
+#'       PaymentNetworks = list(
+#'         list(
+#'           Chain = "BASE"|"SOLANA"|"BASE_SEPOLIA"|"SOLANA_DEVNET",
+#'           WalletAddress = "string",
+#'           Prices = list(
+#'             list(
+#'               Amount = "string",
+#'               Currency = "USDC"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CurrencyMode = "REAL"|"TEST"
 #'   )
 #' )
 #' ```
@@ -14831,7 +15817,7 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' @rdname wafv2_update_rule_group
 #'
 #' @aliases wafv2_update_rule_group
-wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules = NULL, VisibilityConfig, LockToken, CustomResponseBodies = NULL) {
+wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules = NULL, VisibilityConfig, LockToken, CustomResponseBodies = NULL, MonetizationConfig = NULL) {
   op <- new_operation(
     name = "UpdateRuleGroup",
     http_method = "POST",
@@ -14840,7 +15826,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .wafv2$update_rule_group_input(Name = Name, Scope = Scope, Id = Id, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies)
+  input <- .wafv2$update_rule_group_input(Name = Name, Scope = Scope, Id = Id, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, MonetizationConfig = MonetizationConfig)
   output <- .wafv2$update_rule_group_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)
@@ -14865,7 +15851,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' 
 #' 3.  Provide the complete web ACL specification to this call
 #' 
-#' A web ACL defines a collection of rules to use to inspect and control web requests. Each rule has a statement that defines what to look for in web requests and an action that WAF applies to requests that match the statement. In the web ACL, you assign a default action to take (allow, block) for any request that does not match any of the rules. The rules in a web ACL can be a combination of the types Rule, RuleGroup, and managed rule group. You can associate a web ACL with one or more Amazon Web Services resources to protect. The resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, and Amazon Web Services Verified Access instance.
+#' A web ACL defines a collection of rules to use to inspect and control web requests. Each rule has a statement that defines what to look for in web requests and an action that WAF applies to requests that match the statement. In the web ACL, you assign a default action to take (allow, block) for any request that does not match any of the rules. The rules in a web ACL can be a combination of the types Rule, RuleGroup, and managed rule group. You can associate a web ACL with one or more Amazon Web Services resources to protect. The resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, Amazon Web Services Verified Access instance, and Amazon Bedrock AgentCore Gateway.
 #' 
 #' **Temporary inconsistencies during updates**
 #' 
@@ -14885,7 +15871,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' wafv2_update_web_acl(Name, Scope, Id, DefaultAction, Description, Rules,
 #'   VisibilityConfig, DataProtectionConfig, LockToken, CustomResponseBodies,
 #'   CaptchaConfig, ChallengeConfig, TokenDomains, AssociationConfig,
-#'   OnSourceDDoSProtectionConfig, ApplicationConfig)
+#'   OnSourceDDoSProtectionConfig, ApplicationConfig, MonetizationConfig)
 #'
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
@@ -14931,6 +15917,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' -   If you omit `ApplicationConfig` from the request, all existing entries in the web ACL are retained.
 #' 
 #' -   If you include `ApplicationConfig`, entries must match the existing values exactly. Any attempt to modify existing entries will result in an error.
+#' @param MonetizationConfig The monetization configuration for the web ACL. Provide this when any rule in the web ACL uses the `Monetize` action.
 #'
 #' @return
 #' A list with the following syntax:
@@ -15045,7 +16032,13 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           ),
 #'           PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -15118,7 +16111,13 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           ),
 #'           SensitivityLevel = "LOW"|"HIGH"
@@ -15191,7 +16190,13 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -15265,7 +16270,13 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -15340,6 +16351,9 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'                       )
 #'                     )
 #'                   )
+#'                 ),
+#'                 Monetize = list(
+#'                   PriceMultiplier = "string"
 #'                 )
 #'               )
 #'             )
@@ -15422,7 +16436,13 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -15442,7 +16462,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -15451,7 +16471,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -15460,7 +16480,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -15468,7 +16488,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -15482,7 +16502,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'                 TextTransformations = list(
 #'                   list(
 #'                     Priority = 123,
-#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
 #'                   )
 #'                 )
 #'               ),
@@ -15716,6 +16736,9 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'                       )
 #'                     )
 #'                   )
+#'                 ),
+#'                 Monetize = list(
+#'                   PriceMultiplier = "string"
 #'                 )
 #'               )
 #'             )
@@ -15794,7 +16817,13 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"|"REMOVE_WHITESPACE"|"TRIM"|"TRIM_LEFT"|"TRIM_RIGHT"|"REMOVE_COMMENTS_CHAR"|"UPPERCASE"|"CMD_LINE_WIN"|"CMD_LINE_UNIX"|"JS_DECODE_EXT"|"SHA256"
+#'             )
+#'           ),
+#'           PreParseTextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"URL_DECODE"|"URL_DECODE_UNI"|"COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"|"REPLACE_SEMICOLONS_WITH_AMPERSANDS"
 #'             )
 #'           )
 #'         ),
@@ -15860,6 +16889,9 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         Monetize = list(
+#'           PriceMultiplier = "string"
 #'         )
 #'       ),
 #'       OverrideAction = list(
@@ -15956,6 +16988,23 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'         )
 #'       )
 #'     )
+#'   ),
+#'   MonetizationConfig = list(
+#'     CryptoConfig = list(
+#'       PaymentNetworks = list(
+#'         list(
+#'           Chain = "BASE"|"SOLANA"|"BASE_SEPOLIA"|"SOLANA_DEVNET",
+#'           WalletAddress = "string",
+#'           Prices = list(
+#'             list(
+#'               Amount = "string",
+#'               Currency = "USDC"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CurrencyMode = "REAL"|"TEST"
 #'   )
 #' )
 #' ```
@@ -15965,7 +17014,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' @rdname wafv2_update_web_acl
 #'
 #' @aliases wafv2_update_web_acl
-wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, LockToken, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL, OnSourceDDoSProtectionConfig = NULL, ApplicationConfig = NULL) {
+wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, LockToken, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL, OnSourceDDoSProtectionConfig = NULL, ApplicationConfig = NULL, MonetizationConfig = NULL) {
   op <- new_operation(
     name = "UpdateWebACL",
     http_method = "POST",
@@ -15974,7 +17023,7 @@ wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig, OnSourceDDoSProtectionConfig = OnSourceDDoSProtectionConfig, ApplicationConfig = ApplicationConfig)
+  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig, OnSourceDDoSProtectionConfig = OnSourceDDoSProtectionConfig, ApplicationConfig = ApplicationConfig, MonetizationConfig = MonetizationConfig)
   output <- .wafv2$update_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)

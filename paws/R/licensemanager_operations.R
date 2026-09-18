@@ -1083,7 +1083,7 @@ licensemanager_create_license_manager_report_generator <- function(ReportGenerat
 #' licensemanager_create_license_version(LicenseArn, LicenseName,
 #'   ProductName, Issuer, HomeRegion, Validity, LicenseMetadata,
 #'   Entitlements, ConsumptionConfiguration, Status, ClientToken,
-#'   SourceVersion)
+#'   SourceVersion, ResetUsage)
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license.
 #' @param LicenseName &#91;required&#93; License name.
@@ -1097,6 +1097,7 @@ licensemanager_create_license_manager_report_generator <- function(ReportGenerat
 #' @param Status &#91;required&#93; License status.
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
 #' @param SourceVersion Current version of the license.
+#' @param ResetUsage Specifies whether to reset the license usage for the new license version. If you don't specify a value, the license usage is not reset.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1151,7 +1152,8 @@ licensemanager_create_license_manager_report_generator <- function(ReportGenerat
 #'   ),
 #'   Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
 #'   ClientToken = "string",
-#'   SourceVersion = "string"
+#'   SourceVersion = "string",
+#'   ResetUsage = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1160,7 +1162,7 @@ licensemanager_create_license_manager_report_generator <- function(ReportGenerat
 #' @rdname licensemanager_create_license_version
 #'
 #' @aliases licensemanager_create_license_version
-licensemanager_create_license_version <- function(LicenseArn, LicenseName, ProductName, Issuer, HomeRegion, Validity, LicenseMetadata = NULL, Entitlements, ConsumptionConfiguration, Status, ClientToken, SourceVersion = NULL) {
+licensemanager_create_license_version <- function(LicenseArn, LicenseName, ProductName, Issuer, HomeRegion, Validity, LicenseMetadata = NULL, Entitlements, ConsumptionConfiguration, Status, ClientToken, SourceVersion = NULL, ResetUsage = NULL) {
   op <- new_operation(
     name = "CreateLicenseVersion",
     http_method = "POST",
@@ -1169,7 +1171,7 @@ licensemanager_create_license_version <- function(LicenseArn, LicenseName, Produ
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanager$create_license_version_input(LicenseArn = LicenseArn, LicenseName = LicenseName, ProductName = ProductName, Issuer = Issuer, HomeRegion = HomeRegion, Validity = Validity, LicenseMetadata = LicenseMetadata, Entitlements = Entitlements, ConsumptionConfiguration = ConsumptionConfiguration, Status = Status, ClientToken = ClientToken, SourceVersion = SourceVersion)
+  input <- .licensemanager$create_license_version_input(LicenseArn = LicenseArn, LicenseName = LicenseName, ProductName = ProductName, Issuer = Issuer, HomeRegion = HomeRegion, Validity = Validity, LicenseMetadata = LicenseMetadata, Entitlements = Entitlements, ConsumptionConfiguration = ConsumptionConfiguration, Status = Status, ClientToken = ClientToken, SourceVersion = SourceVersion, ResetUsage = ResetUsage)
   output <- .licensemanager$create_license_version_output()
   config <- get_config()
   svc <- .licensemanager$service(config, op)

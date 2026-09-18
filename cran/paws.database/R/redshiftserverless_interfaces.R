@@ -5,780 +5,650 @@ NULL
 
 .redshiftserverless$convert_recovery_point_to_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recoveryPointId = structure(logical(0), tags = list(type = "string")), retentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["convert_recovery_point_to_snapshot_input"]]))
 }
 
 .redshiftserverless$convert_recovery_point_to_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshot = structure(list(accountsWithProvisionedRestoreAccess = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), accountsWithRestoreAccess = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), actualIncrementalBackupSizeInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE)), adminPasswordSecretArn = structure(logical(0), tags = list(type = "string")), adminPasswordSecretKmsKeyId = structure(logical(0), tags = list(type = "string")), adminUsername = structure(logical(0), tags = list(type = "string")), backupProgressInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE)), currentBackupRateInMegaBytesPerSecond = structure(logical(0), tags = list(type = "double", box = TRUE)), elapsedTimeInSeconds = structure(logical(0), tags = list(type = "long", box = TRUE)), estimatedSecondsToCompletion = structure(logical(0), tags = list(type = "long", box = TRUE)), kmsKeyId = structure(logical(0), tags = list(type = "string")), namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), snapshotArn = structure(logical(0), tags = list(type = "string")), snapshotCreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), snapshotName = structure(logical(0), tags = list(type = "string")), snapshotRemainingDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotRetentionStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string")), totalBackupSizeInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["convert_recovery_point_to_snapshot_output"]]))
 }
 
 .redshiftserverless$create_custom_domain_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(customDomainCertificateArn = structure(logical(0), tags = list(type = "string")), customDomainName = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_custom_domain_association_input"]]))
 }
 
 .redshiftserverless$create_custom_domain_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(customDomainCertificateArn = structure(logical(0), tags = list(type = "string")), customDomainCertificateExpiryTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), customDomainName = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_custom_domain_association_output"]]))
 }
 
 .redshiftserverless$create_endpoint_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpointName = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_endpoint_access_input"]]))
 }
 
 .redshiftserverless$create_endpoint_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpoint = structure(list(address = structure(logical(0), tags = list(type = "string")), endpointArn = structure(logical(0), tags = list(type = "string")), endpointCreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endpointName = structure(logical(0), tags = list(type = "string")), endpointStatus = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcEndpoint = structure(list(networkInterfaces = structure(list(structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), ipv6Address = structure(logical(0), tags = list(type = "string")), networkInterfaceId = structure(logical(0), tags = list(type = "string")), privateIpAddress = structure(logical(0), tags = list(type = "string")), subnetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), vpcEndpointId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), vpcSecurityGroups = structure(list(structure(list(status = structure(logical(0), tags = list(type = "string")), vpcSecurityGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_endpoint_access_output"]]))
 }
 
 .redshiftserverless$create_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(adminPasswordSecretKmsKeyId = structure(logical(0), tags = list(type = "string")), adminUserPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), adminUsername = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), dbName = structure(logical(0), tags = list(type = "string")), defaultIamRoleArn = structure(logical(0), tags = list(type = "string")), iamRoles = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), kmsKeyId = structure(logical(0), tags = list(type = "string")), logExports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), manageAdminPassword = structure(logical(0), tags = list(type = "boolean", box = TRUE)), namespaceName = structure(logical(0), tags = list(type = "string")), redshiftIdcApplicationArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_namespace_input"]]))
 }
 
 .redshiftserverless$create_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(namespace = structure(list(adminPasswordSecretArn = structure(logical(0), tags = list(type = "string")), adminPasswordSecretKmsKeyId = structure(logical(0), tags = list(type = "string")), adminUsername = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), catalogArn = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), dbName = structure(logical(0), tags = list(type = "string")), defaultIamRoleArn = structure(logical(0), tags = list(type = "string")), iamRoles = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), kmsKeyId = structure(logical(0), tags = list(type = "string")), lakehouseRegistrationStatus = structure(logical(0), tags = list(type = "string")), logExports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceId = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_namespace_output"]]))
 }
 
 .redshiftserverless$create_reservation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(capacity = structure(logical(0), tags = list(type = "integer")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), offeringId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_reservation_input"]]))
 }
 
 .redshiftserverless$create_reservation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(reservation = structure(list(capacity = structure(logical(0), tags = list(type = "integer")), endDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), offering = structure(list(currencyCode = structure(logical(0), tags = list(type = "string")), duration = structure(logical(0), tags = list(type = "integer")), hourlyCharge = structure(logical(0), tags = list(type = "double")), offeringId = structure(logical(0), tags = list(type = "string")), offeringType = structure(logical(0), tags = list(type = "string")), upfrontCharge = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), reservationArn = structure(logical(0), tags = list(type = "string")), reservationId = structure(logical(0), tags = list(type = "string")), startDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_reservation_output"]]))
 }
 
 .redshiftserverless$create_scheduled_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), endTime = structure(logical(0), tags = list(type = "timestamp")), namespaceName = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), schedule = structure(list(at = structure(logical(0), tags = list(type = "timestamp")), cron = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), scheduledActionDescription = structure(logical(0), tags = list(type = "string")), scheduledActionName = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), targetAction = structure(list(createSnapshot = structure(list(namespaceName = structure(logical(0), tags = list(type = "string")), retentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotNamePrefix = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_scheduled_action_input"]]))
 }
 
 .redshiftserverless$create_scheduled_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(scheduledAction = structure(list(endTime = structure(logical(0), tags = list(type = "timestamp")), namespaceName = structure(logical(0), tags = list(type = "string")), nextInvocations = structure(list(structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "list")), roleArn = structure(logical(0), tags = list(type = "string")), schedule = structure(list(at = structure(logical(0), tags = list(type = "timestamp")), cron = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), scheduledActionDescription = structure(logical(0), tags = list(type = "string")), scheduledActionName = structure(logical(0), tags = list(type = "string")), scheduledActionUuid = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), state = structure(logical(0), tags = list(type = "string")), targetAction = structure(list(createSnapshot = structure(list(namespaceName = structure(logical(0), tags = list(type = "string")), retentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotNamePrefix = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_scheduled_action_output"]]))
 }
 
 .redshiftserverless$create_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(namespaceName = structure(logical(0), tags = list(type = "string")), retentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_snapshot_input"]]))
 }
 
 .redshiftserverless$create_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshot = structure(list(accountsWithProvisionedRestoreAccess = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), accountsWithRestoreAccess = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), actualIncrementalBackupSizeInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE)), adminPasswordSecretArn = structure(logical(0), tags = list(type = "string")), adminPasswordSecretKmsKeyId = structure(logical(0), tags = list(type = "string")), adminUsername = structure(logical(0), tags = list(type = "string")), backupProgressInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE)), currentBackupRateInMegaBytesPerSecond = structure(logical(0), tags = list(type = "double", box = TRUE)), elapsedTimeInSeconds = structure(logical(0), tags = list(type = "long", box = TRUE)), estimatedSecondsToCompletion = structure(logical(0), tags = list(type = "long", box = TRUE)), kmsKeyId = structure(logical(0), tags = list(type = "string")), namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), snapshotArn = structure(logical(0), tags = list(type = "string")), snapshotCreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), snapshotName = structure(logical(0), tags = list(type = "string")), snapshotRemainingDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotRetentionStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string")), totalBackupSizeInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_snapshot_output"]]))
 }
 
 .redshiftserverless$create_snapshot_copy_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(destinationKmsKeyId = structure(logical(0), tags = list(type = "string")), destinationRegion = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), snapshotRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_snapshot_copy_configuration_input"]]))
 }
 
 .redshiftserverless$create_snapshot_copy_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshotCopyConfiguration = structure(list(destinationKmsKeyId = structure(logical(0), tags = list(type = "string")), destinationRegion = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), snapshotCopyConfigurationArn = structure(logical(0), tags = list(type = "string")), snapshotCopyConfigurationId = structure(logical(0), tags = list(type = "string")), snapshotRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_snapshot_copy_configuration_output"]]))
 }
 
 .redshiftserverless$create_usage_limit_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(amount = structure(logical(0), tags = list(type = "long", box = TRUE)), breachAction = structure(logical(0), tags = list(type = "string")), period = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), usageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_usage_limit_input"]]))
 }
 
 .redshiftserverless$create_usage_limit_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usageLimit = structure(list(amount = structure(logical(0), tags = list(type = "long", box = TRUE)), breachAction = structure(logical(0), tags = list(type = "string")), period = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), usageLimitArn = structure(logical(0), tags = list(type = "string")), usageLimitId = structure(logical(0), tags = list(type = "string")), usageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_usage_limit_output"]]))
 }
 
 .redshiftserverless$create_workgroup_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(baseCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), configParameters = structure(list(structure(list(parameterKey = structure(logical(0), tags = list(type = "string")), parameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), enhancedVpcRouting = structure(logical(0), tags = list(type = "boolean", box = TRUE)), extraComputeForAutomaticOptimization = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ipAddressType = structure(logical(0), tags = list(type = "string")), maxCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), namespaceName = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), pricePerformanceTarget = structure(list(level = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), publiclyAccessible = structure(logical(0), tags = list(type = "boolean", box = TRUE)), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), trackName = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_workgroup_input"]]))
 }
 
 .redshiftserverless$create_workgroup_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workgroup = structure(list(baseCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), configParameters = structure(list(structure(list(parameterKey = structure(logical(0), tags = list(type = "string")), parameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), crossAccountVpcs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customDomainCertificateArn = structure(logical(0), tags = list(type = "string")), customDomainCertificateExpiryTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), customDomainName = structure(logical(0), tags = list(type = "string")), endpoint = structure(list(address = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), vpcEndpoints = structure(list(structure(list(networkInterfaces = structure(list(structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), ipv6Address = structure(logical(0), tags = list(type = "string")), networkInterfaceId = structure(logical(0), tags = list(type = "string")), privateIpAddress = structure(logical(0), tags = list(type = "string")), subnetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), vpcEndpointId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), enhancedVpcRouting = structure(logical(0), tags = list(type = "boolean", box = TRUE)), extraComputeForAutomaticOptimization = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ipAddressType = structure(logical(0), tags = list(type = "string")), maxCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), namespaceName = structure(logical(0), tags = list(type = "string")), patchVersion = structure(logical(0), tags = list(type = "string")), pendingTrackName = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), pricePerformanceTarget = structure(list(level = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), publiclyAccessible = structure(logical(0), tags = list(type = "boolean", box = TRUE)), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), trackName = structure(logical(0), tags = list(type = "string")), workgroupArn = structure(logical(0), tags = list(type = "string")), workgroupId = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string")), workgroupVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["create_workgroup_output"]]))
 }
 
 .redshiftserverless$delete_custom_domain_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(customDomainName = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_custom_domain_association_input"]]))
 }
 
 .redshiftserverless$delete_custom_domain_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_custom_domain_association_output"]]))
 }
 
 .redshiftserverless$delete_endpoint_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpointName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_endpoint_access_input"]]))
 }
 
 .redshiftserverless$delete_endpoint_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpoint = structure(list(address = structure(logical(0), tags = list(type = "string")), endpointArn = structure(logical(0), tags = list(type = "string")), endpointCreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endpointName = structure(logical(0), tags = list(type = "string")), endpointStatus = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcEndpoint = structure(list(networkInterfaces = structure(list(structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), ipv6Address = structure(logical(0), tags = list(type = "string")), networkInterfaceId = structure(logical(0), tags = list(type = "string")), privateIpAddress = structure(logical(0), tags = list(type = "string")), subnetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), vpcEndpointId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), vpcSecurityGroups = structure(list(structure(list(status = structure(logical(0), tags = list(type = "string")), vpcSecurityGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_endpoint_access_output"]]))
 }
 
 .redshiftserverless$delete_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(finalSnapshotName = structure(logical(0), tags = list(type = "string")), finalSnapshotRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), namespaceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_namespace_input"]]))
 }
 
 .redshiftserverless$delete_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(namespace = structure(list(adminPasswordSecretArn = structure(logical(0), tags = list(type = "string")), adminPasswordSecretKmsKeyId = structure(logical(0), tags = list(type = "string")), adminUsername = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), catalogArn = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), dbName = structure(logical(0), tags = list(type = "string")), defaultIamRoleArn = structure(logical(0), tags = list(type = "string")), iamRoles = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), kmsKeyId = structure(logical(0), tags = list(type = "string")), lakehouseRegistrationStatus = structure(logical(0), tags = list(type = "string")), logExports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceId = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_namespace_output"]]))
 }
 
 .redshiftserverless$delete_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_resource_policy_input"]]))
 }
 
 .redshiftserverless$delete_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_resource_policy_output"]]))
 }
 
 .redshiftserverless$delete_scheduled_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(scheduledActionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_scheduled_action_input"]]))
 }
 
 .redshiftserverless$delete_scheduled_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(scheduledAction = structure(list(endTime = structure(logical(0), tags = list(type = "timestamp")), namespaceName = structure(logical(0), tags = list(type = "string")), nextInvocations = structure(list(structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "list")), roleArn = structure(logical(0), tags = list(type = "string")), schedule = structure(list(at = structure(logical(0), tags = list(type = "timestamp")), cron = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), scheduledActionDescription = structure(logical(0), tags = list(type = "string")), scheduledActionName = structure(logical(0), tags = list(type = "string")), scheduledActionUuid = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), state = structure(logical(0), tags = list(type = "string")), targetAction = structure(list(createSnapshot = structure(list(namespaceName = structure(logical(0), tags = list(type = "string")), retentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotNamePrefix = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_scheduled_action_output"]]))
 }
 
 .redshiftserverless$delete_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshotName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_snapshot_input"]]))
 }
 
 .redshiftserverless$delete_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshot = structure(list(accountsWithProvisionedRestoreAccess = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), accountsWithRestoreAccess = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), actualIncrementalBackupSizeInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE)), adminPasswordSecretArn = structure(logical(0), tags = list(type = "string")), adminPasswordSecretKmsKeyId = structure(logical(0), tags = list(type = "string")), adminUsername = structure(logical(0), tags = list(type = "string")), backupProgressInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE)), currentBackupRateInMegaBytesPerSecond = structure(logical(0), tags = list(type = "double", box = TRUE)), elapsedTimeInSeconds = structure(logical(0), tags = list(type = "long", box = TRUE)), estimatedSecondsToCompletion = structure(logical(0), tags = list(type = "long", box = TRUE)), kmsKeyId = structure(logical(0), tags = list(type = "string")), namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), snapshotArn = structure(logical(0), tags = list(type = "string")), snapshotCreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), snapshotName = structure(logical(0), tags = list(type = "string")), snapshotRemainingDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotRetentionStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string")), totalBackupSizeInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_snapshot_output"]]))
 }
 
 .redshiftserverless$delete_snapshot_copy_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshotCopyConfigurationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_snapshot_copy_configuration_input"]]))
 }
 
 .redshiftserverless$delete_snapshot_copy_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshotCopyConfiguration = structure(list(destinationKmsKeyId = structure(logical(0), tags = list(type = "string")), destinationRegion = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), snapshotCopyConfigurationArn = structure(logical(0), tags = list(type = "string")), snapshotCopyConfigurationId = structure(logical(0), tags = list(type = "string")), snapshotRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_snapshot_copy_configuration_output"]]))
 }
 
 .redshiftserverless$delete_usage_limit_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usageLimitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_usage_limit_input"]]))
 }
 
 .redshiftserverless$delete_usage_limit_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usageLimit = structure(list(amount = structure(logical(0), tags = list(type = "long", box = TRUE)), breachAction = structure(logical(0), tags = list(type = "string")), period = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), usageLimitArn = structure(logical(0), tags = list(type = "string")), usageLimitId = structure(logical(0), tags = list(type = "string")), usageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_usage_limit_output"]]))
 }
 
 .redshiftserverless$delete_workgroup_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_workgroup_input"]]))
 }
 
 .redshiftserverless$delete_workgroup_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workgroup = structure(list(baseCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), configParameters = structure(list(structure(list(parameterKey = structure(logical(0), tags = list(type = "string")), parameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), crossAccountVpcs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customDomainCertificateArn = structure(logical(0), tags = list(type = "string")), customDomainCertificateExpiryTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), customDomainName = structure(logical(0), tags = list(type = "string")), endpoint = structure(list(address = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), vpcEndpoints = structure(list(structure(list(networkInterfaces = structure(list(structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), ipv6Address = structure(logical(0), tags = list(type = "string")), networkInterfaceId = structure(logical(0), tags = list(type = "string")), privateIpAddress = structure(logical(0), tags = list(type = "string")), subnetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), vpcEndpointId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), enhancedVpcRouting = structure(logical(0), tags = list(type = "boolean", box = TRUE)), extraComputeForAutomaticOptimization = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ipAddressType = structure(logical(0), tags = list(type = "string")), maxCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), namespaceName = structure(logical(0), tags = list(type = "string")), patchVersion = structure(logical(0), tags = list(type = "string")), pendingTrackName = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), pricePerformanceTarget = structure(list(level = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), publiclyAccessible = structure(logical(0), tags = list(type = "boolean", box = TRUE)), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), trackName = structure(logical(0), tags = list(type = "string")), workgroupArn = structure(logical(0), tags = list(type = "string")), workgroupId = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string")), workgroupVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["delete_workgroup_output"]]))
 }
 
 .redshiftserverless$get_credentials_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(customDomainName = structure(logical(0), tags = list(type = "string")), dbName = structure(logical(0), tags = list(type = "string")), durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_credentials_input"]]))
 }
 
 .redshiftserverless$get_credentials_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(dbPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), dbUser = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), expiration = structure(logical(0), tags = list(type = "timestamp")), nextRefreshTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_credentials_output"]]))
 }
 
 .redshiftserverless$get_custom_domain_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(customDomainName = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_custom_domain_association_input"]]))
 }
 
 .redshiftserverless$get_custom_domain_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(customDomainCertificateArn = structure(logical(0), tags = list(type = "string")), customDomainCertificateExpiryTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), customDomainName = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_custom_domain_association_output"]]))
 }
 
 .redshiftserverless$get_endpoint_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpointName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_endpoint_access_input"]]))
 }
 
 .redshiftserverless$get_endpoint_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpoint = structure(list(address = structure(logical(0), tags = list(type = "string")), endpointArn = structure(logical(0), tags = list(type = "string")), endpointCreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endpointName = structure(logical(0), tags = list(type = "string")), endpointStatus = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcEndpoint = structure(list(networkInterfaces = structure(list(structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), ipv6Address = structure(logical(0), tags = list(type = "string")), networkInterfaceId = structure(logical(0), tags = list(type = "string")), privateIpAddress = structure(logical(0), tags = list(type = "string")), subnetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), vpcEndpointId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), vpcSecurityGroups = structure(list(structure(list(status = structure(logical(0), tags = list(type = "string")), vpcSecurityGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_endpoint_access_output"]]))
 }
 
 .redshiftserverless$get_identity_center_auth_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workgroupNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_identity_center_auth_token_input"]]))
 }
 
 .redshiftserverless$get_identity_center_auth_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(expirationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), token = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_identity_center_auth_token_output"]]))
 }
 
 .redshiftserverless$get_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(namespaceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_namespace_input"]]))
 }
 
 .redshiftserverless$get_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(namespace = structure(list(adminPasswordSecretArn = structure(logical(0), tags = list(type = "string")), adminPasswordSecretKmsKeyId = structure(logical(0), tags = list(type = "string")), adminUsername = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), catalogArn = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), dbName = structure(logical(0), tags = list(type = "string")), defaultIamRoleArn = structure(logical(0), tags = list(type = "string")), iamRoles = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), kmsKeyId = structure(logical(0), tags = list(type = "string")), lakehouseRegistrationStatus = structure(logical(0), tags = list(type = "string")), logExports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceId = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_namespace_output"]]))
 }
 
 .redshiftserverless$get_recovery_point_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recoveryPointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_recovery_point_input"]]))
 }
 
 .redshiftserverless$get_recovery_point_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recoveryPoint = structure(list(namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), recoveryPointCreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), recoveryPointId = structure(logical(0), tags = list(type = "string")), totalSizeInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE)), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_recovery_point_output"]]))
 }
 
 .redshiftserverless$get_reservation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(reservationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_reservation_input"]]))
 }
 
 .redshiftserverless$get_reservation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(reservation = structure(list(capacity = structure(logical(0), tags = list(type = "integer")), endDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), offering = structure(list(currencyCode = structure(logical(0), tags = list(type = "string")), duration = structure(logical(0), tags = list(type = "integer")), hourlyCharge = structure(logical(0), tags = list(type = "double")), offeringId = structure(logical(0), tags = list(type = "string")), offeringType = structure(logical(0), tags = list(type = "string")), upfrontCharge = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), reservationArn = structure(logical(0), tags = list(type = "string")), reservationId = structure(logical(0), tags = list(type = "string")), startDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_reservation_output"]]))
 }
 
 .redshiftserverless$get_reservation_offering_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(offeringId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_reservation_offering_input"]]))
 }
 
 .redshiftserverless$get_reservation_offering_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(reservationOffering = structure(list(currencyCode = structure(logical(0), tags = list(type = "string")), duration = structure(logical(0), tags = list(type = "integer")), hourlyCharge = structure(logical(0), tags = list(type = "double")), offeringId = structure(logical(0), tags = list(type = "string")), offeringType = structure(logical(0), tags = list(type = "string")), upfrontCharge = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_reservation_offering_output"]]))
 }
 
 .redshiftserverless$get_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_resource_policy_input"]]))
 }
 
 .redshiftserverless$get_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourcePolicy = structure(list(policy = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_resource_policy_output"]]))
 }
 
 .redshiftserverless$get_scheduled_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(scheduledActionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_scheduled_action_input"]]))
 }
 
 .redshiftserverless$get_scheduled_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(scheduledAction = structure(list(endTime = structure(logical(0), tags = list(type = "timestamp")), namespaceName = structure(logical(0), tags = list(type = "string")), nextInvocations = structure(list(structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "list")), roleArn = structure(logical(0), tags = list(type = "string")), schedule = structure(list(at = structure(logical(0), tags = list(type = "timestamp")), cron = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), scheduledActionDescription = structure(logical(0), tags = list(type = "string")), scheduledActionName = structure(logical(0), tags = list(type = "string")), scheduledActionUuid = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), state = structure(logical(0), tags = list(type = "string")), targetAction = structure(list(createSnapshot = structure(list(namespaceName = structure(logical(0), tags = list(type = "string")), retentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotNamePrefix = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_scheduled_action_output"]]))
 }
 
 .redshiftserverless$get_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), snapshotArn = structure(logical(0), tags = list(type = "string")), snapshotName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_snapshot_input"]]))
 }
 
 .redshiftserverless$get_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshot = structure(list(accountsWithProvisionedRestoreAccess = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), accountsWithRestoreAccess = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), actualIncrementalBackupSizeInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE)), adminPasswordSecretArn = structure(logical(0), tags = list(type = "string")), adminPasswordSecretKmsKeyId = structure(logical(0), tags = list(type = "string")), adminUsername = structure(logical(0), tags = list(type = "string")), backupProgressInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE)), currentBackupRateInMegaBytesPerSecond = structure(logical(0), tags = list(type = "double", box = TRUE)), elapsedTimeInSeconds = structure(logical(0), tags = list(type = "long", box = TRUE)), estimatedSecondsToCompletion = structure(logical(0), tags = list(type = "long", box = TRUE)), kmsKeyId = structure(logical(0), tags = list(type = "string")), namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), snapshotArn = structure(logical(0), tags = list(type = "string")), snapshotCreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), snapshotName = structure(logical(0), tags = list(type = "string")), snapshotRemainingDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotRetentionStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string")), totalBackupSizeInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_snapshot_output"]]))
 }
 
 .redshiftserverless$get_table_restore_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tableRestoreRequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_table_restore_status_input"]]))
 }
 
 .redshiftserverless$get_table_restore_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tableRestoreStatus = structure(list(message = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), newTableName = structure(logical(0), tags = list(type = "string")), progressInMegaBytes = structure(logical(0), tags = list(type = "long", box = TRUE)), recoveryPointId = structure(logical(0), tags = list(type = "string")), requestTime = structure(logical(0), tags = list(type = "timestamp")), snapshotName = structure(logical(0), tags = list(type = "string")), sourceDatabaseName = structure(logical(0), tags = list(type = "string")), sourceSchemaName = structure(logical(0), tags = list(type = "string")), sourceTableName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tableRestoreRequestId = structure(logical(0), tags = list(type = "string")), targetDatabaseName = structure(logical(0), tags = list(type = "string")), targetSchemaName = structure(logical(0), tags = list(type = "string")), totalDataInMegaBytes = structure(logical(0), tags = list(type = "long", box = TRUE)), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_table_restore_status_output"]]))
 }
 
 .redshiftserverless$get_track_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trackName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_track_input"]]))
 }
 
 .redshiftserverless$get_track_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(track = structure(list(trackName = structure(logical(0), tags = list(type = "string")), updateTargets = structure(list(structure(list(trackName = structure(logical(0), tags = list(type = "string")), workgroupVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), workgroupVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_track_output"]]))
 }
 
 .redshiftserverless$get_usage_limit_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usageLimitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_usage_limit_input"]]))
 }
 
 .redshiftserverless$get_usage_limit_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usageLimit = structure(list(amount = structure(logical(0), tags = list(type = "long", box = TRUE)), breachAction = structure(logical(0), tags = list(type = "string")), period = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), usageLimitArn = structure(logical(0), tags = list(type = "string")), usageLimitId = structure(logical(0), tags = list(type = "string")), usageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_usage_limit_output"]]))
 }
 
 .redshiftserverless$get_workgroup_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_workgroup_input"]]))
 }
 
 .redshiftserverless$get_workgroup_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workgroup = structure(list(baseCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), configParameters = structure(list(structure(list(parameterKey = structure(logical(0), tags = list(type = "string")), parameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), crossAccountVpcs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customDomainCertificateArn = structure(logical(0), tags = list(type = "string")), customDomainCertificateExpiryTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), customDomainName = structure(logical(0), tags = list(type = "string")), endpoint = structure(list(address = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), vpcEndpoints = structure(list(structure(list(networkInterfaces = structure(list(structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), ipv6Address = structure(logical(0), tags = list(type = "string")), networkInterfaceId = structure(logical(0), tags = list(type = "string")), privateIpAddress = structure(logical(0), tags = list(type = "string")), subnetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), vpcEndpointId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), enhancedVpcRouting = structure(logical(0), tags = list(type = "boolean", box = TRUE)), extraComputeForAutomaticOptimization = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ipAddressType = structure(logical(0), tags = list(type = "string")), maxCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), namespaceName = structure(logical(0), tags = list(type = "string")), patchVersion = structure(logical(0), tags = list(type = "string")), pendingTrackName = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), pricePerformanceTarget = structure(list(level = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), publiclyAccessible = structure(logical(0), tags = list(type = "boolean", box = TRUE)), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), trackName = structure(logical(0), tags = list(type = "string")), workgroupArn = structure(logical(0), tags = list(type = "string")), workgroupId = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string")), workgroupVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["get_workgroup_output"]]))
 }
 
 .redshiftserverless$list_custom_domain_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(customDomainCertificateArn = structure(logical(0), tags = list(type = "string")), customDomainName = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_custom_domain_associations_input"]]))
 }
 
 .redshiftserverless$list_custom_domain_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(associations = structure(list(structure(list(customDomainCertificateArn = structure(logical(0), tags = list(type = "string")), customDomainCertificateExpiryTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), customDomainName = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_custom_domain_associations_output"]]))
 }
 
 .redshiftserverless$list_endpoint_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_endpoint_access_input"]]))
 }
 
 .redshiftserverless$list_endpoint_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpoints = structure(list(structure(list(address = structure(logical(0), tags = list(type = "string")), endpointArn = structure(logical(0), tags = list(type = "string")), endpointCreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endpointName = structure(logical(0), tags = list(type = "string")), endpointStatus = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcEndpoint = structure(list(networkInterfaces = structure(list(structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), ipv6Address = structure(logical(0), tags = list(type = "string")), networkInterfaceId = structure(logical(0), tags = list(type = "string")), privateIpAddress = structure(logical(0), tags = list(type = "string")), subnetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), vpcEndpointId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), vpcSecurityGroups = structure(list(structure(list(status = structure(logical(0), tags = list(type = "string")), vpcSecurityGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_endpoint_access_output"]]))
 }
 
 .redshiftserverless$list_managed_workgroups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), sourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_managed_workgroups_input"]]))
 }
 
 .redshiftserverless$list_managed_workgroups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(managedWorkgroups = structure(list(structure(list(creationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), managedWorkgroupId = structure(logical(0), tags = list(type = "string")), managedWorkgroupName = structure(logical(0), tags = list(type = "string")), sourceArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_managed_workgroups_output"]]))
 }
 
 .redshiftserverless$list_namespaces_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_namespaces_input"]]))
 }
 
 .redshiftserverless$list_namespaces_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(namespaces = structure(list(structure(list(adminPasswordSecretArn = structure(logical(0), tags = list(type = "string")), adminPasswordSecretKmsKeyId = structure(logical(0), tags = list(type = "string")), adminUsername = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), catalogArn = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), dbName = structure(logical(0), tags = list(type = "string")), defaultIamRoleArn = structure(logical(0), tags = list(type = "string")), iamRoles = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), kmsKeyId = structure(logical(0), tags = list(type = "string")), lakehouseRegistrationStatus = structure(logical(0), tags = list(type = "string")), logExports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceId = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_namespaces_output"]]))
 }
 
 .redshiftserverless$list_recovery_points_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endTime = structure(logical(0), tags = list(type = "timestamp")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_recovery_points_input"]]))
 }
 
 .redshiftserverless$list_recovery_points_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), recoveryPoints = structure(list(structure(list(namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), recoveryPointCreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), recoveryPointId = structure(logical(0), tags = list(type = "string")), totalSizeInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE)), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_recovery_points_output"]]))
 }
 
 .redshiftserverless$list_reservation_offerings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_reservation_offerings_input"]]))
 }
 
 .redshiftserverless$list_reservation_offerings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), reservationOfferingsList = structure(list(structure(list(currencyCode = structure(logical(0), tags = list(type = "string")), duration = structure(logical(0), tags = list(type = "integer")), hourlyCharge = structure(logical(0), tags = list(type = "double")), offeringId = structure(logical(0), tags = list(type = "string")), offeringType = structure(logical(0), tags = list(type = "string")), upfrontCharge = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_reservation_offerings_output"]]))
 }
 
 .redshiftserverless$list_reservations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_reservations_input"]]))
 }
 
 .redshiftserverless$list_reservations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), reservationsList = structure(list(structure(list(capacity = structure(logical(0), tags = list(type = "integer")), endDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), offering = structure(list(currencyCode = structure(logical(0), tags = list(type = "string")), duration = structure(logical(0), tags = list(type = "integer")), hourlyCharge = structure(logical(0), tags = list(type = "double")), offeringId = structure(logical(0), tags = list(type = "string")), offeringType = structure(logical(0), tags = list(type = "string")), upfrontCharge = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), reservationArn = structure(logical(0), tags = list(type = "string")), reservationId = structure(logical(0), tags = list(type = "string")), startDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_reservations_output"]]))
 }
 
 .redshiftserverless$list_scheduled_actions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), namespaceName = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_scheduled_actions_input"]]))
 }
 
 .redshiftserverless$list_scheduled_actions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), scheduledActions = structure(list(structure(list(namespaceName = structure(logical(0), tags = list(type = "string")), scheduledActionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_scheduled_actions_output"]]))
 }
 
 .redshiftserverless$list_snapshot_copy_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), namespaceName = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_snapshot_copy_configurations_input"]]))
 }
 
 .redshiftserverless$list_snapshot_copy_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), snapshotCopyConfigurations = structure(list(structure(list(destinationKmsKeyId = structure(logical(0), tags = list(type = "string")), destinationRegion = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), snapshotCopyConfigurationArn = structure(logical(0), tags = list(type = "string")), snapshotCopyConfigurationId = structure(logical(0), tags = list(type = "string")), snapshotRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_snapshot_copy_configurations_output"]]))
 }
 
 .redshiftserverless$list_snapshots_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endTime = structure(logical(0), tags = list(type = "timestamp")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_snapshots_input"]]))
 }
 
 .redshiftserverless$list_snapshots_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), snapshots = structure(list(structure(list(accountsWithProvisionedRestoreAccess = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), accountsWithRestoreAccess = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), actualIncrementalBackupSizeInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE)), adminPasswordSecretArn = structure(logical(0), tags = list(type = "string")), adminPasswordSecretKmsKeyId = structure(logical(0), tags = list(type = "string")), adminUsername = structure(logical(0), tags = list(type = "string")), backupProgressInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE)), currentBackupRateInMegaBytesPerSecond = structure(logical(0), tags = list(type = "double", box = TRUE)), elapsedTimeInSeconds = structure(logical(0), tags = list(type = "long", box = TRUE)), estimatedSecondsToCompletion = structure(logical(0), tags = list(type = "long", box = TRUE)), kmsKeyId = structure(logical(0), tags = list(type = "string")), namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), snapshotArn = structure(logical(0), tags = list(type = "string")), snapshotCreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), snapshotName = structure(logical(0), tags = list(type = "string")), snapshotRemainingDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotRetentionStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string")), totalBackupSizeInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_snapshots_output"]]))
 }
 
 .redshiftserverless$list_table_restore_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), namespaceName = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_table_restore_status_input"]]))
 }
 
 .redshiftserverless$list_table_restore_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), tableRestoreStatuses = structure(list(structure(list(message = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), newTableName = structure(logical(0), tags = list(type = "string")), progressInMegaBytes = structure(logical(0), tags = list(type = "long", box = TRUE)), recoveryPointId = structure(logical(0), tags = list(type = "string")), requestTime = structure(logical(0), tags = list(type = "timestamp")), snapshotName = structure(logical(0), tags = list(type = "string")), sourceDatabaseName = structure(logical(0), tags = list(type = "string")), sourceSchemaName = structure(logical(0), tags = list(type = "string")), sourceTableName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tableRestoreRequestId = structure(logical(0), tags = list(type = "string")), targetDatabaseName = structure(logical(0), tags = list(type = "string")), targetSchemaName = structure(logical(0), tags = list(type = "string")), totalDataInMegaBytes = structure(logical(0), tags = list(type = "long", box = TRUE)), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_table_restore_status_output"]]))
 }
 
 .redshiftserverless$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_tags_for_resource_input"]]))
 }
 
 .redshiftserverless$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_tags_for_resource_output"]]))
 }
 
 .redshiftserverless$list_tracks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_tracks_input"]]))
 }
 
 .redshiftserverless$list_tracks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), tracks = structure(list(structure(list(trackName = structure(logical(0), tags = list(type = "string")), updateTargets = structure(list(structure(list(trackName = structure(logical(0), tags = list(type = "string")), workgroupVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), workgroupVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_tracks_output"]]))
 }
 
 .redshiftserverless$list_usage_limits_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), usageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_usage_limits_input"]]))
 }
 
 .redshiftserverless$list_usage_limits_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), usageLimits = structure(list(structure(list(amount = structure(logical(0), tags = list(type = "long", box = TRUE)), breachAction = structure(logical(0), tags = list(type = "string")), period = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), usageLimitArn = structure(logical(0), tags = list(type = "string")), usageLimitId = structure(logical(0), tags = list(type = "string")), usageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_usage_limits_output"]]))
 }
 
 .redshiftserverless$list_workgroups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_workgroups_input"]]))
 }
 
 .redshiftserverless$list_workgroups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), workgroups = structure(list(structure(list(baseCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), configParameters = structure(list(structure(list(parameterKey = structure(logical(0), tags = list(type = "string")), parameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), crossAccountVpcs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customDomainCertificateArn = structure(logical(0), tags = list(type = "string")), customDomainCertificateExpiryTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), customDomainName = structure(logical(0), tags = list(type = "string")), endpoint = structure(list(address = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), vpcEndpoints = structure(list(structure(list(networkInterfaces = structure(list(structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), ipv6Address = structure(logical(0), tags = list(type = "string")), networkInterfaceId = structure(logical(0), tags = list(type = "string")), privateIpAddress = structure(logical(0), tags = list(type = "string")), subnetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), vpcEndpointId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), enhancedVpcRouting = structure(logical(0), tags = list(type = "boolean", box = TRUE)), extraComputeForAutomaticOptimization = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ipAddressType = structure(logical(0), tags = list(type = "string")), maxCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), namespaceName = structure(logical(0), tags = list(type = "string")), patchVersion = structure(logical(0), tags = list(type = "string")), pendingTrackName = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), pricePerformanceTarget = structure(list(level = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), publiclyAccessible = structure(logical(0), tags = list(type = "boolean", box = TRUE)), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), trackName = structure(logical(0), tags = list(type = "string")), workgroupArn = structure(logical(0), tags = list(type = "string")), workgroupId = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string")), workgroupVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["list_workgroups_output"]]))
 }
 
 .redshiftserverless$put_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policy = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["put_resource_policy_input"]]))
 }
 
 .redshiftserverless$put_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourcePolicy = structure(list(policy = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["put_resource_policy_output"]]))
 }
 
 .redshiftserverless$restore_from_recovery_point_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(namespaceName = structure(logical(0), tags = list(type = "string")), recoveryPointId = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["restore_from_recovery_point_input"]]))
 }
 
 .redshiftserverless$restore_from_recovery_point_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(namespace = structure(list(adminPasswordSecretArn = structure(logical(0), tags = list(type = "string")), adminPasswordSecretKmsKeyId = structure(logical(0), tags = list(type = "string")), adminUsername = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), catalogArn = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), dbName = structure(logical(0), tags = list(type = "string")), defaultIamRoleArn = structure(logical(0), tags = list(type = "string")), iamRoles = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), kmsKeyId = structure(logical(0), tags = list(type = "string")), lakehouseRegistrationStatus = structure(logical(0), tags = list(type = "string")), logExports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceId = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), recoveryPointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["restore_from_recovery_point_output"]]))
 }
 
 .redshiftserverless$restore_from_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(adminPasswordSecretKmsKeyId = structure(logical(0), tags = list(type = "string")), manageAdminPassword = structure(logical(0), tags = list(type = "boolean", box = TRUE)), namespaceName = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), snapshotArn = structure(logical(0), tags = list(type = "string")), snapshotName = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["restore_from_snapshot_input"]]))
 }
 
 .redshiftserverless$restore_from_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(namespace = structure(list(adminPasswordSecretArn = structure(logical(0), tags = list(type = "string")), adminPasswordSecretKmsKeyId = structure(logical(0), tags = list(type = "string")), adminUsername = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), catalogArn = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), dbName = structure(logical(0), tags = list(type = "string")), defaultIamRoleArn = structure(logical(0), tags = list(type = "string")), iamRoles = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), kmsKeyId = structure(logical(0), tags = list(type = "string")), lakehouseRegistrationStatus = structure(logical(0), tags = list(type = "string")), logExports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceId = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ownerAccount = structure(logical(0), tags = list(type = "string")), snapshotName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["restore_from_snapshot_output"]]))
 }
 
 .redshiftserverless$restore_table_from_recovery_point_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(activateCaseSensitiveIdentifier = structure(logical(0), tags = list(type = "boolean", box = TRUE)), namespaceName = structure(logical(0), tags = list(type = "string")), newTableName = structure(logical(0), tags = list(type = "string")), recoveryPointId = structure(logical(0), tags = list(type = "string")), sourceDatabaseName = structure(logical(0), tags = list(type = "string")), sourceSchemaName = structure(logical(0), tags = list(type = "string")), sourceTableName = structure(logical(0), tags = list(type = "string")), targetDatabaseName = structure(logical(0), tags = list(type = "string")), targetSchemaName = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["restore_table_from_recovery_point_input"]]))
 }
 
 .redshiftserverless$restore_table_from_recovery_point_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tableRestoreStatus = structure(list(message = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), newTableName = structure(logical(0), tags = list(type = "string")), progressInMegaBytes = structure(logical(0), tags = list(type = "long", box = TRUE)), recoveryPointId = structure(logical(0), tags = list(type = "string")), requestTime = structure(logical(0), tags = list(type = "timestamp")), snapshotName = structure(logical(0), tags = list(type = "string")), sourceDatabaseName = structure(logical(0), tags = list(type = "string")), sourceSchemaName = structure(logical(0), tags = list(type = "string")), sourceTableName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tableRestoreRequestId = structure(logical(0), tags = list(type = "string")), targetDatabaseName = structure(logical(0), tags = list(type = "string")), targetSchemaName = structure(logical(0), tags = list(type = "string")), totalDataInMegaBytes = structure(logical(0), tags = list(type = "long", box = TRUE)), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["restore_table_from_recovery_point_output"]]))
 }
 
 .redshiftserverless$restore_table_from_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(activateCaseSensitiveIdentifier = structure(logical(0), tags = list(type = "boolean", box = TRUE)), namespaceName = structure(logical(0), tags = list(type = "string")), newTableName = structure(logical(0), tags = list(type = "string")), snapshotName = structure(logical(0), tags = list(type = "string")), sourceDatabaseName = structure(logical(0), tags = list(type = "string")), sourceSchemaName = structure(logical(0), tags = list(type = "string")), sourceTableName = structure(logical(0), tags = list(type = "string")), targetDatabaseName = structure(logical(0), tags = list(type = "string")), targetSchemaName = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["restore_table_from_snapshot_input"]]))
 }
 
 .redshiftserverless$restore_table_from_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tableRestoreStatus = structure(list(message = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), newTableName = structure(logical(0), tags = list(type = "string")), progressInMegaBytes = structure(logical(0), tags = list(type = "long", box = TRUE)), recoveryPointId = structure(logical(0), tags = list(type = "string")), requestTime = structure(logical(0), tags = list(type = "timestamp")), snapshotName = structure(logical(0), tags = list(type = "string")), sourceDatabaseName = structure(logical(0), tags = list(type = "string")), sourceSchemaName = structure(logical(0), tags = list(type = "string")), sourceTableName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tableRestoreRequestId = structure(logical(0), tags = list(type = "string")), targetDatabaseName = structure(logical(0), tags = list(type = "string")), targetSchemaName = structure(logical(0), tags = list(type = "string")), totalDataInMegaBytes = structure(logical(0), tags = list(type = "long", box = TRUE)), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["restore_table_from_snapshot_output"]]))
 }
 
 .redshiftserverless$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["tag_resource_input"]]))
 }
 
 .redshiftserverless$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["tag_resource_output"]]))
 }
 
 .redshiftserverless$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["untag_resource_input"]]))
 }
 
 .redshiftserverless$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["untag_resource_output"]]))
 }
 
 .redshiftserverless$update_custom_domain_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(customDomainCertificateArn = structure(logical(0), tags = list(type = "string")), customDomainName = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_custom_domain_association_input"]]))
 }
 
 .redshiftserverless$update_custom_domain_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(customDomainCertificateArn = structure(logical(0), tags = list(type = "string")), customDomainCertificateExpiryTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), customDomainName = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_custom_domain_association_output"]]))
 }
 
 .redshiftserverless$update_endpoint_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpointName = structure(logical(0), tags = list(type = "string")), vpcSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_endpoint_access_input"]]))
 }
 
 .redshiftserverless$update_endpoint_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpoint = structure(list(address = structure(logical(0), tags = list(type = "string")), endpointArn = structure(logical(0), tags = list(type = "string")), endpointCreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endpointName = structure(logical(0), tags = list(type = "string")), endpointStatus = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcEndpoint = structure(list(networkInterfaces = structure(list(structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), ipv6Address = structure(logical(0), tags = list(type = "string")), networkInterfaceId = structure(logical(0), tags = list(type = "string")), privateIpAddress = structure(logical(0), tags = list(type = "string")), subnetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), vpcEndpointId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), vpcSecurityGroups = structure(list(structure(list(status = structure(logical(0), tags = list(type = "string")), vpcSecurityGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_endpoint_access_output"]]))
 }
 
 .redshiftserverless$update_lakehouse_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(catalogName = structure(logical(0), tags = list(type = "string")), dryRun = structure(logical(0), tags = list(type = "boolean", box = TRUE)), lakehouseIdcApplicationArn = structure(logical(0), tags = list(type = "string")), lakehouseIdcRegistration = structure(logical(0), tags = list(type = "string")), lakehouseRegistration = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_lakehouse_configuration_input"]]))
 }
 
 .redshiftserverless$update_lakehouse_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(catalogArn = structure(logical(0), tags = list(type = "string")), lakehouseIdcApplicationArn = structure(logical(0), tags = list(type = "string")), lakehouseRegistrationStatus = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_lakehouse_configuration_output"]]))
 }
 
 .redshiftserverless$update_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(adminPasswordSecretKmsKeyId = structure(logical(0), tags = list(type = "string")), adminUserPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), adminUsername = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), defaultIamRoleArn = structure(logical(0), tags = list(type = "string")), iamRoles = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), kmsKeyId = structure(logical(0), tags = list(type = "string")), logExports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), manageAdminPassword = structure(logical(0), tags = list(type = "boolean", box = TRUE)), namespaceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_namespace_input"]]))
 }
 
 .redshiftserverless$update_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(namespace = structure(list(adminPasswordSecretArn = structure(logical(0), tags = list(type = "string")), adminPasswordSecretKmsKeyId = structure(logical(0), tags = list(type = "string")), adminUsername = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), catalogArn = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), dbName = structure(logical(0), tags = list(type = "string")), defaultIamRoleArn = structure(logical(0), tags = list(type = "string")), iamRoles = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), kmsKeyId = structure(logical(0), tags = list(type = "string")), lakehouseRegistrationStatus = structure(logical(0), tags = list(type = "string")), logExports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceId = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_namespace_output"]]))
 }
 
 .redshiftserverless$update_scheduled_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), endTime = structure(logical(0), tags = list(type = "timestamp")), roleArn = structure(logical(0), tags = list(type = "string")), schedule = structure(list(at = structure(logical(0), tags = list(type = "timestamp")), cron = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), scheduledActionDescription = structure(logical(0), tags = list(type = "string")), scheduledActionName = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), targetAction = structure(list(createSnapshot = structure(list(namespaceName = structure(logical(0), tags = list(type = "string")), retentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotNamePrefix = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_scheduled_action_input"]]))
 }
 
 .redshiftserverless$update_scheduled_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(scheduledAction = structure(list(endTime = structure(logical(0), tags = list(type = "timestamp")), namespaceName = structure(logical(0), tags = list(type = "string")), nextInvocations = structure(list(structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "list")), roleArn = structure(logical(0), tags = list(type = "string")), schedule = structure(list(at = structure(logical(0), tags = list(type = "timestamp")), cron = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), scheduledActionDescription = structure(logical(0), tags = list(type = "string")), scheduledActionName = structure(logical(0), tags = list(type = "string")), scheduledActionUuid = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), state = structure(logical(0), tags = list(type = "string")), targetAction = structure(list(createSnapshot = structure(list(namespaceName = structure(logical(0), tags = list(type = "string")), retentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotNamePrefix = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_scheduled_action_output"]]))
 }
 
 .redshiftserverless$update_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(retentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_snapshot_input"]]))
 }
 
 .redshiftserverless$update_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshot = structure(list(accountsWithProvisionedRestoreAccess = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), accountsWithRestoreAccess = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), actualIncrementalBackupSizeInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE)), adminPasswordSecretArn = structure(logical(0), tags = list(type = "string")), adminPasswordSecretKmsKeyId = structure(logical(0), tags = list(type = "string")), adminUsername = structure(logical(0), tags = list(type = "string")), backupProgressInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE)), currentBackupRateInMegaBytesPerSecond = structure(logical(0), tags = list(type = "double", box = TRUE)), elapsedTimeInSeconds = structure(logical(0), tags = list(type = "long", box = TRUE)), estimatedSecondsToCompletion = structure(logical(0), tags = list(type = "long", box = TRUE)), kmsKeyId = structure(logical(0), tags = list(type = "string")), namespaceArn = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), snapshotArn = structure(logical(0), tags = list(type = "string")), snapshotCreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), snapshotName = structure(logical(0), tags = list(type = "string")), snapshotRemainingDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE)), snapshotRetentionStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string")), totalBackupSizeInMegaBytes = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_snapshot_output"]]))
 }
 
 .redshiftserverless$update_snapshot_copy_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshotCopyConfigurationId = structure(logical(0), tags = list(type = "string")), snapshotRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_snapshot_copy_configuration_input"]]))
 }
 
 .redshiftserverless$update_snapshot_copy_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snapshotCopyConfiguration = structure(list(destinationKmsKeyId = structure(logical(0), tags = list(type = "string")), destinationRegion = structure(logical(0), tags = list(type = "string")), namespaceName = structure(logical(0), tags = list(type = "string")), snapshotCopyConfigurationArn = structure(logical(0), tags = list(type = "string")), snapshotCopyConfigurationId = structure(logical(0), tags = list(type = "string")), snapshotRetentionPeriod = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_snapshot_copy_configuration_output"]]))
 }
 
 .redshiftserverless$update_usage_limit_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(amount = structure(logical(0), tags = list(type = "long", box = TRUE)), breachAction = structure(logical(0), tags = list(type = "string")), usageLimitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_usage_limit_input"]]))
 }
 
 .redshiftserverless$update_usage_limit_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usageLimit = structure(list(amount = structure(logical(0), tags = list(type = "long", box = TRUE)), breachAction = structure(logical(0), tags = list(type = "string")), period = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), usageLimitArn = structure(logical(0), tags = list(type = "string")), usageLimitId = structure(logical(0), tags = list(type = "string")), usageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_usage_limit_output"]]))
 }
 
 .redshiftserverless$update_workgroup_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(baseCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), configParameters = structure(list(structure(list(parameterKey = structure(logical(0), tags = list(type = "string")), parameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), enhancedVpcRouting = structure(logical(0), tags = list(type = "boolean", box = TRUE)), extraComputeForAutomaticOptimization = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ipAddressType = structure(logical(0), tags = list(type = "string")), maxCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), pricePerformanceTarget = structure(list(level = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), publiclyAccessible = structure(logical(0), tags = list(type = "boolean", box = TRUE)), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), trackName = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_workgroup_input"]]))
 }
 
 .redshiftserverless$update_workgroup_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workgroup = structure(list(baseCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), configParameters = structure(list(structure(list(parameterKey = structure(logical(0), tags = list(type = "string")), parameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), crossAccountVpcs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customDomainCertificateArn = structure(logical(0), tags = list(type = "string")), customDomainCertificateExpiryTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), customDomainName = structure(logical(0), tags = list(type = "string")), endpoint = structure(list(address = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), vpcEndpoints = structure(list(structure(list(networkInterfaces = structure(list(structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), ipv6Address = structure(logical(0), tags = list(type = "string")), networkInterfaceId = structure(logical(0), tags = list(type = "string")), privateIpAddress = structure(logical(0), tags = list(type = "string")), subnetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), vpcEndpointId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), enhancedVpcRouting = structure(logical(0), tags = list(type = "boolean", box = TRUE)), extraComputeForAutomaticOptimization = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ipAddressType = structure(logical(0), tags = list(type = "string")), maxCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), namespaceName = structure(logical(0), tags = list(type = "string")), patchVersion = structure(logical(0), tags = list(type = "string")), pendingTrackName = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), pricePerformanceTarget = structure(list(level = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), publiclyAccessible = structure(logical(0), tags = list(type = "boolean", box = TRUE)), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), trackName = structure(logical(0), tags = list(type = "string")), workgroupArn = structure(logical(0), tags = list(type = "string")), workgroupId = structure(logical(0), tags = list(type = "string")), workgroupName = structure(logical(0), tags = list(type = "string")), workgroupVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .redshiftserverless_shapes[["update_workgroup_output"]]))
 }

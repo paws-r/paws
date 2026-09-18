@@ -208,6 +208,7 @@ This API Reference provides detailed information about the actions, data types, 
 \link[=lightsail_get_operation]{get_operation} \tab Returns information about a specific operation\cr
 \link[=lightsail_get_operations]{get_operations} \tab Returns information about all operations\cr
 \link[=lightsail_get_operations_for_resource]{get_operations_for_resource} \tab Gets operations for a specific resource (an instance or a static IP)\cr
+\link[=lightsail_get_profile]{get_profile} \tab Returns information about the profile of the Amazon Lightsail account that makes the request\cr
 \link[=lightsail_get_regions]{get_regions} \tab Returns a list of all valid regions for Amazon Lightsail\cr
 \link[=lightsail_get_relational_database]{get_relational_database} \tab Returns information about a specific database in Amazon Lightsail\cr
 \link[=lightsail_get_relational_database_blueprints]{get_relational_database_blueprints} \tab Returns a list of available database blueprints in Amazon Lightsail\cr

@@ -23,7 +23,10 @@ For a FIFO (first-in-first-out) topic, the name must end with the \code{.fifo} s
 The following lists names, descriptions, and values of the special request parameters that the \code{\link[=sns_create_topic]{create_topic}} action uses:
 \itemize{
 \item \code{DeliveryPolicy} – The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints.
-\item \code{DisplayName} – The display name to use for a topic with SMS subscriptions.
+\item \code{DisplayName} – The display name to use for a topic with SMS, \code{email}, and \code{email-json} subscriptions. For \code{email} and \code{email-json} subscriptions, the display name is used as the sender name for regular notification messages. Subscription confirmation and unsubscribe confirmation emails always use "Amazon Web Services Notifications" as the sender name.
+\item \code{MaximumMessageSize} – The maximum size, in bytes, of a message that can be published to the topic. Valid values are \code{1024} to \code{1048576} (1 MiB). The default is \code{262144} (256 KiB).
+
+A topic with a \code{MaximumMessageSize} above 256 KiB must have 100 or fewer subscriptions, and each subscription must be an Amazon SQS, Amazon Data Firehose, or Lambda subscription.
 \item \code{Policy} – The policy that defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic.
 \item \code{TracingConfig} – Tracing mode of an Amazon SNS topic. By default \code{TracingConfig} is set to \code{PassThrough}, and the topic passes through the tracing header it receives from an Amazon SNS publisher to its subscriptions. If set to \code{Active}, Amazon SNS will vend X-Ray segment data to topic owner account if the sampled flag in the tracing header is true. This is only supported on standard topics.
 \item HTTP
@@ -90,7 +93,9 @@ The following attributes apply only to \href{https://docs.aws.amazon.com/sns/lat
 
 To be able to tag a topic on creation, you must have the \code{sns:CreateTopic} and \code{sns:TagResource} permissions.}
 
-\item{DataProtectionPolicy}{The body of the policy document you want to use for this topic.
+\item{DataProtectionPolicy}{Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-message-data-protection-availability-change.html}{Amazon SNS message data protection availability change}.
+
+The body of the policy document you want to use for this topic.
 
 You can only add one policy per topic.
 

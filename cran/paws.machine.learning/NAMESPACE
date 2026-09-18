@@ -27,7 +27,6 @@ export(machinelearning)
 export(paginate)
 export(paginate_lapply)
 export(paginate_sapply)
-export(panorama)
 export(paws_stream_parser)
 export(personalize)
 export(personalizeevents)
@@ -44,20 +43,22 @@ export(textract)
 export(transcribeservice)
 export(translate)
 export(voiceid)
-importFrom(paws.common,config)
-importFrom(paws.common,credentials)
-importFrom(paws.common,creds)
-importFrom(paws.common,get_config)
-importFrom(paws.common,list_paginators)
-importFrom(paws.common,merge_config)
-importFrom(paws.common,new_handlers)
-importFrom(paws.common,new_operation)
-importFrom(paws.common,new_request)
-importFrom(paws.common,new_service)
-importFrom(paws.common,paginate)
-importFrom(paws.common,paginate_lapply)
-importFrom(paws.common,paginate_sapply)
-importFrom(paws.common,paws_stream_parser)
-importFrom(paws.common,populate)
-importFrom(paws.common,send_request)
-importFrom(paws.common,set_config)
+importFrom(paws.common,
+  config,
+  credentials,
+  creds,
+  get_config,
+  list_paginators,
+  merge_config,
+  new_handlers,
+  new_operation,
+  new_request,
+  new_service,
+  paginate,
+  paginate_lapply,
+  paginate_sapply,
+  paws_stream_parser,
+  populate,
+  send_request,
+  set_config
+)

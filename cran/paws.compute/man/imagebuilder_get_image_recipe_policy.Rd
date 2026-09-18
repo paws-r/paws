@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_get_image_recipe_policy}
 \alias{imagebuilder_get_image_recipe_policy}
-\title{Gets an image recipe policy}
+\title{Retrieves an image recipe policy}
 \usage{
 imagebuilder_get_image_recipe_policy(imageRecipeArn)
 }
@@ -10,7 +10,7 @@ imagebuilder_get_image_recipe_policy(imageRecipeArn)
 \item{imageRecipeArn}{[required] The Amazon Resource Name (ARN) of the image recipe whose policy you want to retrieve.}
 }
 \description{
-Gets an image recipe policy.
+Retrieves an image recipe policy.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_image_recipe_policy/} for full documentation.
 }

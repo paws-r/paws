@@ -92,18 +92,21 @@ NULL
 #' \tabular{ll}{
 #'  \link[=kafka_batch_associate_scram_secret]{batch_associate_scram_secret} \tab Associates one or more Scram Secrets with an Amazon MSK cluster\cr
 #'  \link[=kafka_batch_disassociate_scram_secret]{batch_disassociate_scram_secret} \tab Disassociates one or more Scram Secrets from an Amazon MSK cluster\cr
+#'  \link[=kafka_create_channel]{create_channel} \tab Creates a Channel that streams records from an Amazon MSK Express cluster topic to Amazon S3 or Apache Iceberg\cr
 #'  \link[=kafka_create_cluster]{create_cluster} \tab Creates a new MSK cluster\cr
 #'  \link[=kafka_create_cluster_v2]{create_cluster_v2} \tab Creates a new MSK cluster\cr
 #'  \link[=kafka_create_configuration]{create_configuration} \tab Creates a new MSK configuration\cr
 #'  \link[=kafka_create_replicator]{create_replicator} \tab Creates the replicator\cr
 #'  \link[=kafka_create_topic]{create_topic} \tab Creates a topic in the specified MSK cluster\cr
 #'  \link[=kafka_create_vpc_connection]{create_vpc_connection} \tab Creates a new MSK VPC connection\cr
+#'  \link[=kafka_delete_channel]{delete_channel} \tab Deletes the channel specified by channelArn from the cluster specified by clusterArn\cr
 #'  \link[=kafka_delete_cluster]{delete_cluster} \tab Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request\cr
 #'  \link[=kafka_delete_cluster_policy]{delete_cluster_policy} \tab Deletes the MSK cluster policy specified by the Amazon Resource Name (ARN) in the request\cr
 #'  \link[=kafka_delete_configuration]{delete_configuration} \tab Deletes an MSK Configuration\cr
 #'  \link[=kafka_delete_replicator]{delete_replicator} \tab Deletes a replicator\cr
 #'  \link[=kafka_delete_topic]{delete_topic} \tab Deletes a topic in the specified MSK cluster\cr
 #'  \link[=kafka_delete_vpc_connection]{delete_vpc_connection} \tab Deletes a MSK VPC connection\cr
+#'  \link[=kafka_describe_channel]{describe_channel} \tab Returns the current configuration and state of a channel\cr
 #'  \link[=kafka_describe_cluster]{describe_cluster} \tab Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request\cr
 #'  \link[=kafka_describe_cluster_operation]{describe_cluster_operation} \tab Returns a description of the cluster operation specified by the ARN\cr
 #'  \link[=kafka_describe_cluster_operation_v2]{describe_cluster_operation_v2} \tab Returns a description of the cluster operation specified by the ARN\cr
@@ -117,6 +120,7 @@ NULL
 #'  \link[=kafka_get_bootstrap_brokers]{get_bootstrap_brokers} \tab A list of brokers that a client application can use to bootstrap\cr
 #'  \link[=kafka_get_cluster_policy]{get_cluster_policy} \tab Get the MSK cluster policy specified by the Amazon Resource Name (ARN) in the request\cr
 #'  \link[=kafka_get_compatible_kafka_versions]{get_compatible_kafka_versions} \tab Gets the Apache Kafka versions to which you can update the MSK cluster\cr
+#'  \link[=kafka_list_channels]{list_channels} \tab Returns the list of channels in a cluster\cr
 #'  \link[=kafka_list_client_vpc_connections]{list_client_vpc_connections} \tab Returns a list of all the VPC connections in this Region\cr
 #'  \link[=kafka_list_cluster_operations]{list_cluster_operations} \tab Returns a list of all the operations that have been performed on the specified MSK cluster\cr
 #'  \link[=kafka_list_cluster_operations_v2]{list_cluster_operations_v2} \tab Returns a list of all the operations that have been performed on the specified MSK cluster\cr
@@ -139,6 +143,7 @@ NULL
 #'  \link[=kafka_update_broker_count]{update_broker_count} \tab Updates the number of broker nodes in the cluster\cr
 #'  \link[=kafka_update_broker_storage]{update_broker_storage} \tab Updates the EBS storage associated with MSK brokers\cr
 #'  \link[=kafka_update_broker_type]{update_broker_type} \tab Updates EC2 instance type\cr
+#'  \link[=kafka_update_channel]{update_channel} \tab Updates the destination configuration of an existing channel\cr
 #'  \link[=kafka_update_cluster_configuration]{update_cluster_configuration} \tab Updates the cluster with the configuration that is specified in the request body\cr
 #'  \link[=kafka_update_cluster_kafka_version]{update_cluster_kafka_version} \tab Updates the Apache Kafka version for the cluster\cr
 #'  \link[=kafka_update_configuration]{update_configuration} \tab Updates an MSK configuration\cr

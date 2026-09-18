@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_list_channels}
 \alias{cloudtrail_list_channels}
-\title{Lists the channels in the current account, and their source names}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_list_channels(MaxResults = NULL, NextToken = NULL)
 }
@@ -12,7 +13,7 @@ cloudtrail_list_channels(MaxResults = NULL, NextToken = NULL)
 \item{NextToken}{The token to use to get the next page of results after a previous API call. This token must be passed in with the same parameters that were specified in the original call. For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with NextToken should include those same parameters.}
 }
 \description{
-Lists the channels in the current account, and their source names.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_list_channels/} for full documentation.
 }

@@ -229,7 +229,7 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #' Creates a rule for the specified listener
 #'
 #' @description
-#' Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer.
+#' Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer or a dual-stack Network Load Balancer.
 #'
 #' See [https://www.paws-r-sdk.com/docs/elbv2_create_rule/](https://www.paws-r-sdk.com/docs/elbv2_create_rule/) for full documentation.
 #'

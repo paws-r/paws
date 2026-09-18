@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_stop_event_data_store_ingestion}
 \alias{cloudtrail_stop_event_data_store_ingestion}
-\title{Stops the ingestion of live events on an event data store specified as
-either an ARN or the ID portion of the ARN}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_stop_event_data_store_ingestion(EventDataStore)
 }
@@ -11,7 +11,7 @@ cloudtrail_stop_event_data_store_ingestion(EventDataStore)
 \item{EventDataStore}{[required] The ARN (or ID suffix of the ARN) of the event data store for which you want to stop ingestion.}
 }
 \description{
-Stops the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To stop ingestion, the event data store \code{Status} must be \code{ENABLED} and the \code{eventCategory} must be \code{Management}, \code{Data}, \code{NetworkActivity}, or \code{ConfigurationItem}.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_stop_event_data_store_ingestion/} for full documentation.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticbeanstalk_operations.R
 \name{elasticbeanstalk_list_tags_for_resource}
 \alias{elasticbeanstalk_list_tags_for_resource}
-\title{Return the tags applied to an AWS Elastic Beanstalk resource}
+\title{Return the tags applied to an Elastic Beanstalk resource}
 \usage{
 elasticbeanstalk_list_tags_for_resource(ResourceArn)
 }
@@ -12,7 +12,7 @@ elasticbeanstalk_list_tags_for_resource(ResourceArn)
 Must be the ARN of an Elastic Beanstalk resource.}
 }
 \description{
-Return the tags applied to an AWS Elastic Beanstalk resource. The response contains a list of tag key-value pairs.
+Return the tags applied to an Elastic Beanstalk resource. The response contains a list of tag key-value pairs.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_list_tags_for_resource/} for full documentation.
 }

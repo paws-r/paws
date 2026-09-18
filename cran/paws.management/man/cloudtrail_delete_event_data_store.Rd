@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_delete_event_data_store}
 \alias{cloudtrail_delete_event_data_store}
-\title{Disables the event data store specified by EventDataStore, which accepts
-an event data store ARN}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_delete_event_data_store(EventDataStore)
 }
@@ -11,7 +11,7 @@ cloudtrail_delete_event_data_store(EventDataStore)
 \item{EventDataStore}{[required] The ARN (or the ID suffix of the ARN) of the event data store to delete.}
 }
 \description{
-Disables the event data store specified by \code{EventDataStore}, which accepts an event data store ARN. After you run \code{\link[=cloudtrail_delete_event_data_store]{delete_event_data_store}}, the event data store enters a \code{PENDING_DELETION} state, and is automatically deleted after a wait period of seven days. \code{TerminationProtectionEnabled} must be set to \code{False} on the event data store and the \code{FederationStatus} must be \code{DISABLED}. You cannot delete an event data store if \code{TerminationProtectionEnabled} is \code{True} or the \code{FederationStatus} is \code{ENABLED}.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_delete_event_data_store/} for full documentation.
 }

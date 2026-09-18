@@ -5,204 +5,170 @@ NULL
 
 .braket$cancel_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(location = "uri", locationName = "jobArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["cancel_job_input"]]))
 }
 
 .braket$cancel_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string")), cancellationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["cancel_job_output"]]))
 }
 
 .braket$cancel_quantum_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(quantumTaskArn = structure(logical(0), tags = list(location = "uri", locationName = "quantumTaskArn", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["cancel_quantum_task_input"]]))
 }
 
 .braket$cancel_quantum_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(quantumTaskArn = structure(logical(0), tags = list(type = "string")), cancellationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["cancel_quantum_task_output"]]))
 }
 
 .braket$create_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), algorithmSpecification = structure(list(scriptModeConfig = structure(list(entryPoint = structure(logical(0), tags = list(type = "string")), s3Uri = structure(logical(0), tags = list(type = "string")), compressionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), containerImage = structure(list(uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), inputDataConfig = structure(list(structure(list(channelName = structure(logical(0), tags = list(type = "string")), contentType = structure(logical(0), tags = list(type = "string")), dataSource = structure(list(s3DataSource = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), outputDataConfig = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), s3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), checkpointConfig = structure(list(localPath = structure(logical(0), tags = list(type = "string")), s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), jobName = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), stoppingCondition = structure(list(maxRuntimeInSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), instanceConfig = structure(list(instanceType = structure(logical(0), tags = list(type = "string")), volumeSizeInGb = structure(logical(0), tags = list(type = "integer", box = TRUE)), instanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), hyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), deviceConfig = structure(list(device = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), associations = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["create_job_input"]]))
 }
 
 .braket$create_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["create_job_output"]]))
 }
 
 .braket$create_quantum_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), deviceArn = structure(logical(0), tags = list(type = "string")), deviceParameters = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), shots = structure(logical(0), tags = list(type = "long", box = TRUE)), outputS3Bucket = structure(logical(0), tags = list(type = "string")), outputS3KeyPrefix = structure(logical(0), tags = list(type = "string")), action = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), jobToken = structure(logical(0), tags = list(type = "string")), associations = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), experimentalCapabilities = structure(list(enabled = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["create_quantum_task_input"]]))
 }
 
 .braket$create_quantum_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(quantumTaskArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["create_quantum_task_output"]]))
 }
 
 .braket$create_spending_limit_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), deviceArn = structure(logical(0), tags = list(type = "string")), spendingLimit = structure(logical(0), tags = list(type = "string")), timePeriod = structure(list(startAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), endAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["create_spending_limit_input"]]))
 }
 
 .braket$create_spending_limit_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spendingLimitArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["create_spending_limit_output"]]))
 }
 
 .braket$delete_spending_limit_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spendingLimitArn = structure(logical(0), tags = list(location = "uri", locationName = "spendingLimitArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["delete_spending_limit_input"]]))
 }
 
 .braket$delete_spending_limit_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["delete_spending_limit_output"]]))
 }
 
 .braket$get_device_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deviceArn = structure(logical(0), tags = list(location = "uri", locationName = "deviceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["get_device_input"]]))
 }
 
 .braket$get_device_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deviceArn = structure(logical(0), tags = list(type = "string")), deviceName = structure(logical(0), tags = list(type = "string")), providerName = structure(logical(0), tags = list(type = "string")), deviceType = structure(logical(0), tags = list(type = "string")), deviceStatus = structure(logical(0), tags = list(type = "string")), deviceCapabilities = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), deviceQueueInfo = structure(list(structure(list(queue = structure(logical(0), tags = list(type = "string")), queueSize = structure(logical(0), tags = list(type = "string")), queuePriority = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["get_device_output"]]))
 }
 
 .braket$get_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(location = "uri", locationName = "jobArn", type = "string")), additionalAttributeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "additionalAttributeNames", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["get_job_input"]]))
 }
 
 .braket$get_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(status = structure(logical(0), tags = list(type = "string")), jobArn = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), hyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), inputDataConfig = structure(list(structure(list(channelName = structure(logical(0), tags = list(type = "string")), contentType = structure(logical(0), tags = list(type = "string")), dataSource = structure(list(s3DataSource = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), outputDataConfig = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), s3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), stoppingCondition = structure(list(maxRuntimeInSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), checkpointConfig = structure(list(localPath = structure(logical(0), tags = list(type = "string")), s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), algorithmSpecification = structure(list(scriptModeConfig = structure(list(entryPoint = structure(logical(0), tags = list(type = "string")), s3Uri = structure(logical(0), tags = list(type = "string")), compressionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), containerImage = structure(list(uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), instanceConfig = structure(list(instanceType = structure(logical(0), tags = list(type = "string")), volumeSizeInGb = structure(logical(0), tags = list(type = "integer", box = TRUE)), instanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), startedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), billableDuration = structure(logical(0), tags = list(type = "integer", box = TRUE)), deviceConfig = structure(list(device = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), events = structure(list(structure(list(eventType = structure(logical(0), tags = list(type = "string")), timeOfEvent = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), queueInfo = structure(list(queue = structure(logical(0), tags = list(type = "string")), position = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), associations = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["get_job_output"]]))
 }
 
 .braket$get_quantum_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(quantumTaskArn = structure(logical(0), tags = list(location = "uri", locationName = "quantumTaskArn", type = "string")), additionalAttributeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "additionalAttributeNames", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["get_quantum_task_input"]]))
 }
 
 .braket$get_quantum_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(quantumTaskArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), deviceArn = structure(logical(0), tags = list(type = "string")), deviceParameters = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), shots = structure(logical(0), tags = list(type = "long", box = TRUE)), outputS3Bucket = structure(logical(0), tags = list(type = "string")), outputS3Directory = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), jobArn = structure(logical(0), tags = list(type = "string")), queueInfo = structure(list(queue = structure(logical(0), tags = list(type = "string")), position = structure(logical(0), tags = list(type = "string")), queuePriority = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), associations = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), numSuccessfulShots = structure(logical(0), tags = list(type = "long", box = TRUE)), actionMetadata = structure(list(actionType = structure(logical(0), tags = list(type = "string")), programCount = structure(logical(0), tags = list(type = "long", box = TRUE)), executableCount = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure")), experimentalCapabilities = structure(list(enabled = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["get_quantum_task_output"]]))
 }
 
 .braket$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["list_tags_for_resource_input"]]))
 }
 
 .braket$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["list_tags_for_resource_output"]]))
 }
 
 .braket$search_devices_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["search_devices_input"]]))
 }
 
 .braket$search_devices_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(devices = structure(list(structure(list(deviceArn = structure(logical(0), tags = list(type = "string")), deviceName = structure(logical(0), tags = list(type = "string")), providerName = structure(logical(0), tags = list(type = "string")), deviceType = structure(logical(0), tags = list(type = "string")), deviceStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["search_devices_output"]]))
 }
 
 .braket$search_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), operator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["search_jobs_input"]]))
 }
 
 .braket$search_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobs = structure(list(structure(list(status = structure(logical(0), tags = list(type = "string")), jobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), device = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), startedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["search_jobs_output"]]))
 }
 
 .braket$search_quantum_tasks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), operator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["search_quantum_tasks_input"]]))
 }
 
 .braket$search_quantum_tasks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(quantumTasks = structure(list(structure(list(quantumTaskArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), deviceArn = structure(logical(0), tags = list(type = "string")), shots = structure(logical(0), tags = list(type = "long", box = TRUE)), outputS3Bucket = structure(logical(0), tags = list(type = "string")), outputS3Directory = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["search_quantum_tasks_output"]]))
 }
 
 .braket$search_spending_limits_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), operator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["search_spending_limits_input"]]))
 }
 
 .braket$search_spending_limits_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spendingLimits = structure(list(structure(list(spendingLimitArn = structure(logical(0), tags = list(type = "string")), deviceArn = structure(logical(0), tags = list(type = "string")), timePeriod = structure(list(startAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), endAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp"))), tags = list(type = "structure")), spendingLimit = structure(logical(0), tags = list(type = "string")), queuedSpend = structure(logical(0), tags = list(type = "string")), totalSpend = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["search_spending_limits_output"]]))
 }
 
 .braket$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["tag_resource_input"]]))
 }
 
 .braket$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["tag_resource_output"]]))
 }
 
 .braket$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["untag_resource_input"]]))
 }
 
 .braket$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["untag_resource_output"]]))
 }
 
 .braket$update_spending_limit_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spendingLimitArn = structure(logical(0), tags = list(location = "uri", locationName = "spendingLimitArn", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), spendingLimit = structure(logical(0), tags = list(type = "string")), timePeriod = structure(list(startAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), endAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["update_spending_limit_input"]]))
 }
 
 .braket$update_spending_limit_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .braket_shapes[["update_spending_limit_output"]]))
 }

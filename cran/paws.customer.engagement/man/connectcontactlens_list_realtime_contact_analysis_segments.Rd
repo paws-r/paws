@@ -2,7 +2,8 @@
 % Please edit documentation in R/connectcontactlens_operations.R
 \name{connectcontactlens_list_realtime_contact_analysis_segments}
 \alias{connectcontactlens_list_realtime_contact_analysis_segments}
-\title{Provides a list of analysis segments for a real-time analysis session}
+\title{Provides a list of analysis segments for a real-time analysis session
+for voice}
 \usage{
 connectcontactlens_list_realtime_contact_analysis_segments(
   InstanceId,
@@ -21,7 +22,7 @@ connectcontactlens_list_realtime_contact_analysis_segments(
 \item{NextToken}{The token for the next set of results. Use the value returned in the previous response in the next request to retrieve the next set of results.}
 }
 \description{
-Provides a list of analysis segments for a real-time analysis session.
+Provides a list of analysis segments for a real-time analysis session for voice.
 
 See \url{https://www.paws-r-sdk.com/docs/connectcontactlens_list_realtime_contact_analysis_segments/} for full documentation.
 }

@@ -11,10 +11,11 @@ bedrockagentcorecontrol_update_configuration_bundle(
   bundleName = NULL,
   description = NULL,
   components = NULL,
-  parentVersionIds = NULL,
+  parentVersionIds,
   branchName = NULL,
   commitMessage = NULL,
-  createdBy = NULL
+  createdBy = NULL,
+  kmsKeyArn = NULL
 )
 }
 \arguments{
@@ -28,13 +29,15 @@ bedrockagentcorecontrol_update_configuration_bundle(
 
 \item{components}{The updated component configurations. Creates a new version of the bundle.}
 
-\item{parentVersionIds}{A list of parent version identifiers for lineage tracking. Regular commits have a single parent. Merge commits have two parents: the target branch parent and the source branch parent. If the branch already exists, the first parent must be the latest version on that branch.}
+\item{parentVersionIds}{[required] A list of parent version identifiers for lineage tracking. Regular commits have a single parent. Merge commits have two parents: the target branch parent and the source branch parent. If the branch already exists, the first parent must be the latest version on that branch.}
 
 \item{branchName}{The branch name for this version. If not specified, inherits the parent's branch or defaults to \code{mainline}.}
 
 \item{commitMessage}{A commit message describing the changes in this version.}
 
 \item{createdBy}{The source that created this version, including the source name and optional ARN.}
+
+\item{kmsKeyArn}{Optional KMS key ARN for encrypting component configurations. If provided, components will be encrypted with this key. If the bundle already has a KMS key, this rotates to the new key.}
 }
 \description{
 Updates a configuration bundle by creating a new version with the specified changes. Each update creates a new version in the version history.

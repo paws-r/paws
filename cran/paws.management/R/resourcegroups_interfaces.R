@@ -5,8 +5,7 @@ NULL
 
 .resourcegroups$cancel_tag_sync_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TaskArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["cancel_tag_sync_task_input"]]))
 }
 
 .resourcegroups$cancel_tag_sync_task_output <- function(...) {
@@ -15,26 +14,22 @@ NULL
 
 .resourcegroups$create_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Configuration = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Criticality = structure(logical(0), tags = list(type = "integer")), Owner = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["create_group_input"]]))
 }
 
 .resourcegroups$create_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Criticality = structure(logical(0), tags = list(type = "integer")), Owner = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), ApplicationTag = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), GroupConfiguration = structure(list(Configuration = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedConfiguration = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["create_group_output"]]))
 }
 
 .resourcegroups$delete_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupName = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This field is deprecated, use Group instead.", type = "string")), Group = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["delete_group_input"]]))
 }
 
 .resourcegroups$delete_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Criticality = structure(logical(0), tags = list(type = "integer")), Owner = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), ApplicationTag = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["delete_group_output"]]))
 }
 
 .resourcegroups$get_account_settings_input <- function(...) {
@@ -43,234 +38,195 @@ NULL
 
 .resourcegroups$get_account_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountSettings = structure(list(GroupLifecycleEventsDesiredStatus = structure(logical(0), tags = list(type = "string")), GroupLifecycleEventsStatus = structure(logical(0), tags = list(type = "string")), GroupLifecycleEventsStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["get_account_settings_output"]]))
 }
 
 .resourcegroups$get_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupName = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This field is deprecated, use Group instead.", type = "string")), Group = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["get_group_input"]]))
 }
 
 .resourcegroups$get_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Criticality = structure(logical(0), tags = list(type = "integer")), Owner = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), ApplicationTag = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["get_group_output"]]))
 }
 
 .resourcegroups$get_group_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["get_group_configuration_input"]]))
 }
 
 .resourcegroups$get_group_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupConfiguration = structure(list(Configuration = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedConfiguration = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["get_group_configuration_output"]]))
 }
 
 .resourcegroups$get_group_query_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupName = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This field is deprecated, use Group instead.", type = "string")), Group = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["get_group_query_input"]]))
 }
 
 .resourcegroups$get_group_query_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupQuery = structure(list(GroupName = structure(logical(0), tags = list(type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["get_group_query_output"]]))
 }
 
 .resourcegroups$get_tag_sync_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TaskArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["get_tag_sync_task_input"]]))
 }
 
 .resourcegroups$get_tag_sync_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), TaskArn = structure(logical(0), tags = list(type = "string")), TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["get_tag_sync_task_output"]]))
 }
 
 .resourcegroups$get_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(location = "uri", locationName = "Arn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["get_tags_input"]]))
 }
 
 .resourcegroups$get_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["get_tags_output"]]))
 }
 
 .resourcegroups$group_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(logical(0), tags = list(type = "string")), ResourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["group_resources_input"]]))
 }
 
 .resourcegroups$group_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Succeeded = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Failed = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Pending = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["group_resources_output"]]))
 }
 
 .resourcegroups$list_group_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupName = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This field is deprecated, use Group instead.", type = "string")), Group = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["list_group_resources_input"]]))
 }
 
 .resourcegroups$list_group_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Resources = structure(list(structure(list(Identifier = structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), ResourceIdentifiers = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "This field is deprecated, use Resources instead.", type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), QueryErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["list_group_resources_output"]]))
 }
 
 .resourcegroups$list_grouping_statuses_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["list_grouping_statuses_input"]]))
 }
 
 .resourcegroups$list_grouping_statuses_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(logical(0), tags = list(type = "string")), GroupingStatuses = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["list_grouping_statuses_output"]]))
 }
 
 .resourcegroups$list_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["list_groups_input"]]))
 }
 
 .resourcegroups$list_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupIdentifiers = structure(list(structure(list(GroupName = structure(logical(0), tags = list(type = "string")), GroupArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Criticality = structure(logical(0), tags = list(type = "integer")), Owner = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Groups = structure(list(structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Criticality = structure(logical(0), tags = list(type = "integer")), Owner = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), ApplicationTag = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "This field is deprecated, use GroupIdentifiers instead.", type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["list_groups_output"]]))
 }
 
 .resourcegroups$list_tag_sync_tasks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filters = structure(list(structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["list_tag_sync_tasks_input"]]))
 }
 
 .resourcegroups$list_tag_sync_tasks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TagSyncTasks = structure(list(structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), TaskArn = structure(logical(0), tags = list(type = "string")), TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["list_tag_sync_tasks_output"]]))
 }
 
 .resourcegroups$put_group_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["put_group_configuration_input"]]))
 }
 
 .resourcegroups$put_group_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["put_group_configuration_output"]]))
 }
 
 .resourcegroups$search_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["search_resources_input"]]))
 }
 
 .resourcegroups$search_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceIdentifiers = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), QueryErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["search_resources_output"]]))
 }
 
 .resourcegroups$start_tag_sync_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(logical(0), tags = list(type = "string")), TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["start_tag_sync_task_input"]]))
 }
 
 .resourcegroups$start_tag_sync_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), TaskArn = structure(logical(0), tags = list(type = "string")), TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["start_tag_sync_task_output"]]))
 }
 
 .resourcegroups$tag_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(location = "uri", locationName = "Arn", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["tag_input"]]))
 }
 
 .resourcegroups$tag_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["tag_output"]]))
 }
 
 .resourcegroups$ungroup_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(logical(0), tags = list(type = "string")), ResourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["ungroup_resources_input"]]))
 }
 
 .resourcegroups$ungroup_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Succeeded = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Failed = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Pending = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["ungroup_resources_output"]]))
 }
 
 .resourcegroups$untag_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(location = "uri", locationName = "Arn", type = "string")), Keys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["untag_input"]]))
 }
 
 .resourcegroups$untag_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Keys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["untag_output"]]))
 }
 
 .resourcegroups$update_account_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupLifecycleEventsDesiredStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["update_account_settings_input"]]))
 }
 
 .resourcegroups$update_account_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountSettings = structure(list(GroupLifecycleEventsDesiredStatus = structure(logical(0), tags = list(type = "string")), GroupLifecycleEventsStatus = structure(logical(0), tags = list(type = "string")), GroupLifecycleEventsStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["update_account_settings_output"]]))
 }
 
 .resourcegroups$update_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupName = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This field is deprecated, use Group instead.", type = "string")), Group = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Criticality = structure(logical(0), tags = list(type = "integer")), Owner = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["update_group_input"]]))
 }
 
 .resourcegroups$update_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Criticality = structure(logical(0), tags = list(type = "integer")), Owner = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), ApplicationTag = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["update_group_output"]]))
 }
 
 .resourcegroups$update_group_query_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupName = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This field is deprecated, use Group instead.", type = "string")), Group = structure(logical(0), tags = list(type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["update_group_query_input"]]))
 }
 
 .resourcegroups$update_group_query_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupQuery = structure(list(GroupName = structure(logical(0), tags = list(type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resourcegroups_shapes[["update_group_query_output"]]))
 }

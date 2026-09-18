@@ -75,3 +75,7 @@ test_that("list_log_groups", {
 test_that("list_scheduled_queries", {
   expect_error(svc$list_scheduled_queries(), NA)
 })
+
+test_that("list_syslog_configurations", {
+  expect_error(svc$list_syslog_configurations(), NA)
+})

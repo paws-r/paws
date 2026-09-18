@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_get_event_data_store}
 \alias{cloudtrail_get_event_data_store}
-\title{Returns information about an event data store specified as either an ARN
-or the ID portion of the ARN}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_get_event_data_store(EventDataStore)
 }
@@ -11,7 +11,7 @@ cloudtrail_get_event_data_store(EventDataStore)
 \item{EventDataStore}{[required] The ARN (or ID suffix of the ARN) of the event data store about which you want information.}
 }
 \description{
-Returns information about an event data store specified as either an ARN or the ID portion of the ARN.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_get_event_data_store/} for full documentation.
 }

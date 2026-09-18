@@ -15,6 +15,7 @@ sagemaker_create_ai_recommendation_job(
   InferenceSpecification = NULL,
   OptimizeModel = NULL,
   ComputeSpec = NULL,
+  AdapterSource = NULL,
   Tags = NULL
 )
 }
@@ -36,6 +37,8 @@ sagemaker_create_ai_recommendation_job(
 \item{OptimizeModel}{Whether to allow model optimization techniques such as quantization, speculative decoding, and kernel tuning. The default is \code{true}.}
 
 \item{ComputeSpec}{The compute resource specification for the recommendation job. You can specify up to 3 instance types to consider, and optionally provide capacity reservation configuration.}
+
+\item{AdapterSource}{The LoRA adapter source for the recommendation job. Specify either a list of model package ARNs or Amazon S3 URIs for your LoRA adapters. When this parameter is absent, the recommendation job runs without LoRA adapter support.}
 
 \item{Tags}{The metadata that you apply to Amazon Web Services resources to help you categorize and organize them.}
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockagentcorecontrol_operations.R
 \name{bedrockagentcorecontrol_create_harness}
 \alias{bedrockagentcorecontrol_create_harness}
-\title{Operation to create a Harness}
+\title{Operation to create a harness}
 \usage{
 bedrockagentcorecontrol_create_harness(
   harnessName,
@@ -63,7 +63,7 @@ bedrockagentcorecontrol_create_harness(
 \item{tags}{Tags to apply to the harness resource.}
 }
 \description{
-Operation to create a Harness.
+Operation to create a harness.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_create_harness/} for full documentation.
 }

@@ -18,7 +18,7 @@ bedrockagentcorecontrol_delete_dataset_examples(
 \item{exampleIds}{[required] The IDs of the examples to delete.}
 }
 \description{
-Deletes specific examples by ID from DRAFT.
+Deletes specific examples by ID from DRAFT. All example IDs are validated before any deletes occur. If any ID does not exist in DRAFT, the entire batch is rejected (all-or-nothing semantics).
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_delete_dataset_examples/} for full documentation.
 }

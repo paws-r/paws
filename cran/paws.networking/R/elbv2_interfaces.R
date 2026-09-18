@@ -5,612 +5,510 @@ NULL
 
 .elbv2$add_listener_certificates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), Certificates = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["add_listener_certificates_input"]]))
 }
 
 .elbv2$add_listener_certificates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Certificates = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "AddListenerCertificatesResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["add_listener_certificates_output"]]))
 }
 
 .elbv2$add_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["add_tags_input"]]))
 }
 
 .elbv2$add_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "AddTagsResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["add_tags_output"]]))
 }
 
 .elbv2$add_trust_store_revocations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustStoreArn = structure(logical(0), tags = list(type = "string")), RevocationContents = structure(list(structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string")), S3ObjectVersion = structure(logical(0), tags = list(type = "string")), RevocationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["add_trust_store_revocations_input"]]))
 }
 
 .elbv2$add_trust_store_revocations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustStoreRevocations = structure(list(structure(list(TrustStoreArn = structure(logical(0), tags = list(type = "string")), RevocationId = structure(logical(0), tags = list(type = "long")), RevocationType = structure(logical(0), tags = list(type = "string")), NumberOfRevokedEntries = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "AddTrustStoreRevocationsResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["add_trust_store_revocations_output"]]))
 }
 
 .elbv2$create_listener_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerArn = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), SslPolicy = structure(logical(0), tags = list(type = "string")), Certificates = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultActions = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TargetGroupArn = structure(logical(0), tags = list(type = "string")), AuthenticateOidcConfig = structure(list(Issuer = structure(logical(0), tags = list(type = "string")), AuthorizationEndpoint = structure(logical(0), tags = list(type = "string")), TokenEndpoint = structure(logical(0), tags = list(type = "string")), UserInfoEndpoint = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string")), ClientSecret = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string")), UseExistingClientSecret = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AuthenticateCognitoConfig = structure(list(UserPoolArn = structure(logical(0), tags = list(type = "string")), UserPoolClientId = structure(logical(0), tags = list(type = "string")), UserPoolDomain = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Order = structure(logical(0), tags = list(type = "integer")), RedirectConfig = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FixedResponseConfig = structure(list(MessageBody = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ForwardConfig = structure(list(TargetGroups = structure(list(structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), TargetGroupStickinessConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), JwtValidationConfig = structure(list(JwksEndpoint = structure(logical(0), tags = list(type = "string")), Issuer = structure(logical(0), tags = list(type = "string")), AdditionalClaims = structure(list(structure(list(Format = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), AlpnPolicy = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MutualAuthentication = structure(list(Mode = structure(logical(0), tags = list(type = "string")), TrustStoreArn = structure(logical(0), tags = list(type = "string")), IgnoreClientCertificateExpiry = structure(logical(0), tags = list(type = "boolean")), TrustStoreAssociationStatus = structure(logical(0), tags = list(type = "string")), AdvertiseTrustStoreCaNames = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["create_listener_input"]]))
 }
 
 .elbv2$create_listener_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Listeners = structure(list(structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), LoadBalancerArn = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Protocol = structure(logical(0), tags = list(type = "string")), Certificates = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), SslPolicy = structure(logical(0), tags = list(type = "string")), DefaultActions = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TargetGroupArn = structure(logical(0), tags = list(type = "string")), AuthenticateOidcConfig = structure(list(Issuer = structure(logical(0), tags = list(type = "string")), AuthorizationEndpoint = structure(logical(0), tags = list(type = "string")), TokenEndpoint = structure(logical(0), tags = list(type = "string")), UserInfoEndpoint = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string")), ClientSecret = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string")), UseExistingClientSecret = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AuthenticateCognitoConfig = structure(list(UserPoolArn = structure(logical(0), tags = list(type = "string")), UserPoolClientId = structure(logical(0), tags = list(type = "string")), UserPoolDomain = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Order = structure(logical(0), tags = list(type = "integer")), RedirectConfig = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FixedResponseConfig = structure(list(MessageBody = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ForwardConfig = structure(list(TargetGroups = structure(list(structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), TargetGroupStickinessConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), JwtValidationConfig = structure(list(JwksEndpoint = structure(logical(0), tags = list(type = "string")), Issuer = structure(logical(0), tags = list(type = "string")), AdditionalClaims = structure(list(structure(list(Format = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), AlpnPolicy = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MutualAuthentication = structure(list(Mode = structure(logical(0), tags = list(type = "string")), TrustStoreArn = structure(logical(0), tags = list(type = "string")), IgnoreClientCertificateExpiry = structure(logical(0), tags = list(type = "boolean")), TrustStoreAssociationStatus = structure(logical(0), tags = list(type = "string")), AdvertiseTrustStoreCaNames = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "CreateListenerResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["create_listener_output"]]))
 }
 
 .elbv2$create_load_balancer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SubnetMappings = structure(list(structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), AllocationId = structure(logical(0), tags = list(type = "string")), PrivateIPv4Address = structure(logical(0), tags = list(type = "string")), IPv6Address = structure(logical(0), tags = list(type = "string")), SourceNatIpv6Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Scheme = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Type = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), CustomerOwnedIpv4Pool = structure(logical(0), tags = list(type = "string")), EnablePrefixForIpv6SourceNat = structure(logical(0), tags = list(type = "string")), IpamPools = structure(list(Ipv4IpamPoolId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["create_load_balancer_input"]]))
 }
 
 .elbv2$create_load_balancer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancers = structure(list(structure(list(LoadBalancerArn = structure(logical(0), tags = list(type = "string")), DNSName = structure(logical(0), tags = list(type = "string")), CanonicalHostedZoneId = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LoadBalancerName = structure(logical(0), tags = list(type = "string")), Scheme = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), State = structure(list(Code = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Type = structure(logical(0), tags = list(type = "string")), AvailabilityZones = structure(list(structure(list(ZoneName = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), OutpostId = structure(logical(0), tags = list(type = "string")), LoadBalancerAddresses = structure(list(structure(list(IpAddress = structure(logical(0), tags = list(type = "string")), AllocationId = structure(logical(0), tags = list(type = "string")), PrivateIPv4Address = structure(logical(0), tags = list(type = "string")), IPv6Address = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SourceNatIpv6Prefixes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IpAddressType = structure(logical(0), tags = list(type = "string")), CustomerOwnedIpv4Pool = structure(logical(0), tags = list(type = "string")), EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic = structure(logical(0), tags = list(type = "string")), EnablePrefixForIpv6SourceNat = structure(logical(0), tags = list(type = "string")), IpamPools = structure(list(Ipv4IpamPoolId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "CreateLoadBalancerResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["create_load_balancer_output"]]))
 }
 
 .elbv2$create_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(Field = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HostHeaderConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), PathPatternConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), HttpHeaderConfig = structure(list(HttpHeaderName = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), QueryStringConfig = structure(list(Values = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), HttpRequestMethodConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), SourceIpConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Priority = structure(logical(0), tags = list(type = "integer")), Actions = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TargetGroupArn = structure(logical(0), tags = list(type = "string")), AuthenticateOidcConfig = structure(list(Issuer = structure(logical(0), tags = list(type = "string")), AuthorizationEndpoint = structure(logical(0), tags = list(type = "string")), TokenEndpoint = structure(logical(0), tags = list(type = "string")), UserInfoEndpoint = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string")), ClientSecret = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string")), UseExistingClientSecret = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AuthenticateCognitoConfig = structure(list(UserPoolArn = structure(logical(0), tags = list(type = "string")), UserPoolClientId = structure(logical(0), tags = list(type = "string")), UserPoolDomain = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Order = structure(logical(0), tags = list(type = "integer")), RedirectConfig = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FixedResponseConfig = structure(list(MessageBody = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ForwardConfig = structure(list(TargetGroups = structure(list(structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), TargetGroupStickinessConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), JwtValidationConfig = structure(list(JwksEndpoint = structure(logical(0), tags = list(type = "string")), Issuer = structure(logical(0), tags = list(type = "string")), AdditionalClaims = structure(list(structure(list(Format = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Transforms = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), HostHeaderRewriteConfig = structure(list(Rewrites = structure(list(structure(list(Regex = structure(logical(0), tags = list(type = "string")), Replace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UrlRewriteConfig = structure(list(Rewrites = structure(list(structure(list(Regex = structure(logical(0), tags = list(type = "string")), Replace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["create_rule_input"]]))
 }
 
 .elbv2$create_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Rules = structure(list(structure(list(RuleArn = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(Field = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HostHeaderConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), PathPatternConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), HttpHeaderConfig = structure(list(HttpHeaderName = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), QueryStringConfig = structure(list(Values = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), HttpRequestMethodConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), SourceIpConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Actions = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TargetGroupArn = structure(logical(0), tags = list(type = "string")), AuthenticateOidcConfig = structure(list(Issuer = structure(logical(0), tags = list(type = "string")), AuthorizationEndpoint = structure(logical(0), tags = list(type = "string")), TokenEndpoint = structure(logical(0), tags = list(type = "string")), UserInfoEndpoint = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string")), ClientSecret = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string")), UseExistingClientSecret = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AuthenticateCognitoConfig = structure(list(UserPoolArn = structure(logical(0), tags = list(type = "string")), UserPoolClientId = structure(logical(0), tags = list(type = "string")), UserPoolDomain = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Order = structure(logical(0), tags = list(type = "integer")), RedirectConfig = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FixedResponseConfig = structure(list(MessageBody = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ForwardConfig = structure(list(TargetGroups = structure(list(structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), TargetGroupStickinessConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), JwtValidationConfig = structure(list(JwksEndpoint = structure(logical(0), tags = list(type = "string")), Issuer = structure(logical(0), tags = list(type = "string")), AdditionalClaims = structure(list(structure(list(Format = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), IsDefault = structure(logical(0), tags = list(type = "boolean")), Transforms = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), HostHeaderRewriteConfig = structure(list(Rewrites = structure(list(structure(list(Regex = structure(logical(0), tags = list(type = "string")), Replace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UrlRewriteConfig = structure(list(Rewrites = structure(list(structure(list(Regex = structure(logical(0), tags = list(type = "string")), Replace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "CreateRuleResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["create_rule_output"]]))
 }
 
 .elbv2$create_target_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), ProtocolVersion = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), VpcId = structure(logical(0), tags = list(type = "string")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPort = structure(logical(0), tags = list(type = "string")), HealthCheckEnabled = structure(logical(0), tags = list(type = "boolean")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), HealthCheckTimeoutSeconds = structure(logical(0), tags = list(type = "integer")), HealthyThresholdCount = structure(logical(0), tags = list(type = "integer")), UnhealthyThresholdCount = structure(logical(0), tags = list(type = "integer")), Matcher = structure(list(HttpCode = structure(logical(0), tags = list(type = "string")), GrpcCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TargetType = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IpAddressType = structure(logical(0), tags = list(type = "string")), TargetControlPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["create_target_group_input"]]))
 }
 
 .elbv2$create_target_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TargetGroups = structure(list(structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), TargetGroupName = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), VpcId = structure(logical(0), tags = list(type = "string")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPort = structure(logical(0), tags = list(type = "string")), HealthCheckEnabled = structure(logical(0), tags = list(type = "boolean")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), HealthCheckTimeoutSeconds = structure(logical(0), tags = list(type = "integer")), HealthyThresholdCount = structure(logical(0), tags = list(type = "integer")), UnhealthyThresholdCount = structure(logical(0), tags = list(type = "integer")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), Matcher = structure(list(HttpCode = structure(logical(0), tags = list(type = "string")), GrpcCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LoadBalancerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TargetType = structure(logical(0), tags = list(type = "string")), ProtocolVersion = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), TargetControlPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "CreateTargetGroupResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["create_target_group_output"]]))
 }
 
 .elbv2$create_trust_store_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), CaCertificatesBundleS3Bucket = structure(logical(0), tags = list(type = "string")), CaCertificatesBundleS3Key = structure(logical(0), tags = list(type = "string")), CaCertificatesBundleS3ObjectVersion = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["create_trust_store_input"]]))
 }
 
 .elbv2$create_trust_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustStores = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), TrustStoreArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), NumberOfCaCertificates = structure(logical(0), tags = list(type = "integer")), TotalRevokedEntries = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "CreateTrustStoreResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["create_trust_store_output"]]))
 }
 
 .elbv2$delete_listener_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["delete_listener_input"]]))
 }
 
 .elbv2$delete_listener_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DeleteListenerResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["delete_listener_output"]]))
 }
 
 .elbv2$delete_load_balancer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["delete_load_balancer_input"]]))
 }
 
 .elbv2$delete_load_balancer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DeleteLoadBalancerResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["delete_load_balancer_output"]]))
 }
 
 .elbv2$delete_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["delete_rule_input"]]))
 }
 
 .elbv2$delete_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DeleteRuleResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["delete_rule_output"]]))
 }
 
 .elbv2$delete_shared_trust_store_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustStoreArn = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["delete_shared_trust_store_association_input"]]))
 }
 
 .elbv2$delete_shared_trust_store_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DeleteSharedTrustStoreAssociationResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["delete_shared_trust_store_association_output"]]))
 }
 
 .elbv2$delete_target_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["delete_target_group_input"]]))
 }
 
 .elbv2$delete_target_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DeleteTargetGroupResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["delete_target_group_output"]]))
 }
 
 .elbv2$delete_trust_store_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustStoreArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["delete_trust_store_input"]]))
 }
 
 .elbv2$delete_trust_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DeleteTrustStoreResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["delete_trust_store_output"]]))
 }
 
 .elbv2$deregister_targets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), Targets = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), QuicServerId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["deregister_targets_input"]]))
 }
 
 .elbv2$deregister_targets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DeregisterTargetsResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["deregister_targets_output"]]))
 }
 
 .elbv2$describe_account_limits_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_account_limits_input"]]))
 }
 
 .elbv2$describe_account_limits_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Limits = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Max = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeAccountLimitsResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_account_limits_output"]]))
 }
 
 .elbv2$describe_capacity_reservation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_capacity_reservation_input"]]))
 }
 
 .elbv2$describe_capacity_reservation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), DecreaseRequestsRemaining = structure(logical(0), tags = list(type = "integer")), MinimumLoadBalancerCapacity = structure(list(CapacityUnits = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CapacityReservationState = structure(list(structure(list(State = structure(list(Code = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), EffectiveCapacityUnits = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeCapacityReservationResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_capacity_reservation_output"]]))
 }
 
 .elbv2$describe_listener_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_listener_attributes_input"]]))
 }
 
 .elbv2$describe_listener_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attributes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeListenerAttributesResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_listener_attributes_output"]]))
 }
 
 .elbv2$describe_listener_certificates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_listener_certificates_input"]]))
 }
 
 .elbv2$describe_listener_certificates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Certificates = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeListenerCertificatesResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_listener_certificates_output"]]))
 }
 
 .elbv2$describe_listeners_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerArn = structure(logical(0), tags = list(type = "string")), ListenerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_listeners_input"]]))
 }
 
 .elbv2$describe_listeners_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Listeners = structure(list(structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), LoadBalancerArn = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Protocol = structure(logical(0), tags = list(type = "string")), Certificates = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), SslPolicy = structure(logical(0), tags = list(type = "string")), DefaultActions = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TargetGroupArn = structure(logical(0), tags = list(type = "string")), AuthenticateOidcConfig = structure(list(Issuer = structure(logical(0), tags = list(type = "string")), AuthorizationEndpoint = structure(logical(0), tags = list(type = "string")), TokenEndpoint = structure(logical(0), tags = list(type = "string")), UserInfoEndpoint = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string")), ClientSecret = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string")), UseExistingClientSecret = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AuthenticateCognitoConfig = structure(list(UserPoolArn = structure(logical(0), tags = list(type = "string")), UserPoolClientId = structure(logical(0), tags = list(type = "string")), UserPoolDomain = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Order = structure(logical(0), tags = list(type = "integer")), RedirectConfig = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FixedResponseConfig = structure(list(MessageBody = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ForwardConfig = structure(list(TargetGroups = structure(list(structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), TargetGroupStickinessConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), JwtValidationConfig = structure(list(JwksEndpoint = structure(logical(0), tags = list(type = "string")), Issuer = structure(logical(0), tags = list(type = "string")), AdditionalClaims = structure(list(structure(list(Format = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), AlpnPolicy = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MutualAuthentication = structure(list(Mode = structure(logical(0), tags = list(type = "string")), TrustStoreArn = structure(logical(0), tags = list(type = "string")), IgnoreClientCertificateExpiry = structure(logical(0), tags = list(type = "boolean")), TrustStoreAssociationStatus = structure(logical(0), tags = list(type = "string")), AdvertiseTrustStoreCaNames = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeListenersResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_listeners_output"]]))
 }
 
 .elbv2$describe_load_balancer_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_load_balancer_attributes_input"]]))
 }
 
 .elbv2$describe_load_balancer_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attributes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeLoadBalancerAttributesResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_load_balancer_attributes_output"]]))
 }
 
 .elbv2$describe_load_balancers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_load_balancers_input"]]))
 }
 
 .elbv2$describe_load_balancers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancers = structure(list(structure(list(LoadBalancerArn = structure(logical(0), tags = list(type = "string")), DNSName = structure(logical(0), tags = list(type = "string")), CanonicalHostedZoneId = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LoadBalancerName = structure(logical(0), tags = list(type = "string")), Scheme = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), State = structure(list(Code = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Type = structure(logical(0), tags = list(type = "string")), AvailabilityZones = structure(list(structure(list(ZoneName = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), OutpostId = structure(logical(0), tags = list(type = "string")), LoadBalancerAddresses = structure(list(structure(list(IpAddress = structure(logical(0), tags = list(type = "string")), AllocationId = structure(logical(0), tags = list(type = "string")), PrivateIPv4Address = structure(logical(0), tags = list(type = "string")), IPv6Address = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SourceNatIpv6Prefixes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IpAddressType = structure(logical(0), tags = list(type = "string")), CustomerOwnedIpv4Pool = structure(logical(0), tags = list(type = "string")), EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic = structure(logical(0), tags = list(type = "string")), EnablePrefixForIpv6SourceNat = structure(logical(0), tags = list(type = "string")), IpamPools = structure(list(Ipv4IpamPoolId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeLoadBalancersResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_load_balancers_output"]]))
 }
 
 .elbv2$describe_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), RuleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_rules_input"]]))
 }
 
 .elbv2$describe_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Rules = structure(list(structure(list(RuleArn = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(Field = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HostHeaderConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), PathPatternConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), HttpHeaderConfig = structure(list(HttpHeaderName = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), QueryStringConfig = structure(list(Values = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), HttpRequestMethodConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), SourceIpConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Actions = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TargetGroupArn = structure(logical(0), tags = list(type = "string")), AuthenticateOidcConfig = structure(list(Issuer = structure(logical(0), tags = list(type = "string")), AuthorizationEndpoint = structure(logical(0), tags = list(type = "string")), TokenEndpoint = structure(logical(0), tags = list(type = "string")), UserInfoEndpoint = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string")), ClientSecret = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string")), UseExistingClientSecret = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AuthenticateCognitoConfig = structure(list(UserPoolArn = structure(logical(0), tags = list(type = "string")), UserPoolClientId = structure(logical(0), tags = list(type = "string")), UserPoolDomain = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Order = structure(logical(0), tags = list(type = "integer")), RedirectConfig = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FixedResponseConfig = structure(list(MessageBody = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ForwardConfig = structure(list(TargetGroups = structure(list(structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), TargetGroupStickinessConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), JwtValidationConfig = structure(list(JwksEndpoint = structure(logical(0), tags = list(type = "string")), Issuer = structure(logical(0), tags = list(type = "string")), AdditionalClaims = structure(list(structure(list(Format = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), IsDefault = structure(logical(0), tags = list(type = "boolean")), Transforms = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), HostHeaderRewriteConfig = structure(list(Rewrites = structure(list(structure(list(Regex = structure(logical(0), tags = list(type = "string")), Replace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UrlRewriteConfig = structure(list(Rewrites = structure(list(structure(list(Regex = structure(logical(0), tags = list(type = "string")), Replace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeRulesResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_rules_output"]]))
 }
 
 .elbv2$describe_ssl_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer")), LoadBalancerType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_ssl_policies_input"]]))
 }
 
 .elbv2$describe_ssl_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SslPolicies = structure(list(structure(list(SslProtocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Ciphers = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Name = structure(logical(0), tags = list(type = "string")), SupportedLoadBalancerTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeSSLPoliciesResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_ssl_policies_output"]]))
 }
 
 .elbv2$describe_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_tags_input"]]))
 }
 
 .elbv2$describe_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TagDescriptions = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeTagsResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_tags_output"]]))
 }
 
 .elbv2$describe_target_group_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_target_group_attributes_input"]]))
 }
 
 .elbv2$describe_target_group_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attributes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeTargetGroupAttributesResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_target_group_attributes_output"]]))
 }
 
 .elbv2$describe_target_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerArn = structure(logical(0), tags = list(type = "string")), TargetGroupArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_target_groups_input"]]))
 }
 
 .elbv2$describe_target_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TargetGroups = structure(list(structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), TargetGroupName = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), VpcId = structure(logical(0), tags = list(type = "string")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPort = structure(logical(0), tags = list(type = "string")), HealthCheckEnabled = structure(logical(0), tags = list(type = "boolean")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), HealthCheckTimeoutSeconds = structure(logical(0), tags = list(type = "integer")), HealthyThresholdCount = structure(logical(0), tags = list(type = "integer")), UnhealthyThresholdCount = structure(logical(0), tags = list(type = "integer")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), Matcher = structure(list(HttpCode = structure(logical(0), tags = list(type = "string")), GrpcCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LoadBalancerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TargetType = structure(logical(0), tags = list(type = "string")), ProtocolVersion = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), TargetControlPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeTargetGroupsResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_target_groups_output"]]))
 }
 
 .elbv2$describe_target_health_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), Targets = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), QuicServerId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Include = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_target_health_input"]]))
 }
 
 .elbv2$describe_target_health_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TargetHealthDescriptions = structure(list(structure(list(Target = structure(list(Id = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), QuicServerId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HealthCheckPort = structure(logical(0), tags = list(type = "string")), TargetHealth = structure(list(State = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AnomalyDetection = structure(list(Result = structure(logical(0), tags = list(type = "string")), MitigationInEffect = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AdministrativeOverride = structure(list(State = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeTargetHealthResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_target_health_output"]]))
 }
 
 .elbv2$describe_trust_store_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustStoreArn = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_trust_store_associations_input"]]))
 }
 
 .elbv2$describe_trust_store_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustStoreAssociations = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeTrustStoreAssociationsResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_trust_store_associations_output"]]))
 }
 
 .elbv2$describe_trust_store_revocations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustStoreArn = structure(logical(0), tags = list(type = "string")), RevocationIds = structure(list(structure(logical(0), tags = list(type = "long"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_trust_store_revocations_input"]]))
 }
 
 .elbv2$describe_trust_store_revocations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustStoreRevocations = structure(list(structure(list(TrustStoreArn = structure(logical(0), tags = list(type = "string")), RevocationId = structure(logical(0), tags = list(type = "long")), RevocationType = structure(logical(0), tags = list(type = "string")), NumberOfRevokedEntries = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeTrustStoreRevocationsResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_trust_store_revocations_output"]]))
 }
 
 .elbv2$describe_trust_stores_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustStoreArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_trust_stores_input"]]))
 }
 
 .elbv2$describe_trust_stores_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustStores = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), TrustStoreArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), NumberOfCaCertificates = structure(logical(0), tags = list(type = "integer")), TotalRevokedEntries = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeTrustStoresResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["describe_trust_stores_output"]]))
 }
 
 .elbv2$get_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["get_resource_policy_input"]]))
 }
 
 .elbv2$get_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetResourcePolicyResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["get_resource_policy_output"]]))
 }
 
 .elbv2$get_trust_store_ca_certificates_bundle_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustStoreArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["get_trust_store_ca_certificates_bundle_input"]]))
 }
 
 .elbv2$get_trust_store_ca_certificates_bundle_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Location = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetTrustStoreCaCertificatesBundleResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["get_trust_store_ca_certificates_bundle_output"]]))
 }
 
 .elbv2$get_trust_store_revocation_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustStoreArn = structure(logical(0), tags = list(type = "string")), RevocationId = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["get_trust_store_revocation_content_input"]]))
 }
 
 .elbv2$get_trust_store_revocation_content_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Location = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetTrustStoreRevocationContentResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["get_trust_store_revocation_content_output"]]))
 }
 
 .elbv2$modify_capacity_reservation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerArn = structure(logical(0), tags = list(type = "string")), MinimumLoadBalancerCapacity = structure(list(CapacityUnits = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ResetCapacityReservation = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_capacity_reservation_input"]]))
 }
 
 .elbv2$modify_capacity_reservation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), DecreaseRequestsRemaining = structure(logical(0), tags = list(type = "integer")), MinimumLoadBalancerCapacity = structure(list(CapacityUnits = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CapacityReservationState = structure(list(structure(list(State = structure(list(Code = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), EffectiveCapacityUnits = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ModifyCapacityReservationResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_capacity_reservation_output"]]))
 }
 
 .elbv2$modify_ip_pools_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerArn = structure(logical(0), tags = list(type = "string")), IpamPools = structure(list(Ipv4IpamPoolId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RemoveIpamPools = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_ip_pools_input"]]))
 }
 
 .elbv2$modify_ip_pools_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IpamPools = structure(list(Ipv4IpamPoolId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "ModifyIpPoolsResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_ip_pools_output"]]))
 }
 
 .elbv2$modify_listener_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Protocol = structure(logical(0), tags = list(type = "string")), SslPolicy = structure(logical(0), tags = list(type = "string")), Certificates = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultActions = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TargetGroupArn = structure(logical(0), tags = list(type = "string")), AuthenticateOidcConfig = structure(list(Issuer = structure(logical(0), tags = list(type = "string")), AuthorizationEndpoint = structure(logical(0), tags = list(type = "string")), TokenEndpoint = structure(logical(0), tags = list(type = "string")), UserInfoEndpoint = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string")), ClientSecret = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string")), UseExistingClientSecret = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AuthenticateCognitoConfig = structure(list(UserPoolArn = structure(logical(0), tags = list(type = "string")), UserPoolClientId = structure(logical(0), tags = list(type = "string")), UserPoolDomain = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Order = structure(logical(0), tags = list(type = "integer")), RedirectConfig = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FixedResponseConfig = structure(list(MessageBody = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ForwardConfig = structure(list(TargetGroups = structure(list(structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), TargetGroupStickinessConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), JwtValidationConfig = structure(list(JwksEndpoint = structure(logical(0), tags = list(type = "string")), Issuer = structure(logical(0), tags = list(type = "string")), AdditionalClaims = structure(list(structure(list(Format = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), AlpnPolicy = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MutualAuthentication = structure(list(Mode = structure(logical(0), tags = list(type = "string")), TrustStoreArn = structure(logical(0), tags = list(type = "string")), IgnoreClientCertificateExpiry = structure(logical(0), tags = list(type = "boolean")), TrustStoreAssociationStatus = structure(logical(0), tags = list(type = "string")), AdvertiseTrustStoreCaNames = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_listener_input"]]))
 }
 
 .elbv2$modify_listener_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Listeners = structure(list(structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), LoadBalancerArn = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Protocol = structure(logical(0), tags = list(type = "string")), Certificates = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), SslPolicy = structure(logical(0), tags = list(type = "string")), DefaultActions = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TargetGroupArn = structure(logical(0), tags = list(type = "string")), AuthenticateOidcConfig = structure(list(Issuer = structure(logical(0), tags = list(type = "string")), AuthorizationEndpoint = structure(logical(0), tags = list(type = "string")), TokenEndpoint = structure(logical(0), tags = list(type = "string")), UserInfoEndpoint = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string")), ClientSecret = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string")), UseExistingClientSecret = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AuthenticateCognitoConfig = structure(list(UserPoolArn = structure(logical(0), tags = list(type = "string")), UserPoolClientId = structure(logical(0), tags = list(type = "string")), UserPoolDomain = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Order = structure(logical(0), tags = list(type = "integer")), RedirectConfig = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FixedResponseConfig = structure(list(MessageBody = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ForwardConfig = structure(list(TargetGroups = structure(list(structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), TargetGroupStickinessConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), JwtValidationConfig = structure(list(JwksEndpoint = structure(logical(0), tags = list(type = "string")), Issuer = structure(logical(0), tags = list(type = "string")), AdditionalClaims = structure(list(structure(list(Format = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), AlpnPolicy = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MutualAuthentication = structure(list(Mode = structure(logical(0), tags = list(type = "string")), TrustStoreArn = structure(logical(0), tags = list(type = "string")), IgnoreClientCertificateExpiry = structure(logical(0), tags = list(type = "boolean")), TrustStoreAssociationStatus = structure(logical(0), tags = list(type = "string")), AdvertiseTrustStoreCaNames = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ModifyListenerResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_listener_output"]]))
 }
 
 .elbv2$modify_listener_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_listener_attributes_input"]]))
 }
 
 .elbv2$modify_listener_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attributes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ModifyListenerAttributesResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_listener_attributes_output"]]))
 }
 
 .elbv2$modify_load_balancer_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerArn = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_load_balancer_attributes_input"]]))
 }
 
 .elbv2$modify_load_balancer_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attributes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ModifyLoadBalancerAttributesResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_load_balancer_attributes_output"]]))
 }
 
 .elbv2$modify_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleArn = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(Field = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HostHeaderConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), PathPatternConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), HttpHeaderConfig = structure(list(HttpHeaderName = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), QueryStringConfig = structure(list(Values = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), HttpRequestMethodConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), SourceIpConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Actions = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TargetGroupArn = structure(logical(0), tags = list(type = "string")), AuthenticateOidcConfig = structure(list(Issuer = structure(logical(0), tags = list(type = "string")), AuthorizationEndpoint = structure(logical(0), tags = list(type = "string")), TokenEndpoint = structure(logical(0), tags = list(type = "string")), UserInfoEndpoint = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string")), ClientSecret = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string")), UseExistingClientSecret = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AuthenticateCognitoConfig = structure(list(UserPoolArn = structure(logical(0), tags = list(type = "string")), UserPoolClientId = structure(logical(0), tags = list(type = "string")), UserPoolDomain = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Order = structure(logical(0), tags = list(type = "integer")), RedirectConfig = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FixedResponseConfig = structure(list(MessageBody = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ForwardConfig = structure(list(TargetGroups = structure(list(structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), TargetGroupStickinessConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), JwtValidationConfig = structure(list(JwksEndpoint = structure(logical(0), tags = list(type = "string")), Issuer = structure(logical(0), tags = list(type = "string")), AdditionalClaims = structure(list(structure(list(Format = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Transforms = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), HostHeaderRewriteConfig = structure(list(Rewrites = structure(list(structure(list(Regex = structure(logical(0), tags = list(type = "string")), Replace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UrlRewriteConfig = structure(list(Rewrites = structure(list(structure(list(Regex = structure(logical(0), tags = list(type = "string")), Replace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), ResetTransforms = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_rule_input"]]))
 }
 
 .elbv2$modify_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Rules = structure(list(structure(list(RuleArn = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(Field = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HostHeaderConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), PathPatternConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), HttpHeaderConfig = structure(list(HttpHeaderName = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), QueryStringConfig = structure(list(Values = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), HttpRequestMethodConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), SourceIpConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Actions = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TargetGroupArn = structure(logical(0), tags = list(type = "string")), AuthenticateOidcConfig = structure(list(Issuer = structure(logical(0), tags = list(type = "string")), AuthorizationEndpoint = structure(logical(0), tags = list(type = "string")), TokenEndpoint = structure(logical(0), tags = list(type = "string")), UserInfoEndpoint = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string")), ClientSecret = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string")), UseExistingClientSecret = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AuthenticateCognitoConfig = structure(list(UserPoolArn = structure(logical(0), tags = list(type = "string")), UserPoolClientId = structure(logical(0), tags = list(type = "string")), UserPoolDomain = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Order = structure(logical(0), tags = list(type = "integer")), RedirectConfig = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FixedResponseConfig = structure(list(MessageBody = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ForwardConfig = structure(list(TargetGroups = structure(list(structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), TargetGroupStickinessConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), JwtValidationConfig = structure(list(JwksEndpoint = structure(logical(0), tags = list(type = "string")), Issuer = structure(logical(0), tags = list(type = "string")), AdditionalClaims = structure(list(structure(list(Format = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), IsDefault = structure(logical(0), tags = list(type = "boolean")), Transforms = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), HostHeaderRewriteConfig = structure(list(Rewrites = structure(list(structure(list(Regex = structure(logical(0), tags = list(type = "string")), Replace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UrlRewriteConfig = structure(list(Rewrites = structure(list(structure(list(Regex = structure(logical(0), tags = list(type = "string")), Replace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ModifyRuleResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_rule_output"]]))
 }
 
 .elbv2$modify_target_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPort = structure(logical(0), tags = list(type = "string")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), HealthCheckEnabled = structure(logical(0), tags = list(type = "boolean")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), HealthCheckTimeoutSeconds = structure(logical(0), tags = list(type = "integer")), HealthyThresholdCount = structure(logical(0), tags = list(type = "integer")), UnhealthyThresholdCount = structure(logical(0), tags = list(type = "integer")), Matcher = structure(list(HttpCode = structure(logical(0), tags = list(type = "string")), GrpcCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_target_group_input"]]))
 }
 
 .elbv2$modify_target_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TargetGroups = structure(list(structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), TargetGroupName = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), VpcId = structure(logical(0), tags = list(type = "string")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPort = structure(logical(0), tags = list(type = "string")), HealthCheckEnabled = structure(logical(0), tags = list(type = "boolean")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), HealthCheckTimeoutSeconds = structure(logical(0), tags = list(type = "integer")), HealthyThresholdCount = structure(logical(0), tags = list(type = "integer")), UnhealthyThresholdCount = structure(logical(0), tags = list(type = "integer")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), Matcher = structure(list(HttpCode = structure(logical(0), tags = list(type = "string")), GrpcCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LoadBalancerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TargetType = structure(logical(0), tags = list(type = "string")), ProtocolVersion = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), TargetControlPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ModifyTargetGroupResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_target_group_output"]]))
 }
 
 .elbv2$modify_target_group_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_target_group_attributes_input"]]))
 }
 
 .elbv2$modify_target_group_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attributes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ModifyTargetGroupAttributesResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_target_group_attributes_output"]]))
 }
 
 .elbv2$modify_trust_store_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustStoreArn = structure(logical(0), tags = list(type = "string")), CaCertificatesBundleS3Bucket = structure(logical(0), tags = list(type = "string")), CaCertificatesBundleS3Key = structure(logical(0), tags = list(type = "string")), CaCertificatesBundleS3ObjectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_trust_store_input"]]))
 }
 
 .elbv2$modify_trust_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustStores = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), TrustStoreArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), NumberOfCaCertificates = structure(logical(0), tags = list(type = "integer")), TotalRevokedEntries = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ModifyTrustStoreResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["modify_trust_store_output"]]))
 }
 
 .elbv2$register_targets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), Targets = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), QuicServerId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["register_targets_input"]]))
 }
 
 .elbv2$register_targets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "RegisterTargetsResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["register_targets_output"]]))
 }
 
 .elbv2$remove_listener_certificates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), Certificates = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["remove_listener_certificates_input"]]))
 }
 
 .elbv2$remove_listener_certificates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "RemoveListenerCertificatesResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["remove_listener_certificates_output"]]))
 }
 
 .elbv2$remove_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["remove_tags_input"]]))
 }
 
 .elbv2$remove_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "RemoveTagsResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["remove_tags_output"]]))
 }
 
 .elbv2$remove_trust_store_revocations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustStoreArn = structure(logical(0), tags = list(type = "string")), RevocationIds = structure(list(structure(logical(0), tags = list(type = "long"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["remove_trust_store_revocations_input"]]))
 }
 
 .elbv2$remove_trust_store_revocations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "RemoveTrustStoreRevocationsResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["remove_trust_store_revocations_output"]]))
 }
 
 .elbv2$set_ip_address_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerArn = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["set_ip_address_type_input"]]))
 }
 
 .elbv2$set_ip_address_type_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IpAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "SetIpAddressTypeResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["set_ip_address_type_output"]]))
 }
 
 .elbv2$set_rule_priorities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RulePriorities = structure(list(structure(list(RuleArn = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["set_rule_priorities_input"]]))
 }
 
 .elbv2$set_rule_priorities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Rules = structure(list(structure(list(RuleArn = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(Field = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HostHeaderConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), PathPatternConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), HttpHeaderConfig = structure(list(HttpHeaderName = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), QueryStringConfig = structure(list(Values = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), HttpRequestMethodConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), SourceIpConfig = structure(list(Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), RegexValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Actions = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TargetGroupArn = structure(logical(0), tags = list(type = "string")), AuthenticateOidcConfig = structure(list(Issuer = structure(logical(0), tags = list(type = "string")), AuthorizationEndpoint = structure(logical(0), tags = list(type = "string")), TokenEndpoint = structure(logical(0), tags = list(type = "string")), UserInfoEndpoint = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string")), ClientSecret = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string")), UseExistingClientSecret = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AuthenticateCognitoConfig = structure(list(UserPoolArn = structure(logical(0), tags = list(type = "string")), UserPoolClientId = structure(logical(0), tags = list(type = "string")), UserPoolDomain = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Order = structure(logical(0), tags = list(type = "integer")), RedirectConfig = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FixedResponseConfig = structure(list(MessageBody = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ForwardConfig = structure(list(TargetGroups = structure(list(structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), TargetGroupStickinessConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), JwtValidationConfig = structure(list(JwksEndpoint = structure(logical(0), tags = list(type = "string")), Issuer = structure(logical(0), tags = list(type = "string")), AdditionalClaims = structure(list(structure(list(Format = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), IsDefault = structure(logical(0), tags = list(type = "boolean")), Transforms = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), HostHeaderRewriteConfig = structure(list(Rewrites = structure(list(structure(list(Regex = structure(logical(0), tags = list(type = "string")), Replace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UrlRewriteConfig = structure(list(Rewrites = structure(list(structure(list(Regex = structure(logical(0), tags = list(type = "string")), Replace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "SetRulePrioritiesResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["set_rule_priorities_output"]]))
 }
 
 .elbv2$set_security_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerArn = structure(logical(0), tags = list(type = "string")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["set_security_groups_input"]]))
 }
 
 .elbv2$set_security_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "SetSecurityGroupsResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["set_security_groups_output"]]))
 }
 
 .elbv2$set_subnets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoadBalancerArn = structure(logical(0), tags = list(type = "string")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SubnetMappings = structure(list(structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), AllocationId = structure(logical(0), tags = list(type = "string")), PrivateIPv4Address = structure(logical(0), tags = list(type = "string")), IPv6Address = structure(logical(0), tags = list(type = "string")), SourceNatIpv6Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IpAddressType = structure(logical(0), tags = list(type = "string")), EnablePrefixForIpv6SourceNat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["set_subnets_input"]]))
 }
 
 .elbv2$set_subnets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AvailabilityZones = structure(list(structure(list(ZoneName = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), OutpostId = structure(logical(0), tags = list(type = "string")), LoadBalancerAddresses = structure(list(structure(list(IpAddress = structure(logical(0), tags = list(type = "string")), AllocationId = structure(logical(0), tags = list(type = "string")), PrivateIPv4Address = structure(logical(0), tags = list(type = "string")), IPv6Address = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SourceNatIpv6Prefixes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), IpAddressType = structure(logical(0), tags = list(type = "string")), EnablePrefixForIpv6SourceNat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "SetSubnetsResult"))
-  return(populate(args, shape))
+  return(populate(args, .elbv2_shapes[["set_subnets_output"]]))
 }

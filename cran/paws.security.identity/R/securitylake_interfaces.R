@@ -5,372 +5,310 @@ NULL
 
 .securitylake$create_aws_log_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sources = structure(list(structure(list(accounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["create_aws_log_source_input"]]))
 }
 
 .securitylake$create_aws_log_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(failed = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["create_aws_log_source_output"]]))
 }
 
 .securitylake$create_custom_log_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuration = structure(list(crawlerConfiguration = structure(list(roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), providerIdentity = structure(list(externalId = structure(logical(0), tags = list(type = "string")), principal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), eventClasses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["create_custom_log_source_input"]]))
 }
 
 .securitylake$create_custom_log_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(source = structure(list(attributes = structure(list(crawlerArn = structure(logical(0), tags = list(type = "string")), databaseArn = structure(logical(0), tags = list(type = "string")), tableArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), provider = structure(list(location = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["create_custom_log_source_output"]]))
 }
 
 .securitylake$create_data_lake_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configurations = structure(list(structure(list(encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lifecycleConfiguration = structure(list(expiration = structure(list(days = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), transitions = structure(list(structure(list(days = structure(logical(0), tags = list(type = "integer", box = TRUE)), storageClass = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), region = structure(logical(0), tags = list(type = "string")), replicationConfiguration = structure(list(regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), metaStoreManagerRoleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["create_data_lake_input"]]))
 }
 
 .securitylake$create_data_lake_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(dataLakes = structure(list(structure(list(createStatus = structure(logical(0), tags = list(type = "string")), dataLakeArn = structure(logical(0), tags = list(type = "string")), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lifecycleConfiguration = structure(list(expiration = structure(list(days = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), transitions = structure(list(structure(list(days = structure(logical(0), tags = list(type = "integer", box = TRUE)), storageClass = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), region = structure(logical(0), tags = list(type = "string")), replicationConfiguration = structure(list(regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3BucketArn = structure(logical(0), tags = list(type = "string")), updateStatus = structure(list(exception = structure(list(code = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), requestId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["create_data_lake_output"]]))
 }
 
 .securitylake$create_data_lake_exception_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(exceptionTimeToLive = structure(logical(0), tags = list(type = "long", box = TRUE)), notificationEndpoint = structure(logical(0), tags = list(type = "string")), subscriptionProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["create_data_lake_exception_subscription_input"]]))
 }
 
 .securitylake$create_data_lake_exception_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["create_data_lake_exception_subscription_output"]]))
 }
 
 .securitylake$create_data_lake_organization_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(autoEnableNewAccount = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(list(sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["create_data_lake_organization_configuration_input"]]))
 }
 
 .securitylake$create_data_lake_organization_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["create_data_lake_organization_configuration_output"]]))
 }
 
 .securitylake$create_subscriber_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accessTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sources = structure(list(structure(list(awsLogSource = structure(list(sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), customLogSource = structure(list(attributes = structure(list(crawlerArn = structure(logical(0), tags = list(type = "string")), databaseArn = structure(logical(0), tags = list(type = "string")), tableArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), provider = structure(list(location = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), subscriberDescription = structure(logical(0), tags = list(type = "string")), subscriberIdentity = structure(list(externalId = structure(logical(0), tags = list(type = "string")), principal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), subscriberName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["create_subscriber_input"]]))
 }
 
 .securitylake$create_subscriber_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subscriber = structure(list(accessTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), s3BucketArn = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(list(awsLogSource = structure(list(sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), customLogSource = structure(list(attributes = structure(list(crawlerArn = structure(logical(0), tags = list(type = "string")), databaseArn = structure(logical(0), tags = list(type = "string")), tableArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), provider = structure(list(location = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), subscriberArn = structure(logical(0), tags = list(type = "string")), subscriberDescription = structure(logical(0), tags = list(type = "string")), subscriberEndpoint = structure(logical(0), tags = list(type = "string")), subscriberId = structure(logical(0), tags = list(type = "string")), subscriberIdentity = structure(list(externalId = structure(logical(0), tags = list(type = "string")), principal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), subscriberName = structure(logical(0), tags = list(type = "string")), subscriberStatus = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["create_subscriber_output"]]))
 }
 
 .securitylake$create_subscriber_notification_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuration = structure(list(httpsNotificationConfiguration = structure(list(authorizationApiKeyName = structure(logical(0), tags = list(type = "string")), authorizationApiKeyValue = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), httpMethod = structure(logical(0), tags = list(type = "string")), targetRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sqsNotificationConfiguration = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), subscriberId = structure(logical(0), tags = list(location = "uri", locationName = "subscriberId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["create_subscriber_notification_input"]]))
 }
 
 .securitylake$create_subscriber_notification_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subscriberEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["create_subscriber_notification_output"]]))
 }
 
 .securitylake$delete_aws_log_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sources = structure(list(structure(list(accounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["delete_aws_log_source_input"]]))
 }
 
 .securitylake$delete_aws_log_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(failed = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["delete_aws_log_source_output"]]))
 }
 
 .securitylake$delete_custom_log_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceName = structure(logical(0), tags = list(location = "uri", locationName = "sourceName", type = "string")), sourceVersion = structure(logical(0), tags = list(location = "querystring", locationName = "sourceVersion", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["delete_custom_log_source_input"]]))
 }
 
 .securitylake$delete_custom_log_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["delete_custom_log_source_output"]]))
 }
 
 .securitylake$delete_data_lake_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["delete_data_lake_input"]]))
 }
 
 .securitylake$delete_data_lake_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["delete_data_lake_output"]]))
 }
 
 .securitylake$delete_data_lake_exception_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["delete_data_lake_exception_subscription_input"]]))
 }
 
 .securitylake$delete_data_lake_exception_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["delete_data_lake_exception_subscription_output"]]))
 }
 
 .securitylake$delete_data_lake_organization_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(autoEnableNewAccount = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(list(sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["delete_data_lake_organization_configuration_input"]]))
 }
 
 .securitylake$delete_data_lake_organization_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["delete_data_lake_organization_configuration_output"]]))
 }
 
 .securitylake$delete_subscriber_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subscriberId = structure(logical(0), tags = list(location = "uri", locationName = "subscriberId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["delete_subscriber_input"]]))
 }
 
 .securitylake$delete_subscriber_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["delete_subscriber_output"]]))
 }
 
 .securitylake$delete_subscriber_notification_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subscriberId = structure(logical(0), tags = list(location = "uri", locationName = "subscriberId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["delete_subscriber_notification_input"]]))
 }
 
 .securitylake$delete_subscriber_notification_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["delete_subscriber_notification_output"]]))
 }
 
 .securitylake$deregister_data_lake_delegated_administrator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["deregister_data_lake_delegated_administrator_input"]]))
 }
 
 .securitylake$deregister_data_lake_delegated_administrator_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["deregister_data_lake_delegated_administrator_output"]]))
 }
 
 .securitylake$get_data_lake_exception_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["get_data_lake_exception_subscription_input"]]))
 }
 
 .securitylake$get_data_lake_exception_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(exceptionTimeToLive = structure(logical(0), tags = list(type = "long", box = TRUE)), notificationEndpoint = structure(logical(0), tags = list(type = "string")), subscriptionProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["get_data_lake_exception_subscription_output"]]))
 }
 
 .securitylake$get_data_lake_organization_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["get_data_lake_organization_configuration_input"]]))
 }
 
 .securitylake$get_data_lake_organization_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(autoEnableNewAccount = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(list(sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["get_data_lake_organization_configuration_output"]]))
 }
 
 .securitylake$get_data_lake_sources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["get_data_lake_sources_input"]]))
 }
 
 .securitylake$get_data_lake_sources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(dataLakeArn = structure(logical(0), tags = list(type = "string")), dataLakeSources = structure(list(structure(list(account = structure(logical(0), tags = list(type = "string")), eventClasses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sourceName = structure(logical(0), tags = list(type = "string")), sourceStatuses = structure(list(structure(list(resource = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["get_data_lake_sources_output"]]))
 }
 
 .securitylake$get_subscriber_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subscriberId = structure(logical(0), tags = list(location = "uri", locationName = "subscriberId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["get_subscriber_input"]]))
 }
 
 .securitylake$get_subscriber_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subscriber = structure(list(accessTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), s3BucketArn = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(list(awsLogSource = structure(list(sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), customLogSource = structure(list(attributes = structure(list(crawlerArn = structure(logical(0), tags = list(type = "string")), databaseArn = structure(logical(0), tags = list(type = "string")), tableArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), provider = structure(list(location = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), subscriberArn = structure(logical(0), tags = list(type = "string")), subscriberDescription = structure(logical(0), tags = list(type = "string")), subscriberEndpoint = structure(logical(0), tags = list(type = "string")), subscriberId = structure(logical(0), tags = list(type = "string")), subscriberIdentity = structure(list(externalId = structure(logical(0), tags = list(type = "string")), principal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), subscriberName = structure(logical(0), tags = list(type = "string")), subscriberStatus = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["get_subscriber_output"]]))
 }
 
 .securitylake$list_data_lake_exceptions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["list_data_lake_exceptions_input"]]))
 }
 
 .securitylake$list_data_lake_exceptions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(exceptions = structure(list(structure(list(exception = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), remediation = structure(logical(0), tags = list(type = "string")), timestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["list_data_lake_exceptions_output"]]))
 }
 
 .securitylake$list_data_lakes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "regions", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["list_data_lakes_input"]]))
 }
 
 .securitylake$list_data_lakes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(dataLakes = structure(list(structure(list(createStatus = structure(logical(0), tags = list(type = "string")), dataLakeArn = structure(logical(0), tags = list(type = "string")), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lifecycleConfiguration = structure(list(expiration = structure(list(days = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), transitions = structure(list(structure(list(days = structure(logical(0), tags = list(type = "integer", box = TRUE)), storageClass = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), region = structure(logical(0), tags = list(type = "string")), replicationConfiguration = structure(list(regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3BucketArn = structure(logical(0), tags = list(type = "string")), updateStatus = structure(list(exception = structure(list(code = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), requestId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["list_data_lakes_output"]]))
 }
 
 .securitylake$list_log_sources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sources = structure(list(structure(list(awsLogSource = structure(list(sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), customLogSource = structure(list(attributes = structure(list(crawlerArn = structure(logical(0), tags = list(type = "string")), databaseArn = structure(logical(0), tags = list(type = "string")), tableArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), provider = structure(list(location = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["list_log_sources_input"]]))
 }
 
 .securitylake$list_log_sources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(list(account = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(list(awsLogSource = structure(list(sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), customLogSource = structure(list(attributes = structure(list(crawlerArn = structure(logical(0), tags = list(type = "string")), databaseArn = structure(logical(0), tags = list(type = "string")), tableArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), provider = structure(list(location = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["list_log_sources_output"]]))
 }
 
 .securitylake$list_subscribers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["list_subscribers_input"]]))
 }
 
 .securitylake$list_subscribers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), subscribers = structure(list(structure(list(accessTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), s3BucketArn = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(list(awsLogSource = structure(list(sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), customLogSource = structure(list(attributes = structure(list(crawlerArn = structure(logical(0), tags = list(type = "string")), databaseArn = structure(logical(0), tags = list(type = "string")), tableArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), provider = structure(list(location = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), subscriberArn = structure(logical(0), tags = list(type = "string")), subscriberDescription = structure(logical(0), tags = list(type = "string")), subscriberEndpoint = structure(logical(0), tags = list(type = "string")), subscriberId = structure(logical(0), tags = list(type = "string")), subscriberIdentity = structure(list(externalId = structure(logical(0), tags = list(type = "string")), principal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), subscriberName = structure(logical(0), tags = list(type = "string")), subscriberStatus = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["list_subscribers_output"]]))
 }
 
 .securitylake$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["list_tags_for_resource_input"]]))
 }
 
 .securitylake$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["list_tags_for_resource_output"]]))
 }
 
 .securitylake$register_data_lake_delegated_administrator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["register_data_lake_delegated_administrator_input"]]))
 }
 
 .securitylake$register_data_lake_delegated_administrator_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["register_data_lake_delegated_administrator_output"]]))
 }
 
 .securitylake$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["tag_resource_input"]]))
 }
 
 .securitylake$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["tag_resource_output"]]))
 }
 
 .securitylake$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["untag_resource_input"]]))
 }
 
 .securitylake$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["untag_resource_output"]]))
 }
 
 .securitylake$update_data_lake_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configurations = structure(list(structure(list(encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lifecycleConfiguration = structure(list(expiration = structure(list(days = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), transitions = structure(list(structure(list(days = structure(logical(0), tags = list(type = "integer", box = TRUE)), storageClass = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), region = structure(logical(0), tags = list(type = "string")), replicationConfiguration = structure(list(regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), metaStoreManagerRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["update_data_lake_input"]]))
 }
 
 .securitylake$update_data_lake_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(dataLakes = structure(list(structure(list(createStatus = structure(logical(0), tags = list(type = "string")), dataLakeArn = structure(logical(0), tags = list(type = "string")), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lifecycleConfiguration = structure(list(expiration = structure(list(days = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), transitions = structure(list(structure(list(days = structure(logical(0), tags = list(type = "integer", box = TRUE)), storageClass = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), region = structure(logical(0), tags = list(type = "string")), replicationConfiguration = structure(list(regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3BucketArn = structure(logical(0), tags = list(type = "string")), updateStatus = structure(list(exception = structure(list(code = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), requestId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["update_data_lake_output"]]))
 }
 
 .securitylake$update_data_lake_exception_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(exceptionTimeToLive = structure(logical(0), tags = list(type = "long", box = TRUE)), notificationEndpoint = structure(logical(0), tags = list(type = "string")), subscriptionProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["update_data_lake_exception_subscription_input"]]))
 }
 
 .securitylake$update_data_lake_exception_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["update_data_lake_exception_subscription_output"]]))
 }
 
 .securitylake$update_subscriber_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sources = structure(list(structure(list(awsLogSource = structure(list(sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), customLogSource = structure(list(attributes = structure(list(crawlerArn = structure(logical(0), tags = list(type = "string")), databaseArn = structure(logical(0), tags = list(type = "string")), tableArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), provider = structure(list(location = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), subscriberDescription = structure(logical(0), tags = list(type = "string")), subscriberId = structure(logical(0), tags = list(location = "uri", locationName = "subscriberId", type = "string")), subscriberIdentity = structure(list(externalId = structure(logical(0), tags = list(type = "string")), principal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), subscriberName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["update_subscriber_input"]]))
 }
 
 .securitylake$update_subscriber_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subscriber = structure(list(accessTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), s3BucketArn = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(list(awsLogSource = structure(list(sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), customLogSource = structure(list(attributes = structure(list(crawlerArn = structure(logical(0), tags = list(type = "string")), databaseArn = structure(logical(0), tags = list(type = "string")), tableArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), provider = structure(list(location = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceName = structure(logical(0), tags = list(type = "string")), sourceVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), subscriberArn = structure(logical(0), tags = list(type = "string")), subscriberDescription = structure(logical(0), tags = list(type = "string")), subscriberEndpoint = structure(logical(0), tags = list(type = "string")), subscriberId = structure(logical(0), tags = list(type = "string")), subscriberIdentity = structure(list(externalId = structure(logical(0), tags = list(type = "string")), principal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), subscriberName = structure(logical(0), tags = list(type = "string")), subscriberStatus = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["update_subscriber_output"]]))
 }
 
 .securitylake$update_subscriber_notification_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuration = structure(list(httpsNotificationConfiguration = structure(list(authorizationApiKeyName = structure(logical(0), tags = list(type = "string")), authorizationApiKeyValue = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), httpMethod = structure(logical(0), tags = list(type = "string")), targetRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sqsNotificationConfiguration = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), subscriberId = structure(logical(0), tags = list(location = "uri", locationName = "subscriberId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["update_subscriber_notification_input"]]))
 }
 
 .securitylake$update_subscriber_notification_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subscriberEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .securitylake_shapes[["update_subscriber_notification_output"]]))
 }

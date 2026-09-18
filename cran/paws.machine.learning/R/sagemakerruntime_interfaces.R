@@ -5,36 +5,30 @@ NULL
 
 .sagemakerruntime$invoke_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EndpointName = structure(logical(0), tags = list(location = "uri", locationName = "EndpointName", type = "string")), Body = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), Accept = structure(logical(0), tags = list(location = "header", locationName = "Accept", type = "string")), CustomAttributes = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Custom-Attributes", type = "string", sensitive = TRUE)), TargetModel = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Target-Model", type = "string")), TargetVariant = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Target-Variant", type = "string")), TargetContainerHostname = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Target-Container-Hostname", type = "string")), InferenceId = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Inference-Id", type = "string")), EnableExplanations = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Enable-Explanations", type = "string")), InferenceComponentName = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Inference-Component", type = "string")), SessionId = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Session-Id", type = "string"))), tags = list(type = "structure", payload = "Body"))
-  return(populate(args, shape))
+  return(populate(args, .sagemakerruntime_shapes[["invoke_endpoint_input"]]))
 }
 
 .sagemakerruntime$invoke_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Body = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), InvokedProductionVariant = structure(logical(0), tags = list(location = "header", locationName = "x-Amzn-Invoked-Production-Variant", type = "string")), CustomAttributes = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Custom-Attributes", type = "string", sensitive = TRUE)), NewSessionId = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-New-Session-Id", type = "string")), ClosedSessionId = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Closed-Session-Id", type = "string"))), tags = list(type = "structure", payload = "Body"))
-  return(populate(args, shape))
+  return(populate(args, .sagemakerruntime_shapes[["invoke_endpoint_output"]]))
 }
 
 .sagemakerruntime$invoke_endpoint_async_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EndpointName = structure(logical(0), tags = list(location = "uri", locationName = "EndpointName", type = "string")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Content-Type", type = "string")), Accept = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Accept", type = "string")), CustomAttributes = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Custom-Attributes", type = "string", sensitive = TRUE)), InferenceId = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Inference-Id", type = "string")), InputLocation = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-InputLocation", type = "string")), S3OutputPathExtension = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-S3OutputPathExtension", type = "string")), Filename = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Filename", type = "string")), RequestTTLSeconds = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-RequestTTLSeconds", type = "integer")), InvocationTimeoutSeconds = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-InvocationTimeoutSeconds", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sagemakerruntime_shapes[["invoke_endpoint_async_input"]]))
 }
 
 .sagemakerruntime$invoke_endpoint_async_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InferenceId = structure(logical(0), tags = list(type = "string")), OutputLocation = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-OutputLocation", type = "string")), FailureLocation = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-FailureLocation", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sagemakerruntime_shapes[["invoke_endpoint_async_output"]]))
 }
 
 .sagemakerruntime$invoke_endpoint_with_response_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EndpointName = structure(logical(0), tags = list(location = "uri", locationName = "EndpointName", type = "string")), Body = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), Accept = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Accept", type = "string")), CustomAttributes = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Custom-Attributes", type = "string", sensitive = TRUE)), TargetVariant = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Target-Variant", type = "string")), TargetContainerHostname = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Target-Container-Hostname", type = "string")), InferenceId = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Inference-Id", type = "string")), InferenceComponentName = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Inference-Component", type = "string")), SessionId = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Session-Id", type = "string"))), tags = list(type = "structure", payload = "Body"))
-  return(populate(args, shape))
+  return(populate(args, .sagemakerruntime_shapes[["invoke_endpoint_with_response_stream_input"]]))
 }
 
 .sagemakerruntime$invoke_endpoint_with_response_stream_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Body = structure(list(PayloadPart = structure(list(Bytes = structure(logical(0), tags = list(eventpayload = TRUE, type = "blob", sensitive = TRUE))), tags = list(type = "structure", event = TRUE)), ModelStreamError = structure(list(Message = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", exception = TRUE, synthetic = TRUE)), InternalStreamFailure = structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", exception = TRUE, fault = TRUE, synthetic = TRUE))), tags = list(type = "structure", eventstream = TRUE)), ContentType = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Content-Type", type = "string")), InvokedProductionVariant = structure(logical(0), tags = list(location = "header", locationName = "x-Amzn-Invoked-Production-Variant", type = "string")), CustomAttributes = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-SageMaker-Custom-Attributes", type = "string", sensitive = TRUE))), tags = list(type = "structure", payload = "Body"))
-  return(populate(args, shape))
+  return(populate(args, .sagemakerruntime_shapes[["invoke_endpoint_with_response_stream_output"]]))
 }

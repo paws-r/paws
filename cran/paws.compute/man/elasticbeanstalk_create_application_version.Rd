@@ -13,7 +13,8 @@ elasticbeanstalk_create_application_version(
   BuildConfiguration = NULL,
   AutoCreateApplication = NULL,
   Process = NULL,
-  Tags = NULL
+  Tags = NULL,
+  ImageConfiguration = NULL
 )
 }
 \arguments{
@@ -21,34 +22,42 @@ elasticbeanstalk_create_application_version(
 
 \item{VersionLabel}{[required] A label identifying this version.
 
-Constraint: Must be unique per application. If an application version already exists with this label for the specified application, AWS Elastic Beanstalk returns an \code{InvalidParameterValue} error.}
+Constraint: Must be unique per application. If an application version already exists with this label for the specified application, Elastic Beanstalk returns an \code{InvalidParameterValue} error.}
 
 \item{Description}{A description of this application version.}
 
-\item{SourceBuildInformation}{Specify a commit in an AWS CodeCommit Git repository to use as the source code for the application version.}
+\item{SourceBuildInformation}{Specify a commit in an CodeCommit Git repository to use as the source code for the application version.}
 
 \item{SourceBundle}{The Amazon S3 bucket and key that identify the location of the source bundle for this version.
 
 The Amazon S3 bucket must be in the same region as the environment.
 
-Specify a source bundle in S3 or a commit in an AWS CodeCommit repository (with \code{SourceBuildInformation}), but not both. If neither \code{SourceBundle} nor \code{SourceBuildInformation} are provided, Elastic Beanstalk uses a sample application.}
+Unless you're specifying a source bundle in the bucket that Elastic Beanstalk manages in your account, you must assign a custom policy to your user, and grant \code{Allow} permission to the \verb{s3:Get*} actions on your S3 object resource, for example, \code{arn:aws:s3:::your-bucket/your-source-bundle-object}.
 
-\item{BuildConfiguration}{Settings for an AWS CodeBuild build.}
+Specify a source bundle in Amazon S3 or a commit in an CodeCommit repository (with \code{SourceBuildInformation}), but not both. If neither \code{SourceBundle} nor \code{SourceBuildInformation} are provided, Elastic Beanstalk uses a sample application.}
+
+\item{BuildConfiguration}{Settings for an CodeBuild build.
+
+Don't specify \code{BuildConfiguration} together with \code{ImageConfiguration}, which configures a container image build instead.}
 
 \item{AutoCreateApplication}{Set to \code{true} to create an application with the specified name if it doesn't already exist.}
 
 \item{Process}{Pre-processes and validates the environment manifest (\code{env.yaml}) and configuration files (\verb{*.config} files in the \code{.ebextensions} folder) in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment.
 
-You must turn processing on for application versions that you create using AWS CodeBuild or AWS CodeCommit. For application versions built from a source bundle in Amazon S3, processing is optional.
+You must turn processing on for application versions that you create using CodeBuild or CodeCommit. For application versions built from a source bundle in Amazon S3, processing is optional.
 
 The \code{Process} option validates Elastic Beanstalk configuration files. It doesn't validate your application's configuration files, like proxy server or Docker configuration.}
 
 \item{Tags}{Specifies the tags applied to the application version.
 
 Elastic Beanstalk applies these tags only to the application version. Environments that use the application version don't inherit the tags.}
+
+\item{ImageConfiguration}{The source of the container image for this application version. You can specify an image that you built and pushed to a container registry yourself, or settings for Elastic Beanstalk to build one from your source bundle. Specify exactly one of the \code{Source} and \code{Build} members.
+
+Don't specify \code{ImageConfiguration} together with \code{BuildConfiguration}, which configures an CodeBuild build instead.}
 }
 \description{
-Creates an application version for the specified application. You can create an application version from a source bundle in Amazon S3, a commit in AWS CodeCommit, or the output of an AWS CodeBuild build as follows:
+Creates an application version for the specified application. You can create an application version from a source bundle in Amazon S3, a commit in CodeCommit, or the output of an CodeBuild build as follows:
 
 See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_application_version/} for full documentation.
 }

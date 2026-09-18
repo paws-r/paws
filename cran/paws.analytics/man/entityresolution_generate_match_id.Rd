@@ -24,7 +24,9 @@ If not specified, defaults to \code{CONSISTENT}.
 
 \code{EVENTUAL} (shown as \emph{Background} in the console): Performs initial match ID lookup or generation immediately, with record updates processed asynchronously in the background. Offers faster initial response time, with complete matching results available later in S3.
 
-\code{EVENTUAL_NO_LOOKUP} (shown as \emph{Quick ID generation} in the console): Generates new match IDs without checking existing matches, with updates processed asynchronously. Provides fastest response time but should only be used for records known to be unique.}
+\code{EVENTUAL_NO_LOOKUP} (shown as \emph{Quick ID generation} in the console): Generates new match IDs without checking existing matches, with updates processed asynchronously. Provides fastest response time but should only be used for records known to be unique.
+
+Advanced matching workflows don't support the \code{processingType} field.}
 }
 \description{
 Generates or retrieves Match IDs for records using a rule-based matching workflow. When you call this operation, it processes your records against the workflow's matching rules to identify potential matches. For existing records, it retrieves their Match IDs and associated rules. For records without matches, it generates new Match IDs. The operation saves results to Amazon S3.

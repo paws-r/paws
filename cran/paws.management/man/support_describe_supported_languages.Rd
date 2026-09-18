@@ -5,7 +5,12 @@
 \title{Returns a list of supported languages for a specified categoryCode,
 issueType and serviceCode}
 \usage{
-support_describe_supported_languages(issueType, serviceCode, categoryCode)
+support_describe_supported_languages(
+  issueType,
+  serviceCode,
+  categoryCode,
+  dryRun = NULL
+)
 }
 \arguments{
 \item{issueType}{[required] The type of issue for the case. You can specify \code{customer-service} or \code{technical}.}
@@ -13,6 +18,8 @@ support_describe_supported_languages(issueType, serviceCode, categoryCode)
 \item{serviceCode}{[required] The code for the Amazon Web Services service. You can use the \code{\link[=support_describe_services]{describe_services}} operation to get the possible \code{serviceCode} values.}
 
 \item{categoryCode}{[required] The category of problem for the support case. You also use the \code{\link[=support_describe_services]{describe_services}} operation to get the category code for a service. Each Amazon Web Services service defines its own set of category codes.}
+
+\item{dryRun}{Specifies whether to validate the request without actually returning supported languages. When set to \code{true}, the request is validated but no languages are returned, and the operation returns a \code{DryRunOperationException}. When omitted or set to \code{false}, the request runs normally.}
 }
 \description{
 Returns a list of supported languages for a specified \code{categoryCode}, \code{issueType} and \code{serviceCode}. The returned supported languages will include a ISO 639-1 code for the \code{language}, and the language display name.

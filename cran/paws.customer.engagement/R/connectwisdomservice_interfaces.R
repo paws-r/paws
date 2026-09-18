@@ -5,492 +5,410 @@ NULL
 
 .connectwisdomservice$create_assistant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), description = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), serverSideEncryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["create_assistant_input"]]))
 }
 
 .connectwisdomservice$create_assistant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistant = structure(list(assistantArn = structure(logical(0), tags = list(type = "string")), assistantId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), integrationConfiguration = structure(list(topicIntegrationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), serverSideEncryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["create_assistant_output"]]))
 }
 
 .connectwisdomservice$create_assistant_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantId = structure(logical(0), tags = list(location = "uri", locationName = "assistantId", type = "string")), association = structure(list(knowledgeBaseId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), associationType = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["create_assistant_association_input"]]))
 }
 
 .connectwisdomservice$create_assistant_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantAssociation = structure(list(assistantArn = structure(logical(0), tags = list(type = "string")), assistantAssociationArn = structure(logical(0), tags = list(type = "string")), assistantAssociationId = structure(logical(0), tags = list(type = "string")), assistantId = structure(logical(0), tags = list(type = "string")), associationData = structure(list(knowledgeBaseAssociation = structure(list(knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), associationType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["create_assistant_association_output"]]))
 }
 
 .connectwisdomservice$create_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), name = structure(logical(0), tags = list(type = "string")), overrideLinkOutUri = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), title = structure(logical(0), tags = list(type = "string")), uploadId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["create_content_input"]]))
 }
 
 .connectwisdomservice$create_content_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(content = structure(list(contentArn = structure(logical(0), tags = list(type = "string")), contentId = structure(logical(0), tags = list(type = "string")), contentType = structure(logical(0), tags = list(type = "string")), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), linkOutUri = structure(logical(0), tags = list(type = "string")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), name = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), title = structure(logical(0), tags = list(type = "string")), url = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), urlExpiry = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["create_content_output"]]))
 }
 
 .connectwisdomservice$create_knowledge_base_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), description = structure(logical(0), tags = list(type = "string")), knowledgeBaseType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), renderingConfiguration = structure(list(templateUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), serverSideEncryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceConfiguration = structure(list(appIntegrations = structure(list(appIntegrationArn = structure(logical(0), tags = list(type = "string")), objectFields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["create_knowledge_base_input"]]))
 }
 
 .connectwisdomservice$create_knowledge_base_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(knowledgeBase = structure(list(description = structure(logical(0), tags = list(type = "string")), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), knowledgeBaseType = structure(logical(0), tags = list(type = "string")), lastContentModificationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), name = structure(logical(0), tags = list(type = "string")), renderingConfiguration = structure(list(templateUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), serverSideEncryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceConfiguration = structure(list(appIntegrations = structure(list(appIntegrationArn = structure(logical(0), tags = list(type = "string")), objectFields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["create_knowledge_base_output"]]))
 }
 
 .connectwisdomservice$create_quick_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(channels = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), content = structure(list(content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE)), contentType = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), groupingConfiguration = structure(list(criteria = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure")), isActive = structure(logical(0), tags = list(type = "boolean", box = TRUE)), knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string")), language = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), shortcutKey = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["create_quick_response_input"]]))
 }
 
 .connectwisdomservice$create_quick_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(quickResponse = structure(list(channels = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), contentType = structure(logical(0), tags = list(type = "string")), contents = structure(list(markdown = structure(list(content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE)), plainText = structure(list(content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), createdTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), description = structure(logical(0), tags = list(type = "string")), groupingConfiguration = structure(list(criteria = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure")), isActive = structure(logical(0), tags = list(type = "boolean", box = TRUE)), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), language = structure(logical(0), tags = list(type = "string")), lastModifiedBy = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), name = structure(logical(0), tags = list(type = "string")), quickResponseArn = structure(logical(0), tags = list(type = "string")), quickResponseId = structure(logical(0), tags = list(type = "string")), shortcutKey = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["create_quick_response_output"]]))
 }
 
 .connectwisdomservice$create_session_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantId = structure(logical(0), tags = list(location = "uri", locationName = "assistantId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), description = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["create_session_input"]]))
 }
 
 .connectwisdomservice$create_session_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(session = structure(list(description = structure(logical(0), tags = list(type = "string")), integrationConfiguration = structure(list(topicIntegrationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), sessionArn = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["create_session_output"]]))
 }
 
 .connectwisdomservice$delete_assistant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantId = structure(logical(0), tags = list(location = "uri", locationName = "assistantId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["delete_assistant_input"]]))
 }
 
 .connectwisdomservice$delete_assistant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["delete_assistant_output"]]))
 }
 
 .connectwisdomservice$delete_assistant_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantAssociationId = structure(logical(0), tags = list(location = "uri", locationName = "assistantAssociationId", type = "string")), assistantId = structure(logical(0), tags = list(location = "uri", locationName = "assistantId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["delete_assistant_association_input"]]))
 }
 
 .connectwisdomservice$delete_assistant_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["delete_assistant_association_output"]]))
 }
 
 .connectwisdomservice$delete_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentId = structure(logical(0), tags = list(location = "uri", locationName = "contentId", type = "string")), knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["delete_content_input"]]))
 }
 
 .connectwisdomservice$delete_content_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["delete_content_output"]]))
 }
 
 .connectwisdomservice$delete_import_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(importJobId = structure(logical(0), tags = list(location = "uri", locationName = "importJobId", type = "string")), knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["delete_import_job_input"]]))
 }
 
 .connectwisdomservice$delete_import_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["delete_import_job_output"]]))
 }
 
 .connectwisdomservice$delete_knowledge_base_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["delete_knowledge_base_input"]]))
 }
 
 .connectwisdomservice$delete_knowledge_base_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["delete_knowledge_base_output"]]))
 }
 
 .connectwisdomservice$delete_quick_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string")), quickResponseId = structure(logical(0), tags = list(location = "uri", locationName = "quickResponseId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["delete_quick_response_input"]]))
 }
 
 .connectwisdomservice$delete_quick_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["delete_quick_response_output"]]))
 }
 
 .connectwisdomservice$get_assistant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantId = structure(logical(0), tags = list(location = "uri", locationName = "assistantId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_assistant_input"]]))
 }
 
 .connectwisdomservice$get_assistant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistant = structure(list(assistantArn = structure(logical(0), tags = list(type = "string")), assistantId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), integrationConfiguration = structure(list(topicIntegrationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), serverSideEncryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_assistant_output"]]))
 }
 
 .connectwisdomservice$get_assistant_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantAssociationId = structure(logical(0), tags = list(location = "uri", locationName = "assistantAssociationId", type = "string")), assistantId = structure(logical(0), tags = list(location = "uri", locationName = "assistantId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_assistant_association_input"]]))
 }
 
 .connectwisdomservice$get_assistant_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantAssociation = structure(list(assistantArn = structure(logical(0), tags = list(type = "string")), assistantAssociationArn = structure(logical(0), tags = list(type = "string")), assistantAssociationId = structure(logical(0), tags = list(type = "string")), assistantId = structure(logical(0), tags = list(type = "string")), associationData = structure(list(knowledgeBaseAssociation = structure(list(knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), associationType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_assistant_association_output"]]))
 }
 
 .connectwisdomservice$get_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentId = structure(logical(0), tags = list(location = "uri", locationName = "contentId", type = "string")), knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_content_input"]]))
 }
 
 .connectwisdomservice$get_content_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(content = structure(list(contentArn = structure(logical(0), tags = list(type = "string")), contentId = structure(logical(0), tags = list(type = "string")), contentType = structure(logical(0), tags = list(type = "string")), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), linkOutUri = structure(logical(0), tags = list(type = "string")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), name = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), title = structure(logical(0), tags = list(type = "string")), url = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), urlExpiry = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_content_output"]]))
 }
 
 .connectwisdomservice$get_content_summary_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentId = structure(logical(0), tags = list(location = "uri", locationName = "contentId", type = "string")), knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_content_summary_input"]]))
 }
 
 .connectwisdomservice$get_content_summary_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentSummary = structure(list(contentArn = structure(logical(0), tags = list(type = "string")), contentId = structure(logical(0), tags = list(type = "string")), contentType = structure(logical(0), tags = list(type = "string")), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), name = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_content_summary_output"]]))
 }
 
 .connectwisdomservice$get_import_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(importJobId = structure(logical(0), tags = list(location = "uri", locationName = "importJobId", type = "string")), knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_import_job_input"]]))
 }
 
 .connectwisdomservice$get_import_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(importJob = structure(list(createdTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), externalSourceConfiguration = structure(list(configuration = structure(list(connectConfiguration = structure(list(instanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), source = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), failedRecordReport = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), importJobId = structure(logical(0), tags = list(type = "string")), importJobType = structure(logical(0), tags = list(type = "string")), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), status = structure(logical(0), tags = list(type = "string")), uploadId = structure(logical(0), tags = list(type = "string")), url = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), urlExpiry = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_import_job_output"]]))
 }
 
 .connectwisdomservice$get_knowledge_base_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_knowledge_base_input"]]))
 }
 
 .connectwisdomservice$get_knowledge_base_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(knowledgeBase = structure(list(description = structure(logical(0), tags = list(type = "string")), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), knowledgeBaseType = structure(logical(0), tags = list(type = "string")), lastContentModificationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), name = structure(logical(0), tags = list(type = "string")), renderingConfiguration = structure(list(templateUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), serverSideEncryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceConfiguration = structure(list(appIntegrations = structure(list(appIntegrationArn = structure(logical(0), tags = list(type = "string")), objectFields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_knowledge_base_output"]]))
 }
 
 .connectwisdomservice$get_quick_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string")), quickResponseId = structure(logical(0), tags = list(location = "uri", locationName = "quickResponseId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_quick_response_input"]]))
 }
 
 .connectwisdomservice$get_quick_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(quickResponse = structure(list(channels = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), contentType = structure(logical(0), tags = list(type = "string")), contents = structure(list(markdown = structure(list(content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE)), plainText = structure(list(content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), createdTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), description = structure(logical(0), tags = list(type = "string")), groupingConfiguration = structure(list(criteria = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure")), isActive = structure(logical(0), tags = list(type = "boolean", box = TRUE)), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), language = structure(logical(0), tags = list(type = "string")), lastModifiedBy = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), name = structure(logical(0), tags = list(type = "string")), quickResponseArn = structure(logical(0), tags = list(type = "string")), quickResponseId = structure(logical(0), tags = list(type = "string")), shortcutKey = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_quick_response_output"]]))
 }
 
 .connectwisdomservice$get_recommendations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantId = structure(logical(0), tags = list(location = "uri", locationName = "assistantId", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), sessionId = structure(logical(0), tags = list(location = "uri", locationName = "sessionId", type = "string")), waitTimeSeconds = structure(logical(0), tags = list(location = "querystring", locationName = "waitTimeSeconds", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_recommendations_input"]]))
 }
 
 .connectwisdomservice$get_recommendations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recommendations = structure(list(structure(list(document = structure(list(contentReference = structure(list(contentArn = structure(logical(0), tags = list(type = "string")), contentId = structure(logical(0), tags = list(type = "string")), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), excerpt = structure(list(highlights = structure(list(structure(list(beginOffsetInclusive = structure(logical(0), tags = list(type = "integer")), endOffsetExclusive = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), title = structure(list(highlights = structure(list(structure(list(beginOffsetInclusive = structure(logical(0), tags = list(type = "integer")), endOffsetExclusive = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), recommendationId = structure(logical(0), tags = list(type = "string")), relevanceLevel = structure(logical(0), tags = list(type = "string")), relevanceScore = structure(logical(0), tags = list(type = "double")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), triggers = structure(list(structure(list(data = structure(list(query = structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), id = structure(logical(0), tags = list(type = "string")), recommendationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), source = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_recommendations_output"]]))
 }
 
 .connectwisdomservice$get_session_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantId = structure(logical(0), tags = list(location = "uri", locationName = "assistantId", type = "string")), sessionId = structure(logical(0), tags = list(location = "uri", locationName = "sessionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_session_input"]]))
 }
 
 .connectwisdomservice$get_session_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(session = structure(list(description = structure(logical(0), tags = list(type = "string")), integrationConfiguration = structure(list(topicIntegrationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), sessionArn = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["get_session_output"]]))
 }
 
 .connectwisdomservice$list_assistant_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantId = structure(logical(0), tags = list(location = "uri", locationName = "assistantId", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["list_assistant_associations_input"]]))
 }
 
 .connectwisdomservice$list_assistant_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantAssociationSummaries = structure(list(structure(list(assistantArn = structure(logical(0), tags = list(type = "string")), assistantAssociationArn = structure(logical(0), tags = list(type = "string")), assistantAssociationId = structure(logical(0), tags = list(type = "string")), assistantId = structure(logical(0), tags = list(type = "string")), associationData = structure(list(knowledgeBaseAssociation = structure(list(knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), associationType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["list_assistant_associations_output"]]))
 }
 
 .connectwisdomservice$list_assistants_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["list_assistants_input"]]))
 }
 
 .connectwisdomservice$list_assistants_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantSummaries = structure(list(structure(list(assistantArn = structure(logical(0), tags = list(type = "string")), assistantId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), integrationConfiguration = structure(list(topicIntegrationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), serverSideEncryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["list_assistants_output"]]))
 }
 
 .connectwisdomservice$list_contents_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["list_contents_input"]]))
 }
 
 .connectwisdomservice$list_contents_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentSummaries = structure(list(structure(list(contentArn = structure(logical(0), tags = list(type = "string")), contentId = structure(logical(0), tags = list(type = "string")), contentType = structure(logical(0), tags = list(type = "string")), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), name = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["list_contents_output"]]))
 }
 
 .connectwisdomservice$list_import_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["list_import_jobs_input"]]))
 }
 
 .connectwisdomservice$list_import_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(importJobSummaries = structure(list(structure(list(createdTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), externalSourceConfiguration = structure(list(configuration = structure(list(connectConfiguration = structure(list(instanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), source = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), importJobId = structure(logical(0), tags = list(type = "string")), importJobType = structure(logical(0), tags = list(type = "string")), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), status = structure(logical(0), tags = list(type = "string")), uploadId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["list_import_jobs_output"]]))
 }
 
 .connectwisdomservice$list_knowledge_bases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["list_knowledge_bases_input"]]))
 }
 
 .connectwisdomservice$list_knowledge_bases_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(knowledgeBaseSummaries = structure(list(structure(list(description = structure(logical(0), tags = list(type = "string")), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), knowledgeBaseType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), renderingConfiguration = structure(list(templateUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), serverSideEncryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceConfiguration = structure(list(appIntegrations = structure(list(appIntegrationArn = structure(logical(0), tags = list(type = "string")), objectFields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["list_knowledge_bases_output"]]))
 }
 
 .connectwisdomservice$list_quick_responses_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["list_quick_responses_input"]]))
 }
 
 .connectwisdomservice$list_quick_responses_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), quickResponseSummaries = structure(list(structure(list(channels = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), contentType = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), description = structure(logical(0), tags = list(type = "string")), isActive = structure(logical(0), tags = list(type = "boolean", box = TRUE)), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), lastModifiedBy = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), name = structure(logical(0), tags = list(type = "string")), quickResponseArn = structure(logical(0), tags = list(type = "string")), quickResponseId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["list_quick_responses_output"]]))
 }
 
 .connectwisdomservice$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["list_tags_for_resource_input"]]))
 }
 
 .connectwisdomservice$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["list_tags_for_resource_output"]]))
 }
 
 .connectwisdomservice$notify_recommendations_received_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantId = structure(logical(0), tags = list(location = "uri", locationName = "assistantId", type = "string")), recommendationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sessionId = structure(logical(0), tags = list(location = "uri", locationName = "sessionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["notify_recommendations_received_input"]]))
 }
 
 .connectwisdomservice$notify_recommendations_received_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(errors = structure(list(structure(list(message = structure(logical(0), tags = list(type = "string")), recommendationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), recommendationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["notify_recommendations_received_output"]]))
 }
 
 .connectwisdomservice$query_assistant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantId = structure(logical(0), tags = list(location = "uri", locationName = "assistantId", type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), queryText = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["query_assistant_input"]]))
 }
 
 .connectwisdomservice$query_assistant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), results = structure(list(structure(list(document = structure(list(contentReference = structure(list(contentArn = structure(logical(0), tags = list(type = "string")), contentId = structure(logical(0), tags = list(type = "string")), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), excerpt = structure(list(highlights = structure(list(structure(list(beginOffsetInclusive = structure(logical(0), tags = list(type = "integer")), endOffsetExclusive = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), title = structure(list(highlights = structure(list(structure(list(beginOffsetInclusive = structure(logical(0), tags = list(type = "integer")), endOffsetExclusive = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), relevanceScore = structure(logical(0), tags = list(type = "double")), resultId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["query_assistant_output"]]))
 }
 
 .connectwisdomservice$remove_knowledge_base_template_uri_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["remove_knowledge_base_template_uri_input"]]))
 }
 
 .connectwisdomservice$remove_knowledge_base_template_uri_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["remove_knowledge_base_template_uri_output"]]))
 }
 
 .connectwisdomservice$search_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), searchExpression = structure(list(filters = structure(list(structure(list(field = structure(logical(0), tags = list(type = "string")), operator = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["search_content_input"]]))
 }
 
 .connectwisdomservice$search_content_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentSummaries = structure(list(structure(list(contentArn = structure(logical(0), tags = list(type = "string")), contentId = structure(logical(0), tags = list(type = "string")), contentType = structure(logical(0), tags = list(type = "string")), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), name = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["search_content_output"]]))
 }
 
 .connectwisdomservice$search_quick_responses_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), searchExpression = structure(list(filters = structure(list(structure(list(includeNoExistence = structure(logical(0), tags = list(type = "boolean", box = TRUE)), name = structure(logical(0), tags = list(type = "string")), operator = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), orderOnField = structure(list(name = structure(logical(0), tags = list(type = "string")), order = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), queries = structure(list(structure(list(allowFuzziness = structure(logical(0), tags = list(type = "boolean", box = TRUE)), name = structure(logical(0), tags = list(type = "string")), operator = structure(logical(0), tags = list(type = "string")), priority = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["search_quick_responses_input"]]))
 }
 
 .connectwisdomservice$search_quick_responses_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), results = structure(list(structure(list(attributesInterpolated = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", sensitive = TRUE)), attributesNotInterpolated = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", sensitive = TRUE)), channels = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), contentType = structure(logical(0), tags = list(type = "string")), contents = structure(list(markdown = structure(list(content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE)), plainText = structure(list(content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), createdTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), description = structure(logical(0), tags = list(type = "string")), groupingConfiguration = structure(list(criteria = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure")), isActive = structure(logical(0), tags = list(type = "boolean", box = TRUE)), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), language = structure(logical(0), tags = list(type = "string")), lastModifiedBy = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), name = structure(logical(0), tags = list(type = "string")), quickResponseArn = structure(logical(0), tags = list(type = "string")), quickResponseId = structure(logical(0), tags = list(type = "string")), shortcutKey = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["search_quick_responses_output"]]))
 }
 
 .connectwisdomservice$search_sessions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantId = structure(logical(0), tags = list(location = "uri", locationName = "assistantId", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), searchExpression = structure(list(filters = structure(list(structure(list(field = structure(logical(0), tags = list(type = "string")), operator = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["search_sessions_input"]]))
 }
 
 .connectwisdomservice$search_sessions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), sessionSummaries = structure(list(structure(list(assistantArn = structure(logical(0), tags = list(type = "string")), assistantId = structure(logical(0), tags = list(type = "string")), sessionArn = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["search_sessions_output"]]))
 }
 
 .connectwisdomservice$start_content_upload_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentType = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string")), presignedUrlTimeToLive = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["start_content_upload_input"]]))
 }
 
 .connectwisdomservice$start_content_upload_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(headersToInclude = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), uploadId = structure(logical(0), tags = list(type = "string")), url = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), urlExpiry = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["start_content_upload_output"]]))
 }
 
 .connectwisdomservice$start_import_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), externalSourceConfiguration = structure(list(configuration = structure(list(connectConfiguration = structure(list(instanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), source = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), importJobType = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), uploadId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["start_import_job_input"]]))
 }
 
 .connectwisdomservice$start_import_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(importJob = structure(list(createdTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), externalSourceConfiguration = structure(list(configuration = structure(list(connectConfiguration = structure(list(instanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), source = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), failedRecordReport = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), importJobId = structure(logical(0), tags = list(type = "string")), importJobType = structure(logical(0), tags = list(type = "string")), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), status = structure(logical(0), tags = list(type = "string")), uploadId = structure(logical(0), tags = list(type = "string")), url = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), urlExpiry = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["start_import_job_output"]]))
 }
 
 .connectwisdomservice$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["tag_resource_input"]]))
 }
 
 .connectwisdomservice$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["tag_resource_output"]]))
 }
 
 .connectwisdomservice$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["untag_resource_input"]]))
 }
 
 .connectwisdomservice$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["untag_resource_output"]]))
 }
 
 .connectwisdomservice$update_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentId = structure(logical(0), tags = list(location = "uri", locationName = "contentId", type = "string")), knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), overrideLinkOutUri = structure(logical(0), tags = list(type = "string")), removeOverrideLinkOutUri = structure(logical(0), tags = list(type = "boolean", box = TRUE)), revisionId = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), uploadId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["update_content_input"]]))
 }
 
 .connectwisdomservice$update_content_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(content = structure(list(contentArn = structure(logical(0), tags = list(type = "string")), contentId = structure(logical(0), tags = list(type = "string")), contentType = structure(logical(0), tags = list(type = "string")), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), linkOutUri = structure(logical(0), tags = list(type = "string")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), name = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), title = structure(logical(0), tags = list(type = "string")), url = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), urlExpiry = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["update_content_output"]]))
 }
 
 .connectwisdomservice$update_knowledge_base_template_uri_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string")), templateUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["update_knowledge_base_template_uri_input"]]))
 }
 
 .connectwisdomservice$update_knowledge_base_template_uri_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(knowledgeBase = structure(list(description = structure(logical(0), tags = list(type = "string")), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), knowledgeBaseType = structure(logical(0), tags = list(type = "string")), lastContentModificationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), name = structure(logical(0), tags = list(type = "string")), renderingConfiguration = structure(list(templateUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), serverSideEncryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceConfiguration = structure(list(appIntegrations = structure(list(appIntegrationArn = structure(logical(0), tags = list(type = "string")), objectFields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["update_knowledge_base_template_uri_output"]]))
 }
 
 .connectwisdomservice$update_quick_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(channels = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), content = structure(list(content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE)), contentType = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), groupingConfiguration = structure(list(criteria = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure")), isActive = structure(logical(0), tags = list(type = "boolean", box = TRUE)), knowledgeBaseId = structure(logical(0), tags = list(location = "uri", locationName = "knowledgeBaseId", type = "string")), language = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), quickResponseId = structure(logical(0), tags = list(location = "uri", locationName = "quickResponseId", type = "string")), removeDescription = structure(logical(0), tags = list(type = "boolean", box = TRUE)), removeGroupingConfiguration = structure(logical(0), tags = list(type = "boolean", box = TRUE)), removeShortcutKey = structure(logical(0), tags = list(type = "boolean", box = TRUE)), shortcutKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["update_quick_response_input"]]))
 }
 
 .connectwisdomservice$update_quick_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(quickResponse = structure(list(channels = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), contentType = structure(logical(0), tags = list(type = "string")), contents = structure(list(markdown = structure(list(content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE)), plainText = structure(list(content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), createdTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), description = structure(logical(0), tags = list(type = "string")), groupingConfiguration = structure(list(criteria = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure")), isActive = structure(logical(0), tags = list(type = "boolean", box = TRUE)), knowledgeBaseArn = structure(logical(0), tags = list(type = "string")), knowledgeBaseId = structure(logical(0), tags = list(type = "string")), language = structure(logical(0), tags = list(type = "string")), lastModifiedBy = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "unixTimestamp")), name = structure(logical(0), tags = list(type = "string")), quickResponseArn = structure(logical(0), tags = list(type = "string")), quickResponseId = structure(logical(0), tags = list(type = "string")), shortcutKey = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectwisdomservice_shapes[["update_quick_response_output"]]))
 }

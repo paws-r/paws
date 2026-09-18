@@ -5,180 +5,150 @@ NULL
 
 .arczonalshift$cancel_practice_run_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(zonalShiftId = structure(logical(0), tags = list(location = "uri", locationName = "zonalShiftId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["cancel_practice_run_input"]]))
 }
 
 .arczonalshift$cancel_practice_run_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(zonalShiftId = structure(logical(0), tags = list(type = "string")), resourceIdentifier = structure(logical(0), tags = list(type = "string")), awayFrom = structure(logical(0), tags = list(type = "string")), expiryTime = structure(logical(0), tags = list(type = "timestamp")), startTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["cancel_practice_run_output"]]))
 }
 
 .arczonalshift$cancel_zonal_shift_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(zonalShiftId = structure(logical(0), tags = list(location = "uri", locationName = "zonalShiftId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["cancel_zonal_shift_input"]]))
 }
 
 .arczonalshift$cancel_zonal_shift_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(zonalShiftId = structure(logical(0), tags = list(type = "string")), resourceIdentifier = structure(logical(0), tags = list(type = "string")), awayFrom = structure(logical(0), tags = list(type = "string")), expiryTime = structure(logical(0), tags = list(type = "timestamp")), startTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["cancel_zonal_shift_output"]]))
 }
 
 .arczonalshift$create_practice_run_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceIdentifier = structure(logical(0), tags = list(type = "string")), blockedWindows = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), blockedDates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), blockingAlarms = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), alarmIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), allowedWindows = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), outcomeAlarms = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), alarmIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["create_practice_run_configuration_input"]]))
 }
 
 .arczonalshift$create_practice_run_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), zonalAutoshiftStatus = structure(logical(0), tags = list(type = "string")), practiceRunConfiguration = structure(list(blockingAlarms = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), alarmIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), outcomeAlarms = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), alarmIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), blockedWindows = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), allowedWindows = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), blockedDates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["create_practice_run_configuration_output"]]))
 }
 
 .arczonalshift$delete_practice_run_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "resourceIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["delete_practice_run_configuration_input"]]))
 }
 
 .arczonalshift$delete_practice_run_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), zonalAutoshiftStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["delete_practice_run_configuration_output"]]))
 }
 
 .arczonalshift$get_autoshift_observer_notification_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["get_autoshift_observer_notification_status_input"]]))
 }
 
 .arczonalshift$get_autoshift_observer_notification_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["get_autoshift_observer_notification_status_output"]]))
 }
 
 .arczonalshift$get_managed_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "resourceIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["get_managed_resource_input"]]))
 }
 
 .arczonalshift$get_managed_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), appliedWeights = structure(list(structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "map")), zonalShifts = structure(list(structure(list(appliedStatus = structure(logical(0), tags = list(type = "string")), zonalShiftId = structure(logical(0), tags = list(type = "string")), resourceIdentifier = structure(logical(0), tags = list(type = "string")), awayFrom = structure(logical(0), tags = list(type = "string")), expiryTime = structure(logical(0), tags = list(type = "timestamp")), startTime = structure(logical(0), tags = list(type = "timestamp")), comment = structure(logical(0), tags = list(type = "string")), shiftType = structure(logical(0), tags = list(type = "string")), practiceRunOutcome = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), autoshifts = structure(list(structure(list(appliedStatus = structure(logical(0), tags = list(type = "string")), awayFrom = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), practiceRunConfiguration = structure(list(blockingAlarms = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), alarmIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), outcomeAlarms = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), alarmIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), blockedWindows = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), allowedWindows = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), blockedDates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), zonalAutoshiftStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["get_managed_resource_output"]]))
 }
 
 .arczonalshift$list_autoshifts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), status = structure(logical(0), tags = list(location = "querystring", locationName = "status", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["list_autoshifts_input"]]))
 }
 
 .arczonalshift$list_autoshifts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(awayFrom = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "timestamp")), startTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["list_autoshifts_output"]]))
 }
 
 .arczonalshift$list_managed_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["list_managed_resources_input"]]))
 }
 
 .arczonalshift$list_managed_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), availabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), appliedWeights = structure(list(structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "map")), zonalShifts = structure(list(structure(list(appliedStatus = structure(logical(0), tags = list(type = "string")), zonalShiftId = structure(logical(0), tags = list(type = "string")), resourceIdentifier = structure(logical(0), tags = list(type = "string")), awayFrom = structure(logical(0), tags = list(type = "string")), expiryTime = structure(logical(0), tags = list(type = "timestamp")), startTime = structure(logical(0), tags = list(type = "timestamp")), comment = structure(logical(0), tags = list(type = "string")), shiftType = structure(logical(0), tags = list(type = "string")), practiceRunOutcome = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), autoshifts = structure(list(structure(list(appliedStatus = structure(logical(0), tags = list(type = "string")), awayFrom = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), zonalAutoshiftStatus = structure(logical(0), tags = list(type = "string")), practiceRunStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["list_managed_resources_output"]]))
 }
 
 .arczonalshift$list_zonal_shifts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), status = structure(logical(0), tags = list(location = "querystring", locationName = "status", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), resourceIdentifier = structure(logical(0), tags = list(location = "querystring", locationName = "resourceIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["list_zonal_shifts_input"]]))
 }
 
 .arczonalshift$list_zonal_shifts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(zonalShiftId = structure(logical(0), tags = list(type = "string")), resourceIdentifier = structure(logical(0), tags = list(type = "string")), awayFrom = structure(logical(0), tags = list(type = "string")), expiryTime = structure(logical(0), tags = list(type = "timestamp")), startTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string")), shiftType = structure(logical(0), tags = list(type = "string")), practiceRunOutcome = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["list_zonal_shifts_output"]]))
 }
 
 .arczonalshift$start_practice_run_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceIdentifier = structure(logical(0), tags = list(type = "string")), awayFrom = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["start_practice_run_input"]]))
 }
 
 .arczonalshift$start_practice_run_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(zonalShiftId = structure(logical(0), tags = list(type = "string")), resourceIdentifier = structure(logical(0), tags = list(type = "string")), awayFrom = structure(logical(0), tags = list(type = "string")), expiryTime = structure(logical(0), tags = list(type = "timestamp")), startTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["start_practice_run_output"]]))
 }
 
 .arczonalshift$start_zonal_shift_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceIdentifier = structure(logical(0), tags = list(type = "string")), awayFrom = structure(logical(0), tags = list(type = "string")), expiresIn = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["start_zonal_shift_input"]]))
 }
 
 .arczonalshift$start_zonal_shift_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(zonalShiftId = structure(logical(0), tags = list(type = "string")), resourceIdentifier = structure(logical(0), tags = list(type = "string")), awayFrom = structure(logical(0), tags = list(type = "string")), expiryTime = structure(logical(0), tags = list(type = "timestamp")), startTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["start_zonal_shift_output"]]))
 }
 
 .arczonalshift$update_autoshift_observer_notification_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["update_autoshift_observer_notification_status_input"]]))
 }
 
 .arczonalshift$update_autoshift_observer_notification_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["update_autoshift_observer_notification_status_output"]]))
 }
 
 .arczonalshift$update_practice_run_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "resourceIdentifier", type = "string")), blockedWindows = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), blockedDates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), blockingAlarms = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), alarmIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), allowedWindows = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), outcomeAlarms = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), alarmIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["update_practice_run_configuration_input"]]))
 }
 
 .arczonalshift$update_practice_run_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), zonalAutoshiftStatus = structure(logical(0), tags = list(type = "string")), practiceRunConfiguration = structure(list(blockingAlarms = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), alarmIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), outcomeAlarms = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), alarmIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), blockedWindows = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), allowedWindows = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), blockedDates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["update_practice_run_configuration_output"]]))
 }
 
 .arczonalshift$update_zonal_autoshift_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "resourceIdentifier", type = "string")), zonalAutoshiftStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["update_zonal_autoshift_configuration_input"]]))
 }
 
 .arczonalshift$update_zonal_autoshift_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceIdentifier = structure(logical(0), tags = list(type = "string")), zonalAutoshiftStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["update_zonal_autoshift_configuration_output"]]))
 }
 
 .arczonalshift$update_zonal_shift_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(zonalShiftId = structure(logical(0), tags = list(location = "uri", locationName = "zonalShiftId", type = "string")), comment = structure(logical(0), tags = list(type = "string")), expiresIn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["update_zonal_shift_input"]]))
 }
 
 .arczonalshift$update_zonal_shift_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(zonalShiftId = structure(logical(0), tags = list(type = "string")), resourceIdentifier = structure(logical(0), tags = list(type = "string")), awayFrom = structure(logical(0), tags = list(type = "string")), expiryTime = structure(logical(0), tags = list(type = "timestamp")), startTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .arczonalshift_shapes[["update_zonal_shift_output"]]))
 }

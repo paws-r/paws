@@ -2,9 +2,8 @@
 % Please edit documentation in R/bedrockagent_operations.R
 \name{bedrockagent_create_agent}
 \alias{bedrockagent_create_agent}
-\title{Creates an agent that orchestrates interactions between foundation
-models, data sources, software applications, user conversations, and
-APIs to carry out tasks to help customers}
+\title{Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no longer
+open to new customers}
 \usage{
 bedrockagent_create_agent(
   agentName,
@@ -67,7 +66,7 @@ A user interaction remains active for the amount of time specified. If no conver
 \item{agentCollaboration}{The agent's collaboration role.}
 }
 \description{
-Creates an agent that orchestrates interactions between foundation models, data sources, software applications, user conversations, and APIs to carry out tasks to help customers.
+Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no longer open to new customers. For capabilities similar to Bedrock Agents Classic, explore Amazon Bedrock AgentCore. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/agents-classic-maintenance-mode.html}{Amazon Bedrock Agents Classic availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagent_create_agent/} for full documentation.
 }

@@ -21,25 +21,25 @@ elasticbeanstalk_describe_events(
 )
 }
 \arguments{
-\item{ApplicationName}{If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those associated with this application.}
+\item{ApplicationName}{If specified, Elastic Beanstalk restricts the returned descriptions to include only those associated with this application.}
 
-\item{VersionLabel}{If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this application version.}
+\item{VersionLabel}{If specified, Elastic Beanstalk restricts the returned descriptions to those associated with this application version.}
 
-\item{TemplateName}{If specified, AWS Elastic Beanstalk restricts the returned descriptions to those that are associated with this environment configuration.}
+\item{TemplateName}{If specified, Elastic Beanstalk restricts the returned descriptions to those that are associated with this environment configuration.}
 
-\item{EnvironmentId}{If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this environment.}
+\item{EnvironmentId}{If specified, Elastic Beanstalk restricts the returned descriptions to those associated with this environment.}
 
-\item{EnvironmentName}{If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this environment.}
+\item{EnvironmentName}{If specified, Elastic Beanstalk restricts the returned descriptions to those associated with this environment.}
 
-\item{PlatformArn}{The ARN of a custom platform version. If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this custom platform version.}
+\item{PlatformArn}{The ARN of a custom platform version. If specified, Elastic Beanstalk restricts the returned descriptions to those associated with this custom platform version.}
 
-\item{RequestId}{If specified, AWS Elastic Beanstalk restricts the described events to include only those associated with this request ID.}
+\item{RequestId}{If specified, Elastic Beanstalk restricts the described events to include only those associated with this request ID.}
 
 \item{Severity}{If specified, limits the events returned from this call to include only those with the specified severity or higher.}
 
-\item{StartTime}{If specified, AWS Elastic Beanstalk restricts the returned descriptions to those that occur on or after this time.}
+\item{StartTime}{If specified, Elastic Beanstalk restricts the returned descriptions to those that occur on or after this time.}
 
-\item{EndTime}{If specified, AWS Elastic Beanstalk restricts the returned descriptions to those that occur up to, but not including, the \code{EndTime}.}
+\item{EndTime}{If specified, Elastic Beanstalk restricts the returned descriptions to those that occur up to, but not including, the \code{EndTime}.}
 
 \item{MaxRecords}{Specifies the maximum number of events that can be returned, beginning with the most recent event.}
 

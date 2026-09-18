@@ -93,6 +93,7 @@ If you're new to Amazon SES API v2, you might find it helpful to review the \hre
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.customer.engagement:sesv2_associate_email_identity_certificate]{associate_email_identity_certificate} \tab Associates an S/MIME certificate with an email identity\cr
 \link[paws.customer.engagement:sesv2_batch_get_metric_data]{batch_get_metric_data} \tab Retrieves batches of metric data collected based on your sending activity\cr
 \link[paws.customer.engagement:sesv2_cancel_export_job]{cancel_export_job} \tab Cancels an export job\cr
 \link[paws.customer.engagement:sesv2_create_configuration_set]{create_configuration_set} \tab Create a configuration set\cr
@@ -120,9 +121,10 @@ If you're new to Amazon SES API v2, you might find it helpful to review the \hre
 \link[paws.customer.engagement:sesv2_delete_email_identity_policy]{delete_email_identity_policy} \tab Deletes the specified sending authorization policy for the given identity (an email address or a domain)\cr
 \link[paws.customer.engagement:sesv2_delete_email_template]{delete_email_template} \tab Deletes an email template\cr
 \link[paws.customer.engagement:sesv2_delete_multi_region_endpoint]{delete_multi_region_endpoint} \tab Deletes a multi-region endpoint (global-endpoint)\cr
-\link[paws.customer.engagement:sesv2_delete_suppressed_destination]{delete_suppressed_destination} \tab Removes an email address from the suppression list for your account\cr
+\link[paws.customer.engagement:sesv2_delete_suppressed_destination]{delete_suppressed_destination} \tab Removes an email address from the suppression list for your account or for a specific tenant\cr
 \link[paws.customer.engagement:sesv2_delete_tenant]{delete_tenant} \tab Delete an existing tenant\cr
 \link[paws.customer.engagement:sesv2_delete_tenant_resource_association]{delete_tenant_resource_association} \tab Delete an association between a tenant and a resource\cr
+\link[paws.customer.engagement:sesv2_disassociate_email_identity_certificate]{disassociate_email_identity_certificate} \tab Removes the association between an S/MIME certificate and an email identity\cr
 \link[paws.customer.engagement:sesv2_get_account]{get_account} \tab Obtain information about the email-sending status and capabilities of your Amazon SES account in the current Amazon Web Services Region\cr
 \link[paws.customer.engagement:sesv2_get_blacklist_reports]{get_blacklist_reports} \tab Retrieve a list of the blacklists that your dedicated IP addresses appear on\cr
 \link[paws.customer.engagement:sesv2_get_configuration_set]{get_configuration_set} \tab Get information about an existing configuration set, including the dedicated IP pool that it's associated with, whether or not it's enabled for sending email, and more\cr
@@ -146,8 +148,8 @@ If you're new to Amazon SES API v2, you might find it helpful to review the \hre
 \link[paws.customer.engagement:sesv2_get_message_insights]{get_message_insights} \tab Provides information about a specific message, including the from address, the subject, the recipient address, email tags, as well as events associated with the message\cr
 \link[paws.customer.engagement:sesv2_get_multi_region_endpoint]{get_multi_region_endpoint} \tab Displays the multi-region endpoint (global-endpoint) configuration\cr
 \link[paws.customer.engagement:sesv2_get_reputation_entity]{get_reputation_entity} \tab Retrieve information about a specific reputation entity, including its reputation management policy, customer-managed status, Amazon Web Services Amazon SES-managed status, and aggregate sending status\cr
-\link[paws.customer.engagement:sesv2_get_suppressed_destination]{get_suppressed_destination} \tab Retrieves information about a specific email address that's on the suppression list for your account\cr
-\link[paws.customer.engagement:sesv2_get_tenant]{get_tenant} \tab Get information about a specific tenant, including the tenant's name, ID, ARN, creation timestamp, tags, and sending status\cr
+\link[paws.customer.engagement:sesv2_get_suppressed_destination]{get_suppressed_destination} \tab Retrieves information about a specific email address that's on the suppression list for your account or for a specific tenant\cr
+\link[paws.customer.engagement:sesv2_get_tenant]{get_tenant} \tab Get information about a specific tenant, including the tenant's name, ID, ARN, creation timestamp, tags, sending status, and suppression attributes\cr
 \link[paws.customer.engagement:sesv2_list_configuration_sets]{list_configuration_sets} \tab List all of the configuration sets associated with your account in the current region\cr
 \link[paws.customer.engagement:sesv2_list_contact_lists]{list_contact_lists} \tab Lists all of the contact lists available\cr
 \link[paws.customer.engagement:sesv2_list_contacts]{list_contacts} \tab Lists the contacts present in a specific contact list\cr
@@ -156,6 +158,7 @@ If you're new to Amazon SES API v2, you might find it helpful to review the \hre
 \link[paws.customer.engagement:sesv2_list_deliverability_test_reports]{list_deliverability_test_reports} \tab Show a list of the predictive inbox placement tests that you've performed, regardless of their statuses\cr
 \link[paws.customer.engagement:sesv2_list_domain_deliverability_campaigns]{list_domain_deliverability_campaigns} \tab Retrieve deliverability data for all the campaigns that used a specific domain to send email during a specified time range\cr
 \link[paws.customer.engagement:sesv2_list_email_identities]{list_email_identities} \tab Returns a list of all of the email identities that are associated with your Amazon Web Services account\cr
+\link[paws.customer.engagement:sesv2_list_email_identity_certificates]{list_email_identity_certificates} \tab Lists the S/MIME certificates that are associated with the specified email identity\cr
 \link[paws.customer.engagement:sesv2_list_email_templates]{list_email_templates} \tab Lists the email templates present in your Amazon SES account in the current Amazon Web Services Region\cr
 \link[paws.customer.engagement:sesv2_list_export_jobs]{list_export_jobs} \tab Lists all of the export jobs\cr
 \link[paws.customer.engagement:sesv2_list_import_jobs]{list_import_jobs} \tab Lists all of the import jobs\cr
@@ -163,12 +166,13 @@ If you're new to Amazon SES API v2, you might find it helpful to review the \hre
 \link[paws.customer.engagement:sesv2_list_recommendations]{list_recommendations} \tab Lists the recommendations present in your Amazon SES account in the current Amazon Web Services Region\cr
 \link[paws.customer.engagement:sesv2_list_reputation_entities]{list_reputation_entities} \tab List reputation entities in your Amazon SES account in the current Amazon Web Services Region\cr
 \link[paws.customer.engagement:sesv2_list_resource_tenants]{list_resource_tenants} \tab List all tenants associated with a specific resource\cr
-\link[paws.customer.engagement:sesv2_list_suppressed_destinations]{list_suppressed_destinations} \tab Retrieves a list of email addresses that are on the suppression list for your account\cr
+\link[paws.customer.engagement:sesv2_list_suppressed_destinations]{list_suppressed_destinations} \tab Retrieves a list of email addresses that are on the suppression list for your account or for a specific tenant\cr
 \link[paws.customer.engagement:sesv2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve a list of the tags (keys and values) that are associated with a specified resource\cr
 \link[paws.customer.engagement:sesv2_list_tenant_resources]{list_tenant_resources} \tab List all resources associated with a specific tenant\cr
 \link[paws.customer.engagement:sesv2_list_tenants]{list_tenants} \tab List all tenants associated with your account in the current Amazon Web Services Region\cr
 \link[paws.customer.engagement:sesv2_put_account_dedicated_ip_warmup_attributes]{put_account_dedicated_ip_warmup_attributes} \tab Enable or disable the automatic warm-up feature for dedicated IP addresses\cr
 \link[paws.customer.engagement:sesv2_put_account_details]{put_account_details} \tab Update your Amazon SES account details\cr
+\link[paws.customer.engagement:sesv2_put_account_pricing_attributes]{put_account_pricing_attributes} \tab Set the pricing plan for your Amazon SES account\cr
 \link[paws.customer.engagement:sesv2_put_account_sending_attributes]{put_account_sending_attributes} \tab Enable or disable the ability of your account to send email\cr
 \link[paws.customer.engagement:sesv2_put_account_suppression_attributes]{put_account_suppression_attributes} \tab Change the settings for the account-level suppression list\cr
 \link[paws.customer.engagement:sesv2_put_account_vdm_attributes]{put_account_vdm_attributes} \tab Update your Amazon SES account VDM attributes\cr
@@ -176,7 +180,7 @@ If you're new to Amazon SES API v2, you might find it helpful to review the \hre
 \link[paws.customer.engagement:sesv2_put_configuration_set_delivery_options]{put_configuration_set_delivery_options} \tab Associate a configuration set with a dedicated IP pool\cr
 \link[paws.customer.engagement:sesv2_put_configuration_set_reputation_options]{put_configuration_set_reputation_options} \tab Enable or disable collection of reputation metrics for emails that you send using a particular configuration set in a specific Amazon Web Services Region\cr
 \link[paws.customer.engagement:sesv2_put_configuration_set_sending_options]{put_configuration_set_sending_options} \tab Enable or disable email sending for messages that use a particular configuration set in a specific Amazon Web Services Region\cr
-\link[paws.customer.engagement:sesv2_put_configuration_set_suppression_options]{put_configuration_set_suppression_options} \tab Specify the account suppression list preferences for a configuration set\cr
+\link[paws.customer.engagement:sesv2_put_configuration_set_suppression_options]{put_configuration_set_suppression_options} \tab Specify the suppression list preferences for a configuration set\cr
 \link[paws.customer.engagement:sesv2_put_configuration_set_tracking_options]{put_configuration_set_tracking_options} \tab Specify a custom domain to use for open and click tracking elements in email that you send\cr
 \link[paws.customer.engagement:sesv2_put_configuration_set_vdm_options]{put_configuration_set_vdm_options} \tab Specify VDM preferences for email that you send using the configuration set\cr
 \link[paws.customer.engagement:sesv2_put_dedicated_ip_in_pool]{put_dedicated_ip_in_pool} \tab Move a dedicated IP address to an existing dedicated IP pool\cr
@@ -188,13 +192,15 @@ If you're new to Amazon SES API v2, you might find it helpful to review the \hre
 \link[paws.customer.engagement:sesv2_put_email_identity_dkim_signing_attributes]{put_email_identity_dkim_signing_attributes} \tab Used to configure or change the DKIM authentication settings for an email domain identity\cr
 \link[paws.customer.engagement:sesv2_put_email_identity_feedback_attributes]{put_email_identity_feedback_attributes} \tab Used to enable or disable feedback forwarding for an identity\cr
 \link[paws.customer.engagement:sesv2_put_email_identity_mail_from_attributes]{put_email_identity_mail_from_attributes} \tab Used to enable or disable the custom Mail-From domain configuration for an email identity\cr
-\link[paws.customer.engagement:sesv2_put_suppressed_destination]{put_suppressed_destination} \tab Adds an email address to the suppression list for your account\cr
+\link[paws.customer.engagement:sesv2_put_suppressed_destination]{put_suppressed_destination} \tab Adds an email address to the suppression list for your account or for a specific tenant\cr
+\link[paws.customer.engagement:sesv2_put_tenant_suppression_attributes]{put_tenant_suppression_attributes} \tab Configure the suppression list preferences for a tenant\cr
 \link[paws.customer.engagement:sesv2_send_bulk_email]{send_bulk_email} \tab Composes an email message to multiple destinations\cr
 \link[paws.customer.engagement:sesv2_send_custom_verification_email]{send_custom_verification_email} \tab Adds an email address to the list of identities for your Amazon SES account in the current Amazon Web Services Region and attempts to verify it\cr
 \link[paws.customer.engagement:sesv2_send_email]{send_email} \tab Sends an email message\cr
 \link[paws.customer.engagement:sesv2_tag_resource]{tag_resource} \tab Add one or more tags (keys and values) to a specified resource\cr
 \link[paws.customer.engagement:sesv2_test_render_email_template]{test_render_email_template} \tab Creates a preview of the MIME content of an email when provided with a template and a set of replacement data\cr
 \link[paws.customer.engagement:sesv2_untag_resource]{untag_resource} \tab Remove one or more tags (keys and values) from a specified resource\cr
+\link[paws.customer.engagement:sesv2_update_configuration_set]{update_configuration_set} \tab Updates an existing configuration set\cr
 \link[paws.customer.engagement:sesv2_update_configuration_set_event_destination]{update_configuration_set_event_destination} \tab Update the configuration of an event destination for a configuration set\cr
 \link[paws.customer.engagement:sesv2_update_contact]{update_contact} \tab Updates a contact's preferences for a list\cr
 \link[paws.customer.engagement:sesv2_update_contact_list]{update_contact_list} \tab Updates contact list metadata\cr
@@ -209,7 +215,7 @@ If you're new to Amazon SES API v2, you might find it helpful to review the \hre
 \examples{
 \dontrun{
 svc <- sesv2()
-svc$batch_get_metric_data(
+svc$associate_email_identity_certificate(
   Foo = 123
 )
 }

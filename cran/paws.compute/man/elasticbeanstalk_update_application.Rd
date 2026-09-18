@@ -11,7 +11,7 @@ elasticbeanstalk_update_application(ApplicationName, Description = NULL)
 
 \item{Description}{A new description for the application.
 
-Default: If not specified, AWS Elastic Beanstalk does not update the description.}
+Default: If not specified, Elastic Beanstalk does not update the description.}
 }
 \description{
 Updates the specified application to have the specified properties.

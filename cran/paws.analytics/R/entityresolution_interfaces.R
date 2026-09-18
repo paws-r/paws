@@ -5,456 +5,380 @@ NULL
 
 .entityresolution$add_policy_statement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(location = "uri", locationName = "arn", type = "string")), statementId = structure(logical(0), tags = list(location = "uri", locationName = "statementId", type = "string")), effect = structure(logical(0), tags = list(type = "string")), action = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), principal = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["add_policy_statement_input"]]))
 }
 
 .entityresolution$add_policy_statement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), token = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["add_policy_statement_output"]]))
 }
 
 .entityresolution$batch_delete_unique_id_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(location = "uri", locationName = "workflowName", type = "string")), inputSource = structure(logical(0), tags = list(location = "header", locationName = "inputSource", type = "string")), uniqueIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "header", locationName = "uniqueIds", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["batch_delete_unique_id_input"]]))
 }
 
 .entityresolution$batch_delete_unique_id_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(status = structure(logical(0), tags = list(type = "string")), errors = structure(list(structure(list(uniqueId = structure(logical(0), tags = list(type = "string")), errorType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), deleted = structure(list(structure(list(uniqueId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), disconnectedUniqueIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["batch_delete_unique_id_output"]]))
 }
 
 .entityresolution$create_id_mapping_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), inputSourceConfig = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), outputSourceConfig = structure(list(structure(list(KMSArn = structure(logical(0), tags = list(type = "string")), outputS3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), idMappingTechniques = structure(list(idMappingType = structure(logical(0), tags = list(type = "string")), ruleBasedProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), matchingKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ruleDefinitionType = structure(logical(0), tags = list(type = "string")), attributeMatchingModel = structure(logical(0), tags = list(type = "string")), recordMatchingModel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), providerProperties = structure(list(providerServiceArn = structure(logical(0), tags = list(type = "string")), providerConfiguration = structure(list(), tags = list(type = "structure", document = TRUE)), intermediateSourceConfiguration = structure(list(intermediateS3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), incrementalRunConfig = structure(list(incrementalRunType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["create_id_mapping_workflow_input"]]))
 }
 
 .entityresolution$create_id_mapping_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(type = "string")), workflowArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), inputSourceConfig = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), outputSourceConfig = structure(list(structure(list(KMSArn = structure(logical(0), tags = list(type = "string")), outputS3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), idMappingTechniques = structure(list(idMappingType = structure(logical(0), tags = list(type = "string")), ruleBasedProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), matchingKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ruleDefinitionType = structure(logical(0), tags = list(type = "string")), attributeMatchingModel = structure(logical(0), tags = list(type = "string")), recordMatchingModel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), providerProperties = structure(list(providerServiceArn = structure(logical(0), tags = list(type = "string")), providerConfiguration = structure(list(), tags = list(type = "structure", document = TRUE)), intermediateSourceConfiguration = structure(list(intermediateS3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), incrementalRunConfig = structure(list(incrementalRunType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["create_id_mapping_workflow_output"]]))
 }
 
 .entityresolution$create_id_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(idNamespaceName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), inputSourceConfig = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), idMappingWorkflowProperties = structure(list(structure(list(idMappingType = structure(logical(0), tags = list(type = "string")), ruleBasedProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), matchingKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ruleDefinitionTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), attributeMatchingModel = structure(logical(0), tags = list(type = "string")), recordMatchingModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), providerProperties = structure(list(providerServiceArn = structure(logical(0), tags = list(type = "string")), providerConfiguration = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), type = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["create_id_namespace_input"]]))
 }
 
 .entityresolution$create_id_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(idNamespaceName = structure(logical(0), tags = list(type = "string")), idNamespaceArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), inputSourceConfig = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), idMappingWorkflowProperties = structure(list(structure(list(idMappingType = structure(logical(0), tags = list(type = "string")), ruleBasedProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), matchingKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ruleDefinitionTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), attributeMatchingModel = structure(logical(0), tags = list(type = "string")), recordMatchingModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), providerProperties = structure(list(providerServiceArn = structure(logical(0), tags = list(type = "string")), providerConfiguration = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), type = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["create_id_namespace_output"]]))
 }
 
 .entityresolution$create_matching_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), inputSourceConfig = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string")), applyNormalization = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), outputSourceConfig = structure(list(structure(list(KMSArn = structure(logical(0), tags = list(type = "string")), outputS3Path = structure(logical(0), tags = list(type = "string")), output = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), hashed = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), applyNormalization = structure(logical(0), tags = list(type = "boolean", box = TRUE)), customerProfilesIntegrationConfig = structure(list(domainArn = structure(logical(0), tags = list(type = "string")), objectTypeArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), resolutionTechniques = structure(list(resolutionType = structure(logical(0), tags = list(type = "string")), ruleBasedProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), matchingKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), attributeMatchingModel = structure(logical(0), tags = list(type = "string")), matchPurpose = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ruleConditionProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), matchingConfig = structure(list(enableTransitiveMatching = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), providerProperties = structure(list(providerServiceArn = structure(logical(0), tags = list(type = "string")), providerConfiguration = structure(list(), tags = list(type = "structure", document = TRUE)), intermediateSourceConfiguration = structure(list(intermediateS3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), incrementalRunConfig = structure(list(incrementalRunType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["create_matching_workflow_input"]]))
 }
 
 .entityresolution$create_matching_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(type = "string")), workflowArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), inputSourceConfig = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string")), applyNormalization = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), outputSourceConfig = structure(list(structure(list(KMSArn = structure(logical(0), tags = list(type = "string")), outputS3Path = structure(logical(0), tags = list(type = "string")), output = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), hashed = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), applyNormalization = structure(logical(0), tags = list(type = "boolean", box = TRUE)), customerProfilesIntegrationConfig = structure(list(domainArn = structure(logical(0), tags = list(type = "string")), objectTypeArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), resolutionTechniques = structure(list(resolutionType = structure(logical(0), tags = list(type = "string")), ruleBasedProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), matchingKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), attributeMatchingModel = structure(logical(0), tags = list(type = "string")), matchPurpose = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ruleConditionProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), matchingConfig = structure(list(enableTransitiveMatching = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), providerProperties = structure(list(providerServiceArn = structure(logical(0), tags = list(type = "string")), providerConfiguration = structure(list(), tags = list(type = "structure", document = TRUE)), intermediateSourceConfiguration = structure(list(intermediateS3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), incrementalRunConfig = structure(list(incrementalRunType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["create_matching_workflow_output"]]))
 }
 
 .entityresolution$create_schema_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(schemaName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), mappedInputFields = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), groupName = structure(logical(0), tags = list(type = "string")), matchKey = structure(logical(0), tags = list(type = "string")), subType = structure(logical(0), tags = list(type = "string")), hashed = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["create_schema_mapping_input"]]))
 }
 
 .entityresolution$create_schema_mapping_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(schemaName = structure(logical(0), tags = list(type = "string")), schemaArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), mappedInputFields = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), groupName = structure(logical(0), tags = list(type = "string")), matchKey = structure(logical(0), tags = list(type = "string")), subType = structure(logical(0), tags = list(type = "string")), hashed = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["create_schema_mapping_output"]]))
 }
 
 .entityresolution$delete_id_mapping_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(location = "uri", locationName = "workflowName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["delete_id_mapping_workflow_input"]]))
 }
 
 .entityresolution$delete_id_mapping_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["delete_id_mapping_workflow_output"]]))
 }
 
 .entityresolution$delete_id_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(idNamespaceName = structure(logical(0), tags = list(location = "uri", locationName = "idNamespaceName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["delete_id_namespace_input"]]))
 }
 
 .entityresolution$delete_id_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["delete_id_namespace_output"]]))
 }
 
 .entityresolution$delete_matching_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(location = "uri", locationName = "workflowName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["delete_matching_workflow_input"]]))
 }
 
 .entityresolution$delete_matching_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["delete_matching_workflow_output"]]))
 }
 
 .entityresolution$delete_policy_statement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(location = "uri", locationName = "arn", type = "string")), statementId = structure(logical(0), tags = list(location = "uri", locationName = "statementId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["delete_policy_statement_input"]]))
 }
 
 .entityresolution$delete_policy_statement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), token = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["delete_policy_statement_output"]]))
 }
 
 .entityresolution$delete_schema_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(schemaName = structure(logical(0), tags = list(location = "uri", locationName = "schemaName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["delete_schema_mapping_input"]]))
 }
 
 .entityresolution$delete_schema_mapping_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["delete_schema_mapping_output"]]))
 }
 
 .entityresolution$generate_match_id_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(location = "uri", locationName = "workflowName", type = "string")), records = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), uniqueId = structure(logical(0), tags = list(type = "string")), recordAttributeMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), processingType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["generate_match_id_input"]]))
 }
 
 .entityresolution$generate_match_id_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(matchGroups = structure(list(structure(list(records = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), recordId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), matchId = structure(logical(0), tags = list(type = "string")), matchRule = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), failedRecords = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), uniqueId = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["generate_match_id_output"]]))
 }
 
 .entityresolution$get_id_mapping_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(location = "uri", locationName = "workflowName", type = "string")), jobId = structure(logical(0), tags = list(location = "uri", locationName = "jobId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_id_mapping_job_input"]]))
 }
 
 .entityresolution$get_id_mapping_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), metrics = structure(list(inputRecords = structure(logical(0), tags = list(type = "integer", box = TRUE)), totalRecordsProcessed = structure(logical(0), tags = list(type = "integer", box = TRUE)), recordsNotProcessed = structure(logical(0), tags = list(type = "integer", box = TRUE)), deleteRecordsProcessed = structure(logical(0), tags = list(type = "integer", box = TRUE)), totalMappedRecords = structure(logical(0), tags = list(type = "integer", box = TRUE)), totalMappedSourceRecords = structure(logical(0), tags = list(type = "integer", box = TRUE)), totalMappedTargetRecords = structure(logical(0), tags = list(type = "integer", box = TRUE)), uniqueRecordsLoaded = structure(logical(0), tags = list(type = "integer", box = TRUE)), newMappedRecords = structure(logical(0), tags = list(type = "integer", box = TRUE)), newMappedSourceRecords = structure(logical(0), tags = list(type = "integer", box = TRUE)), newMappedTargetRecords = structure(logical(0), tags = list(type = "integer", box = TRUE)), newUniqueRecordsLoaded = structure(logical(0), tags = list(type = "integer", box = TRUE)), mappedRecordsRemoved = structure(logical(0), tags = list(type = "integer", box = TRUE)), mappedSourceRecordsRemoved = structure(logical(0), tags = list(type = "integer", box = TRUE)), mappedTargetRecordsRemoved = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), errorDetails = structure(list(errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), outputSourceConfig = structure(list(structure(list(roleArn = structure(logical(0), tags = list(type = "string")), outputS3Path = structure(logical(0), tags = list(type = "string")), KMSArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), jobType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_id_mapping_job_output"]]))
 }
 
 .entityresolution$get_id_mapping_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(location = "uri", locationName = "workflowName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_id_mapping_workflow_input"]]))
 }
 
 .entityresolution$get_id_mapping_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(type = "string")), workflowArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), inputSourceConfig = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), outputSourceConfig = structure(list(structure(list(KMSArn = structure(logical(0), tags = list(type = "string")), outputS3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), idMappingTechniques = structure(list(idMappingType = structure(logical(0), tags = list(type = "string")), ruleBasedProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), matchingKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ruleDefinitionType = structure(logical(0), tags = list(type = "string")), attributeMatchingModel = structure(logical(0), tags = list(type = "string")), recordMatchingModel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), providerProperties = structure(list(providerServiceArn = structure(logical(0), tags = list(type = "string")), providerConfiguration = structure(list(), tags = list(type = "structure", document = TRUE)), intermediateSourceConfiguration = structure(list(intermediateS3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), incrementalRunConfig = structure(list(incrementalRunType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_id_mapping_workflow_output"]]))
 }
 
 .entityresolution$get_id_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(idNamespaceName = structure(logical(0), tags = list(location = "uri", locationName = "idNamespaceName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_id_namespace_input"]]))
 }
 
 .entityresolution$get_id_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(idNamespaceName = structure(logical(0), tags = list(type = "string")), idNamespaceArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), inputSourceConfig = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), idMappingWorkflowProperties = structure(list(structure(list(idMappingType = structure(logical(0), tags = list(type = "string")), ruleBasedProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), matchingKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ruleDefinitionTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), attributeMatchingModel = structure(logical(0), tags = list(type = "string")), recordMatchingModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), providerProperties = structure(list(providerServiceArn = structure(logical(0), tags = list(type = "string")), providerConfiguration = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), type = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_id_namespace_output"]]))
 }
 
 .entityresolution$get_match_id_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(location = "uri", locationName = "workflowName", type = "string")), record = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), applyNormalization = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_match_id_input"]]))
 }
 
 .entityresolution$get_match_id_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(matchId = structure(logical(0), tags = list(type = "string")), matchRule = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_match_id_output"]]))
 }
 
 .entityresolution$get_matching_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(location = "uri", locationName = "workflowName", type = "string")), jobId = structure(logical(0), tags = list(location = "uri", locationName = "jobId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_matching_job_input"]]))
 }
 
 .entityresolution$get_matching_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), metrics = structure(list(inputRecords = structure(logical(0), tags = list(type = "integer", box = TRUE)), totalRecordsProcessed = structure(logical(0), tags = list(type = "integer", box = TRUE)), recordsNotProcessed = structure(logical(0), tags = list(type = "integer", box = TRUE)), deleteRecordsProcessed = structure(logical(0), tags = list(type = "integer", box = TRUE)), matchIDs = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), errorDetails = structure(list(errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), outputSourceConfig = structure(list(structure(list(roleArn = structure(logical(0), tags = list(type = "string")), outputS3Path = structure(logical(0), tags = list(type = "string")), KMSArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_matching_job_output"]]))
 }
 
 .entityresolution$get_matching_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(location = "uri", locationName = "workflowName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_matching_workflow_input"]]))
 }
 
 .entityresolution$get_matching_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(type = "string")), workflowArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), inputSourceConfig = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string")), applyNormalization = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), outputSourceConfig = structure(list(structure(list(KMSArn = structure(logical(0), tags = list(type = "string")), outputS3Path = structure(logical(0), tags = list(type = "string")), output = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), hashed = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), applyNormalization = structure(logical(0), tags = list(type = "boolean", box = TRUE)), customerProfilesIntegrationConfig = structure(list(domainArn = structure(logical(0), tags = list(type = "string")), objectTypeArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), resolutionTechniques = structure(list(resolutionType = structure(logical(0), tags = list(type = "string")), ruleBasedProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), matchingKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), attributeMatchingModel = structure(logical(0), tags = list(type = "string")), matchPurpose = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ruleConditionProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), matchingConfig = structure(list(enableTransitiveMatching = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), providerProperties = structure(list(providerServiceArn = structure(logical(0), tags = list(type = "string")), providerConfiguration = structure(list(), tags = list(type = "structure", document = TRUE)), intermediateSourceConfiguration = structure(list(intermediateS3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), incrementalRunConfig = structure(list(incrementalRunType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_matching_workflow_output"]]))
 }
 
 .entityresolution$get_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(location = "uri", locationName = "arn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_policy_input"]]))
 }
 
 .entityresolution$get_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), token = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_policy_output"]]))
 }
 
 .entityresolution$get_provider_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(providerName = structure(logical(0), tags = list(location = "uri", locationName = "providerName", type = "string")), providerServiceName = structure(logical(0), tags = list(location = "uri", locationName = "providerServiceName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_provider_service_input"]]))
 }
 
 .entityresolution$get_provider_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(providerName = structure(logical(0), tags = list(type = "string")), providerServiceName = structure(logical(0), tags = list(type = "string")), providerServiceDisplayName = structure(logical(0), tags = list(type = "string")), providerServiceType = structure(logical(0), tags = list(type = "string")), providerServiceArn = structure(logical(0), tags = list(type = "string")), providerConfigurationDefinition = structure(list(), tags = list(type = "structure", document = TRUE)), providerIdNameSpaceConfiguration = structure(list(description = structure(logical(0), tags = list(type = "string")), providerTargetConfigurationDefinition = structure(list(), tags = list(type = "structure", document = TRUE)), providerSourceConfigurationDefinition = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), providerJobConfiguration = structure(list(), tags = list(type = "structure", document = TRUE)), providerEndpointConfiguration = structure(list(marketplaceConfiguration = structure(list(dataSetId = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), assetId = structure(logical(0), tags = list(type = "string")), listingId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), anonymizedOutput = structure(logical(0), tags = list(type = "boolean", box = TRUE)), providerEntityOutputDefinition = structure(list(), tags = list(type = "structure", document = TRUE)), providerIntermediateDataAccessConfiguration = structure(list(awsAccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), requiredBucketActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), providerComponentSchema = structure(list(schemas = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "list")), providerSchemaAttributes = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), subType = structure(logical(0), tags = list(type = "string")), hashing = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_provider_service_output"]]))
 }
 
 .entityresolution$get_schema_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(schemaName = structure(logical(0), tags = list(location = "uri", locationName = "schemaName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_schema_mapping_input"]]))
 }
 
 .entityresolution$get_schema_mapping_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(schemaName = structure(logical(0), tags = list(type = "string")), schemaArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), mappedInputFields = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), groupName = structure(logical(0), tags = list(type = "string")), matchKey = structure(logical(0), tags = list(type = "string")), subType = structure(logical(0), tags = list(type = "string")), hashed = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), hasWorkflows = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["get_schema_mapping_output"]]))
 }
 
 .entityresolution$list_id_mapping_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(location = "uri", locationName = "workflowName", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["list_id_mapping_jobs_input"]]))
 }
 
 .entityresolution$list_id_mapping_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobs = structure(list(structure(list(jobId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["list_id_mapping_jobs_output"]]))
 }
 
 .entityresolution$list_id_mapping_workflows_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["list_id_mapping_workflows_input"]]))
 }
 
 .entityresolution$list_id_mapping_workflows_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowSummaries = structure(list(structure(list(workflowName = structure(logical(0), tags = list(type = "string")), workflowArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["list_id_mapping_workflows_output"]]))
 }
 
 .entityresolution$list_id_namespaces_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["list_id_namespaces_input"]]))
 }
 
 .entityresolution$list_id_namespaces_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(idNamespaceSummaries = structure(list(structure(list(idNamespaceName = structure(logical(0), tags = list(type = "string")), idNamespaceArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), idMappingWorkflowProperties = structure(list(structure(list(idMappingType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), type = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["list_id_namespaces_output"]]))
 }
 
 .entityresolution$list_matching_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(location = "uri", locationName = "workflowName", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["list_matching_jobs_input"]]))
 }
 
 .entityresolution$list_matching_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobs = structure(list(structure(list(jobId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["list_matching_jobs_output"]]))
 }
 
 .entityresolution$list_matching_workflows_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["list_matching_workflows_input"]]))
 }
 
 .entityresolution$list_matching_workflows_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowSummaries = structure(list(structure(list(workflowName = structure(logical(0), tags = list(type = "string")), workflowArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), resolutionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["list_matching_workflows_output"]]))
 }
 
 .entityresolution$list_provider_services_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), providerName = structure(logical(0), tags = list(location = "querystring", locationName = "providerName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["list_provider_services_input"]]))
 }
 
 .entityresolution$list_provider_services_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(providerServiceSummaries = structure(list(structure(list(providerServiceArn = structure(logical(0), tags = list(type = "string")), providerName = structure(logical(0), tags = list(type = "string")), providerServiceDisplayName = structure(logical(0), tags = list(type = "string")), providerServiceName = structure(logical(0), tags = list(type = "string")), providerServiceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["list_provider_services_output"]]))
 }
 
 .entityresolution$list_schema_mappings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["list_schema_mappings_input"]]))
 }
 
 .entityresolution$list_schema_mappings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(schemaList = structure(list(structure(list(schemaName = structure(logical(0), tags = list(type = "string")), schemaArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), hasWorkflows = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["list_schema_mappings_output"]]))
 }
 
 .entityresolution$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["list_tags_for_resource_input"]]))
 }
 
 .entityresolution$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["list_tags_for_resource_output"]]))
 }
 
 .entityresolution$put_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(location = "uri", locationName = "arn", type = "string")), token = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["put_policy_input"]]))
 }
 
 .entityresolution$put_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), token = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["put_policy_output"]]))
 }
 
 .entityresolution$start_id_mapping_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(location = "uri", locationName = "workflowName", type = "string")), outputSourceConfig = structure(list(structure(list(roleArn = structure(logical(0), tags = list(type = "string")), outputS3Path = structure(logical(0), tags = list(type = "string")), KMSArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), jobType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["start_id_mapping_job_input"]]))
 }
 
 .entityresolution$start_id_mapping_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobId = structure(logical(0), tags = list(type = "string")), outputSourceConfig = structure(list(structure(list(roleArn = structure(logical(0), tags = list(type = "string")), outputS3Path = structure(logical(0), tags = list(type = "string")), KMSArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), jobType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["start_id_mapping_job_output"]]))
 }
 
 .entityresolution$start_matching_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(location = "uri", locationName = "workflowName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["start_matching_job_input"]]))
 }
 
 .entityresolution$start_matching_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["start_matching_job_output"]]))
 }
 
 .entityresolution$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["tag_resource_input"]]))
 }
 
 .entityresolution$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["tag_resource_output"]]))
 }
 
 .entityresolution$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["untag_resource_input"]]))
 }
 
 .entityresolution$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["untag_resource_output"]]))
 }
 
 .entityresolution$update_id_mapping_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(location = "uri", locationName = "workflowName", type = "string")), description = structure(logical(0), tags = list(type = "string")), inputSourceConfig = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), outputSourceConfig = structure(list(structure(list(KMSArn = structure(logical(0), tags = list(type = "string")), outputS3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), idMappingTechniques = structure(list(idMappingType = structure(logical(0), tags = list(type = "string")), ruleBasedProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), matchingKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ruleDefinitionType = structure(logical(0), tags = list(type = "string")), attributeMatchingModel = structure(logical(0), tags = list(type = "string")), recordMatchingModel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), providerProperties = structure(list(providerServiceArn = structure(logical(0), tags = list(type = "string")), providerConfiguration = structure(list(), tags = list(type = "structure", document = TRUE)), intermediateSourceConfiguration = structure(list(intermediateS3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), incrementalRunConfig = structure(list(incrementalRunType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["update_id_mapping_workflow_input"]]))
 }
 
 .entityresolution$update_id_mapping_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(type = "string")), workflowArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), inputSourceConfig = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), outputSourceConfig = structure(list(structure(list(KMSArn = structure(logical(0), tags = list(type = "string")), outputS3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), idMappingTechniques = structure(list(idMappingType = structure(logical(0), tags = list(type = "string")), ruleBasedProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), matchingKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ruleDefinitionType = structure(logical(0), tags = list(type = "string")), attributeMatchingModel = structure(logical(0), tags = list(type = "string")), recordMatchingModel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), providerProperties = structure(list(providerServiceArn = structure(logical(0), tags = list(type = "string")), providerConfiguration = structure(list(), tags = list(type = "structure", document = TRUE)), intermediateSourceConfiguration = structure(list(intermediateS3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), incrementalRunConfig = structure(list(incrementalRunType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["update_id_mapping_workflow_output"]]))
 }
 
 .entityresolution$update_id_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(idNamespaceName = structure(logical(0), tags = list(location = "uri", locationName = "idNamespaceName", type = "string")), description = structure(logical(0), tags = list(type = "string")), inputSourceConfig = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), idMappingWorkflowProperties = structure(list(structure(list(idMappingType = structure(logical(0), tags = list(type = "string")), ruleBasedProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), matchingKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ruleDefinitionTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), attributeMatchingModel = structure(logical(0), tags = list(type = "string")), recordMatchingModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), providerProperties = structure(list(providerServiceArn = structure(logical(0), tags = list(type = "string")), providerConfiguration = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["update_id_namespace_input"]]))
 }
 
 .entityresolution$update_id_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(idNamespaceName = structure(logical(0), tags = list(type = "string")), idNamespaceArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), inputSourceConfig = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), idMappingWorkflowProperties = structure(list(structure(list(idMappingType = structure(logical(0), tags = list(type = "string")), ruleBasedProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), matchingKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ruleDefinitionTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), attributeMatchingModel = structure(logical(0), tags = list(type = "string")), recordMatchingModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), providerProperties = structure(list(providerServiceArn = structure(logical(0), tags = list(type = "string")), providerConfiguration = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), type = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["update_id_namespace_output"]]))
 }
 
 .entityresolution$update_matching_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(location = "uri", locationName = "workflowName", type = "string")), description = structure(logical(0), tags = list(type = "string")), inputSourceConfig = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string")), applyNormalization = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), outputSourceConfig = structure(list(structure(list(KMSArn = structure(logical(0), tags = list(type = "string")), outputS3Path = structure(logical(0), tags = list(type = "string")), output = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), hashed = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), applyNormalization = structure(logical(0), tags = list(type = "boolean", box = TRUE)), customerProfilesIntegrationConfig = structure(list(domainArn = structure(logical(0), tags = list(type = "string")), objectTypeArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), resolutionTechniques = structure(list(resolutionType = structure(logical(0), tags = list(type = "string")), ruleBasedProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), matchingKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), attributeMatchingModel = structure(logical(0), tags = list(type = "string")), matchPurpose = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ruleConditionProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), matchingConfig = structure(list(enableTransitiveMatching = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), providerProperties = structure(list(providerServiceArn = structure(logical(0), tags = list(type = "string")), providerConfiguration = structure(list(), tags = list(type = "structure", document = TRUE)), intermediateSourceConfiguration = structure(list(intermediateS3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), incrementalRunConfig = structure(list(incrementalRunType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["update_matching_workflow_input"]]))
 }
 
 .entityresolution$update_matching_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), inputSourceConfig = structure(list(structure(list(inputSourceARN = structure(logical(0), tags = list(type = "string")), schemaName = structure(logical(0), tags = list(type = "string")), applyNormalization = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), outputSourceConfig = structure(list(structure(list(KMSArn = structure(logical(0), tags = list(type = "string")), outputS3Path = structure(logical(0), tags = list(type = "string")), output = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), hashed = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), applyNormalization = structure(logical(0), tags = list(type = "boolean", box = TRUE)), customerProfilesIntegrationConfig = structure(list(domainArn = structure(logical(0), tags = list(type = "string")), objectTypeArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), resolutionTechniques = structure(list(resolutionType = structure(logical(0), tags = list(type = "string")), ruleBasedProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), matchingKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), attributeMatchingModel = structure(logical(0), tags = list(type = "string")), matchPurpose = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ruleConditionProperties = structure(list(rules = structure(list(structure(list(ruleName = structure(logical(0), tags = list(type = "string")), condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), matchingConfig = structure(list(enableTransitiveMatching = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), providerProperties = structure(list(providerServiceArn = structure(logical(0), tags = list(type = "string")), providerConfiguration = structure(list(), tags = list(type = "structure", document = TRUE)), intermediateSourceConfiguration = structure(list(intermediateS3Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), incrementalRunConfig = structure(list(incrementalRunType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["update_matching_workflow_output"]]))
 }
 
 .entityresolution$update_schema_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(schemaName = structure(logical(0), tags = list(location = "uri", locationName = "schemaName", type = "string")), description = structure(logical(0), tags = list(type = "string")), mappedInputFields = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), groupName = structure(logical(0), tags = list(type = "string")), matchKey = structure(logical(0), tags = list(type = "string")), subType = structure(logical(0), tags = list(type = "string")), hashed = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["update_schema_mapping_input"]]))
 }
 
 .entityresolution$update_schema_mapping_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(schemaName = structure(logical(0), tags = list(type = "string")), schemaArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), mappedInputFields = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), groupName = structure(logical(0), tags = list(type = "string")), matchKey = structure(logical(0), tags = list(type = "string")), subType = structure(logical(0), tags = list(type = "string")), hashed = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .entityresolution_shapes[["update_schema_mapping_output"]]))
 }

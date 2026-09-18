@@ -2,7 +2,8 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_list_lifecycle_policies}
 \alias{imagebuilder_list_lifecycle_policies}
-\title{Get a list of lifecycle policies in your Amazon Web Services account}
+\title{Retrieves a list of lifecycle policies in your Amazon Web Services
+account}
 \usage{
 imagebuilder_list_lifecycle_policies(
   filters = NULL,
@@ -13,12 +14,12 @@ imagebuilder_list_lifecycle_policies(
 \arguments{
 \item{filters}{Streamline results based on one of the following values: \code{Name}, \code{Status}.}
 
-\item{maxResults}{Specify the maximum number of items to return in a request.}
+\item{maxResults}{The maximum number of items to return in a single request.}
 
-\item{nextToken}{A token to specify where to start paginating. This is the nextToken from a previously truncated response.}
+\item{nextToken}{A token to specify where to start paginating. Use the \code{nextToken} value from a previously truncated response.}
 }
 \description{
-Get a list of lifecycle policies in your Amazon Web Services account.
+Retrieves a list of lifecycle policies in your Amazon Web Services account.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_lifecycle_policies/} for full documentation.
 }

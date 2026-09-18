@@ -6,8 +6,9 @@
 \usage{
 appstream_create_imported_image(
   Name,
-  SourceAmiId,
-  IamRoleArn,
+  SourceAmiId = NULL,
+  WorkspaceImageId = NULL,
+  IamRoleArn = NULL,
   Description = NULL,
   DisplayName = NULL,
   Tags = NULL,
@@ -20,9 +21,11 @@ appstream_create_imported_image(
 \arguments{
 \item{Name}{[required] A unique name for the imported image. The name must be between 1 and 100 characters and can contain letters, numbers, underscores, periods, and hyphens.}
 
-\item{SourceAmiId}{[required] The ID of the EC2 AMI to import. The AMI must meet specific requirements including Windows Server 2022 Full Base, UEFI boot mode, TPM 2.0 support, and proper drivers.}
+\item{SourceAmiId}{The ID of the EC2 AMI to import.}
 
-\item{IamRoleArn}{[required] The ARN of the IAM role that allows WorkSpaces Applications to access your AMI. The role must have permissions to modify image attributes and describe images, with a trust relationship allowing appstream.amazonaws.com to assume the role.}
+\item{WorkspaceImageId}{The ID of the Workspaces Image to import.}
+
+\item{IamRoleArn}{The ARN of the IAM role that allows WorkSpaces Applications to access your AMI. The role must have permissions to modify image attributes and describe images, with a trust relationship allowing appstream.amazonaws.com to assume the role.}
 
 \item{Description}{An optional description for the imported image. The description must match approved regex patterns and can be up to 256 characters.}
 

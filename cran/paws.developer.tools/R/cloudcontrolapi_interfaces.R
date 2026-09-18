@@ -5,96 +5,80 @@ NULL
 
 .cloudcontrolapi$cancel_resource_request_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudcontrolapi_shapes[["cancel_resource_request_input"]]))
 }
 
 .cloudcontrolapi$cancel_resource_request_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProgressEvent = structure(list(TypeName = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), RequestToken = structure(logical(0), tags = list(type = "string")), HooksRequestToken = structure(logical(0), tags = list(type = "string")), Operation = structure(logical(0), tags = list(type = "string")), OperationStatus = structure(logical(0), tags = list(type = "string")), EventTime = structure(logical(0), tags = list(type = "timestamp")), ResourceModel = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), StatusMessage = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), RetryAfter = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudcontrolapi_shapes[["cancel_resource_request_output"]]))
 }
 
 .cloudcontrolapi$create_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TypeName = structure(logical(0), tags = list(type = "string")), TypeVersionId = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), DesiredState = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudcontrolapi_shapes[["create_resource_input"]]))
 }
 
 .cloudcontrolapi$create_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProgressEvent = structure(list(TypeName = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), RequestToken = structure(logical(0), tags = list(type = "string")), HooksRequestToken = structure(logical(0), tags = list(type = "string")), Operation = structure(logical(0), tags = list(type = "string")), OperationStatus = structure(logical(0), tags = list(type = "string")), EventTime = structure(logical(0), tags = list(type = "timestamp")), ResourceModel = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), StatusMessage = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), RetryAfter = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudcontrolapi_shapes[["create_resource_output"]]))
 }
 
 .cloudcontrolapi$delete_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TypeName = structure(logical(0), tags = list(type = "string")), TypeVersionId = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudcontrolapi_shapes[["delete_resource_input"]]))
 }
 
 .cloudcontrolapi$delete_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProgressEvent = structure(list(TypeName = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), RequestToken = structure(logical(0), tags = list(type = "string")), HooksRequestToken = structure(logical(0), tags = list(type = "string")), Operation = structure(logical(0), tags = list(type = "string")), OperationStatus = structure(logical(0), tags = list(type = "string")), EventTime = structure(logical(0), tags = list(type = "timestamp")), ResourceModel = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), StatusMessage = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), RetryAfter = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudcontrolapi_shapes[["delete_resource_output"]]))
 }
 
 .cloudcontrolapi$get_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TypeName = structure(logical(0), tags = list(type = "string")), TypeVersionId = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudcontrolapi_shapes[["get_resource_input"]]))
 }
 
 .cloudcontrolapi$get_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TypeName = structure(logical(0), tags = list(type = "string")), ResourceDescription = structure(list(Identifier = structure(logical(0), tags = list(type = "string")), Properties = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudcontrolapi_shapes[["get_resource_output"]]))
 }
 
 .cloudcontrolapi$get_resource_request_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudcontrolapi_shapes[["get_resource_request_status_input"]]))
 }
 
 .cloudcontrolapi$get_resource_request_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProgressEvent = structure(list(TypeName = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), RequestToken = structure(logical(0), tags = list(type = "string")), HooksRequestToken = structure(logical(0), tags = list(type = "string")), Operation = structure(logical(0), tags = list(type = "string")), OperationStatus = structure(logical(0), tags = list(type = "string")), EventTime = structure(logical(0), tags = list(type = "timestamp")), ResourceModel = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), StatusMessage = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), RetryAfter = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), HooksProgressEvent = structure(list(structure(list(HookTypeName = structure(logical(0), tags = list(type = "string")), HookTypeVersionId = structure(logical(0), tags = list(type = "string")), HookTypeArn = structure(logical(0), tags = list(type = "string")), InvocationPoint = structure(logical(0), tags = list(type = "string")), HookStatus = structure(logical(0), tags = list(type = "string")), HookEventTime = structure(logical(0), tags = list(type = "timestamp")), HookStatusMessage = structure(logical(0), tags = list(type = "string")), FailureMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudcontrolapi_shapes[["get_resource_request_status_output"]]))
 }
 
 .cloudcontrolapi$list_resource_requests_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), ResourceRequestStatusFilter = structure(list(Operations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OperationStatuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudcontrolapi_shapes[["list_resource_requests_input"]]))
 }
 
 .cloudcontrolapi$list_resource_requests_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceRequestStatusSummaries = structure(list(structure(list(TypeName = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), RequestToken = structure(logical(0), tags = list(type = "string")), HooksRequestToken = structure(logical(0), tags = list(type = "string")), Operation = structure(logical(0), tags = list(type = "string")), OperationStatus = structure(logical(0), tags = list(type = "string")), EventTime = structure(logical(0), tags = list(type = "timestamp")), ResourceModel = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), StatusMessage = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), RetryAfter = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudcontrolapi_shapes[["list_resource_requests_output"]]))
 }
 
 .cloudcontrolapi$list_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TypeName = structure(logical(0), tags = list(type = "string")), TypeVersionId = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), ResourceModel = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudcontrolapi_shapes[["list_resources_input"]]))
 }
 
 .cloudcontrolapi$list_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TypeName = structure(logical(0), tags = list(type = "string")), ResourceDescriptions = structure(list(structure(list(Identifier = structure(logical(0), tags = list(type = "string")), Properties = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudcontrolapi_shapes[["list_resources_output"]]))
 }
 
 .cloudcontrolapi$update_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TypeName = structure(logical(0), tags = list(type = "string")), TypeVersionId = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), PatchDocument = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudcontrolapi_shapes[["update_resource_input"]]))
 }
 
 .cloudcontrolapi$update_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProgressEvent = structure(list(TypeName = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), RequestToken = structure(logical(0), tags = list(type = "string")), HooksRequestToken = structure(logical(0), tags = list(type = "string")), Operation = structure(logical(0), tags = list(type = "string")), OperationStatus = structure(logical(0), tags = list(type = "string")), EventTime = structure(logical(0), tags = list(type = "timestamp")), ResourceModel = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), StatusMessage = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), RetryAfter = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudcontrolapi_shapes[["update_resource_output"]]))
 }

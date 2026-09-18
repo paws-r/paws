@@ -46,7 +46,7 @@ The length constraint applies only to the full ARN. If you specify only the func
 
 \item{Description}{A description of the function.}
 
-\item{Timeout}{The amount of time (in seconds) that Lambda allows a function to run before stopping it. The default is 3 seconds. The maximum allowed value is 900 seconds. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html}{Lambda execution environment}.}
+\item{Timeout}{The amount of time (in seconds) that Lambda allows a function to run before stopping it. The default is 3 seconds, and the maximum allowed value is 900 seconds. For functions using Lambda Managed Instances, asynchronous invocations and event source mapping invocations (except Amazon MQ and Amazon DocumentDB) support a maximum allowed value of 5,400 seconds (90 minutes). For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html}{Lambda execution environment}.}
 
 \item{MemorySize}{The amount of \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions.html#configuration-memory-console}{memory available to the function} at runtime. Increasing the function memory also increases its CPU allocation. The default value is 128 MB. The value can be any multiple of 1 MB.}
 
@@ -90,7 +90,7 @@ If you don't provide a customer managed key, Lambda uses an \href{https://docs.a
 
 \item{CapacityProviderConfig}{Configuration for the capacity provider that manages compute resources for Lambda functions.}
 
-\item{DurableConfig}{Configuration settings for durable functions. Allows updating execution timeout and retention period for functions with durability enabled.}
+\item{DurableConfig}{Configuration settings for \href{https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html}{durable functions}, including execution timeout, retention period for execution history, and an optional ARN of the Key Management Service (KMS) customer managed key that is used to encrypt your durable execution's payload data, including input, output, and error payloads.}
 }
 \description{
 Modify the version-specific settings of a Lambda function.

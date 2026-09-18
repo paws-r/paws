@@ -5,308 +5,257 @@ NULL
 
 .servicediscovery$create_http_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["create_http_namespace_input"]]))
 }
 
 .servicediscovery$create_http_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["create_http_namespace_output"]]))
 }
 
 .servicediscovery$create_private_dns_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Description = structure(logical(0), tags = list(type = "string")), Vpc = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Properties = structure(list(DnsProperties = structure(list(SOA = structure(list(TTL = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["create_private_dns_namespace_input"]]))
 }
 
 .servicediscovery$create_private_dns_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["create_private_dns_namespace_output"]]))
 }
 
 .servicediscovery$create_public_dns_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Properties = structure(list(DnsProperties = structure(list(SOA = structure(list(TTL = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["create_public_dns_namespace_input"]]))
 }
 
 .servicediscovery$create_public_dns_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["create_public_dns_namespace_output"]]))
 }
 
 .servicediscovery$create_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), NamespaceId = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Description = structure(logical(0), tags = list(type = "string")), DnsConfig = structure(list(NamespaceId = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Top level attribute in request should be used to reference namespace-id", type = "string")), RoutingPolicy = structure(logical(0), tags = list(type = "string")), DnsRecords = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TTL = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), HealthCheckConfig = structure(list(Type = structure(logical(0), tags = list(type = "string")), ResourcePath = structure(logical(0), tags = list(type = "string")), FailureThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), HealthCheckCustomConfig = structure(list(FailureThreshold = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Configurable FailureThreshold of HealthCheckCustomConfig is deprecated.  It will always have value 1.", type = "integer"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["create_service_input"]]))
 }
 
 .servicediscovery$create_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Service = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), ResourceOwner = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), NamespaceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), DnsConfig = structure(list(NamespaceId = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Top level attribute in request should be used to reference namespace-id", type = "string")), RoutingPolicy = structure(logical(0), tags = list(type = "string")), DnsRecords = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TTL = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Type = structure(logical(0), tags = list(type = "string")), HealthCheckConfig = structure(list(Type = structure(logical(0), tags = list(type = "string")), ResourcePath = structure(logical(0), tags = list(type = "string")), FailureThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), HealthCheckCustomConfig = structure(list(FailureThreshold = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Configurable FailureThreshold of HealthCheckCustomConfig is deprecated.  It will always have value 1.", type = "integer"))), tags = list(type = "structure")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreatedByAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["create_service_output"]]))
 }
 
 .servicediscovery$delete_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["delete_namespace_input"]]))
 }
 
 .servicediscovery$delete_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["delete_namespace_output"]]))
 }
 
 .servicediscovery$delete_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["delete_service_input"]]))
 }
 
 .servicediscovery$delete_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["delete_service_output"]]))
 }
 
 .servicediscovery$delete_service_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceId = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["delete_service_attributes_input"]]))
 }
 
 .servicediscovery$delete_service_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["delete_service_attributes_output"]]))
 }
 
 .servicediscovery$deregister_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceId = structure(logical(0), tags = list(type = "string")), InstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["deregister_instance_input"]]))
 }
 
 .servicediscovery$deregister_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["deregister_instance_output"]]))
 }
 
 .servicediscovery$discover_instances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NamespaceName = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), QueryParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OptionalParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), HealthStatus = structure(logical(0), tags = list(type = "string")), OwnerAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["discover_instances_input"]]))
 }
 
 .servicediscovery$discover_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Instances = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), NamespaceName = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), HealthStatus = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), InstancesRevision = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["discover_instances_output"]]))
 }
 
 .servicediscovery$discover_instances_revision_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NamespaceName = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), OwnerAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["discover_instances_revision_input"]]))
 }
 
 .servicediscovery$discover_instances_revision_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstancesRevision = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["discover_instances_revision_output"]]))
 }
 
 .servicediscovery$get_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceId = structure(logical(0), tags = list(type = "string")), InstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["get_instance_input"]]))
 }
 
 .servicediscovery$get_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceOwner = structure(logical(0), tags = list(type = "string")), Instance = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), CreatedByAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["get_instance_output"]]))
 }
 
 .servicediscovery$get_instances_health_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceId = structure(logical(0), tags = list(type = "string")), Instances = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["get_instances_health_status_input"]]))
 }
 
 .servicediscovery$get_instances_health_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Status = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["get_instances_health_status_output"]]))
 }
 
 .servicediscovery$get_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["get_namespace_input"]]))
 }
 
 .servicediscovery$get_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Namespace = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), ResourceOwner = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ServiceCount = structure(logical(0), tags = list(type = "integer")), Properties = structure(list(DnsProperties = structure(list(HostedZoneId = structure(logical(0), tags = list(type = "string")), SOA = structure(list(TTL = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure")), HttpProperties = structure(list(HttpName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), CreatorRequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["get_namespace_output"]]))
 }
 
 .servicediscovery$get_operation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string")), OwnerAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["get_operation_input"]]))
 }
 
 .servicediscovery$get_operation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Operation = structure(list(Id = structure(logical(0), tags = list(type = "string")), OwnerAccount = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), Targets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["get_operation_output"]]))
 }
 
 .servicediscovery$get_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["get_service_input"]]))
 }
 
 .servicediscovery$get_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Service = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), ResourceOwner = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), NamespaceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), DnsConfig = structure(list(NamespaceId = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Top level attribute in request should be used to reference namespace-id", type = "string")), RoutingPolicy = structure(logical(0), tags = list(type = "string")), DnsRecords = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TTL = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Type = structure(logical(0), tags = list(type = "string")), HealthCheckConfig = structure(list(Type = structure(logical(0), tags = list(type = "string")), ResourcePath = structure(logical(0), tags = list(type = "string")), FailureThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), HealthCheckCustomConfig = structure(list(FailureThreshold = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Configurable FailureThreshold of HealthCheckCustomConfig is deprecated.  It will always have value 1.", type = "integer"))), tags = list(type = "structure")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreatedByAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["get_service_output"]]))
 }
 
 .servicediscovery$get_service_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["get_service_attributes_input"]]))
 }
 
 .servicediscovery$get_service_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceAttributes = structure(list(ServiceArn = structure(logical(0), tags = list(type = "string")), ResourceOwner = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["get_service_attributes_output"]]))
 }
 
 .servicediscovery$list_instances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["list_instances_input"]]))
 }
 
 .servicediscovery$list_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceOwner = structure(logical(0), tags = list(type = "string")), Instances = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), CreatedByAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["list_instances_output"]]))
 }
 
 .servicediscovery$list_namespaces_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["list_namespaces_input"]]))
 }
 
 .servicediscovery$list_namespaces_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Namespaces = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), ResourceOwner = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ServiceCount = structure(logical(0), tags = list(type = "integer")), Properties = structure(list(DnsProperties = structure(list(HostedZoneId = structure(logical(0), tags = list(type = "string")), SOA = structure(list(TTL = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure")), HttpProperties = structure(list(HttpName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), CreateDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["list_namespaces_output"]]))
 }
 
 .servicediscovery$list_operations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["list_operations_input"]]))
 }
 
 .servicediscovery$list_operations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Operations = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["list_operations_output"]]))
 }
 
 .servicediscovery$list_services_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["list_services_input"]]))
 }
 
 .servicediscovery$list_services_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Services = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), ResourceOwner = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), DnsConfig = structure(list(NamespaceId = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Top level attribute in request should be used to reference namespace-id", type = "string")), RoutingPolicy = structure(logical(0), tags = list(type = "string")), DnsRecords = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TTL = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), HealthCheckConfig = structure(list(Type = structure(logical(0), tags = list(type = "string")), ResourcePath = structure(logical(0), tags = list(type = "string")), FailureThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), HealthCheckCustomConfig = structure(list(FailureThreshold = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Configurable FailureThreshold of HealthCheckCustomConfig is deprecated.  It will always have value 1.", type = "integer"))), tags = list(type = "structure")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), CreatedByAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["list_services_output"]]))
 }
 
 .servicediscovery$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["list_tags_for_resource_input"]]))
 }
 
 .servicediscovery$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["list_tags_for_resource_output"]]))
 }
 
 .servicediscovery$register_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceId = structure(logical(0), tags = list(type = "string")), InstanceId = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["register_instance_input"]]))
 }
 
 .servicediscovery$register_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["register_instance_output"]]))
 }
 
 .servicediscovery$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["tag_resource_input"]]))
 }
 
 .servicediscovery$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["tag_resource_output"]]))
 }
 
 .servicediscovery$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["untag_resource_input"]]))
 }
 
 .servicediscovery$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["untag_resource_output"]]))
 }
 
 .servicediscovery$update_http_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), UpdaterRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Namespace = structure(list(Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["update_http_namespace_input"]]))
 }
 
 .servicediscovery$update_http_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["update_http_namespace_output"]]))
 }
 
 .servicediscovery$update_instance_custom_health_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceId = structure(logical(0), tags = list(type = "string")), InstanceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["update_instance_custom_health_status_input"]]))
 }
 
 .servicediscovery$update_instance_custom_health_status_output <- function(...) {
@@ -315,48 +264,40 @@ NULL
 
 .servicediscovery$update_private_dns_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), UpdaterRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Namespace = structure(list(Description = structure(logical(0), tags = list(type = "string")), Properties = structure(list(DnsProperties = structure(list(SOA = structure(list(TTL = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["update_private_dns_namespace_input"]]))
 }
 
 .servicediscovery$update_private_dns_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["update_private_dns_namespace_output"]]))
 }
 
 .servicediscovery$update_public_dns_namespace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), UpdaterRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Namespace = structure(list(Description = structure(logical(0), tags = list(type = "string")), Properties = structure(list(DnsProperties = structure(list(SOA = structure(list(TTL = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["update_public_dns_namespace_input"]]))
 }
 
 .servicediscovery$update_public_dns_namespace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["update_public_dns_namespace_output"]]))
 }
 
 .servicediscovery$update_service_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), Service = structure(list(Description = structure(logical(0), tags = list(type = "string")), DnsConfig = structure(list(DnsRecords = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TTL = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), HealthCheckConfig = structure(list(Type = structure(logical(0), tags = list(type = "string")), ResourcePath = structure(logical(0), tags = list(type = "string")), FailureThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["update_service_input"]]))
 }
 
 .servicediscovery$update_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["update_service_output"]]))
 }
 
 .servicediscovery$update_service_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceId = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["update_service_attributes_input"]]))
 }
 
 .servicediscovery$update_service_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicediscovery_shapes[["update_service_attributes_output"]]))
 }

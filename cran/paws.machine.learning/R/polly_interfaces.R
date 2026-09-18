@@ -5,120 +5,100 @@ NULL
 
 .polly$delete_lexicon_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "LexiconName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["delete_lexicon_input"]]))
 }
 
 .polly$delete_lexicon_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["delete_lexicon_output"]]))
 }
 
 .polly$describe_voices_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Engine = structure(logical(0), tags = list(location = "querystring", locationName = "Engine", type = "string")), LanguageCode = structure(logical(0), tags = list(location = "querystring", locationName = "LanguageCode", type = "string")), IncludeAdditionalLanguageCodes = structure(logical(0), tags = list(location = "querystring", locationName = "IncludeAdditionalLanguageCodes", type = "boolean")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["describe_voices_input"]]))
 }
 
 .polly$describe_voices_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Voices = structure(list(structure(list(Gender = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), LanguageName = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AdditionalLanguageCodes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SupportedEngines = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["describe_voices_output"]]))
 }
 
 .polly$get_lexicon_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "LexiconName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["get_lexicon_input"]]))
 }
 
 .polly$get_lexicon_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Lexicon = structure(list(Content = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LexiconAttributes = structure(list(Alphabet = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), LastModified = structure(logical(0), tags = list(type = "timestamp")), LexiconArn = structure(logical(0), tags = list(type = "string")), LexemesCount = structure(logical(0), tags = list(type = "integer")), Size = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["get_lexicon_output"]]))
 }
 
 .polly$get_speech_synthesis_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TaskId = structure(logical(0), tags = list(location = "uri", locationName = "TaskId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["get_speech_synthesis_task_input"]]))
 }
 
 .polly$get_speech_synthesis_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SynthesisTask = structure(list(Engine = structure(logical(0), tags = list(type = "string")), TaskId = structure(logical(0), tags = list(type = "string")), TaskStatus = structure(logical(0), tags = list(type = "string")), TaskStatusReason = structure(logical(0), tags = list(type = "string")), OutputUri = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), RequestCharacters = structure(logical(0), tags = list(type = "integer")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), LexiconNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OutputFormat = structure(logical(0), tags = list(type = "string")), SampleRate = structure(logical(0), tags = list(type = "string")), SpeechMarkTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TextType = structure(logical(0), tags = list(type = "string")), VoiceId = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["get_speech_synthesis_task_output"]]))
 }
 
 .polly$list_lexicons_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["list_lexicons_input"]]))
 }
 
 .polly$list_lexicons_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Lexicons = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(Alphabet = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), LastModified = structure(logical(0), tags = list(type = "timestamp")), LexiconArn = structure(logical(0), tags = list(type = "string")), LexemesCount = structure(logical(0), tags = list(type = "integer")), Size = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["list_lexicons_output"]]))
 }
 
 .polly$list_speech_synthesis_tasks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), Status = structure(logical(0), tags = list(location = "querystring", locationName = "Status", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["list_speech_synthesis_tasks_input"]]))
 }
 
 .polly$list_speech_synthesis_tasks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), SynthesisTasks = structure(list(structure(list(Engine = structure(logical(0), tags = list(type = "string")), TaskId = structure(logical(0), tags = list(type = "string")), TaskStatus = structure(logical(0), tags = list(type = "string")), TaskStatusReason = structure(logical(0), tags = list(type = "string")), OutputUri = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), RequestCharacters = structure(logical(0), tags = list(type = "integer")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), LexiconNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OutputFormat = structure(logical(0), tags = list(type = "string")), SampleRate = structure(logical(0), tags = list(type = "string")), SpeechMarkTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TextType = structure(logical(0), tags = list(type = "string")), VoiceId = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["list_speech_synthesis_tasks_output"]]))
 }
 
 .polly$put_lexicon_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "LexiconName", type = "string")), Content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["put_lexicon_input"]]))
 }
 
 .polly$put_lexicon_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["put_lexicon_output"]]))
 }
 
 .polly$start_speech_synthesis_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Engine = structure(logical(0), tags = list(location = "header", locationName = "x-amzn-Engine", type = "string")), LanguageCode = structure(logical(0), tags = list(location = "header", locationName = "x-amzn-LanguageCode", type = "string")), LexiconNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "header", locationName = "x-amzn-LexiconNames", type = "list")), OutputFormat = structure(logical(0), tags = list(location = "header", locationName = "x-amzn-OutputFormat", type = "string")), SampleRate = structure(logical(0), tags = list(location = "header", locationName = "x-amzn-SampleRate", type = "string")), VoiceId = structure(logical(0), tags = list(location = "header", locationName = "x-amzn-VoiceId", type = "string")), ActionStream = structure(list(TextEvent = structure(list(Text = structure(logical(0), tags = list(type = "string")), TextType = structure(logical(0), tags = list(type = "string")), FlushStreamConfiguration = structure(list(Force = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure", event = TRUE)), CloseStreamEvent = structure(list(), tags = list(type = "structure", event = TRUE))), tags = list(type = "structure", eventstream = TRUE))), tags = list(type = "structure", payload = "ActionStream"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["start_speech_synthesis_stream_input"]]))
 }
 
 .polly$start_speech_synthesis_stream_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EventStream = structure(list(AudioEvent = structure(list(AudioChunk = structure(logical(0), tags = list(eventpayload = TRUE, type = "blob"))), tags = list(type = "structure", event = TRUE)), StreamClosedEvent = structure(list(RequestCharacters = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure", event = TRUE)), ValidationException = structure(list(message = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string")), fields = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", exception = TRUE)), ServiceQuotaExceededException = structure(list(message = structure(logical(0), tags = list(type = "string")), quotaCode = structure(logical(0), tags = list(type = "string")), serviceCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", exception = TRUE)), ServiceFailureException = structure(list(message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", exception = TRUE, fault = TRUE)), ThrottlingException = structure(list(message = structure(logical(0), tags = list(type = "string")), throttlingReasons = structure(list(structure(list(reason = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", exception = TRUE, synthetic = TRUE))), tags = list(type = "structure", eventstream = TRUE))), tags = list(type = "structure", payload = "EventStream"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["start_speech_synthesis_stream_output"]]))
 }
 
 .polly$start_speech_synthesis_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Engine = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), LexiconNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OutputFormat = structure(logical(0), tags = list(type = "string")), OutputS3BucketName = structure(logical(0), tags = list(type = "string")), OutputS3KeyPrefix = structure(logical(0), tags = list(type = "string")), SampleRate = structure(logical(0), tags = list(type = "string")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), SpeechMarkTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Text = structure(logical(0), tags = list(type = "string")), TextType = structure(logical(0), tags = list(type = "string")), VoiceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["start_speech_synthesis_task_input"]]))
 }
 
 .polly$start_speech_synthesis_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SynthesisTask = structure(list(Engine = structure(logical(0), tags = list(type = "string")), TaskId = structure(logical(0), tags = list(type = "string")), TaskStatus = structure(logical(0), tags = list(type = "string")), TaskStatusReason = structure(logical(0), tags = list(type = "string")), OutputUri = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), RequestCharacters = structure(logical(0), tags = list(type = "integer")), SnsTopicArn = structure(logical(0), tags = list(type = "string")), LexiconNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OutputFormat = structure(logical(0), tags = list(type = "string")), SampleRate = structure(logical(0), tags = list(type = "string")), SpeechMarkTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TextType = structure(logical(0), tags = list(type = "string")), VoiceId = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["start_speech_synthesis_task_output"]]))
 }
 
 .polly$synthesize_speech_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Engine = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), LexiconNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OutputFormat = structure(logical(0), tags = list(type = "string")), SampleRate = structure(logical(0), tags = list(type = "string")), SpeechMarkTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Text = structure(logical(0), tags = list(type = "string")), TextType = structure(logical(0), tags = list(type = "string")), VoiceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["synthesize_speech_input"]]))
 }
 
 .polly$synthesize_speech_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AudioStream = structure(logical(0), tags = list(type = "blob", streaming = TRUE)), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), RequestCharacters = structure(logical(0), tags = list(location = "header", locationName = "x-amzn-RequestCharacters", type = "integer"))), tags = list(type = "structure", payload = "AudioStream"))
-  return(populate(args, shape))
+  return(populate(args, .polly_shapes[["synthesize_speech_output"]]))
 }

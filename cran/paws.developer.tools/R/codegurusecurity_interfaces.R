@@ -5,156 +5,130 @@ NULL
 
 .codegurusecurity$batch_get_findings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(findingIdentifiers = structure(list(structure(list(scanName = structure(logical(0), tags = list(type = "string")), findingId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["batch_get_findings_input"]]))
 }
 
 .codegurusecurity$batch_get_findings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(findings = structure(list(structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string")), generatorId = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), type = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), resource = structure(list(id = structure(logical(0), tags = list(type = "string")), subResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), vulnerability = structure(list(referenceUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), relatedVulnerabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), id = structure(logical(0), tags = list(type = "string")), filePath = structure(list(name = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), startLine = structure(logical(0), tags = list(type = "integer", box = TRUE)), endLine = structure(logical(0), tags = list(type = "integer", box = TRUE)), codeSnippet = structure(list(structure(list(number = structure(logical(0), tags = list(type = "integer", box = TRUE)), content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), itemCount = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This shape is not used.", type = "integer", box = TRUE))), tags = list(type = "structure")), severity = structure(logical(0), tags = list(type = "string")), remediation = structure(list(recommendation = structure(list(text = structure(logical(0), tags = list(type = "string")), url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), suggestedFixes = structure(list(structure(list(description = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), title = structure(logical(0), tags = list(type = "string")), detectorTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), detectorId = structure(logical(0), tags = list(type = "string")), detectorName = structure(logical(0), tags = list(type = "string")), ruleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), failedFindings = structure(list(structure(list(scanName = structure(logical(0), tags = list(type = "string")), findingId = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["batch_get_findings_output"]]))
 }
 
 .codegurusecurity$create_scan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), resourceId = structure(list(codeArtifactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), scanName = structure(logical(0), tags = list(type = "string")), scanType = structure(logical(0), tags = list(type = "string")), analysisType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["create_scan_input"]]))
 }
 
 .codegurusecurity$create_scan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(scanName = structure(logical(0), tags = list(type = "string")), runId = structure(logical(0), tags = list(type = "string")), resourceId = structure(list(codeArtifactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), scanState = structure(logical(0), tags = list(type = "string")), scanNameArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["create_scan_output"]]))
 }
 
 .codegurusecurity$create_upload_url_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(scanName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["create_upload_url_input"]]))
 }
 
 .codegurusecurity$create_upload_url_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(s3Url = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), requestHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), codeArtifactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["create_upload_url_output"]]))
 }
 
 .codegurusecurity$get_account_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["get_account_configuration_input"]]))
 }
 
 .codegurusecurity$get_account_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(encryptionConfig = structure(list(kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["get_account_configuration_output"]]))
 }
 
 .codegurusecurity$get_findings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(scanName = structure(logical(0), tags = list(location = "uri", locationName = "scanName", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), status = structure(logical(0), tags = list(location = "querystring", locationName = "status", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["get_findings_input"]]))
 }
 
 .codegurusecurity$get_findings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(findings = structure(list(structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string")), generatorId = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), type = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), resource = structure(list(id = structure(logical(0), tags = list(type = "string")), subResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), vulnerability = structure(list(referenceUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), relatedVulnerabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), id = structure(logical(0), tags = list(type = "string")), filePath = structure(list(name = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), startLine = structure(logical(0), tags = list(type = "integer", box = TRUE)), endLine = structure(logical(0), tags = list(type = "integer", box = TRUE)), codeSnippet = structure(list(structure(list(number = structure(logical(0), tags = list(type = "integer", box = TRUE)), content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), itemCount = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This shape is not used.", type = "integer", box = TRUE))), tags = list(type = "structure")), severity = structure(logical(0), tags = list(type = "string")), remediation = structure(list(recommendation = structure(list(text = structure(logical(0), tags = list(type = "string")), url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), suggestedFixes = structure(list(structure(list(description = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), title = structure(logical(0), tags = list(type = "string")), detectorTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), detectorId = structure(logical(0), tags = list(type = "string")), detectorName = structure(logical(0), tags = list(type = "string")), ruleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["get_findings_output"]]))
 }
 
 .codegurusecurity$get_metrics_summary_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(date = structure(logical(0), tags = list(location = "querystring", locationName = "date", type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["get_metrics_summary_input"]]))
 }
 
 .codegurusecurity$get_metrics_summary_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(metricsSummary = structure(list(date = structure(logical(0), tags = list(type = "timestamp")), openFindings = structure(list(info = structure(logical(0), tags = list(type = "double", box = TRUE)), low = structure(logical(0), tags = list(type = "double", box = TRUE)), medium = structure(logical(0), tags = list(type = "double", box = TRUE)), high = structure(logical(0), tags = list(type = "double", box = TRUE)), critical = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), categoriesWithMostFindings = structure(list(structure(list(categoryName = structure(logical(0), tags = list(type = "string")), findingNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), scansWithMostOpenFindings = structure(list(structure(list(scanName = structure(logical(0), tags = list(type = "string")), findingNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), scansWithMostOpenCriticalFindings = structure(list(structure(list(scanName = structure(logical(0), tags = list(type = "string")), findingNumber = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["get_metrics_summary_output"]]))
 }
 
 .codegurusecurity$get_scan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(scanName = structure(logical(0), tags = list(location = "uri", locationName = "scanName", type = "string")), runId = structure(logical(0), tags = list(location = "querystring", locationName = "runId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["get_scan_input"]]))
 }
 
 .codegurusecurity$get_scan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(scanName = structure(logical(0), tags = list(type = "string")), runId = structure(logical(0), tags = list(type = "string")), scanState = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), analysisType = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), numberOfRevisions = structure(logical(0), tags = list(type = "long", box = TRUE)), scanNameArn = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["get_scan_output"]]))
 }
 
 .codegurusecurity$list_findings_metrics_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), startDate = structure(logical(0), tags = list(location = "querystring", locationName = "startDate", type = "timestamp")), endDate = structure(logical(0), tags = list(location = "querystring", locationName = "endDate", type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["list_findings_metrics_input"]]))
 }
 
 .codegurusecurity$list_findings_metrics_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(findingsMetrics = structure(list(structure(list(date = structure(logical(0), tags = list(type = "timestamp")), newFindings = structure(list(info = structure(logical(0), tags = list(type = "double", box = TRUE)), low = structure(logical(0), tags = list(type = "double", box = TRUE)), medium = structure(logical(0), tags = list(type = "double", box = TRUE)), high = structure(logical(0), tags = list(type = "double", box = TRUE)), critical = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), closedFindings = structure(list(info = structure(logical(0), tags = list(type = "double", box = TRUE)), low = structure(logical(0), tags = list(type = "double", box = TRUE)), medium = structure(logical(0), tags = list(type = "double", box = TRUE)), high = structure(logical(0), tags = list(type = "double", box = TRUE)), critical = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), openFindings = structure(list(info = structure(logical(0), tags = list(type = "double", box = TRUE)), low = structure(logical(0), tags = list(type = "double", box = TRUE)), medium = structure(logical(0), tags = list(type = "double", box = TRUE)), high = structure(logical(0), tags = list(type = "double", box = TRUE)), critical = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), meanTimeToClose = structure(list(info = structure(logical(0), tags = list(type = "double", box = TRUE)), low = structure(logical(0), tags = list(type = "double", box = TRUE)), medium = structure(logical(0), tags = list(type = "double", box = TRUE)), high = structure(logical(0), tags = list(type = "double", box = TRUE)), critical = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["list_findings_metrics_output"]]))
 }
 
 .codegurusecurity$list_scans_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["list_scans_input"]]))
 }
 
 .codegurusecurity$list_scans_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(summaries = structure(list(structure(list(scanState = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), scanName = structure(logical(0), tags = list(type = "string")), runId = structure(logical(0), tags = list(type = "string")), scanNameArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["list_scans_output"]]))
 }
 
 .codegurusecurity$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["list_tags_for_resource_input"]]))
 }
 
 .codegurusecurity$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["list_tags_for_resource_output"]]))
 }
 
 .codegurusecurity$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["tag_resource_input"]]))
 }
 
 .codegurusecurity$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["tag_resource_output"]]))
 }
 
 .codegurusecurity$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["untag_resource_input"]]))
 }
 
 .codegurusecurity$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["untag_resource_output"]]))
 }
 
 .codegurusecurity$update_account_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(encryptionConfig = structure(list(kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["update_account_configuration_input"]]))
 }
 
 .codegurusecurity$update_account_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(encryptionConfig = structure(list(kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codegurusecurity_shapes[["update_account_configuration_output"]]))
 }

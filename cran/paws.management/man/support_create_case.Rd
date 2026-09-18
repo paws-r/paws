@@ -13,7 +13,9 @@ support_create_case(
   ccEmailAddresses = NULL,
   language = NULL,
   issueType = NULL,
-  attachmentSetId = NULL
+  attachmentSetId = NULL,
+  uploadIds = NULL,
+  dryRun = NULL
 )
 }
 \arguments{
@@ -33,11 +35,15 @@ The availability of severity levels depends on the support plan for the Amazon W
 
 \item{ccEmailAddresses}{A list of email addresses that Amazon Web Services Support copies on case correspondence. Amazon Web Services Support identifies the account that creates the case when you specify your Amazon Web Services credentials in an HTTP POST method or use the \href{https://builder.aws.com/build/tools}{Amazon Web Services SDKs}.}
 
-\item{language}{The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the \code{language} parameter if you want support in that language.}
+\item{language}{The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") , Chinese ("zh"), Spanish ("es"), Portuguese ("pt"), French ("fr"), Korean (“ko”), and Turkish ("tr"). You must specify the ISO 639-1 code for the \code{language} parameter if you want support in that language.}
 
 \item{issueType}{The type of issue for the case. You can specify \code{customer-service} or \code{technical}. If you don't specify a value, the default is \code{technical}.}
 
-\item{attachmentSetId}{The ID of a set of one or more attachments for the case. Create the set by using the \code{\link[=support_add_attachments_to_set]{add_attachments_to_set}} operation.}
+\item{attachmentSetId}{The ID of a set of one or more attachments for the case. Create the set by using the \code{\link[=support_add_attachments_to_set]{add_attachments_to_set}} operation. Each attachment in the set must be 5 MB or smaller. To attach files larger than 5 MB, use \code{uploadIds}.}
+
+\item{uploadIds}{A list of upload IDs that identify attachments to add to the case. Each \code{uploadId} is returned by the \code{\link[=support_get_attachment_upload_links]{get_attachment_upload_links}} operation. The upload must reach the \code{attachment-ready} state by calling \code{\link[=support_complete_attachment_upload]{complete_attachment_upload}} before it can be passed here. Use \code{uploadIds} to attach files of any supported size, including files larger than 5 MB.}
+
+\item{dryRun}{Specifies whether to validate the request without actually creating the case. When set to \code{true}, the request is validated but no case is created, and the operation returns a \code{DryRunOperationException}. When omitted or set to \code{false}, the request runs normally.}
 }
 \description{
 Creates a case in the Amazon Web Services Support Center. This operation is similar to how you create a case in the Amazon Web Services Support Center Create Case page.

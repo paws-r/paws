@@ -310,7 +310,7 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 #' 
-#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In \emph{\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}} , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
+#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
 #' 
 #' Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
 #' 
@@ -467,6 +467,62 @@ cognitoidentityprovider_admin_create_user <- function(UserPoolId, Username, User
   return(response)
 }
 .cognitoidentityprovider$operations$admin_create_user <- cognitoidentityprovider_admin_create_user
+
+#' Deletes a user's registered time-based one-time password (TOTP)
+#' multi-factor authentication (MFA) factor, also known as a software token
+#'
+#' @description
+#' Deletes a user's registered time-based one-time password (TOTP) multi-factor authentication (MFA) factor, also known as a software token. After this operation, the user can no longer sign in with TOTP MFA, and can register a new TOTP factor with [`associate_software_token`][cognitoidentityprovider_associate_software_token]. Use this operation when a user loses access to their TOTP-generating device, for example, a lost or reset phone, and needs to register a new one.
+#' 
+#' Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
+#' 
+#' **Learn more**
+#' 
+#' -   [Signing Amazon Web Services API Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
+#' 
+#' -   [Using the Amazon Cognito user pools API and user pool endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
+#'
+#' @usage
+#' cognitoidentityprovider_admin_delete_software_token(UserPoolId,
+#'   Username)
+#'
+#' @param UserPoolId &#91;required&#93; The ID of the user pool where you want to delete the user's software token.
+#' @param Username &#91;required&#93; The name of the user that you want to query or modify. The value of this parameter is typically your user's username, but it can be any of their alias attributes. If `username` isn't an alias attribute in your user pool, this value must be the `sub` of a local user or the username of a user from a third-party IdP.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$admin_delete_software_token(
+#'   UserPoolId = "string",
+#'   Username = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentityprovider_admin_delete_software_token
+#'
+#' @aliases cognitoidentityprovider_admin_delete_software_token
+cognitoidentityprovider_admin_delete_software_token <- function(UserPoolId, Username) {
+  op <- new_operation(
+    name = "AdminDeleteSoftwareToken",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cognitoidentityprovider$admin_delete_software_token_input(UserPoolId = UserPoolId, Username = Username)
+  output <- .cognitoidentityprovider$admin_delete_software_token_output()
+  config <- get_config()
+  svc <- .cognitoidentityprovider$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentityprovider$operations$admin_delete_software_token <- cognitoidentityprovider_admin_delete_software_token
 
 #' Deletes a user profile in your user pool
 #'
@@ -981,6 +1037,77 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 }
 .cognitoidentityprovider$operations$admin_get_user <- cognitoidentityprovider_admin_get_user
 
+#' Lists the authentication options for a user in a user pool
+#'
+#' @description
+#' Lists the authentication options for a user in a user pool. Returns the following:
+#' 
+#' 1.  The user's multi-factor authentication (MFA) preferences.
+#' 
+#' 2.  The user's options for choice-based authentication with the `USER_AUTH` flow.
+#' 
+#' Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
+#' 
+#' **Learn more**
+#' 
+#' -   [Signing Amazon Web Services API Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
+#' 
+#' -   [Using the Amazon Cognito user pools API and user pool endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
+#'
+#' @usage
+#' cognitoidentityprovider_admin_get_user_auth_factors(UserPoolId,
+#'   Username)
+#'
+#' @param UserPoolId &#91;required&#93; The ID of the user pool where you want to get information about the user's authentication factors.
+#' @param Username &#91;required&#93; The name of the user that you want to query or modify. The value of this parameter is typically your user's username, but it can be any of their alias attributes. If `username` isn't an alias attribute in your user pool, this value must be the `sub` of a local user or the username of a user from a third-party IdP.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Username = "string",
+#'   PreferredMfaSetting = "string",
+#'   UserMFASettingList = list(
+#'     "string"
+#'   ),
+#'   ConfiguredUserAuthFactors = list(
+#'     "PASSWORD"|"EMAIL_OTP"|"SMS_OTP"|"WEB_AUTHN"|"SOFTWARE_TOKEN"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$admin_get_user_auth_factors(
+#'   UserPoolId = "string",
+#'   Username = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentityprovider_admin_get_user_auth_factors
+#'
+#' @aliases cognitoidentityprovider_admin_get_user_auth_factors
+cognitoidentityprovider_admin_get_user_auth_factors <- function(UserPoolId, Username) {
+  op <- new_operation(
+    name = "AdminGetUserAuthFactors",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cognitoidentityprovider$admin_get_user_auth_factors_input(UserPoolId = UserPoolId, Username = Username)
+  output <- .cognitoidentityprovider$admin_get_user_auth_factors_output()
+  config <- get_config()
+  svc <- .cognitoidentityprovider$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentityprovider$operations$admin_get_user_auth_factors <- cognitoidentityprovider_admin_get_user_auth_factors
+
 #' Starts sign-in for applications with a server-side component, for
 #' example a traditional web application
 #'
@@ -989,7 +1116,7 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 #' 
-#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In \emph{\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}} , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
+#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
 #' 
 #' Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
 #' 
@@ -1219,8 +1346,6 @@ cognitoidentityprovider_admin_initiate_auth <- function(UserPoolId, ClientId, Au
 #' The `ProviderAttributeName` of the `DestinationUser` is ignored.
 #' 
 #' The `ProviderName` should be set to `Cognito` for users in Cognito user pools.
-#' 
-#' All attributes in the DestinationUser profile must be mutable. If you have assigned the user any immutable custom attributes, the operation won't succeed.
 #' @param SourceUser &#91;required&#93; An external IdP account for a user who doesn't exist yet in the user pool. This user must be a federated user (for example, a SAML or Facebook user), not another native user.
 #' 
 #' If the `SourceUser` is using a federated social IdP, such as Facebook, Google, or Login with Amazon, you must set the `ProviderAttributeName` to `Cognito_Subject`. For social IdPs, the `ProviderName` will be `Facebook`, `Google`, or `LoginWithAmazon`, and Amazon Cognito will automatically parse the Facebook, Google, and Login with Amazon tokens for `id`, `sub`, and `user_id`, respectively. The `ProviderAttributeValue` for the user must be the same value as the `id`, `sub`, or `user_id` value found in the social IdP token.
@@ -1606,7 +1731,7 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 #' 
-#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In \emph{\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}} , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
+#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
 #' 
 #' Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
 #' 
@@ -1685,7 +1810,7 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 #' 
-#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In \emph{\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}} , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
+#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
 #' 
 #' Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
 #' 
@@ -2277,7 +2402,7 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 #' 
-#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In \emph{\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}} , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
+#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
 #'
 #' @usage
 #' cognitoidentityprovider_admin_update_user_attributes(UserPoolId,
@@ -3343,11 +3468,14 @@ cognitoidentityprovider_create_terms <- function(UserPoolId, ClientId, TermsName
 #'
 #' @usage
 #' cognitoidentityprovider_create_user_import_job(JobName, UserPoolId,
-#'   CloudWatchLogsRoleArn)
+#'   CloudWatchLogsRoleArn, PasswordHashingAlgorithm)
 #'
 #' @param JobName &#91;required&#93; A friendly name for the user import job.
 #' @param UserPoolId &#91;required&#93; The ID of the user pool that you want to import users into.
 #' @param CloudWatchLogsRoleArn &#91;required&#93; You must specify an IAM role that has permission to log import-job results to Amazon CloudWatch Logs. This parameter is the ARN of that role.
+#' @param PasswordHashingAlgorithm The password hashing algorithm used to generate the hashes in the CSV file for this import job.
+#' 
+#' Valid values: `BCRYPT` | `SCRYPT` | `ARGON2ID` | `PBKDF2_SHA256`
 #'
 #' @return
 #' A list with the following syntax:
@@ -3372,7 +3500,8 @@ cognitoidentityprovider_create_terms <- function(UserPoolId, ClientId, TermsName
 #'     ImportedUsers = 123,
 #'     SkippedUsers = 123,
 #'     FailedUsers = 123,
-#'     CompletionMessage = "string"
+#'     CompletionMessage = "string",
+#'     PasswordHashingAlgorithm = "BCRYPT"|"SCRYPT"|"ARGON2ID"|"PBKDF2_SHA256"
 #'   )
 #' )
 #' ```
@@ -3382,7 +3511,8 @@ cognitoidentityprovider_create_terms <- function(UserPoolId, ClientId, TermsName
 #' svc$create_user_import_job(
 #'   JobName = "string",
 #'   UserPoolId = "string",
-#'   CloudWatchLogsRoleArn = "string"
+#'   CloudWatchLogsRoleArn = "string",
+#'   PasswordHashingAlgorithm = "BCRYPT"|"SCRYPT"|"ARGON2ID"|"PBKDF2_SHA256"
 #' )
 #' ```
 #'
@@ -3391,7 +3521,7 @@ cognitoidentityprovider_create_terms <- function(UserPoolId, ClientId, TermsName
 #' @rdname cognitoidentityprovider_create_user_import_job
 #'
 #' @aliases cognitoidentityprovider_create_user_import_job
-cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, CloudWatchLogsRoleArn) {
+cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, CloudWatchLogsRoleArn, PasswordHashingAlgorithm = NULL) {
   op <- new_operation(
     name = "CreateUserImportJob",
     http_method = "POST",
@@ -3400,7 +3530,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cognitoidentityprovider$create_user_import_job_input(JobName = JobName, UserPoolId = UserPoolId, CloudWatchLogsRoleArn = CloudWatchLogsRoleArn)
+  input <- .cognitoidentityprovider$create_user_import_job_input(JobName = JobName, UserPoolId = UserPoolId, CloudWatchLogsRoleArn = CloudWatchLogsRoleArn, PasswordHashingAlgorithm = PasswordHashingAlgorithm)
   output <- .cognitoidentityprovider$create_user_import_job_output()
   config <- get_config()
   svc <- .cognitoidentityprovider$service(config, op)
@@ -3419,7 +3549,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 #' 
-#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In \emph{\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}} , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
+#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
 #' 
 #' Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
 #' 
@@ -3438,7 +3568,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'   UserAttributeUpdateSettings, DeviceConfiguration, EmailConfiguration,
 #'   SmsConfiguration, UserPoolTags, AdminCreateUserConfig, Schema,
 #'   UserPoolAddOns, UsernameConfiguration, AccountRecoverySetting,
-#'   UserPoolTier)
+#'   UserPoolTier, KeyConfiguration, IssuerConfiguration)
 #'
 #' @param PoolName &#91;required&#93; A friendly name for your user pool.
 #' @param Policies The password policy and sign-in policy in the user pool. The password policy sets options like password complexity requirements and password history. The sign-in policy sets the options available to applications in [choice-based authentication](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-selection-sdk.html#authentication-flows-selection-choice).
@@ -3459,6 +3589,14 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' @param MfaConfiguration Sets multi-factor authentication (MFA) to be on, off, or optional. When `ON`, all users must set up MFA before they can sign in. When `OPTIONAL`, your application must make a client-side determination of whether a user wants to register an MFA device. For user pools with adaptive authentication with threat protection, choose `OPTIONAL`.
 #' 
 #' When `MfaConfiguration` is `OPTIONAL`, managed login doesn't automatically prompt users to set up MFA. Amazon Cognito generates MFA prompts in API responses and in managed login for users who have chosen and configured a preferred MFA factor.
+#' 
+#' The [`create_user_pool`][cognitoidentityprovider_create_user_pool] operation supports only SMS MFA configuration. If you set `MfaConfiguration` to either of these values, include an `SmsConfiguration` in the same request:
+#' 
+#' -   `ON` – Requires MFA for all users
+#' 
+#' -   `OPTIONAL` – Makes MFA optional for each user
+#' 
+#' If you omit `SmsConfiguration`, the operation returns an `InvalidParameterException`. To configure TOTP or email MFA, use the [`set_user_pool_mfa_config`][cognitoidentityprovider_set_user_pool_mfa_config] operation. You can also use [`set_user_pool_mfa_config`][cognitoidentityprovider_set_user_pool_mfa_config] to add MFA factors later.
 #' @param UserAttributeUpdateSettings The settings for updates to user attributes. These settings include the property `AttributesRequireVerificationBeforeUpdate`, a user-pool setting that tells Amazon Cognito how to handle changes to the value of your users' email address and phone number attributes. For more information, see [Verifying updates to email addresses and phone numbers](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-email-phone-verification.html#user-pool-settings-verifications-verify-attribute-updates).
 #' @param DeviceConfiguration The device-remembering configuration for a user pool. Device remembering or device tracking is a "Remember me on this device" option for user pools that perform authentication with the device key of a trusted device in the back end, instead of a user-provided MFA code. For more information about device authentication, see [Working with user devices in your user pool](https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html). A null value indicates that you have deactivated device remembering in your user pool.
 #' 
@@ -3480,6 +3618,8 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' 
 #' As a best practice, configure both `verified_email` and `verified_phone_number`, with one having a higher priority than the other.
 #' @param UserPoolTier The user pool [feature plan](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-sign-in-feature-plans.html), or tier. This parameter determines the eligibility of the user pool for features like managed login, access-token customization, and threat protection. Defaults to `ESSENTIALS`.
+#' @param KeyConfiguration The key configuration for the user pool. Specifies the key type and KMS key ARN for encryption.
+#' @param IssuerConfiguration The issuer configuration for the user pool. Specifies the issuer type for token generation.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3500,7 +3640,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'       ),
 #'       SignInPolicy = list(
 #'         AllowedFirstAuthFactors = list(
-#'           "PASSWORD"|"EMAIL_OTP"|"SMS_OTP"|"WEB_AUTHN"
+#'           "PASSWORD"|"EMAIL_OTP"|"SMS_OTP"|"WEB_AUTHN"|"SOFTWARE_TOKEN"
 #'         )
 #'       )
 #'     ),
@@ -3600,7 +3740,16 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'     SmsConfiguration = list(
 #'       SnsCallerArn = "string",
 #'       ExternalId = "string",
-#'       SnsRegion = "string"
+#'       SnsRegion = "string",
+#'       EumsSms = list(
+#'         CallerArn = "string",
+#'         ExternalId = "string",
+#'         OriginationIdentity = "string",
+#'         ConfigurationSetName = "string",
+#'         InEntityId = "string",
+#'         InTemplateId = "string",
+#'         Region = "string"
+#'       )
 #'     ),
 #'     UserPoolTags = list(
 #'       "string"
@@ -3636,7 +3785,14 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'         )
 #'       )
 #'     ),
-#'     UserPoolTier = "LITE"|"ESSENTIALS"|"PLUS"
+#'     UserPoolTier = "LITE"|"ESSENTIALS"|"PLUS",
+#'     KeyConfiguration = list(
+#'       KeyType = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KEY",
+#'       KmsKeyArn = "string"
+#'     ),
+#'     IssuerConfiguration = list(
+#'       Type = "ORIGINAL"|"UPDATED"
+#'     )
 #'   )
 #' )
 #' ```
@@ -3657,7 +3813,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'     ),
 #'     SignInPolicy = list(
 #'       AllowedFirstAuthFactors = list(
-#'         "PASSWORD"|"EMAIL_OTP"|"SMS_OTP"|"WEB_AUTHN"
+#'         "PASSWORD"|"EMAIL_OTP"|"SMS_OTP"|"WEB_AUTHN"|"SOFTWARE_TOKEN"
 #'       )
 #'     )
 #'   ),
@@ -3732,7 +3888,16 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'   SmsConfiguration = list(
 #'     SnsCallerArn = "string",
 #'     ExternalId = "string",
-#'     SnsRegion = "string"
+#'     SnsRegion = "string",
+#'     EumsSms = list(
+#'       CallerArn = "string",
+#'       ExternalId = "string",
+#'       OriginationIdentity = "string",
+#'       ConfigurationSetName = "string",
+#'       InEntityId = "string",
+#'       InTemplateId = "string",
+#'       Region = "string"
+#'     )
 #'   ),
 #'   UserPoolTags = list(
 #'     "string"
@@ -3780,7 +3945,14 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'       )
 #'     )
 #'   ),
-#'   UserPoolTier = "LITE"|"ESSENTIALS"|"PLUS"
+#'   UserPoolTier = "LITE"|"ESSENTIALS"|"PLUS",
+#'   KeyConfiguration = list(
+#'     KeyType = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KEY",
+#'     KmsKeyArn = "string"
+#'   ),
+#'   IssuerConfiguration = list(
+#'     Type = "ORIGINAL"|"UPDATED"
+#'   )
 #' )
 #' ```
 #'
@@ -3789,7 +3961,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' @rdname cognitoidentityprovider_create_user_pool
 #'
 #' @aliases cognitoidentityprovider_create_user_pool
-cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, DeletionProtection = NULL, LambdaConfig = NULL, AutoVerifiedAttributes = NULL, AliasAttributes = NULL, UsernameAttributes = NULL, SmsVerificationMessage = NULL, EmailVerificationMessage = NULL, EmailVerificationSubject = NULL, VerificationMessageTemplate = NULL, SmsAuthenticationMessage = NULL, MfaConfiguration = NULL, UserAttributeUpdateSettings = NULL, DeviceConfiguration = NULL, EmailConfiguration = NULL, SmsConfiguration = NULL, UserPoolTags = NULL, AdminCreateUserConfig = NULL, Schema = NULL, UserPoolAddOns = NULL, UsernameConfiguration = NULL, AccountRecoverySetting = NULL, UserPoolTier = NULL) {
+cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, DeletionProtection = NULL, LambdaConfig = NULL, AutoVerifiedAttributes = NULL, AliasAttributes = NULL, UsernameAttributes = NULL, SmsVerificationMessage = NULL, EmailVerificationMessage = NULL, EmailVerificationSubject = NULL, VerificationMessageTemplate = NULL, SmsAuthenticationMessage = NULL, MfaConfiguration = NULL, UserAttributeUpdateSettings = NULL, DeviceConfiguration = NULL, EmailConfiguration = NULL, SmsConfiguration = NULL, UserPoolTags = NULL, AdminCreateUserConfig = NULL, Schema = NULL, UserPoolAddOns = NULL, UsernameConfiguration = NULL, AccountRecoverySetting = NULL, UserPoolTier = NULL, KeyConfiguration = NULL, IssuerConfiguration = NULL) {
   op <- new_operation(
     name = "CreateUserPool",
     http_method = "POST",
@@ -3798,7 +3970,7 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cognitoidentityprovider$create_user_pool_input(PoolName = PoolName, Policies = Policies, DeletionProtection = DeletionProtection, LambdaConfig = LambdaConfig, AutoVerifiedAttributes = AutoVerifiedAttributes, AliasAttributes = AliasAttributes, UsernameAttributes = UsernameAttributes, SmsVerificationMessage = SmsVerificationMessage, EmailVerificationMessage = EmailVerificationMessage, EmailVerificationSubject = EmailVerificationSubject, VerificationMessageTemplate = VerificationMessageTemplate, SmsAuthenticationMessage = SmsAuthenticationMessage, MfaConfiguration = MfaConfiguration, UserAttributeUpdateSettings = UserAttributeUpdateSettings, DeviceConfiguration = DeviceConfiguration, EmailConfiguration = EmailConfiguration, SmsConfiguration = SmsConfiguration, UserPoolTags = UserPoolTags, AdminCreateUserConfig = AdminCreateUserConfig, Schema = Schema, UserPoolAddOns = UserPoolAddOns, UsernameConfiguration = UsernameConfiguration, AccountRecoverySetting = AccountRecoverySetting, UserPoolTier = UserPoolTier)
+  input <- .cognitoidentityprovider$create_user_pool_input(PoolName = PoolName, Policies = Policies, DeletionProtection = DeletionProtection, LambdaConfig = LambdaConfig, AutoVerifiedAttributes = AutoVerifiedAttributes, AliasAttributes = AliasAttributes, UsernameAttributes = UsernameAttributes, SmsVerificationMessage = SmsVerificationMessage, EmailVerificationMessage = EmailVerificationMessage, EmailVerificationSubject = EmailVerificationSubject, VerificationMessageTemplate = VerificationMessageTemplate, SmsAuthenticationMessage = SmsAuthenticationMessage, MfaConfiguration = MfaConfiguration, UserAttributeUpdateSettings = UserAttributeUpdateSettings, DeviceConfiguration = DeviceConfiguration, EmailConfiguration = EmailConfiguration, SmsConfiguration = SmsConfiguration, UserPoolTags = UserPoolTags, AdminCreateUserConfig = AdminCreateUserConfig, Schema = Schema, UserPoolAddOns = UserPoolAddOns, UsernameConfiguration = UsernameConfiguration, AccountRecoverySetting = AccountRecoverySetting, UserPoolTier = UserPoolTier, KeyConfiguration = KeyConfiguration, IssuerConfiguration = IssuerConfiguration)
   output <- .cognitoidentityprovider$create_user_pool_output()
   config <- get_config()
   svc <- .cognitoidentityprovider$service(config, op)
@@ -4122,25 +4294,34 @@ cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientNa
 #'
 #' @usage
 #' cognitoidentityprovider_create_user_pool_domain(Domain, UserPoolId,
-#'   ManagedLoginVersion, CustomDomainConfig)
+#'   ManagedLoginVersion, CustomDomainConfig, Routing)
 #'
 #' @param Domain &#91;required&#93; The domain string. For custom domains, this is the fully-qualified domain name, such as `auth.example.com`. For prefix domains, this is the prefix alone, such as `myprefix`. A prefix value of `myprefix` for a user pool in the `us-east-1` Region results in a domain of `myprefix.auth.us-east-1.amazoncognito.com`.
 #' @param UserPoolId &#91;required&#93; The ID of the user pool where you want to add a domain.
 #' @param ManagedLoginVersion The version of managed login branding that you want to apply to your domain. A value of `1` indicates hosted UI (classic) and a version of `2` indicates managed login.
 #' 
 #' Managed login requires that your user pool be configured for any [feature plan](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-sign-in-feature-plans.html) other than `Lite`.
+#' 
+#' A `ManagedLoginVersion` value of `2` does not activate managed login pages for your app client. When you create an app client programmatically, your app client has no branding style. To use managed login, create a branding style using the [`create_managed_login_branding`][cognitoidentityprovider_create_managed_login_branding] operation. When you use the console, Amazon Cognito assigns a default branding style automatically. When you use the API or an SDK, you must create a branding style yourself.
 #' @param CustomDomainConfig The configuration for a custom domain. Configures your domain with an Certificate Manager certificate in the `us-east-1` Region.
 #' 
 #' Provide this parameter only if you want to use a [custom domain](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html) for your user pool. Otherwise, you can omit this parameter and use a [prefix domain](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain-prefix.html) instead.
 #' 
 #' When you create a custom domain, the passkey RP ID defaults to the custom domain. If you had a prefix domain active, this will cause passkey integration for your prefix domain to stop working due to a mismatch in RP ID. To keep the prefix domain passkey integration working, you can explicitly set RP ID to the prefix domain.
+#' @param Routing The configuration of routing for requests to the domain for replicas of a replicated user pool. The routing configuration is currently only supported for custom domains.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   ManagedLoginVersion = 123,
-#'   CloudFrontDomain = "string"
+#'   CloudFrontDomain = "string",
+#'   Routing = list(
+#'     Failover = list(
+#'       SecondaryRegion = "string",
+#'       PrimaryRoute53HealthCheckId = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4151,7 +4332,14 @@ cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientNa
 #'   UserPoolId = "string",
 #'   ManagedLoginVersion = 123,
 #'   CustomDomainConfig = list(
-#'     CertificateArn = "string"
+#'     CertificateArn = "string",
+#'     SecurityPolicy = "TLS_V1"|"TLS_V1_2_2021"|"TLS_V1_3_2025"
+#'   ),
+#'   Routing = list(
+#'     Failover = list(
+#'       SecondaryRegion = "string",
+#'       PrimaryRoute53HealthCheckId = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -4161,7 +4349,7 @@ cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientNa
 #' @rdname cognitoidentityprovider_create_user_pool_domain
 #'
 #' @aliases cognitoidentityprovider_create_user_pool_domain
-cognitoidentityprovider_create_user_pool_domain <- function(Domain, UserPoolId, ManagedLoginVersion = NULL, CustomDomainConfig = NULL) {
+cognitoidentityprovider_create_user_pool_domain <- function(Domain, UserPoolId, ManagedLoginVersion = NULL, CustomDomainConfig = NULL, Routing = NULL) {
   op <- new_operation(
     name = "CreateUserPoolDomain",
     http_method = "POST",
@@ -4170,7 +4358,7 @@ cognitoidentityprovider_create_user_pool_domain <- function(Domain, UserPoolId, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cognitoidentityprovider$create_user_pool_domain_input(Domain = Domain, UserPoolId = UserPoolId, ManagedLoginVersion = ManagedLoginVersion, CustomDomainConfig = CustomDomainConfig)
+  input <- .cognitoidentityprovider$create_user_pool_domain_input(Domain = Domain, UserPoolId = UserPoolId, ManagedLoginVersion = ManagedLoginVersion, CustomDomainConfig = CustomDomainConfig, Routing = Routing)
   output <- .cognitoidentityprovider$create_user_pool_domain_output()
   config <- get_config()
   svc <- .cognitoidentityprovider$service(config, op)
@@ -4179,6 +4367,76 @@ cognitoidentityprovider_create_user_pool_domain <- function(Domain, UserPoolId, 
   return(response)
 }
 .cognitoidentityprovider$operations$create_user_pool_domain <- cognitoidentityprovider_create_user_pool_domain
+
+#' Creates a replica of an existing user pool in a specified Amazon Web
+#' Services Region
+#'
+#' @description
+#' Creates a replica of an existing user pool in a specified Amazon Web Services Region. The replica enables multi-region replication for high availability and disaster recovery. To create a replica, you must have permissions to create user pools in the target Region.
+#' 
+#' Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
+#' 
+#' **Learn more**
+#' 
+#' -   [Signing Amazon Web Services API Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
+#' 
+#' -   [Using the Amazon Cognito user pools API and user pool endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
+#'
+#' @usage
+#' cognitoidentityprovider_create_user_pool_replica(UserPoolId, RegionName,
+#'   UserPoolTags)
+#'
+#' @param UserPoolId &#91;required&#93; The ID of the user pool to replicate.
+#' @param RegionName &#91;required&#93; The Amazon Web Services Region where you want to create the replica user pool.
+#' @param UserPoolTags A map of tags to assign to the replica user pool. Each tag consists of a key and an optional value, both of which you define. You can maintain tags independently on replica user pools.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserPoolReplica = list(
+#'     RegionName = "string",
+#'     Status = "CREATING"|"ACTIVE"|"INACTIVE"|"DELETING",
+#'     Role = "PRIMARY"|"SECONDARY",
+#'     UserPoolArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_user_pool_replica(
+#'   UserPoolId = "string",
+#'   RegionName = "string",
+#'   UserPoolTags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentityprovider_create_user_pool_replica
+#'
+#' @aliases cognitoidentityprovider_create_user_pool_replica
+cognitoidentityprovider_create_user_pool_replica <- function(UserPoolId, RegionName, UserPoolTags = NULL) {
+  op <- new_operation(
+    name = "CreateUserPoolReplica",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cognitoidentityprovider$create_user_pool_replica_input(UserPoolId = UserPoolId, RegionName = RegionName, UserPoolTags = UserPoolTags)
+  output <- .cognitoidentityprovider$create_user_pool_replica_output()
+  config <- get_config()
+  svc <- .cognitoidentityprovider$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentityprovider$operations$create_user_pool_replica <- cognitoidentityprovider_create_user_pool_replica
 
 #' Deletes a group from the specified user pool
 #'
@@ -4746,6 +5004,70 @@ cognitoidentityprovider_delete_user_pool_domain <- function(Domain, UserPoolId) 
 }
 .cognitoidentityprovider$operations$delete_user_pool_domain <- cognitoidentityprovider_delete_user_pool_domain
 
+#' Deletes a secondary replica user pool
+#'
+#' @description
+#' Deletes a secondary replica user pool. You can only delete replicas that are in the INACTIVE status. This operation must be called from the primary Region.
+#' 
+#' Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
+#' 
+#' **Learn more**
+#' 
+#' -   [Signing Amazon Web Services API Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
+#' 
+#' -   [Using the Amazon Cognito user pools API and user pool endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
+#'
+#' @usage
+#' cognitoidentityprovider_delete_user_pool_replica(UserPoolId, RegionName)
+#'
+#' @param UserPoolId &#91;required&#93; The ID of the user pool that contains the replica to delete.
+#' @param RegionName &#91;required&#93; The Amazon Web Services Region of the replica to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserPoolReplica = list(
+#'     RegionName = "string",
+#'     Status = "CREATING"|"ACTIVE"|"INACTIVE"|"DELETING",
+#'     Role = "PRIMARY"|"SECONDARY",
+#'     UserPoolArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_user_pool_replica(
+#'   UserPoolId = "string",
+#'   RegionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentityprovider_delete_user_pool_replica
+#'
+#' @aliases cognitoidentityprovider_delete_user_pool_replica
+cognitoidentityprovider_delete_user_pool_replica <- function(UserPoolId, RegionName) {
+  op <- new_operation(
+    name = "DeleteUserPoolReplica",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cognitoidentityprovider$delete_user_pool_replica_input(UserPoolId = UserPoolId, RegionName = RegionName)
+  output <- .cognitoidentityprovider$delete_user_pool_replica_output()
+  config <- get_config()
+  svc <- .cognitoidentityprovider$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentityprovider$operations$delete_user_pool_replica <- cognitoidentityprovider_delete_user_pool_replica
+
 #' Deletes a registered passkey, or WebAuthn, authenticator for the
 #' currently signed-in user
 #'
@@ -5269,6 +5591,87 @@ cognitoidentityprovider_describe_terms <- function(TermsId, UserPoolId) {
 }
 .cognitoidentityprovider$operations$describe_terms <- cognitoidentityprovider_describe_terms
 
+#' Returns details for the terms documents that are associated with an app
+#' client, identified by the app client ID, user pool ID, and terms name
+#'
+#' @description
+#' Returns details for the terms documents that are associated with an app client, identified by the app client ID, user pool ID, and terms name. For more information, see [Terms documents](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managed-login.html#managed-login-terms-documents).
+#' 
+#' To call [`describe_terms_by_client`][cognitoidentityprovider_describe_terms_by_client], you must have the `cognito-idp:DescribeTermsByClient` Identity and Access Management (IAM) permission. This operation additionally validates your permission for `cognito-idp:DescribeTerms`, the action for . As a result, an IAM policy that denies `cognito-idp:DescribeTerms` also denies requests to [`describe_terms_by_client`][cognitoidentityprovider_describe_terms_by_client].
+#' 
+#' Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
+#' 
+#' **Learn more**
+#' 
+#' -   [Signing Amazon Web Services API Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
+#' 
+#' -   [Using the Amazon Cognito user pools API and user pool endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
+#'
+#' @usage
+#' cognitoidentityprovider_describe_terms_by_client(ClientId, UserPoolId,
+#'   TermsName)
+#'
+#' @param ClientId &#91;required&#93; The ID of the app client that the terms documents are associated with.
+#' @param UserPoolId &#91;required&#93; The ID of the user pool that contains the terms documents that you want to describe.
+#' @param TermsName &#91;required&#93; The name of the terms documents that you want to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Terms = list(
+#'     TermsId = "string",
+#'     UserPoolId = "string",
+#'     ClientId = "string",
+#'     TermsName = "string",
+#'     TermsSource = "LINK",
+#'     Enforcement = "NONE",
+#'     Links = list(
+#'       "string"
+#'     ),
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_terms_by_client(
+#'   ClientId = "string",
+#'   UserPoolId = "string",
+#'   TermsName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentityprovider_describe_terms_by_client
+#'
+#' @aliases cognitoidentityprovider_describe_terms_by_client
+cognitoidentityprovider_describe_terms_by_client <- function(ClientId, UserPoolId, TermsName) {
+  op <- new_operation(
+    name = "DescribeTermsByClient",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cognitoidentityprovider$describe_terms_by_client_input(ClientId = ClientId, UserPoolId = UserPoolId, TermsName = TermsName)
+  output <- .cognitoidentityprovider$describe_terms_by_client_output()
+  config <- get_config()
+  svc <- .cognitoidentityprovider$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentityprovider$operations$describe_terms_by_client <- cognitoidentityprovider_describe_terms_by_client
+
 #' Describes a user import job
 #'
 #' @description
@@ -5303,7 +5706,8 @@ cognitoidentityprovider_describe_terms <- function(TermsId, UserPoolId) {
 #'     ImportedUsers = 123,
 #'     SkippedUsers = 123,
 #'     FailedUsers = 123,
-#'     CompletionMessage = "string"
+#'     CompletionMessage = "string",
+#'     PasswordHashingAlgorithm = "BCRYPT"|"SCRYPT"|"ARGON2ID"|"PBKDF2_SHA256"
 #'   )
 #' )
 #' ```
@@ -5377,7 +5781,7 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
 #'       ),
 #'       SignInPolicy = list(
 #'         AllowedFirstAuthFactors = list(
-#'           "PASSWORD"|"EMAIL_OTP"|"SMS_OTP"|"WEB_AUTHN"
+#'           "PASSWORD"|"EMAIL_OTP"|"SMS_OTP"|"WEB_AUTHN"|"SOFTWARE_TOKEN"
 #'         )
 #'       )
 #'     ),
@@ -5477,7 +5881,16 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
 #'     SmsConfiguration = list(
 #'       SnsCallerArn = "string",
 #'       ExternalId = "string",
-#'       SnsRegion = "string"
+#'       SnsRegion = "string",
+#'       EumsSms = list(
+#'         CallerArn = "string",
+#'         ExternalId = "string",
+#'         OriginationIdentity = "string",
+#'         ConfigurationSetName = "string",
+#'         InEntityId = "string",
+#'         InTemplateId = "string",
+#'         Region = "string"
+#'       )
 #'     ),
 #'     UserPoolTags = list(
 #'       "string"
@@ -5513,7 +5926,14 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
 #'         )
 #'       )
 #'     ),
-#'     UserPoolTier = "LITE"|"ESSENTIALS"|"PLUS"
+#'     UserPoolTier = "LITE"|"ESSENTIALS"|"PLUS",
+#'     KeyConfiguration = list(
+#'       KeyType = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KEY",
+#'       KmsKeyArn = "string"
+#'     ),
+#'     IssuerConfiguration = list(
+#'       Type = "ORIGINAL"|"UPDATED"
+#'     )
 #'   )
 #' )
 #' ```
@@ -5674,6 +6094,8 @@ cognitoidentityprovider_describe_user_pool_client <- function(UserPoolId, Client
 #' @description
 #' Given a user pool domain name, returns information about the domain configuration.
 #' 
+#' This operation doesn't return results when you query a prefix domain in a secondary Region. Prefix domains are Region-specific and can only be described in the Region where they were created. To describe a prefix domain for a replica user pool, make the request to the primary Region's endpoint.
+#' 
 #' Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
 #' 
 #' **Learn more**
@@ -5700,9 +6122,16 @@ cognitoidentityprovider_describe_user_pool_client <- function(UserPoolId, Client
 #'     Version = "string",
 #'     Status = "CREATING"|"DELETING"|"UPDATING"|"ACTIVE"|"FAILED",
 #'     CustomDomainConfig = list(
-#'       CertificateArn = "string"
+#'       CertificateArn = "string",
+#'       SecurityPolicy = "TLS_V1"|"TLS_V1_2_2021"|"TLS_V1_3_2025"
 #'     ),
-#'     ManagedLoginVersion = 123
+#'     ManagedLoginVersion = 123,
+#'     Routing = list(
+#'       Failover = list(
+#'         SecondaryRegion = "string",
+#'         PrimaryRoute53HealthCheckId = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -5803,7 +6232,7 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 #' 
-#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In \emph{\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}} , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
+#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
 #'
 #' @usage
 #' cognitoidentityprovider_forgot_password(ClientId, SecretHash,
@@ -5945,6 +6374,86 @@ cognitoidentityprovider_get_csv_header <- function(UserPoolId) {
   return(response)
 }
 .cognitoidentityprovider$operations$get_csv_header <- cognitoidentityprovider_get_csv_header
+
+#' Issues an access token for machine-to-machine (M2M) authorization
+#'
+#' @description
+#' Issues an access token for machine-to-machine (M2M) authorization. Your app client provides its client ID and secret, and receives an access token that authorizes requests to your resource servers. [`get_client_token`][cognitoidentityprovider_get_client_token] provides the same functionality as the OAuth2 client-credentials grant; both authorize an application rather than a user.
+#' 
+#' To use this operation, you must configure the app client with a client secret and enable the `ALLOW_CLIENT_TOKEN_AUTH` authentication flow. The `ALLOW_CLIENT_TOKEN_AUTH` flow is mutually exclusive with user authentication flows. It must be the only authentication flow that you configure for the app client. For more information, see [Scopes, M2M, and resource servers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-define-resource-servers.html).
+#' 
+#' Amazon Cognito doesn't evaluate Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you can't use IAM credentials to authorize requests, and you can't grant IAM permissions in policies. For more information about authorization models in Amazon Cognito, see [Using the Amazon Cognito user pools API and user pool endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
+#'
+#' @usage
+#' cognitoidentityprovider_get_client_token(ClientId, Secret, Scopes,
+#'   ClientMetadata)
+#'
+#' @param ClientId &#91;required&#93; The ID of the app client that requests the access token. The app client must have a client secret and the `ALLOW_CLIENT_TOKEN_AUTH` authentication flow.
+#' @param Secret &#91;required&#93; An active secret for the app client.
+#' @param Scopes The custom scopes to authorize in the access token, in the format `resource-server-identifier/scope-name`. Each scope must belong to a resource server in your user pool. If you don't specify any scopes, Amazon Cognito authorizes the scopes that are configured for the app client.
+#' @param ClientMetadata A map of custom key-value pairs that you can provide as input for any custom workflows that this action triggers. You create custom workflows by assigning Lambda functions to user pool triggers.
+#' 
+#' When Amazon Cognito invokes any of these functions, it passes a JSON payload, which the function receives as input. This payload contains a `clientMetadata` attribute that provides the data that you assigned to the ClientMetadata parameter in your request. In your function code, you can process the `clientMetadata` value to enhance your workflow for your specific needs.
+#' 
+#' To review the Lambda trigger types that Amazon Cognito invokes at runtime with API requests, see [Connecting API actions to Lambda triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html#lambda-triggers-by-event) in the *Amazon Cognito Developer Guide*.
+#' 
+#' When you use the `ClientMetadata` parameter, note that Amazon Cognito won't do the following:
+#' 
+#' -   Store the `ClientMetadata` value. This data is available only to Lambda triggers that are assigned to a user pool to support custom workflows. If your user pool configuration doesn't include triggers, the `ClientMetadata` parameter serves no purpose.
+#' 
+#' -   Validate the `ClientMetadata` value.
+#' 
+#' -   Encrypt the `ClientMetadata` value. Don't send sensitive information in this parameter.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientAuthenticationResult = list(
+#'     AccessToken = "string",
+#'     ExpiresIn = 123,
+#'     TokenType = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_client_token(
+#'   ClientId = "string",
+#'   Secret = "string",
+#'   Scopes = list(
+#'     "string"
+#'   ),
+#'   ClientMetadata = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentityprovider_get_client_token
+#'
+#' @aliases cognitoidentityprovider_get_client_token
+cognitoidentityprovider_get_client_token <- function(ClientId, Secret, Scopes = NULL, ClientMetadata = NULL) {
+  op <- new_operation(
+    name = "GetClientToken",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cognitoidentityprovider$get_client_token_input(ClientId = ClientId, Secret = Secret, Scopes = Scopes, ClientMetadata = ClientMetadata)
+  output <- .cognitoidentityprovider$get_client_token_output()
+  config <- get_config()
+  svc <- .cognitoidentityprovider$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentityprovider$operations$get_client_token <- cognitoidentityprovider_get_client_token
 
 #' Given a device key, returns information about a remembered device for
 #' the current user
@@ -6240,6 +6749,77 @@ cognitoidentityprovider_get_log_delivery_configuration <- function(UserPoolId) {
 }
 .cognitoidentityprovider$operations$get_log_delivery_configuration <- cognitoidentityprovider_get_log_delivery_configuration
 
+#' Returns the current provisioned limit for a specific API category
+#'
+#' @description
+#' Returns the current provisioned limit for a specific API category.
+#' 
+#' Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
+#' 
+#' **Learn more**
+#' 
+#' -   [Signing Amazon Web Services API Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
+#' 
+#' -   [Using the Amazon Cognito user pools API and user pool endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
+#'
+#' @usage
+#' cognitoidentityprovider_get_provisioned_limit(LimitDefinition)
+#'
+#' @param LimitDefinition &#91;required&#93; The limit to retrieve. Specify the limit class and the attributes that identify the limit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Limit = list(
+#'     LimitDefinition = list(
+#'       LimitClass = "API_CATEGORY",
+#'       Attributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     ProvisionedLimitValue = 123,
+#'     FreeLimitValue = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_provisioned_limit(
+#'   LimitDefinition = list(
+#'     LimitClass = "API_CATEGORY",
+#'     Attributes = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentityprovider_get_provisioned_limit
+#'
+#' @aliases cognitoidentityprovider_get_provisioned_limit
+cognitoidentityprovider_get_provisioned_limit <- function(LimitDefinition) {
+  op <- new_operation(
+    name = "GetProvisionedLimit",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cognitoidentityprovider$get_provisioned_limit_input(LimitDefinition = LimitDefinition)
+  output <- .cognitoidentityprovider$get_provisioned_limit_output()
+  config <- get_config()
+  svc <- .cognitoidentityprovider$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentityprovider$operations$get_provisioned_limit <- cognitoidentityprovider_get_provisioned_limit
+
 #' Given a user pool ID, returns the signing certificate for SAML 2
 #'
 #' @description
@@ -6532,7 +7112,7 @@ cognitoidentityprovider_get_user <- function(AccessToken) {
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 #' 
-#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In \emph{\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}} , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
+#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
 #'
 #' @usage
 #' cognitoidentityprovider_get_user_attribute_verification_code(
@@ -6629,7 +7209,7 @@ cognitoidentityprovider_get_user_attribute_verification_code <- function(AccessT
 #'     "string"
 #'   ),
 #'   ConfiguredUserAuthFactors = list(
-#'     "PASSWORD"|"EMAIL_OTP"|"SMS_OTP"|"WEB_AUTHN"
+#'     "PASSWORD"|"EMAIL_OTP"|"SMS_OTP"|"WEB_AUTHN"|"SOFTWARE_TOKEN"
 #'   )
 #' )
 #' ```
@@ -6701,7 +7281,16 @@ cognitoidentityprovider_get_user_auth_factors <- function(AccessToken) {
 #'     SmsConfiguration = list(
 #'       SnsCallerArn = "string",
 #'       ExternalId = "string",
-#'       SnsRegion = "string"
+#'       SnsRegion = "string",
+#'       EumsSms = list(
+#'         CallerArn = "string",
+#'         ExternalId = "string",
+#'         OriginationIdentity = "string",
+#'         ConfigurationSetName = "string",
+#'         InEntityId = "string",
+#'         InTemplateId = "string",
+#'         Region = "string"
+#'       )
 #'     )
 #'   ),
 #'   SoftwareTokenMfaConfiguration = list(
@@ -6820,7 +7409,7 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 #' 
-#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In \emph{\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}} , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
+#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
 #'
 #' @usage
 #' cognitoidentityprovider_initiate_auth(AuthFlow, AuthParameters,
@@ -7475,7 +8064,8 @@ cognitoidentityprovider_list_terms <- function(UserPoolId, MaxResults = NULL, Ne
 #'       ImportedUsers = 123,
 #'       SkippedUsers = 123,
 #'       FailedUsers = 123,
-#'       CompletionMessage = "string"
+#'       CompletionMessage = "string",
+#'       PasswordHashingAlgorithm = "BCRYPT"|"SCRYPT"|"ARGON2ID"|"PBKDF2_SHA256"
 #'     )
 #'   ),
 #'   PaginationToken = "string"
@@ -7647,6 +8237,74 @@ cognitoidentityprovider_list_user_pool_clients <- function(UserPoolId, MaxResult
 }
 .cognitoidentityprovider$operations$list_user_pool_clients <- cognitoidentityprovider_list_user_pool_clients
 
+#' Lists all replicas for a user pool, including both primary and secondary
+#' replicas
+#'
+#' @description
+#' Lists all replicas for a user pool, including both primary and secondary replicas. We recommend using pagination to ensure that the operation returns quickly and successfully.
+#' 
+#' Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
+#' 
+#' **Learn more**
+#' 
+#' -   [Signing Amazon Web Services API Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
+#' 
+#' -   [Using the Amazon Cognito user pools API and user pool endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
+#'
+#' @usage
+#' cognitoidentityprovider_list_user_pool_replicas(UserPoolId, NextToken)
+#'
+#' @param UserPoolId &#91;required&#93; The ID of the user pool for which to list replicas.
+#' @param NextToken A pagination token for retrieving the next page of results. If this parameter is omitted, the operation returns the first page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserPoolReplicas = list(
+#'     list(
+#'       RegionName = "string",
+#'       Status = "CREATING"|"ACTIVE"|"INACTIVE"|"DELETING",
+#'       Role = "PRIMARY"|"SECONDARY",
+#'       UserPoolArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_user_pool_replicas(
+#'   UserPoolId = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentityprovider_list_user_pool_replicas
+#'
+#' @aliases cognitoidentityprovider_list_user_pool_replicas
+cognitoidentityprovider_list_user_pool_replicas <- function(UserPoolId, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListUserPoolReplicas",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cognitoidentityprovider$list_user_pool_replicas_input(UserPoolId = UserPoolId, NextToken = NextToken)
+  output <- .cognitoidentityprovider$list_user_pool_replicas_output()
+  config <- get_config()
+  svc <- .cognitoidentityprovider$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentityprovider$operations$list_user_pool_replicas <- cognitoidentityprovider_list_user_pool_replicas
+
 #' Lists user pools and their details in the current Amazon Web Services
 #' account
 #'
@@ -7710,6 +8368,9 @@ cognitoidentityprovider_list_user_pool_clients <- function(UserPoolId, MaxResult
 #'       ),
 #'       CreationDate = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       ReplicaRegions = list(
+#'         "string"
 #'       )
 #'     )
 #'   ),
@@ -8058,7 +8719,7 @@ cognitoidentityprovider_list_web_authn_credentials <- function(AccessToken, Next
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 #' 
-#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In \emph{\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}} , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
+#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
 #'
 #' @usage
 #' cognitoidentityprovider_resend_confirmation_code(ClientId, SecretHash,
@@ -8153,7 +8814,7 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 #' 
-#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In \emph{\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}} , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
+#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
 #'
 #' @usage
 #' cognitoidentityprovider_respond_to_auth_challenge(ClientId,
@@ -8531,6 +9192,8 @@ cognitoidentityprovider_set_log_delivery_configuration <- function(UserPoolId, L
 #' -   IP-address denylist and allowlist
 #' 
 #' To set the risk configuration for the user pool to defaults, send this request with only the `UserPoolId` parameter. To reset the threat protection settings of an app client to be inherited from the user pool, send `UserPoolId` and `ClientId` parameters only. To change threat protection to audit-only or off, update the value of `UserPoolAddOns` in an [`update_user_pool`][cognitoidentityprovider_update_user_pool] request. To activate this setting, your user pool must be on the [Plus tier](https://docs.aws.amazon.com/cognito/latest/developerguide/feature-plans-features-plus.html).
+#' 
+#' In secondary regions for user pools with multi-region replication, only the `SourceARN` and `From` attributes of `NotifyConfiguration` can be modified to configure region-specific SES integration. All other risk configuration settings must match the existing values to maintain consistency across replicas.
 #'
 #' @usage
 #' cognitoidentityprovider_set_risk_configuration(UserPoolId, ClientId,
@@ -8852,7 +9515,7 @@ cognitoidentityprovider_set_user_mfa_preference <- function(SMSMfaSettings = NUL
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 #' 
-#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In \emph{\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}} , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
+#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
 #'
 #' @usage
 #' cognitoidentityprovider_set_user_pool_mfa_config(UserPoolId,
@@ -8877,7 +9540,16 @@ cognitoidentityprovider_set_user_mfa_preference <- function(SMSMfaSettings = NUL
 #'     SmsConfiguration = list(
 #'       SnsCallerArn = "string",
 #'       ExternalId = "string",
-#'       SnsRegion = "string"
+#'       SnsRegion = "string",
+#'       EumsSms = list(
+#'         CallerArn = "string",
+#'         ExternalId = "string",
+#'         OriginationIdentity = "string",
+#'         ConfigurationSetName = "string",
+#'         InEntityId = "string",
+#'         InTemplateId = "string",
+#'         Region = "string"
+#'       )
 #'     )
 #'   ),
 #'   SoftwareTokenMfaConfiguration = list(
@@ -8905,7 +9577,16 @@ cognitoidentityprovider_set_user_mfa_preference <- function(SMSMfaSettings = NUL
 #'     SmsConfiguration = list(
 #'       SnsCallerArn = "string",
 #'       ExternalId = "string",
-#'       SnsRegion = "string"
+#'       SnsRegion = "string",
+#'       EumsSms = list(
+#'         CallerArn = "string",
+#'         ExternalId = "string",
+#'         OriginationIdentity = "string",
+#'         ConfigurationSetName = "string",
+#'         InEntityId = "string",
+#'         InTemplateId = "string",
+#'         Region = "string"
+#'       )
 #'     )
 #'   ),
 #'   SoftwareTokenMfaConfiguration = list(
@@ -9013,7 +9694,7 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 #' 
-#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In \emph{\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}} , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
+#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
 #' 
 #' You might receive a `LimitExceeded` exception in response to this request if you have exceeded a rate quota for email or SMS messages, and if your user pool automatically verifies email addresses or phone numbers. When you get this exception in the response, the user is successfully created and is in an `UNCONFIRMED` state.
 #'
@@ -9160,7 +9841,8 @@ cognitoidentityprovider_sign_up <- function(ClientId, SecretHash = NULL, Usernam
 #'     ImportedUsers = 123,
 #'     SkippedUsers = 123,
 #'     FailedUsers = 123,
-#'     CompletionMessage = "string"
+#'     CompletionMessage = "string",
+#'     PasswordHashingAlgorithm = "BCRYPT"|"SCRYPT"|"ARGON2ID"|"PBKDF2_SHA256"
 #'   )
 #' )
 #' ```
@@ -9284,7 +9966,8 @@ cognitoidentityprovider_start_web_authn_registration <- function(AccessToken) {
 #'     ImportedUsers = 123,
 #'     SkippedUsers = 123,
 #'     FailedUsers = 123,
-#'     CompletionMessage = "string"
+#'     CompletionMessage = "string",
+#'     PasswordHashingAlgorithm = "BCRYPT"|"SCRYPT"|"ARGON2ID"|"PBKDF2_SHA256"
 #'   )
 #' )
 #' ```
@@ -9863,6 +10546,82 @@ cognitoidentityprovider_update_managed_login_branding <- function(UserPoolId = N
 }
 .cognitoidentityprovider$operations$update_managed_login_branding <- cognitoidentityprovider_update_managed_login_branding
 
+#' Sets the provisioned limit for a specific API category
+#'
+#' @description
+#' Sets the provisioned limit for a specific API category. The value must be between the default limit and your account-level maximum limit in Service Quotas.
+#' 
+#' Managed login user pools don't support adjustments to the `UserAuthentication` or `UserFederation` categories. To increase these limits, submit a Service Quotas increase request.
+#' 
+#' Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
+#' 
+#' **Learn more**
+#' 
+#' -   [Signing Amazon Web Services API Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
+#' 
+#' -   [Using the Amazon Cognito user pools API and user pool endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
+#'
+#' @usage
+#' cognitoidentityprovider_update_provisioned_limit(LimitDefinition,
+#'   RequestedLimitValue)
+#'
+#' @param LimitDefinition &#91;required&#93; The limit to update. Specify the limit class and the attributes that identify the limit.
+#' @param RequestedLimitValue &#91;required&#93; The provisioned rate to set, in requests per second (RPS).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Limit = list(
+#'     LimitDefinition = list(
+#'       LimitClass = "API_CATEGORY",
+#'       Attributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     ProvisionedLimitValue = 123,
+#'     FreeLimitValue = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_provisioned_limit(
+#'   LimitDefinition = list(
+#'     LimitClass = "API_CATEGORY",
+#'     Attributes = list(
+#'       "string"
+#'     )
+#'   ),
+#'   RequestedLimitValue = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentityprovider_update_provisioned_limit
+#'
+#' @aliases cognitoidentityprovider_update_provisioned_limit
+cognitoidentityprovider_update_provisioned_limit <- function(LimitDefinition, RequestedLimitValue) {
+  op <- new_operation(
+    name = "UpdateProvisionedLimit",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cognitoidentityprovider$update_provisioned_limit_input(LimitDefinition = LimitDefinition, RequestedLimitValue = RequestedLimitValue)
+  output <- .cognitoidentityprovider$update_provisioned_limit_output()
+  config <- get_config()
+  svc <- .cognitoidentityprovider$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentityprovider$operations$update_provisioned_limit <- cognitoidentityprovider_update_provisioned_limit
+
 #' Updates the name and scopes of a resource server
 #'
 #' @description
@@ -10053,7 +10812,7 @@ cognitoidentityprovider_update_terms <- function(TermsId, UserPoolId, TermsName 
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 #' 
-#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In \emph{\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}} , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
+#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
 #'
 #' @usage
 #' cognitoidentityprovider_update_user_attributes(UserAttributes,
@@ -10138,11 +10897,13 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' @description
 #' Updates the configuration of a user pool. To avoid setting parameters to Amazon Cognito defaults, construct this API request to pass the existing configuration of your user pool, modified to include the changes that you want to make.
 #' 
-#' With the exception of `UserPoolTier`, if you don't provide a value for an attribute, Amazon Cognito sets it to its default value.
+#' If you don't provide a value for an attribute, Amazon Cognito sets it to its default value.
+#' 
+#' In secondary regions for user pools with multi-region replication, regional configurations for email, SMS, Lambda functions, and tags can be updated. Both global and regional settings must be provided as inputs, with global settings required to match existing values to maintain consistency across replicas.
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 #' 
-#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In \emph{\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}} , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
+#' If you have never used SMS text messages with Amazon Cognito or any other Amazon Web Services service, Amazon Simple Notification Service might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers. After you test your app while in the sandbox environment, you can move out of the sandbox and into production. For more information, see [SMS message settings for Amazon Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html) in the *Amazon Cognito Developer Guide*.
 #' 
 #' Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
 #' 
@@ -10160,7 +10921,7 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #'   SmsAuthenticationMessage, UserAttributeUpdateSettings, MfaConfiguration,
 #'   DeviceConfiguration, EmailConfiguration, SmsConfiguration, UserPoolTags,
 #'   AdminCreateUserConfig, UserPoolAddOns, AccountRecoverySetting, PoolName,
-#'   UserPoolTier)
+#'   UserPoolTier, KeyConfiguration, IssuerConfiguration)
 #'
 #' @param UserPoolId &#91;required&#93; The ID of the user pool you want to update.
 #' @param Policies The password policy and sign-in policy in the user pool. The password policy sets options like password complexity requirements and password history. The sign-in policy sets the options available to applications in [choice-based authentication](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-selection-sdk.html#authentication-flows-selection-choice).
@@ -10193,6 +10954,8 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' @param AccountRecoverySetting The available verified method a user can use to recover their password when they call [`forgot_password`][cognitoidentityprovider_forgot_password]. You can use this setting to define a preferred method when a user has more than one method available. With this setting, SMS doesn't qualify for a valid password recovery mechanism if the user also has SMS multi-factor authentication (MFA) activated. In the absence of this setting, Amazon Cognito uses the legacy behavior to determine the recovery method where SMS is preferred through email.
 #' @param PoolName The updated name of your user pool.
 #' @param UserPoolTier The user pool [feature plan](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-sign-in-feature-plans.html), or tier. This parameter determines the eligibility of the user pool for features like managed login, access-token customization, and threat protection. Defaults to `ESSENTIALS`.
+#' @param KeyConfiguration The key configuration for the user pool. In secondary regions, this parameter must match the existing configuration and cannot be modified.
+#' @param IssuerConfiguration The issuer configuration for the user pool. In secondary regions, this parameter must match the existing configuration and cannot be modified.
 #'
 #' @return
 #' An empty list.
@@ -10213,7 +10976,7 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #'     ),
 #'     SignInPolicy = list(
 #'       AllowedFirstAuthFactors = list(
-#'         "PASSWORD"|"EMAIL_OTP"|"SMS_OTP"|"WEB_AUTHN"
+#'         "PASSWORD"|"EMAIL_OTP"|"SMS_OTP"|"WEB_AUTHN"|"SOFTWARE_TOKEN"
 #'       )
 #'     )
 #'   ),
@@ -10282,7 +11045,16 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #'   SmsConfiguration = list(
 #'     SnsCallerArn = "string",
 #'     ExternalId = "string",
-#'     SnsRegion = "string"
+#'     SnsRegion = "string",
+#'     EumsSms = list(
+#'       CallerArn = "string",
+#'       ExternalId = "string",
+#'       OriginationIdentity = "string",
+#'       ConfigurationSetName = "string",
+#'       InEntityId = "string",
+#'       InTemplateId = "string",
+#'       Region = "string"
+#'     )
 #'   ),
 #'   UserPoolTags = list(
 #'     "string"
@@ -10311,7 +11083,14 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #'     )
 #'   ),
 #'   PoolName = "string",
-#'   UserPoolTier = "LITE"|"ESSENTIALS"|"PLUS"
+#'   UserPoolTier = "LITE"|"ESSENTIALS"|"PLUS",
+#'   KeyConfiguration = list(
+#'     KeyType = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KEY",
+#'     KmsKeyArn = "string"
+#'   ),
+#'   IssuerConfiguration = list(
+#'     Type = "ORIGINAL"|"UPDATED"
+#'   )
 #' )
 #' ```
 #'
@@ -10320,7 +11099,7 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' @rdname cognitoidentityprovider_update_user_pool
 #'
 #' @aliases cognitoidentityprovider_update_user_pool
-cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL, DeletionProtection = NULL, LambdaConfig = NULL, AutoVerifiedAttributes = NULL, SmsVerificationMessage = NULL, EmailVerificationMessage = NULL, EmailVerificationSubject = NULL, VerificationMessageTemplate = NULL, SmsAuthenticationMessage = NULL, UserAttributeUpdateSettings = NULL, MfaConfiguration = NULL, DeviceConfiguration = NULL, EmailConfiguration = NULL, SmsConfiguration = NULL, UserPoolTags = NULL, AdminCreateUserConfig = NULL, UserPoolAddOns = NULL, AccountRecoverySetting = NULL, PoolName = NULL, UserPoolTier = NULL) {
+cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL, DeletionProtection = NULL, LambdaConfig = NULL, AutoVerifiedAttributes = NULL, SmsVerificationMessage = NULL, EmailVerificationMessage = NULL, EmailVerificationSubject = NULL, VerificationMessageTemplate = NULL, SmsAuthenticationMessage = NULL, UserAttributeUpdateSettings = NULL, MfaConfiguration = NULL, DeviceConfiguration = NULL, EmailConfiguration = NULL, SmsConfiguration = NULL, UserPoolTags = NULL, AdminCreateUserConfig = NULL, UserPoolAddOns = NULL, AccountRecoverySetting = NULL, PoolName = NULL, UserPoolTier = NULL, KeyConfiguration = NULL, IssuerConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateUserPool",
     http_method = "POST",
@@ -10329,7 +11108,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cognitoidentityprovider$update_user_pool_input(UserPoolId = UserPoolId, Policies = Policies, DeletionProtection = DeletionProtection, LambdaConfig = LambdaConfig, AutoVerifiedAttributes = AutoVerifiedAttributes, SmsVerificationMessage = SmsVerificationMessage, EmailVerificationMessage = EmailVerificationMessage, EmailVerificationSubject = EmailVerificationSubject, VerificationMessageTemplate = VerificationMessageTemplate, SmsAuthenticationMessage = SmsAuthenticationMessage, UserAttributeUpdateSettings = UserAttributeUpdateSettings, MfaConfiguration = MfaConfiguration, DeviceConfiguration = DeviceConfiguration, EmailConfiguration = EmailConfiguration, SmsConfiguration = SmsConfiguration, UserPoolTags = UserPoolTags, AdminCreateUserConfig = AdminCreateUserConfig, UserPoolAddOns = UserPoolAddOns, AccountRecoverySetting = AccountRecoverySetting, PoolName = PoolName, UserPoolTier = UserPoolTier)
+  input <- .cognitoidentityprovider$update_user_pool_input(UserPoolId = UserPoolId, Policies = Policies, DeletionProtection = DeletionProtection, LambdaConfig = LambdaConfig, AutoVerifiedAttributes = AutoVerifiedAttributes, SmsVerificationMessage = SmsVerificationMessage, EmailVerificationMessage = EmailVerificationMessage, EmailVerificationSubject = EmailVerificationSubject, VerificationMessageTemplate = VerificationMessageTemplate, SmsAuthenticationMessage = SmsAuthenticationMessage, UserAttributeUpdateSettings = UserAttributeUpdateSettings, MfaConfiguration = MfaConfiguration, DeviceConfiguration = DeviceConfiguration, EmailConfiguration = EmailConfiguration, SmsConfiguration = SmsConfiguration, UserPoolTags = UserPoolTags, AdminCreateUserConfig = AdminCreateUserConfig, UserPoolAddOns = UserPoolAddOns, AccountRecoverySetting = AccountRecoverySetting, PoolName = PoolName, UserPoolTier = UserPoolTier, KeyConfiguration = KeyConfiguration, IssuerConfiguration = IssuerConfiguration)
   output <- .cognitoidentityprovider$update_user_pool_output()
   config <- get_config()
   svc <- .cognitoidentityprovider$service(config, op)
@@ -10655,7 +11434,7 @@ cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId
 #'
 #' @usage
 #' cognitoidentityprovider_update_user_pool_domain(Domain, UserPoolId,
-#'   ManagedLoginVersion, CustomDomainConfig)
+#'   ManagedLoginVersion, CustomDomainConfig, Routing)
 #'
 #' @param Domain &#91;required&#93; The name of the domain that you want to update. For custom domains, this is the fully-qualified domain name, for example `auth.example.com`. For prefix domains, this is the prefix alone, such as `myprefix`.
 #' @param UserPoolId &#91;required&#93; The ID of the user pool that is associated with the domain you're updating.
@@ -10663,13 +11442,20 @@ cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId
 #' @param CustomDomainConfig The configuration for a custom domain that hosts managed login for your application. In an [`update_user_pool_domain`][cognitoidentityprovider_update_user_pool_domain] request, this parameter specifies an SSL certificate for the managed login hosted webserver. The certificate must be an ACM ARN in `us-east-1`.
 #' 
 #' When you create a custom domain, the passkey RP ID defaults to the custom domain. If you had a prefix domain active, this will cause passkey integration for your prefix domain to stop working due to a mismatch in RP ID. To keep the prefix domain passkey integration working, you can explicitly set RP ID to the prefix domain.
+#' @param Routing The routing configuration for the user pool domain. Specifies failover settings for multi-region deployments.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   ManagedLoginVersion = 123,
-#'   CloudFrontDomain = "string"
+#'   CloudFrontDomain = "string",
+#'   Routing = list(
+#'     Failover = list(
+#'       SecondaryRegion = "string",
+#'       PrimaryRoute53HealthCheckId = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -10680,7 +11466,14 @@ cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId
 #'   UserPoolId = "string",
 #'   ManagedLoginVersion = 123,
 #'   CustomDomainConfig = list(
-#'     CertificateArn = "string"
+#'     CertificateArn = "string",
+#'     SecurityPolicy = "TLS_V1"|"TLS_V1_2_2021"|"TLS_V1_3_2025"
+#'   ),
+#'   Routing = list(
+#'     Failover = list(
+#'       SecondaryRegion = "string",
+#'       PrimaryRoute53HealthCheckId = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -10690,7 +11483,7 @@ cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId
 #' @rdname cognitoidentityprovider_update_user_pool_domain
 #'
 #' @aliases cognitoidentityprovider_update_user_pool_domain
-cognitoidentityprovider_update_user_pool_domain <- function(Domain, UserPoolId, ManagedLoginVersion = NULL, CustomDomainConfig = NULL) {
+cognitoidentityprovider_update_user_pool_domain <- function(Domain, UserPoolId, ManagedLoginVersion = NULL, CustomDomainConfig = NULL, Routing = NULL) {
   op <- new_operation(
     name = "UpdateUserPoolDomain",
     http_method = "POST",
@@ -10699,7 +11492,7 @@ cognitoidentityprovider_update_user_pool_domain <- function(Domain, UserPoolId, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cognitoidentityprovider$update_user_pool_domain_input(Domain = Domain, UserPoolId = UserPoolId, ManagedLoginVersion = ManagedLoginVersion, CustomDomainConfig = CustomDomainConfig)
+  input <- .cognitoidentityprovider$update_user_pool_domain_input(Domain = Domain, UserPoolId = UserPoolId, ManagedLoginVersion = ManagedLoginVersion, CustomDomainConfig = CustomDomainConfig, Routing = Routing)
   output <- .cognitoidentityprovider$update_user_pool_domain_output()
   config <- get_config()
   svc <- .cognitoidentityprovider$service(config, op)
@@ -10708,6 +11501,73 @@ cognitoidentityprovider_update_user_pool_domain <- function(Domain, UserPoolId, 
   return(response)
 }
 .cognitoidentityprovider$operations$update_user_pool_domain <- cognitoidentityprovider_update_user_pool_domain
+
+#' Updates replica-specific settings for a user pool replica
+#'
+#' @description
+#' Updates replica-specific settings for a user pool replica. You can modify the status to activate or deactivate the replica. This request can be made in both primary and secondary regions of the user pool.
+#' 
+#' Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
+#' 
+#' **Learn more**
+#' 
+#' -   [Signing Amazon Web Services API Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
+#' 
+#' -   [Using the Amazon Cognito user pools API and user pool endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
+#'
+#' @usage
+#' cognitoidentityprovider_update_user_pool_replica(UserPoolId, RegionName,
+#'   Status)
+#'
+#' @param UserPoolId &#91;required&#93; The ID of the user pool that contains the replica to update.
+#' @param RegionName &#91;required&#93; The Amazon Web Services Region of the replica to update.
+#' @param Status &#91;required&#93; The status to set for the replica. Valid values are ACTIVE and INACTIVE.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserPoolReplica = list(
+#'     RegionName = "string",
+#'     Status = "CREATING"|"ACTIVE"|"INACTIVE"|"DELETING",
+#'     Role = "PRIMARY"|"SECONDARY",
+#'     UserPoolArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_user_pool_replica(
+#'   UserPoolId = "string",
+#'   RegionName = "string",
+#'   Status = "ACTIVE"|"INACTIVE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentityprovider_update_user_pool_replica
+#'
+#' @aliases cognitoidentityprovider_update_user_pool_replica
+cognitoidentityprovider_update_user_pool_replica <- function(UserPoolId, RegionName, Status) {
+  op <- new_operation(
+    name = "UpdateUserPoolReplica",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cognitoidentityprovider$update_user_pool_replica_input(UserPoolId = UserPoolId, RegionName = RegionName, Status = Status)
+  output <- .cognitoidentityprovider$update_user_pool_replica_output()
+  config <- get_config()
+  svc <- .cognitoidentityprovider$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentityprovider$operations$update_user_pool_replica <- cognitoidentityprovider_update_user_pool_replica
 
 #' Registers the current user's time-based one-time password (TOTP)
 #' authenticator with a code generated in their authenticator app from a

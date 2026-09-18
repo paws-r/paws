@@ -5,276 +5,250 @@ NULL
 
 .emrcontainers$cancel_job_run_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "jobRunId", type = "string")), virtualClusterId = structure(logical(0), tags = list(location = "uri", locationName = "virtualClusterId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["cancel_job_run_input"]]))
 }
 
 .emrcontainers$cancel_job_run_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), virtualClusterId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["cancel_job_run_output"]]))
 }
 
 .emrcontainers$create_job_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), jobTemplateData = structure(list(executionRoleArn = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), configurationOverrides = structure(list(applicationConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), monitoringConfiguration = structure(list(persistentAppUI = structure(logical(0), tags = list(type = "string")), cloudWatchMonitoringConfiguration = structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), logStreamNamePrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3MonitoringConfiguration = structure(list(logUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), jobDriver = structure(list(sparkSubmitJobDriver = structure(list(entryPoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entryPointArguments = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), sparkSubmitParameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), sparkSqlJobDriver = structure(list(entryPoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sparkSqlParameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), parameterConfiguration = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), defaultValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), jobTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["create_job_template_input"]]))
 }
 
 .emrcontainers$create_job_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["create_job_template_output"]]))
 }
 
 .emrcontainers$create_managed_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), virtualClusterId = structure(logical(0), tags = list(location = "uri", locationName = "virtualClusterId", type = "string")), type = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), executionRoleArn = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Customer provided certificate-arn is deprecated and would be removed in future.", type = "string")), configurationOverrides = structure(list(applicationConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), monitoringConfiguration = structure(list(managedLogs = structure(list(allowAWSToRetainLogs = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), persistentAppUI = structure(logical(0), tags = list(type = "string")), cloudWatchMonitoringConfiguration = structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), logStreamNamePrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3MonitoringConfiguration = structure(list(logUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), containerLogRotationConfiguration = structure(list(rotationSize = structure(logical(0), tags = list(type = "string")), maxFilesToKeep = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["create_managed_endpoint_input"]]))
 }
 
 .emrcontainers$create_managed_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), virtualClusterId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["create_managed_endpoint_output"]]))
 }
 
 .emrcontainers$create_security_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), name = structure(logical(0), tags = list(type = "string")), containerProvider = structure(list(type = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), info = structure(list(eksInfo = structure(list(namespace = structure(logical(0), tags = list(type = "string")), nodeLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), securityConfigurationData = structure(list(authorizationConfiguration = structure(list(lakeFormationConfiguration = structure(list(authorizedSessionTagValue = structure(logical(0), tags = list(type = "string")), secureNamespaceInfo = structure(list(clusterId = structure(logical(0), tags = list(type = "string")), namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), queryEngineRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), encryptionConfiguration = structure(list(inTransitEncryptionConfiguration = structure(list(tlsCertificateConfiguration = structure(list(certificateProviderType = structure(logical(0), tags = list(type = "string")), publicCertificateSecretArn = structure(logical(0), tags = list(type = "string")), privateCertificateSecretArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["create_security_configuration_input"]]))
 }
 
 .emrcontainers$create_security_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["create_security_configuration_output"]]))
 }
 
 .emrcontainers$create_virtual_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), containerProvider = structure(list(type = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), info = structure(list(eksInfo = structure(list(namespace = structure(logical(0), tags = list(type = "string")), nodeLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), securityConfigurationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["create_virtual_cluster_input"]]))
 }
 
 .emrcontainers$create_virtual_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["create_virtual_cluster_output"]]))
 }
 
 .emrcontainers$delete_job_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "templateId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["delete_job_template_input"]]))
 }
 
 .emrcontainers$delete_job_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["delete_job_template_output"]]))
 }
 
 .emrcontainers$delete_managed_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "endpointId", type = "string")), virtualClusterId = structure(logical(0), tags = list(location = "uri", locationName = "virtualClusterId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["delete_managed_endpoint_input"]]))
 }
 
 .emrcontainers$delete_managed_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), virtualClusterId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["delete_managed_endpoint_output"]]))
+}
+
+.emrcontainers$delete_security_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .emrcontainers_shapes[["delete_security_configuration_input"]]))
+}
+
+.emrcontainers$delete_security_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .emrcontainers_shapes[["delete_security_configuration_output"]]))
 }
 
 .emrcontainers$delete_virtual_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "virtualClusterId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["delete_virtual_cluster_input"]]))
 }
 
 .emrcontainers$delete_virtual_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["delete_virtual_cluster_output"]]))
 }
 
 .emrcontainers$describe_job_run_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "jobRunId", type = "string")), virtualClusterId = structure(logical(0), tags = list(location = "uri", locationName = "virtualClusterId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["describe_job_run_input"]]))
 }
 
 .emrcontainers$describe_job_run_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobRun = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), virtualClusterId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string")), executionRoleArn = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), configurationOverrides = structure(list(applicationConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), monitoringConfiguration = structure(list(managedLogs = structure(list(allowAWSToRetainLogs = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), persistentAppUI = structure(logical(0), tags = list(type = "string")), cloudWatchMonitoringConfiguration = structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), logStreamNamePrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3MonitoringConfiguration = structure(list(logUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), containerLogRotationConfiguration = structure(list(rotationSize = structure(logical(0), tags = list(type = "string")), maxFilesToKeep = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), jobDriver = structure(list(sparkSubmitJobDriver = structure(list(entryPoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entryPointArguments = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), sparkSubmitParameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), sparkSqlJobDriver = structure(list(entryPoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sparkSqlParameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdBy = structure(logical(0), tags = list(type = "string")), finishedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), stateDetails = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), retryPolicyConfiguration = structure(list(maxAttempts = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), retryPolicyExecution = structure(list(currentAttemptCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["describe_job_run_output"]]))
 }
 
 .emrcontainers$describe_job_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "templateId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["describe_job_template_input"]]))
 }
 
 .emrcontainers$describe_job_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobTemplate = structure(list(name = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdBy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), jobTemplateData = structure(list(executionRoleArn = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), configurationOverrides = structure(list(applicationConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), monitoringConfiguration = structure(list(persistentAppUI = structure(logical(0), tags = list(type = "string")), cloudWatchMonitoringConfiguration = structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), logStreamNamePrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3MonitoringConfiguration = structure(list(logUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), jobDriver = structure(list(sparkSubmitJobDriver = structure(list(entryPoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entryPointArguments = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), sparkSubmitParameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), sparkSqlJobDriver = structure(list(entryPoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sparkSqlParameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), parameterConfiguration = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), defaultValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), jobTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), decryptionError = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["describe_job_template_output"]]))
 }
 
 .emrcontainers$describe_managed_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "endpointId", type = "string")), virtualClusterId = structure(logical(0), tags = list(location = "uri", locationName = "virtualClusterId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["describe_managed_endpoint_input"]]))
 }
 
 .emrcontainers$describe_managed_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpoint = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), virtualClusterId = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), executionRoleArn = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Customer provided certificate-arn is deprecated and would be removed in future.", type = "string")), certificateAuthority = structure(list(certificateArn = structure(logical(0), tags = list(type = "string")), certificateData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), configurationOverrides = structure(list(applicationConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), monitoringConfiguration = structure(list(managedLogs = structure(list(allowAWSToRetainLogs = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), persistentAppUI = structure(logical(0), tags = list(type = "string")), cloudWatchMonitoringConfiguration = structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), logStreamNamePrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3MonitoringConfiguration = structure(list(logUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), containerLogRotationConfiguration = structure(list(rotationSize = structure(logical(0), tags = list(type = "string")), maxFilesToKeep = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), serverUrl = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), securityGroup = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), stateDetails = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["describe_managed_endpoint_output"]]))
 }
 
 .emrcontainers$describe_security_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "securityConfigurationId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["describe_security_configuration_input"]]))
 }
 
 .emrcontainers$describe_security_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(securityConfiguration = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdBy = structure(logical(0), tags = list(type = "string")), securityConfigurationData = structure(list(authorizationConfiguration = structure(list(lakeFormationConfiguration = structure(list(authorizedSessionTagValue = structure(logical(0), tags = list(type = "string")), secureNamespaceInfo = structure(list(clusterId = structure(logical(0), tags = list(type = "string")), namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), queryEngineRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), encryptionConfiguration = structure(list(inTransitEncryptionConfiguration = structure(list(tlsCertificateConfiguration = structure(list(certificateProviderType = structure(logical(0), tags = list(type = "string")), publicCertificateSecretArn = structure(logical(0), tags = list(type = "string")), privateCertificateSecretArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["describe_security_configuration_output"]]))
 }
 
 .emrcontainers$describe_virtual_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "virtualClusterId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["describe_virtual_cluster_input"]]))
 }
 
 .emrcontainers$describe_virtual_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualCluster = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), containerProvider = structure(list(type = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), info = structure(list(eksInfo = structure(list(namespace = structure(logical(0), tags = list(type = "string")), nodeLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), securityConfigurationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["describe_virtual_cluster_output"]]))
 }
 
 .emrcontainers$get_managed_endpoint_session_credentials_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpointIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "endpointId", type = "string")), virtualClusterIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "virtualClusterId", type = "string")), executionRoleArn = structure(logical(0), tags = list(type = "string")), credentialType = structure(logical(0), tags = list(type = "string")), durationInSeconds = structure(logical(0), tags = list(type = "integer")), logContext = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["get_managed_endpoint_session_credentials_input"]]))
 }
 
 .emrcontainers$get_managed_endpoint_session_credentials_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), credentials = structure(list(token = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE)), expiresAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["get_managed_endpoint_session_credentials_output"]]))
 }
 
 .emrcontainers$list_job_runs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualClusterId = structure(logical(0), tags = list(location = "uri", locationName = "virtualClusterId", type = "string")), createdBefore = structure(logical(0), tags = list(location = "querystring", locationName = "createdBefore", type = "timestamp", timestampFormat = "iso8601")), createdAfter = structure(logical(0), tags = list(location = "querystring", locationName = "createdAfter", type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(location = "querystring", locationName = "name", type = "string")), states = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "states", type = "list")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["list_job_runs_input"]]))
 }
 
 .emrcontainers$list_job_runs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobRuns = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), virtualClusterId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string")), executionRoleArn = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), configurationOverrides = structure(list(applicationConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), monitoringConfiguration = structure(list(managedLogs = structure(list(allowAWSToRetainLogs = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), persistentAppUI = structure(logical(0), tags = list(type = "string")), cloudWatchMonitoringConfiguration = structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), logStreamNamePrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3MonitoringConfiguration = structure(list(logUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), containerLogRotationConfiguration = structure(list(rotationSize = structure(logical(0), tags = list(type = "string")), maxFilesToKeep = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), jobDriver = structure(list(sparkSubmitJobDriver = structure(list(entryPoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entryPointArguments = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), sparkSubmitParameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), sparkSqlJobDriver = structure(list(entryPoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sparkSqlParameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdBy = structure(logical(0), tags = list(type = "string")), finishedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), stateDetails = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), retryPolicyConfiguration = structure(list(maxAttempts = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), retryPolicyExecution = structure(list(currentAttemptCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["list_job_runs_output"]]))
 }
 
 .emrcontainers$list_job_templates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createdAfter = structure(logical(0), tags = list(location = "querystring", locationName = "createdAfter", type = "timestamp", timestampFormat = "iso8601")), createdBefore = structure(logical(0), tags = list(location = "querystring", locationName = "createdBefore", type = "timestamp", timestampFormat = "iso8601")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["list_job_templates_input"]]))
 }
 
 .emrcontainers$list_job_templates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(templates = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdBy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), jobTemplateData = structure(list(executionRoleArn = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), configurationOverrides = structure(list(applicationConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), monitoringConfiguration = structure(list(persistentAppUI = structure(logical(0), tags = list(type = "string")), cloudWatchMonitoringConfiguration = structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), logStreamNamePrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3MonitoringConfiguration = structure(list(logUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), jobDriver = structure(list(sparkSubmitJobDriver = structure(list(entryPoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entryPointArguments = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), sparkSubmitParameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), sparkSqlJobDriver = structure(list(entryPoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sparkSqlParameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), parameterConfiguration = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), defaultValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), jobTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), decryptionError = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["list_job_templates_output"]]))
 }
 
 .emrcontainers$list_managed_endpoints_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualClusterId = structure(logical(0), tags = list(location = "uri", locationName = "virtualClusterId", type = "string")), createdBefore = structure(logical(0), tags = list(location = "querystring", locationName = "createdBefore", type = "timestamp", timestampFormat = "iso8601")), createdAfter = structure(logical(0), tags = list(location = "querystring", locationName = "createdAfter", type = "timestamp", timestampFormat = "iso8601")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "types", type = "list")), states = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "states", type = "list")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["list_managed_endpoints_input"]]))
 }
 
 .emrcontainers$list_managed_endpoints_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpoints = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), virtualClusterId = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), executionRoleArn = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Customer provided certificate-arn is deprecated and would be removed in future.", type = "string")), certificateAuthority = structure(list(certificateArn = structure(logical(0), tags = list(type = "string")), certificateData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), configurationOverrides = structure(list(applicationConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), monitoringConfiguration = structure(list(managedLogs = structure(list(allowAWSToRetainLogs = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), persistentAppUI = structure(logical(0), tags = list(type = "string")), cloudWatchMonitoringConfiguration = structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), logStreamNamePrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3MonitoringConfiguration = structure(list(logUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), containerLogRotationConfiguration = structure(list(rotationSize = structure(logical(0), tags = list(type = "string")), maxFilesToKeep = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), serverUrl = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), securityGroup = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), stateDetails = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["list_managed_endpoints_output"]]))
 }
 
 .emrcontainers$list_security_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createdAfter = structure(logical(0), tags = list(location = "querystring", locationName = "createdAfter", type = "timestamp", timestampFormat = "iso8601")), createdBefore = structure(logical(0), tags = list(location = "querystring", locationName = "createdBefore", type = "timestamp", timestampFormat = "iso8601")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["list_security_configurations_input"]]))
 }
 
 .emrcontainers$list_security_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(securityConfigurations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdBy = structure(logical(0), tags = list(type = "string")), securityConfigurationData = structure(list(authorizationConfiguration = structure(list(lakeFormationConfiguration = structure(list(authorizedSessionTagValue = structure(logical(0), tags = list(type = "string")), secureNamespaceInfo = structure(list(clusterId = structure(logical(0), tags = list(type = "string")), namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), queryEngineRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), encryptionConfiguration = structure(list(inTransitEncryptionConfiguration = structure(list(tlsCertificateConfiguration = structure(list(certificateProviderType = structure(logical(0), tags = list(type = "string")), publicCertificateSecretArn = structure(logical(0), tags = list(type = "string")), privateCertificateSecretArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["list_security_configurations_output"]]))
 }
 
 .emrcontainers$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["list_tags_for_resource_input"]]))
 }
 
 .emrcontainers$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["list_tags_for_resource_output"]]))
 }
 
 .emrcontainers$list_virtual_clusters_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(containerProviderId = structure(logical(0), tags = list(location = "querystring", locationName = "containerProviderId", type = "string")), containerProviderType = structure(logical(0), tags = list(location = "querystring", locationName = "containerProviderType", type = "string")), createdAfter = structure(logical(0), tags = list(location = "querystring", locationName = "createdAfter", type = "timestamp", timestampFormat = "iso8601")), createdBefore = structure(logical(0), tags = list(location = "querystring", locationName = "createdBefore", type = "timestamp", timestampFormat = "iso8601")), states = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "states", type = "list")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), eksAccessEntryIntegrated = structure(logical(0), tags = list(location = "querystring", locationName = "eksAccessEntryIntegrated", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["list_virtual_clusters_input"]]))
 }
 
 .emrcontainers$list_virtual_clusters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualClusters = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), containerProvider = structure(list(type = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), info = structure(list(eksInfo = structure(list(namespace = structure(logical(0), tags = list(type = "string")), nodeLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), securityConfigurationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["list_virtual_clusters_output"]]))
 }
 
 .emrcontainers$start_job_run_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), virtualClusterId = structure(logical(0), tags = list(location = "uri", locationName = "virtualClusterId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), executionRoleArn = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), jobDriver = structure(list(sparkSubmitJobDriver = structure(list(entryPoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entryPointArguments = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), sparkSubmitParameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), sparkSqlJobDriver = structure(list(entryPoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sparkSqlParameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), configurationOverrides = structure(list(applicationConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), monitoringConfiguration = structure(list(managedLogs = structure(list(allowAWSToRetainLogs = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), persistentAppUI = structure(logical(0), tags = list(type = "string")), cloudWatchMonitoringConfiguration = structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), logStreamNamePrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3MonitoringConfiguration = structure(list(logUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), containerLogRotationConfiguration = structure(list(rotationSize = structure(logical(0), tags = list(type = "string")), maxFilesToKeep = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), jobTemplateId = structure(logical(0), tags = list(type = "string")), jobTemplateParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), retryPolicyConfiguration = structure(list(maxAttempts = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["start_job_run_input"]]))
 }
 
 .emrcontainers$start_job_run_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), virtualClusterId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["start_job_run_output"]]))
 }
 
 .emrcontainers$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["tag_resource_input"]]))
 }
 
 .emrcontainers$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["tag_resource_output"]]))
 }
 
 .emrcontainers$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["untag_resource_input"]]))
 }
 
 .emrcontainers$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrcontainers_shapes[["untag_resource_output"]]))
+}
+
+.emrcontainers$update_virtual_cluster_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .emrcontainers_shapes[["update_virtual_cluster_input"]]))
+}
+
+.emrcontainers$update_virtual_cluster_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .emrcontainers_shapes[["update_virtual_cluster_output"]]))
 }

@@ -55,7 +55,7 @@ You can't specify both this parameter and the \code{ResourceArnList} parameter i
 
 The string for each service name and resource type is the same as that embedded in a resource's Amazon Resource Name (ARN).
 
-For the list of services whose resources you can tag using the Resource Groups Tagging API, see \href{https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/supported-services.html}{Services that support the Resource Groups Tagging API}. If an Amazon Web Services service isn't listed on that page, you might still be able to tag that service's resources by using that service's native tagging operations instead of using Resource Groups Tagging API operations. All tagged resources, whether the tagging used the Resource Groups Tagging API or not, are returned by the \verb{Get*} operation.
+For the list of services whose resources you can tag using the Resource Groups Tagging API, see \href{https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/}{Services that support the Resource Groups Tagging API}. If an Amazon Web Services service isn't listed on that page, you might still be able to tag that service's resources by using that service's native tagging operations instead of using Resource Groups Tagging API operations. All tagged resources, whether the tagging used the Resource Groups Tagging API or not, are returned by the \verb{Get*} operation.
 
 You can specify multiple resource types by using an array. The array can include up to 100 items. Note that the length constraint requirement applies to each resource type filter. For example, the following string would limit the response to only Amazon EC2 instances, Amazon S3 buckets, or any Audit Manager resource:
 

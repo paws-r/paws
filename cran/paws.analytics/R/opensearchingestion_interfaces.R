@@ -5,264 +5,220 @@ NULL
 
 .opensearchingestion$create_pipeline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PipelineName = structure(logical(0), tags = list(type = "string")), MinUnits = structure(logical(0), tags = list(type = "integer")), MaxUnits = structure(logical(0), tags = list(type = "integer")), PipelineConfigurationBody = structure(logical(0), tags = list(type = "string")), LogPublishingOptions = structure(list(IsLoggingEnabled = structure(logical(0), tags = list(type = "boolean")), CloudWatchLogDestination = structure(list(LogGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), VpcOptions = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), VpcAttachmentOptions = structure(list(AttachToVpc = structure(logical(0), tags = list(type = "boolean")), CidrBlock = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), VpcEndpointManagement = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), BufferOptions = structure(list(PersistentBufferEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), EncryptionAtRestOptions = structure(list(KmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PipelineRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["create_pipeline_input"]]))
 }
 
 .opensearchingestion$create_pipeline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Pipeline = structure(list(PipelineName = structure(logical(0), tags = list(type = "string")), PipelineArn = structure(logical(0), tags = list(type = "string")), MinUnits = structure(logical(0), tags = list(type = "integer")), MaxUnits = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(list(Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PipelineConfigurationBody = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), IngestEndpointUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LogPublishingOptions = structure(list(IsLoggingEnabled = structure(logical(0), tags = list(type = "boolean")), CloudWatchLogDestination = structure(list(LogGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), VpcEndpoints = structure(list(structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), VpcAttachmentOptions = structure(list(AttachToVpc = structure(logical(0), tags = list(type = "boolean")), CidrBlock = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), VpcEndpointManagement = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), BufferOptions = structure(list(PersistentBufferEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), EncryptionAtRestOptions = structure(list(KmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), VpcEndpointService = structure(logical(0), tags = list(type = "string")), ServiceVpcEndpoints = structure(list(structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Destinations = structure(list(structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PipelineRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["create_pipeline_output"]]))
 }
 
 .opensearchingestion$create_pipeline_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PipelineArn = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["create_pipeline_endpoint_input"]]))
 }
 
 .opensearchingestion$create_pipeline_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PipelineArn = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["create_pipeline_endpoint_output"]]))
 }
 
 .opensearchingestion$delete_pipeline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PipelineName = structure(logical(0), tags = list(location = "uri", locationName = "PipelineName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["delete_pipeline_input"]]))
 }
 
 .opensearchingestion$delete_pipeline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["delete_pipeline_output"]]))
 }
 
 .opensearchingestion$delete_pipeline_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EndpointId = structure(logical(0), tags = list(location = "uri", locationName = "EndpointId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["delete_pipeline_endpoint_input"]]))
 }
 
 .opensearchingestion$delete_pipeline_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["delete_pipeline_endpoint_output"]]))
 }
 
 .opensearchingestion$delete_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["delete_resource_policy_input"]]))
 }
 
 .opensearchingestion$delete_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["delete_resource_policy_output"]]))
 }
 
 .opensearchingestion$get_pipeline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PipelineName = structure(logical(0), tags = list(location = "uri", locationName = "PipelineName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["get_pipeline_input"]]))
 }
 
 .opensearchingestion$get_pipeline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Pipeline = structure(list(PipelineName = structure(logical(0), tags = list(type = "string")), PipelineArn = structure(logical(0), tags = list(type = "string")), MinUnits = structure(logical(0), tags = list(type = "integer")), MaxUnits = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(list(Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PipelineConfigurationBody = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), IngestEndpointUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LogPublishingOptions = structure(list(IsLoggingEnabled = structure(logical(0), tags = list(type = "boolean")), CloudWatchLogDestination = structure(list(LogGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), VpcEndpoints = structure(list(structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), VpcAttachmentOptions = structure(list(AttachToVpc = structure(logical(0), tags = list(type = "boolean")), CidrBlock = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), VpcEndpointManagement = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), BufferOptions = structure(list(PersistentBufferEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), EncryptionAtRestOptions = structure(list(KmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), VpcEndpointService = structure(logical(0), tags = list(type = "string")), ServiceVpcEndpoints = structure(list(structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Destinations = structure(list(structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PipelineRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["get_pipeline_output"]]))
 }
 
 .opensearchingestion$get_pipeline_blueprint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BlueprintName = structure(logical(0), tags = list(location = "uri", locationName = "BlueprintName", type = "string")), Format = structure(logical(0), tags = list(location = "querystring", locationName = "format", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["get_pipeline_blueprint_input"]]))
 }
 
 .opensearchingestion$get_pipeline_blueprint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Blueprint = structure(list(BlueprintName = structure(logical(0), tags = list(type = "string")), PipelineConfigurationBody = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), DisplayDescription = structure(logical(0), tags = list(type = "string")), Service = structure(logical(0), tags = list(type = "string")), UseCase = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["get_pipeline_blueprint_output"]]))
 }
 
 .opensearchingestion$get_pipeline_change_progress_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PipelineName = structure(logical(0), tags = list(location = "uri", locationName = "PipelineName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["get_pipeline_change_progress_input"]]))
 }
 
 .opensearchingestion$get_pipeline_change_progress_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ChangeProgressStatuses = structure(list(structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), TotalNumberOfStages = structure(logical(0), tags = list(type = "integer")), ChangeProgressStages = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["get_pipeline_change_progress_output"]]))
 }
 
 .opensearchingestion$get_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["get_resource_policy_input"]]))
 }
 
 .opensearchingestion$get_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["get_resource_policy_output"]]))
 }
 
 .opensearchingestion$list_pipeline_blueprints_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["list_pipeline_blueprints_input"]]))
 }
 
 .opensearchingestion$list_pipeline_blueprints_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Blueprints = structure(list(structure(list(BlueprintName = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), DisplayDescription = structure(logical(0), tags = list(type = "string")), Service = structure(logical(0), tags = list(type = "string")), UseCase = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["list_pipeline_blueprints_output"]]))
 }
 
 .opensearchingestion$list_pipeline_endpoint_connections_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["list_pipeline_endpoint_connections_input"]]))
 }
 
 .opensearchingestion$list_pipeline_endpoint_connections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), PipelineEndpointConnections = structure(list(structure(list(PipelineArn = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), VpcEndpointOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["list_pipeline_endpoint_connections_output"]]))
 }
 
 .opensearchingestion$list_pipeline_endpoints_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["list_pipeline_endpoints_input"]]))
 }
 
 .opensearchingestion$list_pipeline_endpoints_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), PipelineEndpoints = structure(list(structure(list(PipelineArn = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), IngestEndpointUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["list_pipeline_endpoints_output"]]))
 }
 
 .opensearchingestion$list_pipelines_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["list_pipelines_input"]]))
 }
 
 .opensearchingestion$list_pipelines_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Pipelines = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(list(Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PipelineName = structure(logical(0), tags = list(type = "string")), PipelineArn = structure(logical(0), tags = list(type = "string")), MinUnits = structure(logical(0), tags = list(type = "integer")), MaxUnits = structure(logical(0), tags = list(type = "integer")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Destinations = structure(list(structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["list_pipelines_output"]]))
 }
 
 .opensearchingestion$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(location = "querystring", locationName = "arn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["list_tags_for_resource_input"]]))
 }
 
 .opensearchingestion$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["list_tags_for_resource_output"]]))
 }
 
 .opensearchingestion$put_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["put_resource_policy_input"]]))
 }
 
 .opensearchingestion$put_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["put_resource_policy_output"]]))
 }
 
 .opensearchingestion$revoke_pipeline_endpoint_connections_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PipelineArn = structure(logical(0), tags = list(type = "string")), EndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["revoke_pipeline_endpoint_connections_input"]]))
 }
 
 .opensearchingestion$revoke_pipeline_endpoint_connections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PipelineArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["revoke_pipeline_endpoint_connections_output"]]))
 }
 
 .opensearchingestion$start_pipeline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PipelineName = structure(logical(0), tags = list(location = "uri", locationName = "PipelineName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["start_pipeline_input"]]))
 }
 
 .opensearchingestion$start_pipeline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Pipeline = structure(list(PipelineName = structure(logical(0), tags = list(type = "string")), PipelineArn = structure(logical(0), tags = list(type = "string")), MinUnits = structure(logical(0), tags = list(type = "integer")), MaxUnits = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(list(Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PipelineConfigurationBody = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), IngestEndpointUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LogPublishingOptions = structure(list(IsLoggingEnabled = structure(logical(0), tags = list(type = "boolean")), CloudWatchLogDestination = structure(list(LogGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), VpcEndpoints = structure(list(structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), VpcAttachmentOptions = structure(list(AttachToVpc = structure(logical(0), tags = list(type = "boolean")), CidrBlock = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), VpcEndpointManagement = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), BufferOptions = structure(list(PersistentBufferEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), EncryptionAtRestOptions = structure(list(KmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), VpcEndpointService = structure(logical(0), tags = list(type = "string")), ServiceVpcEndpoints = structure(list(structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Destinations = structure(list(structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PipelineRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["start_pipeline_output"]]))
 }
 
 .opensearchingestion$stop_pipeline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PipelineName = structure(logical(0), tags = list(location = "uri", locationName = "PipelineName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["stop_pipeline_input"]]))
 }
 
 .opensearchingestion$stop_pipeline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Pipeline = structure(list(PipelineName = structure(logical(0), tags = list(type = "string")), PipelineArn = structure(logical(0), tags = list(type = "string")), MinUnits = structure(logical(0), tags = list(type = "integer")), MaxUnits = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(list(Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PipelineConfigurationBody = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), IngestEndpointUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LogPublishingOptions = structure(list(IsLoggingEnabled = structure(logical(0), tags = list(type = "boolean")), CloudWatchLogDestination = structure(list(LogGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), VpcEndpoints = structure(list(structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), VpcAttachmentOptions = structure(list(AttachToVpc = structure(logical(0), tags = list(type = "boolean")), CidrBlock = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), VpcEndpointManagement = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), BufferOptions = structure(list(PersistentBufferEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), EncryptionAtRestOptions = structure(list(KmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), VpcEndpointService = structure(logical(0), tags = list(type = "string")), ServiceVpcEndpoints = structure(list(structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Destinations = structure(list(structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PipelineRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["stop_pipeline_output"]]))
 }
 
 .opensearchingestion$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(location = "querystring", locationName = "arn", type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["tag_resource_input"]]))
 }
 
 .opensearchingestion$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["tag_resource_output"]]))
 }
 
 .opensearchingestion$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(location = "querystring", locationName = "arn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["untag_resource_input"]]))
 }
 
 .opensearchingestion$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["untag_resource_output"]]))
 }
 
 .opensearchingestion$update_pipeline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PipelineName = structure(logical(0), tags = list(location = "uri", locationName = "PipelineName", type = "string")), MinUnits = structure(logical(0), tags = list(type = "integer")), MaxUnits = structure(logical(0), tags = list(type = "integer")), PipelineConfigurationBody = structure(logical(0), tags = list(type = "string")), LogPublishingOptions = structure(list(IsLoggingEnabled = structure(logical(0), tags = list(type = "boolean")), CloudWatchLogDestination = structure(list(LogGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), BufferOptions = structure(list(PersistentBufferEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), EncryptionAtRestOptions = structure(list(KmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PipelineRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["update_pipeline_input"]]))
 }
 
 .opensearchingestion$update_pipeline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Pipeline = structure(list(PipelineName = structure(logical(0), tags = list(type = "string")), PipelineArn = structure(logical(0), tags = list(type = "string")), MinUnits = structure(logical(0), tags = list(type = "integer")), MaxUnits = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(list(Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PipelineConfigurationBody = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), IngestEndpointUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LogPublishingOptions = structure(list(IsLoggingEnabled = structure(logical(0), tags = list(type = "boolean")), CloudWatchLogDestination = structure(list(LogGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), VpcEndpoints = structure(list(structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), VpcAttachmentOptions = structure(list(AttachToVpc = structure(logical(0), tags = list(type = "boolean")), CidrBlock = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), VpcEndpointManagement = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), BufferOptions = structure(list(PersistentBufferEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), EncryptionAtRestOptions = structure(list(KmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), VpcEndpointService = structure(logical(0), tags = list(type = "string")), ServiceVpcEndpoints = structure(list(structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Destinations = structure(list(structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PipelineRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["update_pipeline_output"]]))
 }
 
 .opensearchingestion$validate_pipeline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PipelineConfigurationBody = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["validate_pipeline_input"]]))
 }
 
 .opensearchingestion$validate_pipeline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(isValid = structure(logical(0), tags = list(type = "boolean")), Errors = structure(list(structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchingestion_shapes[["validate_pipeline_output"]]))
 }

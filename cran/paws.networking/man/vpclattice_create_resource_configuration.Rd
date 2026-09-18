@@ -29,13 +29,14 @@ vpclattice_create_resource_configuration(
 \item \strong{GROUP} - A group of resources. You must create a group resource configuration before you create a child resource configuration.
 \item \strong{CHILD} - A single resource that is part of a group resource configuration.
 \item \strong{ARN} - An Amazon Web Services resource.
+\item \strong{CIDR} - A network segment, expressed as a range of IP addresses (a CIDR block). Use this type to share a portion of your network rather than an individual resource. A consumer accesses the resources within the CIDR range through a \code{Tunnel} VPC endpoint. You can't add a CIDR resource configuration to a service network. A CIDR resource configuration must be associated with a resource gateway whose DNS resolution is set to \code{IN_VPC}.
 }}
 
-\item{portRanges}{(SINGLE, GROUP, CHILD) The TCP port ranges that a consumer can use to access a resource configuration (for example: 1-65535). You can separate port ranges using commas (for example: 1,2,22-30).}
+\item{portRanges}{(SINGLE, GROUP, CHILD, CIDR) The port ranges that a consumer can use to access a resource configuration (for example: 1-65535). You can separate port ranges using commas (for example: 1,2,22-30). To resolve DNS through a CIDR resource configuration, include port 53 in the port ranges.}
 
-\item{protocol}{(SINGLE, GROUP) The protocol accepted by the resource configuration.}
+\item{protocol}{(SINGLE, GROUP, CIDR) The protocol accepted by the resource configuration. The default is \code{TCP}. \code{TCP_UDP} is supported only for CIDR resource configurations; specify it for a CIDR resource configuration to allow DNS resolution, which uses UDP.}
 
-\item{resourceGatewayIdentifier}{(SINGLE, GROUP, ARN) The ID or ARN of the resource gateway used to connect to the resource configuration. For a child resource configuration, this value is inherited from the parent resource configuration.}
+\item{resourceGatewayIdentifier}{(SINGLE, GROUP, ARN, CIDR) The ID or ARN of the resource gateway used to connect to the resource configuration. For a child resource configuration, this value is inherited from the parent resource configuration. For a CIDR resource configuration, the associated resource gateway must have its DNS resolution set to \code{IN_VPC} so that DNS queries resolve in the context of your VPC.}
 
 \item{resourceConfigurationGroupIdentifier}{(CHILD) The ID or ARN of the parent resource configuration of type \code{GROUP}. This is used to associate a child resource configuration with a group resource configuration.}
 
@@ -44,6 +45,7 @@ vpclattice_create_resource_configuration(
 \item \strong{Amazon Resource Name (ARN)} - Supported resource-types that are provisioned by Amazon Web Services services, such as RDS databases, can be identified by their ARN.
 \item \strong{Domain name} - Any domain name that is publicly resolvable.
 \item \strong{IP address} - For IPv4 and IPv6, only IP addresses in the VPC are supported.
+\item \strong{CIDR range} - For a resource configuration of type CIDR, specify a \code{cidrResource} with one or more \code{cidrRanges} (for example, \verb{10.0.0.0/16}) that cover the IP addresses of the resources you want to make accessible. You can specify up to 10 ranges, using IPv4, IPv6, or both, and each range must include a prefix length. To represent your entire network, specify \verb{0.0.0.0/0} (IPv4) or \verb{::/0} (IPv6) as the only range. You can't use reserved ranges such as \verb{169.254.0.0/16}, \verb{100.64.0.0/10}, \verb{224.0.0.0/4}, \verb{fe80::/10}, or \verb{ff00::/8}.
 }}
 
 \item{allowAssociationToShareableServiceNetwork}{(SINGLE, GROUP, ARN) Specifies whether the resource configuration can be associated with a sharable service network. The default is false.}

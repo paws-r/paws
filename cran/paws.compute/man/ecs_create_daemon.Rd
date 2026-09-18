@@ -14,7 +14,8 @@ ecs_create_daemon(
   propagateTags = NULL,
   enableECSManagedTags = NULL,
   enableExecuteCommand = NULL,
-  clientToken = NULL
+  clientToken = NULL,
+  critical = NULL
 )
 }
 \arguments{
@@ -48,6 +49,14 @@ The following basic restrictions apply to tags:
 \item{enableExecuteCommand}{Determines whether the execute command functionality is turned on for the daemon. If \code{true}, the execute command functionality is turned on for all tasks in the daemon.}
 
 \item{clientToken}{An identifier that you provide to ensure the idempotency of the request. It must be unique and is case sensitive. Up to 36 ASCII characters in the range of 33-126 (inclusive) are allowed.}
+
+\item{critical}{If the \code{critical} parameter of a daemon is \code{true}, and the daemon task fails, stops, or becomes unhealthy, Amazon ECS drains the container instance and stops the other tasks running on it. If the \code{critical} parameter is \code{false}, the daemon task failure doesn't affect the other tasks on the instance. The default value is \code{true}.
+
+A non-critical daemon doesn't block instance registration. The container instance becomes active and continues to run your other tasks, whether the daemon task fails during scale-out or during a deployment.
+
+Amazon ECS emits an EventBridge event when a daemon task fails to start, for both critical and non-critical daemons.
+
+Daemon task launch failures during a deployment are still counted by the deployment circuit breaker. The circuit breaker can roll back an unstable target revision.}
 }
 \description{
 Creates a new daemon in the specified cluster and capacity providers. A daemon deploys cross-cutting software agents such as security monitoring, telemetry, and logging independently across your Amazon ECS infrastructure.

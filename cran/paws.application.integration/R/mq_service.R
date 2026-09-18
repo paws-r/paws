@@ -103,6 +103,7 @@ NULL
 #'  \link[=mq_describe_broker_instance_options]{describe_broker_instance_options} \tab Describe available broker instance options\cr
 #'  \link[=mq_describe_configuration]{describe_configuration} \tab Returns information about the specified configuration\cr
 #'  \link[=mq_describe_configuration_revision]{describe_configuration_revision} \tab Returns the specified configuration revision for the specified configuration\cr
+#'  \link[=mq_describe_shared_resources]{describe_shared_resources} \tab Returns the resources shared to a broker\cr
 #'  \link[=mq_describe_user]{describe_user} \tab Returns information about an ActiveMQ user\cr
 #'  \link[=mq_list_brokers]{list_brokers} \tab Returns a list of all brokers\cr
 #'  \link[=mq_list_configuration_revisions]{list_configuration_revisions} \tab Returns a list of all revisions for the specified configuration\cr

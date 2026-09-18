@@ -4,12 +4,18 @@
 \alias{bedrockagentcore_delete_memory_record}
 \title{Deletes a memory record from an AgentCore Memory resource}
 \usage{
-bedrockagentcore_delete_memory_record(memoryId, memoryRecordId)
+bedrockagentcore_delete_memory_record(
+  memoryId,
+  memoryRecordId,
+  namespace = NULL
+)
 }
 \arguments{
 \item{memoryId}{[required] The identifier of the AgentCore Memory resource from which to delete the memory record.}
 
 \item{memoryRecordId}{[required] The identifier of the memory record to delete.}
+
+\item{namespace}{The namespace of the memory record to delete. This value is used for IAM condition key authorization.}
 }
 \description{
 Deletes a memory record from an AgentCore Memory resource. When you delete a memory record, it is permanently removed.

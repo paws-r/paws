@@ -58,7 +58,7 @@ DB load is measured as average active sessions. Performance Insights provides th
 \itemize{
 \item To learn more about Performance Insights and Amazon Aurora DB instances, go to the \emph{\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html}{ Amazon Aurora User Guide}} .
 \item To learn more about Performance Insights and Amazon RDS DB instances, go to the \emph{\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{ Amazon RDS User Guide}} .
-\item To learn more about Performance Insights and Amazon DocumentDB clusters, go to the \emph{\href{https://docs.aws.amazon.com/documentdb/latest/devguide/performance-insights.html}{ Amazon DocumentDB Developer Guide}} .
+\item To learn more about Performance Insights and Amazon DocumentDB clusters, go to the \emph{\href{https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html}{ Amazon DocumentDB Developer Guide}} .
 }
 }
 \section{Service syntax}{

@@ -16,7 +16,8 @@ licensemanager_create_license_version(
   ConsumptionConfiguration,
   Status,
   ClientToken,
-  SourceVersion = NULL
+  SourceVersion = NULL,
+  ResetUsage = NULL
 )
 }
 \arguments{
@@ -43,6 +44,8 @@ licensemanager_create_license_version(
 \item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.}
 
 \item{SourceVersion}{Current version of the license.}
+
+\item{ResetUsage}{Specifies whether to reset the license usage for the new license version. If you don't specify a value, the license usage is not reset.}
 }
 \description{
 Creates a new version of the specified license.

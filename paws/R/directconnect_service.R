@@ -96,6 +96,7 @@ NULL
 #'  \link[=directconnect_allocate_private_virtual_interface]{allocate_private_virtual_interface} \tab Provisions a private virtual interface to be owned by the specified Amazon Web Services account\cr
 #'  \link[=directconnect_allocate_public_virtual_interface]{allocate_public_virtual_interface} \tab Provisions a public virtual interface to be owned by the specified Amazon Web Services account\cr
 #'  \link[=directconnect_allocate_transit_virtual_interface]{allocate_transit_virtual_interface} \tab Provisions a transit virtual interface to be owned by the specified Amazon Web Services account\cr
+#'  \link[=directconnect_associate_connections_to_resiliency_group]{associate_connections_to_resiliency_group} \tab Associates one or more connections with the specified resiliency group\cr
 #'  \link[=directconnect_associate_connection_with_lag]{associate_connection_with_lag} \tab Associates an existing connection with a link aggregation group (LAG)\cr
 #'  \link[=directconnect_associate_hosted_connection]{associate_hosted_connection} \tab Associates a hosted connection and its virtual interfaces with a link aggregation group (LAG) or interconnect\cr
 #'  \link[=directconnect_associate_mac_sec_key]{associate_mac_sec_key} \tab Associates a MAC Security (MACsec) Connection Key Name (CKN)/ Connectivity Association Key (CAK) pair with a Direct Connect connection\cr
@@ -114,6 +115,7 @@ NULL
 #'  \link[=directconnect_create_lag]{create_lag} \tab Creates a link aggregation group (LAG) with the specified number of bundled physical dedicated connections between the customer network and a specific Direct Connect location\cr
 #'  \link[=directconnect_create_private_virtual_interface]{create_private_virtual_interface} \tab Creates a private virtual interface\cr
 #'  \link[=directconnect_create_public_virtual_interface]{create_public_virtual_interface} \tab Creates a public virtual interface\cr
+#'  \link[=directconnect_create_resiliency_group]{create_resiliency_group} \tab Creates a resiliency group\cr
 #'  \link[=directconnect_create_transit_virtual_interface]{create_transit_virtual_interface} \tab Creates a transit virtual interface\cr
 #'  \link[=directconnect_delete_bgp_peer]{delete_bgp_peer} \tab Deletes the specified BGP peer on the specified virtual interface with the specified customer address and ASN\cr
 #'  \link[=directconnect_delete_connection]{delete_connection} \tab Deletes the specified connection\cr
@@ -122,6 +124,7 @@ NULL
 #'  \link[=directconnect_delete_direct_connect_gateway_association_proposal]{delete_direct_connect_gateway_association_proposal} \tab Deletes the association proposal request between the specified Direct Connect gateway and virtual private gateway or transit gateway\cr
 #'  \link[=directconnect_delete_interconnect]{delete_interconnect} \tab Deletes the specified interconnect\cr
 #'  \link[=directconnect_delete_lag]{delete_lag} \tab Deletes the specified link aggregation group (LAG)\cr
+#'  \link[=directconnect_delete_resiliency_group]{delete_resiliency_group} \tab Deletes the specified resiliency group\cr
 #'  \link[=directconnect_delete_virtual_interface]{delete_virtual_interface} \tab Deletes a virtual interface\cr
 #'  \link[=directconnect_describe_connection_loa]{describe_connection_loa} \tab Deprecated\cr
 #'  \link[=directconnect_describe_connections]{describe_connections} \tab Displays the specified connection or all connections in this Region\cr
@@ -142,16 +145,23 @@ NULL
 #'  \link[=directconnect_describe_virtual_gateways]{describe_virtual_gateways} \tab Deprecated\cr
 #'  \link[=directconnect_describe_virtual_interfaces]{describe_virtual_interfaces} \tab Displays all virtual interfaces for an Amazon Web Services account\cr
 #'  \link[=directconnect_disassociate_connection_from_lag]{disassociate_connection_from_lag} \tab Disassociates a connection from a link aggregation group (LAG)\cr
+#'  \link[=directconnect_disassociate_connections_from_resiliency_group]{disassociate_connections_from_resiliency_group} \tab Disassociates one or more connections from the specified resiliency group\cr
 #'  \link[=directconnect_disassociate_mac_sec_key]{disassociate_mac_sec_key} \tab Removes the association between a MAC Security (MACsec) security key and a Direct Connect connection\cr
+#'  \link[=directconnect_get_resiliency_group]{get_resiliency_group} \tab Gets information about the specified resiliency group\cr
+#'  \link[=directconnect_list_resiliency_group_associations]{list_resiliency_group_associations} \tab Lists the connection associations for the specified resiliency group\cr
+#'  \link[=directconnect_list_resiliency_groups]{list_resiliency_groups} \tab Lists the resiliency groups owned by your Amazon Web Services account in the current Amazon Web Services Region\cr
+#'  \link[=directconnect_list_virtual_interface_routes]{list_virtual_interface_routes} \tab Lists the routes for the specified virtual interface\cr
 #'  \link[=directconnect_list_virtual_interface_test_history]{list_virtual_interface_test_history} \tab Lists the virtual interface failover test history\cr
 #'  \link[=directconnect_start_bgp_failover_test]{start_bgp_failover_test} \tab Starts the virtual interface failover test that verifies your configuration meets your resiliency requirements by placing the BGP peering session in the DOWN state\cr
 #'  \link[=directconnect_stop_bgp_failover_test]{stop_bgp_failover_test} \tab Stops the virtual interface failover test\cr
 #'  \link[=directconnect_tag_resource]{tag_resource} \tab Adds the specified tags to the specified Direct Connect resource\cr
 #'  \link[=directconnect_untag_resource]{untag_resource} \tab Removes one or more tags from the specified Direct Connect resource\cr
 #'  \link[=directconnect_update_connection]{update_connection} \tab Updates the Direct Connect connection configuration\cr
+#'  \link[=directconnect_update_connections_billing_mode]{update_connections_billing_mode} \tab Updates the billing mode for the specified Direct Connect connections\cr
 #'  \link[=directconnect_update_direct_connect_gateway]{update_direct_connect_gateway} \tab Updates the name of a current Direct Connect gateway\cr
 #'  \link[=directconnect_update_direct_connect_gateway_association]{update_direct_connect_gateway_association} \tab Updates the specified attributes of the Direct Connect gateway association\cr
 #'  \link[=directconnect_update_lag]{update_lag} \tab Updates the attributes of the specified link aggregation group (LAG)\cr
+#'  \link[=directconnect_update_resiliency_group]{update_resiliency_group} \tab Updates the name of the specified resiliency group\cr
 #'  \link[=directconnect_update_virtual_interface_attributes]{update_virtual_interface_attributes} \tab Updates the specified attributes of the specified virtual private interface
 #' }
 #'

@@ -5,32 +5,27 @@ NULL
 
 .kms$cancel_key_deletion_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["cancel_key_deletion_input"]]))
 }
 
 .kms$cancel_key_deletion_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["cancel_key_deletion_output"]]))
 }
 
 .kms$connect_custom_key_store_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CustomKeyStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["connect_custom_key_store_input"]]))
 }
 
 .kms$connect_custom_key_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["connect_custom_key_store_output"]]))
 }
 
 .kms$create_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AliasName = structure(logical(0), tags = list(type = "string")), TargetKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["create_alias_input"]]))
 }
 
 .kms$create_alias_output <- function(...) {
@@ -39,56 +34,47 @@ NULL
 
 .kms$create_custom_key_store_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CustomKeyStoreName = structure(logical(0), tags = list(type = "string")), CloudHsmClusterId = structure(logical(0), tags = list(type = "string")), TrustAnchorCertificate = structure(logical(0), tags = list(type = "string")), KeyStorePassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CustomKeyStoreType = structure(logical(0), tags = list(type = "string")), XksProxyUriEndpoint = structure(logical(0), tags = list(type = "string")), XksProxyUriPath = structure(logical(0), tags = list(type = "string")), XksProxyVpcEndpointServiceName = structure(logical(0), tags = list(type = "string")), XksProxyVpcEndpointServiceOwner = structure(logical(0), tags = list(type = "string")), XksProxyAuthenticationCredential = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RawSecretAccessKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), XksProxyConnectivity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["create_custom_key_store_input"]]))
 }
 
 .kms$create_custom_key_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CustomKeyStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["create_custom_key_store_output"]]))
 }
 
 .kms$create_grant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), GranteePrincipal = structure(logical(0), tags = list(type = "string")), RetiringPrincipal = structure(logical(0), tags = list(type = "string")), Operations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Constraints = structure(list(EncryptionContextSubset = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), EncryptionContextEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Name = structure(logical(0), tags = list(type = "string")), DryRun = structure(logical(0), tags = list(type = "boolean")), GranteeServicePrincipal = structure(logical(0), tags = list(type = "string")), RetiringServicePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["create_grant_input"]]))
 }
 
 .kms$create_grant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GrantToken = structure(logical(0), tags = list(type = "string")), GrantId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["create_grant_output"]]))
 }
 
 .kms$create_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), KeyUsage = structure(logical(0), tags = list(type = "string")), CustomerMasterKeySpec = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "This enum has been deprecated. Instead, use the KeySpec enum.")), KeySpec = structure(logical(0), tags = list(type = "string")), Origin = structure(logical(0), tags = list(type = "string")), CustomKeyStoreId = structure(logical(0), tags = list(type = "string")), BypassPolicyLockoutSafetyCheck = structure(logical(0), tags = list(type = "boolean")), Tags = structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiRegion = structure(logical(0), tags = list(type = "boolean")), XksKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["create_key_input"]]))
 }
 
 .kms$create_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyMetadata = structure(list(AWSAccountId = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), Enabled = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), KeyUsage = structure(logical(0), tags = list(type = "string")), KeyState = structure(logical(0), tags = list(type = "string")), DeletionDate = structure(logical(0), tags = list(type = "timestamp")), ValidTo = structure(logical(0), tags = list(type = "timestamp")), Origin = structure(logical(0), tags = list(type = "string")), CustomKeyStoreId = structure(logical(0), tags = list(type = "string")), CloudHsmClusterId = structure(logical(0), tags = list(type = "string")), ExpirationModel = structure(logical(0), tags = list(type = "string")), KeyManager = structure(logical(0), tags = list(type = "string")), CustomerMasterKeySpec = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "This enum has been deprecated. Instead, use the KeySpec enum.")), KeySpec = structure(logical(0), tags = list(type = "string")), EncryptionAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KeyAgreementAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MultiRegion = structure(logical(0), tags = list(type = "boolean")), MultiRegionConfiguration = structure(list(MultiRegionKeyType = structure(logical(0), tags = list(type = "string")), PrimaryKey = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReplicaKeys = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), PendingDeletionWindowInDays = structure(logical(0), tags = list(type = "integer")), MacAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), XksKeyConfiguration = structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CurrentKeyMaterialId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["create_key_output"]]))
 }
 
 .kms$decrypt_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CiphertextBlob = structure(logical(0), tags = list(type = "blob")), EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KeyId = structure(logical(0), tags = list(type = "string")), EncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), Recipient = structure(list(KeyEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), AttestationDocument = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure")), DryRun = structure(logical(0), tags = list(type = "boolean")), DryRunModifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["decrypt_input"]]))
 }
 
 .kms$decrypt_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Plaintext = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), EncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), CiphertextForRecipient = structure(logical(0), tags = list(type = "blob")), KeyMaterialId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["decrypt_output"]]))
 }
 
 .kms$delete_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AliasName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["delete_alias_input"]]))
 }
 
 .kms$delete_alias_output <- function(...) {
@@ -97,68 +83,57 @@ NULL
 
 .kms$delete_custom_key_store_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CustomKeyStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["delete_custom_key_store_input"]]))
 }
 
 .kms$delete_custom_key_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["delete_custom_key_store_output"]]))
 }
 
 .kms$delete_imported_key_material_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), KeyMaterialId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["delete_imported_key_material_input"]]))
 }
 
 .kms$delete_imported_key_material_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), KeyMaterialId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["delete_imported_key_material_output"]]))
 }
 
 .kms$derive_shared_secret_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), KeyAgreementAlgorithm = structure(logical(0), tags = list(type = "string")), PublicKey = structure(logical(0), tags = list(type = "blob")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean")), Recipient = structure(list(KeyEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), AttestationDocument = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["derive_shared_secret_input"]]))
 }
 
 .kms$derive_shared_secret_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), SharedSecret = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), CiphertextForRecipient = structure(logical(0), tags = list(type = "blob")), KeyAgreementAlgorithm = structure(logical(0), tags = list(type = "string")), KeyOrigin = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["derive_shared_secret_output"]]))
 }
 
 .kms$describe_custom_key_stores_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CustomKeyStoreId = structure(logical(0), tags = list(type = "string")), CustomKeyStoreName = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["describe_custom_key_stores_input"]]))
 }
 
 .kms$describe_custom_key_stores_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CustomKeyStores = structure(list(structure(list(CustomKeyStoreId = structure(logical(0), tags = list(type = "string")), CustomKeyStoreName = structure(logical(0), tags = list(type = "string")), CloudHsmClusterId = structure(logical(0), tags = list(type = "string")), TrustAnchorCertificate = structure(logical(0), tags = list(type = "string")), ConnectionState = structure(logical(0), tags = list(type = "string")), ConnectionErrorCode = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), CustomKeyStoreType = structure(logical(0), tags = list(type = "string")), XksProxyConfiguration = structure(list(Connectivity = structure(logical(0), tags = list(type = "string")), AccessKeyId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), UriEndpoint = structure(logical(0), tags = list(type = "string")), UriPath = structure(logical(0), tags = list(type = "string")), VpcEndpointServiceName = structure(logical(0), tags = list(type = "string")), VpcEndpointServiceOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string")), Truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["describe_custom_key_stores_output"]]))
 }
 
 .kms$describe_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["describe_key_input"]]))
 }
 
 .kms$describe_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyMetadata = structure(list(AWSAccountId = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), Enabled = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), KeyUsage = structure(logical(0), tags = list(type = "string")), KeyState = structure(logical(0), tags = list(type = "string")), DeletionDate = structure(logical(0), tags = list(type = "timestamp")), ValidTo = structure(logical(0), tags = list(type = "timestamp")), Origin = structure(logical(0), tags = list(type = "string")), CustomKeyStoreId = structure(logical(0), tags = list(type = "string")), CloudHsmClusterId = structure(logical(0), tags = list(type = "string")), ExpirationModel = structure(logical(0), tags = list(type = "string")), KeyManager = structure(logical(0), tags = list(type = "string")), CustomerMasterKeySpec = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "This enum has been deprecated. Instead, use the KeySpec enum.")), KeySpec = structure(logical(0), tags = list(type = "string")), EncryptionAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KeyAgreementAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MultiRegion = structure(logical(0), tags = list(type = "boolean")), MultiRegionConfiguration = structure(list(MultiRegionKeyType = structure(logical(0), tags = list(type = "string")), PrimaryKey = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReplicaKeys = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), PendingDeletionWindowInDays = structure(logical(0), tags = list(type = "integer")), MacAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), XksKeyConfiguration = structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CurrentKeyMaterialId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["describe_key_output"]]))
 }
 
 .kms$disable_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["disable_key_input"]]))
 }
 
 .kms$disable_key_output <- function(...) {
@@ -167,8 +142,7 @@ NULL
 
 .kms$disable_key_rotation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["disable_key_rotation_input"]]))
 }
 
 .kms$disable_key_rotation_output <- function(...) {
@@ -177,20 +151,17 @@ NULL
 
 .kms$disconnect_custom_key_store_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CustomKeyStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["disconnect_custom_key_store_input"]]))
 }
 
 .kms$disconnect_custom_key_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["disconnect_custom_key_store_output"]]))
 }
 
 .kms$enable_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["enable_key_input"]]))
 }
 
 .kms$enable_key_output <- function(...) {
@@ -199,8 +170,7 @@ NULL
 
 .kms$enable_key_rotation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), RotationPeriodInDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["enable_key_rotation_input"]]))
 }
 
 .kms$enable_key_rotation_output <- function(...) {
@@ -209,248 +179,207 @@ NULL
 
 .kms$encrypt_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Plaintext = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["encrypt_input"]]))
 }
 
 .kms$encrypt_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CiphertextBlob = structure(logical(0), tags = list(type = "blob")), KeyId = structure(logical(0), tags = list(type = "string")), EncryptionAlgorithm = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["encrypt_output"]]))
 }
 
 .kms$generate_data_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), NumberOfBytes = structure(logical(0), tags = list(type = "integer")), KeySpec = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Recipient = structure(list(KeyEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), AttestationDocument = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["generate_data_key_input"]]))
 }
 
 .kms$generate_data_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CiphertextBlob = structure(logical(0), tags = list(type = "blob")), Plaintext = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), KeyId = structure(logical(0), tags = list(type = "string")), CiphertextForRecipient = structure(logical(0), tags = list(type = "blob")), KeyMaterialId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["generate_data_key_output"]]))
 }
 
 .kms$generate_data_key_pair_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), KeyId = structure(logical(0), tags = list(type = "string")), KeyPairSpec = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Recipient = structure(list(KeyEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), AttestationDocument = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["generate_data_key_pair_input"]]))
 }
 
 .kms$generate_data_key_pair_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PrivateKeyCiphertextBlob = structure(logical(0), tags = list(type = "blob")), PrivateKeyPlaintext = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), PublicKey = structure(logical(0), tags = list(type = "blob")), KeyId = structure(logical(0), tags = list(type = "string")), KeyPairSpec = structure(logical(0), tags = list(type = "string")), CiphertextForRecipient = structure(logical(0), tags = list(type = "blob")), KeyMaterialId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["generate_data_key_pair_output"]]))
 }
 
 .kms$generate_data_key_pair_without_plaintext_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), KeyId = structure(logical(0), tags = list(type = "string")), KeyPairSpec = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["generate_data_key_pair_without_plaintext_input"]]))
 }
 
 .kms$generate_data_key_pair_without_plaintext_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PrivateKeyCiphertextBlob = structure(logical(0), tags = list(type = "blob")), PublicKey = structure(logical(0), tags = list(type = "blob")), KeyId = structure(logical(0), tags = list(type = "string")), KeyPairSpec = structure(logical(0), tags = list(type = "string")), KeyMaterialId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["generate_data_key_pair_without_plaintext_output"]]))
 }
 
 .kms$generate_data_key_without_plaintext_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), KeySpec = structure(logical(0), tags = list(type = "string")), NumberOfBytes = structure(logical(0), tags = list(type = "integer")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["generate_data_key_without_plaintext_input"]]))
 }
 
 .kms$generate_data_key_without_plaintext_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CiphertextBlob = structure(logical(0), tags = list(type = "blob")), KeyId = structure(logical(0), tags = list(type = "string")), KeyMaterialId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["generate_data_key_without_plaintext_output"]]))
 }
 
 .kms$generate_mac_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), KeyId = structure(logical(0), tags = list(type = "string")), MacAlgorithm = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["generate_mac_input"]]))
 }
 
 .kms$generate_mac_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Mac = structure(logical(0), tags = list(type = "blob")), MacAlgorithm = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["generate_mac_output"]]))
 }
 
 .kms$generate_random_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NumberOfBytes = structure(logical(0), tags = list(type = "integer")), CustomKeyStoreId = structure(logical(0), tags = list(type = "string")), Recipient = structure(list(KeyEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), AttestationDocument = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["generate_random_input"]]))
 }
 
 .kms$generate_random_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Plaintext = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), CiphertextForRecipient = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["generate_random_output"]]))
 }
 
 .kms$get_key_last_usage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["get_key_last_usage_input"]]))
 }
 
 .kms$get_key_last_usage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), KeyLastUsage = structure(list(Operation = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), CloudTrailEventId = structure(logical(0), tags = list(type = "string")), KmsRequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TrackingStartDate = structure(logical(0), tags = list(type = "timestamp")), KeyCreationDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["get_key_last_usage_output"]]))
 }
 
 .kms$get_key_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["get_key_policy_input"]]))
 }
 
 .kms$get_key_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["get_key_policy_output"]]))
 }
 
 .kms$get_key_rotation_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["get_key_rotation_status_input"]]))
 }
 
 .kms$get_key_rotation_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyRotationEnabled = structure(logical(0), tags = list(type = "boolean")), KeyId = structure(logical(0), tags = list(type = "string")), RotationPeriodInDays = structure(logical(0), tags = list(type = "integer")), NextRotationDate = structure(logical(0), tags = list(type = "timestamp")), OnDemandRotationStartDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["get_key_rotation_status_output"]]))
 }
 
 .kms$get_parameters_for_import_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), WrappingAlgorithm = structure(logical(0), tags = list(type = "string")), WrappingKeySpec = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["get_parameters_for_import_input"]]))
 }
 
 .kms$get_parameters_for_import_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), ImportToken = structure(logical(0), tags = list(type = "blob")), PublicKey = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), ParametersValidTo = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["get_parameters_for_import_output"]]))
 }
 
 .kms$get_public_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["get_public_key_input"]]))
 }
 
 .kms$get_public_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), PublicKey = structure(logical(0), tags = list(type = "blob")), CustomerMasterKeySpec = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "This enum has been deprecated. Instead, use the KeySpec enum.")), KeySpec = structure(logical(0), tags = list(type = "string")), KeyUsage = structure(logical(0), tags = list(type = "string")), EncryptionAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KeyAgreementAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["get_public_key_output"]]))
 }
 
 .kms$import_key_material_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), ImportToken = structure(logical(0), tags = list(type = "blob")), EncryptedKeyMaterial = structure(logical(0), tags = list(type = "blob")), ValidTo = structure(logical(0), tags = list(type = "timestamp")), ExpirationModel = structure(logical(0), tags = list(type = "string")), ImportType = structure(logical(0), tags = list(type = "string")), KeyMaterialDescription = structure(logical(0), tags = list(type = "string")), KeyMaterialId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["import_key_material_input"]]))
 }
 
 .kms$import_key_material_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), KeyMaterialId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["import_key_material_output"]]))
 }
 
 .kms$list_aliases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["list_aliases_input"]]))
 }
 
 .kms$list_aliases_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Aliases = structure(list(structure(list(AliasName = structure(logical(0), tags = list(type = "string")), AliasArn = structure(logical(0), tags = list(type = "string")), TargetKeyId = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string")), Truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["list_aliases_output"]]))
 }
 
 .kms$list_grants_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Limit = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), GrantId = structure(logical(0), tags = list(type = "string")), GranteePrincipal = structure(logical(0), tags = list(type = "string")), GranteeServicePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["list_grants_input"]]))
 }
 
 .kms$list_grants_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Grants = structure(list(structure(list(KeyId = structure(logical(0), tags = list(type = "string")), GrantId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), GranteePrincipal = structure(logical(0), tags = list(type = "string")), RetiringPrincipal = structure(logical(0), tags = list(type = "string")), IssuingAccount = structure(logical(0), tags = list(type = "string")), Operations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Constraints = structure(list(EncryptionContextSubset = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), EncryptionContextEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GranteeServicePrincipal = structure(logical(0), tags = list(type = "string")), RetiringServicePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string")), Truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["list_grants_output"]]))
 }
 
 .kms$list_key_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["list_key_policies_input"]]))
 }
 
 .kms$list_key_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string")), Truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["list_key_policies_output"]]))
 }
 
 .kms$list_key_rotations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), IncludeKeyMaterial = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["list_key_rotations_input"]]))
 }
 
 .kms$list_key_rotations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Rotations = structure(list(structure(list(KeyId = structure(logical(0), tags = list(type = "string")), KeyMaterialId = structure(logical(0), tags = list(type = "string")), KeyMaterialDescription = structure(logical(0), tags = list(type = "string")), ImportState = structure(logical(0), tags = list(type = "string")), KeyMaterialState = structure(logical(0), tags = list(type = "string")), ExpirationModel = structure(logical(0), tags = list(type = "string")), ValidTo = structure(logical(0), tags = list(type = "timestamp")), RotationDate = structure(logical(0), tags = list(type = "timestamp")), RotationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string")), Truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["list_key_rotations_output"]]))
 }
 
 .kms$list_keys_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Limit = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["list_keys_input"]]))
 }
 
 .kms$list_keys_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Keys = structure(list(structure(list(KeyId = structure(logical(0), tags = list(type = "string")), KeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string")), Truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["list_keys_output"]]))
 }
 
 .kms$list_resource_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["list_resource_tags_input"]]))
 }
 
 .kms$list_resource_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string")), Truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["list_resource_tags_output"]]))
 }
 
 .kms$list_retirable_grants_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Limit = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string")), RetiringPrincipal = structure(logical(0), tags = list(type = "string")), RetiringServicePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["list_retirable_grants_input"]]))
 }
 
 .kms$list_retirable_grants_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Grants = structure(list(structure(list(KeyId = structure(logical(0), tags = list(type = "string")), GrantId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), GranteePrincipal = structure(logical(0), tags = list(type = "string")), RetiringPrincipal = structure(logical(0), tags = list(type = "string")), IssuingAccount = structure(logical(0), tags = list(type = "string")), Operations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Constraints = structure(list(EncryptionContextSubset = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), EncryptionContextEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GranteeServicePrincipal = structure(logical(0), tags = list(type = "string")), RetiringServicePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string")), Truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["list_retirable_grants_output"]]))
 }
 
 .kms$put_key_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string")), BypassPolicyLockoutSafetyCheck = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["put_key_policy_input"]]))
 }
 
 .kms$put_key_policy_output <- function(...) {
@@ -459,32 +388,27 @@ NULL
 
 .kms$re_encrypt_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CiphertextBlob = structure(logical(0), tags = list(type = "blob")), SourceEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SourceKeyId = structure(logical(0), tags = list(type = "string")), DestinationKeyId = structure(logical(0), tags = list(type = "string")), DestinationEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SourceEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), DestinationEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean")), DryRunModifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["re_encrypt_input"]]))
 }
 
 .kms$re_encrypt_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CiphertextBlob = structure(logical(0), tags = list(type = "blob")), SourceKeyId = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), SourceEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), DestinationEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), SourceKeyMaterialId = structure(logical(0), tags = list(type = "string")), DestinationKeyMaterialId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["re_encrypt_output"]]))
 }
 
 .kms$replicate_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), ReplicaRegion = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string")), BypassPolicyLockoutSafetyCheck = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["replicate_key_input"]]))
 }
 
 .kms$replicate_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReplicaKeyMetadata = structure(list(AWSAccountId = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), Enabled = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), KeyUsage = structure(logical(0), tags = list(type = "string")), KeyState = structure(logical(0), tags = list(type = "string")), DeletionDate = structure(logical(0), tags = list(type = "timestamp")), ValidTo = structure(logical(0), tags = list(type = "timestamp")), Origin = structure(logical(0), tags = list(type = "string")), CustomKeyStoreId = structure(logical(0), tags = list(type = "string")), CloudHsmClusterId = structure(logical(0), tags = list(type = "string")), ExpirationModel = structure(logical(0), tags = list(type = "string")), KeyManager = structure(logical(0), tags = list(type = "string")), CustomerMasterKeySpec = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "This enum has been deprecated. Instead, use the KeySpec enum.")), KeySpec = structure(logical(0), tags = list(type = "string")), EncryptionAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KeyAgreementAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MultiRegion = structure(logical(0), tags = list(type = "boolean")), MultiRegionConfiguration = structure(list(MultiRegionKeyType = structure(logical(0), tags = list(type = "string")), PrimaryKey = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReplicaKeys = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), PendingDeletionWindowInDays = structure(logical(0), tags = list(type = "integer")), MacAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), XksKeyConfiguration = structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CurrentKeyMaterialId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReplicaPolicy = structure(logical(0), tags = list(type = "string")), ReplicaTags = structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["replicate_key_output"]]))
 }
 
 .kms$retire_grant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GrantToken = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), GrantId = structure(logical(0), tags = list(type = "string")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["retire_grant_input"]]))
 }
 
 .kms$retire_grant_output <- function(...) {
@@ -493,8 +417,7 @@ NULL
 
 .kms$revoke_grant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), GrantId = structure(logical(0), tags = list(type = "string")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["revoke_grant_input"]]))
 }
 
 .kms$revoke_grant_output <- function(...) {
@@ -503,44 +426,37 @@ NULL
 
 .kms$rotate_key_on_demand_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["rotate_key_on_demand_input"]]))
 }
 
 .kms$rotate_key_on_demand_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["rotate_key_on_demand_output"]]))
 }
 
 .kms$schedule_key_deletion_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), PendingWindowInDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["schedule_key_deletion_input"]]))
 }
 
 .kms$schedule_key_deletion_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), DeletionDate = structure(logical(0), tags = list(type = "timestamp")), KeyState = structure(logical(0), tags = list(type = "string")), PendingWindowInDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["schedule_key_deletion_output"]]))
 }
 
 .kms$sign_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), MessageType = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAlgorithm = structure(logical(0), tags = list(type = "string")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["sign_input"]]))
 }
 
 .kms$sign_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Signature = structure(logical(0), tags = list(type = "blob")), SigningAlgorithm = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["sign_output"]]))
 }
 
 .kms$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["tag_resource_input"]]))
 }
 
 .kms$tag_resource_output <- function(...) {
@@ -549,8 +465,7 @@ NULL
 
 .kms$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["untag_resource_input"]]))
 }
 
 .kms$untag_resource_output <- function(...) {
@@ -559,8 +474,7 @@ NULL
 
 .kms$update_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AliasName = structure(logical(0), tags = list(type = "string")), TargetKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["update_alias_input"]]))
 }
 
 .kms$update_alias_output <- function(...) {
@@ -569,20 +483,17 @@ NULL
 
 .kms$update_custom_key_store_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CustomKeyStoreId = structure(logical(0), tags = list(type = "string")), NewCustomKeyStoreName = structure(logical(0), tags = list(type = "string")), KeyStorePassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CloudHsmClusterId = structure(logical(0), tags = list(type = "string")), XksProxyUriEndpoint = structure(logical(0), tags = list(type = "string")), XksProxyUriPath = structure(logical(0), tags = list(type = "string")), XksProxyVpcEndpointServiceName = structure(logical(0), tags = list(type = "string")), XksProxyVpcEndpointServiceOwner = structure(logical(0), tags = list(type = "string")), XksProxyAuthenticationCredential = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RawSecretAccessKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), XksProxyConnectivity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["update_custom_key_store_input"]]))
 }
 
 .kms$update_custom_key_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["update_custom_key_store_output"]]))
 }
 
 .kms$update_key_description_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["update_key_description_input"]]))
 }
 
 .kms$update_key_description_output <- function(...) {
@@ -591,8 +502,7 @@ NULL
 
 .kms$update_primary_region_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), PrimaryRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["update_primary_region_input"]]))
 }
 
 .kms$update_primary_region_output <- function(...) {
@@ -601,24 +511,20 @@ NULL
 
 .kms$verify_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), MessageType = structure(logical(0), tags = list(type = "string")), Signature = structure(logical(0), tags = list(type = "blob")), SigningAlgorithm = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["verify_input"]]))
 }
 
 .kms$verify_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), SignatureValid = structure(logical(0), tags = list(type = "boolean")), SigningAlgorithm = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["verify_output"]]))
 }
 
 .kms$verify_mac_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), KeyId = structure(logical(0), tags = list(type = "string")), MacAlgorithm = structure(logical(0), tags = list(type = "string")), Mac = structure(logical(0), tags = list(type = "blob")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["verify_mac_input"]]))
 }
 
 .kms$verify_mac_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), MacValid = structure(logical(0), tags = list(type = "boolean")), MacAlgorithm = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .kms_shapes[["verify_mac_output"]]))
 }

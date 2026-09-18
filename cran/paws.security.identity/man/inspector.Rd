@@ -53,7 +53,7 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Inspector enables you to analyze the behavior of your AWS resources and to identify potential security issues. For more information, see \href{https://docs.aws.amazon.com/inspector/v1/userguide/inspector_introduction.html}{Amazon Inspector User Guide}.
+Amazon Inspector enables you to analyze the behavior of your AWS resources and to identify potential security issues. For more information, see Amazon Inspector User Guide.
 }
 \section{Service syntax}{
 

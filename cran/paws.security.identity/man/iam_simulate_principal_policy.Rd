@@ -10,6 +10,7 @@ iam_simulate_principal_policy(
   PolicySourceArn,
   PolicyInputList = NULL,
   PermissionsBoundaryPolicyInputList = NULL,
+  PolicyExclusionList = NULL,
   ActionNames,
   ResourceArns = NULL,
   ResourcePolicy = NULL,
@@ -48,6 +49,12 @@ The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to validate t
 \item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return (\verb{U+000D})
 }}
 
+\item{PolicyExclusionList}{A list of policies to exclude from the simulation. Use this parameter to test what the simulation result would be if a policy were removed, without changing which policies are actually attached to the principal identified by \code{PolicySourceArn}.
+
+Each entry is a \href{https://docs.aws.amazon.com/IAM/latest/APIReference/API_PolicyIdentifier.html}{PolicyIdentifier} that identifies one or more policies to exclude by policy type, by Amazon Resource Name (ARN), or by the name of an inline policy and the entity it is attached to.
+
+Syntactically invalid identifiers, such as malformed ARNs or wildcards in disallowed positions, cause the request to fail with an \code{InvalidInput} error. Syntactically valid identifiers that don't match any attached policy are ignored. Resource control policies (RCPs) are not supported in this release; identifiers that target RCPs are also ignored.}
+
 \item{ActionNames}{[required] A list of names of API operations to evaluate in the simulation. Each operation is evaluated for each resource. Each operation must include the service identifier, such as \code{iam:CreateUser}.}
 
 \item{ResourceArns}{A list of ARNs of Amazon Web Services resources to include in the simulation. If this parameter is not provided, then the value defaults to \code{*} (all resources). Each API in the \code{ActionNames} parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response. You can simulate resources that don't exist in your account.
@@ -73,11 +80,11 @@ Simulation of resource-based policies isn't supported for IAM roles.}
 
 \item{ResourceOwner}{An Amazon Web Services account ID that specifies the owner of any simulated resource that does not identify its owner in the resource ARN. Examples of resource ARNs include an S3 bucket or object. If \code{ResourceOwner} is specified, it is also used as the account owner of any \code{ResourcePolicy} included in the simulation. If the \code{ResourceOwner} parameter is not specified, then the owner of the resources and the resource policy defaults to the account of the identity provided in \code{CallerArn}. This parameter is required only if you specify a resource-based policy and account that owns the resource is different from the account that owns the simulated calling user \code{CallerArn}.}
 
-\item{CallerArn}{The ARN of the IAM user that you want to specify as the simulated caller of the API operations. If you do not specify a \code{CallerArn}, it defaults to the ARN of the user that you specify in \code{PolicySourceArn}, if you specified a user. If you include both a \code{PolicySourceArn} (for example, \verb{arn:aws:iam::123456789012:user/David}) and a \code{CallerArn} (for example, \verb{arn:aws:iam::123456789012:user/Bob}), the result is that you simulate calling the API operations as Bob, as if Bob had David's policies.
+\item{CallerArn}{The ARN of the IAM user, group, or role that you want to specify as the simulated caller of the API operations. If you do not specify a \code{CallerArn}, it defaults to the ARN of the user, group, or role that you specify in \code{PolicySourceArn}. If you include both a \code{PolicySourceArn} (for example, \verb{arn:aws:iam::123456789012:user/David}) and a \code{CallerArn} (for example, \verb{arn:aws:iam::123456789012:user/Bob}), the result is that you simulate calling the API operations as Bob, as if Bob had David's policies.
 
-You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed role, federated user, or a service principal.
+You can specify the ARN of an IAM user, group, or role. You cannot specify the ARN of an assumed role, federated user, or a service principal.
 
-\code{CallerArn} is required if you include a \code{ResourcePolicy} and the \code{PolicySourceArn} is not the ARN for an IAM user. This is required so that the resource-based policy's \code{Principal} element has a value to use in evaluating the policy.
+\code{CallerArn} is required if you include a \code{ResourcePolicy} and the \code{PolicySourceArn} is not the ARN for an IAM user, group, or role. This is required so that the resource-based policy's \code{Principal} element has a value to use in evaluating the policy.
 
 For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference}.}
 

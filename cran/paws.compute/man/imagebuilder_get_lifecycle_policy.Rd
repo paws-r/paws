@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_get_lifecycle_policy}
 \alias{imagebuilder_get_lifecycle_policy}
-\title{Get details for the specified image lifecycle policy}
+\title{Retrieves details for the specified image lifecycle policy}
 \usage{
 imagebuilder_get_lifecycle_policy(lifecyclePolicyArn)
 }
@@ -10,7 +10,7 @@ imagebuilder_get_lifecycle_policy(lifecyclePolicyArn)
 \item{lifecyclePolicyArn}{[required] Specifies the Amazon Resource Name (ARN) of the image lifecycle policy resource to get.}
 }
 \description{
-Get details for the specified image lifecycle policy.
+Retrieves details for the specified image lifecycle policy.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_lifecycle_policy/} for full documentation.
 }

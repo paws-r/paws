@@ -246,6 +246,39 @@ directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
 }
 .directconnect$operations$associate_connection_with_lag <- directconnect_associate_connection_with_lag
 
+#' Associates one or more connections with the specified resiliency group
+#'
+#' @description
+#' Associates one or more connections with the specified resiliency group. This operation is atomic: either all of the specified connections are associated, or the operation fails and no changes are made.
+#'
+#' See [https://www.paws-r-sdk.com/docs/directconnect_associate_connections_to_resiliency_group/](https://www.paws-r-sdk.com/docs/directconnect_associate_connections_to_resiliency_group/) for full documentation.
+#'
+#' @param connectionIdentifiers &#91;required&#93; The IDs or ARNs of the connections to associate with the resiliency group.
+#' @param resiliencyGroupId &#91;required&#93; The ID of the resiliency group.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_associate_connections_to_resiliency_group
+directconnect_associate_connections_to_resiliency_group <- function(connectionIdentifiers, resiliencyGroupId, clientToken = NULL) {
+  op <- new_operation(
+    name = "AssociateConnectionsToResiliencyGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directconnect$associate_connections_to_resiliency_group_input(connectionIdentifiers = connectionIdentifiers, resiliencyGroupId = resiliencyGroupId, clientToken = clientToken)
+  output <- .directconnect$associate_connections_to_resiliency_group_output()
+  config <- get_config()
+  svc <- .directconnect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$associate_connections_to_resiliency_group <- directconnect_associate_connections_to_resiliency_group
+
 #' Associates a hosted connection and its virtual interfaces with a link
 #' aggregation group (LAG) or interconnect
 #'
@@ -577,11 +610,12 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #' @param requestMACSec Indicates whether you want the connection to support MAC Security (MACsec).
 #' 
 #' MAC Security (MACsec) is unavailable on hosted connections. For information about MAC Security (MACsec) prerequisites, see [MAC Security in Direct Connect](https://docs.aws.amazon.com/directconnect/latest/UserGuide/) in the *Direct Connect User Guide*.
+#' @param billingMode The billing mode for the connection.
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_create_connection
-directconnect_create_connection <- function(location, bandwidth, connectionName, lagId = NULL, tags = NULL, providerName = NULL, requestMACSec = NULL) {
+directconnect_create_connection <- function(location, bandwidth, connectionName, lagId = NULL, tags = NULL, providerName = NULL, requestMACSec = NULL, billingMode = NULL) {
   op <- new_operation(
     name = "CreateConnection",
     http_method = "POST",
@@ -590,7 +624,7 @@ directconnect_create_connection <- function(location, bandwidth, connectionName,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$create_connection_input(location = location, bandwidth = bandwidth, connectionName = connectionName, lagId = lagId, tags = tags, providerName = providerName, requestMACSec = requestMACSec)
+  input <- .directconnect$create_connection_input(location = location, bandwidth = bandwidth, connectionName = connectionName, lagId = lagId, tags = tags, providerName = providerName, requestMACSec = requestMACSec, billingMode = billingMode)
   output <- .directconnect$create_connection_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -768,11 +802,12 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #' @param requestMACSec Indicates whether the connection will support MAC Security (MACsec).
 #' 
 #' All connections in the LAG must be capable of supporting MAC Security (MACsec). For information about MAC Security (MACsec) prerequisties, see [MACsec prerequisties](https://docs.aws.amazon.com/directconnect/latest/UserGuide/#mac-sec-prerequisites) in the *Direct Connect User Guide*.
+#' @param billingMode The billing mode for the LAG.
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_create_lag
-directconnect_create_lag <- function(numberOfConnections, location, connectionsBandwidth, lagName, connectionId = NULL, tags = NULL, childConnectionTags = NULL, providerName = NULL, requestMACSec = NULL) {
+directconnect_create_lag <- function(numberOfConnections, location, connectionsBandwidth, lagName, connectionId = NULL, tags = NULL, childConnectionTags = NULL, providerName = NULL, requestMACSec = NULL, billingMode = NULL) {
   op <- new_operation(
     name = "CreateLag",
     http_method = "POST",
@@ -781,7 +816,7 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$create_lag_input(numberOfConnections = numberOfConnections, location = location, connectionsBandwidth = connectionsBandwidth, lagName = lagName, connectionId = connectionId, tags = tags, childConnectionTags = childConnectionTags, providerName = providerName, requestMACSec = requestMACSec)
+  input <- .directconnect$create_lag_input(numberOfConnections = numberOfConnections, location = location, connectionsBandwidth = connectionsBandwidth, lagName = lagName, connectionId = connectionId, tags = tags, childConnectionTags = childConnectionTags, providerName = providerName, requestMACSec = requestMACSec, billingMode = billingMode)
   output <- .directconnect$create_lag_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)
@@ -855,6 +890,40 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 }
 .directconnect$operations$create_public_virtual_interface <- directconnect_create_public_virtual_interface
 
+#' Creates a resiliency group
+#'
+#' @description
+#' Creates a resiliency group. A resiliency group lets you group Direct Connect connections together and manage them as a single unit to meet a target resiliency model.
+#'
+#' See [https://www.paws-r-sdk.com/docs/directconnect_create_resiliency_group/](https://www.paws-r-sdk.com/docs/directconnect_create_resiliency_group/) for full documentation.
+#'
+#' @param resiliencyGroupName &#91;required&#93; The name of the resiliency group.
+#' @param intendedResiliencyModel &#91;required&#93; The resiliency model that the resiliency group is intended to meet. The valid values are `maximum-resiliency`, `high-resiliency`, and `basic-resiliency`.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#' @param tags The tags to associate with the resiliency group.
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_create_resiliency_group
+directconnect_create_resiliency_group <- function(resiliencyGroupName, intendedResiliencyModel, clientToken = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateResiliencyGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directconnect$create_resiliency_group_input(resiliencyGroupName = resiliencyGroupName, intendedResiliencyModel = intendedResiliencyModel, clientToken = clientToken, tags = tags)
+  output <- .directconnect$create_resiliency_group_output()
+  config <- get_config()
+  svc <- .directconnect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$create_resiliency_group <- directconnect_create_resiliency_group
+
 #' Creates a transit virtual interface
 #'
 #' @description
@@ -898,16 +967,24 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
 #' @param virtualInterfaceId The ID of the virtual interface.
 #' @param asn The autonomous system number (ASN). The valid range is from 1 to 2147483646 for Border Gateway Protocol (BGP) configuration. If you provide a number greater than the maximum, an error is returned. Use `asnLong` instead.
 #' 
-#' You can use `asnLong` or `asn`, but not both. We recommend using `asnLong` as it supports a greater pool of numbers.
-#' 
-#' -   The `asnLong` attribute accepts both ASN and long ASN ranges.
+#' -   You can use `asnLong` or `asn`, but not both. We recommend using `asnLong` as it supports a greater pool of numbers.
 #' 
 #' -   If you provide a value in the same API call for both `asn` and `asnLong`, the API will only accept the value for `asnLong`.
+#' 
+#' -   If you enter a 4-byte ASN for the `asn` parameter, the API returns an error.
+#' 
+#' -   If you are using a 2-byte ASN, the API response will include the 2-byte value for both the `asn` and `asnLong` fields.
 #' @param asnLong The long ASN for the BGP peer to be deleted from a Direct Connect virtual interface. The valid range is from 1 to 4294967294 for BGP configuration.
 #' 
-#' You can use `asnLong` or `asn`, but not both. We recommend using `asnLong` as it supports a greater pool of numbers.
+#' Note the following limitations when using `asnLong`:
 #' 
-#' -   The `asnLong` attribute accepts both ASN and long ASN ranges.
+#' -   You can use `asnLong` or `asn`, but not both. We recommend using `asnLong` as it supports a greater pool of numbers.
+#' 
+#' -   `asnLong` accepts any valid ASN value, regardless if it's 2-byte or 4-byte.
+#' 
+#' -   When using a 4-byte `asnLong`, the API response returns `0` for the legacy `asn` attribute since 4-byte ASN values exceed the maximum supported value of 2,147,483,647.
+#' 
+#' -   If you are using a 2-byte ASN, the API response will include the 2-byte value for both the `asn` and `asnLong` fields.
 #' 
 #' -   If you provide a value in the same API call for both `asn` and `asnLong`, the API will only accept the value for `asnLong`.
 #' @param customerAddress The IP address assigned to the customer interface.
@@ -1124,6 +1201,37 @@ directconnect_delete_lag <- function(lagId) {
   return(response)
 }
 .directconnect$operations$delete_lag <- directconnect_delete_lag
+
+#' Deletes the specified resiliency group
+#'
+#' @description
+#' Deletes the specified resiliency group. Deletion is asynchronous: the resiliency group transitions through the `deleting` state before it reaches the `deleted` state. The response returns the resiliency group so you can observe its current state without a subsequent [`get_resiliency_group`][directconnect_get_resiliency_group] call.
+#'
+#' See [https://www.paws-r-sdk.com/docs/directconnect_delete_resiliency_group/](https://www.paws-r-sdk.com/docs/directconnect_delete_resiliency_group/) for full documentation.
+#'
+#' @param resiliencyGroupId &#91;required&#93; The ID of the resiliency group.
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_delete_resiliency_group
+directconnect_delete_resiliency_group <- function(resiliencyGroupId) {
+  op <- new_operation(
+    name = "DeleteResiliencyGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directconnect$delete_resiliency_group_input(resiliencyGroupId = resiliencyGroupId)
+  output <- .directconnect$delete_resiliency_group_output()
+  config <- get_config()
+  svc <- .directconnect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$delete_resiliency_group <- directconnect_delete_resiliency_group
 
 #' Deletes a virtual interface
 #'
@@ -1807,6 +1915,40 @@ directconnect_disassociate_connection_from_lag <- function(connectionId, lagId) 
 }
 .directconnect$operations$disassociate_connection_from_lag <- directconnect_disassociate_connection_from_lag
 
+#' Disassociates one or more connections from the specified resiliency
+#' group
+#'
+#' @description
+#' Disassociates one or more connections from the specified resiliency group. This operation is atomic: either all of the specified connections are disassociated, or the operation fails and no changes are made.
+#'
+#' See [https://www.paws-r-sdk.com/docs/directconnect_disassociate_connections_from_resiliency_group/](https://www.paws-r-sdk.com/docs/directconnect_disassociate_connections_from_resiliency_group/) for full documentation.
+#'
+#' @param connectionIdentifiers &#91;required&#93; The IDs or ARNs of the connections to disassociate from the resiliency group.
+#' @param resiliencyGroupId &#91;required&#93; The ID of the resiliency group.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_disassociate_connections_from_resiliency_group
+directconnect_disassociate_connections_from_resiliency_group <- function(connectionIdentifiers, resiliencyGroupId, clientToken = NULL) {
+  op <- new_operation(
+    name = "DisassociateConnectionsFromResiliencyGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directconnect$disassociate_connections_from_resiliency_group_input(connectionIdentifiers = connectionIdentifiers, resiliencyGroupId = resiliencyGroupId, clientToken = clientToken)
+  output <- .directconnect$disassociate_connections_from_resiliency_group_output()
+  config <- get_config()
+  svc <- .directconnect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$disassociate_connections_from_resiliency_group <- directconnect_disassociate_connections_from_resiliency_group
+
 #' Removes the association between a MAC Security (MACsec) security key and
 #' a Direct Connect connection
 #'
@@ -1843,6 +1985,143 @@ directconnect_disassociate_mac_sec_key <- function(connectionId, secretARN) {
   return(response)
 }
 .directconnect$operations$disassociate_mac_sec_key <- directconnect_disassociate_mac_sec_key
+
+#' Gets information about the specified resiliency group
+#'
+#' @description
+#' Gets information about the specified resiliency group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/directconnect_get_resiliency_group/](https://www.paws-r-sdk.com/docs/directconnect_get_resiliency_group/) for full documentation.
+#'
+#' @param resiliencyGroupId &#91;required&#93; The ID of the resiliency group.
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_get_resiliency_group
+directconnect_get_resiliency_group <- function(resiliencyGroupId) {
+  op <- new_operation(
+    name = "GetResiliencyGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directconnect$get_resiliency_group_input(resiliencyGroupId = resiliencyGroupId)
+  output <- .directconnect$get_resiliency_group_output()
+  config <- get_config()
+  svc <- .directconnect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$get_resiliency_group <- directconnect_get_resiliency_group
+
+#' Lists the connection associations for the specified resiliency group
+#'
+#' @description
+#' Lists the connection associations for the specified resiliency group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/directconnect_list_resiliency_group_associations/](https://www.paws-r-sdk.com/docs/directconnect_list_resiliency_group_associations/) for full documentation.
+#'
+#' @param resiliencyGroupId &#91;required&#93; The ID of the resiliency group.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are returned.
+#' @param nextToken The token for the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_list_resiliency_group_associations
+directconnect_list_resiliency_group_associations <- function(resiliencyGroupId, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListResiliencyGroupAssociations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directconnect$list_resiliency_group_associations_input(resiliencyGroupId = resiliencyGroupId, maxResults = maxResults, nextToken = nextToken)
+  output <- .directconnect$list_resiliency_group_associations_output()
+  config <- get_config()
+  svc <- .directconnect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$list_resiliency_group_associations <- directconnect_list_resiliency_group_associations
+
+#' Lists the resiliency groups owned by your Amazon Web Services account in
+#' the current Amazon Web Services Region
+#'
+#' @description
+#' Lists the resiliency groups owned by your Amazon Web Services account in the current Amazon Web Services Region.
+#'
+#' See [https://www.paws-r-sdk.com/docs/directconnect_list_resiliency_groups/](https://www.paws-r-sdk.com/docs/directconnect_list_resiliency_groups/) for full documentation.
+#'
+#' @param maxResults The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are returned.
+#' @param nextToken The token for the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_list_resiliency_groups
+directconnect_list_resiliency_groups <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListResiliencyGroups",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directconnect$list_resiliency_groups_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .directconnect$list_resiliency_groups_output()
+  config <- get_config()
+  svc <- .directconnect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$list_resiliency_groups <- directconnect_list_resiliency_groups
+
+#' Lists the routes for the specified virtual interface
+#'
+#' @description
+#' Lists the routes for the specified virtual interface.
+#'
+#' See [https://www.paws-r-sdk.com/docs/directconnect_list_virtual_interface_routes/](https://www.paws-r-sdk.com/docs/directconnect_list_virtual_interface_routes/) for full documentation.
+#'
+#' @param virtualInterfaceId The ID of the virtual interface.
+#' @param filters The filters to apply to the routes returned.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned `nextToken` value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are returned.
+#' @param nextToken The token for the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_list_virtual_interface_routes
+directconnect_list_virtual_interface_routes <- function(virtualInterfaceId = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListVirtualInterfaceRoutes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directconnect$list_virtual_interface_routes_input(virtualInterfaceId = virtualInterfaceId, filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .directconnect$list_virtual_interface_routes_output()
+  config <- get_config()
+  svc <- .directconnect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$list_virtual_interface_routes <- directconnect_list_virtual_interface_routes
 
 #' Lists the virtual interface failover test history
 #'
@@ -2053,6 +2332,38 @@ directconnect_update_connection <- function(connectionId, connectionName = NULL,
 }
 .directconnect$operations$update_connection <- directconnect_update_connection
 
+#' Updates the billing mode for the specified Direct Connect connections
+#'
+#' @description
+#' Updates the billing mode for the specified Direct Connect connections. You can update the billing mode for up to 200 connections in a single request.
+#'
+#' See [https://www.paws-r-sdk.com/docs/directconnect_update_connections_billing_mode/](https://www.paws-r-sdk.com/docs/directconnect_update_connections_billing_mode/) for full documentation.
+#'
+#' @param connectionIds &#91;required&#93; The IDs of the connections to update. You can specify from 1 to 200 connections.
+#' @param billingMode &#91;required&#93; The billing mode to apply to the specified connections. The valid values are `PayAsYouGo`, `FlatRateTier1`, `FlatRateTier2`, `FlatRateTier3`, `FlatRateTier4`, and `FlatRateTier5`.
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_update_connections_billing_mode
+directconnect_update_connections_billing_mode <- function(connectionIds, billingMode) {
+  op <- new_operation(
+    name = "UpdateConnectionsBillingMode",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directconnect$update_connections_billing_mode_input(connectionIds = connectionIds, billingMode = billingMode)
+  output <- .directconnect$update_connections_billing_mode_output()
+  config <- get_config()
+  svc <- .directconnect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$update_connections_billing_mode <- directconnect_update_connections_billing_mode
+
 #' Updates the name of a current Direct Connect gateway
 #'
 #' @description
@@ -2155,6 +2466,39 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL,
 }
 .directconnect$operations$update_lag <- directconnect_update_lag
 
+#' Updates the name of the specified resiliency group
+#'
+#' @description
+#' Updates the name of the specified resiliency group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/directconnect_update_resiliency_group/](https://www.paws-r-sdk.com/docs/directconnect_update_resiliency_group/) for full documentation.
+#'
+#' @param resiliencyGroupId &#91;required&#93; The ID of the resiliency group.
+#' @param resiliencyGroupName &#91;required&#93; The new name of the resiliency group.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_update_resiliency_group
+directconnect_update_resiliency_group <- function(resiliencyGroupId, resiliencyGroupName, clientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateResiliencyGroup",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directconnect$update_resiliency_group_input(resiliencyGroupId = resiliencyGroupId, resiliencyGroupName = resiliencyGroupName, clientToken = clientToken)
+  output <- .directconnect$update_resiliency_group_output()
+  config <- get_config()
+  svc <- .directconnect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$update_resiliency_group <- directconnect_update_resiliency_group
+
 #' Updates the specified attributes of the specified virtual private
 #' interface
 #'
@@ -2167,11 +2511,14 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL,
 #' @param mtu The maximum transmission unit (MTU), in bytes. The supported values are 1500 and 8500. The default value is 1500.
 #' @param enableSiteLink Indicates whether to enable or disable SiteLink.
 #' @param virtualInterfaceName The name of the virtual private interface.
+#' @param prefixPoolAllocatedCountIpv4 The number of inbound IPv4 route prefixes to allocate to the virtual interface. Not applicable to public virtual interfaces.
+#' @param prefixPoolAllocatedCountIpv6 The number of inbound IPv6 route prefixes to allocate to the virtual interface. Not applicable to public virtual interfaces.
+#' @param rateLimit The rate limit (bandwidth allocation) to apply to the virtual interface. Use this to update the bandwidth allocation on an existing virtual interface.
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_update_virtual_interface_attributes
-directconnect_update_virtual_interface_attributes <- function(virtualInterfaceId, mtu = NULL, enableSiteLink = NULL, virtualInterfaceName = NULL) {
+directconnect_update_virtual_interface_attributes <- function(virtualInterfaceId, mtu = NULL, enableSiteLink = NULL, virtualInterfaceName = NULL, prefixPoolAllocatedCountIpv4 = NULL, prefixPoolAllocatedCountIpv6 = NULL, rateLimit = NULL) {
   op <- new_operation(
     name = "UpdateVirtualInterfaceAttributes",
     http_method = "POST",
@@ -2180,7 +2527,7 @@ directconnect_update_virtual_interface_attributes <- function(virtualInterfaceId
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$update_virtual_interface_attributes_input(virtualInterfaceId = virtualInterfaceId, mtu = mtu, enableSiteLink = enableSiteLink, virtualInterfaceName = virtualInterfaceName)
+  input <- .directconnect$update_virtual_interface_attributes_input(virtualInterfaceId = virtualInterfaceId, mtu = mtu, enableSiteLink = enableSiteLink, virtualInterfaceName = virtualInterfaceName, prefixPoolAllocatedCountIpv4 = prefixPoolAllocatedCountIpv4, prefixPoolAllocatedCountIpv6 = prefixPoolAllocatedCountIpv6, rateLimit = rateLimit)
   output <- .directconnect$update_virtual_interface_attributes_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)

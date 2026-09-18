@@ -11,7 +11,7 @@ NULL
 #' See [https://www.paws-r-sdk.com/docs/codecatalyst_create_access_token/](https://www.paws-r-sdk.com/docs/codecatalyst_create_access_token/) for full documentation.
 #'
 #' @param name &#91;required&#93; The friendly name of the personal access token.
-#' @param expiresTime The date and time the personal access token expires, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.
+#' @param expiresTime The date and time the personal access token expires, in coordinated universal time (UTC) timestamp format as specified in [RFC 3339](https://www.rfc-editor.org/info/rfc3339/#section-5.6).
 #'
 #' @keywords internal
 #'
@@ -749,8 +749,8 @@ codecatalyst_list_dev_environments <- function(spaceName, projectName = NULL, fi
 #' See [https://www.paws-r-sdk.com/docs/codecatalyst_list_event_logs/](https://www.paws-r-sdk.com/docs/codecatalyst_list_event_logs/) for full documentation.
 #'
 #' @param spaceName &#91;required&#93; The name of the space.
-#' @param startTime &#91;required&#93; The date and time when you want to start retrieving events, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.
-#' @param endTime &#91;required&#93; The time after which you do not want any events retrieved, in coordinated universal time (UTC) timestamp format as specified in RFC 3339.
+#' @param startTime &#91;required&#93; The date and time when you want to start retrieving events, in coordinated universal time (UTC) timestamp format as specified in [RFC 3339](https://www.rfc-editor.org/info/rfc3339/#section-5.6).
+#' @param endTime &#91;required&#93; The time after which you do not want any events retrieved, in coordinated universal time (UTC) timestamp format as specified in [RFC 3339](https://www.rfc-editor.org/info/rfc3339/#section-5.6).
 #' @param eventName The name of the event.
 #' @param nextToken A token returned from a call to this API to indicate the next batch of results to return, if any.
 #' @param maxResults The maximum number of results to show in a single call to this API. If the number of results is larger than the number you specified, the response will include a `NextToken` element, which you can use to obtain additional results.

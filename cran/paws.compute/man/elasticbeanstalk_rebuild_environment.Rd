@@ -2,8 +2,8 @@
 % Please edit documentation in R/elasticbeanstalk_operations.R
 \name{elasticbeanstalk_rebuild_environment}
 \alias{elasticbeanstalk_rebuild_environment}
-\title{Deletes and recreates all of the AWS resources (for example: the Auto
-Scaling group, load balancer, etc}
+\title{Deletes and recreates all of the Amazon Web Services resources (for
+example: the Auto Scaling group, load balancer, etc}
 \usage{
 elasticbeanstalk_rebuild_environment(
   EnvironmentId = NULL,
@@ -13,14 +13,14 @@ elasticbeanstalk_rebuild_environment(
 \arguments{
 \item{EnvironmentId}{The ID of the environment to rebuild.
 
-Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
+Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 
 \item{EnvironmentName}{The name of the environment to rebuild.
 
-Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
+Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 }
 \description{
-Deletes and recreates all of the AWS resources (for example: the Auto Scaling group, load balancer, etc.) for a specified environment and forces a restart.
+Deletes and recreates all of the Amazon Web Services resources (for example: the Auto Scaling group, load balancer, etc.) for a specified environment and forces a restart.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_rebuild_environment/} for full documentation.
 }

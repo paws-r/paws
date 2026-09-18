@@ -2,12 +2,14 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_create_lookup_table}
 \alias{cloudwatchlogs_create_lookup_table}
-\title{Creates a lookup table by uploading CSV data}
+\title{Creates a lookup table by uploading CSV data or from CloudWatch Logs
+query results}
 \usage{
 cloudwatchlogs_create_lookup_table(
   lookupTableName,
   description = NULL,
-  tableBody,
+  tableBody = NULL,
+  queryId = NULL,
   kmsKeyId = NULL,
   tags = NULL
 )
@@ -17,14 +19,20 @@ cloudwatchlogs_create_lookup_table(
 
 \item{description}{A description of the lookup table. The description can be up to 1024 characters long.}
 
-\item{tableBody}{[required] The CSV content of the lookup table. The first row must be a header row with column names. The content must use UTF-8 encoding and not exceed 10 MB.}
+\item{tableBody}{The CSV content of the lookup table. The first row must be a header row with column names. The content must use UTF-8 encoding and not exceed 10 MB.
+
+You must specify either \code{tableBody} or \code{queryId}, but not both.}
+
+\item{queryId}{The ID of a completed or cancelled CloudWatch Logs query whose results populate the lookup table. A cancelled query populates the table with the partial results that were available when the query was stopped.
+
+You must specify either \code{tableBody} or \code{queryId}, but not both.}
 
 \item{kmsKeyId}{The ARN of the KMS key to use to encrypt the lookup table data. If you don't specify a key, the data is encrypted with an Amazon Web Services-owned key.}
 
 \item{tags}{A list of key-value pairs to associate with the lookup table. You can associate as many as 50 tags with a lookup table. Tags can help you organize and categorize your resources.}
 }
 \description{
-Creates a lookup table by uploading CSV data. You can use lookup tables to enrich log data in CloudWatch Logs Insights queries with reference data such as user details, application names, or error descriptions.
+Creates a lookup table by uploading CSV data or from CloudWatch Logs query results. You can use lookup tables to enrich log data in CloudWatch Logs queries with reference data such as user details, application names, or error descriptions.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_lookup_table/} for full documentation.
 }

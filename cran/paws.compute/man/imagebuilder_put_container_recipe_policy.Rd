@@ -12,7 +12,7 @@ imagebuilder_put_container_recipe_policy(containerRecipeArn, policy)
 \item{policy}{[required] The policy to apply to the container recipe.}
 }
 \description{
-Applies a policy to a container image. We recommend that you call the RAM API CreateResourceShare (https://docs.aws.amazon.com//ram/latest/APIReference/API_CreateResourceShare.html) to share resources. If you call the Image Builder API \code{PutContainerImagePolicy}, you must also call the RAM API PromoteResourceShareCreatedFromPolicy (https://docs.aws.amazon.com//ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) in order for the resource to be visible to all principals with whom the resource is shared.
+Applies a policy to a container image. To share resources, call the RAM API \href{https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html}{CreateResourceShare}. If you call this API, you must also call the RAM API \href{https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html}{PromoteResourceShareCreatedFromPolicy} so that the resource is visible to all principals with whom the resource is shared.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_put_container_recipe_policy/} for full documentation.
 }

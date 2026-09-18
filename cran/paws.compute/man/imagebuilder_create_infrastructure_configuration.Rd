@@ -19,7 +19,8 @@ imagebuilder_create_infrastructure_configuration(
   instanceMetadataOptions = NULL,
   tags = NULL,
   placement = NULL,
-  clientToken
+  clientToken,
+  dryRun = NULL
 )
 }
 \arguments{
@@ -27,7 +28,7 @@ imagebuilder_create_infrastructure_configuration(
 
 \item{description}{The description of the infrastructure configuration.}
 
-\item{instanceTypes}{The instance types of the infrastructure configuration. You can specify one or more instance types to use for this build. The service will pick one of these instance types based on availability.}
+\item{instanceTypes}{The instance types of the infrastructure configuration. You can specify one or more instance types to use for this build. Image Builder picks one of these instance types based on availability.}
 
 \item{instanceProfileName}{[required] The instance profile to associate with the instance used to customize your Amazon EC2 AMI.}
 
@@ -39,9 +40,9 @@ imagebuilder_create_infrastructure_configuration(
 
 \item{keyPair}{The key pair of the infrastructure configuration. You can use this to log on to and debug the instance used to create your image.}
 
-\item{terminateInstanceOnFailure}{The terminate instance on failure setting of the infrastructure configuration. Set to false if you want Image Builder to retain the instance used to configure your AMI if the build or test phase of your workflow fails.}
+\item{terminateInstanceOnFailure}{Specifies whether to terminate the instance on failure. Set to false if you want Image Builder to retain the instance used to configure your AMI if the build or test phase of your workflow fails. Defaults to \code{true}.}
 
-\item{snsTopicArn}{The Amazon Resource Name (ARN) for the SNS topic to which we send image build event notifications.
+\item{snsTopicArn}{The Amazon Resource Name (ARN) of the SNS topic to which Image Builder sends image build event notifications.
 
 EC2 Image Builder is unable to send notifications to SNS topics that are encrypted using keys from other accounts. The key that is used to encrypt the SNS topic must reside in the account that the Image Builder service runs under.}
 
@@ -51,9 +52,11 @@ EC2 Image Builder is unable to send notifications to SNS topics that are encrypt
 
 \item{tags}{The metadata tags to assign to the infrastructure configuration resource that Image Builder creates as output. Tags are formatted as key value pairs.}
 
-\item{placement}{The instance placement settings that define where the instances that are launched from your image will run.}
+\item{placement}{The instance placement settings that define where the instances that are launched from your image run.}
 
-\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+
+\item{dryRun}{Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a \code{DryRunOperationException} error response.}
 }
 \description{
 Creates a new infrastructure configuration. An infrastructure configuration defines the environment in which your image will be built and tested.

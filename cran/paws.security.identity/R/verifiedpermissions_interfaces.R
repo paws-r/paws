@@ -5,408 +5,340 @@ NULL
 
 .verifiedpermissions$batch_get_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requests = structure(list(structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), policyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["batch_get_policy_input"]]))
 }
 
 .verifiedpermissions$batch_get_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(results = structure(list(structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), policyId = structure(logical(0), tags = list(type = "string")), policyType = structure(logical(0), tags = list(type = "string")), definition = structure(list(static = structure(list(description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), statement = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), templateLinked = structure(list(policyTemplateId = structure(logical(0), tags = list(type = "string")), principal = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), resource = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), errors = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), policyStoreId = structure(logical(0), tags = list(type = "string")), policyId = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["batch_get_policy_output"]]))
 }
 
 .verifiedpermissions$batch_is_authorized_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), entities = structure(list(entityList = structure(list(structure(list(identifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), attributes = structure(list(structure(list(boolean = structure(logical(0), tags = list(type = "boolean", box = TRUE, sensitive = TRUE)), entityIdentifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), long = structure(logical(0), tags = list(type = "long", box = TRUE, sensitive = TRUE)), string = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), set = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), record = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), ipaddr = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), decimal = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datetime = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), duration = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), parents = structure(list(structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(list(boolean = structure(logical(0), tags = list(type = "boolean", box = TRUE, sensitive = TRUE)), entityIdentifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), long = structure(logical(0), tags = list(type = "long", box = TRUE, sensitive = TRUE)), string = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), set = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), record = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), ipaddr = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), decimal = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datetime = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), duration = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), cedarJson = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE)), requests = structure(list(structure(list(principal = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), action = structure(list(actionType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), resource = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), context = structure(list(contextMap = structure(list(structure(list(boolean = structure(logical(0), tags = list(type = "boolean", box = TRUE, sensitive = TRUE)), entityIdentifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), long = structure(logical(0), tags = list(type = "long", box = TRUE, sensitive = TRUE)), string = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), set = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), record = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), ipaddr = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), decimal = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datetime = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), duration = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map", sensitive = TRUE)), cedarJson = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["batch_is_authorized_input"]]))
 }
 
 .verifiedpermissions$batch_is_authorized_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(results = structure(list(structure(list(request = structure(list(principal = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), action = structure(list(actionType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), resource = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), context = structure(list(contextMap = structure(list(structure(list(boolean = structure(logical(0), tags = list(type = "boolean", box = TRUE, sensitive = TRUE)), entityIdentifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), long = structure(logical(0), tags = list(type = "long", box = TRUE, sensitive = TRUE)), string = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), set = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), record = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), ipaddr = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), decimal = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datetime = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), duration = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map", sensitive = TRUE)), cedarJson = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), decision = structure(logical(0), tags = list(type = "string")), determiningPolicies = structure(list(structure(list(policyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), errors = structure(list(structure(list(errorDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["batch_is_authorized_output"]]))
 }
 
 .verifiedpermissions$batch_is_authorized_with_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), identityToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), accessToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entities = structure(list(entityList = structure(list(structure(list(identifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), attributes = structure(list(structure(list(boolean = structure(logical(0), tags = list(type = "boolean", box = TRUE, sensitive = TRUE)), entityIdentifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), long = structure(logical(0), tags = list(type = "long", box = TRUE, sensitive = TRUE)), string = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), set = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), record = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), ipaddr = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), decimal = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datetime = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), duration = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), parents = structure(list(structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(list(boolean = structure(logical(0), tags = list(type = "boolean", box = TRUE, sensitive = TRUE)), entityIdentifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), long = structure(logical(0), tags = list(type = "long", box = TRUE, sensitive = TRUE)), string = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), set = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), record = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), ipaddr = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), decimal = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datetime = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), duration = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), cedarJson = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE)), requests = structure(list(structure(list(action = structure(list(actionType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), resource = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), context = structure(list(contextMap = structure(list(structure(list(boolean = structure(logical(0), tags = list(type = "boolean", box = TRUE, sensitive = TRUE)), entityIdentifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), long = structure(logical(0), tags = list(type = "long", box = TRUE, sensitive = TRUE)), string = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), set = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), record = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), ipaddr = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), decimal = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datetime = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), duration = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map", sensitive = TRUE)), cedarJson = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["batch_is_authorized_with_token_input"]]))
 }
 
 .verifiedpermissions$batch_is_authorized_with_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(principal = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), results = structure(list(structure(list(request = structure(list(action = structure(list(actionType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), resource = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), context = structure(list(contextMap = structure(list(structure(list(boolean = structure(logical(0), tags = list(type = "boolean", box = TRUE, sensitive = TRUE)), entityIdentifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), long = structure(logical(0), tags = list(type = "long", box = TRUE, sensitive = TRUE)), string = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), set = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), record = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), ipaddr = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), decimal = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datetime = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), duration = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map", sensitive = TRUE)), cedarJson = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), decision = structure(logical(0), tags = list(type = "string")), determiningPolicies = structure(list(structure(list(policyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), errors = structure(list(structure(list(errorDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["batch_is_authorized_with_token_output"]]))
 }
 
 .verifiedpermissions$create_identity_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), policyStoreId = structure(logical(0), tags = list(type = "string")), configuration = structure(list(cognitoUserPoolConfiguration = structure(list(userPoolArn = structure(logical(0), tags = list(type = "string")), clientIds = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), groupConfiguration = structure(list(groupEntityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), openIdConnectConfiguration = structure(list(issuer = structure(logical(0), tags = list(type = "string")), entityIdPrefix = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), groupConfiguration = structure(list(groupClaim = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), groupEntityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), tokenSelection = structure(list(accessTokenOnly = structure(list(principalIdClaim = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), audiences = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), identityTokenOnly = structure(list(principalIdClaim = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), clientIds = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), principalEntityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["create_identity_source_input"]]))
 }
 
 .verifiedpermissions$create_identity_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), identitySourceId = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), policyStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["create_identity_source_output"]]))
 }
 
 .verifiedpermissions$create_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), policyStoreId = structure(logical(0), tags = list(type = "string")), definition = structure(list(static = structure(list(description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), statement = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), templateLinked = structure(list(policyTemplateId = structure(logical(0), tags = list(type = "string")), principal = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), resource = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["create_policy_input"]]))
 }
 
 .verifiedpermissions$create_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), policyId = structure(logical(0), tags = list(type = "string")), policyType = structure(logical(0), tags = list(type = "string")), principal = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), resource = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), actions = structure(list(structure(list(actionType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), effect = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["create_policy_output"]]))
 }
 
 .verifiedpermissions$create_policy_store_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), validationSettings = structure(list(mode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), deletionProtection = structure(logical(0), tags = list(type = "string")), encryptionSettings = structure(list(kmsEncryptionSettings = structure(list(key = structure(logical(0), tags = list(type = "string")), encryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), default = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["create_policy_store_input"]]))
 }
 
 .verifiedpermissions$create_policy_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["create_policy_store_output"]]))
 }
 
 .verifiedpermissions$create_policy_store_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(aliasName = structure(logical(0), tags = list(type = "string")), policyStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["create_policy_store_alias_input"]]))
 }
 
 .verifiedpermissions$create_policy_store_alias_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(aliasName = structure(logical(0), tags = list(type = "string")), policyStoreId = structure(logical(0), tags = list(type = "string")), aliasArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["create_policy_store_alias_output"]]))
 }
 
 .verifiedpermissions$create_policy_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), policyStoreId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), statement = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["create_policy_template_input"]]))
 }
 
 .verifiedpermissions$create_policy_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), policyTemplateId = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["create_policy_template_output"]]))
 }
 
 .verifiedpermissions$delete_identity_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), identitySourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["delete_identity_source_input"]]))
 }
 
 .verifiedpermissions$delete_identity_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["delete_identity_source_output"]]))
 }
 
 .verifiedpermissions$delete_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), policyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["delete_policy_input"]]))
 }
 
 .verifiedpermissions$delete_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["delete_policy_output"]]))
 }
 
 .verifiedpermissions$delete_policy_store_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["delete_policy_store_input"]]))
 }
 
 .verifiedpermissions$delete_policy_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["delete_policy_store_output"]]))
 }
 
 .verifiedpermissions$delete_policy_store_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(aliasName = structure(logical(0), tags = list(type = "string")), deletionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["delete_policy_store_alias_input"]]))
 }
 
 .verifiedpermissions$delete_policy_store_alias_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["delete_policy_store_alias_output"]]))
 }
 
 .verifiedpermissions$delete_policy_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), policyTemplateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["delete_policy_template_input"]]))
 }
 
 .verifiedpermissions$delete_policy_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["delete_policy_template_output"]]))
 }
 
 .verifiedpermissions$get_identity_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), identitySourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["get_identity_source_input"]]))
 }
 
 .verifiedpermissions$get_identity_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), details = structure(list(clientIds = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(deprecated = TRUE, deprecatedMessage = "This attribute has been replaced by configuration.cognitoUserPoolConfiguration.clientIds", type = "list")), userPoolArn = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This attribute has been replaced by configuration.cognitoUserPoolConfiguration.userPoolArn", type = "string")), discoveryUrl = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This attribute has been replaced by configuration.cognitoUserPoolConfiguration.issuer", type = "string")), openIdIssuer = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This attribute has been replaced by configuration", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "This shape has been replaced by ConfigurationDetail")), identitySourceId = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), policyStoreId = structure(logical(0), tags = list(type = "string")), principalEntityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), configuration = structure(list(cognitoUserPoolConfiguration = structure(list(userPoolArn = structure(logical(0), tags = list(type = "string")), clientIds = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), issuer = structure(logical(0), tags = list(type = "string")), groupConfiguration = structure(list(groupEntityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), openIdConnectConfiguration = structure(list(issuer = structure(logical(0), tags = list(type = "string")), entityIdPrefix = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), groupConfiguration = structure(list(groupClaim = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), groupEntityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), tokenSelection = structure(list(accessTokenOnly = structure(list(principalIdClaim = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), audiences = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), identityTokenOnly = structure(list(principalIdClaim = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), clientIds = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["get_identity_source_output"]]))
 }
 
 .verifiedpermissions$get_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), policyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["get_policy_input"]]))
 }
 
 .verifiedpermissions$get_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), policyId = structure(logical(0), tags = list(type = "string")), policyType = structure(logical(0), tags = list(type = "string")), principal = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), resource = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), actions = structure(list(structure(list(actionType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), definition = structure(list(static = structure(list(description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), statement = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), templateLinked = structure(list(policyTemplateId = structure(logical(0), tags = list(type = "string")), principal = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), resource = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), effect = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["get_policy_output"]]))
 }
 
 .verifiedpermissions$get_policy_store_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), tags = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["get_policy_store_input"]]))
 }
 
 .verifiedpermissions$get_policy_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), validationSettings = structure(list(mode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), deletionProtection = structure(logical(0), tags = list(type = "string")), encryptionState = structure(list(kmsEncryptionState = structure(list(key = structure(logical(0), tags = list(type = "string")), encryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), default = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), cedarVersion = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["get_policy_store_output"]]))
 }
 
 .verifiedpermissions$get_policy_store_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(aliasName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["get_policy_store_alias_input"]]))
 }
 
 .verifiedpermissions$get_policy_store_alias_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(aliasName = structure(logical(0), tags = list(type = "string")), policyStoreId = structure(logical(0), tags = list(type = "string")), aliasArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["get_policy_store_alias_output"]]))
 }
 
 .verifiedpermissions$get_policy_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), policyTemplateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["get_policy_template_input"]]))
 }
 
 .verifiedpermissions$get_policy_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), policyTemplateId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), statement = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["get_policy_template_output"]]))
 }
 
 .verifiedpermissions$get_schema_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["get_schema_input"]]))
 }
 
 .verifiedpermissions$get_schema_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), namespaces = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["get_schema_output"]]))
 }
 
 .verifiedpermissions$is_authorized_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), principal = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), action = structure(list(actionType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), resource = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), context = structure(list(contextMap = structure(list(structure(list(boolean = structure(logical(0), tags = list(type = "boolean", box = TRUE, sensitive = TRUE)), entityIdentifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), long = structure(logical(0), tags = list(type = "long", box = TRUE, sensitive = TRUE)), string = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), set = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), record = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), ipaddr = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), decimal = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datetime = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), duration = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map", sensitive = TRUE)), cedarJson = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE)), entities = structure(list(entityList = structure(list(structure(list(identifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), attributes = structure(list(structure(list(boolean = structure(logical(0), tags = list(type = "boolean", box = TRUE, sensitive = TRUE)), entityIdentifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), long = structure(logical(0), tags = list(type = "long", box = TRUE, sensitive = TRUE)), string = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), set = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), record = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), ipaddr = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), decimal = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datetime = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), duration = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), parents = structure(list(structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(list(boolean = structure(logical(0), tags = list(type = "boolean", box = TRUE, sensitive = TRUE)), entityIdentifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), long = structure(logical(0), tags = list(type = "long", box = TRUE, sensitive = TRUE)), string = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), set = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), record = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), ipaddr = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), decimal = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datetime = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), duration = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), cedarJson = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["is_authorized_input"]]))
 }
 
 .verifiedpermissions$is_authorized_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(decision = structure(logical(0), tags = list(type = "string")), determiningPolicies = structure(list(structure(list(policyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), errors = structure(list(structure(list(errorDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["is_authorized_output"]]))
 }
 
 .verifiedpermissions$is_authorized_with_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), identityToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), accessToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), action = structure(list(actionType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), resource = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), context = structure(list(contextMap = structure(list(structure(list(boolean = structure(logical(0), tags = list(type = "boolean", box = TRUE, sensitive = TRUE)), entityIdentifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), long = structure(logical(0), tags = list(type = "long", box = TRUE, sensitive = TRUE)), string = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), set = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), record = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), ipaddr = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), decimal = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datetime = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), duration = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map", sensitive = TRUE)), cedarJson = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE)), entities = structure(list(entityList = structure(list(structure(list(identifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), attributes = structure(list(structure(list(boolean = structure(logical(0), tags = list(type = "boolean", box = TRUE, sensitive = TRUE)), entityIdentifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), long = structure(logical(0), tags = list(type = "long", box = TRUE, sensitive = TRUE)), string = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), set = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), record = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), ipaddr = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), decimal = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datetime = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), duration = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), parents = structure(list(structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(list(boolean = structure(logical(0), tags = list(type = "boolean", box = TRUE, sensitive = TRUE)), entityIdentifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), long = structure(logical(0), tags = list(type = "long", box = TRUE, sensitive = TRUE)), string = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), set = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), record = structure(list(structure(logical(0), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), ipaddr = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), decimal = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datetime = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), duration = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), cedarJson = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["is_authorized_with_token_input"]]))
 }
 
 .verifiedpermissions$is_authorized_with_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(decision = structure(logical(0), tags = list(type = "string")), determiningPolicies = structure(list(structure(list(policyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), errors = structure(list(structure(list(errorDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), principal = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["is_authorized_with_token_output"]]))
 }
 
 .verifiedpermissions$list_identity_sources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), filters = structure(list(structure(list(principalEntityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["list_identity_sources_input"]]))
 }
 
 .verifiedpermissions$list_identity_sources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), identitySources = structure(list(structure(list(createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), details = structure(list(clientIds = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(deprecated = TRUE, deprecatedMessage = "This attribute has been replaced by configuration.cognitoUserPoolConfiguration.clientIds", type = "list")), userPoolArn = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This attribute has been replaced by configuration.cognitoUserPoolConfiguration.userPoolArn", type = "string")), discoveryUrl = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This attribute has been replaced by configuration.cognitoUserPoolConfiguration.issuer", type = "string")), openIdIssuer = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This attribute has been replaced by configuration", type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "This shape has been replaced by ConfigurationItem")), identitySourceId = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), policyStoreId = structure(logical(0), tags = list(type = "string")), principalEntityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), configuration = structure(list(cognitoUserPoolConfiguration = structure(list(userPoolArn = structure(logical(0), tags = list(type = "string")), clientIds = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), issuer = structure(logical(0), tags = list(type = "string")), groupConfiguration = structure(list(groupEntityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), openIdConnectConfiguration = structure(list(issuer = structure(logical(0), tags = list(type = "string")), entityIdPrefix = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), groupConfiguration = structure(list(groupClaim = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), groupEntityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), tokenSelection = structure(list(accessTokenOnly = structure(list(principalIdClaim = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), audiences = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), identityTokenOnly = structure(list(principalIdClaim = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), clientIds = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["list_identity_sources_output"]]))
 }
 
 .verifiedpermissions$list_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), filter = structure(list(principal = structure(list(unspecified = structure(logical(0), tags = list(type = "boolean", box = TRUE)), identifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), resource = structure(list(unspecified = structure(logical(0), tags = list(type = "boolean", box = TRUE)), identifier = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), policyType = structure(logical(0), tags = list(type = "string")), policyTemplateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["list_policies_input"]]))
 }
 
 .verifiedpermissions$list_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), policies = structure(list(structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), policyId = structure(logical(0), tags = list(type = "string")), policyType = structure(logical(0), tags = list(type = "string")), principal = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), resource = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), actions = structure(list(structure(list(actionType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), definition = structure(list(static = structure(list(description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), templateLinked = structure(list(policyTemplateId = structure(logical(0), tags = list(type = "string")), principal = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), resource = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), effect = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["list_policies_output"]]))
 }
 
 .verifiedpermissions$list_policy_store_aliases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), filter = structure(list(policyStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["list_policy_store_aliases_input"]]))
 }
 
 .verifiedpermissions$list_policy_store_aliases_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), policyStoreAliases = structure(list(structure(list(aliasName = structure(logical(0), tags = list(type = "string")), policyStoreId = structure(logical(0), tags = list(type = "string")), aliasArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["list_policy_store_aliases_output"]]))
 }
 
 .verifiedpermissions$list_policy_stores_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["list_policy_stores_input"]]))
 }
 
 .verifiedpermissions$list_policy_stores_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), policyStores = structure(list(structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["list_policy_stores_output"]]))
 }
 
 .verifiedpermissions$list_policy_templates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["list_policy_templates_input"]]))
 }
 
 .verifiedpermissions$list_policy_templates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), policyTemplates = structure(list(structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), policyTemplateId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["list_policy_templates_output"]]))
 }
 
 .verifiedpermissions$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["list_tags_for_resource_input"]]))
 }
 
 .verifiedpermissions$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["list_tags_for_resource_output"]]))
 }
 
 .verifiedpermissions$put_schema_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), definition = structure(list(cedarJson = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["put_schema_input"]]))
 }
 
 .verifiedpermissions$put_schema_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), namespaces = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["put_schema_output"]]))
 }
 
 .verifiedpermissions$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["tag_resource_input"]]))
 }
 
 .verifiedpermissions$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["tag_resource_output"]]))
 }
 
 .verifiedpermissions$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["untag_resource_input"]]))
 }
 
 .verifiedpermissions$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["untag_resource_output"]]))
 }
 
 .verifiedpermissions$update_identity_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), identitySourceId = structure(logical(0), tags = list(type = "string")), updateConfiguration = structure(list(cognitoUserPoolConfiguration = structure(list(userPoolArn = structure(logical(0), tags = list(type = "string")), clientIds = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), groupConfiguration = structure(list(groupEntityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), openIdConnectConfiguration = structure(list(issuer = structure(logical(0), tags = list(type = "string")), entityIdPrefix = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), groupConfiguration = structure(list(groupClaim = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), groupEntityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), tokenSelection = structure(list(accessTokenOnly = structure(list(principalIdClaim = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), audiences = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), identityTokenOnly = structure(list(principalIdClaim = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), clientIds = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), principalEntityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["update_identity_source_input"]]))
 }
 
 .verifiedpermissions$update_identity_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), identitySourceId = structure(logical(0), tags = list(type = "string")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), policyStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["update_identity_source_output"]]))
 }
 
 .verifiedpermissions$update_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), policyId = structure(logical(0), tags = list(type = "string")), definition = structure(list(static = structure(list(description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), statement = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["update_policy_input"]]))
 }
 
 .verifiedpermissions$update_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), policyId = structure(logical(0), tags = list(type = "string")), policyType = structure(logical(0), tags = list(type = "string")), principal = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), resource = structure(list(entityType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entityId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), actions = structure(list(structure(list(actionType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), effect = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["update_policy_output"]]))
 }
 
 .verifiedpermissions$update_policy_store_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), validationSettings = structure(list(mode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), deletionProtection = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["update_policy_store_input"]]))
 }
 
 .verifiedpermissions$update_policy_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["update_policy_store_output"]]))
 }
 
 .verifiedpermissions$update_policy_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), policyTemplateId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), statement = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["update_policy_template_input"]]))
 }
 
 .verifiedpermissions$update_policy_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), policyTemplateId = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .verifiedpermissions_shapes[["update_policy_template_output"]]))
 }

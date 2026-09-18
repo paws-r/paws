@@ -5,44 +5,37 @@ NULL
 
 .ivschat$create_chat_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(roomIdentifier = structure(logical(0), tags = list(type = "string")), userId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sessionDurationInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["create_chat_token_input"]]))
 }
 
 .ivschat$create_chat_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(token = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tokenExpirationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), sessionExpirationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["create_chat_token_output"]]))
 }
 
 .ivschat$create_logging_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), destinationConfiguration = structure(list(s3 = structure(list(bucketName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), cloudWatchLogs = structure(list(logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), firehose = structure(list(deliveryStreamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["create_logging_configuration_input"]]))
 }
 
 .ivschat$create_logging_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), destinationConfiguration = structure(list(s3 = structure(list(bucketName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), cloudWatchLogs = structure(list(logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), firehose = structure(list(deliveryStreamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), state = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["create_logging_configuration_output"]]))
 }
 
 .ivschat$create_room_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), maximumMessageRatePerSecond = structure(logical(0), tags = list(type = "integer", box = TRUE)), maximumMessageLength = structure(logical(0), tags = list(type = "integer", box = TRUE)), messageReviewHandler = structure(list(uri = structure(logical(0), tags = list(type = "string")), fallbackResult = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), loggingConfigurationIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["create_room_input"]]))
 }
 
 .ivschat$create_room_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), maximumMessageRatePerSecond = structure(logical(0), tags = list(type = "integer", box = TRUE)), maximumMessageLength = structure(logical(0), tags = list(type = "integer", box = TRUE)), messageReviewHandler = structure(list(uri = structure(logical(0), tags = list(type = "string")), fallbackResult = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), loggingConfigurationIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["create_room_output"]]))
 }
 
 .ivschat$delete_logging_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["delete_logging_configuration_input"]]))
 }
 
 .ivschat$delete_logging_configuration_output <- function(...) {
@@ -51,20 +44,17 @@ NULL
 
 .ivschat$delete_message_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(roomIdentifier = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["delete_message_input"]]))
 }
 
 .ivschat$delete_message_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["delete_message_output"]]))
 }
 
 .ivschat$delete_room_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["delete_room_input"]]))
 }
 
 .ivschat$delete_room_output <- function(...) {
@@ -73,132 +63,110 @@ NULL
 
 .ivschat$disconnect_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(roomIdentifier = structure(logical(0), tags = list(type = "string")), userId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["disconnect_user_input"]]))
 }
 
 .ivschat$disconnect_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["disconnect_user_output"]]))
 }
 
 .ivschat$get_logging_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["get_logging_configuration_input"]]))
 }
 
 .ivschat$get_logging_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), destinationConfiguration = structure(list(s3 = structure(list(bucketName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), cloudWatchLogs = structure(list(logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), firehose = structure(list(deliveryStreamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), state = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["get_logging_configuration_output"]]))
 }
 
 .ivschat$get_room_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["get_room_input"]]))
 }
 
 .ivschat$get_room_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), maximumMessageRatePerSecond = structure(logical(0), tags = list(type = "integer", box = TRUE)), maximumMessageLength = structure(logical(0), tags = list(type = "integer", box = TRUE)), messageReviewHandler = structure(list(uri = structure(logical(0), tags = list(type = "string")), fallbackResult = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), loggingConfigurationIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["get_room_output"]]))
 }
 
 .ivschat$list_logging_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["list_logging_configurations_input"]]))
 }
 
 .ivschat$list_logging_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(loggingConfigurations = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), destinationConfiguration = structure(list(s3 = structure(list(bucketName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), cloudWatchLogs = structure(list(logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), firehose = structure(list(deliveryStreamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), state = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["list_logging_configurations_output"]]))
 }
 
 .ivschat$list_rooms_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), messageReviewHandlerUri = structure(logical(0), tags = list(type = "string")), loggingConfigurationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["list_rooms_input"]]))
 }
 
 .ivschat$list_rooms_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(rooms = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), messageReviewHandler = structure(list(uri = structure(logical(0), tags = list(type = "string")), fallbackResult = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), loggingConfigurationIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["list_rooms_output"]]))
 }
 
 .ivschat$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["list_tags_for_resource_input"]]))
 }
 
 .ivschat$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["list_tags_for_resource_output"]]))
 }
 
 .ivschat$send_event_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(roomIdentifier = structure(logical(0), tags = list(type = "string")), eventName = structure(logical(0), tags = list(type = "string")), attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["send_event_input"]]))
 }
 
 .ivschat$send_event_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["send_event_output"]]))
 }
 
 .ivschat$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["tag_resource_input"]]))
 }
 
 .ivschat$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["tag_resource_output"]]))
 }
 
 .ivschat$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["untag_resource_input"]]))
 }
 
 .ivschat$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["untag_resource_output"]]))
 }
 
 .ivschat$update_logging_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(identifier = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), destinationConfiguration = structure(list(s3 = structure(list(bucketName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), cloudWatchLogs = structure(list(logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), firehose = structure(list(deliveryStreamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["update_logging_configuration_input"]]))
 }
 
 .ivschat$update_logging_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), destinationConfiguration = structure(list(s3 = structure(list(bucketName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), cloudWatchLogs = structure(list(logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), firehose = structure(list(deliveryStreamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), state = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["update_logging_configuration_output"]]))
 }
 
 .ivschat$update_room_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(identifier = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), maximumMessageRatePerSecond = structure(logical(0), tags = list(type = "integer", box = TRUE)), maximumMessageLength = structure(logical(0), tags = list(type = "integer", box = TRUE)), messageReviewHandler = structure(list(uri = structure(logical(0), tags = list(type = "string")), fallbackResult = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), loggingConfigurationIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["update_room_input"]]))
 }
 
 .ivschat$update_room_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), maximumMessageRatePerSecond = structure(logical(0), tags = list(type = "integer", box = TRUE)), maximumMessageLength = structure(logical(0), tags = list(type = "integer", box = TRUE)), messageReviewHandler = structure(list(uri = structure(logical(0), tags = list(type = "string")), fallbackResult = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), loggingConfigurationIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ivschat_shapes[["update_room_output"]]))
 }

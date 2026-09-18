@@ -5,6 +5,7 @@
 \title{Lists the anomaly detection models that you have created in your account}
 \usage{
 cloudwatch_describe_anomaly_detectors(
+  AnomalyDetectorIds = NULL,
   NextToken = NULL,
   MaxResults = NULL,
   Namespace = NULL,
@@ -14,6 +15,8 @@ cloudwatch_describe_anomaly_detectors(
 )
 }
 \arguments{
+\item{AnomalyDetectorIds}{Specifies the unique identifiers of the anomaly detectors to describe. You can specify up to 50 identifiers. If you specify this parameter, you cannot also specify the \code{Namespace}, \code{MetricName}, \code{Dimensions}, or \code{AnomalyDetectorTypes} metric filters.}
+
 \item{NextToken}{Use the token returned by the previous operation to request the next page of results.}
 
 \item{MaxResults}{The maximum number of results to return in one operation. The maximum value that you can specify is 100.

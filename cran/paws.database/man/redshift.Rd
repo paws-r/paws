@@ -120,6 +120,7 @@ If you are a database developer, the \href{https://docs.aws.amazon.com/redshift/
 \link[=redshift_create_hsm_client_certificate]{create_hsm_client_certificate} \tab Creates an HSM client certificate that an Amazon Redshift cluster will use to connect to the client's HSM in order to store and retrieve the keys used to encrypt the cluster databases\cr
 \link[=redshift_create_hsm_configuration]{create_hsm_configuration} \tab Creates an HSM configuration that contains the information required by an Amazon Redshift cluster to store and use database encryption keys in a Hardware Security Module (HSM)\cr
 \link[=redshift_create_integration]{create_integration} \tab Creates a zero-ETL integration or S3 event integration with Amazon Redshift\cr
+\link[=redshift_create_qev_2_idc_application]{create_qev_2_idc_application} \tab Creates an Amazon Redshift Query Editor (QEV2) IAM Identity Center application\cr
 \link[=redshift_create_redshift_idc_application]{create_redshift_idc_application} \tab Creates an Amazon Redshift application for use with IAM Identity Center\cr
 \link[=redshift_create_scheduled_action]{create_scheduled_action} \tab Creates a scheduled action\cr
 \link[=redshift_create_snapshot_copy_grant]{create_snapshot_copy_grant} \tab Creates a snapshot copy grant that permits Amazon Redshift to use an encrypted symmetric key from Key Management Service (KMS) to encrypt copied snapshots in a destination region\cr
@@ -140,6 +141,7 @@ If you are a database developer, the \href{https://docs.aws.amazon.com/redshift/
 \link[=redshift_delete_hsm_configuration]{delete_hsm_configuration} \tab Deletes the specified Amazon Redshift HSM configuration\cr
 \link[=redshift_delete_integration]{delete_integration} \tab Deletes a zero-ETL integration or S3 event integration with Amazon Redshift\cr
 \link[=redshift_delete_partner]{delete_partner} \tab Deletes a partner integration from a cluster\cr
+\link[=redshift_delete_qev_2_idc_application]{delete_qev_2_idc_application} \tab Deletes an Amazon Redshift Query Editor (QEV2) IAM Identity Center application\cr
 \link[=redshift_delete_redshift_idc_application]{delete_redshift_idc_application} \tab Deletes an Amazon Redshift IAM Identity Center application\cr
 \link[=redshift_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource policy for a specified resource\cr
 \link[=redshift_delete_scheduled_action]{delete_scheduled_action} \tab Deletes a scheduled action\cr
@@ -177,6 +179,7 @@ If you are a database developer, the \href{https://docs.aws.amazon.com/redshift/
 \link[=redshift_describe_node_configuration_options]{describe_node_configuration_options} \tab Returns properties of possible node configurations such as node type, number of nodes, and disk usage for the specified action type\cr
 \link[=redshift_describe_orderable_cluster_options]{describe_orderable_cluster_options} \tab Returns a list of orderable cluster options\cr
 \link[=redshift_describe_partners]{describe_partners} \tab Returns information about the partner integrations defined for a cluster\cr
+\link[=redshift_describe_qev_2_idc_applications]{describe_qev_2_idc_applications} \tab Lists the Amazon Redshift Query Editor (QEV2) IAM Identity Center applications\cr
 \link[=redshift_describe_redshift_idc_applications]{describe_redshift_idc_applications} \tab Lists the Amazon Redshift IAM Identity Center applications\cr
 \link[=redshift_describe_reserved_node_exchange_status]{describe_reserved_node_exchange_status} \tab Returns exchange status details and associated metadata for a reserved-node exchange\cr
 \link[=redshift_describe_reserved_node_offerings]{describe_reserved_node_offerings} \tab Returns a list of the available reserved node offerings by Amazon Redshift with their descriptions including the node type, the fixed and recurring costs of reserving the node and duration the node will be reserved for you\cr
@@ -217,6 +220,7 @@ If you are a database developer, the \href{https://docs.aws.amazon.com/redshift/
 \link[=redshift_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing Amazon Redshift event notification subscription\cr
 \link[=redshift_modify_integration]{modify_integration} \tab Modifies a zero-ETL integration or S3 event integration with Amazon Redshift\cr
 \link[=redshift_modify_lakehouse_configuration]{modify_lakehouse_configuration} \tab Modifies the lakehouse configuration for a cluster\cr
+\link[=redshift_modify_qev_2_idc_application]{modify_qev_2_idc_application} \tab Modifies an Amazon Redshift Query Editor (QEV2) IAM Identity Center application\cr
 \link[=redshift_modify_redshift_idc_application]{modify_redshift_idc_application} \tab Changes an existing Amazon Redshift IAM Identity Center application\cr
 \link[=redshift_modify_scheduled_action]{modify_scheduled_action} \tab Modifies a scheduled action\cr
 \link[=redshift_modify_snapshot_copy_retention_period]{modify_snapshot_copy_retention_period} \tab Modifies the number of days to retain snapshots in the destination Amazon Web Services Region after they are copied from the source Amazon Web Services Region\cr

@@ -11,7 +11,8 @@ bedrockagentcorecontrol_create_payment_manager(
   authorizerConfiguration = NULL,
   roleArn,
   clientToken = NULL,
-  tags = NULL
+  tags = NULL,
+  kmsKeyArn = NULL
 )
 }
 \arguments{
@@ -32,6 +33,8 @@ bedrockagentcorecontrol_create_payment_manager(
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
 \item{tags}{A map of tag keys and values to assign to the payment manager.}
+
+\item{kmsKeyArn}{The Amazon Resource Name (ARN) of the customer managed KMS key to use for encrypting sensitive payment manager data at rest. If you don't specify a key, the data is encrypted with an Amazon Web Services owned key.}
 }
 \description{
 Creates a new payment manager in your Amazon Web Services account. A payment manager serves as the top-level resource for managing payment processing capabilities, including payment connectors that integrate with supported payment providers.

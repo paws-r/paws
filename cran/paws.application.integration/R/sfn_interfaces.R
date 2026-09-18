@@ -5,444 +5,370 @@ NULL
 
 .sfn$create_activity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsDataKeyReusePeriodSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["create_activity_input"]]))
 }
 
 .sfn$create_activity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(activityArn = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["create_activity_output"]]))
 }
 
 .sfn$create_state_machine_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), definition = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), roleArn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), loggingConfiguration = structure(list(level = structure(logical(0), tags = list(type = "string")), includeExecutionData = structure(logical(0), tags = list(type = "boolean")), destinations = structure(list(structure(list(cloudWatchLogsLogGroup = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tracingConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), publish = structure(logical(0), tags = list(type = "boolean")), versionDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsDataKeyReusePeriodSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["create_state_machine_input"]]))
 }
 
 .sfn$create_state_machine_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineArn = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), stateMachineVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["create_state_machine_output"]]))
 }
 
 .sfn$create_state_machine_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string")), routingConfiguration = structure(list(structure(list(stateMachineVersionArn = structure(logical(0), tags = list(type = "string")), weight = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["create_state_machine_alias_input"]]))
 }
 
 .sfn$create_state_machine_alias_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineAliasArn = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["create_state_machine_alias_output"]]))
 }
 
 .sfn$delete_activity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(activityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["delete_activity_input"]]))
 }
 
 .sfn$delete_activity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["delete_activity_output"]]))
 }
 
 .sfn$delete_state_machine_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["delete_state_machine_input"]]))
 }
 
 .sfn$delete_state_machine_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["delete_state_machine_output"]]))
 }
 
 .sfn$delete_state_machine_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineAliasArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["delete_state_machine_alias_input"]]))
 }
 
 .sfn$delete_state_machine_alias_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["delete_state_machine_alias_output"]]))
 }
 
 .sfn$delete_state_machine_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["delete_state_machine_version_input"]]))
 }
 
 .sfn$delete_state_machine_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["delete_state_machine_version_output"]]))
 }
 
 .sfn$describe_activity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(activityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["describe_activity_input"]]))
 }
 
 .sfn$describe_activity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(activityArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsDataKeyReusePeriodSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["describe_activity_output"]]))
 }
 
 .sfn$describe_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(executionArn = structure(logical(0), tags = list(type = "string")), includedData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["describe_execution_input"]]))
 }
 
 .sfn$describe_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(executionArn = structure(logical(0), tags = list(type = "string")), stateMachineArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startDate = structure(logical(0), tags = list(type = "timestamp")), stopDate = structure(logical(0), tags = list(type = "timestamp")), input = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputDetails = structure(list(included = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), output = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputDetails = structure(list(included = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), traceHeader = structure(logical(0), tags = list(type = "string")), mapRunArn = structure(logical(0), tags = list(type = "string")), error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), stateMachineVersionArn = structure(logical(0), tags = list(type = "string")), stateMachineAliasArn = structure(logical(0), tags = list(type = "string")), redriveCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), redriveDate = structure(logical(0), tags = list(type = "timestamp")), redriveStatus = structure(logical(0), tags = list(type = "string")), redriveStatusReason = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["describe_execution_output"]]))
 }
 
 .sfn$describe_map_run_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(mapRunArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["describe_map_run_input"]]))
 }
 
 .sfn$describe_map_run_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(mapRunArn = structure(logical(0), tags = list(type = "string")), executionArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startDate = structure(logical(0), tags = list(type = "timestamp")), stopDate = structure(logical(0), tags = list(type = "timestamp")), maxConcurrency = structure(logical(0), tags = list(type = "integer")), toleratedFailurePercentage = structure(logical(0), tags = list(type = "float")), toleratedFailureCount = structure(logical(0), tags = list(type = "long")), itemCounts = structure(list(pending = structure(logical(0), tags = list(type = "long")), running = structure(logical(0), tags = list(type = "long")), succeeded = structure(logical(0), tags = list(type = "long")), failed = structure(logical(0), tags = list(type = "long")), timedOut = structure(logical(0), tags = list(type = "long")), aborted = structure(logical(0), tags = list(type = "long")), total = structure(logical(0), tags = list(type = "long")), resultsWritten = structure(logical(0), tags = list(type = "long")), failuresNotRedrivable = structure(logical(0), tags = list(type = "long")), pendingRedrive = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), executionCounts = structure(list(pending = structure(logical(0), tags = list(type = "long")), running = structure(logical(0), tags = list(type = "long")), succeeded = structure(logical(0), tags = list(type = "long")), failed = structure(logical(0), tags = list(type = "long")), timedOut = structure(logical(0), tags = list(type = "long")), aborted = structure(logical(0), tags = list(type = "long")), total = structure(logical(0), tags = list(type = "long")), resultsWritten = structure(logical(0), tags = list(type = "long")), failuresNotRedrivable = structure(logical(0), tags = list(type = "long")), pendingRedrive = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), redriveCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), redriveDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["describe_map_run_output"]]))
 }
 
 .sfn$describe_state_machine_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineArn = structure(logical(0), tags = list(type = "string")), includedData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["describe_state_machine_input"]]))
 }
 
 .sfn$describe_state_machine_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), definition = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), roleArn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), loggingConfiguration = structure(list(level = structure(logical(0), tags = list(type = "string")), includeExecutionData = structure(logical(0), tags = list(type = "boolean")), destinations = structure(list(structure(list(cloudWatchLogsLogGroup = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), tracingConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), label = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsDataKeyReusePeriodSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), variableReferences = structure(list(structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["describe_state_machine_output"]]))
 }
 
 .sfn$describe_state_machine_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineAliasArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["describe_state_machine_alias_input"]]))
 }
 
 .sfn$describe_state_machine_alias_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineAliasArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), routingConfiguration = structure(list(structure(list(stateMachineVersionArn = structure(logical(0), tags = list(type = "string")), weight = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), creationDate = structure(logical(0), tags = list(type = "timestamp")), updateDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["describe_state_machine_alias_output"]]))
 }
 
 .sfn$describe_state_machine_for_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(executionArn = structure(logical(0), tags = list(type = "string")), includedData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["describe_state_machine_for_execution_input"]]))
 }
 
 .sfn$describe_state_machine_for_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), definition = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), roleArn = structure(logical(0), tags = list(type = "string")), updateDate = structure(logical(0), tags = list(type = "timestamp")), loggingConfiguration = structure(list(level = structure(logical(0), tags = list(type = "string")), includeExecutionData = structure(logical(0), tags = list(type = "boolean")), destinations = structure(list(structure(list(cloudWatchLogsLogGroup = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), tracingConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), mapRunArn = structure(logical(0), tags = list(type = "string")), label = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsDataKeyReusePeriodSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), variableReferences = structure(list(structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["describe_state_machine_for_execution_output"]]))
 }
 
 .sfn$get_activity_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(activityArn = structure(logical(0), tags = list(type = "string")), workerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["get_activity_task_input"]]))
 }
 
 .sfn$get_activity_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(taskToken = structure(logical(0), tags = list(type = "string")), input = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["get_activity_task_output"]]))
 }
 
 .sfn$get_execution_history_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(executionArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), reverseOrder = structure(logical(0), tags = list(type = "boolean")), nextToken = structure(logical(0), tags = list(type = "string")), includeExecutionData = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["get_execution_history_input"]]))
 }
 
 .sfn$get_execution_history_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(events = structure(list(structure(list(timestamp = structure(logical(0), tags = list(type = "timestamp")), type = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "long")), previousEventId = structure(logical(0), tags = list(type = "long")), activityFailedEventDetails = structure(list(error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), activityScheduleFailedEventDetails = structure(list(error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), activityScheduledEventDetails = structure(list(resource = structure(logical(0), tags = list(type = "string")), input = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputDetails = structure(list(truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), timeoutInSeconds = structure(logical(0), tags = list(box = TRUE, type = "long")), heartbeatInSeconds = structure(logical(0), tags = list(box = TRUE, type = "long"))), tags = list(type = "structure")), activityStartedEventDetails = structure(list(workerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), activitySucceededEventDetails = structure(list(output = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputDetails = structure(list(truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), activityTimedOutEventDetails = structure(list(error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), taskFailedEventDetails = structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string")), error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), taskScheduledEventDetails = structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), parameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), timeoutInSeconds = structure(logical(0), tags = list(box = TRUE, type = "long")), heartbeatInSeconds = structure(logical(0), tags = list(box = TRUE, type = "long")), taskCredentials = structure(list(roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), taskStartFailedEventDetails = structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string")), error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), taskStartedEventDetails = structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), taskSubmitFailedEventDetails = structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string")), error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), taskSubmittedEventDetails = structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string")), output = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputDetails = structure(list(truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), taskSucceededEventDetails = structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string")), output = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputDetails = structure(list(truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), taskTimedOutEventDetails = structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string")), error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), executionFailedEventDetails = structure(list(error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), executionStartedEventDetails = structure(list(input = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputDetails = structure(list(truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), stateMachineAliasArn = structure(logical(0), tags = list(type = "string")), stateMachineVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), executionSucceededEventDetails = structure(list(output = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputDetails = structure(list(truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), executionAbortedEventDetails = structure(list(error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), executionTimedOutEventDetails = structure(list(error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), executionRedrivenEventDetails = structure(list(redriveCount = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), mapStateStartedEventDetails = structure(list(length = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), mapIterationStartedEventDetails = structure(list(name = structure(logical(0), tags = list(type = "string")), index = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), mapIterationSucceededEventDetails = structure(list(name = structure(logical(0), tags = list(type = "string")), index = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), mapIterationFailedEventDetails = structure(list(name = structure(logical(0), tags = list(type = "string")), index = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), mapIterationAbortedEventDetails = structure(list(name = structure(logical(0), tags = list(type = "string")), index = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), lambdaFunctionFailedEventDetails = structure(list(error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), lambdaFunctionScheduleFailedEventDetails = structure(list(error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), lambdaFunctionScheduledEventDetails = structure(list(resource = structure(logical(0), tags = list(type = "string")), input = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputDetails = structure(list(truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), timeoutInSeconds = structure(logical(0), tags = list(box = TRUE, type = "long")), taskCredentials = structure(list(roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), lambdaFunctionStartFailedEventDetails = structure(list(error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), lambdaFunctionSucceededEventDetails = structure(list(output = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputDetails = structure(list(truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), lambdaFunctionTimedOutEventDetails = structure(list(error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), stateEnteredEventDetails = structure(list(name = structure(logical(0), tags = list(type = "string")), input = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputDetails = structure(list(truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), stateExitedEventDetails = structure(list(name = structure(logical(0), tags = list(type = "string")), output = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputDetails = structure(list(truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), assignedVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), assignedVariablesDetails = structure(list(truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), mapRunStartedEventDetails = structure(list(mapRunArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), mapRunFailedEventDetails = structure(list(error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), mapRunRedrivenEventDetails = structure(list(mapRunArn = structure(logical(0), tags = list(type = "string")), redriveCount = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), evaluationFailedEventDetails = structure(list(error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), location = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["get_execution_history_output"]]))
 }
 
 .sfn$list_activities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["list_activities_input"]]))
 }
 
 .sfn$list_activities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(activities = structure(list(structure(list(activityArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["list_activities_output"]]))
 }
 
 .sfn$list_executions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineArn = structure(logical(0), tags = list(type = "string")), statusFilter = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string")), mapRunArn = structure(logical(0), tags = list(type = "string")), redriveFilter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["list_executions_input"]]))
 }
 
 .sfn$list_executions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(executions = structure(list(structure(list(executionArn = structure(logical(0), tags = list(type = "string")), stateMachineArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startDate = structure(logical(0), tags = list(type = "timestamp")), stopDate = structure(logical(0), tags = list(type = "timestamp")), mapRunArn = structure(logical(0), tags = list(type = "string")), itemCount = structure(logical(0), tags = list(box = TRUE, type = "integer")), stateMachineVersionArn = structure(logical(0), tags = list(type = "string")), stateMachineAliasArn = structure(logical(0), tags = list(type = "string")), redriveCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), redriveDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["list_executions_output"]]))
 }
 
 .sfn$list_map_runs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(executionArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["list_map_runs_input"]]))
 }
 
 .sfn$list_map_runs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(mapRuns = structure(list(structure(list(executionArn = structure(logical(0), tags = list(type = "string")), mapRunArn = structure(logical(0), tags = list(type = "string")), stateMachineArn = structure(logical(0), tags = list(type = "string")), startDate = structure(logical(0), tags = list(type = "timestamp")), stopDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["list_map_runs_output"]]))
 }
 
 .sfn$list_state_machine_aliases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["list_state_machine_aliases_input"]]))
 }
 
 .sfn$list_state_machine_aliases_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineAliases = structure(list(structure(list(stateMachineAliasArn = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["list_state_machine_aliases_output"]]))
 }
 
 .sfn$list_state_machine_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["list_state_machine_versions_input"]]))
 }
 
 .sfn$list_state_machine_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineVersions = structure(list(structure(list(stateMachineVersionArn = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["list_state_machine_versions_output"]]))
 }
 
 .sfn$list_state_machines_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["list_state_machines_input"]]))
 }
 
 .sfn$list_state_machines_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachines = structure(list(structure(list(stateMachineArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["list_state_machines_output"]]))
 }
 
 .sfn$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["list_tags_for_resource_input"]]))
 }
 
 .sfn$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["list_tags_for_resource_output"]]))
 }
 
 .sfn$publish_state_machine_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineArn = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["publish_state_machine_version_input"]]))
 }
 
 .sfn$publish_state_machine_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(creationDate = structure(logical(0), tags = list(type = "timestamp")), stateMachineVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["publish_state_machine_version_output"]]))
 }
 
 .sfn$redrive_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(executionArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["redrive_execution_input"]]))
 }
 
 .sfn$redrive_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(redriveDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["redrive_execution_output"]]))
 }
 
 .sfn$send_task_failure_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(taskToken = structure(logical(0), tags = list(type = "string")), error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["send_task_failure_input"]]))
 }
 
 .sfn$send_task_failure_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["send_task_failure_output"]]))
 }
 
 .sfn$send_task_heartbeat_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(taskToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["send_task_heartbeat_input"]]))
 }
 
 .sfn$send_task_heartbeat_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["send_task_heartbeat_output"]]))
 }
 
 .sfn$send_task_success_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(taskToken = structure(logical(0), tags = list(type = "string")), output = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["send_task_success_input"]]))
 }
 
 .sfn$send_task_success_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["send_task_success_output"]]))
 }
 
 .sfn$start_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), input = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), traceHeader = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["start_execution_input"]]))
 }
 
 .sfn$start_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(executionArn = structure(logical(0), tags = list(type = "string")), startDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["start_execution_output"]]))
 }
 
 .sfn$start_sync_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), input = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), traceHeader = structure(logical(0), tags = list(type = "string")), includedData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["start_sync_execution_input"]]))
 }
 
 .sfn$start_sync_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(executionArn = structure(logical(0), tags = list(type = "string")), stateMachineArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), startDate = structure(logical(0), tags = list(type = "timestamp")), stopDate = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), input = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputDetails = structure(list(included = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), output = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputDetails = structure(list(included = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), traceHeader = structure(logical(0), tags = list(type = "string")), billingDetails = structure(list(billedMemoryUsedInMB = structure(logical(0), tags = list(type = "long")), billedDurationInMilliseconds = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["start_sync_execution_output"]]))
 }
 
 .sfn$stop_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(executionArn = structure(logical(0), tags = list(type = "string")), error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["stop_execution_input"]]))
 }
 
 .sfn$stop_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stopDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["stop_execution_output"]]))
 }
 
 .sfn$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["tag_resource_input"]]))
 }
 
 .sfn$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["tag_resource_output"]]))
 }
 
 .sfn$test_state_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(definition = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), roleArn = structure(logical(0), tags = list(type = "string")), input = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inspectionLevel = structure(logical(0), tags = list(type = "string")), revealSecrets = structure(logical(0), tags = list(type = "boolean")), variables = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), stateName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), mock = structure(list(result = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), errorOutput = structure(list(error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), fieldValidationMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), context = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), stateConfiguration = structure(list(retrierRetryCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), errorCausedByState = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), mapIterationFailureCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), mapItemReaderData = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["test_state_input"]]))
 }
 
 .sfn$test_state_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(output = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), error = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), cause = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inspectionData = structure(list(input = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), afterArguments = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), afterInputPath = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), afterParameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), result = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), afterResultSelector = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), afterResultPath = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), request = structure(list(protocol = structure(logical(0), tags = list(type = "string")), method = structure(logical(0), tags = list(type = "string")), url = structure(logical(0), tags = list(type = "string")), headers = structure(logical(0), tags = list(type = "string")), body = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), response = structure(list(protocol = structure(logical(0), tags = list(type = "string")), statusCode = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), headers = structure(logical(0), tags = list(type = "string")), body = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), variables = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), errorDetails = structure(list(catchIndex = structure(logical(0), tags = list(type = "integer", box = TRUE, sensitive = TRUE)), retryIndex = structure(logical(0), tags = list(type = "integer", box = TRUE, sensitive = TRUE)), retryBackoffIntervalSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE, sensitive = TRUE))), tags = list(type = "structure")), afterItemsPath = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), afterItemSelector = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), afterItemBatcher = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), afterItemsPointer = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), toleratedFailureCount = structure(logical(0), tags = list(type = "integer", box = TRUE, sensitive = TRUE)), toleratedFailurePercentage = structure(logical(0), tags = list(type = "float", box = TRUE, sensitive = TRUE)), maxConcurrency = structure(logical(0), tags = list(type = "integer", box = TRUE, sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE)), nextState = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["test_state_output"]]))
 }
 
 .sfn$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["untag_resource_input"]]))
 }
 
 .sfn$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["untag_resource_output"]]))
 }
 
 .sfn$update_map_run_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(mapRunArn = structure(logical(0), tags = list(type = "string")), maxConcurrency = structure(logical(0), tags = list(box = TRUE, type = "integer")), toleratedFailurePercentage = structure(logical(0), tags = list(box = TRUE, type = "float")), toleratedFailureCount = structure(logical(0), tags = list(box = TRUE, type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["update_map_run_input"]]))
 }
 
 .sfn$update_map_run_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["update_map_run_output"]]))
 }
 
 .sfn$update_state_machine_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineArn = structure(logical(0), tags = list(type = "string")), definition = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), roleArn = structure(logical(0), tags = list(type = "string")), loggingConfiguration = structure(list(level = structure(logical(0), tags = list(type = "string")), includeExecutionData = structure(logical(0), tags = list(type = "boolean")), destinations = structure(list(structure(list(cloudWatchLogsLogGroup = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), tracingConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), publish = structure(logical(0), tags = list(type = "boolean")), versionDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsDataKeyReusePeriodSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["update_state_machine_input"]]))
 }
 
 .sfn$update_state_machine_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(updateDate = structure(logical(0), tags = list(type = "timestamp")), revisionId = structure(logical(0), tags = list(type = "string")), stateMachineVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["update_state_machine_output"]]))
 }
 
 .sfn$update_state_machine_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineAliasArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), routingConfiguration = structure(list(structure(list(stateMachineVersionArn = structure(logical(0), tags = list(type = "string")), weight = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["update_state_machine_alias_input"]]))
 }
 
 .sfn$update_state_machine_alias_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(updateDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["update_state_machine_alias_output"]]))
 }
 
 .sfn$validate_state_machine_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(definition = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string")), severity = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["validate_state_machine_definition_input"]]))
 }
 
 .sfn$validate_state_machine_definition_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(result = structure(logical(0), tags = list(type = "string")), diagnostics = structure(list(structure(list(severity = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), message = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), location = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), truncated = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sfn_shapes[["validate_state_machine_definition_output"]]))
 }

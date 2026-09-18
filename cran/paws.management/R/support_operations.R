@@ -14,11 +14,12 @@ NULL
 #' @param attachments &#91;required&#93; One or more attachments to add to the set. You can add up to three attachments per set. The size limit is 5 MB per attachment.
 #' 
 #' In the `Attachment` object, use the `data` parameter to specify the contents of the attachment file. In the previous request syntax, the value for `data` appear as `blob`, which is represented as a base64-encoded string. The value for `fileName` is the name of the attachment, such as `troubleshoot-screenshot.png`.
+#' @param dryRun Specifies whether to validate the request without actually adding the attachments. When set to `true`, the request is validated but no attachments are stored, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @keywords internal
 #'
 #' @rdname support_add_attachments_to_set
-support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) {
+support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments, dryRun = NULL) {
   op <- new_operation(
     name = "AddAttachmentsToSet",
     http_method = "POST",
@@ -27,7 +28,7 @@ support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$add_attachments_to_set_input(attachmentSetId = attachmentSetId, attachments = attachments)
+  input <- .support$add_attachments_to_set_input(attachmentSetId = attachmentSetId, attachments = attachments, dryRun = dryRun)
   output <- .support$add_attachments_to_set_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -37,23 +38,25 @@ support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) 
 }
 .support$operations$add_attachments_to_set <- support_add_attachments_to_set
 
-#' Adds additional customer communication to an Amazon Web Services Support
+#' Adds additional customer communication to a Amazon Web Services Support
 #' case
 #'
 #' @description
-#' Adds additional customer communication to an Amazon Web Services Support case. Use the `caseId` parameter to identify the case to which to add communication. You can list a set of email addresses to copy on the communication by using the `ccEmailAddresses` parameter. The `communicationBody` value contains the text of the communication.
+#' Adds additional customer communication to a Amazon Web Services Support case. Use the `caseId` parameter to identify the case to which to add communication. To list a set of email addresses to copy on the communication, use the `ccEmailAddresses` parameter. The `communicationBody` value contains the text of the communication.
 #'
 #' See [https://www.paws-r-sdk.com/docs/support_add_communication_to_case/](https://www.paws-r-sdk.com/docs/support_add_communication_to_case/) for full documentation.
 #'
-#' @param caseId The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-*12345678910-2013-c4c1d2bf33c5cf47*
+#' @param caseId The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-*12345678910-exen-2025-c4c1d2bf33c5cf47*
 #' @param communicationBody &#91;required&#93; The body of an email communication to add to the support case.
 #' @param ccEmailAddresses The email addresses in the CC line of an email to be added to the support case.
-#' @param attachmentSetId The ID of a set of one or more attachments for the communication to add to the case. Create the set by calling [`add_attachments_to_set`][support_add_attachments_to_set]
+#' @param attachmentSetId The ID of a set of one or more attachments for the communication to add to the case. Create the set by calling [`add_attachments_to_set`][support_add_attachments_to_set]. Each attachment in the set must be 5 MB or smaller. To attach files larger than 5 MB, use `uploadIds`.
+#' @param uploadIds A list of upload IDs that identify attachments to add to the case. Each `uploadId` is returned by the [`get_attachment_upload_links`][support_get_attachment_upload_links] operation. The upload must reach the `attachment-ready` state by calling [`complete_attachment_upload`][support_complete_attachment_upload] before it can be passed here. Use `uploadIds` to attach files of any supported size, including files larger than 5 MB.
+#' @param dryRun Specifies whether to validate the request without actually adding the communication to the case. When set to `true`, the request is validated but the communication isn't added, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @keywords internal
 #'
 #' @rdname support_add_communication_to_case
-support_add_communication_to_case <- function(caseId = NULL, communicationBody, ccEmailAddresses = NULL, attachmentSetId = NULL) {
+support_add_communication_to_case <- function(caseId = NULL, communicationBody, ccEmailAddresses = NULL, attachmentSetId = NULL, uploadIds = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "AddCommunicationToCase",
     http_method = "POST",
@@ -62,7 +65,7 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$add_communication_to_case_input(caseId = caseId, communicationBody = communicationBody, ccEmailAddresses = ccEmailAddresses, attachmentSetId = attachmentSetId)
+  input <- .support$add_communication_to_case_input(caseId = caseId, communicationBody = communicationBody, ccEmailAddresses = ccEmailAddresses, attachmentSetId = attachmentSetId, uploadIds = uploadIds, dryRun = dryRun)
   output <- .support$add_communication_to_case_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -71,6 +74,40 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
   return(response)
 }
 .support$operations$add_communication_to_case <- support_add_communication_to_case
+
+#' Completes an attachment upload that was started with
+#' GetAttachmentUploadLinks
+#'
+#' @description
+#' Completes an attachment upload that was started with [`get_attachment_upload_links`][support_get_attachment_upload_links]. After you upload a part of the file to its presigned Amazon S3 URL, call [`complete_attachment_upload`][support_complete_attachment_upload] with the `partIndex` and `eTag` of that part. You can include one part per call, or multiple parts in a single call. After [`complete_attachment_upload`][support_complete_attachment_upload] has been called for every part of the file, the service processes the upload asynchronously. The `attachment-ready` status might not be reflected immediately. Use [`describe_attachment_upload_status`][support_describe_attachment_upload_status] to poll for the `uploadStatus` to become `attachment-ready` before passing the `uploadId` to [`create_case`][support_create_case] or [`add_communication_to_case`][support_add_communication_to_case].
+#'
+#' See [https://www.paws-r-sdk.com/docs/support_complete_attachment_upload/](https://www.paws-r-sdk.com/docs/support_complete_attachment_upload/) for full documentation.
+#'
+#' @param uploadId &#91;required&#93; The identifier associated with the upload to complete.
+#' @param completedUploads &#91;required&#93; The list of parts being reported as completed in this call. Each entry must contain the `partIndex` of an uploaded part and the `ETag` returned by Amazon S3 when that part was uploaded.
+#' @param dryRun Specifies whether to validate the request without actually completing the upload. When set to `true`, the request is validated but the upload isn't finalized, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
+#'
+#' @keywords internal
+#'
+#' @rdname support_complete_attachment_upload
+support_complete_attachment_upload <- function(uploadId, completedUploads, dryRun = NULL) {
+  op <- new_operation(
+    name = "CompleteAttachmentUpload",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .support$complete_attachment_upload_input(uploadId = uploadId, completedUploads = completedUploads, dryRun = dryRun)
+  output <- .support$complete_attachment_upload_output()
+  config <- get_config()
+  svc <- .support$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.support$operations$complete_attachment_upload <- support_complete_attachment_upload
 
 #' Creates a case in the Amazon Web Services Support Center
 #'
@@ -89,14 +126,16 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' @param categoryCode The category of problem for the support case. You also use the [`describe_services`][support_describe_services] operation to get the category code for a service. Each Amazon Web Services service defines its own set of category codes.
 #' @param communicationBody &#91;required&#93; The communication body text that describes the issue. This text appears in the **Description** field on the Amazon Web Services Support Center Create Case page.
 #' @param ccEmailAddresses A list of email addresses that Amazon Web Services Support copies on case correspondence. Amazon Web Services Support identifies the account that creates the case when you specify your Amazon Web Services credentials in an HTTP POST method or use the [Amazon Web Services SDKs](https://builder.aws.com/build/tools).
-#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") , Chinese ("zh"), Spanish ("es"), Portuguese ("pt"), French ("fr"), Korean (“ko”), and Turkish ("tr"). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
 #' @param issueType The type of issue for the case. You can specify `customer-service` or `technical`. If you don't specify a value, the default is `technical`.
-#' @param attachmentSetId The ID of a set of one or more attachments for the case. Create the set by using the [`add_attachments_to_set`][support_add_attachments_to_set] operation.
+#' @param attachmentSetId The ID of a set of one or more attachments for the case. Create the set by using the [`add_attachments_to_set`][support_add_attachments_to_set] operation. Each attachment in the set must be 5 MB or smaller. To attach files larger than 5 MB, use `uploadIds`.
+#' @param uploadIds A list of upload IDs that identify attachments to add to the case. Each `uploadId` is returned by the [`get_attachment_upload_links`][support_get_attachment_upload_links] operation. The upload must reach the `attachment-ready` state by calling [`complete_attachment_upload`][support_complete_attachment_upload] before it can be passed here. Use `uploadIds` to attach files of any supported size, including files larger than 5 MB.
+#' @param dryRun Specifies whether to validate the request without actually creating the case. When set to `true`, the request is validated but no case is created, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @keywords internal
 #'
 #' @rdname support_create_case
-support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL, categoryCode = NULL, communicationBody, ccEmailAddresses = NULL, language = NULL, issueType = NULL, attachmentSetId = NULL) {
+support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL, categoryCode = NULL, communicationBody, ccEmailAddresses = NULL, language = NULL, issueType = NULL, attachmentSetId = NULL, uploadIds = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "CreateCase",
     http_method = "POST",
@@ -105,7 +144,7 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$create_case_input(subject = subject, serviceCode = serviceCode, severityCode = severityCode, categoryCode = categoryCode, communicationBody = communicationBody, ccEmailAddresses = ccEmailAddresses, language = language, issueType = issueType, attachmentSetId = attachmentSetId)
+  input <- .support$create_case_input(subject = subject, serviceCode = serviceCode, severityCode = severityCode, categoryCode = categoryCode, communicationBody = communicationBody, ccEmailAddresses = ccEmailAddresses, language = language, issueType = issueType, attachmentSetId = attachmentSetId, uploadIds = uploadIds, dryRun = dryRun)
   output <- .support$create_case_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -123,11 +162,14 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
 #' See [https://www.paws-r-sdk.com/docs/support_describe_attachment/](https://www.paws-r-sdk.com/docs/support_describe_attachment/) for full documentation.
 #'
 #' @param attachmentId &#91;required&#93; The ID of the attachment to return. Attachment IDs are returned by the [`describe_communications`][support_describe_communications] operation.
+#' 
+#' If the specified attachment is larger than 5 MB, this operation returns `InvalidParameterValueException`. To download attachments larger than 5 MB, use [`get_attachment_download_link`][support_get_attachment_download_link].
+#' @param dryRun Specifies whether to validate the request without actually retrieving the attachment. When set to `true`, the request is validated but no attachment content is returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @keywords internal
 #'
 #' @rdname support_describe_attachment
-support_describe_attachment <- function(attachmentId) {
+support_describe_attachment <- function(attachmentId, dryRun = NULL) {
   op <- new_operation(
     name = "DescribeAttachment",
     http_method = "POST",
@@ -136,7 +178,7 @@ support_describe_attachment <- function(attachmentId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$describe_attachment_input(attachmentId = attachmentId)
+  input <- .support$describe_attachment_input(attachmentId = attachmentId, dryRun = dryRun)
   output <- .support$describe_attachment_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -145,6 +187,39 @@ support_describe_attachment <- function(attachmentId) {
   return(response)
 }
 .support$operations$describe_attachment <- support_describe_attachment
+
+#' Returns the current status, file name, and progress of a multipart
+#' attachment upload that was started with GetAttachmentUploadLinks
+#'
+#' @description
+#' Returns the current status, file name, and progress of a multipart attachment upload that was started with [`get_attachment_upload_links`][support_get_attachment_upload_links]. Use this operation to track where an upload is in the workflow. While parts are still being uploaded and reported through [`complete_attachment_upload`][support_complete_attachment_upload], the `uploadStatus` is `attachment-not-ready` and `uploadProgress` reports the total number of parts and how many have been completed so far. After every part has been reported and the service finishes processing the upload asynchronously, the `uploadStatus` becomes `attachment-ready` and the `uploadId` can be attached to a case through [`create_case`][support_create_case] or [`add_communication_to_case`][support_add_communication_to_case].
+#'
+#' See [https://www.paws-r-sdk.com/docs/support_describe_attachment_upload_status/](https://www.paws-r-sdk.com/docs/support_describe_attachment_upload_status/) for full documentation.
+#'
+#' @param uploadId &#91;required&#93; The unique identifier for the upload. The `uploadId` is returned by [`get_attachment_upload_links`][support_get_attachment_upload_links] when you initiate the upload.
+#' @param dryRun Specifies whether to validate the request without actually returning upload status. When set to `true`, the request is validated but no status is returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
+#'
+#' @keywords internal
+#'
+#' @rdname support_describe_attachment_upload_status
+support_describe_attachment_upload_status <- function(uploadId, dryRun = NULL) {
+  op <- new_operation(
+    name = "DescribeAttachmentUploadStatus",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .support$describe_attachment_upload_status_input(uploadId = uploadId, dryRun = dryRun)
+  output <- .support$describe_attachment_upload_status_output()
+  config <- get_config()
+  svc <- .support$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.support$operations$describe_attachment_upload_status <- support_describe_attachment_upload_status
 
 #' Returns a list of cases that you specify by passing one or more case IDs
 #'
@@ -155,18 +230,19 @@ support_describe_attachment <- function(attachmentId) {
 #'
 #' @param caseIdList A list of ID numbers of the support cases you want returned. The maximum number of cases is 100.
 #' @param displayId The ID displayed for a case in the Amazon Web Services Support Center user interface.
-#' @param afterTime The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.
-#' @param beforeTime The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.
+#' @param afterTime The start date for a filtered date search on support case communications. Case communications are available for 24 months after creation.
+#' @param beforeTime The end date for a filtered date search on support case communications. Case communications are available for 24 months after creation.
 #' @param includeResolvedCases Specifies whether to include resolved support cases in the [`describe_cases`][support_describe_cases] response. By default, resolved cases aren't included.
 #' @param nextToken A resumption point for pagination.
 #' @param maxResults The maximum number of results to return before paginating.
-#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") , Chinese ("zh"), Spanish ("es"), Portuguese ("pt"), French ("fr"), Korean (“ko”), and Turkish ("tr"). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
 #' @param includeCommunications Specifies whether to include communications in the [`describe_cases`][support_describe_cases] response. By default, communications are included.
+#' @param dryRun Specifies whether to validate the request without actually returning case data. When set to `true`, the request is validated but no cases are returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @keywords internal
 #'
 #' @rdname support_describe_cases
-support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTime = NULL, beforeTime = NULL, includeResolvedCases = NULL, nextToken = NULL, maxResults = NULL, language = NULL, includeCommunications = NULL) {
+support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTime = NULL, beforeTime = NULL, includeResolvedCases = NULL, nextToken = NULL, maxResults = NULL, language = NULL, includeCommunications = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "DescribeCases",
     http_method = "POST",
@@ -175,7 +251,7 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "cases"),
     stream_api = FALSE
   )
-  input <- .support$describe_cases_input(caseIdList = caseIdList, displayId = displayId, afterTime = afterTime, beforeTime = beforeTime, includeResolvedCases = includeResolvedCases, nextToken = nextToken, maxResults = maxResults, language = language, includeCommunications = includeCommunications)
+  input <- .support$describe_cases_input(caseIdList = caseIdList, displayId = displayId, afterTime = afterTime, beforeTime = beforeTime, includeResolvedCases = includeResolvedCases, nextToken = nextToken, maxResults = maxResults, language = language, includeCommunications = includeCommunications, dryRun = dryRun)
   output <- .support$describe_cases_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -192,16 +268,17 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
 #'
 #' See [https://www.paws-r-sdk.com/docs/support_describe_communications/](https://www.paws-r-sdk.com/docs/support_describe_communications/) for full documentation.
 #'
-#' @param caseId &#91;required&#93; The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-*12345678910-2013-c4c1d2bf33c5cf47*
-#' @param beforeTime The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.
-#' @param afterTime The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.
+#' @param caseId &#91;required&#93; The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-*12345678910-exen-2025-c4c1d2bf33c5cf47*
+#' @param beforeTime The end date for a filtered date search on support case communications. Case communications are available for 24 months after creation.
+#' @param afterTime The start date for a filtered date search on support case communications. Case communications are available for 24 months after creation.
 #' @param nextToken A resumption point for pagination.
 #' @param maxResults The maximum number of results to return before paginating.
+#' @param dryRun Specifies whether to validate the request without actually returning communications. When set to `true`, the request is validated but no communications are returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @keywords internal
 #'
 #' @rdname support_describe_communications
-support_describe_communications <- function(caseId, beforeTime = NULL, afterTime = NULL, nextToken = NULL, maxResults = NULL) {
+support_describe_communications <- function(caseId, beforeTime = NULL, afterTime = NULL, nextToken = NULL, maxResults = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "DescribeCommunications",
     http_method = "POST",
@@ -210,7 +287,7 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "communications"),
     stream_api = FALSE
   )
-  input <- .support$describe_communications_input(caseId = caseId, beforeTime = beforeTime, afterTime = afterTime, nextToken = nextToken, maxResults = maxResults)
+  input <- .support$describe_communications_input(caseId = caseId, beforeTime = beforeTime, afterTime = afterTime, nextToken = nextToken, maxResults = maxResults, dryRun = dryRun)
   output <- .support$describe_communications_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -230,13 +307,14 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
 #'
 #' @param issueType &#91;required&#93; The type of issue for the case. You can specify `customer-service` or `technical`. If you don't specify a value, the default is `technical`.
 #' @param serviceCode &#91;required&#93; The code for the Amazon Web Services service. You can use the [`describe_services`][support_describe_services] operation to get the possible `serviceCode` values.
-#' @param language &#91;required&#93; The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param language &#91;required&#93; The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") , Chinese ("zh"), Spanish ("es"), Portuguese ("pt"), French ("fr"), Korean (“ko”), and Turkish ("tr"). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
 #' @param categoryCode &#91;required&#93; The category of problem for the support case. You also use the [`describe_services`][support_describe_services] operation to get the category code for a service. Each Amazon Web Services service defines its own set of category codes.
+#' @param dryRun Specifies whether to validate the request without actually returning case option data. When set to `true`, the request is validated but no options are returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @keywords internal
 #'
 #' @rdname support_describe_create_case_options
-support_describe_create_case_options <- function(issueType, serviceCode, language, categoryCode) {
+support_describe_create_case_options <- function(issueType, serviceCode, language, categoryCode, dryRun = NULL) {
   op <- new_operation(
     name = "DescribeCreateCaseOptions",
     http_method = "POST",
@@ -245,7 +323,7 @@ support_describe_create_case_options <- function(issueType, serviceCode, languag
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$describe_create_case_options_input(issueType = issueType, serviceCode = serviceCode, language = language, categoryCode = categoryCode)
+  input <- .support$describe_create_case_options_input(issueType = issueType, serviceCode = serviceCode, language = language, categoryCode = categoryCode, dryRun = dryRun)
   output <- .support$describe_create_case_options_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -264,12 +342,13 @@ support_describe_create_case_options <- function(issueType, serviceCode, languag
 #' See [https://www.paws-r-sdk.com/docs/support_describe_services/](https://www.paws-r-sdk.com/docs/support_describe_services/) for full documentation.
 #'
 #' @param serviceCodeList A JSON-formatted list of service codes available for Amazon Web Services services.
-#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") , Chinese ("zh"), Spanish ("es"), Portuguese ("pt"), French ("fr"), Korean (“ko”), and Turkish ("tr"). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param dryRun Specifies whether to validate the request without actually returning the list of services. When set to `true`, the request is validated but no services are returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @keywords internal
 #'
 #' @rdname support_describe_services
-support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
+support_describe_services <- function(serviceCodeList = NULL, language = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "DescribeServices",
     http_method = "POST",
@@ -278,7 +357,7 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$describe_services_input(serviceCodeList = serviceCodeList, language = language)
+  input <- .support$describe_services_input(serviceCodeList = serviceCodeList, language = language, dryRun = dryRun)
   output <- .support$describe_services_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -296,12 +375,13 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/support_describe_severity_levels/](https://www.paws-r-sdk.com/docs/support_describe_severity_levels/) for full documentation.
 #'
-#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") , Chinese ("zh"), Spanish ("es"), Portuguese ("pt"), French ("fr"), Korean (“ko”), and Turkish ("tr"). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param dryRun Specifies whether to validate the request without actually returning severity levels. When set to `true`, the request is validated but no severity levels are returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @keywords internal
 #'
 #' @rdname support_describe_severity_levels
-support_describe_severity_levels <- function(language = NULL) {
+support_describe_severity_levels <- function(language = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "DescribeSeverityLevels",
     http_method = "POST",
@@ -310,7 +390,7 @@ support_describe_severity_levels <- function(language = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$describe_severity_levels_input(language = language)
+  input <- .support$describe_severity_levels_input(language = language, dryRun = dryRun)
   output <- .support$describe_severity_levels_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -331,11 +411,12 @@ support_describe_severity_levels <- function(language = NULL) {
 #' @param issueType &#91;required&#93; The type of issue for the case. You can specify `customer-service` or `technical`.
 #' @param serviceCode &#91;required&#93; The code for the Amazon Web Services service. You can use the [`describe_services`][support_describe_services] operation to get the possible `serviceCode` values.
 #' @param categoryCode &#91;required&#93; The category of problem for the support case. You also use the [`describe_services`][support_describe_services] operation to get the category code for a service. Each Amazon Web Services service defines its own set of category codes.
+#' @param dryRun Specifies whether to validate the request without actually returning supported languages. When set to `true`, the request is validated but no languages are returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @keywords internal
 #'
 #' @rdname support_describe_supported_languages
-support_describe_supported_languages <- function(issueType, serviceCode, categoryCode) {
+support_describe_supported_languages <- function(issueType, serviceCode, categoryCode, dryRun = NULL) {
   op <- new_operation(
     name = "DescribeSupportedLanguages",
     http_method = "POST",
@@ -344,7 +425,7 @@ support_describe_supported_languages <- function(issueType, serviceCode, categor
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$describe_supported_languages_input(issueType = issueType, serviceCode = serviceCode, categoryCode = categoryCode)
+  input <- .support$describe_supported_languages_input(issueType = issueType, serviceCode = serviceCode, categoryCode = categoryCode, dryRun = dryRun)
   output <- .support$describe_supported_languages_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -533,6 +614,75 @@ support_describe_trusted_advisor_checks <- function(language) {
 }
 .support$operations$describe_trusted_advisor_checks <- support_describe_trusted_advisor_checks
 
+#' Returns a presigned download URL for an attachment that is associated
+#' with a case communication
+#'
+#' @description
+#' Returns a presigned download URL for an attachment that is associated with a case communication. The download link works for an attachment of any size, including attachments added through [`add_attachments_to_set`][support_add_attachments_to_set] and attachments uploaded through [`get_attachment_upload_links`][support_get_attachment_upload_links]. The download URL is time-limited and expires at the date and time indicated in the `downloadUrl` response field. Download the attachment from the URL before it expires.
+#'
+#' See [https://www.paws-r-sdk.com/docs/support_get_attachment_download_link/](https://www.paws-r-sdk.com/docs/support_get_attachment_download_link/) for full documentation.
+#'
+#' @param attachmentId &#91;required&#93; The unique identifier of the attachment for which to retrieve a download link. Attachment IDs are returned in the `AttachmentDetails` objects in the `attachments` field of a Communication returned by [`describe_communications`][support_describe_communications] or [`describe_cases`][support_describe_cases].
+#' @param dryRun Specifies whether to validate the request without actually returning a download link. When set to `true`, the request is validated but no URL is returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
+#'
+#' @keywords internal
+#'
+#' @rdname support_get_attachment_download_link
+support_get_attachment_download_link <- function(attachmentId, dryRun = NULL) {
+  op <- new_operation(
+    name = "GetAttachmentDownloadLink",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .support$get_attachment_download_link_input(attachmentId = attachmentId, dryRun = dryRun)
+  output <- .support$get_attachment_download_link_output()
+  config <- get_config()
+  svc <- .support$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.support$operations$get_attachment_download_link <- support_get_attachment_download_link
+
+#' Returns one or more presigned upload URLs for uploading a large file
+#' attachment to a support case by using a multipart upload workflow
+#'
+#' @description
+#' Returns one or more presigned upload URLs for uploading a large file attachment to a support case by using a multipart upload workflow. The maximum file size that you can upload with this workflow is 150 MB, and parts can be up to 100 MB each. Initiate a new upload by providing `fileName` and `fileSizeBytes`; the response returns a unique `uploadId`, the part size, the total number of parts, and a list of presigned upload URLs for the requested range of parts. A maximum of 10 upload URLs are returned per call. To retrieve more upload URLs for an upload that's already in progress, call [`get_attachment_upload_links`][support_get_attachment_upload_links] again with the existing `uploadId` and a new `uploadRange`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/support_get_attachment_upload_links/](https://www.paws-r-sdk.com/docs/support_get_attachment_upload_links/) for full documentation.
+#'
+#' @param fileName &#91;required&#93; The name of the file to upload, including the file extension. This value is required when you initiate a new upload.
+#' @param fileSizeBytes The total size of the file in bytes. The service uses this value to calculate the total number of parts and the size of each part. Required when you initiate a new upload (when `uploadId` isn't provided). Valid range: 1 to 157,286,400 bytes (approximately 150 MB).
+#' @param uploadId The unique identifier of an in-progress multipart upload, returned by a previous call to [`get_attachment_upload_links`][support_get_attachment_upload_links]. Specify `uploadId` to retrieve additional presigned upload URLs for an upload that has already been initiated. Required when `fileSizeBytes` isn't provided. Length: 1 to 2,048 characters.
+#' @param uploadRange The range of part indexes for which to return presigned upload URLs. Use this parameter to page through the upload URLs for a large file across multiple calls. If you omit this parameter, the service determines the range to return.
+#' @param dryRun Specifies whether to validate the request without actually generating upload URLs. When set to `true`, the request is validated but no URLs are returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
+#'
+#' @keywords internal
+#'
+#' @rdname support_get_attachment_upload_links
+support_get_attachment_upload_links <- function(fileName, fileSizeBytes = NULL, uploadId = NULL, uploadRange = NULL, dryRun = NULL) {
+  op <- new_operation(
+    name = "GetAttachmentUploadLinks",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .support$get_attachment_upload_links_input(fileName = fileName, fileSizeBytes = fileSizeBytes, uploadId = uploadId, uploadRange = uploadRange, dryRun = dryRun)
+  output <- .support$get_attachment_upload_links_output()
+  config <- get_config()
+  svc <- .support$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.support$operations$get_attachment_upload_links <- support_get_attachment_upload_links
+
 #' Refreshes the Trusted Advisor check that you specify using the check ID
 #'
 #' @description
@@ -573,12 +723,13 @@ support_refresh_trusted_advisor_check <- function(checkId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/support_resolve_case/](https://www.paws-r-sdk.com/docs/support_resolve_case/) for full documentation.
 #'
-#' @param caseId The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-*12345678910-2013-c4c1d2bf33c5cf47*
+#' @param caseId The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-*12345678910-exen-2025-c4c1d2bf33c5cf47*
+#' @param dryRun Specifies whether to validate the request without actually resolving the case. When set to `true`, the request is validated but the case isn't resolved, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @keywords internal
 #'
 #' @rdname support_resolve_case
-support_resolve_case <- function(caseId = NULL) {
+support_resolve_case <- function(caseId = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "ResolveCase",
     http_method = "POST",
@@ -587,7 +738,7 @@ support_resolve_case <- function(caseId = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$resolve_case_input(caseId = caseId)
+  input <- .support$resolve_case_input(caseId = caseId, dryRun = dryRun)
   output <- .support$resolve_case_output()
   config <- get_config()
   svc <- .support$service(config, op)

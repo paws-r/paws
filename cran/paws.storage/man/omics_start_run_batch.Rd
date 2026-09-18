@@ -17,7 +17,7 @@ omics_start_run_batch(
 
 \item{requestId}{[required] A client token used to deduplicate retry requests and prevent duplicate batches from being created.}
 
-\item{tags}{AWS tags to associate with the batch resource. These tags are not inherited by individual runs. To tag individual runs, use \code{defaultRunSetting.runTags}.}
+\item{tags}{Amazon Web Services tags to associate with the batch resource. These tags are not inherited by individual runs. To tag individual runs, use \code{defaultRunSetting.runTags}.}
 
 \item{defaultRunSetting}{[required] Shared configuration applied to all runs in the batch. See \code{DefaultRunSetting}.}
 

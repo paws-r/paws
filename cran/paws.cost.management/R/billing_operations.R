@@ -137,6 +137,40 @@ billing_disassociate_source_views <- function(arn, sourceViews) {
 }
 .billing$operations$disassociate_source_views <- billing_disassociate_source_views
 
+#' Retrieves billing preferences for the specified feature
+#'
+#' @description
+#' Retrieves billing preferences for the specified feature. Each feature controls a distinct billing capability: which accounts can share Reserved Instances or credits, whether billing alerts are enabled, the historical record of sharing changes, and per-credit options.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_get_billing_preferences/](https://www.paws-r-sdk.com/docs/billing_get_billing_preferences/) for full documentation.
+#'
+#' @param nextToken Pagination token from a previous response. Pass the value returned in `nextToken` to retrieve the next page of results.
+#' @param maxResults The maximum number of records to return per page. Range: 1 to 50. Default: 50.
+#' @param features &#91;required&#93; The feature to retrieve. Specify exactly one value. Valid values: `BILLING_ALERTS`, `RI_SHARING`, `RI_SHARING_HISTORY`, `CREDIT_SHARING`, `CREDIT_SHARING_HISTORY`, `CREDIT_LEVEL_SHARING`, `CREDIT_PREFERENCE_OPTIONS`.
+#' @param filters Filters to narrow results. Specify exactly one filter when supplied. The supported filter name is `PREFERENCE_KEY`, which accepts 1 to 10 values to match preference keys.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_get_billing_preferences
+billing_get_billing_preferences <- function(nextToken = NULL, maxResults = NULL, features, filters = NULL) {
+  op <- new_operation(
+    name = "GetBillingPreferences",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .billing$get_billing_preferences_input(nextToken = nextToken, maxResults = maxResults, features = features, filters = filters)
+  output <- .billing$get_billing_preferences_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$get_billing_preferences <- billing_get_billing_preferences
+
 #' Returns the metadata associated to the specified billing view ARN
 #'
 #' @description
@@ -167,6 +201,141 @@ billing_get_billing_view <- function(arn) {
   return(response)
 }
 .billing$operations$get_billing_view <- billing_get_billing_view
+
+#' Returns the per-billing-month allocation history for credits applied to
+#' an Amazon Web Services account's bills
+#'
+#' @description
+#' Returns the per-billing-month allocation history for credits applied to an Amazon Web Services account's bills. Traverses the consolidated billing family to capture cross-account credit applications. Supports pagination and optional filtering to a single credit.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_get_credit_allocation_history/](https://www.paws-r-sdk.com/docs/billing_get_credit_allocation_history/) for full documentation.
+#'
+#' @param accountId &#91;required&#93; The Amazon Web Services account ID whose allocation history to retrieve. Must be a 12-digit numeric string.
+#' @param creditId Filters the result to a single credit. When omitted, returns allocation entries for all credits.
+#' @param startDate &#91;required&#93; Inclusive start date as Unix epoch seconds. Must be on or before `endDate`. The range from `startDate` to `endDate` cannot exceed 24 billing months.
+#' @param endDate &#91;required&#93; Inclusive end date as Unix epoch seconds.
+#' @param nextToken Pagination token from a previous response. Pass the value returned in `nextToken` to retrieve the next page of results.
+#' @param maxResults The maximum number of records to return per page. Range: 1 to 1000. Default: 100.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_get_credit_allocation_history
+billing_get_credit_allocation_history <- function(accountId, creditId = NULL, startDate, endDate, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "GetCreditAllocationHistory",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "creditAllocationHistoryList"),
+    stream_api = FALSE
+  )
+  input <- .billing$get_credit_allocation_history_input(accountId = accountId, creditId = creditId, startDate = startDate, endDate = endDate, nextToken = nextToken, maxResults = maxResults)
+  output <- .billing$get_credit_allocation_history_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$get_credit_allocation_history <- billing_get_credit_allocation_history
+
+#' Returns the list of Amazon Web Services account credits for the
+#' specified account
+#'
+#' @description
+#' Returns the list of Amazon Web Services account credits for the specified account. Each credit includes its identifier, type, monetary amounts, applicable products, expiration, sharing configuration, and current enabled status.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_get_credits/](https://www.paws-r-sdk.com/docs/billing_get_credits/) for full documentation.
+#'
+#' @param accountId &#91;required&#93; The Amazon Web Services account ID. Must be a 12-digit numeric string.
+#' @param startDate &#91;required&#93; The start date for the credit period as Unix epoch seconds. Must be a past date that is not more than one year before the current date.
+#' @param endDate The end date for the credit period as Unix epoch seconds. Must not be a future date and must be on or after `startDate`. Defaults to the current date when omitted.
+#' @param payerAccountFlag When `true` and the caller is the management account, the response aggregates credits across the entire consolidated billing family. When `false` or omitted, returns only credits for the specified `accountId`.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_get_credits
+billing_get_credits <- function(accountId, startDate, endDate = NULL, payerAccountFlag = NULL) {
+  op <- new_operation(
+    name = "GetCredits",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .billing$get_credits_input(accountId = accountId, startDate = startDate, endDate = endDate, payerAccountFlag = payerAccountFlag)
+  output <- .billing$get_credits_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$get_credits <- billing_get_credits
+
+#' Returns a summary of Enterprise Support data aggregated across all
+#' accounts in the Enterprise Support profile
+#'
+#' @description
+#' Returns a summary of Enterprise Support data aggregated across all accounts in the Enterprise Support profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_get_enterprise_support_charge_summary/](https://www.paws-r-sdk.com/docs/billing_get_enterprise_support_charge_summary/) for full documentation.
+#'
+#' @param billingMonth &#91;required&#93; The billing month in YYYY-MM format. This must be a month in the past.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_get_enterprise_support_charge_summary
+billing_get_enterprise_support_charge_summary <- function(billingMonth) {
+  op <- new_operation(
+    name = "GetEnterpriseSupportChargeSummary",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .billing$get_enterprise_support_charge_summary_input(billingMonth = billingMonth)
+  output <- .billing$get_enterprise_support_charge_summary_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$get_enterprise_support_charge_summary <- billing_get_enterprise_support_charge_summary
+
+#' Returns Enterprise Support contract details
+#'
+#' @description
+#' Returns Enterprise Support contract details.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_get_enterprise_support_contract_details/](https://www.paws-r-sdk.com/docs/billing_get_enterprise_support_contract_details/) for full documentation.
+#'
+#' @param billingMonth &#91;required&#93; The billing month in YYYY-MM format. This must be a month in the past.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_get_enterprise_support_contract_details
+billing_get_enterprise_support_contract_details <- function(billingMonth) {
+  op <- new_operation(
+    name = "GetEnterpriseSupportContractDetails",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .billing$get_enterprise_support_contract_details_input(billingMonth = billingMonth)
+  output <- .billing$get_enterprise_support_contract_details_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$get_enterprise_support_contract_details <- billing_get_enterprise_support_contract_details
 
 #' Returns the resource-based policy document attached to the resource in
 #' JSON format
@@ -238,6 +407,40 @@ billing_list_billing_views <- function(activeTimeRange = NULL, arns = NULL, bill
 }
 .billing$operations$list_billing_views <- billing_list_billing_views
 
+#' Returns Support-eligible spend broken down at linked account level
+#'
+#' @description
+#' Returns Support-eligible spend broken down at linked account level.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_list_enterprise_support_linked_account_charges/](https://www.paws-r-sdk.com/docs/billing_list_enterprise_support_linked_account_charges/) for full documentation.
+#'
+#' @param billingMonth &#91;required&#93; The billing month in YYYY-MM format. This must be a month in the past.
+#' @param accountId An optional linked account ID to filter results to a specific account.
+#' @param maxResults The maximum number of results to return per page.
+#' @param nextToken The pagination token for the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_list_enterprise_support_linked_account_charges
+billing_list_enterprise_support_linked_account_charges <- function(billingMonth, accountId = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListEnterpriseSupportLinkedAccountCharges",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "linkedAccount"),
+    stream_api = FALSE
+  )
+  input <- .billing$list_enterprise_support_linked_account_charges_input(billingMonth = billingMonth, accountId = accountId, maxResults = maxResults, nextToken = nextToken)
+  output <- .billing$list_enterprise_support_linked_account_charges_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$list_enterprise_support_linked_account_charges <- billing_list_enterprise_support_linked_account_charges
+
 #' Lists the source views (managed Amazon Web Services billing views)
 #' associated with the billing view
 #'
@@ -303,6 +506,38 @@ billing_list_tags_for_resource <- function(resourceArn) {
 }
 .billing$operations$list_tags_for_resource <- billing_list_tags_for_resource
 
+#' Redeems an Amazon Web Services promotional credit code on behalf of the
+#' calling account
+#'
+#' @description
+#' Redeems an Amazon Web Services promotional credit code on behalf of the calling account. On success, a new credit is added to the account's credit ledger with the amount, validity period, and applicable products defined by the promotion. The credit is then automatically applied to subsequent bills according to the standard credit application order.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_redeem_credits/](https://www.paws-r-sdk.com/docs/billing_redeem_credits/) for full documentation.
+#'
+#' @param promoCode &#91;required&#93; The promotional credit code to redeem.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_redeem_credits
+billing_redeem_credits <- function(promoCode) {
+  op <- new_operation(
+    name = "RedeemCredits",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .billing$redeem_credits_input(promoCode = promoCode)
+  output <- .billing$redeem_credits_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$redeem_credits <- billing_redeem_credits
+
 #' An API operation for adding one or more tags (key-value pairs) to a
 #' resource
 #'
@@ -367,6 +602,38 @@ billing_untag_resource <- function(resourceArn, resourceTagKeys) {
   return(response)
 }
 .billing$operations$untag_resource <- billing_untag_resource
+
+#' Updates billing preferences for the specified feature
+#'
+#' @description
+#' Updates billing preferences for the specified feature. Each feature targets a distinct billing capability and has its own set of supported keys. The action sets the value for each provided key; keys not present in the request are unchanged.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_update_billing_preferences/](https://www.paws-r-sdk.com/docs/billing_update_billing_preferences/) for full documentation.
+#'
+#' @param feature &#91;required&#93; The feature to update. Valid values: `BILLING_ALERTS`, `RI_SHARING`, `CREDIT_SHARING`, `CREDIT_LEVEL_SHARING`, `CREDIT_PREFERENCE_OPTIONS`. The history features (`RI_SHARING_HISTORY` and `CREDIT_SHARING_HISTORY`) are read-only and cannot be updated.
+#' @param billingPreferencesPerKey &#91;required&#93; Key/value pairs to apply. All keys in a single request must be valid for the specified `feature` and must not be duplicated. For `CREDIT_PREFERENCE_OPTIONS`, all keys must reference the same `creditId`.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_update_billing_preferences
+billing_update_billing_preferences <- function(feature, billingPreferencesPerKey) {
+  op <- new_operation(
+    name = "UpdateBillingPreferences",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .billing$update_billing_preferences_input(feature = feature, billingPreferencesPerKey = billingPreferencesPerKey)
+  output <- .billing$update_billing_preferences_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$update_billing_preferences <- billing_update_billing_preferences
 
 #' An API to update the attributes of the billing view
 #'

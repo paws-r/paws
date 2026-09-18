@@ -5,1140 +5,950 @@ NULL
 
 .networkmanager$accept_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AttachmentId = structure(logical(0), tags = list(location = "uri", locationName = "attachmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["accept_attachment_input"]]))
 }
 
 .networkmanager$accept_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attachment = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), AttachmentType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArn = structure(logical(0), tags = list(type = "string")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedSegmentChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProposedNetworkFunctionGroupChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["accept_attachment_output"]]))
 }
 
 .networkmanager$associate_connect_peer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), ConnectPeerId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["associate_connect_peer_input"]]))
 }
 
 .networkmanager$associate_connect_peer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectPeerAssociation = structure(list(ConnectPeerId = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["associate_connect_peer_output"]]))
 }
 
 .networkmanager$associate_customer_gateway_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CustomerGatewayArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["associate_customer_gateway_input"]]))
 }
 
 .networkmanager$associate_customer_gateway_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CustomerGatewayAssociation = structure(list(CustomerGatewayArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["associate_customer_gateway_output"]]))
 }
 
 .networkmanager$associate_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["associate_link_input"]]))
 }
 
 .networkmanager$associate_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LinkAssociation = structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), LinkAssociationState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["associate_link_output"]]))
 }
 
 .networkmanager$associate_transit_gateway_connect_peer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), TransitGatewayConnectPeerArn = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["associate_transit_gateway_connect_peer_input"]]))
 }
 
 .networkmanager$associate_transit_gateway_connect_peer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitGatewayConnectPeerAssociation = structure(list(TransitGatewayConnectPeerArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["associate_transit_gateway_connect_peer_output"]]))
 }
 
 .networkmanager$create_connect_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), TransportAttachmentId = structure(logical(0), tags = list(type = "string")), RoutingPolicyLabel = structure(logical(0), tags = list(type = "string")), Options = structure(list(Protocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_connect_attachment_input"]]))
 }
 
 .networkmanager$create_connect_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectAttachment = structure(list(Attachment = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), AttachmentType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArn = structure(logical(0), tags = list(type = "string")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedSegmentChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProposedNetworkFunctionGroupChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), TransportAttachmentId = structure(logical(0), tags = list(type = "string")), Options = structure(list(Protocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_connect_attachment_output"]]))
 }
 
 .networkmanager$create_connect_peer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectAttachmentId = structure(logical(0), tags = list(type = "string")), CoreNetworkAddress = structure(logical(0), tags = list(type = "string")), PeerAddress = structure(logical(0), tags = list(type = "string")), BgpOptions = structure(list(PeerAsn = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), InsideCidrBlocks = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), SubnetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_connect_peer_input"]]))
 }
 
 .networkmanager$create_connect_peer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectPeer = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), ConnectAttachmentId = structure(logical(0), tags = list(type = "string")), ConnectPeerId = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Configuration = structure(list(CoreNetworkAddress = structure(logical(0), tags = list(type = "string")), PeerAddress = structure(logical(0), tags = list(type = "string")), InsideCidrBlocks = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Protocol = structure(logical(0), tags = list(type = "string")), BgpConfigurations = structure(list(structure(list(CoreNetworkAsn = structure(logical(0), tags = list(type = "long")), PeerAsn = structure(logical(0), tags = list(type = "long")), CoreNetworkAddress = structure(logical(0), tags = list(type = "string")), PeerAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SubnetArn = structure(logical(0), tags = list(type = "string")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_connect_peer_output"]]))
 }
 
 .networkmanager$create_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), ConnectedDeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), ConnectedLinkId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_connection_input"]]))
 }
 
 .networkmanager$create_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Connection = structure(list(ConnectionId = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), ConnectedDeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), ConnectedLinkId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_connection_output"]]))
 }
 
 .networkmanager$create_core_network_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PolicyDocument = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_core_network_input"]]))
 }
 
 .networkmanager$create_core_network_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetwork = structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Segments = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SharedSegments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NetworkFunctionGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Segments = structure(list(SendVia = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SendTo = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Edges = structure(list(structure(list(EdgeLocation = structure(logical(0), tags = list(type = "string")), Asn = structure(logical(0), tags = list(type = "long")), InsideCidrBlocks = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_core_network_output"]]))
 }
 
 .networkmanager$create_core_network_prefix_list_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), PrefixListArn = structure(logical(0), tags = list(type = "string")), PrefixListAlias = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_core_network_prefix_list_association_input"]]))
 }
 
 .networkmanager$create_core_network_prefix_list_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), PrefixListArn = structure(logical(0), tags = list(type = "string")), PrefixListAlias = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_core_network_prefix_list_association_output"]]))
 }
 
 .networkmanager$create_device_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), AWSLocation = structure(list(Zone = structure(logical(0), tags = list(type = "string")), SubnetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Vendor = structure(logical(0), tags = list(type = "string")), Model = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), Location = structure(list(Address = structure(logical(0), tags = list(type = "string")), Latitude = structure(logical(0), tags = list(type = "string")), Longitude = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), SiteId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_device_input"]]))
 }
 
 .networkmanager$create_device_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Device = structure(list(DeviceId = structure(logical(0), tags = list(type = "string")), DeviceArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), AWSLocation = structure(list(Zone = structure(logical(0), tags = list(type = "string")), SubnetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Vendor = structure(logical(0), tags = list(type = "string")), Model = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), Location = structure(list(Address = structure(logical(0), tags = list(type = "string")), Latitude = structure(logical(0), tags = list(type = "string")), Longitude = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), SiteId = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_device_output"]]))
 }
 
 .networkmanager$create_direct_connect_gateway_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), DirectConnectGatewayArn = structure(logical(0), tags = list(type = "string")), RoutingPolicyLabel = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_direct_connect_gateway_attachment_input"]]))
 }
 
 .networkmanager$create_direct_connect_gateway_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectConnectGatewayAttachment = structure(list(Attachment = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), AttachmentType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArn = structure(logical(0), tags = list(type = "string")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedSegmentChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProposedNetworkFunctionGroupChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), DirectConnectGatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_direct_connect_gateway_attachment_output"]]))
 }
 
 .networkmanager$create_global_network_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_global_network_input"]]))
 }
 
 .networkmanager$create_global_network_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetwork = structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), GlobalNetworkArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_global_network_output"]]))
 }
 
 .networkmanager$create_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Bandwidth = structure(list(UploadSpeed = structure(logical(0), tags = list(type = "integer")), DownloadSpeed = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Provider = structure(logical(0), tags = list(type = "string")), SiteId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_link_input"]]))
 }
 
 .networkmanager$create_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Link = structure(list(LinkId = structure(logical(0), tags = list(type = "string")), LinkArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), SiteId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Bandwidth = structure(list(UploadSpeed = structure(logical(0), tags = list(type = "integer")), DownloadSpeed = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Provider = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_link_output"]]))
 }
 
 .networkmanager$create_site_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), Description = structure(logical(0), tags = list(type = "string")), Location = structure(list(Address = structure(logical(0), tags = list(type = "string")), Latitude = structure(logical(0), tags = list(type = "string")), Longitude = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_site_input"]]))
 }
 
 .networkmanager$create_site_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Site = structure(list(SiteId = structure(logical(0), tags = list(type = "string")), SiteArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Location = structure(list(Address = structure(logical(0), tags = list(type = "string")), Latitude = structure(logical(0), tags = list(type = "string")), Longitude = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_site_output"]]))
 }
 
 .networkmanager$create_site_to_site_vpn_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), VpnConnectionArn = structure(logical(0), tags = list(type = "string")), RoutingPolicyLabel = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_site_to_site_vpn_attachment_input"]]))
 }
 
 .networkmanager$create_site_to_site_vpn_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SiteToSiteVpnAttachment = structure(list(Attachment = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), AttachmentType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArn = structure(logical(0), tags = list(type = "string")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedSegmentChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProposedNetworkFunctionGroupChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), VpnConnectionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_site_to_site_vpn_attachment_output"]]))
 }
 
 .networkmanager$create_transit_gateway_peering_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), TransitGatewayArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_transit_gateway_peering_input"]]))
 }
 
 .networkmanager$create_transit_gateway_peering_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitGatewayPeering = structure(list(Peering = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), PeeringId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), PeeringType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), MissingPermissionsContext = structure(list(MissingPermission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), TransitGatewayArn = structure(logical(0), tags = list(type = "string")), TransitGatewayPeeringAttachmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_transit_gateway_peering_output"]]))
 }
 
 .networkmanager$create_transit_gateway_route_table_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PeeringId = structure(logical(0), tags = list(type = "string")), TransitGatewayRouteTableArn = structure(logical(0), tags = list(type = "string")), RoutingPolicyLabel = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_transit_gateway_route_table_attachment_input"]]))
 }
 
 .networkmanager$create_transit_gateway_route_table_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitGatewayRouteTableAttachment = structure(list(Attachment = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), AttachmentType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArn = structure(logical(0), tags = list(type = "string")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedSegmentChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProposedNetworkFunctionGroupChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), PeeringId = structure(logical(0), tags = list(type = "string")), TransitGatewayRouteTableArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_transit_gateway_route_table_attachment_output"]]))
 }
 
 .networkmanager$create_vpc_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), VpcArn = structure(logical(0), tags = list(type = "string")), SubnetArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Options = structure(list(Ipv6Support = structure(logical(0), tags = list(type = "boolean")), ApplianceModeSupport = structure(logical(0), tags = list(type = "boolean")), DnsSupport = structure(logical(0), tags = list(type = "boolean")), SecurityGroupReferencingSupport = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), RoutingPolicyLabel = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_vpc_attachment_input"]]))
 }
 
 .networkmanager$create_vpc_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcAttachment = structure(list(Attachment = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), AttachmentType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArn = structure(logical(0), tags = list(type = "string")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedSegmentChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProposedNetworkFunctionGroupChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), SubnetArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Options = structure(list(Ipv6Support = structure(logical(0), tags = list(type = "boolean")), ApplianceModeSupport = structure(logical(0), tags = list(type = "boolean")), DnsSupport = structure(logical(0), tags = list(type = "boolean")), SecurityGroupReferencingSupport = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["create_vpc_attachment_output"]]))
 }
 
 .networkmanager$delete_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AttachmentId = structure(logical(0), tags = list(location = "uri", locationName = "attachmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_attachment_input"]]))
 }
 
 .networkmanager$delete_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attachment = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), AttachmentType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArn = structure(logical(0), tags = list(type = "string")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedSegmentChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProposedNetworkFunctionGroupChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_attachment_output"]]))
 }
 
 .networkmanager$delete_connect_peer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectPeerId = structure(logical(0), tags = list(location = "uri", locationName = "connectPeerId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_connect_peer_input"]]))
 }
 
 .networkmanager$delete_connect_peer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectPeer = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), ConnectAttachmentId = structure(logical(0), tags = list(type = "string")), ConnectPeerId = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Configuration = structure(list(CoreNetworkAddress = structure(logical(0), tags = list(type = "string")), PeerAddress = structure(logical(0), tags = list(type = "string")), InsideCidrBlocks = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Protocol = structure(logical(0), tags = list(type = "string")), BgpConfigurations = structure(list(structure(list(CoreNetworkAsn = structure(logical(0), tags = list(type = "long")), PeerAsn = structure(logical(0), tags = list(type = "long")), CoreNetworkAddress = structure(logical(0), tags = list(type = "string")), PeerAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SubnetArn = structure(logical(0), tags = list(type = "string")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_connect_peer_output"]]))
 }
 
 .networkmanager$delete_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), ConnectionId = structure(logical(0), tags = list(location = "uri", locationName = "connectionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_connection_input"]]))
 }
 
 .networkmanager$delete_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Connection = structure(list(ConnectionId = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), ConnectedDeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), ConnectedLinkId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_connection_output"]]))
 }
 
 .networkmanager$delete_core_network_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "coreNetworkId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_core_network_input"]]))
 }
 
 .networkmanager$delete_core_network_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetwork = structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Segments = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SharedSegments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NetworkFunctionGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Segments = structure(list(SendVia = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SendTo = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Edges = structure(list(structure(list(EdgeLocation = structure(logical(0), tags = list(type = "string")), Asn = structure(logical(0), tags = list(type = "long")), InsideCidrBlocks = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_core_network_output"]]))
 }
 
 .networkmanager$delete_core_network_policy_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "coreNetworkId", type = "string")), PolicyVersionId = structure(logical(0), tags = list(location = "uri", locationName = "policyVersionId", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_core_network_policy_version_input"]]))
 }
 
 .networkmanager$delete_core_network_policy_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkPolicy = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), PolicyVersionId = structure(logical(0), tags = list(type = "integer")), Alias = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ChangeSetState = structure(logical(0), tags = list(type = "string")), PolicyErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PolicyDocument = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_core_network_policy_version_output"]]))
 }
 
 .networkmanager$delete_core_network_prefix_list_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "coreNetworkId", type = "string")), PrefixListArn = structure(logical(0), tags = list(location = "uri", locationName = "prefixListArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_core_network_prefix_list_association_input"]]))
 }
 
 .networkmanager$delete_core_network_prefix_list_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), PrefixListArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_core_network_prefix_list_association_output"]]))
 }
 
 .networkmanager$delete_device_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_device_input"]]))
 }
 
 .networkmanager$delete_device_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Device = structure(list(DeviceId = structure(logical(0), tags = list(type = "string")), DeviceArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), AWSLocation = structure(list(Zone = structure(logical(0), tags = list(type = "string")), SubnetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Vendor = structure(logical(0), tags = list(type = "string")), Model = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), Location = structure(list(Address = structure(logical(0), tags = list(type = "string")), Latitude = structure(logical(0), tags = list(type = "string")), Longitude = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), SiteId = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_device_output"]]))
 }
 
 .networkmanager$delete_global_network_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_global_network_input"]]))
 }
 
 .networkmanager$delete_global_network_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetwork = structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), GlobalNetworkArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_global_network_output"]]))
 }
 
 .networkmanager$delete_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), LinkId = structure(logical(0), tags = list(location = "uri", locationName = "linkId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_link_input"]]))
 }
 
 .networkmanager$delete_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Link = structure(list(LinkId = structure(logical(0), tags = list(type = "string")), LinkArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), SiteId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Bandwidth = structure(list(UploadSpeed = structure(logical(0), tags = list(type = "integer")), DownloadSpeed = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Provider = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_link_output"]]))
 }
 
 .networkmanager$delete_peering_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PeeringId = structure(logical(0), tags = list(location = "uri", locationName = "peeringId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_peering_input"]]))
 }
 
 .networkmanager$delete_peering_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Peering = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), PeeringId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), PeeringType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), MissingPermissionsContext = structure(list(MissingPermission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_peering_output"]]))
 }
 
 .networkmanager$delete_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_resource_policy_input"]]))
 }
 
 .networkmanager$delete_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_resource_policy_output"]]))
 }
 
 .networkmanager$delete_site_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), SiteId = structure(logical(0), tags = list(location = "uri", locationName = "siteId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_site_input"]]))
 }
 
 .networkmanager$delete_site_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Site = structure(list(SiteId = structure(logical(0), tags = list(type = "string")), SiteArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Location = structure(list(Address = structure(logical(0), tags = list(type = "string")), Latitude = structure(logical(0), tags = list(type = "string")), Longitude = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["delete_site_output"]]))
 }
 
 .networkmanager$deregister_transit_gateway_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), TransitGatewayArn = structure(logical(0), tags = list(location = "uri", locationName = "transitGatewayArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["deregister_transit_gateway_input"]]))
 }
 
 .networkmanager$deregister_transit_gateway_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitGatewayRegistration = structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), TransitGatewayArn = structure(logical(0), tags = list(type = "string")), State = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["deregister_transit_gateway_output"]]))
 }
 
 .networkmanager$describe_global_networks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "globalNetworkIds", type = "list")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["describe_global_networks_input"]]))
 }
 
 .networkmanager$describe_global_networks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworks = structure(list(structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), GlobalNetworkArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["describe_global_networks_output"]]))
 }
 
 .networkmanager$disassociate_connect_peer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), ConnectPeerId = structure(logical(0), tags = list(location = "uri", locationName = "connectPeerId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["disassociate_connect_peer_input"]]))
 }
 
 .networkmanager$disassociate_connect_peer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectPeerAssociation = structure(list(ConnectPeerId = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["disassociate_connect_peer_output"]]))
 }
 
 .networkmanager$disassociate_customer_gateway_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), CustomerGatewayArn = structure(logical(0), tags = list(location = "uri", locationName = "customerGatewayArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["disassociate_customer_gateway_input"]]))
 }
 
 .networkmanager$disassociate_customer_gateway_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CustomerGatewayAssociation = structure(list(CustomerGatewayArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["disassociate_customer_gateway_output"]]))
 }
 
 .networkmanager$disassociate_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), DeviceId = structure(logical(0), tags = list(location = "querystring", locationName = "deviceId", type = "string")), LinkId = structure(logical(0), tags = list(location = "querystring", locationName = "linkId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["disassociate_link_input"]]))
 }
 
 .networkmanager$disassociate_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LinkAssociation = structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), LinkAssociationState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["disassociate_link_output"]]))
 }
 
 .networkmanager$disassociate_transit_gateway_connect_peer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), TransitGatewayConnectPeerArn = structure(logical(0), tags = list(location = "uri", locationName = "transitGatewayConnectPeerArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["disassociate_transit_gateway_connect_peer_input"]]))
 }
 
 .networkmanager$disassociate_transit_gateway_connect_peer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitGatewayConnectPeerAssociation = structure(list(TransitGatewayConnectPeerArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["disassociate_transit_gateway_connect_peer_output"]]))
 }
 
 .networkmanager$execute_core_network_change_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "coreNetworkId", type = "string")), PolicyVersionId = structure(logical(0), tags = list(location = "uri", locationName = "policyVersionId", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["execute_core_network_change_set_input"]]))
 }
 
 .networkmanager$execute_core_network_change_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["execute_core_network_change_set_output"]]))
 }
 
 .networkmanager$get_connect_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AttachmentId = structure(logical(0), tags = list(location = "uri", locationName = "attachmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_connect_attachment_input"]]))
 }
 
 .networkmanager$get_connect_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectAttachment = structure(list(Attachment = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), AttachmentType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArn = structure(logical(0), tags = list(type = "string")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedSegmentChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProposedNetworkFunctionGroupChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), TransportAttachmentId = structure(logical(0), tags = list(type = "string")), Options = structure(list(Protocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_connect_attachment_output"]]))
 }
 
 .networkmanager$get_connect_peer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectPeerId = structure(logical(0), tags = list(location = "uri", locationName = "connectPeerId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_connect_peer_input"]]))
 }
 
 .networkmanager$get_connect_peer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectPeer = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), ConnectAttachmentId = structure(logical(0), tags = list(type = "string")), ConnectPeerId = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Configuration = structure(list(CoreNetworkAddress = structure(logical(0), tags = list(type = "string")), PeerAddress = structure(logical(0), tags = list(type = "string")), InsideCidrBlocks = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Protocol = structure(logical(0), tags = list(type = "string")), BgpConfigurations = structure(list(structure(list(CoreNetworkAsn = structure(logical(0), tags = list(type = "long")), PeerAsn = structure(logical(0), tags = list(type = "long")), CoreNetworkAddress = structure(logical(0), tags = list(type = "string")), PeerAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SubnetArn = structure(logical(0), tags = list(type = "string")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_connect_peer_output"]]))
 }
 
 .networkmanager$get_connect_peer_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), ConnectPeerIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "connectPeerIds", type = "list")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_connect_peer_associations_input"]]))
 }
 
 .networkmanager$get_connect_peer_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectPeerAssociations = structure(list(structure(list(ConnectPeerId = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_connect_peer_associations_output"]]))
 }
 
 .networkmanager$get_connections_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), ConnectionIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "connectionIds", type = "list")), DeviceId = structure(logical(0), tags = list(location = "querystring", locationName = "deviceId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_connections_input"]]))
 }
 
 .networkmanager$get_connections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Connections = structure(list(structure(list(ConnectionId = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), ConnectedDeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), ConnectedLinkId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_connections_output"]]))
 }
 
 .networkmanager$get_core_network_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "coreNetworkId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_core_network_input"]]))
 }
 
 .networkmanager$get_core_network_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetwork = structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Segments = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SharedSegments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NetworkFunctionGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Segments = structure(list(SendVia = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SendTo = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Edges = structure(list(structure(list(EdgeLocation = structure(logical(0), tags = list(type = "string")), Asn = structure(logical(0), tags = list(type = "long")), InsideCidrBlocks = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_core_network_output"]]))
 }
 
 .networkmanager$get_core_network_change_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "coreNetworkId", type = "string")), PolicyVersionId = structure(logical(0), tags = list(location = "uri", locationName = "policyVersionId", type = "integer")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_core_network_change_events_input"]]))
 }
 
 .networkmanager$get_core_network_change_events_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkChangeEvents = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), IdentifierPath = structure(logical(0), tags = list(type = "string")), EventTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), Values = structure(list(EdgeLocation = structure(logical(0), tags = list(type = "string")), PeerEdgeLocation = structure(logical(0), tags = list(box = TRUE, type = "string")), RoutingPolicyDirection = structure(logical(0), tags = list(box = TRUE, type = "string")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), Cidr = structure(logical(0), tags = list(type = "string")), RoutingPolicyAssociationDetails = structure(list(structure(list(RoutingPolicyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SharedSegments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(box = TRUE, type = "list"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_core_network_change_events_output"]]))
 }
 
 .networkmanager$get_core_network_change_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "coreNetworkId", type = "string")), PolicyVersionId = structure(logical(0), tags = list(location = "uri", locationName = "policyVersionId", type = "integer")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_core_network_change_set_input"]]))
 }
 
 .networkmanager$get_core_network_change_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkChanges = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string")), PreviousValues = structure(list(SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Asn = structure(logical(0), tags = list(type = "long")), Cidr = structure(logical(0), tags = list(type = "string")), DestinationIdentifier = structure(logical(0), tags = list(type = "string")), InsideCidrBlocks = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SharedSegments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceInsertionActions = structure(list(structure(list(Action = structure(logical(0), tags = list(type = "string")), Mode = structure(logical(0), tags = list(type = "string")), WhenSentTo = structure(list(WhenSentToSegmentsList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Via = structure(list(NetworkFunctionGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), WithEdgeOverrides = structure(list(structure(list(EdgeSets = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "list")), UseEdge = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), VpnEcmpSupport = structure(logical(0), tags = list(type = "boolean")), DnsSupport = structure(logical(0), tags = list(type = "boolean")), SecurityGroupReferencingSupport = structure(logical(0), tags = list(type = "boolean")), RoutingPolicyDirection = structure(logical(0), tags = list(box = TRUE, type = "string")), RoutingPolicy = structure(logical(0), tags = list(box = TRUE, type = "string")), PeerEdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(box = TRUE, type = "list")), AttachmentId = structure(logical(0), tags = list(box = TRUE, type = "string")), RoutingPolicyAssociationDetails = structure(list(structure(list(RoutingPolicyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SharedSegments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(box = TRUE, type = "list"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list"))), tags = list(type = "structure")), NewValues = structure(list(SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Asn = structure(logical(0), tags = list(type = "long")), Cidr = structure(logical(0), tags = list(type = "string")), DestinationIdentifier = structure(logical(0), tags = list(type = "string")), InsideCidrBlocks = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SharedSegments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceInsertionActions = structure(list(structure(list(Action = structure(logical(0), tags = list(type = "string")), Mode = structure(logical(0), tags = list(type = "string")), WhenSentTo = structure(list(WhenSentToSegmentsList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Via = structure(list(NetworkFunctionGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), WithEdgeOverrides = structure(list(structure(list(EdgeSets = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "list")), UseEdge = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), VpnEcmpSupport = structure(logical(0), tags = list(type = "boolean")), DnsSupport = structure(logical(0), tags = list(type = "boolean")), SecurityGroupReferencingSupport = structure(logical(0), tags = list(type = "boolean")), RoutingPolicyDirection = structure(logical(0), tags = list(box = TRUE, type = "string")), RoutingPolicy = structure(logical(0), tags = list(box = TRUE, type = "string")), PeerEdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(box = TRUE, type = "list")), AttachmentId = structure(logical(0), tags = list(box = TRUE, type = "string")), RoutingPolicyAssociationDetails = structure(list(structure(list(RoutingPolicyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SharedSegments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(box = TRUE, type = "list"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list"))), tags = list(type = "structure")), IdentifierPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_core_network_change_set_output"]]))
 }
 
 .networkmanager$get_core_network_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "coreNetworkId", type = "string")), PolicyVersionId = structure(logical(0), tags = list(location = "querystring", locationName = "policyVersionId", type = "integer")), Alias = structure(logical(0), tags = list(location = "querystring", locationName = "alias", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_core_network_policy_input"]]))
 }
 
 .networkmanager$get_core_network_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkPolicy = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), PolicyVersionId = structure(logical(0), tags = list(type = "integer")), Alias = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ChangeSetState = structure(logical(0), tags = list(type = "string")), PolicyErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PolicyDocument = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_core_network_policy_output"]]))
 }
 
 .networkmanager$get_customer_gateway_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), CustomerGatewayArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "customerGatewayArns", type = "list")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_customer_gateway_associations_input"]]))
 }
 
 .networkmanager$get_customer_gateway_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CustomerGatewayAssociations = structure(list(structure(list(CustomerGatewayArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_customer_gateway_associations_output"]]))
 }
 
 .networkmanager$get_devices_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), DeviceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "deviceIds", type = "list")), SiteId = structure(logical(0), tags = list(location = "querystring", locationName = "siteId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_devices_input"]]))
 }
 
 .networkmanager$get_devices_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Devices = structure(list(structure(list(DeviceId = structure(logical(0), tags = list(type = "string")), DeviceArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), AWSLocation = structure(list(Zone = structure(logical(0), tags = list(type = "string")), SubnetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Vendor = structure(logical(0), tags = list(type = "string")), Model = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), Location = structure(list(Address = structure(logical(0), tags = list(type = "string")), Latitude = structure(logical(0), tags = list(type = "string")), Longitude = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), SiteId = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_devices_output"]]))
 }
 
 .networkmanager$get_direct_connect_gateway_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AttachmentId = structure(logical(0), tags = list(location = "uri", locationName = "attachmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_direct_connect_gateway_attachment_input"]]))
 }
 
 .networkmanager$get_direct_connect_gateway_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectConnectGatewayAttachment = structure(list(Attachment = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), AttachmentType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArn = structure(logical(0), tags = list(type = "string")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedSegmentChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProposedNetworkFunctionGroupChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), DirectConnectGatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_direct_connect_gateway_attachment_output"]]))
 }
 
 .networkmanager$get_link_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), DeviceId = structure(logical(0), tags = list(location = "querystring", locationName = "deviceId", type = "string")), LinkId = structure(logical(0), tags = list(location = "querystring", locationName = "linkId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_link_associations_input"]]))
 }
 
 .networkmanager$get_link_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LinkAssociations = structure(list(structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), LinkAssociationState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_link_associations_output"]]))
 }
 
 .networkmanager$get_links_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), LinkIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "linkIds", type = "list")), SiteId = structure(logical(0), tags = list(location = "querystring", locationName = "siteId", type = "string")), Type = structure(logical(0), tags = list(location = "querystring", locationName = "type", type = "string")), Provider = structure(logical(0), tags = list(location = "querystring", locationName = "provider", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_links_input"]]))
 }
 
 .networkmanager$get_links_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Links = structure(list(structure(list(LinkId = structure(logical(0), tags = list(type = "string")), LinkArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), SiteId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Bandwidth = structure(list(UploadSpeed = structure(logical(0), tags = list(type = "integer")), DownloadSpeed = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Provider = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_links_output"]]))
 }
 
 .networkmanager$get_network_resource_counts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), ResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "resourceType", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_network_resource_counts_input"]]))
 }
 
 .networkmanager$get_network_resource_counts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NetworkResourceCounts = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_network_resource_counts_output"]]))
 }
 
 .networkmanager$get_network_resource_relationships_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), CoreNetworkId = structure(logical(0), tags = list(location = "querystring", locationName = "coreNetworkId", type = "string")), RegisteredGatewayArn = structure(logical(0), tags = list(location = "querystring", locationName = "registeredGatewayArn", type = "string")), AwsRegion = structure(logical(0), tags = list(location = "querystring", locationName = "awsRegion", type = "string")), AccountId = structure(logical(0), tags = list(location = "querystring", locationName = "accountId", type = "string")), ResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "resourceType", type = "string")), ResourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceArn", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_network_resource_relationships_input"]]))
 }
 
 .networkmanager$get_network_resource_relationships_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Relationships = structure(list(structure(list(From = structure(logical(0), tags = list(type = "string")), To = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_network_resource_relationships_output"]]))
 }
 
 .networkmanager$get_network_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), CoreNetworkId = structure(logical(0), tags = list(location = "querystring", locationName = "coreNetworkId", type = "string")), RegisteredGatewayArn = structure(logical(0), tags = list(location = "querystring", locationName = "registeredGatewayArn", type = "string")), AwsRegion = structure(logical(0), tags = list(location = "querystring", locationName = "awsRegion", type = "string")), AccountId = structure(logical(0), tags = list(location = "querystring", locationName = "accountId", type = "string")), ResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "resourceType", type = "string")), ResourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceArn", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_network_resources_input"]]))
 }
 
 .networkmanager$get_network_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NetworkResources = structure(list(structure(list(RegisteredGatewayArn = structure(logical(0), tags = list(type = "string")), CoreNetworkId = structure(logical(0), tags = list(type = "string")), AwsRegion = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), Definition = structure(logical(0), tags = list(type = "string")), DefinitionTimestamp = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_network_resources_output"]]))
 }
 
 .networkmanager$get_network_routes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), RouteTableIdentifier = structure(list(TransitGatewayRouteTableArn = structure(logical(0), tags = list(type = "string")), CoreNetworkSegmentEdge = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), SegmentName = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CoreNetworkNetworkFunctionGroup = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ExactCidrMatches = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LongestPrefixMatches = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SubnetOfMatches = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SupernetOfMatches = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PrefixListIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), States = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DestinationFilters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_network_routes_input"]]))
 }
 
 .networkmanager$get_network_routes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RouteTableArn = structure(logical(0), tags = list(type = "string")), CoreNetworkSegmentEdge = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), SegmentName = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RouteTableType = structure(logical(0), tags = list(type = "string")), RouteTableTimestamp = structure(logical(0), tags = list(type = "timestamp")), NetworkRoutes = structure(list(structure(list(DestinationCidrBlock = structure(logical(0), tags = list(type = "string")), Destinations = structure(list(structure(list(CoreNetworkAttachmentId = structure(logical(0), tags = list(type = "string")), TransitGatewayAttachmentId = structure(logical(0), tags = list(type = "string")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PrefixListId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_network_routes_output"]]))
 }
 
 .networkmanager$get_network_telemetry_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), CoreNetworkId = structure(logical(0), tags = list(location = "querystring", locationName = "coreNetworkId", type = "string")), RegisteredGatewayArn = structure(logical(0), tags = list(location = "querystring", locationName = "registeredGatewayArn", type = "string")), AwsRegion = structure(logical(0), tags = list(location = "querystring", locationName = "awsRegion", type = "string")), AccountId = structure(logical(0), tags = list(location = "querystring", locationName = "accountId", type = "string")), ResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "resourceType", type = "string")), ResourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceArn", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_network_telemetry_input"]]))
 }
 
 .networkmanager$get_network_telemetry_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NetworkTelemetry = structure(list(structure(list(RegisteredGatewayArn = structure(logical(0), tags = list(type = "string")), CoreNetworkId = structure(logical(0), tags = list(type = "string")), AwsRegion = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), Address = structure(logical(0), tags = list(type = "string")), Health = structure(list(Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_network_telemetry_output"]]))
 }
 
 .networkmanager$get_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_resource_policy_input"]]))
 }
 
 .networkmanager$get_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyDocument = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_resource_policy_output"]]))
 }
 
 .networkmanager$get_route_analysis_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), RouteAnalysisId = structure(logical(0), tags = list(location = "uri", locationName = "routeAnalysisId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_route_analysis_input"]]))
 }
 
 .networkmanager$get_route_analysis_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RouteAnalysis = structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), RouteAnalysisId = structure(logical(0), tags = list(type = "string")), StartTimestamp = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), Source = structure(list(TransitGatewayAttachmentArn = structure(logical(0), tags = list(type = "string")), TransitGatewayArn = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Destination = structure(list(TransitGatewayAttachmentArn = structure(logical(0), tags = list(type = "string")), TransitGatewayArn = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IncludeReturnPath = structure(logical(0), tags = list(type = "boolean")), UseMiddleboxes = structure(logical(0), tags = list(type = "boolean")), ForwardPath = structure(list(CompletionStatus = structure(list(ResultCode = structure(logical(0), tags = list(type = "string")), ReasonCode = structure(logical(0), tags = list(type = "string")), ReasonContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), Path = structure(list(structure(list(Sequence = structure(logical(0), tags = list(type = "integer")), Resource = structure(list(RegisteredGatewayArn = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Definition = structure(logical(0), tags = list(type = "string")), NameTag = structure(logical(0), tags = list(type = "string")), IsMiddlebox = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DestinationCidrBlock = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ReturnPath = structure(list(CompletionStatus = structure(list(ResultCode = structure(logical(0), tags = list(type = "string")), ReasonCode = structure(logical(0), tags = list(type = "string")), ReasonContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), Path = structure(list(structure(list(Sequence = structure(logical(0), tags = list(type = "integer")), Resource = structure(list(RegisteredGatewayArn = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Definition = structure(logical(0), tags = list(type = "string")), NameTag = structure(logical(0), tags = list(type = "string")), IsMiddlebox = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DestinationCidrBlock = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_route_analysis_output"]]))
 }
 
 .networkmanager$get_site_to_site_vpn_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AttachmentId = structure(logical(0), tags = list(location = "uri", locationName = "attachmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_site_to_site_vpn_attachment_input"]]))
 }
 
 .networkmanager$get_site_to_site_vpn_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SiteToSiteVpnAttachment = structure(list(Attachment = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), AttachmentType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArn = structure(logical(0), tags = list(type = "string")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedSegmentChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProposedNetworkFunctionGroupChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), VpnConnectionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_site_to_site_vpn_attachment_output"]]))
 }
 
 .networkmanager$get_sites_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), SiteIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "siteIds", type = "list")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_sites_input"]]))
 }
 
 .networkmanager$get_sites_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Sites = structure(list(structure(list(SiteId = structure(logical(0), tags = list(type = "string")), SiteArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Location = structure(list(Address = structure(logical(0), tags = list(type = "string")), Latitude = structure(logical(0), tags = list(type = "string")), Longitude = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_sites_output"]]))
 }
 
 .networkmanager$get_transit_gateway_connect_peer_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), TransitGatewayConnectPeerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "transitGatewayConnectPeerArns", type = "list")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_transit_gateway_connect_peer_associations_input"]]))
 }
 
 .networkmanager$get_transit_gateway_connect_peer_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitGatewayConnectPeerAssociations = structure(list(structure(list(TransitGatewayConnectPeerArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_transit_gateway_connect_peer_associations_output"]]))
 }
 
 .networkmanager$get_transit_gateway_peering_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PeeringId = structure(logical(0), tags = list(location = "uri", locationName = "peeringId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_transit_gateway_peering_input"]]))
 }
 
 .networkmanager$get_transit_gateway_peering_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitGatewayPeering = structure(list(Peering = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), PeeringId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), PeeringType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), MissingPermissionsContext = structure(list(MissingPermission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), TransitGatewayArn = structure(logical(0), tags = list(type = "string")), TransitGatewayPeeringAttachmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_transit_gateway_peering_output"]]))
 }
 
 .networkmanager$get_transit_gateway_registrations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), TransitGatewayArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "transitGatewayArns", type = "list")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_transit_gateway_registrations_input"]]))
 }
 
 .networkmanager$get_transit_gateway_registrations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitGatewayRegistrations = structure(list(structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), TransitGatewayArn = structure(logical(0), tags = list(type = "string")), State = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_transit_gateway_registrations_output"]]))
 }
 
 .networkmanager$get_transit_gateway_route_table_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AttachmentId = structure(logical(0), tags = list(location = "uri", locationName = "attachmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_transit_gateway_route_table_attachment_input"]]))
 }
 
 .networkmanager$get_transit_gateway_route_table_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitGatewayRouteTableAttachment = structure(list(Attachment = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), AttachmentType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArn = structure(logical(0), tags = list(type = "string")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedSegmentChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProposedNetworkFunctionGroupChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), PeeringId = structure(logical(0), tags = list(type = "string")), TransitGatewayRouteTableArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_transit_gateway_route_table_attachment_output"]]))
 }
 
 .networkmanager$get_vpc_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AttachmentId = structure(logical(0), tags = list(location = "uri", locationName = "attachmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_vpc_attachment_input"]]))
 }
 
 .networkmanager$get_vpc_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcAttachment = structure(list(Attachment = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), AttachmentType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArn = structure(logical(0), tags = list(type = "string")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedSegmentChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProposedNetworkFunctionGroupChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), SubnetArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Options = structure(list(Ipv6Support = structure(logical(0), tags = list(type = "boolean")), ApplianceModeSupport = structure(logical(0), tags = list(type = "boolean")), DnsSupport = structure(logical(0), tags = list(type = "boolean")), SecurityGroupReferencingSupport = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["get_vpc_attachment_output"]]))
 }
 
 .networkmanager$list_attachment_routing_policy_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "coreNetworkId", type = "string")), AttachmentId = structure(logical(0), tags = list(location = "querystring", locationName = "attachmentId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_attachment_routing_policy_associations_input"]]))
 }
 
 .networkmanager$list_attachment_routing_policy_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AttachmentRoutingPolicyAssociations = structure(list(structure(list(AttachmentId = structure(logical(0), tags = list(type = "string")), PendingRoutingPolicies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AssociatedRoutingPolicies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RoutingPolicyLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_attachment_routing_policy_associations_output"]]))
 }
 
 .networkmanager$list_attachments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "querystring", locationName = "coreNetworkId", type = "string")), AttachmentType = structure(logical(0), tags = list(location = "querystring", locationName = "attachmentType", type = "string")), EdgeLocation = structure(logical(0), tags = list(location = "querystring", locationName = "edgeLocation", type = "string")), State = structure(logical(0), tags = list(location = "querystring", locationName = "state", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_attachments_input"]]))
 }
 
 .networkmanager$list_attachments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attachments = structure(list(structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), AttachmentType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArn = structure(logical(0), tags = list(type = "string")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedSegmentChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProposedNetworkFunctionGroupChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_attachments_output"]]))
 }
 
 .networkmanager$list_connect_peers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "querystring", locationName = "coreNetworkId", type = "string")), ConnectAttachmentId = structure(logical(0), tags = list(location = "querystring", locationName = "connectAttachmentId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_connect_peers_input"]]))
 }
 
 .networkmanager$list_connect_peers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectPeers = structure(list(structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), ConnectAttachmentId = structure(logical(0), tags = list(type = "string")), ConnectPeerId = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), ConnectPeerState = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SubnetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_connect_peers_output"]]))
 }
 
 .networkmanager$list_core_network_policy_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "coreNetworkId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_core_network_policy_versions_input"]]))
 }
 
 .networkmanager$list_core_network_policy_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkPolicyVersions = structure(list(structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), PolicyVersionId = structure(logical(0), tags = list(type = "integer")), Alias = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ChangeSetState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_core_network_policy_versions_output"]]))
 }
 
 .networkmanager$list_core_network_prefix_list_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "coreNetworkId", type = "string")), PrefixListArn = structure(logical(0), tags = list(location = "querystring", locationName = "prefixListArn", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_core_network_prefix_list_associations_input"]]))
 }
 
 .networkmanager$list_core_network_prefix_list_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PrefixListAssociations = structure(list(structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), PrefixListArn = structure(logical(0), tags = list(type = "string")), PrefixListAlias = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_core_network_prefix_list_associations_output"]]))
 }
 
 .networkmanager$list_core_network_routing_information_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "coreNetworkId", type = "string")), SegmentName = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), NextHopFilters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), LocalPreferenceMatches = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ExactAsPathMatches = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MedMatches = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CommunityMatches = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_core_network_routing_information_input"]]))
 }
 
 .networkmanager$list_core_network_routing_information_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkRoutingInformation = structure(list(structure(list(Prefix = structure(logical(0), tags = list(type = "string")), NextHop = structure(list(IpAddress = structure(logical(0), tags = list(type = "string")), CoreNetworkAttachmentId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), SegmentName = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LocalPreference = structure(logical(0), tags = list(type = "string")), Med = structure(logical(0), tags = list(type = "string")), AsPath = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Communities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_core_network_routing_information_output"]]))
 }
 
 .networkmanager$list_core_networks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_core_networks_input"]]))
 }
 
 .networkmanager$list_core_networks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworks = structure(list(structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_core_networks_output"]]))
 }
 
 .networkmanager$list_organization_service_access_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_organization_service_access_status_input"]]))
 }
 
 .networkmanager$list_organization_service_access_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationStatus = structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), OrganizationAwsServiceAccessStatus = structure(logical(0), tags = list(type = "string")), SLRDeploymentStatus = structure(logical(0), tags = list(type = "string")), AccountStatusList = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), SLRDeploymentStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_organization_service_access_status_output"]]))
 }
 
 .networkmanager$list_peerings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "querystring", locationName = "coreNetworkId", type = "string")), PeeringType = structure(logical(0), tags = list(location = "querystring", locationName = "peeringType", type = "string")), EdgeLocation = structure(logical(0), tags = list(location = "querystring", locationName = "edgeLocation", type = "string")), State = structure(logical(0), tags = list(location = "querystring", locationName = "state", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_peerings_input"]]))
 }
 
 .networkmanager$list_peerings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Peerings = structure(list(structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), PeeringId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), PeeringType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string")), MissingPermissionsContext = structure(list(MissingPermission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_peerings_output"]]))
 }
 
 .networkmanager$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_tags_for_resource_input"]]))
 }
 
 .networkmanager$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["list_tags_for_resource_output"]]))
 }
 
 .networkmanager$put_attachment_routing_policy_label_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), RoutingPolicyLabel = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["put_attachment_routing_policy_label_input"]]))
 }
 
 .networkmanager$put_attachment_routing_policy_label_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), RoutingPolicyLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["put_attachment_routing_policy_label_output"]]))
 }
 
 .networkmanager$put_core_network_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "coreNetworkId", type = "string")), PolicyDocument = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), Description = structure(logical(0), tags = list(type = "string")), LatestVersionId = structure(logical(0), tags = list(type = "integer")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["put_core_network_policy_input"]]))
 }
 
 .networkmanager$put_core_network_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkPolicy = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), PolicyVersionId = structure(logical(0), tags = list(type = "integer")), Alias = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ChangeSetState = structure(logical(0), tags = list(type = "string")), PolicyErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PolicyDocument = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["put_core_network_policy_output"]]))
 }
 
 .networkmanager$put_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyDocument = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["put_resource_policy_input"]]))
 }
 
 .networkmanager$put_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["put_resource_policy_output"]]))
 }
 
 .networkmanager$register_transit_gateway_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), TransitGatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["register_transit_gateway_input"]]))
 }
 
 .networkmanager$register_transit_gateway_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitGatewayRegistration = structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), TransitGatewayArn = structure(logical(0), tags = list(type = "string")), State = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["register_transit_gateway_output"]]))
 }
 
 .networkmanager$reject_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AttachmentId = structure(logical(0), tags = list(location = "uri", locationName = "attachmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["reject_attachment_input"]]))
 }
 
 .networkmanager$reject_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attachment = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), AttachmentType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArn = structure(logical(0), tags = list(type = "string")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedSegmentChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProposedNetworkFunctionGroupChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["reject_attachment_output"]]))
 }
 
 .networkmanager$remove_attachment_routing_policy_label_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "coreNetworkId", type = "string")), AttachmentId = structure(logical(0), tags = list(location = "uri", locationName = "attachmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["remove_attachment_routing_policy_label_input"]]))
 }
 
 .networkmanager$remove_attachment_routing_policy_label_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), RoutingPolicyLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["remove_attachment_routing_policy_label_output"]]))
 }
 
 .networkmanager$restore_core_network_policy_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "coreNetworkId", type = "string")), PolicyVersionId = structure(logical(0), tags = list(location = "uri", locationName = "policyVersionId", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["restore_core_network_policy_version_input"]]))
 }
 
 .networkmanager$restore_core_network_policy_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkPolicy = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), PolicyVersionId = structure(logical(0), tags = list(type = "integer")), Alias = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ChangeSetState = structure(logical(0), tags = list(type = "string")), PolicyErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PolicyDocument = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["restore_core_network_policy_version_output"]]))
 }
 
 .networkmanager$start_organization_service_access_update_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Action = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["start_organization_service_access_update_input"]]))
 }
 
 .networkmanager$start_organization_service_access_update_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationStatus = structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), OrganizationAwsServiceAccessStatus = structure(logical(0), tags = list(type = "string")), SLRDeploymentStatus = structure(logical(0), tags = list(type = "string")), AccountStatusList = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), SLRDeploymentStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["start_organization_service_access_update_output"]]))
 }
 
 .networkmanager$start_route_analysis_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), Source = structure(list(TransitGatewayAttachmentArn = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Destination = structure(list(TransitGatewayAttachmentArn = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IncludeReturnPath = structure(logical(0), tags = list(type = "boolean")), UseMiddleboxes = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["start_route_analysis_input"]]))
 }
 
 .networkmanager$start_route_analysis_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RouteAnalysis = structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), RouteAnalysisId = structure(logical(0), tags = list(type = "string")), StartTimestamp = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), Source = structure(list(TransitGatewayAttachmentArn = structure(logical(0), tags = list(type = "string")), TransitGatewayArn = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Destination = structure(list(TransitGatewayAttachmentArn = structure(logical(0), tags = list(type = "string")), TransitGatewayArn = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IncludeReturnPath = structure(logical(0), tags = list(type = "boolean")), UseMiddleboxes = structure(logical(0), tags = list(type = "boolean")), ForwardPath = structure(list(CompletionStatus = structure(list(ResultCode = structure(logical(0), tags = list(type = "string")), ReasonCode = structure(logical(0), tags = list(type = "string")), ReasonContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), Path = structure(list(structure(list(Sequence = structure(logical(0), tags = list(type = "integer")), Resource = structure(list(RegisteredGatewayArn = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Definition = structure(logical(0), tags = list(type = "string")), NameTag = structure(logical(0), tags = list(type = "string")), IsMiddlebox = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DestinationCidrBlock = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ReturnPath = structure(list(CompletionStatus = structure(list(ResultCode = structure(logical(0), tags = list(type = "string")), ReasonCode = structure(logical(0), tags = list(type = "string")), ReasonContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), Path = structure(list(structure(list(Sequence = structure(logical(0), tags = list(type = "integer")), Resource = structure(list(RegisteredGatewayArn = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Definition = structure(logical(0), tags = list(type = "string")), NameTag = structure(logical(0), tags = list(type = "string")), IsMiddlebox = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DestinationCidrBlock = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["start_route_analysis_output"]]))
 }
 
 .networkmanager$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["tag_resource_input"]]))
 }
 
 .networkmanager$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["tag_resource_output"]]))
 }
 
 .networkmanager$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["untag_resource_input"]]))
 }
 
 .networkmanager$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["untag_resource_output"]]))
 }
 
 .networkmanager$update_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), ConnectionId = structure(logical(0), tags = list(location = "uri", locationName = "connectionId", type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), ConnectedLinkId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_connection_input"]]))
 }
 
 .networkmanager$update_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Connection = structure(list(ConnectionId = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), DeviceId = structure(logical(0), tags = list(type = "string")), ConnectedDeviceId = structure(logical(0), tags = list(type = "string")), LinkId = structure(logical(0), tags = list(type = "string")), ConnectedLinkId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_connection_output"]]))
 }
 
 .networkmanager$update_core_network_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "coreNetworkId", type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_core_network_input"]]))
 }
 
 .networkmanager$update_core_network_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CoreNetwork = structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Segments = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SharedSegments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NetworkFunctionGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Segments = structure(list(SendVia = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SendTo = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Edges = structure(list(structure(list(EdgeLocation = structure(logical(0), tags = list(type = "string")), Asn = structure(logical(0), tags = list(type = "long")), InsideCidrBlocks = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_core_network_output"]]))
 }
 
 .networkmanager$update_device_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), DeviceId = structure(logical(0), tags = list(location = "uri", locationName = "deviceId", type = "string")), AWSLocation = structure(list(Zone = structure(logical(0), tags = list(type = "string")), SubnetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Vendor = structure(logical(0), tags = list(type = "string")), Model = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), Location = structure(list(Address = structure(logical(0), tags = list(type = "string")), Latitude = structure(logical(0), tags = list(type = "string")), Longitude = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), SiteId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_device_input"]]))
 }
 
 .networkmanager$update_device_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Device = structure(list(DeviceId = structure(logical(0), tags = list(type = "string")), DeviceArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), AWSLocation = structure(list(Zone = structure(logical(0), tags = list(type = "string")), SubnetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Vendor = structure(logical(0), tags = list(type = "string")), Model = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), Location = structure(list(Address = structure(logical(0), tags = list(type = "string")), Latitude = structure(logical(0), tags = list(type = "string")), Longitude = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), SiteId = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_device_output"]]))
 }
 
 .networkmanager$update_direct_connect_gateway_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AttachmentId = structure(logical(0), tags = list(location = "uri", locationName = "attachmentId", type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_direct_connect_gateway_attachment_input"]]))
 }
 
 .networkmanager$update_direct_connect_gateway_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectConnectGatewayAttachment = structure(list(Attachment = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), AttachmentType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArn = structure(logical(0), tags = list(type = "string")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedSegmentChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProposedNetworkFunctionGroupChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), DirectConnectGatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_direct_connect_gateway_attachment_output"]]))
 }
 
 .networkmanager$update_global_network_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_global_network_input"]]))
 }
 
 .networkmanager$update_global_network_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetwork = structure(list(GlobalNetworkId = structure(logical(0), tags = list(type = "string")), GlobalNetworkArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_global_network_output"]]))
 }
 
 .networkmanager$update_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), LinkId = structure(logical(0), tags = list(location = "uri", locationName = "linkId", type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Bandwidth = structure(list(UploadSpeed = structure(logical(0), tags = list(type = "integer")), DownloadSpeed = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_link_input"]]))
 }
 
 .networkmanager$update_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Link = structure(list(LinkId = structure(logical(0), tags = list(type = "string")), LinkArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), SiteId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Bandwidth = structure(list(UploadSpeed = structure(logical(0), tags = list(type = "integer")), DownloadSpeed = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Provider = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_link_output"]]))
 }
 
 .networkmanager$update_network_resource_metadata_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_network_resource_metadata_input"]]))
 }
 
 .networkmanager$update_network_resource_metadata_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_network_resource_metadata_output"]]))
 }
 
 .networkmanager$update_site_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalNetworkId = structure(logical(0), tags = list(location = "uri", locationName = "globalNetworkId", type = "string")), SiteId = structure(logical(0), tags = list(location = "uri", locationName = "siteId", type = "string")), Description = structure(logical(0), tags = list(type = "string")), Location = structure(list(Address = structure(logical(0), tags = list(type = "string")), Latitude = structure(logical(0), tags = list(type = "string")), Longitude = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_site_input"]]))
 }
 
 .networkmanager$update_site_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Site = structure(list(SiteId = structure(logical(0), tags = list(type = "string")), SiteArn = structure(logical(0), tags = list(type = "string")), GlobalNetworkId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Location = structure(list(Address = structure(logical(0), tags = list(type = "string")), Latitude = structure(logical(0), tags = list(type = "string")), Longitude = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_site_output"]]))
 }
 
 .networkmanager$update_vpc_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AttachmentId = structure(logical(0), tags = list(location = "uri", locationName = "attachmentId", type = "string")), AddSubnetArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RemoveSubnetArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Options = structure(list(Ipv6Support = structure(logical(0), tags = list(type = "boolean")), ApplianceModeSupport = structure(logical(0), tags = list(type = "boolean")), DnsSupport = structure(logical(0), tags = list(type = "boolean")), SecurityGroupReferencingSupport = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_vpc_attachment_input"]]))
 }
 
 .networkmanager$update_vpc_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcAttachment = structure(list(Attachment = structure(list(CoreNetworkId = structure(logical(0), tags = list(type = "string")), CoreNetworkArn = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), AttachmentType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EdgeLocation = structure(logical(0), tags = list(type = "string")), EdgeLocations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArn = structure(logical(0), tags = list(type = "string")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProposedSegmentChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), SegmentName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProposedNetworkFunctionGroupChange = structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachmentPolicyRuleNumber = structure(logical(0), tags = list(type = "integer")), NetworkFunctionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LastModificationErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), RequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), SubnetArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Options = structure(list(Ipv6Support = structure(logical(0), tags = list(type = "boolean")), ApplianceModeSupport = structure(logical(0), tags = list(type = "boolean")), DnsSupport = structure(logical(0), tags = list(type = "boolean")), SecurityGroupReferencingSupport = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkmanager_shapes[["update_vpc_attachment_output"]]))
 }

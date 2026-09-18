@@ -14,7 +14,9 @@ ec2_copy_volumes(
   TagSpecifications = NULL,
   MultiAttachEnabled = NULL,
   Throughput = NULL,
-  ClientToken = NULL
+  ClientToken = NULL,
+  Encrypted = NULL,
+  KmsKeyId = NULL
 )
 }
 \arguments{
@@ -56,6 +58,10 @@ Maximum supported sizes:
 Valid Range: \code{125 - 2000} MiB/s}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensure Idempotency}.}
+
+\item{Encrypted}{Indicates whether to encrypt the volume copy. If the source volume is encrypted, the service always encrypts the copy regardless of this value. Set to \code{true} to encrypt a copy of an unencrypted source volume during the copy operation. If you set \code{Encrypted} to \code{true} but do not specify \code{KmsKeyId}, the service uses the default KMS key for EBS encryption in your account.}
+
+\item{KmsKeyId}{The identifier of the KMS key to use for encryption of the volume copy. Specify a symmetric encryption KMS key. You can specify a KMS key using the key ID, key ARN, alias name, or alias ARN. If you set \code{Encrypted} to \code{true} but do not specify this parameter, the service uses the default KMS key for EBS encryption in your account. For cross-account volume copies, this must be a KMS key in the calling account.}
 }
 \description{
 Creates a crash-consistent, point-in-time copy of an existing Amazon EBS volume within the same Availability Zone. The volume copy can be attached to an Amazon EC2 instance once it reaches the \code{available} state. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-copying-volume.html}{Copy an Amazon EBS volume}.

@@ -5,32 +5,27 @@ NULL
 
 .timestreamquery$cancel_query_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["cancel_query_input"]]))
 }
 
 .timestreamquery$cancel_query_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CancellationMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["cancel_query_output"]]))
 }
 
 .timestreamquery$create_scheduled_query_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), QueryString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ScheduleConfiguration = structure(list(ScheduleExpression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NotificationConfiguration = structure(list(SnsConfiguration = structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), TargetConfiguration = structure(list(TimestreamConfiguration = structure(list(DatabaseName = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string")), TimeColumn = structure(logical(0), tags = list(type = "string")), DimensionMappings = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), DimensionValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiMeasureMappings = structure(list(TargetMultiMeasureName = structure(logical(0), tags = list(type = "string")), MultiMeasureAttributeMappings = structure(list(structure(list(SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMultiMeasureAttributeName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MixedMeasureMappings = structure(list(structure(list(MeasureName = structure(logical(0), tags = list(type = "string")), SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMeasureName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string")), MultiMeasureAttributeMappings = structure(list(structure(list(SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMultiMeasureAttributeName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MeasureNameColumn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string", sensitive = TRUE)), ScheduledQueryExecutionRoleArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ErrorReportConfiguration = structure(list(S3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string")), EncryptionOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["create_scheduled_query_input"]]))
 }
 
 .timestreamquery$create_scheduled_query_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["create_scheduled_query_output"]]))
 }
 
 .timestreamquery$delete_scheduled_query_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScheduledQueryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["delete_scheduled_query_input"]]))
 }
 
 .timestreamquery$delete_scheduled_query_output <- function(...) {
@@ -39,44 +34,37 @@ NULL
 
 .timestreamquery$describe_account_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["describe_account_settings_input"]]))
 }
 
 .timestreamquery$describe_account_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxQueryTCU = structure(logical(0), tags = list(type = "integer")), QueryPricingModel = structure(logical(0), tags = list(type = "string")), QueryCompute = structure(list(ComputeMode = structure(logical(0), tags = list(type = "string")), ProvisionedCapacity = structure(list(ActiveQueryTCU = structure(logical(0), tags = list(type = "integer")), NotificationConfiguration = structure(list(SnsConfiguration = structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LastUpdate = structure(list(TargetQueryTCU = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["describe_account_settings_output"]]))
 }
 
 .timestreamquery$describe_endpoints_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["describe_endpoints_input"]]))
 }
 
 .timestreamquery$describe_endpoints_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Endpoints = structure(list(structure(list(Address = structure(logical(0), tags = list(type = "string")), CachePeriodInMinutes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["describe_endpoints_output"]]))
 }
 
 .timestreamquery$describe_scheduled_query_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScheduledQueryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["describe_scheduled_query_input"]]))
 }
 
 .timestreamquery$describe_scheduled_query_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScheduledQuery = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), QueryString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreationTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), PreviousInvocationTime = structure(logical(0), tags = list(type = "timestamp")), NextInvocationTime = structure(logical(0), tags = list(type = "timestamp")), ScheduleConfiguration = structure(list(ScheduleExpression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NotificationConfiguration = structure(list(SnsConfiguration = structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), TargetConfiguration = structure(list(TimestreamConfiguration = structure(list(DatabaseName = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string")), TimeColumn = structure(logical(0), tags = list(type = "string")), DimensionMappings = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), DimensionValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiMeasureMappings = structure(list(TargetMultiMeasureName = structure(logical(0), tags = list(type = "string")), MultiMeasureAttributeMappings = structure(list(structure(list(SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMultiMeasureAttributeName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MixedMeasureMappings = structure(list(structure(list(MeasureName = structure(logical(0), tags = list(type = "string")), SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMeasureName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string")), MultiMeasureAttributeMappings = structure(list(structure(list(SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMultiMeasureAttributeName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MeasureNameColumn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ScheduledQueryExecutionRoleArn = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), ErrorReportConfiguration = structure(list(S3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string")), EncryptionOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), LastRunSummary = structure(list(InvocationTime = structure(logical(0), tags = list(type = "timestamp")), TriggerTime = structure(logical(0), tags = list(type = "timestamp")), RunStatus = structure(logical(0), tags = list(type = "string")), ExecutionStats = structure(list(ExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), DataWrites = structure(logical(0), tags = list(type = "long")), BytesMetered = structure(logical(0), tags = list(type = "long")), CumulativeBytesScanned = structure(logical(0), tags = list(type = "long")), RecordsIngested = structure(logical(0), tags = list(type = "long")), QueryResultRows = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), QueryInsightsResponse = structure(list(QuerySpatialCoverage = structure(list(Max = structure(list(Value = structure(logical(0), tags = list(type = "double")), TableArn = structure(logical(0), tags = list(type = "string")), PartitionKey = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), QueryTemporalRange = structure(list(Max = structure(list(Value = structure(logical(0), tags = list(type = "long")), TableArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), QueryTableCount = structure(logical(0), tags = list(box = TRUE, type = "long")), OutputRows = structure(logical(0), tags = list(box = TRUE, type = "long")), OutputBytes = structure(logical(0), tags = list(box = TRUE, type = "long"))), tags = list(type = "structure")), ErrorReportLocation = structure(list(S3ReportLocation = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RecentlyFailedRuns = structure(list(structure(list(InvocationTime = structure(logical(0), tags = list(type = "timestamp")), TriggerTime = structure(logical(0), tags = list(type = "timestamp")), RunStatus = structure(logical(0), tags = list(type = "string")), ExecutionStats = structure(list(ExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), DataWrites = structure(logical(0), tags = list(type = "long")), BytesMetered = structure(logical(0), tags = list(type = "long")), CumulativeBytesScanned = structure(logical(0), tags = list(type = "long")), RecordsIngested = structure(logical(0), tags = list(type = "long")), QueryResultRows = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), QueryInsightsResponse = structure(list(QuerySpatialCoverage = structure(list(Max = structure(list(Value = structure(logical(0), tags = list(type = "double")), TableArn = structure(logical(0), tags = list(type = "string")), PartitionKey = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), QueryTemporalRange = structure(list(Max = structure(list(Value = structure(logical(0), tags = list(type = "long")), TableArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), QueryTableCount = structure(logical(0), tags = list(box = TRUE, type = "long")), OutputRows = structure(logical(0), tags = list(box = TRUE, type = "long")), OutputBytes = structure(logical(0), tags = list(box = TRUE, type = "long"))), tags = list(type = "structure")), ErrorReportLocation = structure(list(S3ReportLocation = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["describe_scheduled_query_output"]]))
 }
 
 .timestreamquery$execute_scheduled_query_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScheduledQueryArn = structure(logical(0), tags = list(type = "string")), InvocationTime = structure(logical(0), tags = list(type = "timestamp")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string", sensitive = TRUE)), QueryInsights = structure(list(Mode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["execute_scheduled_query_input"]]))
 }
 
 .timestreamquery$execute_scheduled_query_output <- function(...) {
@@ -85,92 +73,77 @@ NULL
 
 .timestreamquery$list_scheduled_queries_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["list_scheduled_queries_input"]]))
 }
 
 .timestreamquery$list_scheduled_queries_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScheduledQueries = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), PreviousInvocationTime = structure(logical(0), tags = list(type = "timestamp")), NextInvocationTime = structure(logical(0), tags = list(type = "timestamp")), ErrorReportConfiguration = structure(list(S3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string")), EncryptionOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), TargetDestination = structure(list(TimestreamDestination = structure(list(DatabaseName = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), LastRunStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["list_scheduled_queries_output"]]))
 }
 
 .timestreamquery$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["list_tags_for_resource_input"]]))
 }
 
 .timestreamquery$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["list_tags_for_resource_output"]]))
 }
 
 .timestreamquery$prepare_query_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueryString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ValidateOnly = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["prepare_query_input"]]))
 }
 
 .timestreamquery$prepare_query_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueryString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Columns = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(list(ScalarType = structure(logical(0), tags = list(type = "string")), ArrayColumnInfo = structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "structure"))), tags = list(type = "structure")), TimeSeriesMeasureValueColumnInfo = structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "structure"))), tags = list(type = "structure")), RowColumnInfo = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), DatabaseName = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string")), Aliased = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Parameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(list(ScalarType = structure(logical(0), tags = list(type = "string")), ArrayColumnInfo = structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "structure"))), tags = list(type = "structure")), TimeSeriesMeasureValueColumnInfo = structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "structure"))), tags = list(type = "structure")), RowColumnInfo = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["prepare_query_output"]]))
 }
 
 .timestreamquery$query_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueryString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string", sensitive = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), MaxRows = structure(logical(0), tags = list(type = "integer", box = TRUE)), QueryInsights = structure(list(Mode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["query_input"]]))
 }
 
 .timestreamquery$query_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueryId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Rows = structure(list(structure(list(Data = structure(list(structure(list(ScalarValue = structure(logical(0), tags = list(type = "string")), TimeSeriesValue = structure(list(structure(list(Time = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), ArrayValue = structure(logical(0), tags = list(type = "list")), RowValue = structure(logical(0), tags = list(type = "structure")), NullValue = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ColumnInfo = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(list(ScalarType = structure(logical(0), tags = list(type = "string")), ArrayColumnInfo = structure(logical(0), tags = list(type = "structure")), TimeSeriesMeasureValueColumnInfo = structure(logical(0), tags = list(type = "structure")), RowColumnInfo = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), QueryStatus = structure(list(ProgressPercentage = structure(logical(0), tags = list(type = "double")), CumulativeBytesScanned = structure(logical(0), tags = list(type = "long")), CumulativeBytesMetered = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), QueryInsightsResponse = structure(list(QuerySpatialCoverage = structure(list(Max = structure(list(Value = structure(logical(0), tags = list(type = "double")), TableArn = structure(logical(0), tags = list(type = "string")), PartitionKey = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), QueryTemporalRange = structure(list(Max = structure(list(Value = structure(logical(0), tags = list(type = "long")), TableArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), QueryTableCount = structure(logical(0), tags = list(box = TRUE, type = "long")), OutputRows = structure(logical(0), tags = list(box = TRUE, type = "long")), OutputBytes = structure(logical(0), tags = list(box = TRUE, type = "long")), UnloadPartitionCount = structure(logical(0), tags = list(box = TRUE, type = "long")), UnloadWrittenRows = structure(logical(0), tags = list(box = TRUE, type = "long")), UnloadWrittenBytes = structure(logical(0), tags = list(box = TRUE, type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["query_output"]]))
 }
 
 .timestreamquery$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["tag_resource_input"]]))
 }
 
 .timestreamquery$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["tag_resource_output"]]))
 }
 
 .timestreamquery$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["untag_resource_input"]]))
 }
 
 .timestreamquery$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["untag_resource_output"]]))
 }
 
 .timestreamquery$update_account_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxQueryTCU = structure(logical(0), tags = list(type = "integer")), QueryPricingModel = structure(logical(0), tags = list(type = "string")), QueryCompute = structure(list(ComputeMode = structure(logical(0), tags = list(type = "string")), ProvisionedCapacity = structure(list(TargetQueryTCU = structure(logical(0), tags = list(type = "integer")), NotificationConfiguration = structure(list(SnsConfiguration = structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["update_account_settings_input"]]))
 }
 
 .timestreamquery$update_account_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxQueryTCU = structure(logical(0), tags = list(type = "integer")), QueryPricingModel = structure(logical(0), tags = list(type = "string")), QueryCompute = structure(list(ComputeMode = structure(logical(0), tags = list(type = "string")), ProvisionedCapacity = structure(list(ActiveQueryTCU = structure(logical(0), tags = list(type = "integer")), NotificationConfiguration = structure(list(SnsConfiguration = structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LastUpdate = structure(list(TargetQueryTCU = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["update_account_settings_output"]]))
 }
 
 .timestreamquery$update_scheduled_query_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScheduledQueryArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamquery_shapes[["update_scheduled_query_input"]]))
 }
 
 .timestreamquery$update_scheduled_query_output <- function(...) {

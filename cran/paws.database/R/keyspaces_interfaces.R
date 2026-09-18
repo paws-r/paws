@@ -5,228 +5,190 @@ NULL
 
 .keyspaces$create_keyspace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), replicationSpecification = structure(list(replicationStrategy = structure(logical(0), tags = list(type = "string")), regionList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["create_keyspace_input"]]))
 }
 
 .keyspaces$create_keyspace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["create_keyspace_output"]]))
 }
 
 .keyspaces$create_table_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceName = structure(logical(0), tags = list(type = "string")), tableName = structure(logical(0), tags = list(type = "string")), schemaDefinition = structure(list(allColumns = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partitionKeys = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clusteringKeys = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), orderBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), staticColumns = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), comment = structure(list(message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), capacitySpecification = structure(list(throughputMode = structure(logical(0), tags = list(type = "string")), readCapacityUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), writeCapacityUnits = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure")), encryptionSpecification = structure(list(type = structure(logical(0), tags = list(type = "string")), kmsKeyIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pointInTimeRecovery = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ttl = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), defaultTimeToLive = structure(logical(0), tags = list(type = "integer", box = TRUE)), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clientSideTimestamps = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), autoScalingSpecification = structure(list(writeCapacityAutoScaling = structure(list(autoScalingDisabled = structure(logical(0), tags = list(type = "boolean")), minimumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), maximumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), scalingPolicy = structure(list(targetTrackingScalingPolicyConfiguration = structure(list(disableScaleIn = structure(logical(0), tags = list(type = "boolean")), scaleInCooldown = structure(logical(0), tags = list(type = "integer")), scaleOutCooldown = structure(logical(0), tags = list(type = "integer")), targetValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), readCapacityAutoScaling = structure(list(autoScalingDisabled = structure(logical(0), tags = list(type = "boolean")), minimumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), maximumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), scalingPolicy = structure(list(targetTrackingScalingPolicyConfiguration = structure(list(disableScaleIn = structure(logical(0), tags = list(type = "boolean")), scaleInCooldown = structure(logical(0), tags = list(type = "integer")), scaleOutCooldown = structure(logical(0), tags = list(type = "integer")), targetValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), replicaSpecifications = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), readCapacityUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), readCapacityAutoScaling = structure(list(autoScalingDisabled = structure(logical(0), tags = list(type = "boolean")), minimumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), maximumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), scalingPolicy = structure(list(targetTrackingScalingPolicyConfiguration = structure(list(disableScaleIn = structure(logical(0), tags = list(type = "boolean")), scaleInCooldown = structure(logical(0), tags = list(type = "integer")), scaleOutCooldown = structure(logical(0), tags = list(type = "integer")), targetValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), cdcSpecification = structure(list(status = structure(logical(0), tags = list(type = "string")), viewType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), propagateTags = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), warmThroughputSpecification = structure(list(readUnitsPerSecond = structure(logical(0), tags = list(type = "long", box = TRUE)), writeUnitsPerSecond = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["create_table_input"]]))
 }
 
 .keyspaces$create_table_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["create_table_output"]]))
 }
 
 .keyspaces$create_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceName = structure(logical(0), tags = list(type = "string")), typeName = structure(logical(0), tags = list(type = "string")), fieldDefinitions = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["create_type_input"]]))
 }
 
 .keyspaces$create_type_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceArn = structure(logical(0), tags = list(type = "string")), typeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["create_type_output"]]))
 }
 
 .keyspaces$delete_keyspace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["delete_keyspace_input"]]))
 }
 
 .keyspaces$delete_keyspace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["delete_keyspace_output"]]))
 }
 
 .keyspaces$delete_table_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceName = structure(logical(0), tags = list(type = "string")), tableName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["delete_table_input"]]))
 }
 
 .keyspaces$delete_table_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["delete_table_output"]]))
 }
 
 .keyspaces$delete_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceName = structure(logical(0), tags = list(type = "string")), typeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["delete_type_input"]]))
 }
 
 .keyspaces$delete_type_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceArn = structure(logical(0), tags = list(type = "string")), typeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["delete_type_output"]]))
 }
 
 .keyspaces$get_keyspace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["get_keyspace_input"]]))
 }
 
 .keyspaces$get_keyspace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceName = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), replicationStrategy = structure(logical(0), tags = list(type = "string")), replicationRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), replicationGroupStatuses = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), keyspaceStatus = structure(logical(0), tags = list(type = "string")), tablesReplicationProgress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["get_keyspace_output"]]))
 }
 
 .keyspaces$get_table_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceName = structure(logical(0), tags = list(type = "string")), tableName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["get_table_input"]]))
 }
 
 .keyspaces$get_table_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceName = structure(logical(0), tags = list(type = "string")), tableName = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), creationTimestamp = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), schemaDefinition = structure(list(allColumns = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partitionKeys = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clusteringKeys = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), orderBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), staticColumns = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), capacitySpecification = structure(list(throughputMode = structure(logical(0), tags = list(type = "string")), readCapacityUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), writeCapacityUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), lastUpdateToPayPerRequestTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), encryptionSpecification = structure(list(type = structure(logical(0), tags = list(type = "string")), kmsKeyIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pointInTimeRecovery = structure(list(status = structure(logical(0), tags = list(type = "string")), earliestRestorableTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ttl = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), defaultTimeToLive = structure(logical(0), tags = list(type = "integer", box = TRUE)), comment = structure(list(message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientSideTimestamps = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), replicaSpecifications = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), capacitySpecification = structure(list(throughputMode = structure(logical(0), tags = list(type = "string")), readCapacityUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), writeCapacityUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), lastUpdateToPayPerRequestTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), warmThroughputSpecification = structure(list(readUnitsPerSecond = structure(logical(0), tags = list(type = "long", box = TRUE)), writeUnitsPerSecond = structure(logical(0), tags = list(type = "long", box = TRUE)), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), latestStreamArn = structure(logical(0), tags = list(type = "string")), cdcSpecification = structure(list(status = structure(logical(0), tags = list(type = "string")), viewType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), warmThroughputSpecification = structure(list(readUnitsPerSecond = structure(logical(0), tags = list(type = "long", box = TRUE)), writeUnitsPerSecond = structure(logical(0), tags = list(type = "long", box = TRUE)), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["get_table_output"]]))
 }
 
 .keyspaces$get_table_auto_scaling_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceName = structure(logical(0), tags = list(type = "string")), tableName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["get_table_auto_scaling_settings_input"]]))
 }
 
 .keyspaces$get_table_auto_scaling_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceName = structure(logical(0), tags = list(type = "string")), tableName = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), autoScalingSpecification = structure(list(writeCapacityAutoScaling = structure(list(autoScalingDisabled = structure(logical(0), tags = list(type = "boolean")), minimumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), maximumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), scalingPolicy = structure(list(targetTrackingScalingPolicyConfiguration = structure(list(disableScaleIn = structure(logical(0), tags = list(type = "boolean")), scaleInCooldown = structure(logical(0), tags = list(type = "integer")), scaleOutCooldown = structure(logical(0), tags = list(type = "integer")), targetValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), readCapacityAutoScaling = structure(list(autoScalingDisabled = structure(logical(0), tags = list(type = "boolean")), minimumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), maximumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), scalingPolicy = structure(list(targetTrackingScalingPolicyConfiguration = structure(list(disableScaleIn = structure(logical(0), tags = list(type = "boolean")), scaleInCooldown = structure(logical(0), tags = list(type = "integer")), scaleOutCooldown = structure(logical(0), tags = list(type = "integer")), targetValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), replicaSpecifications = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), autoScalingSpecification = structure(list(writeCapacityAutoScaling = structure(list(autoScalingDisabled = structure(logical(0), tags = list(type = "boolean")), minimumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), maximumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), scalingPolicy = structure(list(targetTrackingScalingPolicyConfiguration = structure(list(disableScaleIn = structure(logical(0), tags = list(type = "boolean")), scaleInCooldown = structure(logical(0), tags = list(type = "integer")), scaleOutCooldown = structure(logical(0), tags = list(type = "integer")), targetValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), readCapacityAutoScaling = structure(list(autoScalingDisabled = structure(logical(0), tags = list(type = "boolean")), minimumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), maximumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), scalingPolicy = structure(list(targetTrackingScalingPolicyConfiguration = structure(list(disableScaleIn = structure(logical(0), tags = list(type = "boolean")), scaleInCooldown = structure(logical(0), tags = list(type = "integer")), scaleOutCooldown = structure(logical(0), tags = list(type = "integer")), targetValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["get_table_auto_scaling_settings_output"]]))
 }
 
 .keyspaces$get_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceName = structure(logical(0), tags = list(type = "string")), typeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["get_type_input"]]))
 }
 
 .keyspaces$get_type_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceName = structure(logical(0), tags = list(type = "string")), typeName = structure(logical(0), tags = list(type = "string")), fieldDefinitions = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), directReferringTables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), directParentTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), maxNestingDepth = structure(logical(0), tags = list(type = "integer")), keyspaceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["get_type_output"]]))
 }
 
 .keyspaces$list_keyspaces_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["list_keyspaces_input"]]))
 }
 
 .keyspaces$list_keyspaces_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), keyspaces = structure(list(structure(list(keyspaceName = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), replicationStrategy = structure(logical(0), tags = list(type = "string")), replicationRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["list_keyspaces_output"]]))
 }
 
 .keyspaces$list_tables_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), keyspaceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["list_tables_input"]]))
 }
 
 .keyspaces$list_tables_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), tables = structure(list(structure(list(keyspaceName = structure(logical(0), tags = list(type = "string")), tableName = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["list_tables_output"]]))
 }
 
 .keyspaces$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["list_tags_for_resource_input"]]))
 }
 
 .keyspaces$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["list_tags_for_resource_output"]]))
 }
 
 .keyspaces$list_types_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), keyspaceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["list_types_input"]]))
 }
 
 .keyspaces$list_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["list_types_output"]]))
 }
 
 .keyspaces$restore_table_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceKeyspaceName = structure(logical(0), tags = list(type = "string")), sourceTableName = structure(logical(0), tags = list(type = "string")), targetKeyspaceName = structure(logical(0), tags = list(type = "string")), targetTableName = structure(logical(0), tags = list(type = "string")), restoreTimestamp = structure(logical(0), tags = list(type = "timestamp")), capacitySpecificationOverride = structure(list(throughputMode = structure(logical(0), tags = list(type = "string")), readCapacityUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), writeCapacityUnits = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure")), encryptionSpecificationOverride = structure(list(type = structure(logical(0), tags = list(type = "string")), kmsKeyIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pointInTimeRecoveryOverride = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tagsOverride = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), autoScalingSpecification = structure(list(writeCapacityAutoScaling = structure(list(autoScalingDisabled = structure(logical(0), tags = list(type = "boolean")), minimumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), maximumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), scalingPolicy = structure(list(targetTrackingScalingPolicyConfiguration = structure(list(disableScaleIn = structure(logical(0), tags = list(type = "boolean")), scaleInCooldown = structure(logical(0), tags = list(type = "integer")), scaleOutCooldown = structure(logical(0), tags = list(type = "integer")), targetValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), readCapacityAutoScaling = structure(list(autoScalingDisabled = structure(logical(0), tags = list(type = "boolean")), minimumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), maximumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), scalingPolicy = structure(list(targetTrackingScalingPolicyConfiguration = structure(list(disableScaleIn = structure(logical(0), tags = list(type = "boolean")), scaleInCooldown = structure(logical(0), tags = list(type = "integer")), scaleOutCooldown = structure(logical(0), tags = list(type = "integer")), targetValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), replicaSpecifications = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), readCapacityUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), readCapacityAutoScaling = structure(list(autoScalingDisabled = structure(logical(0), tags = list(type = "boolean")), minimumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), maximumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), scalingPolicy = structure(list(targetTrackingScalingPolicyConfiguration = structure(list(disableScaleIn = structure(logical(0), tags = list(type = "boolean")), scaleInCooldown = structure(logical(0), tags = list(type = "integer")), scaleOutCooldown = structure(logical(0), tags = list(type = "integer")), targetValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["restore_table_input"]]))
 }
 
 .keyspaces$restore_table_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restoredTableARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["restore_table_output"]]))
 }
 
 .keyspaces$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["tag_resource_input"]]))
 }
 
 .keyspaces$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["tag_resource_output"]]))
 }
 
 .keyspaces$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["untag_resource_input"]]))
 }
 
 .keyspaces$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["untag_resource_output"]]))
 }
 
 .keyspaces$update_keyspace_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceName = structure(logical(0), tags = list(type = "string")), replicationSpecification = structure(list(replicationStrategy = structure(logical(0), tags = list(type = "string")), regionList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), clientSideTimestamps = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["update_keyspace_input"]]))
 }
 
 .keyspaces$update_keyspace_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["update_keyspace_output"]]))
 }
 
 .keyspaces$update_table_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keyspaceName = structure(logical(0), tags = list(type = "string")), tableName = structure(logical(0), tags = list(type = "string")), addColumns = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), capacitySpecification = structure(list(throughputMode = structure(logical(0), tags = list(type = "string")), readCapacityUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), writeCapacityUnits = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure")), encryptionSpecification = structure(list(type = structure(logical(0), tags = list(type = "string")), kmsKeyIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), pointInTimeRecovery = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ttl = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), defaultTimeToLive = structure(logical(0), tags = list(type = "integer", box = TRUE)), clientSideTimestamps = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), autoScalingSpecification = structure(list(writeCapacityAutoScaling = structure(list(autoScalingDisabled = structure(logical(0), tags = list(type = "boolean")), minimumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), maximumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), scalingPolicy = structure(list(targetTrackingScalingPolicyConfiguration = structure(list(disableScaleIn = structure(logical(0), tags = list(type = "boolean")), scaleInCooldown = structure(logical(0), tags = list(type = "integer")), scaleOutCooldown = structure(logical(0), tags = list(type = "integer")), targetValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), readCapacityAutoScaling = structure(list(autoScalingDisabled = structure(logical(0), tags = list(type = "boolean")), minimumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), maximumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), scalingPolicy = structure(list(targetTrackingScalingPolicyConfiguration = structure(list(disableScaleIn = structure(logical(0), tags = list(type = "boolean")), scaleInCooldown = structure(logical(0), tags = list(type = "integer")), scaleOutCooldown = structure(logical(0), tags = list(type = "integer")), targetValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), replicaSpecifications = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), readCapacityUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), readCapacityAutoScaling = structure(list(autoScalingDisabled = structure(logical(0), tags = list(type = "boolean")), minimumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), maximumUnits = structure(logical(0), tags = list(type = "long", box = TRUE)), scalingPolicy = structure(list(targetTrackingScalingPolicyConfiguration = structure(list(disableScaleIn = structure(logical(0), tags = list(type = "boolean")), scaleInCooldown = structure(logical(0), tags = list(type = "integer")), scaleOutCooldown = structure(logical(0), tags = list(type = "integer")), targetValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), cdcSpecification = structure(list(status = structure(logical(0), tags = list(type = "string")), viewType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), propagateTags = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), warmThroughputSpecification = structure(list(readUnitsPerSecond = structure(logical(0), tags = list(type = "long", box = TRUE)), writeUnitsPerSecond = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["update_table_input"]]))
 }
 
 .keyspaces$update_table_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .keyspaces_shapes[["update_table_output"]]))
 }

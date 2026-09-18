@@ -13,7 +13,7 @@ s3_get_bucket_policy(Bucket, ExpectedBucketOwner = NULL)
 
 \strong{Access points} - When you use this API operation with an access point, provide the alias of the access point in place of the bucket name.
 
-\strong{Object Lambda access points} - When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code \code{InvalidAccessPointAliasError} is returned. For more information about \code{InvalidAccessPointAliasError}, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList}{List of Error Codes}.
+\strong{Object Lambda access points} - When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code \code{InvalidAccessPointAliasError} is returned. For more information about \code{InvalidAccessPointAliasError}, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/#ErrorCodeList}{List of Error Codes}.
 
 Object Lambda access points are not supported by directory buckets.}
 

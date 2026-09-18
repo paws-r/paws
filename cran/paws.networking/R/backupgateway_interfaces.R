@@ -5,300 +5,250 @@ NULL
 
 .backupgateway$associate_gateway_to_server_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string")), ServerArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["associate_gateway_to_server_input"]]))
 }
 
 .backupgateway$associate_gateway_to_server_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["associate_gateway_to_server_output"]]))
 }
 
 .backupgateway$create_gateway_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ActivationKey = structure(logical(0), tags = list(type = "string")), GatewayDisplayName = structure(logical(0), tags = list(type = "string")), GatewayType = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["create_gateway_input"]]))
 }
 
 .backupgateway$create_gateway_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["create_gateway_output"]]))
 }
 
 .backupgateway$delete_gateway_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["delete_gateway_input"]]))
 }
 
 .backupgateway$delete_gateway_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["delete_gateway_output"]]))
 }
 
 .backupgateway$delete_hypervisor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HypervisorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["delete_hypervisor_input"]]))
 }
 
 .backupgateway$delete_hypervisor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HypervisorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["delete_hypervisor_output"]]))
 }
 
 .backupgateway$disassociate_gateway_from_server_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["disassociate_gateway_from_server_input"]]))
 }
 
 .backupgateway$disassociate_gateway_from_server_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["disassociate_gateway_from_server_output"]]))
 }
 
 .backupgateway$get_bandwidth_rate_limit_schedule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["get_bandwidth_rate_limit_schedule_input"]]))
 }
 
 .backupgateway$get_bandwidth_rate_limit_schedule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string")), BandwidthRateLimitIntervals = structure(list(structure(list(AverageUploadRateLimitInBitsPerSec = structure(logical(0), tags = list(type = "long", box = TRUE)), StartHourOfDay = structure(logical(0), tags = list(type = "integer", box = TRUE)), EndHourOfDay = structure(logical(0), tags = list(type = "integer", box = TRUE)), StartMinuteOfHour = structure(logical(0), tags = list(type = "integer", box = TRUE)), EndMinuteOfHour = structure(logical(0), tags = list(type = "integer", box = TRUE)), DaysOfWeek = structure(list(structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["get_bandwidth_rate_limit_schedule_output"]]))
 }
 
 .backupgateway$get_gateway_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["get_gateway_input"]]))
 }
 
 .backupgateway$get_gateway_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Gateway = structure(list(GatewayArn = structure(logical(0), tags = list(type = "string")), GatewayDisplayName = structure(logical(0), tags = list(type = "string")), GatewayType = structure(logical(0), tags = list(type = "string")), HypervisorId = structure(logical(0), tags = list(type = "string")), LastSeenTime = structure(logical(0), tags = list(type = "timestamp")), MaintenanceStartTime = structure(list(DayOfMonth = structure(logical(0), tags = list(type = "integer", box = TRUE)), DayOfWeek = structure(logical(0), tags = list(type = "integer", box = TRUE)), HourOfDay = structure(logical(0), tags = list(type = "integer", box = TRUE)), MinuteOfHour = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), NextUpdateAvailabilityTime = structure(logical(0), tags = list(type = "timestamp")), VpcEndpoint = structure(logical(0), tags = list(type = "string")), DeprecationDate = structure(logical(0), tags = list(type = "timestamp")), SoftwareVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["get_gateway_output"]]))
 }
 
 .backupgateway$get_hypervisor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HypervisorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["get_hypervisor_input"]]))
 }
 
 .backupgateway$get_hypervisor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Hypervisor = structure(list(Host = structure(logical(0), tags = list(type = "string")), HypervisorArn = structure(logical(0), tags = list(type = "string")), KmsKeyArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), LogGroupArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), LastSuccessfulMetadataSyncTime = structure(logical(0), tags = list(type = "timestamp")), LatestMetadataSyncStatusMessage = structure(logical(0), tags = list(type = "string")), LatestMetadataSyncStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["get_hypervisor_output"]]))
 }
 
 .backupgateway$get_hypervisor_property_mappings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HypervisorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["get_hypervisor_property_mappings_input"]]))
 }
 
 .backupgateway$get_hypervisor_property_mappings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HypervisorArn = structure(logical(0), tags = list(type = "string")), VmwareToAwsTagMappings = structure(list(structure(list(VmwareCategory = structure(logical(0), tags = list(type = "string")), VmwareTagName = structure(logical(0), tags = list(type = "string")), AwsTagKey = structure(logical(0), tags = list(type = "string")), AwsTagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IamRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["get_hypervisor_property_mappings_output"]]))
 }
 
 .backupgateway$get_virtual_machine_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["get_virtual_machine_input"]]))
 }
 
 .backupgateway$get_virtual_machine_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VirtualMachine = structure(list(HostName = structure(logical(0), tags = list(type = "string")), HypervisorId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), LastBackupDate = structure(logical(0), tags = list(type = "timestamp")), VmwareTags = structure(list(structure(list(VmwareCategory = structure(logical(0), tags = list(type = "string")), VmwareTagName = structure(logical(0), tags = list(type = "string")), VmwareTagDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["get_virtual_machine_output"]]))
 }
 
 .backupgateway$import_hypervisor_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), KmsKeyArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["import_hypervisor_configuration_input"]]))
 }
 
 .backupgateway$import_hypervisor_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HypervisorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["import_hypervisor_configuration_output"]]))
 }
 
 .backupgateway$list_gateways_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["list_gateways_input"]]))
 }
 
 .backupgateway$list_gateways_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Gateways = structure(list(structure(list(GatewayArn = structure(logical(0), tags = list(type = "string")), GatewayDisplayName = structure(logical(0), tags = list(type = "string")), GatewayType = structure(logical(0), tags = list(type = "string")), HypervisorId = structure(logical(0), tags = list(type = "string")), LastSeenTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["list_gateways_output"]]))
 }
 
 .backupgateway$list_hypervisors_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["list_hypervisors_input"]]))
 }
 
 .backupgateway$list_hypervisors_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Hypervisors = structure(list(structure(list(Host = structure(logical(0), tags = list(type = "string")), HypervisorArn = structure(logical(0), tags = list(type = "string")), KmsKeyArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["list_hypervisors_output"]]))
 }
 
 .backupgateway$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["list_tags_for_resource_input"]]))
 }
 
 .backupgateway$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["list_tags_for_resource_output"]]))
 }
 
 .backupgateway$list_virtual_machines_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HypervisorArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["list_virtual_machines_input"]]))
 }
 
 .backupgateway$list_virtual_machines_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VirtualMachines = structure(list(structure(list(HostName = structure(logical(0), tags = list(type = "string")), HypervisorId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), LastBackupDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["list_virtual_machines_output"]]))
 }
 
 .backupgateway$put_bandwidth_rate_limit_schedule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string")), BandwidthRateLimitIntervals = structure(list(structure(list(AverageUploadRateLimitInBitsPerSec = structure(logical(0), tags = list(type = "long", box = TRUE)), StartHourOfDay = structure(logical(0), tags = list(type = "integer", box = TRUE)), EndHourOfDay = structure(logical(0), tags = list(type = "integer", box = TRUE)), StartMinuteOfHour = structure(logical(0), tags = list(type = "integer", box = TRUE)), EndMinuteOfHour = structure(logical(0), tags = list(type = "integer", box = TRUE)), DaysOfWeek = structure(list(structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["put_bandwidth_rate_limit_schedule_input"]]))
 }
 
 .backupgateway$put_bandwidth_rate_limit_schedule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["put_bandwidth_rate_limit_schedule_output"]]))
 }
 
 .backupgateway$put_hypervisor_property_mappings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HypervisorArn = structure(logical(0), tags = list(type = "string")), VmwareToAwsTagMappings = structure(list(structure(list(VmwareCategory = structure(logical(0), tags = list(type = "string")), VmwareTagName = structure(logical(0), tags = list(type = "string")), AwsTagKey = structure(logical(0), tags = list(type = "string")), AwsTagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IamRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["put_hypervisor_property_mappings_input"]]))
 }
 
 .backupgateway$put_hypervisor_property_mappings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HypervisorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["put_hypervisor_property_mappings_output"]]))
 }
 
 .backupgateway$put_maintenance_start_time_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string")), HourOfDay = structure(logical(0), tags = list(type = "integer", box = TRUE)), MinuteOfHour = structure(logical(0), tags = list(type = "integer", box = TRUE)), DayOfWeek = structure(logical(0), tags = list(type = "integer", box = TRUE)), DayOfMonth = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["put_maintenance_start_time_input"]]))
 }
 
 .backupgateway$put_maintenance_start_time_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["put_maintenance_start_time_output"]]))
 }
 
 .backupgateway$start_virtual_machines_metadata_sync_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HypervisorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["start_virtual_machines_metadata_sync_input"]]))
 }
 
 .backupgateway$start_virtual_machines_metadata_sync_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HypervisorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["start_virtual_machines_metadata_sync_output"]]))
 }
 
 .backupgateway$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["tag_resource_input"]]))
 }
 
 .backupgateway$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["tag_resource_output"]]))
 }
 
 .backupgateway$test_hypervisor_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["test_hypervisor_configuration_input"]]))
 }
 
 .backupgateway$test_hypervisor_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["test_hypervisor_configuration_output"]]))
 }
 
 .backupgateway$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["untag_resource_input"]]))
 }
 
 .backupgateway$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["untag_resource_output"]]))
 }
 
 .backupgateway$update_gateway_information_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string")), GatewayDisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["update_gateway_information_input"]]))
 }
 
 .backupgateway$update_gateway_information_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["update_gateway_information_output"]]))
 }
 
 .backupgateway$update_gateway_software_now_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["update_gateway_software_now_input"]]))
 }
 
 .backupgateway$update_gateway_software_now_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["update_gateway_software_now_output"]]))
 }
 
 .backupgateway$update_hypervisor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HypervisorArn = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Name = structure(logical(0), tags = list(type = "string")), LogGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["update_hypervisor_input"]]))
 }
 
 .backupgateway$update_hypervisor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HypervisorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backupgateway_shapes[["update_hypervisor_output"]]))
 }

@@ -5,6 +5,8 @@ NULL
 #' Agents for Amazon Bedrock Runtime
 #'
 #' @description
+#' Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no longer open to new customers. For capabilities similar to Bedrock Agents Classic, explore Amazon Bedrock AgentCore. Existing customers can continue to use the service as normal. For more information, see [Amazon Bedrock Agents Classic availability change](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-classic-maintenance-mode.html).
+#' 
 #' Contains APIs related to model invocation and querying of knowledge bases.
 #'
 #' @param
@@ -83,13 +85,15 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- bedrockagentruntime()
-#' svc$create_invocation(
+#' svc$agentic_retrieve_stream(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=bedrockagentruntime_agentic_retrieve_stream]{agentic_retrieve_stream} \tab Retrieves information from one or more knowledge bases using an agentic approach\cr
+#'  \link[=bedrockagentruntime_check_ingested_document_acl]{check_ingested_document_acl} \tab Checks whether a user has access to a specific document by verifying against the ingested access control list (ACL) in a knowledge base\cr
 #'  \link[=bedrockagentruntime_create_invocation]{create_invocation} \tab Creates a new invocation within a session\cr
 #'  \link[=bedrockagentruntime_create_session]{create_session} \tab Creates a session to temporarily store conversations for generative AI (GenAI) applications built with open-source frameworks such as LangGraph and LlamaIndex\cr
 #'  \link[=bedrockagentruntime_delete_agent_memory]{delete_agent_memory} \tab Deletes memory from the specified memory identifier\cr
@@ -97,11 +101,13 @@ NULL
 #'  \link[=bedrockagentruntime_end_session]{end_session} \tab Ends the session\cr
 #'  \link[=bedrockagentruntime_generate_query]{generate_query} \tab Generates an SQL query from a natural language query\cr
 #'  \link[=bedrockagentruntime_get_agent_memory]{get_agent_memory} \tab Gets the sessions stored in the memory of the agent\cr
+#'  \link[=bedrockagentruntime_get_document_content]{get_document_content} \tab Retrieves the content of an ingested document from a knowledge base\cr
 #'  \link[=bedrockagentruntime_get_execution_flow_snapshot]{get_execution_flow_snapshot} \tab Retrieves the flow definition snapshot used for a flow execution\cr
 #'  \link[=bedrockagentruntime_get_flow_execution]{get_flow_execution} \tab Retrieves details about a specific flow execution, including its status, start and end times, and any errors that occurred during execution\cr
+#'  \link[=bedrockagentruntime_get_ingested_document_acl]{get_ingested_document_acl} \tab Retrieves the ingested access control list (ACL) for a specific document in a knowledge base\cr
 #'  \link[=bedrockagentruntime_get_invocation_step]{get_invocation_step} \tab Retrieves the details of a specific invocation step within an invocation in a session\cr
 #'  \link[=bedrockagentruntime_get_session]{get_session} \tab Retrieves details about a specific session\cr
-#'  \link[=bedrockagentruntime_invoke_agent]{invoke_agent} \tab Sends a prompt for the agent to process and respond to\cr
+#'  \link[=bedrockagentruntime_invoke_agent]{invoke_agent} \tab Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no longer open to new customers\cr
 #'  \link[=bedrockagentruntime_invoke_flow]{invoke_flow} \tab Invokes an alias of a flow to run the inputs that you specify and return the output of each node as a stream\cr
 #'  \link[=bedrockagentruntime_invoke_inline_agent]{invoke_inline_agent} \tab Invokes an inline Amazon Bedrock agent using the configurations you provide with the request\cr
 #'  \link[=bedrockagentruntime_list_flow_execution_events]{list_flow_execution_events} \tab Lists events that occurred during a flow execution\cr

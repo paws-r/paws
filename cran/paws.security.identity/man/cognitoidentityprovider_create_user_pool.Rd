@@ -28,7 +28,9 @@ cognitoidentityprovider_create_user_pool(
   UserPoolAddOns = NULL,
   UsernameConfiguration = NULL,
   AccountRecoverySetting = NULL,
-  UserPoolTier = NULL
+  UserPoolTier = NULL,
+  KeyConfiguration = NULL,
+  IssuerConfiguration = NULL
 )
 }
 \arguments{
@@ -62,7 +64,15 @@ Set the email message type that corresponds to your \code{DefaultEmailOption} se
 
 \item{MfaConfiguration}{Sets multi-factor authentication (MFA) to be on, off, or optional. When \code{ON}, all users must set up MFA before they can sign in. When \code{OPTIONAL}, your application must make a client-side determination of whether a user wants to register an MFA device. For user pools with adaptive authentication with threat protection, choose \code{OPTIONAL}.
 
-When \code{MfaConfiguration} is \code{OPTIONAL}, managed login doesn't automatically prompt users to set up MFA. Amazon Cognito generates MFA prompts in API responses and in managed login for users who have chosen and configured a preferred MFA factor.}
+When \code{MfaConfiguration} is \code{OPTIONAL}, managed login doesn't automatically prompt users to set up MFA. Amazon Cognito generates MFA prompts in API responses and in managed login for users who have chosen and configured a preferred MFA factor.
+
+The \code{\link[=cognitoidentityprovider_create_user_pool]{create_user_pool}} operation supports only SMS MFA configuration. If you set \code{MfaConfiguration} to either of these values, include an \code{SmsConfiguration} in the same request:
+\itemize{
+\item \code{ON} – Requires MFA for all users
+\item \code{OPTIONAL} – Makes MFA optional for each user
+}
+
+If you omit \code{SmsConfiguration}, the operation returns an \code{InvalidParameterException}. To configure TOTP or email MFA, use the \code{\link[=cognitoidentityprovider_set_user_pool_mfa_config]{set_user_pool_mfa_config}} operation. You can also use \code{\link[=cognitoidentityprovider_set_user_pool_mfa_config]{set_user_pool_mfa_config}} to add MFA factors later.}
 
 \item{UserAttributeUpdateSettings}{The settings for updates to user attributes. These settings include the property \code{AttributesRequireVerificationBeforeUpdate}, a user-pool setting that tells Amazon Cognito how to handle changes to the value of your users' email address and phone number attributes. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-email-phone-verification.html#user-pool-settings-verifications-verify-attribute-updates}{Verifying updates to email addresses and phone numbers}.}
 
@@ -95,6 +105,10 @@ This configuration is immutable after you set it.}
 As a best practice, configure both \code{verified_email} and \code{verified_phone_number}, with one having a higher priority than the other.}
 
 \item{UserPoolTier}{The user pool \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-sign-in-feature-plans.html}{feature plan}, or tier. This parameter determines the eligibility of the user pool for features like managed login, access-token customization, and threat protection. Defaults to \code{ESSENTIALS}.}
+
+\item{KeyConfiguration}{The key configuration for the user pool. Specifies the key type and KMS key ARN for encryption.}
+
+\item{IssuerConfiguration}{The issuer configuration for the user pool. Specifies the issuer type for token generation.}
 }
 \description{
 Creates a new Amazon Cognito user pool. This operation sets basic and advanced configuration options.

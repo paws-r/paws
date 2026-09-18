@@ -38,7 +38,7 @@ NULL
 #' list(
 #'   connectorArn = "string",
 #'   connectorName = "string",
-#'   connectorState = "RUNNING"|"CREATING"|"UPDATING"|"DELETING"|"FAILED"
+#'   connectorState = "RUNNING"|"CREATING"|"UPDATING"|"DELETING"|"FAILED"|"RESTARTING"
 #' )
 #' ```
 #'
@@ -304,7 +304,7 @@ kafkaconnect_create_worker_configuration <- function(description = NULL, name, p
 #' ```
 #' list(
 #'   connectorArn = "string",
-#'   connectorState = "RUNNING"|"CREATING"|"UPDATING"|"DELETING"|"FAILED"
+#'   connectorState = "RUNNING"|"CREATING"|"UPDATING"|"DELETING"|"FAILED"|"RESTARTING"
 #' )
 #' ```
 #'
@@ -478,7 +478,7 @@ kafkaconnect_delete_worker_configuration <- function(workerConfigurationArn) {
 #'   ),
 #'   connectorDescription = "string",
 #'   connectorName = "string",
-#'   connectorState = "RUNNING"|"CREATING"|"UPDATING"|"DELETING"|"FAILED",
+#'   connectorState = "RUNNING"|"CREATING"|"UPDATING"|"DELETING"|"FAILED"|"RESTARTING",
 #'   creationTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -588,8 +588,8 @@ kafkaconnect_describe_connector <- function(connectorArn) {
 #' list(
 #'   connectorArn = "string",
 #'   connectorOperationArn = "string",
-#'   connectorOperationState = "PENDING"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_FAILED"|"ROLLBACK_COMPLETE",
-#'   connectorOperationType = "UPDATE_WORKER_SETTING"|"UPDATE_CONNECTOR_CONFIGURATION"|"ISOLATE_CONNECTOR"|"RESTORE_CONNECTOR",
+#'   connectorOperationState = "PENDING"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_FAILED"|"ROLLBACK_COMPLETE"|"RESTART_IN_PROGRESS"|"RESTART_COMPLETE"|"RESTART_FAILED",
+#'   connectorOperationType = "UPDATE_WORKER_SETTING"|"UPDATE_CONNECTOR_CONFIGURATION"|"ISOLATE_CONNECTOR"|"RESTORE_CONNECTOR"|"RESTART_CONNECTOR",
 #'   operationSteps = list(
 #'     list(
 #'       stepType = "INITIALIZE_UPDATE"|"FINALIZE_UPDATE"|"UPDATE_WORKER_SETTING"|"UPDATE_CONNECTOR_CONFIGURATION"|"VALIDATE_UPDATE",
@@ -847,8 +847,8 @@ kafkaconnect_describe_worker_configuration <- function(workerConfigurationArn) {
 #'   connectorOperations = list(
 #'     list(
 #'       connectorOperationArn = "string",
-#'       connectorOperationType = "UPDATE_WORKER_SETTING"|"UPDATE_CONNECTOR_CONFIGURATION"|"ISOLATE_CONNECTOR"|"RESTORE_CONNECTOR",
-#'       connectorOperationState = "PENDING"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_FAILED"|"ROLLBACK_COMPLETE",
+#'       connectorOperationType = "UPDATE_WORKER_SETTING"|"UPDATE_CONNECTOR_CONFIGURATION"|"ISOLATE_CONNECTOR"|"RESTORE_CONNECTOR"|"RESTART_CONNECTOR",
+#'       connectorOperationState = "PENDING"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_FAILED"|"ROLLBACK_COMPLETE"|"RESTART_IN_PROGRESS"|"RESTART_COMPLETE"|"RESTART_FAILED",
 #'       creationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -933,7 +933,7 @@ kafkaconnect_list_connector_operations <- function(connectorArn, maxResults = NU
 #'       connectorArn = "string",
 #'       connectorDescription = "string",
 #'       connectorName = "string",
-#'       connectorState = "RUNNING"|"CREATING"|"UPDATING"|"DELETING"|"FAILED",
+#'       connectorState = "RUNNING"|"CREATING"|"UPDATING"|"DELETING"|"FAILED"|"RESTARTING",
 #'       creationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1235,6 +1235,58 @@ kafkaconnect_list_worker_configurations <- function(maxResults = NULL, nextToken
 }
 .kafkaconnect$operations$list_worker_configurations <- kafkaconnect_list_worker_configurations
 
+#' Restarts the specified connector
+#'
+#' @description
+#' Restarts the specified connector. By default, this operation restarts the connector and all of its tasks. This operation is asynchronous and returns a connector operation ARN that you can pass to [`describe_connector_operation`][kafkaconnect_describe_connector_operation] to track the state of the restart.
+#'
+#' @usage
+#' kafkaconnect_restart_connector(connectorArn, onlyFailedTasks)
+#'
+#' @param connectorArn &#91;required&#93; The Amazon Resource Name (ARN) of the connector that you want to restart.
+#' @param onlyFailedTasks Specifies whether to restart only the connector's failed tasks. If `true`, the operation restarts only the tasks that are currently in a failed state, and healthy tasks continue running. If `false` or not specified, the operation restarts the connector and all of its tasks.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectorArn = "string",
+#'   connectorOperationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$restart_connector(
+#'   connectorArn = "string",
+#'   onlyFailedTasks = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafkaconnect_restart_connector
+#'
+#' @aliases kafkaconnect_restart_connector
+kafkaconnect_restart_connector <- function(connectorArn, onlyFailedTasks = NULL) {
+  op <- new_operation(
+    name = "RestartConnector",
+    http_method = "POST",
+    http_path = "/v1/connectors/{connectorArn}/restart",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kafkaconnect$restart_connector_input(connectorArn = connectorArn, onlyFailedTasks = onlyFailedTasks)
+  output <- .kafkaconnect$restart_connector_output()
+  config <- get_config()
+  svc <- .kafkaconnect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafkaconnect$operations$restart_connector <- kafkaconnect_restart_connector
+
 #' Attaches tags to the specified resource
 #'
 #' @description
@@ -1350,7 +1402,7 @@ kafkaconnect_untag_resource <- function(resourceArn, tagKeys) {
 #' ```
 #' list(
 #'   connectorArn = "string",
-#'   connectorState = "RUNNING"|"CREATING"|"UPDATING"|"DELETING"|"FAILED",
+#'   connectorState = "RUNNING"|"CREATING"|"UPDATING"|"DELETING"|"FAILED"|"RESTARTING",
 #'   connectorOperationArn = "string"
 #' )
 #' ```

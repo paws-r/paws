@@ -336,9 +336,11 @@ vpclattice_create_listener <- function(serviceIdentifier, name, protocol, port =
 #' -   **CHILD** - A single resource that is part of a group resource configuration.
 #' 
 #' -   **ARN** - An Amazon Web Services resource.
-#' @param portRanges (SINGLE, GROUP, CHILD) The TCP port ranges that a consumer can use to access a resource configuration (for example: 1-65535). You can separate port ranges using commas (for example: 1,2,22-30).
-#' @param protocol (SINGLE, GROUP) The protocol accepted by the resource configuration.
-#' @param resourceGatewayIdentifier (SINGLE, GROUP, ARN) The ID or ARN of the resource gateway used to connect to the resource configuration. For a child resource configuration, this value is inherited from the parent resource configuration.
+#' 
+#' -   **CIDR** - A network segment, expressed as a range of IP addresses (a CIDR block). Use this type to share a portion of your network rather than an individual resource. A consumer accesses the resources within the CIDR range through a `Tunnel` VPC endpoint. You can't add a CIDR resource configuration to a service network. A CIDR resource configuration must be associated with a resource gateway whose DNS resolution is set to `IN_VPC`.
+#' @param portRanges (SINGLE, GROUP, CHILD, CIDR) The port ranges that a consumer can use to access a resource configuration (for example: 1-65535). You can separate port ranges using commas (for example: 1,2,22-30). To resolve DNS through a CIDR resource configuration, include port 53 in the port ranges.
+#' @param protocol (SINGLE, GROUP, CIDR) The protocol accepted by the resource configuration. The default is `TCP`. `TCP_UDP` is supported only for CIDR resource configurations; specify it for a CIDR resource configuration to allow DNS resolution, which uses UDP.
+#' @param resourceGatewayIdentifier (SINGLE, GROUP, ARN, CIDR) The ID or ARN of the resource gateway used to connect to the resource configuration. For a child resource configuration, this value is inherited from the parent resource configuration. For a CIDR resource configuration, the associated resource gateway must have its DNS resolution set to `IN_VPC` so that DNS queries resolve in the context of your VPC.
 #' @param resourceConfigurationGroupIdentifier (CHILD) The ID or ARN of the parent resource configuration of type `GROUP`. This is used to associate a child resource configuration with a group resource configuration.
 #' @param resourceConfigurationDefinition Identifies the resource configuration in one of the following ways:
 #' 
@@ -347,6 +349,8 @@ vpclattice_create_listener <- function(serviceIdentifier, name, protocol, port =
 #' -   **Domain name** - Any domain name that is publicly resolvable.
 #' 
 #' -   **IP address** - For IPv4 and IPv6, only IP addresses in the VPC are supported.
+#' 
+#' -   **CIDR range** - For a resource configuration of type CIDR, specify a `cidrResource` with one or more `cidrRanges` (for example, `10.0.0.0/16`) that cover the IP addresses of the resources you want to make accessible. You can specify up to 10 ranges, using IPv4, IPv6, or both, and each range must include a prefix length. To represent your entire network, specify `0.0.0.0/0` (IPv4) or `::/0` (IPv6) as the only range. You can't use reserved ranges such as `169.254.0.0/16`, `100.64.0.0/10`, `224.0.0.0/4`, `fe80::/10`, or `ff00::/8`.
 #' @param allowAssociationToShareableServiceNetwork (SINGLE, GROUP, ARN) Specifies whether the resource configuration can be associated with a sharable service network. The default is false.
 #' @param customDomainName A custom domain name for your resource configuration. Additionally, provide a DomainVerificationID to prove your ownership of a domain.
 #' @param groupDomain (GROUP) The group domain for a group resource configuration. Any domains that you create for the child resource are subdomains of the group domain. Child resources inherit the verification status of the domain.
@@ -363,11 +367,11 @@ vpclattice_create_listener <- function(serviceIdentifier, name, protocol, port =
 #'   arn = "string",
 #'   resourceGatewayId = "string",
 #'   resourceConfigurationGroupId = "string",
-#'   type = "GROUP"|"CHILD"|"SINGLE"|"ARN",
+#'   type = "GROUP"|"CHILD"|"SINGLE"|"ARN"|"CIDR",
 #'   portRanges = list(
 #'     "string"
 #'   ),
-#'   protocol = "TCP",
+#'   protocol = "TCP"|"TCP_UDP",
 #'   status = "ACTIVE"|"CREATE_IN_PROGRESS"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
 #'   resourceConfigurationDefinition = list(
 #'     dnsResource = list(
@@ -379,6 +383,11 @@ vpclattice_create_listener <- function(serviceIdentifier, name, protocol, port =
 #'     ),
 #'     arnResource = list(
 #'       arn = "string"
+#'     ),
+#'     cidrResource = list(
+#'       cidrRanges = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   allowAssociationToShareableServiceNetwork = TRUE|FALSE,
@@ -397,11 +406,11 @@ vpclattice_create_listener <- function(serviceIdentifier, name, protocol, port =
 #' ```
 #' svc$create_resource_configuration(
 #'   name = "string",
-#'   type = "GROUP"|"CHILD"|"SINGLE"|"ARN",
+#'   type = "GROUP"|"CHILD"|"SINGLE"|"ARN"|"CIDR",
 #'   portRanges = list(
 #'     "string"
 #'   ),
-#'   protocol = "TCP",
+#'   protocol = "TCP"|"TCP_UDP",
 #'   resourceGatewayIdentifier = "string",
 #'   resourceConfigurationGroupIdentifier = "string",
 #'   resourceConfigurationDefinition = list(
@@ -414,6 +423,11 @@ vpclattice_create_listener <- function(serviceIdentifier, name, protocol, port =
 #'     ),
 #'     arnResource = list(
 #'       arn = "string"
+#'     ),
+#'     cidrResource = list(
+#'       cidrRanges = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   allowAssociationToShareableServiceNetwork = TRUE|FALSE,
@@ -477,9 +491,9 @@ vpclattice_create_resource_configuration <- function(name, type, portRanges = NU
 #' 
 #' The IP address type of the resource gateway is independent of the IP address type of the client or the VPC endpoint through which the resource is accessed.
 #' @param ipv4AddressesPerEni The number of IPv4 addresses in each ENI for the resource gateway.
-#' @param resourceConfigDnsResolution Indicates how DNS is resolved for resource configurations associated to this resource gateway. ResourceConfigDnsResolution is set at creation time and cannot be changed.
+#' @param resourceConfigDnsResolution Indicates how DNS is resolved for resource configurations associated with this resource gateway. This value is set when you create the resource gateway and can't be changed afterward. The default is `PUBLIC`.
 #' 
-#' -   `IN_VPC` - DNS resolution occurs privately within the resource gateway's VPC. DNS queries for resources behind this resource gateway resolve using the DNS resolvers defined in the VPC's DHCP option sets. Use this when your resource domain names are hosted in private Route 53 hosted zones or on-premises DNS servers reachable from the VPC.
+#' -   `IN_VPC` - DNS resolution occurs privately within the resource gateway's VPC. DNS queries for resources behind this resource gateway resolve using the DNS resolvers defined in the VPC's DHCP option sets. Use this when your resource domain names are hosted in private Route 53 hosted zones or on-premises DNS servers reachable from the VPC. A CIDR resource configuration requires a resource gateway that uses `IN_VPC`, and an `IN_VPC` resource gateway can't be used for ARN resource configurations, so a single resource gateway can't serve both ARN and CIDR resource configurations.
 #' 
 #' -   `PUBLIC` - DNS resolution occurs against public DNS resolvers. DNS queries for resources behind this resource gateway resolve using standard public DNS. Use this when your resource domain names are publicly resolvable.
 #' @param tags The tags for the resource gateway.
@@ -698,7 +712,7 @@ vpclattice_create_rule <- function(serviceIdentifier, listenerIdentifier, name, 
 #'
 #' @usage
 #' vpclattice_create_service(clientToken, name, tags, customDomainName,
-#'   certificateArn, authType)
+#'   certificateArn, authType, idleTimeoutSeconds)
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request. If you retry a request that completed successfully using the same client token and parameters, the retry succeeds without performing any actions. If the parameters aren't identical, the retry fails.
 #' @param name &#91;required&#93; The name of the service. The name must be unique within the account. The valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
@@ -710,6 +724,7 @@ vpclattice_create_rule <- function(serviceIdentifier, listenerIdentifier, name, 
 #' -   `NONE`: The resource does not use an IAM policy. This is the default.
 #' 
 #' -   `AWS_IAM`: The resource uses an IAM policy. When this type is used, auth is enabled and an auth policy is required.
+#' @param idleTimeoutSeconds The amount of time, in seconds, that a connection can remain idle (no data sent) before VPC Lattice closes it. The valid range is 60 to 600 seconds. If you don't specify a value, the default is 60 seconds. This setting does not change the maximum connection duration of 10 minutes; connections are still closed when they reach that limit.
 #'
 #' @return
 #' A list with the following syntax:
@@ -722,6 +737,7 @@ vpclattice_create_rule <- function(serviceIdentifier, listenerIdentifier, name, 
 #'   certificateArn = "string",
 #'   status = "ACTIVE"|"CREATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_FAILED",
 #'   authType = "NONE"|"AWS_IAM",
+#'   idleTimeoutSeconds = 123,
 #'   dnsEntry = list(
 #'     domainName = "string",
 #'     hostedZoneId = "string"
@@ -739,7 +755,8 @@ vpclattice_create_rule <- function(serviceIdentifier, listenerIdentifier, name, 
 #'   ),
 #'   customDomainName = "string",
 #'   certificateArn = "string",
-#'   authType = "NONE"|"AWS_IAM"
+#'   authType = "NONE"|"AWS_IAM",
+#'   idleTimeoutSeconds = 123
 #' )
 #' ```
 #'
@@ -748,7 +765,7 @@ vpclattice_create_rule <- function(serviceIdentifier, listenerIdentifier, name, 
 #' @rdname vpclattice_create_service
 #'
 #' @aliases vpclattice_create_service
-vpclattice_create_service <- function(clientToken = NULL, name, tags = NULL, customDomainName = NULL, certificateArn = NULL, authType = NULL) {
+vpclattice_create_service <- function(clientToken = NULL, name, tags = NULL, customDomainName = NULL, certificateArn = NULL, authType = NULL, idleTimeoutSeconds = NULL) {
   op <- new_operation(
     name = "CreateService",
     http_method = "POST",
@@ -757,7 +774,7 @@ vpclattice_create_service <- function(clientToken = NULL, name, tags = NULL, cus
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_service_input(clientToken = clientToken, name = name, tags = tags, customDomainName = customDomainName, certificateArn = certificateArn, authType = authType)
+  input <- .vpclattice$create_service_input(clientToken = clientToken, name = name, tags = tags, customDomainName = customDomainName, certificateArn = certificateArn, authType = authType, idleTimeoutSeconds = idleTimeoutSeconds)
   output <- .vpclattice$create_service_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -2254,12 +2271,12 @@ vpclattice_get_listener <- function(serviceIdentifier, listenerIdentifier) {
 #'   arn = "string",
 #'   resourceGatewayId = "string",
 #'   resourceConfigurationGroupId = "string",
-#'   type = "GROUP"|"CHILD"|"SINGLE"|"ARN",
+#'   type = "GROUP"|"CHILD"|"SINGLE"|"ARN"|"CIDR",
 #'   allowAssociationToShareableServiceNetwork = TRUE|FALSE,
 #'   portRanges = list(
 #'     "string"
 #'   ),
-#'   protocol = "TCP",
+#'   protocol = "TCP"|"TCP_UDP",
 #'   customDomainName = "string",
 #'   status = "ACTIVE"|"CREATE_IN_PROGRESS"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
 #'   resourceConfigurationDefinition = list(
@@ -2272,6 +2289,11 @@ vpclattice_get_listener <- function(serviceIdentifier, listenerIdentifier) {
 #'     ),
 #'     arnResource = list(
 #'       arn = "string"
+#'     ),
+#'     cidrResource = list(
+#'       cidrRanges = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   createdAt = as.POSIXct(
@@ -2570,6 +2592,7 @@ vpclattice_get_rule <- function(serviceIdentifier, listenerIdentifier, ruleIdent
 #'   certificateArn = "string",
 #'   status = "ACTIVE"|"CREATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_FAILED",
 #'   authType = "NONE"|"AWS_IAM",
+#'   idleTimeoutSeconds = 123,
 #'   failureCode = "string",
 #'   failureMessage = "string"
 #' )
@@ -3218,7 +3241,7 @@ vpclattice_list_listeners <- function(serviceIdentifier, maxResults = NULL, next
 #'       arn = "string",
 #'       resourceGatewayId = "string",
 #'       resourceConfigurationGroupId = "string",
-#'       type = "GROUP"|"CHILD"|"SINGLE"|"ARN",
+#'       type = "GROUP"|"CHILD"|"SINGLE"|"ARN"|"CIDR",
 #'       status = "ACTIVE"|"CREATE_IN_PROGRESS"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
 #'       amazonManaged = TRUE|FALSE,
 #'       createdAt = as.POSIXct(
@@ -3304,6 +3327,12 @@ vpclattice_list_resource_configurations <- function(resourceGatewayIdentifier = 
 #'       createdBy = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       payerResponsibility = list(
+#'         list(
+#'           scope = "ResourceGatewayCharges",
+#'           payerResponsibilityType = "VpcEndpointAccount"|"ResourceGatewayAccount"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -4647,12 +4676,12 @@ vpclattice_update_listener <- function(serviceIdentifier, listenerIdentifier, de
 #'   arn = "string",
 #'   resourceGatewayId = "string",
 #'   resourceConfigurationGroupId = "string",
-#'   type = "GROUP"|"CHILD"|"SINGLE"|"ARN",
+#'   type = "GROUP"|"CHILD"|"SINGLE"|"ARN"|"CIDR",
 #'   portRanges = list(
 #'     "string"
 #'   ),
 #'   allowAssociationToShareableServiceNetwork = TRUE|FALSE,
-#'   protocol = "TCP",
+#'   protocol = "TCP"|"TCP_UDP",
 #'   status = "ACTIVE"|"CREATE_IN_PROGRESS"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
 #'   resourceConfigurationDefinition = list(
 #'     dnsResource = list(
@@ -4664,6 +4693,11 @@ vpclattice_update_listener <- function(serviceIdentifier, listenerIdentifier, de
 #'     ),
 #'     arnResource = list(
 #'       arn = "string"
+#'     ),
+#'     cidrResource = list(
+#'       cidrRanges = list(
+#'         "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -4683,6 +4717,11 @@ vpclattice_update_listener <- function(serviceIdentifier, listenerIdentifier, de
 #'     ),
 #'     arnResource = list(
 #'       arn = "string"
+#'     ),
+#'     cidrResource = list(
+#'       cidrRanges = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   allowAssociationToShareableServiceNetwork = TRUE|FALSE,
@@ -4921,7 +4960,8 @@ vpclattice_update_rule <- function(serviceIdentifier, listenerIdentifier, ruleId
 #' Updates the specified service.
 #'
 #' @usage
-#' vpclattice_update_service(serviceIdentifier, certificateArn, authType)
+#' vpclattice_update_service(serviceIdentifier, certificateArn, authType,
+#'   idleTimeoutSeconds)
 #'
 #' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #' @param certificateArn The Amazon Resource Name (ARN) of the certificate.
@@ -4930,6 +4970,7 @@ vpclattice_update_rule <- function(serviceIdentifier, listenerIdentifier, ruleId
 #' -   `NONE`: The resource does not use an IAM policy. This is the default.
 #' 
 #' -   `AWS_IAM`: The resource uses an IAM policy. When this type is used, auth is enabled and an auth policy is required.
+#' @param idleTimeoutSeconds The amount of time, in seconds, that a connection can remain idle (no data sent) before VPC Lattice closes it. The valid range is 60 to 600 seconds. If you don't specify a value, the default is 60 seconds. This setting does not change the maximum connection duration of 10 minutes; connections are still closed when they reach that limit.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4940,7 +4981,8 @@ vpclattice_update_rule <- function(serviceIdentifier, listenerIdentifier, ruleId
 #'   name = "string",
 #'   customDomainName = "string",
 #'   certificateArn = "string",
-#'   authType = "NONE"|"AWS_IAM"
+#'   authType = "NONE"|"AWS_IAM",
+#'   idleTimeoutSeconds = 123
 #' )
 #' ```
 #'
@@ -4949,7 +4991,8 @@ vpclattice_update_rule <- function(serviceIdentifier, listenerIdentifier, ruleId
 #' svc$update_service(
 #'   serviceIdentifier = "string",
 #'   certificateArn = "string",
-#'   authType = "NONE"|"AWS_IAM"
+#'   authType = "NONE"|"AWS_IAM",
+#'   idleTimeoutSeconds = 123
 #' )
 #' ```
 #'
@@ -4958,7 +5001,7 @@ vpclattice_update_rule <- function(serviceIdentifier, listenerIdentifier, ruleId
 #' @rdname vpclattice_update_service
 #'
 #' @aliases vpclattice_update_service
-vpclattice_update_service <- function(serviceIdentifier, certificateArn = NULL, authType = NULL) {
+vpclattice_update_service <- function(serviceIdentifier, certificateArn = NULL, authType = NULL, idleTimeoutSeconds = NULL) {
   op <- new_operation(
     name = "UpdateService",
     http_method = "PATCH",
@@ -4967,7 +5010,7 @@ vpclattice_update_service <- function(serviceIdentifier, certificateArn = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$update_service_input(serviceIdentifier = serviceIdentifier, certificateArn = certificateArn, authType = authType)
+  input <- .vpclattice$update_service_input(serviceIdentifier = serviceIdentifier, certificateArn = certificateArn, authType = authType, idleTimeoutSeconds = idleTimeoutSeconds)
   output <- .vpclattice$update_service_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -5042,10 +5085,13 @@ vpclattice_update_service_network <- function(serviceNetworkIdentifier, authType
 #'
 #' @usage
 #' vpclattice_update_service_network_vpc_association(
-#'   serviceNetworkVpcAssociationIdentifier, securityGroupIds)
+#'   serviceNetworkVpcAssociationIdentifier, securityGroupIds,
+#'   privateDnsEnabled, dnsOptions)
 #'
 #' @param serviceNetworkVpcAssociationIdentifier &#91;required&#93; The ID or ARN of the association.
-#' @param securityGroupIds &#91;required&#93; The IDs of the security groups.
+#' @param securityGroupIds The IDs of the security groups.
+#' @param privateDnsEnabled Indicates if private DNS is enabled for the VPC association.
+#' @param dnsOptions DNS options for the service network VPC association.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5057,6 +5103,13 @@ vpclattice_update_service_network <- function(serviceNetworkIdentifier, authType
 #'   createdBy = "string",
 #'   securityGroupIds = list(
 #'     "string"
+#'   ),
+#'   privateDnsEnabled = TRUE|FALSE,
+#'   dnsOptions = list(
+#'     privateDnsPreference = "VERIFIED_DOMAINS_ONLY"|"ALL_DOMAINS"|"VERIFIED_DOMAINS_AND_SPECIFIED_DOMAINS"|"SPECIFIED_DOMAINS_ONLY",
+#'     privateDnsSpecifiedDomains = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -5067,6 +5120,13 @@ vpclattice_update_service_network <- function(serviceNetworkIdentifier, authType
 #'   serviceNetworkVpcAssociationIdentifier = "string",
 #'   securityGroupIds = list(
 #'     "string"
+#'   ),
+#'   privateDnsEnabled = TRUE|FALSE,
+#'   dnsOptions = list(
+#'     privateDnsPreference = "VERIFIED_DOMAINS_ONLY"|"ALL_DOMAINS"|"VERIFIED_DOMAINS_AND_SPECIFIED_DOMAINS"|"SPECIFIED_DOMAINS_ONLY",
+#'     privateDnsSpecifiedDomains = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -5076,7 +5136,7 @@ vpclattice_update_service_network <- function(serviceNetworkIdentifier, authType
 #' @rdname vpclattice_update_service_network_vpc_association
 #'
 #' @aliases vpclattice_update_service_network_vpc_association
-vpclattice_update_service_network_vpc_association <- function(serviceNetworkVpcAssociationIdentifier, securityGroupIds) {
+vpclattice_update_service_network_vpc_association <- function(serviceNetworkVpcAssociationIdentifier, securityGroupIds = NULL, privateDnsEnabled = NULL, dnsOptions = NULL) {
   op <- new_operation(
     name = "UpdateServiceNetworkVpcAssociation",
     http_method = "PATCH",
@@ -5085,7 +5145,7 @@ vpclattice_update_service_network_vpc_association <- function(serviceNetworkVpcA
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$update_service_network_vpc_association_input(serviceNetworkVpcAssociationIdentifier = serviceNetworkVpcAssociationIdentifier, securityGroupIds = securityGroupIds)
+  input <- .vpclattice$update_service_network_vpc_association_input(serviceNetworkVpcAssociationIdentifier = serviceNetworkVpcAssociationIdentifier, securityGroupIds = securityGroupIds, privateDnsEnabled = privateDnsEnabled, dnsOptions = dnsOptions)
   output <- .vpclattice$update_service_network_vpc_association_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)

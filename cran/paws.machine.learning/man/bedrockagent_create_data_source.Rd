@@ -32,7 +32,9 @@ You can set the data deletion policy to:
 \itemize{
 \item DELETE: Deletes all data from your data source that’s converted into vector embeddings upon deletion of a knowledge base or data source resource. Note that the \strong{vector store itself is not deleted}, only the data. This flag is ignored if an Amazon Web Services account is deleted.
 \item RETAIN: Retains all data from your data source that’s converted into vector embeddings upon deletion of a knowledge base or data source resource. Note that the \strong{vector store itself is not deleted} if you delete a knowledge base or data source resource.
-}}
+}
+
+For managed knowledge bases, the only supported option is \code{DELETE}, which is also the default.}
 
 \item{serverSideEncryptionConfiguration}{Contains details about the server-side encryption for the data source.}
 

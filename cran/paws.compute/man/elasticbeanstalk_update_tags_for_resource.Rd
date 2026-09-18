@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticbeanstalk_operations.R
 \name{elasticbeanstalk_update_tags_for_resource}
 \alias{elasticbeanstalk_update_tags_for_resource}
-\title{Update the list of tags applied to an AWS Elastic Beanstalk resource}
+\title{Update the list of tags applied to an Elastic Beanstalk resource}
 \usage{
 elasticbeanstalk_update_tags_for_resource(
   ResourceArn,
@@ -24,7 +24,7 @@ Specify at least one of these parameters: \code{TagsToAdd}, \code{TagsToRemove}.
 Specify at least one of these parameters: \code{TagsToAdd}, \code{TagsToRemove}.}
 }
 \description{
-Update the list of tags applied to an AWS Elastic Beanstalk resource. Two lists can be passed: \code{TagsToAdd} for tags to add or update, and \code{TagsToRemove}.
+Update the list of tags applied to an Elastic Beanstalk resource. Two lists can be passed: \code{TagsToAdd} for tags to add or update, and \code{TagsToRemove}.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_tags_for_resource/} for full documentation.
 }

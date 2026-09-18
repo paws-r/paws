@@ -57,7 +57,7 @@ quicksight_update_data_set(
 \item{SemanticModelConfiguration}{The semantic model configuration for the dataset. This configuration defines how the prepared data is structured for an analysis, including table mappings and row-level security configurations. Required when using the new data preparation experience.}
 }
 \description{
-Updates a dataset. This operation doesn't support datasets that include uploaded files as a source. Partial updates are not supported by this operation.
+Updates a dataset. Partial updates are not supported by this operation.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_update_data_set/} for full documentation.
 }

@@ -5,924 +5,770 @@ NULL
 
 .imagebuilder$cancel_image_creation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imageBuildVersionArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["cancel_image_creation_input"]]))
 }
 
 .imagebuilder$cancel_image_creation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["cancel_image_creation_output"]]))
 }
 
 .imagebuilder$cancel_lifecycle_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecycleExecutionId = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["cancel_lifecycle_execution_input"]]))
 }
 
 .imagebuilder$cancel_lifecycle_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecycleExecutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["cancel_lifecycle_execution_output"]]))
 }
 
 .imagebuilder$create_component_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), semanticVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), changeDescription = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), supportedOsVersions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), data = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_component_input"]]))
 }
 
 .imagebuilder$create_component_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string")), componentBuildVersionArn = structure(logical(0), tags = list(type = "string")), latestVersionReferences = structure(list(latestVersionArn = structure(logical(0), tags = list(type = "string")), latestMajorVersionArn = structure(logical(0), tags = list(type = "string")), latestMinorVersionArn = structure(logical(0), tags = list(type = "string")), latestPatchVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_component_output"]]))
 }
 
 .imagebuilder$create_container_recipe_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(containerType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), semanticVersion = structure(logical(0), tags = list(type = "string")), components = structure(list(structure(list(componentArn = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), instanceConfiguration = structure(list(image = structure(logical(0), tags = list(type = "string")), blockDeviceMappings = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), ebs = structure(list(encrypted = structure(logical(0), tags = list(type = "boolean")), deleteOnTermination = structure(logical(0), tags = list(type = "boolean")), iops = structure(logical(0), tags = list(type = "integer")), kmsKeyId = structure(logical(0), tags = list(type = "string")), snapshotId = structure(logical(0), tags = list(type = "string")), volumeSize = structure(logical(0), tags = list(type = "integer")), volumeType = structure(logical(0), tags = list(type = "string")), throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), virtualName = structure(logical(0), tags = list(type = "string")), noDevice = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), dockerfileTemplateData = structure(logical(0), tags = list(type = "string")), dockerfileTemplateUri = structure(logical(0), tags = list(type = "string")), platformOverride = structure(logical(0), tags = list(type = "string")), imageOsVersionOverride = structure(logical(0), tags = list(type = "string")), parentImage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), workingDirectory = structure(logical(0), tags = list(type = "string")), targetRepository = structure(list(service = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), kmsKeyId = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_container_recipe_input"]]))
 }
 
 .imagebuilder$create_container_recipe_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string")), containerRecipeArn = structure(logical(0), tags = list(type = "string")), latestVersionReferences = structure(list(latestVersionArn = structure(logical(0), tags = list(type = "string")), latestMajorVersionArn = structure(logical(0), tags = list(type = "string")), latestMinorVersionArn = structure(logical(0), tags = list(type = "string")), latestPatchVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_container_recipe_output"]]))
 }
 
 .imagebuilder$create_distribution_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), distributions = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), amiDistributionConfiguration = structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), targetAccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), amiTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), kmsKeyId = structure(logical(0), tags = list(type = "string")), launchPermission = structure(list(userIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), userGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), organizationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), organizationalUnitArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), containerDistributionConfiguration = structure(list(description = structure(logical(0), tags = list(type = "string")), containerTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), targetRepository = structure(list(service = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), licenseConfigurationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), launchTemplateConfigurations = structure(list(structure(list(launchTemplateId = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), setDefaultVersion = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), s3ExportConfiguration = structure(list(roleName = structure(logical(0), tags = list(type = "string")), diskImageFormat = structure(logical(0), tags = list(type = "string")), s3Bucket = structure(logical(0), tags = list(type = "string")), s3Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), fastLaunchConfigurations = structure(list(structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), snapshotConfiguration = structure(list(targetResourceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), maxParallelLaunches = structure(logical(0), tags = list(type = "integer")), launchTemplate = structure(list(launchTemplateId = structure(logical(0), tags = list(type = "string")), launchTemplateName = structure(logical(0), tags = list(type = "string")), launchTemplateVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ssmParameterConfigurations = structure(list(structure(list(amiAccountId = structure(logical(0), tags = list(type = "string")), parameterName = structure(logical(0), tags = list(type = "string")), dataType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_distribution_configuration_input"]]))
 }
 
 .imagebuilder$create_distribution_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string")), distributionConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_distribution_configuration_output"]]))
 }
 
 .imagebuilder$create_image_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imageRecipeArn = structure(logical(0), tags = list(type = "string")), containerRecipeArn = structure(logical(0), tags = list(type = "string")), distributionConfigurationArn = structure(logical(0), tags = list(type = "string")), infrastructureConfigurationArn = structure(logical(0), tags = list(type = "string")), imageTestsConfiguration = structure(list(imageTestsEnabled = structure(logical(0), tags = list(type = "boolean")), timeoutMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), enhancedImageMetadataEnabled = structure(logical(0), tags = list(type = "boolean")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), imageScanningConfiguration = structure(list(imageScanningEnabled = structure(logical(0), tags = list(type = "boolean")), ecrConfiguration = structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), containerTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), workflows = structure(list(structure(list(workflowArn = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), parallelGroup = structure(logical(0), tags = list(type = "string")), onFailure = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), executionRole = structure(logical(0), tags = list(type = "string")), loggingConfiguration = structure(list(logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_image_input"]]))
 }
 
 .imagebuilder$create_image_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string")), latestVersionReferences = structure(list(latestVersionArn = structure(logical(0), tags = list(type = "string")), latestMajorVersionArn = structure(logical(0), tags = list(type = "string")), latestMinorVersionArn = structure(logical(0), tags = list(type = "string")), latestPatchVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_image_output"]]))
 }
 
 .imagebuilder$create_image_pipeline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), imageRecipeArn = structure(logical(0), tags = list(type = "string")), containerRecipeArn = structure(logical(0), tags = list(type = "string")), infrastructureConfigurationArn = structure(logical(0), tags = list(type = "string")), distributionConfigurationArn = structure(logical(0), tags = list(type = "string")), imageTestsConfiguration = structure(list(imageTestsEnabled = structure(logical(0), tags = list(type = "boolean")), timeoutMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), enhancedImageMetadataEnabled = structure(logical(0), tags = list(type = "boolean")), schedule = structure(list(scheduleExpression = structure(logical(0), tags = list(type = "string")), timezone = structure(logical(0), tags = list(type = "string")), pipelineExecutionStartCondition = structure(logical(0), tags = list(type = "string")), autoDisablePolicy = structure(list(failureCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), imageTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), imageScanningConfiguration = structure(list(imageScanningEnabled = structure(logical(0), tags = list(type = "boolean")), ecrConfiguration = structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), containerTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), workflows = structure(list(structure(list(workflowArn = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), parallelGroup = structure(logical(0), tags = list(type = "string")), onFailure = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), executionRole = structure(logical(0), tags = list(type = "string")), loggingConfiguration = structure(list(imageLogGroupName = structure(logical(0), tags = list(type = "string")), pipelineLogGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_image_pipeline_input"]]))
 }
 
 .imagebuilder$create_image_pipeline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string")), imagePipelineArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_image_pipeline_output"]]))
 }
 
 .imagebuilder$create_image_recipe_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), semanticVersion = structure(logical(0), tags = list(type = "string")), components = structure(list(structure(list(componentArn = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), parentImage = structure(logical(0), tags = list(type = "string")), blockDeviceMappings = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), ebs = structure(list(encrypted = structure(logical(0), tags = list(type = "boolean")), deleteOnTermination = structure(logical(0), tags = list(type = "boolean")), iops = structure(logical(0), tags = list(type = "integer")), kmsKeyId = structure(logical(0), tags = list(type = "string")), snapshotId = structure(logical(0), tags = list(type = "string")), volumeSize = structure(logical(0), tags = list(type = "integer")), volumeType = structure(logical(0), tags = list(type = "string")), throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), virtualName = structure(logical(0), tags = list(type = "string")), noDevice = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), workingDirectory = structure(logical(0), tags = list(type = "string")), additionalInstanceConfiguration = structure(list(systemsManagerAgent = structure(list(uninstallAfterBuild = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), userDataOverride = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), amiTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_image_recipe_input"]]))
 }
 
 .imagebuilder$create_image_recipe_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string")), imageRecipeArn = structure(logical(0), tags = list(type = "string")), latestVersionReferences = structure(list(latestVersionArn = structure(logical(0), tags = list(type = "string")), latestMajorVersionArn = structure(logical(0), tags = list(type = "string")), latestMinorVersionArn = structure(logical(0), tags = list(type = "string")), latestPatchVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_image_recipe_output"]]))
 }
 
 .imagebuilder$create_infrastructure_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), instanceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), instanceProfileName = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetId = structure(logical(0), tags = list(type = "string")), logging = structure(list(s3Logs = structure(list(s3BucketName = structure(logical(0), tags = list(type = "string")), s3KeyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), keyPair = structure(logical(0), tags = list(type = "string")), terminateInstanceOnFailure = structure(logical(0), tags = list(type = "boolean")), snsTopicArn = structure(logical(0), tags = list(type = "string")), resourceTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), instanceMetadataOptions = structure(list(httpTokens = structure(logical(0), tags = list(type = "string")), httpPutResponseHopLimit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), placement = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), tenancy = structure(logical(0), tags = list(type = "string")), hostId = structure(logical(0), tags = list(type = "string")), hostResourceGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_infrastructure_configuration_input"]]))
 }
 
 .imagebuilder$create_infrastructure_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string")), infrastructureConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_infrastructure_configuration_output"]]))
 }
 
 .imagebuilder$create_lifecycle_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), executionRole = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), policyDetails = structure(list(structure(list(action = structure(list(type = structure(logical(0), tags = list(type = "string")), includeResources = structure(list(amis = structure(logical(0), tags = list(type = "boolean")), snapshots = structure(logical(0), tags = list(type = "boolean")), containers = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), filter = structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string")), retainAtLeast = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), exclusionRules = structure(list(tagMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), amis = structure(list(isPublic = structure(logical(0), tags = list(type = "boolean")), regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sharedAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), lastLaunched = structure(list(value = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tagMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), resourceSelection = structure(list(recipes = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), semanticVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tagMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_lifecycle_policy_input"]]))
 }
 
 .imagebuilder$create_lifecycle_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(type = "string")), lifecyclePolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_lifecycle_policy_output"]]))
 }
 
 .imagebuilder$create_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), semanticVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), changeDescription = structure(logical(0), tags = list(type = "string")), data = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), type = structure(logical(0), tags = list(type = "string")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_workflow_input"]]))
 }
 
 .imagebuilder$create_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(type = "string")), workflowBuildVersionArn = structure(logical(0), tags = list(type = "string")), latestVersionReferences = structure(list(latestVersionArn = structure(logical(0), tags = list(type = "string")), latestMajorVersionArn = structure(logical(0), tags = list(type = "string")), latestMinorVersionArn = structure(logical(0), tags = list(type = "string")), latestPatchVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["create_workflow_output"]]))
 }
 
 .imagebuilder$delete_component_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(componentBuildVersionArn = structure(logical(0), tags = list(location = "querystring", locationName = "componentBuildVersionArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_component_input"]]))
 }
 
 .imagebuilder$delete_component_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), componentBuildVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_component_output"]]))
 }
 
 .imagebuilder$delete_container_recipe_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(containerRecipeArn = structure(logical(0), tags = list(location = "querystring", locationName = "containerRecipeArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_container_recipe_input"]]))
 }
 
 .imagebuilder$delete_container_recipe_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), containerRecipeArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_container_recipe_output"]]))
 }
 
 .imagebuilder$delete_distribution_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(distributionConfigurationArn = structure(logical(0), tags = list(location = "querystring", locationName = "distributionConfigurationArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_distribution_configuration_input"]]))
 }
 
 .imagebuilder$delete_distribution_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), distributionConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_distribution_configuration_output"]]))
 }
 
 .imagebuilder$delete_image_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imageBuildVersionArn = structure(logical(0), tags = list(location = "querystring", locationName = "imageBuildVersionArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_image_input"]]))
 }
 
 .imagebuilder$delete_image_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_image_output"]]))
 }
 
 .imagebuilder$delete_image_pipeline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imagePipelineArn = structure(logical(0), tags = list(location = "querystring", locationName = "imagePipelineArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_image_pipeline_input"]]))
 }
 
 .imagebuilder$delete_image_pipeline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), imagePipelineArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_image_pipeline_output"]]))
 }
 
 .imagebuilder$delete_image_recipe_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imageRecipeArn = structure(logical(0), tags = list(location = "querystring", locationName = "imageRecipeArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_image_recipe_input"]]))
 }
 
 .imagebuilder$delete_image_recipe_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), imageRecipeArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_image_recipe_output"]]))
 }
 
 .imagebuilder$delete_infrastructure_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(infrastructureConfigurationArn = structure(logical(0), tags = list(location = "querystring", locationName = "infrastructureConfigurationArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_infrastructure_configuration_input"]]))
 }
 
 .imagebuilder$delete_infrastructure_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), infrastructureConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_infrastructure_configuration_output"]]))
 }
 
 .imagebuilder$delete_lifecycle_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecyclePolicyArn = structure(logical(0), tags = list(location = "querystring", locationName = "lifecyclePolicyArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_lifecycle_policy_input"]]))
 }
 
 .imagebuilder$delete_lifecycle_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecyclePolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_lifecycle_policy_output"]]))
 }
 
 .imagebuilder$delete_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowBuildVersionArn = structure(logical(0), tags = list(location = "querystring", locationName = "workflowBuildVersionArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_workflow_input"]]))
 }
 
 .imagebuilder$delete_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowBuildVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["delete_workflow_output"]]))
 }
 
 .imagebuilder$distribute_image_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceImage = structure(logical(0), tags = list(type = "string")), distributionConfigurationArn = structure(logical(0), tags = list(type = "string")), executionRole = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), loggingConfiguration = structure(list(logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["distribute_image_input"]]))
 }
 
 .imagebuilder$distribute_image_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(type = "string")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["distribute_image_output"]]))
 }
 
 .imagebuilder$get_component_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(componentBuildVersionArn = structure(logical(0), tags = list(location = "querystring", locationName = "componentBuildVersionArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_component_input"]]))
 }
 
 .imagebuilder$get_component_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), component = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), changeDescription = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), supportedOsVersions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), defaultValue = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), owner = structure(logical(0), tags = list(type = "string")), data = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), encrypted = structure(logical(0), tags = list(type = "boolean")), dateCreated = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), publisher = structure(logical(0), tags = list(type = "string")), obfuscate = structure(logical(0), tags = list(type = "boolean")), productCodes = structure(list(structure(list(productCodeId = structure(logical(0), tags = list(type = "string")), productCodeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), latestVersionReferences = structure(list(latestVersionArn = structure(logical(0), tags = list(type = "string")), latestMajorVersionArn = structure(logical(0), tags = list(type = "string")), latestMinorVersionArn = structure(logical(0), tags = list(type = "string")), latestPatchVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_component_output"]]))
 }
 
 .imagebuilder$get_component_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(componentArn = structure(logical(0), tags = list(location = "querystring", locationName = "componentArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_component_policy_input"]]))
 }
 
 .imagebuilder$get_component_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_component_policy_output"]]))
 }
 
 .imagebuilder$get_container_recipe_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(containerRecipeArn = structure(logical(0), tags = list(location = "querystring", locationName = "containerRecipeArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_container_recipe_input"]]))
 }
 
 .imagebuilder$get_container_recipe_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), containerRecipe = structure(list(arn = structure(logical(0), tags = list(type = "string")), containerType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), components = structure(list(structure(list(componentArn = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), instanceConfiguration = structure(list(image = structure(logical(0), tags = list(type = "string")), blockDeviceMappings = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), ebs = structure(list(encrypted = structure(logical(0), tags = list(type = "boolean")), deleteOnTermination = structure(logical(0), tags = list(type = "boolean")), iops = structure(logical(0), tags = list(type = "integer")), kmsKeyId = structure(logical(0), tags = list(type = "string")), snapshotId = structure(logical(0), tags = list(type = "string")), volumeSize = structure(logical(0), tags = list(type = "integer")), volumeType = structure(logical(0), tags = list(type = "string")), throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), virtualName = structure(logical(0), tags = list(type = "string")), noDevice = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), dockerfileTemplateData = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), encrypted = structure(logical(0), tags = list(type = "boolean")), parentImage = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), workingDirectory = structure(logical(0), tags = list(type = "string")), targetRepository = structure(list(service = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), latestVersionReferences = structure(list(latestVersionArn = structure(logical(0), tags = list(type = "string")), latestMajorVersionArn = structure(logical(0), tags = list(type = "string")), latestMinorVersionArn = structure(logical(0), tags = list(type = "string")), latestPatchVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_container_recipe_output"]]))
 }
 
 .imagebuilder$get_container_recipe_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(containerRecipeArn = structure(logical(0), tags = list(location = "querystring", locationName = "containerRecipeArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_container_recipe_policy_input"]]))
 }
 
 .imagebuilder$get_container_recipe_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_container_recipe_policy_output"]]))
 }
 
 .imagebuilder$get_distribution_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(distributionConfigurationArn = structure(logical(0), tags = list(location = "querystring", locationName = "distributionConfigurationArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_distribution_configuration_input"]]))
 }
 
 .imagebuilder$get_distribution_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), distributionConfiguration = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), distributions = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), amiDistributionConfiguration = structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), targetAccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), amiTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), kmsKeyId = structure(logical(0), tags = list(type = "string")), launchPermission = structure(list(userIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), userGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), organizationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), organizationalUnitArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), containerDistributionConfiguration = structure(list(description = structure(logical(0), tags = list(type = "string")), containerTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), targetRepository = structure(list(service = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), licenseConfigurationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), launchTemplateConfigurations = structure(list(structure(list(launchTemplateId = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), setDefaultVersion = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), s3ExportConfiguration = structure(list(roleName = structure(logical(0), tags = list(type = "string")), diskImageFormat = structure(logical(0), tags = list(type = "string")), s3Bucket = structure(logical(0), tags = list(type = "string")), s3Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), fastLaunchConfigurations = structure(list(structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), snapshotConfiguration = structure(list(targetResourceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), maxParallelLaunches = structure(logical(0), tags = list(type = "integer")), launchTemplate = structure(list(launchTemplateId = structure(logical(0), tags = list(type = "string")), launchTemplateName = structure(logical(0), tags = list(type = "string")), launchTemplateVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ssmParameterConfigurations = structure(list(structure(list(amiAccountId = structure(logical(0), tags = list(type = "string")), parameterName = structure(logical(0), tags = list(type = "string")), dataType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), timeoutMinutes = structure(logical(0), tags = list(type = "integer")), dateCreated = structure(logical(0), tags = list(type = "string")), dateUpdated = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_distribution_configuration_output"]]))
 }
 
 .imagebuilder$get_image_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imageBuildVersionArn = structure(logical(0), tags = list(location = "querystring", locationName = "imageBuildVersionArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_image_input"]]))
 }
 
 .imagebuilder$get_image_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), image = structure(list(arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), enhancedImageMetadataEnabled = structure(logical(0), tags = list(type = "boolean")), osVersion = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), imageRecipe = structure(list(arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), components = structure(list(structure(list(componentArn = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), parentImage = structure(logical(0), tags = list(type = "string")), blockDeviceMappings = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), ebs = structure(list(encrypted = structure(logical(0), tags = list(type = "boolean")), deleteOnTermination = structure(logical(0), tags = list(type = "boolean")), iops = structure(logical(0), tags = list(type = "integer")), kmsKeyId = structure(logical(0), tags = list(type = "string")), snapshotId = structure(logical(0), tags = list(type = "string")), volumeSize = structure(logical(0), tags = list(type = "integer")), volumeType = structure(logical(0), tags = list(type = "string")), throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), virtualName = structure(logical(0), tags = list(type = "string")), noDevice = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), dateCreated = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), workingDirectory = structure(logical(0), tags = list(type = "string")), additionalInstanceConfiguration = structure(list(systemsManagerAgent = structure(list(uninstallAfterBuild = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), userDataOverride = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), amiTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), containerRecipe = structure(list(arn = structure(logical(0), tags = list(type = "string")), containerType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), components = structure(list(structure(list(componentArn = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), instanceConfiguration = structure(list(image = structure(logical(0), tags = list(type = "string")), blockDeviceMappings = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), ebs = structure(list(encrypted = structure(logical(0), tags = list(type = "boolean")), deleteOnTermination = structure(logical(0), tags = list(type = "boolean")), iops = structure(logical(0), tags = list(type = "integer")), kmsKeyId = structure(logical(0), tags = list(type = "string")), snapshotId = structure(logical(0), tags = list(type = "string")), volumeSize = structure(logical(0), tags = list(type = "integer")), volumeType = structure(logical(0), tags = list(type = "string")), throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), virtualName = structure(logical(0), tags = list(type = "string")), noDevice = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), dockerfileTemplateData = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), encrypted = structure(logical(0), tags = list(type = "boolean")), parentImage = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), workingDirectory = structure(logical(0), tags = list(type = "string")), targetRepository = structure(list(service = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), sourcePipelineName = structure(logical(0), tags = list(type = "string")), sourcePipelineArn = structure(logical(0), tags = list(type = "string")), infrastructureConfiguration = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), instanceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), instanceProfileName = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetId = structure(logical(0), tags = list(type = "string")), logging = structure(list(s3Logs = structure(list(s3BucketName = structure(logical(0), tags = list(type = "string")), s3KeyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), keyPair = structure(logical(0), tags = list(type = "string")), terminateInstanceOnFailure = structure(logical(0), tags = list(type = "boolean")), snsTopicArn = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string")), dateUpdated = structure(logical(0), tags = list(type = "string")), resourceTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), instanceMetadataOptions = structure(list(httpTokens = structure(logical(0), tags = list(type = "string")), httpPutResponseHopLimit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), placement = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), tenancy = structure(logical(0), tags = list(type = "string")), hostId = structure(logical(0), tags = list(type = "string")), hostResourceGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), distributionConfiguration = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), distributions = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), amiDistributionConfiguration = structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), targetAccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), amiTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), kmsKeyId = structure(logical(0), tags = list(type = "string")), launchPermission = structure(list(userIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), userGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), organizationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), organizationalUnitArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), containerDistributionConfiguration = structure(list(description = structure(logical(0), tags = list(type = "string")), containerTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), targetRepository = structure(list(service = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), licenseConfigurationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), launchTemplateConfigurations = structure(list(structure(list(launchTemplateId = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), setDefaultVersion = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), s3ExportConfiguration = structure(list(roleName = structure(logical(0), tags = list(type = "string")), diskImageFormat = structure(logical(0), tags = list(type = "string")), s3Bucket = structure(logical(0), tags = list(type = "string")), s3Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), fastLaunchConfigurations = structure(list(structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), snapshotConfiguration = structure(list(targetResourceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), maxParallelLaunches = structure(logical(0), tags = list(type = "integer")), launchTemplate = structure(list(launchTemplateId = structure(logical(0), tags = list(type = "string")), launchTemplateName = structure(logical(0), tags = list(type = "string")), launchTemplateVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ssmParameterConfigurations = structure(list(structure(list(amiAccountId = structure(logical(0), tags = list(type = "string")), parameterName = structure(logical(0), tags = list(type = "string")), dataType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), timeoutMinutes = structure(logical(0), tags = list(type = "integer")), dateCreated = structure(logical(0), tags = list(type = "string")), dateUpdated = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), imageTestsConfiguration = structure(list(imageTestsEnabled = structure(logical(0), tags = list(type = "boolean")), timeoutMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), dateCreated = structure(logical(0), tags = list(type = "string")), outputResources = structure(list(amis = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), image = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), containers = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), imageUris = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), buildType = structure(logical(0), tags = list(type = "string")), imageSource = structure(logical(0), tags = list(type = "string")), scanState = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), imageScanningConfiguration = structure(list(imageScanningEnabled = structure(logical(0), tags = list(type = "boolean")), ecrConfiguration = structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), containerTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), deprecationTime = structure(logical(0), tags = list(type = "timestamp")), lifecycleExecutionId = structure(logical(0), tags = list(type = "string")), executionRole = structure(logical(0), tags = list(type = "string")), workflows = structure(list(structure(list(workflowArn = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), parallelGroup = structure(logical(0), tags = list(type = "string")), onFailure = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), loggingConfiguration = structure(list(logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), latestVersionReferences = structure(list(latestVersionArn = structure(logical(0), tags = list(type = "string")), latestMajorVersionArn = structure(logical(0), tags = list(type = "string")), latestMinorVersionArn = structure(logical(0), tags = list(type = "string")), latestPatchVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_image_output"]]))
 }
 
 .imagebuilder$get_image_pipeline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imagePipelineArn = structure(logical(0), tags = list(location = "querystring", locationName = "imagePipelineArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_image_pipeline_input"]]))
 }
 
 .imagebuilder$get_image_pipeline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), imagePipeline = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), enhancedImageMetadataEnabled = structure(logical(0), tags = list(type = "boolean")), imageRecipeArn = structure(logical(0), tags = list(type = "string")), containerRecipeArn = structure(logical(0), tags = list(type = "string")), infrastructureConfigurationArn = structure(logical(0), tags = list(type = "string")), distributionConfigurationArn = structure(logical(0), tags = list(type = "string")), imageTestsConfiguration = structure(list(imageTestsEnabled = structure(logical(0), tags = list(type = "boolean")), timeoutMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), schedule = structure(list(scheduleExpression = structure(logical(0), tags = list(type = "string")), timezone = structure(logical(0), tags = list(type = "string")), pipelineExecutionStartCondition = structure(logical(0), tags = list(type = "string")), autoDisablePolicy = structure(list(failureCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string")), dateUpdated = structure(logical(0), tags = list(type = "string")), dateLastRun = structure(logical(0), tags = list(type = "string")), lastRunStatus = structure(logical(0), tags = list(type = "string")), dateNextRun = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), imageScanningConfiguration = structure(list(imageScanningEnabled = structure(logical(0), tags = list(type = "boolean")), ecrConfiguration = structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), containerTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), imageTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), executionRole = structure(logical(0), tags = list(type = "string")), workflows = structure(list(structure(list(workflowArn = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), parallelGroup = structure(logical(0), tags = list(type = "string")), onFailure = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), loggingConfiguration = structure(list(imageLogGroupName = structure(logical(0), tags = list(type = "string")), pipelineLogGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), consecutiveFailures = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_image_pipeline_output"]]))
 }
 
 .imagebuilder$get_image_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imageArn = structure(logical(0), tags = list(location = "querystring", locationName = "imageArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_image_policy_input"]]))
 }
 
 .imagebuilder$get_image_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_image_policy_output"]]))
 }
 
 .imagebuilder$get_image_recipe_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imageRecipeArn = structure(logical(0), tags = list(location = "querystring", locationName = "imageRecipeArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_image_recipe_input"]]))
 }
 
 .imagebuilder$get_image_recipe_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), imageRecipe = structure(list(arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), components = structure(list(structure(list(componentArn = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), parentImage = structure(logical(0), tags = list(type = "string")), blockDeviceMappings = structure(list(structure(list(deviceName = structure(logical(0), tags = list(type = "string")), ebs = structure(list(encrypted = structure(logical(0), tags = list(type = "boolean")), deleteOnTermination = structure(logical(0), tags = list(type = "boolean")), iops = structure(logical(0), tags = list(type = "integer")), kmsKeyId = structure(logical(0), tags = list(type = "string")), snapshotId = structure(logical(0), tags = list(type = "string")), volumeSize = structure(logical(0), tags = list(type = "integer")), volumeType = structure(logical(0), tags = list(type = "string")), throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), virtualName = structure(logical(0), tags = list(type = "string")), noDevice = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), dateCreated = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), workingDirectory = structure(logical(0), tags = list(type = "string")), additionalInstanceConfiguration = structure(list(systemsManagerAgent = structure(list(uninstallAfterBuild = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), userDataOverride = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), amiTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), latestVersionReferences = structure(list(latestVersionArn = structure(logical(0), tags = list(type = "string")), latestMajorVersionArn = structure(logical(0), tags = list(type = "string")), latestMinorVersionArn = structure(logical(0), tags = list(type = "string")), latestPatchVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_image_recipe_output"]]))
 }
 
 .imagebuilder$get_image_recipe_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imageRecipeArn = structure(logical(0), tags = list(location = "querystring", locationName = "imageRecipeArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_image_recipe_policy_input"]]))
 }
 
 .imagebuilder$get_image_recipe_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_image_recipe_policy_output"]]))
 }
 
 .imagebuilder$get_infrastructure_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(infrastructureConfigurationArn = structure(logical(0), tags = list(location = "querystring", locationName = "infrastructureConfigurationArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_infrastructure_configuration_input"]]))
 }
 
 .imagebuilder$get_infrastructure_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), infrastructureConfiguration = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), instanceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), instanceProfileName = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetId = structure(logical(0), tags = list(type = "string")), logging = structure(list(s3Logs = structure(list(s3BucketName = structure(logical(0), tags = list(type = "string")), s3KeyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), keyPair = structure(logical(0), tags = list(type = "string")), terminateInstanceOnFailure = structure(logical(0), tags = list(type = "boolean")), snsTopicArn = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string")), dateUpdated = structure(logical(0), tags = list(type = "string")), resourceTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), instanceMetadataOptions = structure(list(httpTokens = structure(logical(0), tags = list(type = "string")), httpPutResponseHopLimit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), placement = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), tenancy = structure(logical(0), tags = list(type = "string")), hostId = structure(logical(0), tags = list(type = "string")), hostResourceGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_infrastructure_configuration_output"]]))
 }
 
 .imagebuilder$get_lifecycle_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecycleExecutionId = structure(logical(0), tags = list(location = "querystring", locationName = "lifecycleExecutionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_lifecycle_execution_input"]]))
 }
 
 .imagebuilder$get_lifecycle_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecycleExecution = structure(list(lifecycleExecutionId = structure(logical(0), tags = list(type = "string")), lifecyclePolicyArn = structure(logical(0), tags = list(type = "string")), resourcesImpactedSummary = structure(list(hasImpactedResources = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_lifecycle_execution_output"]]))
 }
 
 .imagebuilder$get_lifecycle_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecyclePolicyArn = structure(logical(0), tags = list(location = "querystring", locationName = "lifecyclePolicyArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_lifecycle_policy_input"]]))
 }
 
 .imagebuilder$get_lifecycle_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecyclePolicy = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), executionRole = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), policyDetails = structure(list(structure(list(action = structure(list(type = structure(logical(0), tags = list(type = "string")), includeResources = structure(list(amis = structure(logical(0), tags = list(type = "boolean")), snapshots = structure(logical(0), tags = list(type = "boolean")), containers = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), filter = structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string")), retainAtLeast = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), exclusionRules = structure(list(tagMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), amis = structure(list(isPublic = structure(logical(0), tags = list(type = "boolean")), regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sharedAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), lastLaunched = structure(list(value = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tagMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), resourceSelection = structure(list(recipes = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), semanticVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tagMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), dateCreated = structure(logical(0), tags = list(type = "timestamp")), dateUpdated = structure(logical(0), tags = list(type = "timestamp")), dateLastRun = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_lifecycle_policy_output"]]))
 }
 
 .imagebuilder$get_marketplace_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), resourceLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_marketplace_resource_input"]]))
 }
 
 .imagebuilder$get_marketplace_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), url = structure(logical(0), tags = list(type = "string")), data = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_marketplace_resource_output"]]))
 }
 
 .imagebuilder$get_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowBuildVersionArn = structure(logical(0), tags = list(location = "querystring", locationName = "workflowBuildVersionArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_workflow_input"]]))
 }
 
 .imagebuilder$get_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflow = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), changeDescription = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), owner = structure(logical(0), tags = list(type = "string")), data = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), defaultValue = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), latestVersionReferences = structure(list(latestVersionArn = structure(logical(0), tags = list(type = "string")), latestMajorVersionArn = structure(logical(0), tags = list(type = "string")), latestMinorVersionArn = structure(logical(0), tags = list(type = "string")), latestPatchVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_workflow_output"]]))
 }
 
 .imagebuilder$get_workflow_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowExecutionId = structure(logical(0), tags = list(location = "querystring", locationName = "workflowExecutionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_workflow_execution_input"]]))
 }
 
 .imagebuilder$get_workflow_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), workflowBuildVersionArn = structure(logical(0), tags = list(type = "string")), workflowExecutionId = structure(logical(0), tags = list(type = "string")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), totalStepCount = structure(logical(0), tags = list(type = "integer")), totalStepsSucceeded = structure(logical(0), tags = list(type = "integer")), totalStepsFailed = structure(logical(0), tags = list(type = "integer")), totalStepsSkipped = structure(logical(0), tags = list(type = "integer")), startTime = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "string")), parallelGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_workflow_execution_output"]]))
 }
 
 .imagebuilder$get_workflow_step_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stepExecutionId = structure(logical(0), tags = list(location = "querystring", locationName = "stepExecutionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_workflow_step_execution_input"]]))
 }
 
 .imagebuilder$get_workflow_step_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), stepExecutionId = structure(logical(0), tags = list(type = "string")), workflowBuildVersionArn = structure(logical(0), tags = list(type = "string")), workflowExecutionId = structure(logical(0), tags = list(type = "string")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), action = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), rollbackStatus = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), inputs = structure(logical(0), tags = list(type = "string")), outputs = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "string")), onFailure = structure(logical(0), tags = list(type = "string")), timeoutSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["get_workflow_step_execution_output"]]))
 }
 
 .imagebuilder$import_component_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), semanticVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), changeDescription = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), format = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), data = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["import_component_input"]]))
 }
 
 .imagebuilder$import_component_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string")), componentBuildVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["import_component_output"]]))
 }
 
 .imagebuilder$import_disk_image_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), semanticVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), osVersion = structure(logical(0), tags = list(type = "string")), executionRole = structure(logical(0), tags = list(type = "string")), infrastructureConfigurationArn = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), loggingConfiguration = structure(list(logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), registerImageOptions = structure(list(secureBootEnabled = structure(logical(0), tags = list(type = "boolean")), uefiData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), windowsConfiguration = structure(list(imageIndex = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["import_disk_image_input"]]))
 }
 
 .imagebuilder$import_disk_image_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(type = "string")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["import_disk_image_output"]]))
 }
 
 .imagebuilder$import_vm_image_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), semanticVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), osVersion = structure(logical(0), tags = list(type = "string")), vmImportTaskId = structure(logical(0), tags = list(type = "string")), loggingConfiguration = structure(list(logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["import_vm_image_input"]]))
 }
 
 .imagebuilder$import_vm_image_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), imageArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["import_vm_image_output"]]))
 }
 
 .imagebuilder$list_component_build_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(componentVersionArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_component_build_versions_input"]]))
 }
 
 .imagebuilder$list_component_build_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), componentSummaryList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), supportedOsVersions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), type = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), changeDescription = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), publisher = structure(logical(0), tags = list(type = "string")), obfuscate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_component_build_versions_output"]]))
 }
 
 .imagebuilder$list_components_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(owner = structure(logical(0), tags = list(type = "string")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), byName = structure(logical(0), tags = list(type = "boolean")), maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_components_input"]]))
 }
 
 .imagebuilder$list_components_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), componentVersionList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), supportedOsVersions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), type = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), productCodes = structure(list(structure(list(productCodeId = structure(logical(0), tags = list(type = "string")), productCodeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_components_output"]]))
 }
 
 .imagebuilder$list_container_recipes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(owner = structure(logical(0), tags = list(type = "string")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_container_recipes_input"]]))
 }
 
 .imagebuilder$list_container_recipes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), containerRecipeSummaryList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), containerType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), parentImage = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string")), instanceImage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_container_recipes_output"]]))
 }
 
 .imagebuilder$list_distribution_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_distribution_configurations_input"]]))
 }
 
 .imagebuilder$list_distribution_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), distributionConfigurationSummaryList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string")), dateUpdated = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_distribution_configurations_output"]]))
 }
 
 .imagebuilder$list_image_build_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imageVersionArn = structure(logical(0), tags = list(type = "string")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_image_build_versions_input"]]))
 }
 
 .imagebuilder$list_image_build_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), imageSummaryList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), osVersion = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), owner = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string")), outputResources = structure(list(amis = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), image = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), containers = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), imageUris = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), buildType = structure(logical(0), tags = list(type = "string")), imageSource = structure(logical(0), tags = list(type = "string")), deprecationTime = structure(logical(0), tags = list(type = "timestamp")), lifecycleExecutionId = structure(logical(0), tags = list(type = "string")), loggingConfiguration = structure(list(logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_image_build_versions_output"]]))
 }
 
 .imagebuilder$list_image_packages_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imageBuildVersionArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_image_packages_input"]]))
 }
 
 .imagebuilder$list_image_packages_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), imagePackageList = structure(list(structure(list(packageName = structure(logical(0), tags = list(type = "string")), packageVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_image_packages_output"]]))
 }
 
 .imagebuilder$list_image_pipeline_images_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imagePipelineArn = structure(logical(0), tags = list(type = "string")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_image_pipeline_images_input"]]))
 }
 
 .imagebuilder$list_image_pipeline_images_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), imageSummaryList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), osVersion = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), owner = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string")), outputResources = structure(list(amis = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), image = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), containers = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), imageUris = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), buildType = structure(logical(0), tags = list(type = "string")), imageSource = structure(logical(0), tags = list(type = "string")), deprecationTime = structure(logical(0), tags = list(type = "timestamp")), lifecycleExecutionId = structure(logical(0), tags = list(type = "string")), loggingConfiguration = structure(list(logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_image_pipeline_images_output"]]))
 }
 
 .imagebuilder$list_image_pipelines_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_image_pipelines_input"]]))
 }
 
 .imagebuilder$list_image_pipelines_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), imagePipelineList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), enhancedImageMetadataEnabled = structure(logical(0), tags = list(type = "boolean")), imageRecipeArn = structure(logical(0), tags = list(type = "string")), containerRecipeArn = structure(logical(0), tags = list(type = "string")), infrastructureConfigurationArn = structure(logical(0), tags = list(type = "string")), distributionConfigurationArn = structure(logical(0), tags = list(type = "string")), imageTestsConfiguration = structure(list(imageTestsEnabled = structure(logical(0), tags = list(type = "boolean")), timeoutMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), schedule = structure(list(scheduleExpression = structure(logical(0), tags = list(type = "string")), timezone = structure(logical(0), tags = list(type = "string")), pipelineExecutionStartCondition = structure(logical(0), tags = list(type = "string")), autoDisablePolicy = structure(list(failureCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string")), dateUpdated = structure(logical(0), tags = list(type = "string")), dateLastRun = structure(logical(0), tags = list(type = "string")), lastRunStatus = structure(logical(0), tags = list(type = "string")), dateNextRun = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), imageScanningConfiguration = structure(list(imageScanningEnabled = structure(logical(0), tags = list(type = "boolean")), ecrConfiguration = structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), containerTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), imageTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), executionRole = structure(logical(0), tags = list(type = "string")), workflows = structure(list(structure(list(workflowArn = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), parallelGroup = structure(logical(0), tags = list(type = "string")), onFailure = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), loggingConfiguration = structure(list(imageLogGroupName = structure(logical(0), tags = list(type = "string")), pipelineLogGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), consecutiveFailures = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_image_pipelines_output"]]))
 }
 
 .imagebuilder$list_image_recipes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(owner = structure(logical(0), tags = list(type = "string")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_image_recipes_input"]]))
 }
 
 .imagebuilder$list_image_recipes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), imageRecipeSummaryList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), parentImage = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_image_recipes_output"]]))
 }
 
 .imagebuilder$list_image_scan_finding_aggregations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filter = structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_image_scan_finding_aggregations_input"]]))
 }
 
 .imagebuilder$list_image_scan_finding_aggregations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), aggregationType = structure(logical(0), tags = list(type = "string")), responses = structure(list(structure(list(accountAggregation = structure(list(accountId = structure(logical(0), tags = list(type = "string")), severityCounts = structure(list(all = structure(logical(0), tags = list(type = "long")), critical = structure(logical(0), tags = list(type = "long")), high = structure(logical(0), tags = list(type = "long")), medium = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure")), imageAggregation = structure(list(imageBuildVersionArn = structure(logical(0), tags = list(type = "string")), severityCounts = structure(list(all = structure(logical(0), tags = list(type = "long")), critical = structure(logical(0), tags = list(type = "long")), high = structure(logical(0), tags = list(type = "long")), medium = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure")), imagePipelineAggregation = structure(list(imagePipelineArn = structure(logical(0), tags = list(type = "string")), severityCounts = structure(list(all = structure(logical(0), tags = list(type = "long")), critical = structure(logical(0), tags = list(type = "long")), high = structure(logical(0), tags = list(type = "long")), medium = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure")), vulnerabilityIdAggregation = structure(list(vulnerabilityId = structure(logical(0), tags = list(type = "string")), severityCounts = structure(list(all = structure(logical(0), tags = list(type = "long")), critical = structure(logical(0), tags = list(type = "long")), high = structure(logical(0), tags = list(type = "long")), medium = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_image_scan_finding_aggregations_output"]]))
 }
 
 .imagebuilder$list_image_scan_findings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_image_scan_findings_input"]]))
 }
 
 .imagebuilder$list_image_scan_findings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), findings = structure(list(structure(list(awsAccountId = structure(logical(0), tags = list(type = "string")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string")), imagePipelineArn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), remediation = structure(list(recommendation = structure(list(text = structure(logical(0), tags = list(type = "string")), url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), severity = structure(logical(0), tags = list(type = "string")), firstObservedAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), inspectorScore = structure(logical(0), tags = list(type = "double")), inspectorScoreDetails = structure(list(adjustedCvss = structure(list(scoreSource = structure(logical(0), tags = list(type = "string")), cvssSource = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), score = structure(logical(0), tags = list(type = "double")), scoringVector = structure(logical(0), tags = list(type = "string")), adjustments = structure(list(structure(list(metric = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), packageVulnerabilityDetails = structure(list(vulnerabilityId = structure(logical(0), tags = list(type = "string")), vulnerablePackages = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), sourceLayerHash = structure(logical(0), tags = list(type = "string")), epoch = structure(logical(0), tags = list(type = "integer")), release = structure(logical(0), tags = list(type = "string")), arch = structure(logical(0), tags = list(type = "string")), packageManager = structure(logical(0), tags = list(type = "string")), filePath = structure(logical(0), tags = list(type = "string")), fixedInVersion = structure(logical(0), tags = list(type = "string")), remediation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), source = structure(logical(0), tags = list(type = "string")), cvss = structure(list(structure(list(baseScore = structure(logical(0), tags = list(type = "double")), scoringVector = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), source = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), relatedVulnerabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sourceUrl = structure(logical(0), tags = list(type = "string")), vendorSeverity = structure(logical(0), tags = list(type = "string")), vendorCreatedAt = structure(logical(0), tags = list(type = "timestamp")), vendorUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), referenceUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), fixAvailable = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_image_scan_findings_output"]]))
 }
 
 .imagebuilder$list_images_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(owner = structure(logical(0), tags = list(type = "string")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), byName = structure(logical(0), tags = list(type = "boolean")), maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string")), includeDeprecated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_images_input"]]))
 }
 
 .imagebuilder$list_images_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), imageVersionList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), osVersion = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string")), buildType = structure(logical(0), tags = list(type = "string")), imageSource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_images_output"]]))
 }
 
 .imagebuilder$list_infrastructure_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_infrastructure_configurations_input"]]))
 }
 
 .imagebuilder$list_infrastructure_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), infrastructureConfigurationSummaryList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string")), dateUpdated = structure(logical(0), tags = list(type = "string")), resourceTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), instanceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), instanceProfileName = structure(logical(0), tags = list(type = "string")), placement = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), tenancy = structure(logical(0), tags = list(type = "string")), hostId = structure(logical(0), tags = list(type = "string")), hostResourceGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_infrastructure_configurations_output"]]))
 }
 
 .imagebuilder$list_lifecycle_execution_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecycleExecutionId = structure(logical(0), tags = list(type = "string")), parentResourceId = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_lifecycle_execution_resources_input"]]))
 }
 
 .imagebuilder$list_lifecycle_execution_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecycleExecutionId = structure(logical(0), tags = list(type = "string")), lifecycleExecutionState = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resources = structure(list(structure(list(accountId = structure(logical(0), tags = list(type = "string")), resourceId = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), action = structure(list(name = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), region = structure(logical(0), tags = list(type = "string")), snapshots = structure(list(structure(list(snapshotId = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), imageUris = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_lifecycle_execution_resources_output"]]))
 }
 
 .imagebuilder$list_lifecycle_executions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_lifecycle_executions_input"]]))
 }
 
 .imagebuilder$list_lifecycle_executions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecycleExecutions = structure(list(structure(list(lifecycleExecutionId = structure(logical(0), tags = list(type = "string")), lifecyclePolicyArn = structure(logical(0), tags = list(type = "string")), resourcesImpactedSummary = structure(list(hasImpactedResources = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_lifecycle_executions_output"]]))
 }
 
 .imagebuilder$list_lifecycle_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_lifecycle_policies_input"]]))
 }
 
 .imagebuilder$list_lifecycle_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecyclePolicySummaryList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), executionRole = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "timestamp")), dateUpdated = structure(logical(0), tags = list(type = "timestamp")), dateLastRun = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_lifecycle_policies_output"]]))
 }
 
 .imagebuilder$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_tags_for_resource_input"]]))
 }
 
 .imagebuilder$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_tags_for_resource_output"]]))
 }
 
 .imagebuilder$list_waiting_workflow_steps_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_waiting_workflow_steps_input"]]))
 }
 
 .imagebuilder$list_waiting_workflow_steps_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(steps = structure(list(structure(list(stepExecutionId = structure(logical(0), tags = list(type = "string")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string")), workflowExecutionId = structure(logical(0), tags = list(type = "string")), workflowBuildVersionArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), action = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_waiting_workflow_steps_output"]]))
 }
 
 .imagebuilder$list_workflow_build_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowVersionArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_workflow_build_versions_input"]]))
 }
 
 .imagebuilder$list_workflow_build_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowSummaryList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), changeDescription = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), dateCreated = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_workflow_build_versions_output"]]))
 }
 
 .imagebuilder$list_workflow_executions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_workflow_executions_input"]]))
 }
 
 .imagebuilder$list_workflow_executions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), workflowExecutions = structure(list(structure(list(workflowBuildVersionArn = structure(logical(0), tags = list(type = "string")), workflowExecutionId = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), totalStepCount = structure(logical(0), tags = list(type = "integer")), totalStepsSucceeded = structure(logical(0), tags = list(type = "integer")), totalStepsFailed = structure(logical(0), tags = list(type = "integer")), totalStepsSkipped = structure(logical(0), tags = list(type = "integer")), startTime = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "string")), parallelGroup = structure(logical(0), tags = list(type = "string")), retried = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_workflow_executions_output"]]))
 }
 
 .imagebuilder$list_workflow_step_executions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string")), workflowExecutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_workflow_step_executions_input"]]))
 }
 
 .imagebuilder$list_workflow_step_executions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), steps = structure(list(structure(list(stepExecutionId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), action = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), rollbackStatus = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), inputs = structure(logical(0), tags = list(type = "string")), outputs = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), workflowBuildVersionArn = structure(logical(0), tags = list(type = "string")), workflowExecutionId = structure(logical(0), tags = list(type = "string")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_workflow_step_executions_output"]]))
 }
 
 .imagebuilder$list_workflows_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(owner = structure(logical(0), tags = list(type = "string")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), byName = structure(logical(0), tags = list(type = "boolean")), maxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_workflows_input"]]))
 }
 
 .imagebuilder$list_workflows_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowVersionList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), dateCreated = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["list_workflows_output"]]))
 }
 
 .imagebuilder$put_component_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(componentArn = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["put_component_policy_input"]]))
 }
 
 .imagebuilder$put_component_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), componentArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["put_component_policy_output"]]))
 }
 
 .imagebuilder$put_container_recipe_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(containerRecipeArn = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["put_container_recipe_policy_input"]]))
 }
 
 .imagebuilder$put_container_recipe_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), containerRecipeArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["put_container_recipe_policy_output"]]))
 }
 
 .imagebuilder$put_image_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imageArn = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["put_image_policy_input"]]))
 }
 
 .imagebuilder$put_image_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), imageArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["put_image_policy_output"]]))
 }
 
 .imagebuilder$put_image_recipe_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imageRecipeArn = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["put_image_recipe_policy_input"]]))
 }
 
 .imagebuilder$put_image_recipe_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), imageRecipeArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["put_image_recipe_policy_output"]]))
 }
 
 .imagebuilder$retry_image_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imageBuildVersionArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["retry_image_input"]]))
 }
 
 .imagebuilder$retry_image_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(type = "string")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["retry_image_output"]]))
 }
 
 .imagebuilder$send_workflow_step_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stepExecutionId = structure(logical(0), tags = list(type = "string")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string")), action = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["send_workflow_step_action_input"]]))
 }
 
 .imagebuilder$send_workflow_step_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stepExecutionId = structure(logical(0), tags = list(type = "string")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["send_workflow_step_action_output"]]))
 }
 
 .imagebuilder$start_image_pipeline_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imagePipelineArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["start_image_pipeline_execution_input"]]))
 }
 
 .imagebuilder$start_image_pipeline_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["start_image_pipeline_execution_output"]]))
 }
 
 .imagebuilder$start_resource_state_update_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), executionRole = structure(logical(0), tags = list(type = "string")), includeResources = structure(list(amis = structure(logical(0), tags = list(type = "boolean")), snapshots = structure(logical(0), tags = list(type = "boolean")), containers = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), exclusionRules = structure(list(amis = structure(list(isPublic = structure(logical(0), tags = list(type = "boolean")), regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sharedAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), lastLaunched = structure(list(value = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tagMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), updateAt = structure(logical(0), tags = list(type = "timestamp")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["start_resource_state_update_input"]]))
 }
 
 .imagebuilder$start_resource_state_update_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecycleExecutionId = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["start_resource_state_update_output"]]))
 }
 
 .imagebuilder$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["tag_resource_input"]]))
 }
 
 .imagebuilder$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["tag_resource_output"]]))
 }
 
 .imagebuilder$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["untag_resource_input"]]))
 }
 
 .imagebuilder$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["untag_resource_output"]]))
 }
 
 .imagebuilder$update_distribution_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(distributionConfigurationArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), distributions = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), amiDistributionConfiguration = structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), targetAccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), amiTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), kmsKeyId = structure(logical(0), tags = list(type = "string")), launchPermission = structure(list(userIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), userGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), organizationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), organizationalUnitArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), containerDistributionConfiguration = structure(list(description = structure(logical(0), tags = list(type = "string")), containerTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), targetRepository = structure(list(service = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), licenseConfigurationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), launchTemplateConfigurations = structure(list(structure(list(launchTemplateId = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), setDefaultVersion = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), s3ExportConfiguration = structure(list(roleName = structure(logical(0), tags = list(type = "string")), diskImageFormat = structure(logical(0), tags = list(type = "string")), s3Bucket = structure(logical(0), tags = list(type = "string")), s3Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), fastLaunchConfigurations = structure(list(structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), snapshotConfiguration = structure(list(targetResourceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), maxParallelLaunches = structure(logical(0), tags = list(type = "integer")), launchTemplate = structure(list(launchTemplateId = structure(logical(0), tags = list(type = "string")), launchTemplateName = structure(logical(0), tags = list(type = "string")), launchTemplateVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ssmParameterConfigurations = structure(list(structure(list(amiAccountId = structure(logical(0), tags = list(type = "string")), parameterName = structure(logical(0), tags = list(type = "string")), dataType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["update_distribution_configuration_input"]]))
 }
 
 .imagebuilder$update_distribution_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string")), distributionConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["update_distribution_configuration_output"]]))
 }
 
 .imagebuilder$update_image_pipeline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imagePipelineArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), imageRecipeArn = structure(logical(0), tags = list(type = "string")), containerRecipeArn = structure(logical(0), tags = list(type = "string")), infrastructureConfigurationArn = structure(logical(0), tags = list(type = "string")), distributionConfigurationArn = structure(logical(0), tags = list(type = "string")), imageTestsConfiguration = structure(list(imageTestsEnabled = structure(logical(0), tags = list(type = "boolean")), timeoutMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), enhancedImageMetadataEnabled = structure(logical(0), tags = list(type = "boolean")), schedule = structure(list(scheduleExpression = structure(logical(0), tags = list(type = "string")), timezone = structure(logical(0), tags = list(type = "string")), pipelineExecutionStartCondition = structure(logical(0), tags = list(type = "string")), autoDisablePolicy = structure(list(failureCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), imageScanningConfiguration = structure(list(imageScanningEnabled = structure(logical(0), tags = list(type = "boolean")), ecrConfiguration = structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), containerTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), workflows = structure(list(structure(list(workflowArn = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), parallelGroup = structure(logical(0), tags = list(type = "string")), onFailure = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), loggingConfiguration = structure(list(imageLogGroupName = structure(logical(0), tags = list(type = "string")), pipelineLogGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), executionRole = structure(logical(0), tags = list(type = "string")), imageTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["update_image_pipeline_input"]]))
 }
 
 .imagebuilder$update_image_pipeline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string")), imagePipelineArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["update_image_pipeline_output"]]))
 }
 
 .imagebuilder$update_infrastructure_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(infrastructureConfigurationArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), instanceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), instanceProfileName = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetId = structure(logical(0), tags = list(type = "string")), logging = structure(list(s3Logs = structure(list(s3BucketName = structure(logical(0), tags = list(type = "string")), s3KeyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), keyPair = structure(logical(0), tags = list(type = "string")), terminateInstanceOnFailure = structure(logical(0), tags = list(type = "boolean")), snsTopicArn = structure(logical(0), tags = list(type = "string")), resourceTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), instanceMetadataOptions = structure(list(httpTokens = structure(logical(0), tags = list(type = "string")), httpPutResponseHopLimit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), placement = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), tenancy = structure(logical(0), tags = list(type = "string")), hostId = structure(logical(0), tags = list(type = "string")), hostResourceGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["update_infrastructure_configuration_input"]]))
 }
 
 .imagebuilder$update_infrastructure_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string")), infrastructureConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["update_infrastructure_configuration_output"]]))
 }
 
 .imagebuilder$update_lifecycle_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecyclePolicyArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), executionRole = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), policyDetails = structure(list(structure(list(action = structure(list(type = structure(logical(0), tags = list(type = "string")), includeResources = structure(list(amis = structure(logical(0), tags = list(type = "boolean")), snapshots = structure(logical(0), tags = list(type = "boolean")), containers = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), filter = structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string")), retainAtLeast = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), exclusionRules = structure(list(tagMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), amis = structure(list(isPublic = structure(logical(0), tags = list(type = "boolean")), regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sharedAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), lastLaunched = structure(list(value = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tagMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), resourceSelection = structure(list(recipes = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), semanticVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tagMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["update_lifecycle_policy_input"]]))
 }
 
 .imagebuilder$update_lifecycle_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecyclePolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .imagebuilder_shapes[["update_lifecycle_policy_output"]]))
 }

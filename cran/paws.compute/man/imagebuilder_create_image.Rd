@@ -2,7 +2,8 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_create_image}
 \alias{imagebuilder_create_image}
-\title{Creates a new image}
+\title{Creates a new image along with all configured output resources defined
+in the distribution configuration}
 \usage{
 imagebuilder_create_image(
   imageRecipeArn = NULL,
@@ -30,11 +31,11 @@ imagebuilder_create_image(
 
 \item{imageTestsConfiguration}{The image tests configuration of the image.}
 
-\item{enhancedImageMetadataEnabled}{Collects additional information about the image being created, including the operating system (OS) version and package list. This information is used to enhance the overall experience of using EC2 Image Builder. Enabled by default.}
+\item{enhancedImageMetadataEnabled}{Specifies whether to collect additional information about the image being created, including the operating system (OS) version and package list. Defaults to \code{true}.}
 
 \item{tags}{The tags of the image.}
 
-\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 
 \item{imageScanningConfiguration}{Contains settings for vulnerability scans.}
 
@@ -42,10 +43,10 @@ imagebuilder_create_image(
 
 \item{executionRole}{The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions.}
 
-\item{loggingConfiguration}{Define logging configuration for the image build process.}
+\item{loggingConfiguration}{The logging configuration for the image build process.}
 }
 \description{
-Creates a new image. This request will create a new image along with all of the configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.
+Creates a new image along with all configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_create_image/} for full documentation.
 }

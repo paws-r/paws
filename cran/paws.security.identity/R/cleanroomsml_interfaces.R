@@ -5,8 +5,7 @@ NULL
 
 .cleanroomsml$cancel_trained_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string")), trainedModelArn = structure(logical(0), tags = list(location = "uri", locationName = "trainedModelArn", type = "string")), versionIdentifier = structure(logical(0), tags = list(location = "querystring", locationName = "versionIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["cancel_trained_model_input"]]))
 }
 
 .cleanroomsml$cancel_trained_model_output <- function(...) {
@@ -15,8 +14,7 @@ NULL
 
 .cleanroomsml$cancel_trained_model_inference_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string")), trainedModelInferenceJobArn = structure(logical(0), tags = list(location = "uri", locationName = "trainedModelInferenceJobArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["cancel_trained_model_inference_job_input"]]))
 }
 
 .cleanroomsml$cancel_trained_model_inference_job_output <- function(...) {
@@ -25,92 +23,77 @@ NULL
 
 .cleanroomsml$create_audience_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trainingDataStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), trainingDataEndTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), trainingDatasetArn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["create_audience_model_input"]]))
 }
 
 .cleanroomsml$create_audience_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(audienceModelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["create_audience_model_output"]]))
 }
 
 .cleanroomsml$create_configured_audience_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), audienceModelArn = structure(logical(0), tags = list(type = "string")), outputConfig = structure(list(destination = structure(list(s3Destination = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string")), sharedAudienceMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), minMatchingSeedSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), audienceSizeConfig = structure(list(audienceSizeType = structure(logical(0), tags = list(type = "string")), audienceSizeBins = structure(list(structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), childResourceTagOnCreatePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["create_configured_audience_model_input"]]))
 }
 
 .cleanroomsml$create_configured_audience_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredAudienceModelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["create_configured_audience_model_output"]]))
 }
 
 .cleanroomsml$create_configured_model_algorithm_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), trainingContainerConfig = structure(list(imageUri = structure(logical(0), tags = list(type = "string")), entrypoint = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), arguments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), metricDefinitions = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), regex = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), inferenceContainerConfig = structure(list(imageUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["create_configured_model_algorithm_input"]]))
 }
 
 .cleanroomsml$create_configured_model_algorithm_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredModelAlgorithmArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["create_configured_model_algorithm_output"]]))
 }
 
 .cleanroomsml$create_configured_model_algorithm_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string")), configuredModelAlgorithmArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), privacyConfiguration = structure(list(policies = structure(list(trainedModels = structure(list(containerLogs = structure(list(structure(list(allowedAccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), filterPattern = structure(logical(0), tags = list(type = "string")), logType = structure(logical(0), tags = list(type = "string")), logRedactionConfiguration = structure(list(entitiesToRedact = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customEntityConfig = structure(list(customDataIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), containerMetrics = structure(list(noiseLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), maxArtifactSize = structure(list(unit = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), trainedModelExports = structure(list(maxSize = structure(list(unit = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), filesToExport = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), trainedModelInferenceJobs = structure(list(containerLogs = structure(list(structure(list(allowedAccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), filterPattern = structure(logical(0), tags = list(type = "string")), logType = structure(logical(0), tags = list(type = "string")), logRedactionConfiguration = structure(list(entitiesToRedact = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customEntityConfig = structure(list(customDataIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), maxOutputSize = structure(list(unit = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["create_configured_model_algorithm_association_input"]]))
 }
 
 .cleanroomsml$create_configured_model_algorithm_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["create_configured_model_algorithm_association_output"]]))
 }
 
 .cleanroomsml$create_ml_input_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string")), configuredModelAlgorithmAssociations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), inputChannel = structure(list(dataSource = structure(list(protectedQueryInputParameters = structure(list(sqlParameters = structure(list(queryString = structure(logical(0), tags = list(type = "string")), analysisTemplateArn = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure", sensitive = TRUE)), computeConfiguration = structure(list(worker = structure(list(type = structure(logical(0), tags = list(type = "string")), number = structure(logical(0), tags = list(type = "integer", box = TRUE)), properties = structure(list(spark = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), resultFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), retentionInDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), description = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), payerConfiguration = structure(list(computePayerAccountId = structure(logical(0), tags = list(type = "string")), syntheticDataPayerAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["create_ml_input_channel_input"]]))
 }
 
 .cleanroomsml$create_ml_input_channel_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(mlInputChannelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["create_ml_input_channel_output"]]))
 }
 
 .cleanroomsml$create_trained_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string")), name = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(type = "string")), hyperparameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), environment = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), resourceConfig = structure(list(instanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), volumeSizeInGB = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), stoppingCondition = structure(list(maxRuntimeInSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), incrementalTrainingDataChannels = structure(list(structure(list(trainedModelArn = structure(logical(0), tags = list(type = "string")), versionIdentifier = structure(logical(0), tags = list(type = "string")), channelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), dataChannels = structure(list(structure(list(mlInputChannelArn = structure(logical(0), tags = list(type = "string")), channelName = structure(logical(0), tags = list(type = "string")), s3DataDistributionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), trainingInputMode = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), mlModelTrainingPayerAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["create_trained_model_input"]]))
 }
 
 .cleanroomsml$create_trained_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trainedModelArn = structure(logical(0), tags = list(type = "string")), versionIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["create_trained_model_output"]]))
 }
 
 .cleanroomsml$create_training_dataset_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), trainingData = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), inputConfig = structure(list(schema = structure(list(structure(list(columnName = structure(logical(0), tags = list(type = "string")), columnTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), dataSource = structure(list(glueDataSource = structure(list(tableName = structure(logical(0), tags = list(type = "string")), databaseName = structure(logical(0), tags = list(type = "string")), catalogId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["create_training_dataset_input"]]))
 }
 
 .cleanroomsml$create_training_dataset_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trainingDatasetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["create_training_dataset_output"]]))
 }
 
 .cleanroomsml$delete_audience_generation_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(audienceGenerationJobArn = structure(logical(0), tags = list(location = "uri", locationName = "audienceGenerationJobArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["delete_audience_generation_job_input"]]))
 }
 
 .cleanroomsml$delete_audience_generation_job_output <- function(...) {
@@ -119,8 +102,7 @@ NULL
 
 .cleanroomsml$delete_audience_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(audienceModelArn = structure(logical(0), tags = list(location = "uri", locationName = "audienceModelArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["delete_audience_model_input"]]))
 }
 
 .cleanroomsml$delete_audience_model_output <- function(...) {
@@ -129,8 +111,7 @@ NULL
 
 .cleanroomsml$delete_configured_audience_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredAudienceModelArn = structure(logical(0), tags = list(location = "uri", locationName = "configuredAudienceModelArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["delete_configured_audience_model_input"]]))
 }
 
 .cleanroomsml$delete_configured_audience_model_output <- function(...) {
@@ -139,8 +120,7 @@ NULL
 
 .cleanroomsml$delete_configured_audience_model_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredAudienceModelArn = structure(logical(0), tags = list(location = "uri", locationName = "configuredAudienceModelArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["delete_configured_audience_model_policy_input"]]))
 }
 
 .cleanroomsml$delete_configured_audience_model_policy_output <- function(...) {
@@ -149,8 +129,7 @@ NULL
 
 .cleanroomsml$delete_configured_model_algorithm_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredModelAlgorithmArn = structure(logical(0), tags = list(location = "uri", locationName = "configuredModelAlgorithmArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["delete_configured_model_algorithm_input"]]))
 }
 
 .cleanroomsml$delete_configured_model_algorithm_output <- function(...) {
@@ -159,8 +138,7 @@ NULL
 
 .cleanroomsml$delete_configured_model_algorithm_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(location = "uri", locationName = "configuredModelAlgorithmAssociationArn", type = "string")), membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["delete_configured_model_algorithm_association_input"]]))
 }
 
 .cleanroomsml$delete_configured_model_algorithm_association_output <- function(...) {
@@ -169,8 +147,7 @@ NULL
 
 .cleanroomsml$delete_ml_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["delete_ml_configuration_input"]]))
 }
 
 .cleanroomsml$delete_ml_configuration_output <- function(...) {
@@ -179,8 +156,7 @@ NULL
 
 .cleanroomsml$delete_ml_input_channel_data_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(mlInputChannelArn = structure(logical(0), tags = list(location = "uri", locationName = "mlInputChannelArn", type = "string")), membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["delete_ml_input_channel_data_input"]]))
 }
 
 .cleanroomsml$delete_ml_input_channel_data_output <- function(...) {
@@ -189,8 +165,7 @@ NULL
 
 .cleanroomsml$delete_trained_model_output_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trainedModelArn = structure(logical(0), tags = list(location = "uri", locationName = "trainedModelArn", type = "string")), membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string")), versionIdentifier = structure(logical(0), tags = list(location = "querystring", locationName = "versionIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["delete_trained_model_output_input"]]))
 }
 
 .cleanroomsml$delete_trained_model_output_output <- function(...) {
@@ -199,8 +174,7 @@ NULL
 
 .cleanroomsml$delete_training_dataset_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trainingDatasetArn = structure(logical(0), tags = list(location = "uri", locationName = "trainingDatasetArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["delete_training_dataset_input"]]))
 }
 
 .cleanroomsml$delete_training_dataset_output <- function(...) {
@@ -209,392 +183,327 @@ NULL
 
 .cleanroomsml$get_audience_generation_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(audienceGenerationJobArn = structure(logical(0), tags = list(location = "uri", locationName = "audienceGenerationJobArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_audience_generation_job_input"]]))
 }
 
 .cleanroomsml$get_audience_generation_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), audienceGenerationJobArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusDetails = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), configuredAudienceModelArn = structure(logical(0), tags = list(type = "string")), seedAudience = structure(list(dataSource = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), sqlParameters = structure(list(queryString = structure(logical(0), tags = list(type = "string")), analysisTemplateArn = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure", sensitive = TRUE)), sqlComputeConfiguration = structure(list(worker = structure(list(type = structure(logical(0), tags = list(type = "string")), number = structure(logical(0), tags = list(type = "integer", box = TRUE)), properties = structure(list(spark = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), includeSeedInOutput = structure(logical(0), tags = list(type = "boolean", box = TRUE)), collaborationId = structure(logical(0), tags = list(type = "string")), metrics = structure(list(relevanceMetrics = structure(list(structure(list(audienceSize = structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), score = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), recallMetric = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), startedBy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), protectedQueryIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_audience_generation_job_output"]]))
 }
 
 .cleanroomsml$get_audience_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(audienceModelArn = structure(logical(0), tags = list(location = "uri", locationName = "audienceModelArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_audience_model_input"]]))
 }
 
 .cleanroomsml$get_audience_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), trainingDataStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), trainingDataEndTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), audienceModelArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), trainingDatasetArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusDetails = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_audience_model_output"]]))
 }
 
 .cleanroomsml$get_collaboration_configured_model_algorithm_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(location = "uri", locationName = "configuredModelAlgorithmAssociationArn", type = "string")), collaborationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "collaborationIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_collaboration_configured_model_algorithm_association_input"]]))
 }
 
 .cleanroomsml$get_collaboration_configured_model_algorithm_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(type = "string")), membershipIdentifier = structure(logical(0), tags = list(type = "string")), collaborationIdentifier = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), creatorAccountId = structure(logical(0), tags = list(type = "string")), privacyConfiguration = structure(list(policies = structure(list(trainedModels = structure(list(containerLogs = structure(list(structure(list(allowedAccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), filterPattern = structure(logical(0), tags = list(type = "string")), logType = structure(logical(0), tags = list(type = "string")), logRedactionConfiguration = structure(list(entitiesToRedact = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customEntityConfig = structure(list(customDataIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), containerMetrics = structure(list(noiseLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), maxArtifactSize = structure(list(unit = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), trainedModelExports = structure(list(maxSize = structure(list(unit = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), filesToExport = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), trainedModelInferenceJobs = structure(list(containerLogs = structure(list(structure(list(allowedAccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), filterPattern = structure(logical(0), tags = list(type = "string")), logType = structure(logical(0), tags = list(type = "string")), logRedactionConfiguration = structure(list(entitiesToRedact = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customEntityConfig = structure(list(customDataIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), maxOutputSize = structure(list(unit = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_collaboration_configured_model_algorithm_association_output"]]))
 }
 
 .cleanroomsml$get_collaboration_ml_input_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(mlInputChannelArn = structure(logical(0), tags = list(location = "uri", locationName = "mlInputChannelArn", type = "string")), collaborationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "collaborationIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_collaboration_ml_input_channel_input"]]))
 }
 
 .cleanroomsml$get_collaboration_ml_input_channel_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(membershipIdentifier = structure(logical(0), tags = list(type = "string")), collaborationIdentifier = structure(logical(0), tags = list(type = "string")), mlInputChannelArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmAssociations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), statusDetails = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), retentionInDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), numberOfRecords = structure(logical(0), tags = list(type = "long", box = TRUE)), privacyBudgets = structure(list(accessBudgets = structure(list(structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), details = structure(list(structure(list(startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), remainingBudget = structure(logical(0), tags = list(type = "integer", box = TRUE)), budget = structure(logical(0), tags = list(type = "integer", box = TRUE)), budgetType = structure(logical(0), tags = list(type = "string")), autoRefresh = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), aggregateRemainingBudget = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE)), description = structure(logical(0), tags = list(type = "string")), syntheticDataConfiguration = structure(list(syntheticDataParameters = structure(list(epsilon = structure(logical(0), tags = list(type = "double", box = TRUE)), maxMembershipInferenceAttackScore = structure(logical(0), tags = list(type = "double", box = TRUE)), columnClassification = structure(list(columnMapping = structure(list(structure(list(columnName = structure(logical(0), tags = list(type = "string")), columnType = structure(logical(0), tags = list(type = "string")), isPredictiveValue = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), syntheticDataEvaluationScores = structure(list(dataPrivacyScores = structure(list(membershipInferenceAttackScores = structure(list(structure(list(attackVersion = structure(logical(0), tags = list(type = "string")), score = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), payerConfiguration = structure(list(computePayerAccountId = structure(logical(0), tags = list(type = "string")), syntheticDataPayerAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), creatorAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_collaboration_ml_input_channel_output"]]))
 }
 
 .cleanroomsml$get_collaboration_trained_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trainedModelArn = structure(logical(0), tags = list(location = "uri", locationName = "trainedModelArn", type = "string")), collaborationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "collaborationIdentifier", type = "string")), versionIdentifier = structure(logical(0), tags = list(location = "querystring", locationName = "versionIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_collaboration_trained_model_input"]]))
 }
 
 .cleanroomsml$get_collaboration_trained_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(membershipIdentifier = structure(logical(0), tags = list(type = "string")), collaborationIdentifier = structure(logical(0), tags = list(type = "string")), trainedModelArn = structure(logical(0), tags = list(type = "string")), versionIdentifier = structure(logical(0), tags = list(type = "string")), incrementalTrainingDataChannels = structure(list(structure(list(channelName = structure(logical(0), tags = list(type = "string")), versionIdentifier = structure(logical(0), tags = list(type = "string")), modelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusDetails = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(type = "string")), resourceConfig = structure(list(instanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), volumeSizeInGB = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), trainingInputMode = structure(logical(0), tags = list(type = "string")), stoppingCondition = structure(list(maxRuntimeInSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), metricsStatus = structure(logical(0), tags = list(type = "string")), metricsStatusDetails = structure(logical(0), tags = list(type = "string")), logsStatus = structure(logical(0), tags = list(type = "string")), logsStatusDetails = structure(logical(0), tags = list(type = "string")), trainingContainerImageDigest = structure(logical(0), tags = list(type = "string")), mlModelTrainingPayerAccountId = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), creatorAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_collaboration_trained_model_output"]]))
 }
 
 .cleanroomsml$get_configured_audience_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredAudienceModelArn = structure(logical(0), tags = list(location = "uri", locationName = "configuredAudienceModelArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_configured_audience_model_input"]]))
 }
 
 .cleanroomsml$get_configured_audience_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), configuredAudienceModelArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), audienceModelArn = structure(logical(0), tags = list(type = "string")), outputConfig = structure(list(destination = structure(list(s3Destination = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), sharedAudienceMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), minMatchingSeedSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), audienceSizeConfig = structure(list(audienceSizeType = structure(logical(0), tags = list(type = "string")), audienceSizeBins = structure(list(structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), childResourceTagOnCreatePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_configured_audience_model_output"]]))
 }
 
 .cleanroomsml$get_configured_audience_model_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredAudienceModelArn = structure(logical(0), tags = list(location = "uri", locationName = "configuredAudienceModelArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_configured_audience_model_policy_input"]]))
 }
 
 .cleanroomsml$get_configured_audience_model_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredAudienceModelArn = structure(logical(0), tags = list(type = "string")), configuredAudienceModelPolicy = structure(logical(0), tags = list(type = "string")), policyHash = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_configured_audience_model_policy_output"]]))
 }
 
 .cleanroomsml$get_configured_model_algorithm_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredModelAlgorithmArn = structure(logical(0), tags = list(location = "uri", locationName = "configuredModelAlgorithmArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_configured_model_algorithm_input"]]))
 }
 
 .cleanroomsml$get_configured_model_algorithm_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), configuredModelAlgorithmArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), trainingContainerConfig = structure(list(imageUri = structure(logical(0), tags = list(type = "string")), entrypoint = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), arguments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), metricDefinitions = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), regex = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), inferenceContainerConfig = structure(list(imageUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_configured_model_algorithm_output"]]))
 }
 
 .cleanroomsml$get_configured_model_algorithm_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(location = "uri", locationName = "configuredModelAlgorithmAssociationArn", type = "string")), membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_configured_model_algorithm_association_input"]]))
 }
 
 .cleanroomsml$get_configured_model_algorithm_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(type = "string")), membershipIdentifier = structure(logical(0), tags = list(type = "string")), collaborationIdentifier = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), privacyConfiguration = structure(list(policies = structure(list(trainedModels = structure(list(containerLogs = structure(list(structure(list(allowedAccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), filterPattern = structure(logical(0), tags = list(type = "string")), logType = structure(logical(0), tags = list(type = "string")), logRedactionConfiguration = structure(list(entitiesToRedact = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customEntityConfig = structure(list(customDataIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), containerMetrics = structure(list(noiseLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), maxArtifactSize = structure(list(unit = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), trainedModelExports = structure(list(maxSize = structure(list(unit = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), filesToExport = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), trainedModelInferenceJobs = structure(list(containerLogs = structure(list(structure(list(allowedAccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), filterPattern = structure(logical(0), tags = list(type = "string")), logType = structure(logical(0), tags = list(type = "string")), logRedactionConfiguration = structure(list(entitiesToRedact = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customEntityConfig = structure(list(customDataIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), maxOutputSize = structure(list(unit = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_configured_model_algorithm_association_output"]]))
 }
 
 .cleanroomsml$get_ml_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_ml_configuration_input"]]))
 }
 
 .cleanroomsml$get_ml_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(membershipIdentifier = structure(logical(0), tags = list(type = "string")), defaultOutputLocation = structure(list(destination = structure(list(s3Destination = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_ml_configuration_output"]]))
 }
 
 .cleanroomsml$get_ml_input_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(mlInputChannelArn = structure(logical(0), tags = list(location = "uri", locationName = "mlInputChannelArn", type = "string")), membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_ml_input_channel_input"]]))
 }
 
 .cleanroomsml$get_ml_input_channel_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(membershipIdentifier = structure(logical(0), tags = list(type = "string")), collaborationIdentifier = structure(logical(0), tags = list(type = "string")), mlInputChannelArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmAssociations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), statusDetails = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), retentionInDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), numberOfRecords = structure(logical(0), tags = list(type = "long", box = TRUE)), privacyBudgets = structure(list(accessBudgets = structure(list(structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), details = structure(list(structure(list(startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), remainingBudget = structure(logical(0), tags = list(type = "integer", box = TRUE)), budget = structure(logical(0), tags = list(type = "integer", box = TRUE)), budgetType = structure(logical(0), tags = list(type = "string")), autoRefresh = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), aggregateRemainingBudget = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE)), description = structure(logical(0), tags = list(type = "string")), syntheticDataConfiguration = structure(list(syntheticDataParameters = structure(list(epsilon = structure(logical(0), tags = list(type = "double", box = TRUE)), maxMembershipInferenceAttackScore = structure(logical(0), tags = list(type = "double", box = TRUE)), columnClassification = structure(list(columnMapping = structure(list(structure(list(columnName = structure(logical(0), tags = list(type = "string")), columnType = structure(logical(0), tags = list(type = "string")), isPredictiveValue = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), syntheticDataEvaluationScores = structure(list(dataPrivacyScores = structure(list(membershipInferenceAttackScores = structure(list(structure(list(attackVersion = structure(logical(0), tags = list(type = "string")), score = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), payerConfiguration = structure(list(computePayerAccountId = structure(logical(0), tags = list(type = "string")), syntheticDataPayerAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), inputChannel = structure(list(dataSource = structure(list(protectedQueryInputParameters = structure(list(sqlParameters = structure(list(queryString = structure(logical(0), tags = list(type = "string")), analysisTemplateArn = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure", sensitive = TRUE)), computeConfiguration = structure(list(worker = structure(list(type = structure(logical(0), tags = list(type = "string")), number = structure(logical(0), tags = list(type = "integer", box = TRUE)), properties = structure(list(spark = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), resultFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), protectedQueryIdentifier = structure(logical(0), tags = list(type = "string")), numberOfFiles = structure(logical(0), tags = list(type = "double", box = TRUE)), sizeInGb = structure(logical(0), tags = list(type = "double", box = TRUE)), kmsKeyArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_ml_input_channel_output"]]))
 }
 
 .cleanroomsml$get_trained_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trainedModelArn = structure(logical(0), tags = list(location = "uri", locationName = "trainedModelArn", type = "string")), membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string")), versionIdentifier = structure(logical(0), tags = list(location = "querystring", locationName = "versionIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_trained_model_input"]]))
 }
 
 .cleanroomsml$get_trained_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(membershipIdentifier = structure(logical(0), tags = list(type = "string")), collaborationIdentifier = structure(logical(0), tags = list(type = "string")), trainedModelArn = structure(logical(0), tags = list(type = "string")), versionIdentifier = structure(logical(0), tags = list(type = "string")), incrementalTrainingDataChannels = structure(list(structure(list(channelName = structure(logical(0), tags = list(type = "string")), versionIdentifier = structure(logical(0), tags = list(type = "string")), modelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusDetails = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(type = "string")), resourceConfig = structure(list(instanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), volumeSizeInGB = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), trainingInputMode = structure(logical(0), tags = list(type = "string")), stoppingCondition = structure(list(maxRuntimeInSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), metricsStatus = structure(logical(0), tags = list(type = "string")), metricsStatusDetails = structure(logical(0), tags = list(type = "string")), logsStatus = structure(logical(0), tags = list(type = "string")), logsStatusDetails = structure(logical(0), tags = list(type = "string")), trainingContainerImageDigest = structure(logical(0), tags = list(type = "string")), mlModelTrainingPayerAccountId = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), hyperparameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), environment = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), dataChannels = structure(list(structure(list(mlInputChannelArn = structure(logical(0), tags = list(type = "string")), channelName = structure(logical(0), tags = list(type = "string")), s3DataDistributionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_trained_model_output"]]))
 }
 
 .cleanroomsml$get_trained_model_inference_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string")), trainedModelInferenceJobArn = structure(logical(0), tags = list(location = "uri", locationName = "trainedModelInferenceJobArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_trained_model_inference_job_input"]]))
 }
 
 .cleanroomsml$get_trained_model_inference_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), trainedModelInferenceJobArn = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), trainedModelArn = structure(logical(0), tags = list(type = "string")), trainedModelVersionIdentifier = structure(logical(0), tags = list(type = "string")), resourceConfig = structure(list(instanceType = structure(logical(0), tags = list(type = "string")), instanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), outputConfiguration = structure(list(accept = structure(logical(0), tags = list(type = "string")), members = structure(list(structure(list(accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), membershipIdentifier = structure(logical(0), tags = list(type = "string")), dataSource = structure(list(mlInputChannelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), containerExecutionParameters = structure(list(maxPayloadInMB = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), statusDetails = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string")), inferenceContainerImageDigest = structure(logical(0), tags = list(type = "string")), environment = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), metricsStatus = structure(logical(0), tags = list(type = "string")), metricsStatusDetails = structure(logical(0), tags = list(type = "string")), logsStatus = structure(logical(0), tags = list(type = "string")), logsStatusDetails = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), mlModelInferencePayerAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_trained_model_inference_job_output"]]))
 }
 
 .cleanroomsml$get_training_dataset_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trainingDatasetArn = structure(logical(0), tags = list(location = "uri", locationName = "trainingDatasetArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_training_dataset_input"]]))
 }
 
 .cleanroomsml$get_training_dataset_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), trainingDatasetArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), trainingData = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), inputConfig = structure(list(schema = structure(list(structure(list(columnName = structure(logical(0), tags = list(type = "string")), columnTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), dataSource = structure(list(glueDataSource = structure(list(tableName = structure(logical(0), tags = list(type = "string")), databaseName = structure(logical(0), tags = list(type = "string")), catalogId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["get_training_dataset_output"]]))
 }
 
 .cleanroomsml$list_audience_export_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), audienceGenerationJobArn = structure(logical(0), tags = list(location = "querystring", locationName = "audienceGenerationJobArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_audience_export_jobs_input"]]))
 }
 
 .cleanroomsml$list_audience_export_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), audienceExportJobs = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), audienceGenerationJobArn = structure(logical(0), tags = list(type = "string")), audienceSize = structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusDetails = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), outputLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_audience_export_jobs_output"]]))
 }
 
 .cleanroomsml$list_audience_generation_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), configuredAudienceModelArn = structure(logical(0), tags = list(location = "querystring", locationName = "configuredAudienceModelArn", type = "string")), collaborationId = structure(logical(0), tags = list(location = "querystring", locationName = "collaborationId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_audience_generation_jobs_input"]]))
 }
 
 .cleanroomsml$list_audience_generation_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), audienceGenerationJobs = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), audienceGenerationJobArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), configuredAudienceModelArn = structure(logical(0), tags = list(type = "string")), collaborationId = structure(logical(0), tags = list(type = "string")), startedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_audience_generation_jobs_output"]]))
 }
 
 .cleanroomsml$list_audience_models_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_audience_models_input"]]))
 }
 
 .cleanroomsml$list_audience_models_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), audienceModels = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), audienceModelArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), trainingDatasetArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_audience_models_output"]]))
 }
 
 .cleanroomsml$list_collaboration_configured_model_algorithm_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), collaborationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "collaborationIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_collaboration_configured_model_algorithm_associations_input"]]))
 }
 
 .cleanroomsml$list_collaboration_configured_model_algorithm_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), collaborationConfiguredModelAlgorithmAssociations = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), membershipIdentifier = structure(logical(0), tags = list(type = "string")), collaborationIdentifier = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmArn = structure(logical(0), tags = list(type = "string")), creatorAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_collaboration_configured_model_algorithm_associations_output"]]))
 }
 
 .cleanroomsml$list_collaboration_ml_input_channels_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), collaborationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "collaborationIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_collaboration_ml_input_channels_input"]]))
 }
 
 .cleanroomsml$list_collaboration_ml_input_channels_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), collaborationMLInputChannelsList = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), membershipIdentifier = structure(logical(0), tags = list(type = "string")), collaborationIdentifier = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmAssociations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), mlInputChannelArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creatorAccountId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), payerConfiguration = structure(list(computePayerAccountId = structure(logical(0), tags = list(type = "string")), syntheticDataPayerAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_collaboration_ml_input_channels_output"]]))
 }
 
 .cleanroomsml$list_collaboration_trained_model_export_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), collaborationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "collaborationIdentifier", type = "string")), trainedModelArn = structure(logical(0), tags = list(location = "uri", locationName = "trainedModelArn", type = "string")), trainedModelVersionIdentifier = structure(logical(0), tags = list(location = "querystring", locationName = "trainedModelVersionIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_collaboration_trained_model_export_jobs_input"]]))
 }
 
 .cleanroomsml$list_collaboration_trained_model_export_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), collaborationTrainedModelExportJobs = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), outputConfiguration = structure(list(members = structure(list(structure(list(accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), statusDetails = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string")), creatorAccountId = structure(logical(0), tags = list(type = "string")), trainedModelArn = structure(logical(0), tags = list(type = "string")), trainedModelVersionIdentifier = structure(logical(0), tags = list(type = "string")), membershipIdentifier = structure(logical(0), tags = list(type = "string")), collaborationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_collaboration_trained_model_export_jobs_output"]]))
 }
 
 .cleanroomsml$list_collaboration_trained_model_inference_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), collaborationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "collaborationIdentifier", type = "string")), trainedModelArn = structure(logical(0), tags = list(location = "querystring", locationName = "trainedModelArn", type = "string")), trainedModelVersionIdentifier = structure(logical(0), tags = list(location = "querystring", locationName = "trainedModelVersionIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_collaboration_trained_model_inference_jobs_input"]]))
 }
 
 .cleanroomsml$list_collaboration_trained_model_inference_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), collaborationTrainedModelInferenceJobs = structure(list(structure(list(trainedModelInferenceJobArn = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(type = "string")), membershipIdentifier = structure(logical(0), tags = list(type = "string")), trainedModelArn = structure(logical(0), tags = list(type = "string")), trainedModelVersionIdentifier = structure(logical(0), tags = list(type = "string")), collaborationIdentifier = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), outputConfiguration = structure(list(accept = structure(logical(0), tags = list(type = "string")), members = structure(list(structure(list(accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), metricsStatus = structure(logical(0), tags = list(type = "string")), metricsStatusDetails = structure(logical(0), tags = list(type = "string")), logsStatus = structure(logical(0), tags = list(type = "string")), logsStatusDetails = structure(logical(0), tags = list(type = "string")), mlModelInferencePayerAccountId = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), creatorAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_collaboration_trained_model_inference_jobs_output"]]))
 }
 
 .cleanroomsml$list_collaboration_trained_models_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), collaborationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "collaborationIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_collaboration_trained_models_input"]]))
 }
 
 .cleanroomsml$list_collaboration_trained_models_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), collaborationTrainedModels = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), trainedModelArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), versionIdentifier = structure(logical(0), tags = list(type = "string")), incrementalTrainingDataChannels = structure(list(structure(list(channelName = structure(logical(0), tags = list(type = "string")), versionIdentifier = structure(logical(0), tags = list(type = "string")), modelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string")), membershipIdentifier = structure(logical(0), tags = list(type = "string")), collaborationIdentifier = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(type = "string")), creatorAccountId = structure(logical(0), tags = list(type = "string")), mlModelTrainingPayerAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_collaboration_trained_models_output"]]))
 }
 
 .cleanroomsml$list_configured_audience_models_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_configured_audience_models_input"]]))
 }
 
 .cleanroomsml$list_configured_audience_models_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), configuredAudienceModels = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), audienceModelArn = structure(logical(0), tags = list(type = "string")), outputConfig = structure(list(destination = structure(list(s3Destination = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string")), configuredAudienceModelArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_configured_audience_models_output"]]))
 }
 
 .cleanroomsml$list_configured_model_algorithm_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_configured_model_algorithm_associations_input"]]))
 }
 
 .cleanroomsml$list_configured_model_algorithm_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmAssociations = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), membershipIdentifier = structure(logical(0), tags = list(type = "string")), collaborationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_configured_model_algorithm_associations_output"]]))
 }
 
 .cleanroomsml$list_configured_model_algorithms_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_configured_model_algorithms_input"]]))
 }
 
 .cleanroomsml$list_configured_model_algorithms_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithms = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), configuredModelAlgorithmArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_configured_model_algorithms_output"]]))
 }
 
 .cleanroomsml$list_ml_input_channels_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_ml_input_channels_input"]]))
 }
 
 .cleanroomsml$list_ml_input_channels_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), mlInputChannelsList = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), membershipIdentifier = structure(logical(0), tags = list(type = "string")), collaborationIdentifier = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmAssociations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), protectedQueryIdentifier = structure(logical(0), tags = list(type = "string")), mlInputChannelArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), payerConfiguration = structure(list(computePayerAccountId = structure(logical(0), tags = list(type = "string")), syntheticDataPayerAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_ml_input_channels_output"]]))
 }
 
 .cleanroomsml$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_tags_for_resource_input"]]))
 }
 
 .cleanroomsml$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_tags_for_resource_output"]]))
 }
 
 .cleanroomsml$list_trained_model_inference_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string")), trainedModelArn = structure(logical(0), tags = list(location = "querystring", locationName = "trainedModelArn", type = "string")), trainedModelVersionIdentifier = structure(logical(0), tags = list(location = "querystring", locationName = "trainedModelVersionIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_trained_model_inference_jobs_input"]]))
 }
 
 .cleanroomsml$list_trained_model_inference_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), trainedModelInferenceJobs = structure(list(structure(list(trainedModelInferenceJobArn = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(type = "string")), membershipIdentifier = structure(logical(0), tags = list(type = "string")), trainedModelArn = structure(logical(0), tags = list(type = "string")), trainedModelVersionIdentifier = structure(logical(0), tags = list(type = "string")), collaborationIdentifier = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), outputConfiguration = structure(list(accept = structure(logical(0), tags = list(type = "string")), members = structure(list(structure(list(accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), metricsStatus = structure(logical(0), tags = list(type = "string")), metricsStatusDetails = structure(logical(0), tags = list(type = "string")), logsStatus = structure(logical(0), tags = list(type = "string")), logsStatusDetails = structure(logical(0), tags = list(type = "string")), mlModelInferencePayerAccountId = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_trained_model_inference_jobs_output"]]))
 }
 
 .cleanroomsml$list_trained_model_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string")), trainedModelArn = structure(logical(0), tags = list(location = "uri", locationName = "trainedModelArn", type = "string")), status = structure(logical(0), tags = list(location = "querystring", locationName = "status", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_trained_model_versions_input"]]))
 }
 
 .cleanroomsml$list_trained_model_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), trainedModels = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), trainedModelArn = structure(logical(0), tags = list(type = "string")), versionIdentifier = structure(logical(0), tags = list(type = "string")), incrementalTrainingDataChannels = structure(list(structure(list(channelName = structure(logical(0), tags = list(type = "string")), versionIdentifier = structure(logical(0), tags = list(type = "string")), modelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), membershipIdentifier = structure(logical(0), tags = list(type = "string")), collaborationIdentifier = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(type = "string")), mlModelTrainingPayerAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_trained_model_versions_output"]]))
 }
 
 .cleanroomsml$list_trained_models_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_trained_models_input"]]))
 }
 
 .cleanroomsml$list_trained_models_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), trainedModels = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), trainedModelArn = structure(logical(0), tags = list(type = "string")), versionIdentifier = structure(logical(0), tags = list(type = "string")), incrementalTrainingDataChannels = structure(list(structure(list(channelName = structure(logical(0), tags = list(type = "string")), versionIdentifier = structure(logical(0), tags = list(type = "string")), modelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), membershipIdentifier = structure(logical(0), tags = list(type = "string")), collaborationIdentifier = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(type = "string")), mlModelTrainingPayerAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_trained_models_output"]]))
 }
 
 .cleanroomsml$list_training_datasets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_training_datasets_input"]]))
 }
 
 .cleanroomsml$list_training_datasets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), trainingDatasets = structure(list(structure(list(createTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), trainingDatasetArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["list_training_datasets_output"]]))
 }
 
 .cleanroomsml$put_configured_audience_model_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredAudienceModelArn = structure(logical(0), tags = list(location = "uri", locationName = "configuredAudienceModelArn", type = "string")), configuredAudienceModelPolicy = structure(logical(0), tags = list(type = "string")), previousPolicyHash = structure(logical(0), tags = list(type = "string")), policyExistenceCondition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["put_configured_audience_model_policy_input"]]))
 }
 
 .cleanroomsml$put_configured_audience_model_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredAudienceModelPolicy = structure(logical(0), tags = list(type = "string")), policyHash = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["put_configured_audience_model_policy_output"]]))
 }
 
 .cleanroomsml$put_ml_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string")), defaultOutputLocation = structure(list(destination = structure(list(s3Destination = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["put_ml_configuration_input"]]))
 }
 
 .cleanroomsml$put_ml_configuration_output <- function(...) {
@@ -603,8 +512,7 @@ NULL
 
 .cleanroomsml$start_audience_export_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), audienceGenerationJobArn = structure(logical(0), tags = list(type = "string")), audienceSize = structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["start_audience_export_job_input"]]))
 }
 
 .cleanroomsml$start_audience_export_job_output <- function(...) {
@@ -613,20 +521,17 @@ NULL
 
 .cleanroomsml$start_audience_generation_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), configuredAudienceModelArn = structure(logical(0), tags = list(type = "string")), seedAudience = structure(list(dataSource = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), sqlParameters = structure(list(queryString = structure(logical(0), tags = list(type = "string")), analysisTemplateArn = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure", sensitive = TRUE)), sqlComputeConfiguration = structure(list(worker = structure(list(type = structure(logical(0), tags = list(type = "string")), number = structure(logical(0), tags = list(type = "integer", box = TRUE)), properties = structure(list(spark = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), includeSeedInOutput = structure(logical(0), tags = list(type = "boolean", box = TRUE)), collaborationId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["start_audience_generation_job_input"]]))
 }
 
 .cleanroomsml$start_audience_generation_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(audienceGenerationJobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["start_audience_generation_job_output"]]))
 }
 
 .cleanroomsml$start_trained_model_export_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), trainedModelArn = structure(logical(0), tags = list(location = "uri", locationName = "trainedModelArn", type = "string")), trainedModelVersionIdentifier = structure(logical(0), tags = list(type = "string")), membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string")), outputConfiguration = structure(list(members = structure(list(structure(list(accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["start_trained_model_export_job_input"]]))
 }
 
 .cleanroomsml$start_trained_model_export_job_output <- function(...) {
@@ -635,48 +540,40 @@ NULL
 
 .cleanroomsml$start_trained_model_inference_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(membershipIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "membershipIdentifier", type = "string")), name = structure(logical(0), tags = list(type = "string")), trainedModelArn = structure(logical(0), tags = list(type = "string")), trainedModelVersionIdentifier = structure(logical(0), tags = list(type = "string")), configuredModelAlgorithmAssociationArn = structure(logical(0), tags = list(type = "string")), resourceConfig = structure(list(instanceType = structure(logical(0), tags = list(type = "string")), instanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), outputConfiguration = structure(list(accept = structure(logical(0), tags = list(type = "string")), members = structure(list(structure(list(accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), dataSource = structure(list(mlInputChannelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string")), containerExecutionParameters = structure(list(maxPayloadInMB = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), environment = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), mlModelInferencePayerAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["start_trained_model_inference_job_input"]]))
 }
 
 .cleanroomsml$start_trained_model_inference_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trainedModelInferenceJobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["start_trained_model_inference_job_output"]]))
 }
 
 .cleanroomsml$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["tag_resource_input"]]))
 }
 
 .cleanroomsml$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["tag_resource_output"]]))
 }
 
 .cleanroomsml$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["untag_resource_input"]]))
 }
 
 .cleanroomsml$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["untag_resource_output"]]))
 }
 
 .cleanroomsml$update_configured_audience_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredAudienceModelArn = structure(logical(0), tags = list(location = "uri", locationName = "configuredAudienceModelArn", type = "string")), outputConfig = structure(list(destination = structure(list(s3Destination = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), audienceModelArn = structure(logical(0), tags = list(type = "string")), sharedAudienceMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), minMatchingSeedSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), audienceSizeConfig = structure(list(audienceSizeType = structure(logical(0), tags = list(type = "string")), audienceSizeBins = structure(list(structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "list"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["update_configured_audience_model_input"]]))
 }
 
 .cleanroomsml$update_configured_audience_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuredAudienceModelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cleanroomsml_shapes[["update_configured_audience_model_output"]]))
 }

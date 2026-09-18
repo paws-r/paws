@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_get_component_policy}
 \alias{imagebuilder_get_component_policy}
-\title{Gets a component policy}
+\title{Retrieves a component policy}
 \usage{
 imagebuilder_get_component_policy(componentArn)
 }
@@ -10,7 +10,7 @@ imagebuilder_get_component_policy(componentArn)
 \item{componentArn}{[required] The Amazon Resource Name (ARN) of the component whose policy you want to retrieve.}
 }
 \description{
-Gets a component policy.
+Retrieves a component policy.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_component_policy/} for full documentation.
 }

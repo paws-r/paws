@@ -14,6 +14,7 @@ cloudwatchlogs_create_scheduled_query(
   scheduleExpression,
   timezone = NULL,
   startTimeOffset = NULL,
+  endTimeOffset = NULL,
   destinationConfiguration = NULL,
   scheduleStartTime = NULL,
   scheduleEndTime = NULL,
@@ -23,7 +24,7 @@ cloudwatchlogs_create_scheduled_query(
 )
 }
 \arguments{
-\item{name}{[required] The name of the scheduled query. The name must be unique within your account and region. Valid characters are alphanumeric characters, hyphens, underscores, and periods. Length must be between 1 and 255 characters.}
+\item{name}{[required] The name of the scheduled query. The name must be unique within your account and region. Length must be between 1 and 300 characters.}
 
 \item{description}{An optional description for the scheduled query to help identify its purpose and functionality.}
 
@@ -39,7 +40,9 @@ cloudwatchlogs_create_scheduled_query(
 
 \item{startTimeOffset}{The time offset in seconds that defines the lookback period for the query. This determines how far back in time the query searches from the execution time.}
 
-\item{destinationConfiguration}{Configuration for where to deliver query results. Currently supports Amazon S3 destinations for storing query output.}
+\item{endTimeOffset}{The time offset in seconds that defines the end of the lookback period for the query. Together with \code{startTimeOffset}, this determines the time window relative to the execution time over which the query runs.}
+
+\item{destinationConfiguration}{Configuration for where to deliver query results. Supports Amazon S3 destinations for storing query output and lookup table destinations for automatically refreshing lookup tables with query results. You can configure one or both destination types.}
 
 \item{scheduleStartTime}{The start time for the scheduled query in Unix epoch format. The query will not execute before this time.}
 

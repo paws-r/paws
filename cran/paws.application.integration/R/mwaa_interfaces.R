@@ -5,144 +5,120 @@ NULL
 
 .mwaa$create_cli_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["create_cli_token_input"]]))
 }
 
 .mwaa$create_cli_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CliToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), WebServerHostname = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["create_cli_token_output"]]))
 }
 
 .mwaa$create_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string")), ExecutionRoleArn = structure(logical(0), tags = list(type = "string")), SourceBucketArn = structure(logical(0), tags = list(type = "string")), DagS3Path = structure(logical(0), tags = list(type = "string")), NetworkConfiguration = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), PluginsS3Path = structure(logical(0), tags = list(type = "string")), PluginsS3ObjectVersion = structure(logical(0), tags = list(type = "string")), RequirementsS3Path = structure(logical(0), tags = list(type = "string")), RequirementsS3ObjectVersion = structure(logical(0), tags = list(type = "string")), StartupScriptS3Path = structure(logical(0), tags = list(type = "string")), StartupScriptS3ObjectVersion = structure(logical(0), tags = list(type = "string")), AirflowConfigurationOptions = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map", sensitive = TRUE)), EnvironmentClass = structure(logical(0), tags = list(type = "string")), MaxWorkers = structure(logical(0), tags = list(type = "integer", box = TRUE)), KmsKey = structure(logical(0), tags = list(type = "string")), AirflowVersion = structure(logical(0), tags = list(type = "string")), LoggingConfiguration = structure(list(DagProcessingLogs = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LogLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SchedulerLogs = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LogLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), WebserverLogs = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LogLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), WorkerLogs = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LogLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TaskLogs = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LogLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), WeeklyMaintenanceWindowStart = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), WebserverAccessMode = structure(logical(0), tags = list(type = "string")), MinWorkers = structure(logical(0), tags = list(type = "integer", box = TRUE)), Schedulers = structure(logical(0), tags = list(type = "integer", box = TRUE)), EndpointManagement = structure(logical(0), tags = list(type = "string")), MinWebservers = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxWebservers = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["create_environment_input"]]))
 }
 
 .mwaa$create_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["create_environment_output"]]))
 }
 
 .mwaa$create_web_login_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["create_web_login_token_input"]]))
 }
 
 .mwaa$create_web_login_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WebToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), WebServerHostname = structure(logical(0), tags = list(type = "string")), IamIdentity = structure(logical(0), tags = list(type = "string")), AirflowIdentity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["create_web_login_token_output"]]))
 }
 
 .mwaa$delete_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["delete_environment_input"]]))
 }
 
 .mwaa$delete_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["delete_environment_output"]]))
 }
 
 .mwaa$get_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["get_environment_input"]]))
 }
 
 .mwaa$get_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Environment = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), WebserverUrl = structure(logical(0), tags = list(type = "string")), ExecutionRoleArn = structure(logical(0), tags = list(type = "string")), ServiceRoleArn = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string")), AirflowVersion = structure(logical(0), tags = list(type = "string")), SourceBucketArn = structure(logical(0), tags = list(type = "string")), DagS3Path = structure(logical(0), tags = list(type = "string")), PluginsS3Path = structure(logical(0), tags = list(type = "string")), PluginsS3ObjectVersion = structure(logical(0), tags = list(type = "string")), RequirementsS3Path = structure(logical(0), tags = list(type = "string")), RequirementsS3ObjectVersion = structure(logical(0), tags = list(type = "string")), StartupScriptS3Path = structure(logical(0), tags = list(type = "string")), StartupScriptS3ObjectVersion = structure(logical(0), tags = list(type = "string")), AirflowConfigurationOptions = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map", sensitive = TRUE)), EnvironmentClass = structure(logical(0), tags = list(type = "string")), MaxWorkers = structure(logical(0), tags = list(type = "integer", box = TRUE)), NetworkConfiguration = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), LoggingConfiguration = structure(list(DagProcessingLogs = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LogLevel = structure(logical(0), tags = list(type = "string")), CloudWatchLogGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SchedulerLogs = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LogLevel = structure(logical(0), tags = list(type = "string")), CloudWatchLogGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), WebserverLogs = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LogLevel = structure(logical(0), tags = list(type = "string")), CloudWatchLogGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), WorkerLogs = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LogLevel = structure(logical(0), tags = list(type = "string")), CloudWatchLogGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TaskLogs = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LogLevel = structure(logical(0), tags = list(type = "string")), CloudWatchLogGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), LastUpdate = structure(list(Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Error = structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Source = structure(logical(0), tags = list(type = "string")), WorkerReplacementStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), WeeklyMaintenanceWindowStart = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), WebserverAccessMode = structure(logical(0), tags = list(type = "string")), MinWorkers = structure(logical(0), tags = list(type = "integer", box = TRUE)), Schedulers = structure(logical(0), tags = list(type = "integer", box = TRUE)), WebserverVpcEndpointService = structure(logical(0), tags = list(type = "string")), DatabaseVpcEndpointService = structure(logical(0), tags = list(type = "string")), CeleryExecutorQueue = structure(logical(0), tags = list(type = "string")), EndpointManagement = structure(logical(0), tags = list(type = "string")), MinWebservers = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxWebservers = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["get_environment_output"]]))
 }
 
 .mwaa$invoke_rest_api_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string")), Path = structure(logical(0), tags = list(type = "string")), Method = structure(logical(0), tags = list(type = "string")), QueryParameters = structure(list(), tags = list(type = "structure", document = TRUE)), Body = structure(list(), tags = list(type = "structure", document = TRUE, sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["invoke_rest_api_input"]]))
 }
 
 .mwaa$invoke_rest_api_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestApiStatusCode = structure(logical(0), tags = list(type = "integer", box = TRUE)), RestApiResponse = structure(list(), tags = list(type = "structure", document = TRUE, sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["invoke_rest_api_output"]]))
 }
 
 .mwaa$list_environments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["list_environments_input"]]))
 }
 
 .mwaa$list_environments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Environments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["list_environments_output"]]))
 }
 
 .mwaa$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["list_tags_for_resource_input"]]))
 }
 
 .mwaa$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["list_tags_for_resource_output"]]))
 }
 
 .mwaa$publish_metrics_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EnvironmentName = structure(logical(0), tags = list(location = "uri", locationName = "EnvironmentName", type = "string")), MetricData = structure(list(structure(list(MetricName = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "This type is for internal use and not meant for public use. Data set for this type will be ignored."))), tags = list(type = "list", deprecated = TRUE, deprecatedMessage = "This type is for internal use and not meant for public use. Data set for this type will be ignored.")), Value = structure(logical(0), tags = list(type = "double", box = TRUE)), Unit = structure(logical(0), tags = list(type = "string")), StatisticValues = structure(list(SampleCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), Sum = structure(logical(0), tags = list(type = "double", box = TRUE)), Minimum = structure(logical(0), tags = list(type = "double", box = TRUE)), Maximum = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "This type is for internal use and not meant for public use. Data set for this type will be ignored."))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "This type is for internal use and not meant for public use. Data set for this type will be ignored."))), tags = list(type = "list", deprecated = TRUE, deprecatedMessage = "This type is for internal use and not meant for public use. Data set for this type will be ignored."))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "This type is for internal use and not meant for public use. Data set for this type will be ignored."))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["publish_metrics_input"]]))
 }
 
 .mwaa$publish_metrics_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "This type is for internal use and not meant for public use. Data set for this type will be ignored."))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["publish_metrics_output"]]))
 }
 
 .mwaa$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["tag_resource_input"]]))
 }
 
 .mwaa$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["tag_resource_output"]]))
 }
 
 .mwaa$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["untag_resource_input"]]))
 }
 
 .mwaa$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["untag_resource_output"]]))
 }
 
 .mwaa$update_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string")), ExecutionRoleArn = structure(logical(0), tags = list(type = "string")), AirflowConfigurationOptions = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map", sensitive = TRUE)), AirflowVersion = structure(logical(0), tags = list(type = "string")), DagS3Path = structure(logical(0), tags = list(type = "string")), EnvironmentClass = structure(logical(0), tags = list(type = "string")), LoggingConfiguration = structure(list(DagProcessingLogs = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LogLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SchedulerLogs = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LogLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), WebserverLogs = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LogLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), WorkerLogs = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LogLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TaskLogs = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LogLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), MaxWorkers = structure(logical(0), tags = list(type = "integer", box = TRUE)), MinWorkers = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxWebservers = structure(logical(0), tags = list(type = "integer", box = TRUE)), MinWebservers = structure(logical(0), tags = list(type = "integer", box = TRUE)), WorkerReplacementStrategy = structure(logical(0), tags = list(type = "string")), NetworkConfiguration = structure(list(SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), PluginsS3Path = structure(logical(0), tags = list(type = "string")), PluginsS3ObjectVersion = structure(logical(0), tags = list(type = "string")), RequirementsS3Path = structure(logical(0), tags = list(type = "string")), RequirementsS3ObjectVersion = structure(logical(0), tags = list(type = "string")), Schedulers = structure(logical(0), tags = list(type = "integer", box = TRUE)), SourceBucketArn = structure(logical(0), tags = list(type = "string")), StartupScriptS3Path = structure(logical(0), tags = list(type = "string")), StartupScriptS3ObjectVersion = structure(logical(0), tags = list(type = "string")), WebserverAccessMode = structure(logical(0), tags = list(type = "string")), WeeklyMaintenanceWindowStart = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["update_environment_input"]]))
 }
 
 .mwaa$update_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .mwaa_shapes[["update_environment_output"]]))
 }

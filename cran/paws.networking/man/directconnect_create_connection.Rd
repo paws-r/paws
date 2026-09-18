@@ -12,7 +12,8 @@ directconnect_create_connection(
   lagId = NULL,
   tags = NULL,
   providerName = NULL,
-  requestMACSec = NULL
+  requestMACSec = NULL,
+  billingMode = NULL
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ directconnect_create_connection(
 \item{requestMACSec}{Indicates whether you want the connection to support MAC Security (MACsec).
 
 MAC Security (MACsec) is unavailable on hosted connections. For information about MAC Security (MACsec) prerequisites, see \href{https://docs.aws.amazon.com/directconnect/latest/UserGuide/}{MAC Security in Direct Connect} in the \emph{Direct Connect User Guide}.}
+
+\item{billingMode}{The billing mode for the connection.}
 }
 \description{
 Creates a connection between a customer network and a specific Direct Connect location.

@@ -10,7 +10,7 @@ entityresolution_delete_id_mapping_workflow(workflowName)
 \item{workflowName}{[required] The name of the workflow to be deleted.}
 }
 \description{
-Deletes the \code{IdMappingWorkflow} with a given name. This operation will succeed even if a workflow with the given name does not exist.
+Deletes the \code{IdMappingWorkflow} with a given name. This operation returns a \code{ResourceNotFoundException} if a workflow with the given name does not exist.
 
 See \url{https://www.paws-r-sdk.com/docs/entityresolution_delete_id_mapping_workflow/} for full documentation.
 }

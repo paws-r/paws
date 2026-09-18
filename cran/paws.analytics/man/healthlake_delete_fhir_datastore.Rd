@@ -7,7 +7,7 @@
 healthlake_delete_fhir_datastore(DatastoreId)
 }
 \arguments{
-\item{DatastoreId}{[required] The AWS-generated identifier for the data store to be deleted.}
+\item{DatastoreId}{[required] The Amazon Web Services-generated identifier for the data store to be deleted.}
 }
 \description{
 Delete a FHIR-enabled data store.

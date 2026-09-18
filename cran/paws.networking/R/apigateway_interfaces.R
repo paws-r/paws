@@ -5,200 +5,167 @@ NULL
 
 .apigateway$create_api_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean")), generateDistinctId = structure(logical(0), tags = list(type = "boolean")), value = structure(logical(0), tags = list(type = "string")), stageKeys = structure(list(structure(list(restApiId = structure(logical(0), tags = list(type = "string")), stageName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), customerId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_api_key_input"]]))
 }
 
 .apigateway$create_api_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), customerId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean")), createdDate = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), stageKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_api_key_output"]]))
 }
 
 .apigateway$create_authorizer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), providerARNs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), authType = structure(logical(0), tags = list(type = "string")), authorizerUri = structure(logical(0), tags = list(type = "string")), authorizerCredentials = structure(logical(0), tags = list(type = "string")), identitySource = structure(logical(0), tags = list(type = "string")), identityValidationExpression = structure(logical(0), tags = list(type = "string")), authorizerResultTtlInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_authorizer_input"]]))
 }
 
 .apigateway$create_authorizer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), providerARNs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), authType = structure(logical(0), tags = list(type = "string")), authorizerUri = structure(logical(0), tags = list(type = "string")), authorizerCredentials = structure(logical(0), tags = list(type = "string")), identitySource = structure(logical(0), tags = list(type = "string")), identityValidationExpression = structure(logical(0), tags = list(type = "string")), authorizerResultTtlInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_authorizer_output"]]))
 }
 
 .apigateway$create_base_path_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), domainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), basePath = structure(logical(0), tags = list(type = "string")), restApiId = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_base_path_mapping_input"]]))
 }
 
 .apigateway$create_base_path_mapping_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(basePath = structure(logical(0), tags = list(type = "string")), restApiId = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_base_path_mapping_output"]]))
 }
 
 .apigateway$create_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), stageName = structure(logical(0), tags = list(type = "string")), stageDescription = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), cacheClusterEnabled = structure(logical(0), tags = list(type = "boolean")), cacheClusterSize = structure(logical(0), tags = list(type = "string")), variables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), canarySettings = structure(list(percentTraffic = structure(logical(0), tags = list(type = "double")), stageVariableOverrides = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), useStageCache = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), tracingEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_deployment_input"]]))
 }
 
 .apigateway$create_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), apiSummary = structure(list(structure(list(structure(list(authorizationType = structure(logical(0), tags = list(type = "string")), apiKeyRequired = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_deployment_output"]]))
 }
 
 .apigateway$create_documentation_part_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), location = structure(list(type = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), method = structure(logical(0), tags = list(type = "string")), statusCode = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), properties = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_documentation_part_input"]]))
 }
 
 .apigateway$create_documentation_part_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), location = structure(list(type = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), method = structure(logical(0), tags = list(type = "string")), statusCode = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), properties = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_documentation_part_output"]]))
 }
 
 .apigateway$create_documentation_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), documentationVersion = structure(logical(0), tags = list(type = "string")), stageName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_documentation_version_input"]]))
 }
 
 .apigateway$create_documentation_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(version = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_documentation_version_output"]]))
 }
 
 .apigateway$create_domain_name_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), certificateBody = structure(logical(0), tags = list(type = "string")), certificatePrivateKey = structure(logical(0), tags = list(type = "string")), certificateChain = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), regionalCertificateName = structure(logical(0), tags = list(type = "string")), regionalCertificateArn = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ipAddressType = structure(logical(0), tags = list(type = "string")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), securityPolicy = structure(logical(0), tags = list(type = "string")), endpointAccessMode = structure(logical(0), tags = list(type = "string")), mutualTlsAuthentication = structure(list(truststoreUri = structure(logical(0), tags = list(type = "string")), truststoreVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ownershipVerificationCertificateArn = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string")), routingMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_domain_name_input"]]))
 }
 
 .apigateway$create_domain_name_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(type = "string")), domainNameId = structure(logical(0), tags = list(type = "string")), domainNameArn = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), certificateUploadDate = structure(logical(0), tags = list(type = "timestamp")), regionalDomainName = structure(logical(0), tags = list(type = "string")), regionalHostedZoneId = structure(logical(0), tags = list(type = "string")), regionalCertificateName = structure(logical(0), tags = list(type = "string")), regionalCertificateArn = structure(logical(0), tags = list(type = "string")), distributionDomainName = structure(logical(0), tags = list(type = "string")), distributionHostedZoneId = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ipAddressType = structure(logical(0), tags = list(type = "string")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), domainNameStatus = structure(logical(0), tags = list(type = "string")), domainNameStatusMessage = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), endpointAccessMode = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), mutualTlsAuthentication = structure(list(truststoreUri = structure(logical(0), tags = list(type = "string")), truststoreVersion = structure(logical(0), tags = list(type = "string")), truststoreWarnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ownershipVerificationCertificateArn = structure(logical(0), tags = list(type = "string")), managementPolicy = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string")), routingMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_domain_name_output"]]))
 }
 
 .apigateway$create_domain_name_access_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainNameArn = structure(logical(0), tags = list(type = "string")), accessAssociationSourceType = structure(logical(0), tags = list(type = "string")), accessAssociationSource = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_domain_name_access_association_input"]]))
 }
 
 .apigateway$create_domain_name_access_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainNameAccessAssociationArn = structure(logical(0), tags = list(type = "string")), domainNameArn = structure(logical(0), tags = list(type = "string")), accessAssociationSourceType = structure(logical(0), tags = list(type = "string")), accessAssociationSource = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_domain_name_access_association_output"]]))
 }
 
 .apigateway$create_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string")), contentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_model_input"]]))
 }
 
 .apigateway$create_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string")), contentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_model_output"]]))
 }
 
 .apigateway$create_request_validator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), name = structure(logical(0), tags = list(type = "string")), validateRequestBody = structure(logical(0), tags = list(type = "boolean")), validateRequestParameters = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_request_validator_input"]]))
 }
 
 .apigateway$create_request_validator_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), validateRequestBody = structure(logical(0), tags = list(type = "boolean")), validateRequestParameters = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_request_validator_output"]]))
 }
 
 .apigateway$create_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), parentId = structure(logical(0), tags = list(location = "uri", locationName = "parent_id", type = "string")), pathPart = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_resource_input"]]))
 }
 
 .apigateway$create_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), parentId = structure(logical(0), tags = list(type = "string")), pathPart = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), resourceMethods = structure(list(structure(list(httpMethod = structure(logical(0), tags = list(type = "string")), authorizationType = structure(logical(0), tags = list(type = "string")), authorizerId = structure(logical(0), tags = list(type = "string")), apiKeyRequired = structure(logical(0), tags = list(type = "boolean")), requestValidatorId = structure(logical(0), tags = list(type = "string")), operationName = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), requestModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), methodResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), responseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), methodIntegration = structure(list(type = structure(logical(0), tags = list(type = "string")), httpMethod = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), connectionType = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), credentials = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), requestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), passthroughBehavior = structure(logical(0), tags = list(type = "string")), contentHandling = structure(logical(0), tags = list(type = "string")), timeoutInMillis = structure(logical(0), tags = list(type = "integer")), cacheNamespace = structure(logical(0), tags = list(type = "string")), cacheKeyParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), integrationResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), selectionPattern = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), contentHandling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), tlsConfig = structure(list(insecureSkipVerification = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), responseTransferMode = structure(logical(0), tags = list(type = "string")), integrationTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), authorizationScopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_resource_output"]]))
 }
 
 .apigateway$create_rest_api_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), cloneFrom = structure(logical(0), tags = list(type = "string")), binaryMediaTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), minimumCompressionSize = structure(logical(0), tags = list(type = "integer")), apiKeySource = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ipAddressType = structure(logical(0), tags = list(type = "string")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), policy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), disableExecuteApiEndpoint = structure(logical(0), tags = list(type = "boolean")), securityPolicy = structure(logical(0), tags = list(type = "string")), endpointAccessMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_rest_api_input"]]))
 }
 
 .apigateway$create_rest_api_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), binaryMediaTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), minimumCompressionSize = structure(logical(0), tags = list(type = "integer")), apiKeySource = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ipAddressType = structure(logical(0), tags = list(type = "string")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), policy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), disableExecuteApiEndpoint = structure(logical(0), tags = list(type = "boolean")), rootResourceId = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), endpointAccessMode = structure(logical(0), tags = list(type = "string")), apiStatus = structure(logical(0), tags = list(type = "string")), apiStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_rest_api_output"]]))
 }
 
 .apigateway$create_stage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), stageName = structure(logical(0), tags = list(type = "string")), deploymentId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), cacheClusterEnabled = structure(logical(0), tags = list(type = "boolean")), cacheClusterSize = structure(logical(0), tags = list(type = "string")), variables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), documentationVersion = structure(logical(0), tags = list(type = "string")), canarySettings = structure(list(percentTraffic = structure(logical(0), tags = list(type = "double")), deploymentId = structure(logical(0), tags = list(type = "string")), stageVariableOverrides = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), useStageCache = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), tracingEnabled = structure(logical(0), tags = list(type = "boolean")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_stage_input"]]))
 }
 
 .apigateway$create_stage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), clientCertificateId = structure(logical(0), tags = list(type = "string")), stageName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), cacheClusterEnabled = structure(logical(0), tags = list(type = "boolean")), cacheClusterSize = structure(logical(0), tags = list(type = "string")), cacheClusterStatus = structure(logical(0), tags = list(type = "string")), methodSettings = structure(list(structure(list(metricsEnabled = structure(logical(0), tags = list(type = "boolean")), loggingLevel = structure(logical(0), tags = list(type = "string")), dataTraceEnabled = structure(logical(0), tags = list(type = "boolean")), throttlingBurstLimit = structure(logical(0), tags = list(type = "integer")), throttlingRateLimit = structure(logical(0), tags = list(type = "double")), cachingEnabled = structure(logical(0), tags = list(type = "boolean")), cacheTtlInSeconds = structure(logical(0), tags = list(type = "integer")), cacheDataEncrypted = structure(logical(0), tags = list(type = "boolean")), requireAuthorizationForCacheControl = structure(logical(0), tags = list(type = "boolean")), unauthorizedCacheControlHeaderStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), variables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), documentationVersion = structure(logical(0), tags = list(type = "string")), accessLogSettings = structure(list(format = structure(logical(0), tags = list(type = "string")), destinationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), canarySettings = structure(list(percentTraffic = structure(logical(0), tags = list(type = "double")), deploymentId = structure(logical(0), tags = list(type = "string")), stageVariableOverrides = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), useStageCache = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), tracingEnabled = structure(logical(0), tags = list(type = "boolean")), webAclArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), createdDate = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_stage_output"]]))
 }
 
 .apigateway$create_usage_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), apiStages = structure(list(structure(list(apiId = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string")), throttle = structure(list(structure(list(burstLimit = structure(logical(0), tags = list(type = "integer")), rateLimit = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), throttle = structure(list(burstLimit = structure(logical(0), tags = list(type = "integer")), rateLimit = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), quota = structure(list(limit = structure(logical(0), tags = list(type = "integer")), offset = structure(logical(0), tags = list(type = "integer")), period = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_usage_plan_input"]]))
 }
 
 .apigateway$create_usage_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), apiStages = structure(list(structure(list(apiId = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string")), throttle = structure(list(structure(list(burstLimit = structure(logical(0), tags = list(type = "integer")), rateLimit = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), throttle = structure(list(burstLimit = structure(logical(0), tags = list(type = "integer")), rateLimit = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), quota = structure(list(limit = structure(logical(0), tags = list(type = "integer")), offset = structure(logical(0), tags = list(type = "integer")), period = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), productCode = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_usage_plan_output"]]))
 }
 
 .apigateway$create_usage_plan_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usagePlanId = structure(logical(0), tags = list(location = "uri", locationName = "usageplanId", type = "string")), keyId = structure(logical(0), tags = list(type = "string")), keyType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_usage_plan_key_input"]]))
 }
 
 .apigateway$create_usage_plan_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_usage_plan_key_output"]]))
 }
 
 .apigateway$create_vpc_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), targetArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_vpc_link_input"]]))
 }
 
 .apigateway$create_vpc_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), targetArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["create_vpc_link_output"]]))
 }
 
 .apigateway$delete_api_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(apiKey = structure(logical(0), tags = list(location = "uri", locationName = "api_Key", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_api_key_input"]]))
 }
 
 .apigateway$delete_api_key_output <- function(...) {
@@ -207,8 +174,7 @@ NULL
 
 .apigateway$delete_authorizer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), authorizerId = structure(logical(0), tags = list(location = "uri", locationName = "authorizer_id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_authorizer_input"]]))
 }
 
 .apigateway$delete_authorizer_output <- function(...) {
@@ -217,8 +183,7 @@ NULL
 
 .apigateway$delete_base_path_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), domainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), basePath = structure(logical(0), tags = list(location = "uri", locationName = "base_path", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_base_path_mapping_input"]]))
 }
 
 .apigateway$delete_base_path_mapping_output <- function(...) {
@@ -227,8 +192,7 @@ NULL
 
 .apigateway$delete_client_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientCertificateId = structure(logical(0), tags = list(location = "uri", locationName = "clientcertificate_id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_client_certificate_input"]]))
 }
 
 .apigateway$delete_client_certificate_output <- function(...) {
@@ -237,8 +201,7 @@ NULL
 
 .apigateway$delete_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), deploymentId = structure(logical(0), tags = list(location = "uri", locationName = "deployment_id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_deployment_input"]]))
 }
 
 .apigateway$delete_deployment_output <- function(...) {
@@ -247,8 +210,7 @@ NULL
 
 .apigateway$delete_documentation_part_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), documentationPartId = structure(logical(0), tags = list(location = "uri", locationName = "part_id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_documentation_part_input"]]))
 }
 
 .apigateway$delete_documentation_part_output <- function(...) {
@@ -257,8 +219,7 @@ NULL
 
 .apigateway$delete_documentation_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), documentationVersion = structure(logical(0), tags = list(location = "uri", locationName = "doc_version", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_documentation_version_input"]]))
 }
 
 .apigateway$delete_documentation_version_output <- function(...) {
@@ -267,8 +228,7 @@ NULL
 
 .apigateway$delete_domain_name_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), domainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_domain_name_input"]]))
 }
 
 .apigateway$delete_domain_name_output <- function(...) {
@@ -277,8 +237,7 @@ NULL
 
 .apigateway$delete_domain_name_access_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainNameAccessAssociationArn = structure(logical(0), tags = list(location = "uri", locationName = "domain_name_access_association_arn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_domain_name_access_association_input"]]))
 }
 
 .apigateway$delete_domain_name_access_association_output <- function(...) {
@@ -287,8 +246,7 @@ NULL
 
 .apigateway$delete_gateway_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), responseType = structure(logical(0), tags = list(location = "uri", locationName = "response_type", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_gateway_response_input"]]))
 }
 
 .apigateway$delete_gateway_response_output <- function(...) {
@@ -297,8 +255,7 @@ NULL
 
 .apigateway$delete_integration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_integration_input"]]))
 }
 
 .apigateway$delete_integration_output <- function(...) {
@@ -307,8 +264,7 @@ NULL
 
 .apigateway$delete_integration_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string")), statusCode = structure(logical(0), tags = list(location = "uri", locationName = "status_code", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_integration_response_input"]]))
 }
 
 .apigateway$delete_integration_response_output <- function(...) {
@@ -317,8 +273,7 @@ NULL
 
 .apigateway$delete_method_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_method_input"]]))
 }
 
 .apigateway$delete_method_output <- function(...) {
@@ -327,8 +282,7 @@ NULL
 
 .apigateway$delete_method_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string")), statusCode = structure(logical(0), tags = list(location = "uri", locationName = "status_code", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_method_response_input"]]))
 }
 
 .apigateway$delete_method_response_output <- function(...) {
@@ -337,8 +291,7 @@ NULL
 
 .apigateway$delete_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), modelName = structure(logical(0), tags = list(location = "uri", locationName = "model_name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_model_input"]]))
 }
 
 .apigateway$delete_model_output <- function(...) {
@@ -347,8 +300,7 @@ NULL
 
 .apigateway$delete_request_validator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), requestValidatorId = structure(logical(0), tags = list(location = "uri", locationName = "requestvalidator_id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_request_validator_input"]]))
 }
 
 .apigateway$delete_request_validator_output <- function(...) {
@@ -357,8 +309,7 @@ NULL
 
 .apigateway$delete_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_resource_input"]]))
 }
 
 .apigateway$delete_resource_output <- function(...) {
@@ -367,8 +318,7 @@ NULL
 
 .apigateway$delete_rest_api_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_rest_api_input"]]))
 }
 
 .apigateway$delete_rest_api_output <- function(...) {
@@ -377,8 +327,7 @@ NULL
 
 .apigateway$delete_stage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), stageName = structure(logical(0), tags = list(location = "uri", locationName = "stage_name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_stage_input"]]))
 }
 
 .apigateway$delete_stage_output <- function(...) {
@@ -387,8 +336,7 @@ NULL
 
 .apigateway$delete_usage_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usagePlanId = structure(logical(0), tags = list(location = "uri", locationName = "usageplanId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_usage_plan_input"]]))
 }
 
 .apigateway$delete_usage_plan_output <- function(...) {
@@ -397,8 +345,7 @@ NULL
 
 .apigateway$delete_usage_plan_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usagePlanId = structure(logical(0), tags = list(location = "uri", locationName = "usageplanId", type = "string")), keyId = structure(logical(0), tags = list(location = "uri", locationName = "keyId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_usage_plan_key_input"]]))
 }
 
 .apigateway$delete_usage_plan_key_output <- function(...) {
@@ -407,8 +354,7 @@ NULL
 
 .apigateway$delete_vpc_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(vpcLinkId = structure(logical(0), tags = list(location = "uri", locationName = "vpclink_id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["delete_vpc_link_input"]]))
 }
 
 .apigateway$delete_vpc_link_output <- function(...) {
@@ -417,8 +363,7 @@ NULL
 
 .apigateway$flush_stage_authorizers_cache_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), stageName = structure(logical(0), tags = list(location = "uri", locationName = "stage_name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["flush_stage_authorizers_cache_input"]]))
 }
 
 .apigateway$flush_stage_authorizers_cache_output <- function(...) {
@@ -427,8 +372,7 @@ NULL
 
 .apigateway$flush_stage_cache_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), stageName = structure(logical(0), tags = list(location = "uri", locationName = "stage_name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["flush_stage_cache_input"]]))
 }
 
 .apigateway$flush_stage_cache_output <- function(...) {
@@ -437,692 +381,577 @@ NULL
 
 .apigateway$generate_client_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["generate_client_certificate_input"]]))
 }
 
 .apigateway$generate_client_certificate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientCertificateId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), pemEncodedCertificate = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), expirationDate = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["generate_client_certificate_output"]]))
 }
 
 .apigateway$get_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_account_input"]]))
 }
 
 .apigateway$get_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cloudwatchRoleArn = structure(logical(0), tags = list(type = "string")), throttleSettings = structure(list(burstLimit = structure(logical(0), tags = list(type = "integer")), rateLimit = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), features = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), apiKeyVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_account_output"]]))
 }
 
 .apigateway$get_api_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(apiKey = structure(logical(0), tags = list(location = "uri", locationName = "api_Key", type = "string")), includeValue = structure(logical(0), tags = list(location = "querystring", locationName = "includeValue", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_api_key_input"]]))
 }
 
 .apigateway$get_api_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), customerId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean")), createdDate = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), stageKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_api_key_output"]]))
 }
 
 .apigateway$get_api_keys_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), nameQuery = structure(logical(0), tags = list(location = "querystring", locationName = "name", type = "string")), customerId = structure(logical(0), tags = list(location = "querystring", locationName = "customerId", type = "string")), includeValues = structure(logical(0), tags = list(location = "querystring", locationName = "includeValues", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_api_keys_input"]]))
 }
 
 .apigateway$get_api_keys_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), customerId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean")), createdDate = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), stageKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_api_keys_output"]]))
 }
 
 .apigateway$get_authorizer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), authorizerId = structure(logical(0), tags = list(location = "uri", locationName = "authorizer_id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_authorizer_input"]]))
 }
 
 .apigateway$get_authorizer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), providerARNs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), authType = structure(logical(0), tags = list(type = "string")), authorizerUri = structure(logical(0), tags = list(type = "string")), authorizerCredentials = structure(logical(0), tags = list(type = "string")), identitySource = structure(logical(0), tags = list(type = "string")), identityValidationExpression = structure(logical(0), tags = list(type = "string")), authorizerResultTtlInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_authorizer_output"]]))
 }
 
 .apigateway$get_authorizers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_authorizers_input"]]))
 }
 
 .apigateway$get_authorizers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), providerARNs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), authType = structure(logical(0), tags = list(type = "string")), authorizerUri = structure(logical(0), tags = list(type = "string")), authorizerCredentials = structure(logical(0), tags = list(type = "string")), identitySource = structure(logical(0), tags = list(type = "string")), identityValidationExpression = structure(logical(0), tags = list(type = "string")), authorizerResultTtlInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_authorizers_output"]]))
 }
 
 .apigateway$get_base_path_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), domainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), basePath = structure(logical(0), tags = list(location = "uri", locationName = "base_path", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_base_path_mapping_input"]]))
 }
 
 .apigateway$get_base_path_mapping_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(basePath = structure(logical(0), tags = list(type = "string")), restApiId = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_base_path_mapping_output"]]))
 }
 
 .apigateway$get_base_path_mappings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), domainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_base_path_mappings_input"]]))
 }
 
 .apigateway$get_base_path_mappings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(basePath = structure(logical(0), tags = list(type = "string")), restApiId = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_base_path_mappings_output"]]))
 }
 
 .apigateway$get_client_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientCertificateId = structure(logical(0), tags = list(location = "uri", locationName = "clientcertificate_id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_client_certificate_input"]]))
 }
 
 .apigateway$get_client_certificate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientCertificateId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), pemEncodedCertificate = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), expirationDate = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_client_certificate_output"]]))
 }
 
 .apigateway$get_client_certificates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_client_certificates_input"]]))
 }
 
 .apigateway$get_client_certificates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(clientCertificateId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), pemEncodedCertificate = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), expirationDate = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_client_certificates_output"]]))
 }
 
 .apigateway$get_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), deploymentId = structure(logical(0), tags = list(location = "uri", locationName = "deployment_id", type = "string")), embed = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "embed", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_deployment_input"]]))
 }
 
 .apigateway$get_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), apiSummary = structure(list(structure(list(structure(list(authorizationType = structure(logical(0), tags = list(type = "string")), apiKeyRequired = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_deployment_output"]]))
 }
 
 .apigateway$get_deployments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_deployments_input"]]))
 }
 
 .apigateway$get_deployments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), apiSummary = structure(list(structure(list(structure(list(authorizationType = structure(logical(0), tags = list(type = "string")), apiKeyRequired = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_deployments_output"]]))
 }
 
 .apigateway$get_documentation_part_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), documentationPartId = structure(logical(0), tags = list(location = "uri", locationName = "part_id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_documentation_part_input"]]))
 }
 
 .apigateway$get_documentation_part_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), location = structure(list(type = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), method = structure(logical(0), tags = list(type = "string")), statusCode = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), properties = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_documentation_part_output"]]))
 }
 
 .apigateway$get_documentation_parts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), type = structure(logical(0), tags = list(location = "querystring", locationName = "type", type = "string")), nameQuery = structure(logical(0), tags = list(location = "querystring", locationName = "name", type = "string")), path = structure(logical(0), tags = list(location = "querystring", locationName = "path", type = "string")), position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), locationStatus = structure(logical(0), tags = list(location = "querystring", locationName = "locationStatus", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_documentation_parts_input"]]))
 }
 
 .apigateway$get_documentation_parts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), location = structure(list(type = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), method = structure(logical(0), tags = list(type = "string")), statusCode = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), properties = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_documentation_parts_output"]]))
 }
 
 .apigateway$get_documentation_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), documentationVersion = structure(logical(0), tags = list(location = "uri", locationName = "doc_version", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_documentation_version_input"]]))
 }
 
 .apigateway$get_documentation_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(version = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_documentation_version_output"]]))
 }
 
 .apigateway$get_documentation_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_documentation_versions_input"]]))
 }
 
 .apigateway$get_documentation_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(version = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_documentation_versions_output"]]))
 }
 
 .apigateway$get_domain_name_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), domainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_domain_name_input"]]))
 }
 
 .apigateway$get_domain_name_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(type = "string")), domainNameId = structure(logical(0), tags = list(type = "string")), domainNameArn = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), certificateUploadDate = structure(logical(0), tags = list(type = "timestamp")), regionalDomainName = structure(logical(0), tags = list(type = "string")), regionalHostedZoneId = structure(logical(0), tags = list(type = "string")), regionalCertificateName = structure(logical(0), tags = list(type = "string")), regionalCertificateArn = structure(logical(0), tags = list(type = "string")), distributionDomainName = structure(logical(0), tags = list(type = "string")), distributionHostedZoneId = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ipAddressType = structure(logical(0), tags = list(type = "string")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), domainNameStatus = structure(logical(0), tags = list(type = "string")), domainNameStatusMessage = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), endpointAccessMode = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), mutualTlsAuthentication = structure(list(truststoreUri = structure(logical(0), tags = list(type = "string")), truststoreVersion = structure(logical(0), tags = list(type = "string")), truststoreWarnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ownershipVerificationCertificateArn = structure(logical(0), tags = list(type = "string")), managementPolicy = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string")), routingMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_domain_name_output"]]))
 }
 
 .apigateway$get_domain_name_access_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), resourceOwner = structure(logical(0), tags = list(location = "querystring", locationName = "resourceOwner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_domain_name_access_associations_input"]]))
 }
 
 .apigateway$get_domain_name_access_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(domainNameAccessAssociationArn = structure(logical(0), tags = list(type = "string")), domainNameArn = structure(logical(0), tags = list(type = "string")), accessAssociationSourceType = structure(logical(0), tags = list(type = "string")), accessAssociationSource = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_domain_name_access_associations_output"]]))
 }
 
 .apigateway$get_domain_names_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), resourceOwner = structure(logical(0), tags = list(location = "querystring", locationName = "resourceOwner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_domain_names_input"]]))
 }
 
 .apigateway$get_domain_names_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(domainName = structure(logical(0), tags = list(type = "string")), domainNameId = structure(logical(0), tags = list(type = "string")), domainNameArn = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), certificateUploadDate = structure(logical(0), tags = list(type = "timestamp")), regionalDomainName = structure(logical(0), tags = list(type = "string")), regionalHostedZoneId = structure(logical(0), tags = list(type = "string")), regionalCertificateName = structure(logical(0), tags = list(type = "string")), regionalCertificateArn = structure(logical(0), tags = list(type = "string")), distributionDomainName = structure(logical(0), tags = list(type = "string")), distributionHostedZoneId = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ipAddressType = structure(logical(0), tags = list(type = "string")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), domainNameStatus = structure(logical(0), tags = list(type = "string")), domainNameStatusMessage = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), endpointAccessMode = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), mutualTlsAuthentication = structure(list(truststoreUri = structure(logical(0), tags = list(type = "string")), truststoreVersion = structure(logical(0), tags = list(type = "string")), truststoreWarnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ownershipVerificationCertificateArn = structure(logical(0), tags = list(type = "string")), managementPolicy = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string")), routingMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_domain_names_output"]]))
 }
 
 .apigateway$get_export_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), stageName = structure(logical(0), tags = list(location = "uri", locationName = "stage_name", type = "string")), exportType = structure(logical(0), tags = list(location = "uri", locationName = "export_type", type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", type = "map")), accepts = structure(logical(0), tags = list(location = "header", locationName = "Accept", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_export_input"]]))
 }
 
 .apigateway$get_export_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), contentDisposition = structure(logical(0), tags = list(location = "header", locationName = "Content-Disposition", type = "string")), body = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", payload = "body"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_export_output"]]))
 }
 
 .apigateway$get_gateway_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), responseType = structure(logical(0), tags = list(location = "uri", locationName = "response_type", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_gateway_response_input"]]))
 }
 
 .apigateway$get_gateway_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(responseType = structure(logical(0), tags = list(type = "string")), statusCode = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), defaultResponse = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_gateway_response_output"]]))
 }
 
 .apigateway$get_gateway_responses_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_gateway_responses_input"]]))
 }
 
 .apigateway$get_gateway_responses_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(responseType = structure(logical(0), tags = list(type = "string")), statusCode = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), defaultResponse = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_gateway_responses_output"]]))
 }
 
 .apigateway$get_integration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_integration_input"]]))
 }
 
 .apigateway$get_integration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), httpMethod = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), connectionType = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), credentials = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), requestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), passthroughBehavior = structure(logical(0), tags = list(type = "string")), contentHandling = structure(logical(0), tags = list(type = "string")), timeoutInMillis = structure(logical(0), tags = list(type = "integer")), cacheNamespace = structure(logical(0), tags = list(type = "string")), cacheKeyParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), integrationResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), selectionPattern = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), contentHandling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), tlsConfig = structure(list(insecureSkipVerification = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), responseTransferMode = structure(logical(0), tags = list(type = "string")), integrationTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_integration_output"]]))
 }
 
 .apigateway$get_integration_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string")), statusCode = structure(logical(0), tags = list(location = "uri", locationName = "status_code", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_integration_response_input"]]))
 }
 
 .apigateway$get_integration_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(statusCode = structure(logical(0), tags = list(type = "string")), selectionPattern = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), contentHandling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_integration_response_output"]]))
 }
 
 .apigateway$get_method_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_method_input"]]))
 }
 
 .apigateway$get_method_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(httpMethod = structure(logical(0), tags = list(type = "string")), authorizationType = structure(logical(0), tags = list(type = "string")), authorizerId = structure(logical(0), tags = list(type = "string")), apiKeyRequired = structure(logical(0), tags = list(type = "boolean")), requestValidatorId = structure(logical(0), tags = list(type = "string")), operationName = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), requestModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), methodResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), responseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), methodIntegration = structure(list(type = structure(logical(0), tags = list(type = "string")), httpMethod = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), connectionType = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), credentials = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), requestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), passthroughBehavior = structure(logical(0), tags = list(type = "string")), contentHandling = structure(logical(0), tags = list(type = "string")), timeoutInMillis = structure(logical(0), tags = list(type = "integer")), cacheNamespace = structure(logical(0), tags = list(type = "string")), cacheKeyParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), integrationResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), selectionPattern = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), contentHandling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), tlsConfig = structure(list(insecureSkipVerification = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), responseTransferMode = structure(logical(0), tags = list(type = "string")), integrationTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), authorizationScopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_method_output"]]))
 }
 
 .apigateway$get_method_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string")), statusCode = structure(logical(0), tags = list(location = "uri", locationName = "status_code", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_method_response_input"]]))
 }
 
 .apigateway$get_method_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(statusCode = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), responseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_method_response_output"]]))
 }
 
 .apigateway$get_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), modelName = structure(logical(0), tags = list(location = "uri", locationName = "model_name", type = "string")), flatten = structure(logical(0), tags = list(location = "querystring", locationName = "flatten", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_model_input"]]))
 }
 
 .apigateway$get_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string")), contentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_model_output"]]))
 }
 
 .apigateway$get_model_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), modelName = structure(logical(0), tags = list(location = "uri", locationName = "model_name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_model_template_input"]]))
 }
 
 .apigateway$get_model_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_model_template_output"]]))
 }
 
 .apigateway$get_models_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_models_input"]]))
 }
 
 .apigateway$get_models_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string")), contentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_models_output"]]))
 }
 
 .apigateway$get_request_validator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), requestValidatorId = structure(logical(0), tags = list(location = "uri", locationName = "requestvalidator_id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_request_validator_input"]]))
 }
 
 .apigateway$get_request_validator_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), validateRequestBody = structure(logical(0), tags = list(type = "boolean")), validateRequestParameters = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_request_validator_output"]]))
 }
 
 .apigateway$get_request_validators_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_request_validators_input"]]))
 }
 
 .apigateway$get_request_validators_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), validateRequestBody = structure(logical(0), tags = list(type = "boolean")), validateRequestParameters = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_request_validators_output"]]))
 }
 
 .apigateway$get_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), embed = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "embed", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_resource_input"]]))
 }
 
 .apigateway$get_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), parentId = structure(logical(0), tags = list(type = "string")), pathPart = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), resourceMethods = structure(list(structure(list(httpMethod = structure(logical(0), tags = list(type = "string")), authorizationType = structure(logical(0), tags = list(type = "string")), authorizerId = structure(logical(0), tags = list(type = "string")), apiKeyRequired = structure(logical(0), tags = list(type = "boolean")), requestValidatorId = structure(logical(0), tags = list(type = "string")), operationName = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), requestModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), methodResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), responseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), methodIntegration = structure(list(type = structure(logical(0), tags = list(type = "string")), httpMethod = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), connectionType = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), credentials = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), requestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), passthroughBehavior = structure(logical(0), tags = list(type = "string")), contentHandling = structure(logical(0), tags = list(type = "string")), timeoutInMillis = structure(logical(0), tags = list(type = "integer")), cacheNamespace = structure(logical(0), tags = list(type = "string")), cacheKeyParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), integrationResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), selectionPattern = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), contentHandling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), tlsConfig = structure(list(insecureSkipVerification = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), responseTransferMode = structure(logical(0), tags = list(type = "string")), integrationTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), authorizationScopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_resource_output"]]))
 }
 
 .apigateway$get_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), embed = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "embed", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_resources_input"]]))
 }
 
 .apigateway$get_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), parentId = structure(logical(0), tags = list(type = "string")), pathPart = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), resourceMethods = structure(list(structure(list(httpMethod = structure(logical(0), tags = list(type = "string")), authorizationType = structure(logical(0), tags = list(type = "string")), authorizerId = structure(logical(0), tags = list(type = "string")), apiKeyRequired = structure(logical(0), tags = list(type = "boolean")), requestValidatorId = structure(logical(0), tags = list(type = "string")), operationName = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), requestModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), methodResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), responseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), methodIntegration = structure(list(type = structure(logical(0), tags = list(type = "string")), httpMethod = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), connectionType = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), credentials = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), requestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), passthroughBehavior = structure(logical(0), tags = list(type = "string")), contentHandling = structure(logical(0), tags = list(type = "string")), timeoutInMillis = structure(logical(0), tags = list(type = "integer")), cacheNamespace = structure(logical(0), tags = list(type = "string")), cacheKeyParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), integrationResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), selectionPattern = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), contentHandling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), tlsConfig = structure(list(insecureSkipVerification = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), responseTransferMode = structure(logical(0), tags = list(type = "string")), integrationTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), authorizationScopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_resources_output"]]))
 }
 
 .apigateway$get_rest_api_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_rest_api_input"]]))
 }
 
 .apigateway$get_rest_api_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), binaryMediaTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), minimumCompressionSize = structure(logical(0), tags = list(type = "integer")), apiKeySource = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ipAddressType = structure(logical(0), tags = list(type = "string")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), policy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), disableExecuteApiEndpoint = structure(logical(0), tags = list(type = "boolean")), rootResourceId = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), endpointAccessMode = structure(logical(0), tags = list(type = "string")), apiStatus = structure(logical(0), tags = list(type = "string")), apiStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_rest_api_output"]]))
 }
 
 .apigateway$get_rest_apis_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_rest_apis_input"]]))
 }
 
 .apigateway$get_rest_apis_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), binaryMediaTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), minimumCompressionSize = structure(logical(0), tags = list(type = "integer")), apiKeySource = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ipAddressType = structure(logical(0), tags = list(type = "string")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), policy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), disableExecuteApiEndpoint = structure(logical(0), tags = list(type = "boolean")), rootResourceId = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), endpointAccessMode = structure(logical(0), tags = list(type = "string")), apiStatus = structure(logical(0), tags = list(type = "string")), apiStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_rest_apis_output"]]))
 }
 
 .apigateway$get_sdk_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), stageName = structure(logical(0), tags = list(location = "uri", locationName = "stage_name", type = "string")), sdkType = structure(logical(0), tags = list(location = "uri", locationName = "sdk_type", type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_sdk_input"]]))
 }
 
 .apigateway$get_sdk_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), contentDisposition = structure(logical(0), tags = list(location = "header", locationName = "Content-Disposition", type = "string")), body = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", payload = "body"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_sdk_output"]]))
 }
 
 .apigateway$get_sdk_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "sdktype_id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_sdk_type_input"]]))
 }
 
 .apigateway$get_sdk_type_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), friendlyName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), configurationProperties = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), friendlyName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), required = structure(logical(0), tags = list(type = "boolean")), defaultValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_sdk_type_output"]]))
 }
 
 .apigateway$get_sdk_types_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_sdk_types_input"]]))
 }
 
 .apigateway$get_sdk_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), friendlyName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), configurationProperties = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), friendlyName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), required = structure(logical(0), tags = list(type = "boolean")), defaultValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_sdk_types_output"]]))
 }
 
 .apigateway$get_stage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), stageName = structure(logical(0), tags = list(location = "uri", locationName = "stage_name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_stage_input"]]))
 }
 
 .apigateway$get_stage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), clientCertificateId = structure(logical(0), tags = list(type = "string")), stageName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), cacheClusterEnabled = structure(logical(0), tags = list(type = "boolean")), cacheClusterSize = structure(logical(0), tags = list(type = "string")), cacheClusterStatus = structure(logical(0), tags = list(type = "string")), methodSettings = structure(list(structure(list(metricsEnabled = structure(logical(0), tags = list(type = "boolean")), loggingLevel = structure(logical(0), tags = list(type = "string")), dataTraceEnabled = structure(logical(0), tags = list(type = "boolean")), throttlingBurstLimit = structure(logical(0), tags = list(type = "integer")), throttlingRateLimit = structure(logical(0), tags = list(type = "double")), cachingEnabled = structure(logical(0), tags = list(type = "boolean")), cacheTtlInSeconds = structure(logical(0), tags = list(type = "integer")), cacheDataEncrypted = structure(logical(0), tags = list(type = "boolean")), requireAuthorizationForCacheControl = structure(logical(0), tags = list(type = "boolean")), unauthorizedCacheControlHeaderStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), variables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), documentationVersion = structure(logical(0), tags = list(type = "string")), accessLogSettings = structure(list(format = structure(logical(0), tags = list(type = "string")), destinationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), canarySettings = structure(list(percentTraffic = structure(logical(0), tags = list(type = "double")), deploymentId = structure(logical(0), tags = list(type = "string")), stageVariableOverrides = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), useStageCache = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), tracingEnabled = structure(logical(0), tags = list(type = "boolean")), webAclArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), createdDate = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_stage_output"]]))
 }
 
 .apigateway$get_stages_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), deploymentId = structure(logical(0), tags = list(location = "querystring", locationName = "deploymentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_stages_input"]]))
 }
 
 .apigateway$get_stages_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(item = structure(list(structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), clientCertificateId = structure(logical(0), tags = list(type = "string")), stageName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), cacheClusterEnabled = structure(logical(0), tags = list(type = "boolean")), cacheClusterSize = structure(logical(0), tags = list(type = "string")), cacheClusterStatus = structure(logical(0), tags = list(type = "string")), methodSettings = structure(list(structure(list(metricsEnabled = structure(logical(0), tags = list(type = "boolean")), loggingLevel = structure(logical(0), tags = list(type = "string")), dataTraceEnabled = structure(logical(0), tags = list(type = "boolean")), throttlingBurstLimit = structure(logical(0), tags = list(type = "integer")), throttlingRateLimit = structure(logical(0), tags = list(type = "double")), cachingEnabled = structure(logical(0), tags = list(type = "boolean")), cacheTtlInSeconds = structure(logical(0), tags = list(type = "integer")), cacheDataEncrypted = structure(logical(0), tags = list(type = "boolean")), requireAuthorizationForCacheControl = structure(logical(0), tags = list(type = "boolean")), unauthorizedCacheControlHeaderStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), variables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), documentationVersion = structure(logical(0), tags = list(type = "string")), accessLogSettings = structure(list(format = structure(logical(0), tags = list(type = "string")), destinationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), canarySettings = structure(list(percentTraffic = structure(logical(0), tags = list(type = "double")), deploymentId = structure(logical(0), tags = list(type = "string")), stageVariableOverrides = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), useStageCache = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), tracingEnabled = structure(logical(0), tags = list(type = "boolean")), webAclArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), createdDate = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_stages_output"]]))
 }
 
 .apigateway$get_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resource_arn", type = "string")), position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_tags_input"]]))
 }
 
 .apigateway$get_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_tags_output"]]))
 }
 
 .apigateway$get_usage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usagePlanId = structure(logical(0), tags = list(location = "uri", locationName = "usageplanId", type = "string")), keyId = structure(logical(0), tags = list(location = "querystring", locationName = "keyId", type = "string")), startDate = structure(logical(0), tags = list(location = "querystring", locationName = "startDate", type = "string")), endDate = structure(logical(0), tags = list(location = "querystring", locationName = "endDate", type = "string")), position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_usage_input"]]))
 }
 
 .apigateway$get_usage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usagePlanId = structure(logical(0), tags = list(type = "string")), startDate = structure(logical(0), tags = list(type = "string")), endDate = structure(logical(0), tags = list(type = "string")), position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(structure(list(structure(logical(0), tags = list(type = "long"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(locationName = "values", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_usage_output"]]))
 }
 
 .apigateway$get_usage_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usagePlanId = structure(logical(0), tags = list(location = "uri", locationName = "usageplanId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_usage_plan_input"]]))
 }
 
 .apigateway$get_usage_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), apiStages = structure(list(structure(list(apiId = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string")), throttle = structure(list(structure(list(burstLimit = structure(logical(0), tags = list(type = "integer")), rateLimit = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), throttle = structure(list(burstLimit = structure(logical(0), tags = list(type = "integer")), rateLimit = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), quota = structure(list(limit = structure(logical(0), tags = list(type = "integer")), offset = structure(logical(0), tags = list(type = "integer")), period = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), productCode = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_usage_plan_output"]]))
 }
 
 .apigateway$get_usage_plan_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usagePlanId = structure(logical(0), tags = list(location = "uri", locationName = "usageplanId", type = "string")), keyId = structure(logical(0), tags = list(location = "uri", locationName = "keyId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_usage_plan_key_input"]]))
 }
 
 .apigateway$get_usage_plan_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_usage_plan_key_output"]]))
 }
 
 .apigateway$get_usage_plan_keys_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usagePlanId = structure(logical(0), tags = list(location = "uri", locationName = "usageplanId", type = "string")), position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), nameQuery = structure(logical(0), tags = list(location = "querystring", locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_usage_plan_keys_input"]]))
 }
 
 .apigateway$get_usage_plan_keys_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_usage_plan_keys_output"]]))
 }
 
 .apigateway$get_usage_plans_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), keyId = structure(logical(0), tags = list(location = "querystring", locationName = "keyId", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_usage_plans_input"]]))
 }
 
 .apigateway$get_usage_plans_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), apiStages = structure(list(structure(list(apiId = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string")), throttle = structure(list(structure(list(burstLimit = structure(logical(0), tags = list(type = "integer")), rateLimit = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), throttle = structure(list(burstLimit = structure(logical(0), tags = list(type = "integer")), rateLimit = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), quota = structure(list(limit = structure(logical(0), tags = list(type = "integer")), offset = structure(logical(0), tags = list(type = "integer")), period = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), productCode = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_usage_plans_output"]]))
 }
 
 .apigateway$get_vpc_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(vpcLinkId = structure(logical(0), tags = list(location = "uri", locationName = "vpclink_id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_vpc_link_input"]]))
 }
 
 .apigateway$get_vpc_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), targetArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_vpc_link_output"]]))
 }
 
 .apigateway$get_vpc_links_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_vpc_links_input"]]))
 }
 
 .apigateway$get_vpc_links_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), targetArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["get_vpc_links_output"]]))
 }
 
 .apigateway$import_api_keys_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(body = structure(logical(0), tags = list(type = "blob")), format = structure(logical(0), tags = list(location = "querystring", locationName = "format", type = "string")), failOnWarnings = structure(logical(0), tags = list(location = "querystring", locationName = "failonwarnings", type = "boolean"))), tags = list(type = "structure", payload = "body"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["import_api_keys_input"]]))
 }
 
 .apigateway$import_api_keys_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ids = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["import_api_keys_output"]]))
 }
 
 .apigateway$import_documentation_parts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), mode = structure(logical(0), tags = list(location = "querystring", locationName = "mode", type = "string")), failOnWarnings = structure(logical(0), tags = list(location = "querystring", locationName = "failonwarnings", type = "boolean")), body = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", payload = "body"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["import_documentation_parts_input"]]))
 }
 
 .apigateway$import_documentation_parts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ids = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["import_documentation_parts_output"]]))
 }
 
 .apigateway$import_rest_api_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(failOnWarnings = structure(logical(0), tags = list(location = "querystring", locationName = "failonwarnings", type = "boolean")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", type = "map")), body = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", payload = "body"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["import_rest_api_input"]]))
 }
 
 .apigateway$import_rest_api_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), binaryMediaTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), minimumCompressionSize = structure(logical(0), tags = list(type = "integer")), apiKeySource = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ipAddressType = structure(logical(0), tags = list(type = "string")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), policy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), disableExecuteApiEndpoint = structure(logical(0), tags = list(type = "boolean")), rootResourceId = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), endpointAccessMode = structure(logical(0), tags = list(type = "string")), apiStatus = structure(logical(0), tags = list(type = "string")), apiStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["import_rest_api_output"]]))
 }
 
 .apigateway$put_gateway_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), responseType = structure(logical(0), tags = list(location = "uri", locationName = "response_type", type = "string")), statusCode = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["put_gateway_response_input"]]))
 }
 
 .apigateway$put_gateway_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(responseType = structure(logical(0), tags = list(type = "string")), statusCode = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), defaultResponse = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["put_gateway_response_output"]]))
 }
 
 .apigateway$put_integration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string")), type = structure(logical(0), tags = list(type = "string")), integrationHttpMethod = structure(logical(0), tags = list(locationName = "httpMethod", type = "string")), uri = structure(logical(0), tags = list(type = "string")), connectionType = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), credentials = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), requestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), passthroughBehavior = structure(logical(0), tags = list(type = "string")), cacheNamespace = structure(logical(0), tags = list(type = "string")), cacheKeyParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), contentHandling = structure(logical(0), tags = list(type = "string")), timeoutInMillis = structure(logical(0), tags = list(type = "integer")), tlsConfig = structure(list(insecureSkipVerification = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), responseTransferMode = structure(logical(0), tags = list(type = "string")), integrationTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["put_integration_input"]]))
 }
 
 .apigateway$put_integration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), httpMethod = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), connectionType = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), credentials = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), requestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), passthroughBehavior = structure(logical(0), tags = list(type = "string")), contentHandling = structure(logical(0), tags = list(type = "string")), timeoutInMillis = structure(logical(0), tags = list(type = "integer")), cacheNamespace = structure(logical(0), tags = list(type = "string")), cacheKeyParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), integrationResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), selectionPattern = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), contentHandling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), tlsConfig = structure(list(insecureSkipVerification = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), responseTransferMode = structure(logical(0), tags = list(type = "string")), integrationTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["put_integration_output"]]))
 }
 
 .apigateway$put_integration_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string")), statusCode = structure(logical(0), tags = list(location = "uri", locationName = "status_code", type = "string")), selectionPattern = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), contentHandling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["put_integration_response_input"]]))
 }
 
 .apigateway$put_integration_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(statusCode = structure(logical(0), tags = list(type = "string")), selectionPattern = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), contentHandling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["put_integration_response_output"]]))
 }
 
 .apigateway$put_method_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string")), authorizationType = structure(logical(0), tags = list(type = "string")), authorizerId = structure(logical(0), tags = list(type = "string")), apiKeyRequired = structure(logical(0), tags = list(type = "boolean")), operationName = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), requestModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), requestValidatorId = structure(logical(0), tags = list(type = "string")), authorizationScopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["put_method_input"]]))
 }
 
 .apigateway$put_method_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(httpMethod = structure(logical(0), tags = list(type = "string")), authorizationType = structure(logical(0), tags = list(type = "string")), authorizerId = structure(logical(0), tags = list(type = "string")), apiKeyRequired = structure(logical(0), tags = list(type = "boolean")), requestValidatorId = structure(logical(0), tags = list(type = "string")), operationName = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), requestModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), methodResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), responseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), methodIntegration = structure(list(type = structure(logical(0), tags = list(type = "string")), httpMethod = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), connectionType = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), credentials = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), requestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), passthroughBehavior = structure(logical(0), tags = list(type = "string")), contentHandling = structure(logical(0), tags = list(type = "string")), timeoutInMillis = structure(logical(0), tags = list(type = "integer")), cacheNamespace = structure(logical(0), tags = list(type = "string")), cacheKeyParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), integrationResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), selectionPattern = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), contentHandling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), tlsConfig = structure(list(insecureSkipVerification = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), responseTransferMode = structure(logical(0), tags = list(type = "string")), integrationTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), authorizationScopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["put_method_output"]]))
 }
 
 .apigateway$put_method_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string")), statusCode = structure(logical(0), tags = list(location = "uri", locationName = "status_code", type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), responseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["put_method_response_input"]]))
 }
 
 .apigateway$put_method_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(statusCode = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), responseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["put_method_response_output"]]))
 }
 
 .apigateway$put_rest_api_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), mode = structure(logical(0), tags = list(location = "querystring", locationName = "mode", type = "string")), failOnWarnings = structure(logical(0), tags = list(location = "querystring", locationName = "failonwarnings", type = "boolean")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", type = "map")), body = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", payload = "body"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["put_rest_api_input"]]))
 }
 
 .apigateway$put_rest_api_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), binaryMediaTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), minimumCompressionSize = structure(logical(0), tags = list(type = "integer")), apiKeySource = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ipAddressType = structure(logical(0), tags = list(type = "string")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), policy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), disableExecuteApiEndpoint = structure(logical(0), tags = list(type = "boolean")), rootResourceId = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), endpointAccessMode = structure(logical(0), tags = list(type = "string")), apiStatus = structure(logical(0), tags = list(type = "string")), apiStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["put_rest_api_output"]]))
 }
 
 .apigateway$reject_domain_name_access_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainNameAccessAssociationArn = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameAccessAssociationArn", type = "string")), domainNameArn = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["reject_domain_name_access_association_input"]]))
 }
 
 .apigateway$reject_domain_name_access_association_output <- function(...) {
@@ -1131,8 +960,7 @@ NULL
 
 .apigateway$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resource_arn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["tag_resource_input"]]))
 }
 
 .apigateway$tag_resource_output <- function(...) {
@@ -1141,32 +969,27 @@ NULL
 
 .apigateway$test_invoke_authorizer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), authorizerId = structure(logical(0), tags = list(location = "uri", locationName = "authorizer_id", type = "string")), headers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), multiValueHeaders = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), pathWithQueryString = structure(logical(0), tags = list(type = "string")), body = structure(logical(0), tags = list(type = "string")), stageVariables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), additionalContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["test_invoke_authorizer_input"]]))
 }
 
 .apigateway$test_invoke_authorizer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientStatus = structure(logical(0), tags = list(type = "integer")), log = structure(logical(0), tags = list(type = "string")), latency = structure(logical(0), tags = list(type = "long")), principalId = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string")), authorization = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), claims = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["test_invoke_authorizer_output"]]))
 }
 
 .apigateway$test_invoke_method_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string")), pathWithQueryString = structure(logical(0), tags = list(type = "string")), body = structure(logical(0), tags = list(type = "string")), headers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), multiValueHeaders = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), clientCertificateId = structure(logical(0), tags = list(type = "string")), stageVariables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["test_invoke_method_input"]]))
 }
 
 .apigateway$test_invoke_method_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(status = structure(logical(0), tags = list(type = "integer")), body = structure(logical(0), tags = list(type = "string")), headers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), multiValueHeaders = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), log = structure(logical(0), tags = list(type = "string")), latency = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["test_invoke_method_output"]]))
 }
 
 .apigateway$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resource_arn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["untag_resource_input"]]))
 }
 
 .apigateway$untag_resource_output <- function(...) {
@@ -1175,264 +998,220 @@ NULL
 
 .apigateway$update_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_account_input"]]))
 }
 
 .apigateway$update_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cloudwatchRoleArn = structure(logical(0), tags = list(type = "string")), throttleSettings = structure(list(burstLimit = structure(logical(0), tags = list(type = "integer")), rateLimit = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), features = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), apiKeyVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_account_output"]]))
 }
 
 .apigateway$update_api_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(apiKey = structure(logical(0), tags = list(location = "uri", locationName = "api_Key", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_api_key_input"]]))
 }
 
 .apigateway$update_api_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), customerId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean")), createdDate = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp")), stageKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_api_key_output"]]))
 }
 
 .apigateway$update_authorizer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), authorizerId = structure(logical(0), tags = list(location = "uri", locationName = "authorizer_id", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_authorizer_input"]]))
 }
 
 .apigateway$update_authorizer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), providerARNs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), authType = structure(logical(0), tags = list(type = "string")), authorizerUri = structure(logical(0), tags = list(type = "string")), authorizerCredentials = structure(logical(0), tags = list(type = "string")), identitySource = structure(logical(0), tags = list(type = "string")), identityValidationExpression = structure(logical(0), tags = list(type = "string")), authorizerResultTtlInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_authorizer_output"]]))
 }
 
 .apigateway$update_base_path_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), domainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), basePath = structure(logical(0), tags = list(location = "uri", locationName = "base_path", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_base_path_mapping_input"]]))
 }
 
 .apigateway$update_base_path_mapping_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(basePath = structure(logical(0), tags = list(type = "string")), restApiId = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_base_path_mapping_output"]]))
 }
 
 .apigateway$update_client_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientCertificateId = structure(logical(0), tags = list(location = "uri", locationName = "clientcertificate_id", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_client_certificate_input"]]))
 }
 
 .apigateway$update_client_certificate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientCertificateId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), pemEncodedCertificate = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), expirationDate = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_client_certificate_output"]]))
 }
 
 .apigateway$update_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), deploymentId = structure(logical(0), tags = list(location = "uri", locationName = "deployment_id", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_deployment_input"]]))
 }
 
 .apigateway$update_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), apiSummary = structure(list(structure(list(structure(list(authorizationType = structure(logical(0), tags = list(type = "string")), apiKeyRequired = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_deployment_output"]]))
 }
 
 .apigateway$update_documentation_part_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), documentationPartId = structure(logical(0), tags = list(location = "uri", locationName = "part_id", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_documentation_part_input"]]))
 }
 
 .apigateway$update_documentation_part_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), location = structure(list(type = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), method = structure(logical(0), tags = list(type = "string")), statusCode = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), properties = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_documentation_part_output"]]))
 }
 
 .apigateway$update_documentation_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), documentationVersion = structure(logical(0), tags = list(location = "uri", locationName = "doc_version", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_documentation_version_input"]]))
 }
 
 .apigateway$update_documentation_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(version = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_documentation_version_output"]]))
 }
 
 .apigateway$update_domain_name_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), domainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_domain_name_input"]]))
 }
 
 .apigateway$update_domain_name_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(type = "string")), domainNameId = structure(logical(0), tags = list(type = "string")), domainNameArn = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), certificateUploadDate = structure(logical(0), tags = list(type = "timestamp")), regionalDomainName = structure(logical(0), tags = list(type = "string")), regionalHostedZoneId = structure(logical(0), tags = list(type = "string")), regionalCertificateName = structure(logical(0), tags = list(type = "string")), regionalCertificateArn = structure(logical(0), tags = list(type = "string")), distributionDomainName = structure(logical(0), tags = list(type = "string")), distributionHostedZoneId = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ipAddressType = structure(logical(0), tags = list(type = "string")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), domainNameStatus = structure(logical(0), tags = list(type = "string")), domainNameStatusMessage = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), endpointAccessMode = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), mutualTlsAuthentication = structure(list(truststoreUri = structure(logical(0), tags = list(type = "string")), truststoreVersion = structure(logical(0), tags = list(type = "string")), truststoreWarnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ownershipVerificationCertificateArn = structure(logical(0), tags = list(type = "string")), managementPolicy = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string")), routingMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_domain_name_output"]]))
 }
 
 .apigateway$update_gateway_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), responseType = structure(logical(0), tags = list(location = "uri", locationName = "response_type", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_gateway_response_input"]]))
 }
 
 .apigateway$update_gateway_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(responseType = structure(logical(0), tags = list(type = "string")), statusCode = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), defaultResponse = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_gateway_response_output"]]))
 }
 
 .apigateway$update_integration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_integration_input"]]))
 }
 
 .apigateway$update_integration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), httpMethod = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), connectionType = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), credentials = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), requestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), passthroughBehavior = structure(logical(0), tags = list(type = "string")), contentHandling = structure(logical(0), tags = list(type = "string")), timeoutInMillis = structure(logical(0), tags = list(type = "integer")), cacheNamespace = structure(logical(0), tags = list(type = "string")), cacheKeyParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), integrationResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), selectionPattern = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), contentHandling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), tlsConfig = structure(list(insecureSkipVerification = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), responseTransferMode = structure(logical(0), tags = list(type = "string")), integrationTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_integration_output"]]))
 }
 
 .apigateway$update_integration_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string")), statusCode = structure(logical(0), tags = list(location = "uri", locationName = "status_code", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_integration_response_input"]]))
 }
 
 .apigateway$update_integration_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(statusCode = structure(logical(0), tags = list(type = "string")), selectionPattern = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), contentHandling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_integration_response_output"]]))
 }
 
 .apigateway$update_method_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_method_input"]]))
 }
 
 .apigateway$update_method_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(httpMethod = structure(logical(0), tags = list(type = "string")), authorizationType = structure(logical(0), tags = list(type = "string")), authorizerId = structure(logical(0), tags = list(type = "string")), apiKeyRequired = structure(logical(0), tags = list(type = "boolean")), requestValidatorId = structure(logical(0), tags = list(type = "string")), operationName = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), requestModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), methodResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), responseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), methodIntegration = structure(list(type = structure(logical(0), tags = list(type = "string")), httpMethod = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), connectionType = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), credentials = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), requestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), passthroughBehavior = structure(logical(0), tags = list(type = "string")), contentHandling = structure(logical(0), tags = list(type = "string")), timeoutInMillis = structure(logical(0), tags = list(type = "integer")), cacheNamespace = structure(logical(0), tags = list(type = "string")), cacheKeyParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), integrationResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), selectionPattern = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), contentHandling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), tlsConfig = structure(list(insecureSkipVerification = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), responseTransferMode = structure(logical(0), tags = list(type = "string")), integrationTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), authorizationScopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_method_output"]]))
 }
 
 .apigateway$update_method_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), httpMethod = structure(logical(0), tags = list(location = "uri", locationName = "http_method", type = "string")), statusCode = structure(logical(0), tags = list(location = "uri", locationName = "status_code", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_method_response_input"]]))
 }
 
 .apigateway$update_method_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(statusCode = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), responseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_method_response_output"]]))
 }
 
 .apigateway$update_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), modelName = structure(logical(0), tags = list(location = "uri", locationName = "model_name", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_model_input"]]))
 }
 
 .apigateway$update_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string")), contentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_model_output"]]))
 }
 
 .apigateway$update_request_validator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), requestValidatorId = structure(logical(0), tags = list(location = "uri", locationName = "requestvalidator_id", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_request_validator_input"]]))
 }
 
 .apigateway$update_request_validator_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), validateRequestBody = structure(logical(0), tags = list(type = "boolean")), validateRequestParameters = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_request_validator_output"]]))
 }
 
 .apigateway$update_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), resourceId = structure(logical(0), tags = list(location = "uri", locationName = "resource_id", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_resource_input"]]))
 }
 
 .apigateway$update_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), parentId = structure(logical(0), tags = list(type = "string")), pathPart = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), resourceMethods = structure(list(structure(list(httpMethod = structure(logical(0), tags = list(type = "string")), authorizationType = structure(logical(0), tags = list(type = "string")), authorizerId = structure(logical(0), tags = list(type = "string")), apiKeyRequired = structure(logical(0), tags = list(type = "boolean")), requestValidatorId = structure(logical(0), tags = list(type = "string")), operationName = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), requestModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), methodResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), responseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), methodIntegration = structure(list(type = structure(logical(0), tags = list(type = "string")), httpMethod = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), connectionType = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), credentials = structure(logical(0), tags = list(type = "string")), requestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), requestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), passthroughBehavior = structure(logical(0), tags = list(type = "string")), contentHandling = structure(logical(0), tags = list(type = "string")), timeoutInMillis = structure(logical(0), tags = list(type = "integer")), cacheNamespace = structure(logical(0), tags = list(type = "string")), cacheKeyParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), integrationResponses = structure(list(structure(list(statusCode = structure(logical(0), tags = list(type = "string")), selectionPattern = structure(logical(0), tags = list(type = "string")), responseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), responseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), contentHandling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), tlsConfig = structure(list(insecureSkipVerification = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), responseTransferMode = structure(logical(0), tags = list(type = "string")), integrationTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), authorizationScopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_resource_output"]]))
 }
 
 .apigateway$update_rest_api_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_rest_api_input"]]))
 }
 
 .apigateway$update_rest_api_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), binaryMediaTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), minimumCompressionSize = structure(logical(0), tags = list(type = "integer")), apiKeySource = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ipAddressType = structure(logical(0), tags = list(type = "string")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), policy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), disableExecuteApiEndpoint = structure(logical(0), tags = list(type = "boolean")), rootResourceId = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), endpointAccessMode = structure(logical(0), tags = list(type = "string")), apiStatus = structure(logical(0), tags = list(type = "string")), apiStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_rest_api_output"]]))
 }
 
 .apigateway$update_stage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(restApiId = structure(logical(0), tags = list(location = "uri", locationName = "restapi_id", type = "string")), stageName = structure(logical(0), tags = list(location = "uri", locationName = "stage_name", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_stage_input"]]))
 }
 
 .apigateway$update_stage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), clientCertificateId = structure(logical(0), tags = list(type = "string")), stageName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), cacheClusterEnabled = structure(logical(0), tags = list(type = "boolean")), cacheClusterSize = structure(logical(0), tags = list(type = "string")), cacheClusterStatus = structure(logical(0), tags = list(type = "string")), methodSettings = structure(list(structure(list(metricsEnabled = structure(logical(0), tags = list(type = "boolean")), loggingLevel = structure(logical(0), tags = list(type = "string")), dataTraceEnabled = structure(logical(0), tags = list(type = "boolean")), throttlingBurstLimit = structure(logical(0), tags = list(type = "integer")), throttlingRateLimit = structure(logical(0), tags = list(type = "double")), cachingEnabled = structure(logical(0), tags = list(type = "boolean")), cacheTtlInSeconds = structure(logical(0), tags = list(type = "integer")), cacheDataEncrypted = structure(logical(0), tags = list(type = "boolean")), requireAuthorizationForCacheControl = structure(logical(0), tags = list(type = "boolean")), unauthorizedCacheControlHeaderStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), variables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), documentationVersion = structure(logical(0), tags = list(type = "string")), accessLogSettings = structure(list(format = structure(logical(0), tags = list(type = "string")), destinationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), canarySettings = structure(list(percentTraffic = structure(logical(0), tags = list(type = "double")), deploymentId = structure(logical(0), tags = list(type = "string")), stageVariableOverrides = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), useStageCache = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), tracingEnabled = structure(logical(0), tags = list(type = "boolean")), webAclArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), createdDate = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_stage_output"]]))
 }
 
 .apigateway$update_usage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usagePlanId = structure(logical(0), tags = list(location = "uri", locationName = "usageplanId", type = "string")), keyId = structure(logical(0), tags = list(location = "uri", locationName = "keyId", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_usage_input"]]))
 }
 
 .apigateway$update_usage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usagePlanId = structure(logical(0), tags = list(type = "string")), startDate = structure(logical(0), tags = list(type = "string")), endDate = structure(logical(0), tags = list(type = "string")), position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(structure(list(structure(logical(0), tags = list(type = "long"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(locationName = "values", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_usage_output"]]))
 }
 
 .apigateway$update_usage_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(usagePlanId = structure(logical(0), tags = list(location = "uri", locationName = "usageplanId", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_usage_plan_input"]]))
 }
 
 .apigateway$update_usage_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), apiStages = structure(list(structure(list(apiId = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string")), throttle = structure(list(structure(list(burstLimit = structure(logical(0), tags = list(type = "integer")), rateLimit = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), throttle = structure(list(burstLimit = structure(logical(0), tags = list(type = "integer")), rateLimit = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), quota = structure(list(limit = structure(logical(0), tags = list(type = "integer")), offset = structure(logical(0), tags = list(type = "integer")), period = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), productCode = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_usage_plan_output"]]))
 }
 
 .apigateway$update_vpc_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(vpcLinkId = structure(logical(0), tags = list(location = "uri", locationName = "vpclink_id", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_vpc_link_input"]]))
 }
 
 .apigateway$update_vpc_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), targetArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigateway_shapes[["update_vpc_link_output"]]))
 }

@@ -19,7 +19,8 @@ connect_update_evaluation_form(
   AsDraft = NULL,
   ClientToken = NULL,
   TargetConfiguration = NULL,
-  LanguageConfiguration = NULL
+  LanguageConfiguration = NULL,
+  AIVersion = NULL
 )
 }
 \arguments{
@@ -50,6 +51,8 @@ connect_update_evaluation_form(
 \item{TargetConfiguration}{Configuration that specifies the target for the evaluation form.}
 
 \item{LanguageConfiguration}{Configuration for language settings of the evaluation form.}
+
+\item{AIVersion}{The AI version to use for the evaluation form. This specifies which AI model version is used for automated evaluations.}
 }
 \description{
 Updates details about a specific evaluation form version in the specified Connect Customer instance. Question and section identifiers cannot be duplicated within the same evaluation form.

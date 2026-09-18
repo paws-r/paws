@@ -8,6 +8,7 @@ quicksight_create_custom_permissions(
   AwsAccountId,
   CustomPermissionsName,
   Capabilities = NULL,
+  Governance = NULL,
   Tags = NULL
 )
 }
@@ -17,6 +18,8 @@ quicksight_create_custom_permissions(
 \item{CustomPermissionsName}{[required] The name of the custom permissions profile that you want to create.}
 
 \item{Capabilities}{A set of actions to include in the custom permissions profile.}
+
+\item{Governance}{The governance configuration for the custom permissions profile. When governance controls are defined for a category, any capabilities in that category not explicitly set to \code{ALLOW} in \code{Capabilities} are denied. Even newly added capabilities in the category are implicitly disabled when Amazon Quick releases them.}
 
 \item{Tags}{The tags to associate with the custom permissions profile.}
 }

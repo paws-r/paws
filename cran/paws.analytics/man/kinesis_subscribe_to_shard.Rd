@@ -10,7 +10,8 @@ kinesis_subscribe_to_shard(
   ConsumerARN,
   StreamId = NULL,
   ShardId,
-  StartingPosition
+  StartingPosition,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -21,6 +22,8 @@ kinesis_subscribe_to_shard(
 \item{ShardId}{[required] The ID of the shard you want to subscribe to. To see a list of all the shards for a given stream, use \code{\link[=kinesis_list_shards]{list_shards}}.}
 
 \item{StartingPosition}{[required] The starting position in the data stream from which to start streaming.}
+
+\item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.}
 }
 \description{
 This operation establishes an HTTP/2 connection between the consumer you specify in the \code{ConsumerARN} parameter and the shard you specify in the \code{ShardId} parameter. After the connection is successfully established, Kinesis Data Streams pushes records from the shard to the consumer over this connection. Before you call this operation, call \code{\link[=kinesis_register_stream_consumer]{register_stream_consumer}} to register the consumer with Kinesis Data Streams.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_get_image}
 \alias{imagebuilder_get_image}
-\title{Gets an image}
+\title{Retrieves an image}
 \usage{
 imagebuilder_get_image(imageBuildVersionArn)
 }
@@ -10,7 +10,7 @@ imagebuilder_get_image(imageBuildVersionArn)
 \item{imageBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the image that you want to get.}
 }
 \description{
-Gets an image.
+Retrieves an image.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_image/} for full documentation.
 }

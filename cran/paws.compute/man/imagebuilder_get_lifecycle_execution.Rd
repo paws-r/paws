@@ -2,16 +2,16 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_get_lifecycle_execution}
 \alias{imagebuilder_get_lifecycle_execution}
-\title{Get the runtime information that was logged for a specific runtime
-instance of the lifecycle policy}
+\title{Retrieves the runtime information for a specific runtime instance of the
+lifecycle policy}
 \usage{
 imagebuilder_get_lifecycle_execution(lifecycleExecutionId)
 }
 \arguments{
-\item{lifecycleExecutionId}{[required] Use the unique identifier for a runtime instance of the lifecycle policy to get runtime details.}
+\item{lifecycleExecutionId}{[required] The unique identifier for a runtime instance of the lifecycle policy.}
 }
 \description{
-Get the runtime information that was logged for a specific runtime instance of the lifecycle policy.
+Retrieves the runtime information for a specific runtime instance of the lifecycle policy.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_lifecycle_execution/} for full documentation.
 }

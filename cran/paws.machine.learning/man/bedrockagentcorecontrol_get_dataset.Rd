@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockagentcorecontrol_operations.R
 \name{bedrockagentcorecontrol_get_dataset}
 \alias{bedrockagentcorecontrol_get_dataset}
-\title{Retrieves dataset metadata only}
+\title{Retrieves dataset metadata}
 \usage{
 bedrockagentcorecontrol_get_dataset(datasetId, datasetVersion = NULL)
 }
@@ -12,7 +12,7 @@ bedrockagentcorecontrol_get_dataset(datasetId, datasetVersion = NULL)
 \item{datasetVersion}{Version to retrieve: "DRAFT" or a version number. Defaults to DRAFT if absent.}
 }
 \description{
-Retrieves dataset metadata only.
+Retrieves dataset metadata. Use the \code{datasetVersion} query parameter to retrieve a specific version's metadata. If absent, defaults to DRAFT. For paginated example content, use \code{\link[=bedrockagentcorecontrol_list_dataset_examples]{list_dataset_examples}}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_get_dataset/} for full documentation.
 }

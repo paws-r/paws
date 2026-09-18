@@ -8,6 +8,7 @@ opensearchserviceserverless_update_collection(
   id,
   description = NULL,
   vectorOptions = NULL,
+  deletionProtection = NULL,
   clientToken = NULL
 )
 }
@@ -17,6 +18,8 @@ opensearchserviceserverless_update_collection(
 \item{description}{A description of the collection.}
 
 \item{vectorOptions}{Configuration options for vector search capabilities in the collection.}
+
+\item{deletionProtection}{Indicates whether to enable or disable deletion protection for the collection. When set to \code{ENABLED}, the collection cannot be deleted.}
 
 \item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }

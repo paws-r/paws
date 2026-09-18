@@ -336,7 +336,7 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "AccountId"|"VolumeArn"|"Finding"|"UtilizationMetricsVolumeReadOpsPerSecondMaximum"|"UtilizationMetricsVolumeWriteOpsPerSecondMaximum"|"UtilizationMetricsVolumeReadBytesPerSecondMaximum"|"UtilizationMetricsVolumeWriteBytesPerSecondMaximum"|"LookbackPeriodInDays"|"CurrentConfigurationVolumeType"|"CurrentConfigurationVolumeBaselineIOPS"|"CurrentConfigurationVolumeBaselineThroughput"|"CurrentConfigurationVolumeBurstIOPS"|"CurrentConfigurationVolumeBurstThroughput"|"CurrentConfigurationVolumeSize"|"CurrentMonthlyPrice"|"RecommendationOptionsConfigurationVolumeType"|"RecommendationOptionsConfigurationVolumeBaselineIOPS"|"RecommendationOptionsConfigurationVolumeBaselineThroughput"|"RecommendationOptionsConfigurationVolumeBurstIOPS"|"RecommendationOptionsConfigurationVolumeBurstThroughput"|"RecommendationOptionsConfigurationVolumeSize"|"RecommendationOptionsMonthlyPrice"|"RecommendationOptionsPerformanceRisk"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"Tags"|"RootVolume"|"CurrentConfigurationRootVolume"|"EffectiveRecommendationPreferencesSavingsEstimationMode"|"RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
+#'     "AccountId"|"VolumeArn"|"Finding"|"UtilizationMetricsVolumeReadOpsPerSecondMaximum"|"UtilizationMetricsVolumeWriteOpsPerSecondMaximum"|"UtilizationMetricsVolumeReadBytesPerSecondMaximum"|"UtilizationMetricsVolumeWriteBytesPerSecondMaximum"|"UtilizationMetricsVolumeIOPSExceededMaximum"|"UtilizationMetricsVolumeThroughputExceededMaximum"|"LookbackPeriodInDays"|"CurrentConfigurationVolumeType"|"CurrentConfigurationVolumeBaselineIOPS"|"CurrentConfigurationVolumeBaselineThroughput"|"CurrentConfigurationVolumeBurstIOPS"|"CurrentConfigurationVolumeBurstThroughput"|"CurrentConfigurationVolumeSize"|"CurrentMonthlyPrice"|"RecommendationOptionsConfigurationVolumeType"|"RecommendationOptionsConfigurationVolumeBaselineIOPS"|"RecommendationOptionsConfigurationVolumeBaselineThroughput"|"RecommendationOptionsConfigurationVolumeBurstIOPS"|"RecommendationOptionsConfigurationVolumeBurstThroughput"|"RecommendationOptionsConfigurationVolumeSize"|"RecommendationOptionsMonthlyPrice"|"RecommendationOptionsPerformanceRisk"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"Tags"|"RootVolume"|"CurrentConfigurationRootVolume"|"EffectiveRecommendationPreferencesSavingsEstimationMode"|"RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"|"EffectiveRecommendationPreferencesLookBackPeriod"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -545,7 +545,7 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "AccountId"|"ServiceArn"|"LookbackPeriodInDays"|"LastRefreshTimestamp"|"LaunchType"|"CurrentPerformanceRisk"|"CurrentServiceConfigurationMemory"|"CurrentServiceConfigurationCpu"|"CurrentServiceConfigurationTaskDefinitionArn"|"CurrentServiceConfigurationAutoScalingConfiguration"|"CurrentServiceContainerConfigurations"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"Finding"|"FindingReasonCodes"|"RecommendationOptionsMemory"|"RecommendationOptionsCpu"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"RecommendationOptionsContainerRecommendations"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"Tags"|"EffectiveRecommendationPreferencesSavingsEstimationMode"|"RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
+#'     "AccountId"|"ServiceArn"|"LookbackPeriodInDays"|"LastRefreshTimestamp"|"LaunchType"|"CurrentPerformanceRisk"|"CurrentServiceConfigurationMemory"|"CurrentServiceConfigurationCpu"|"CurrentServiceConfigurationTaskDefinitionArn"|"CurrentServiceConfigurationAutoScalingConfiguration"|"CurrentServiceContainerConfigurations"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"Finding"|"FindingReasonCodes"|"RecommendationOptionsMemory"|"RecommendationOptionsCpu"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"RecommendationOptionsContainerRecommendations"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"Tags"|"EffectiveRecommendationPreferencesSavingsEstimationMode"|"RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"|"EffectiveRecommendationPreferencesLookBackPeriod"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -644,7 +644,7 @@ computeoptimizer_export_ecs_service_recommendations <- function(accountIds = NUL
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "AccountId"|"ResourceArn"|"ResourceId"|"ResourceType"|"LastRefreshTimestamp"|"LookbackPeriodInDays"|"SavingsOpportunity"|"SavingsOpportunityAfterDiscount"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsNetworkOutBytesPerSecondMaximum"|"UtilizationMetricsNetworkInBytesPerSecondMaximum"|"UtilizationMetricsDatabaseConnectionsMaximum"|"UtilizationMetricsEBSVolumeReadIOPSMaximum"|"UtilizationMetricsEBSVolumeWriteIOPSMaximum"|"UtilizationMetricsVolumeReadOpsPerSecondMaximum"|"UtilizationMetricsVolumeWriteOpsPerSecondMaximum"|"UtilizationMetricsActiveConnectionCountMaximum"|"UtilizationMetricsPacketsInFromSourceMaximum"|"UtilizationMetricsPacketsInFromDestinationMaximum"|"Finding"|"FindingDescription"|"Tags"
+#'     "AccountId"|"ResourceArn"|"ResourceId"|"ResourceType"|"LastRefreshTimestamp"|"LookbackPeriodInDays"|"SavingsOpportunity"|"SavingsOpportunityAfterDiscount"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsNetworkOutBytesPerSecondMaximum"|"UtilizationMetricsNetworkInBytesPerSecondMaximum"|"UtilizationMetricsDatabaseConnectionsMaximum"|"UtilizationMetricsEBSVolumeReadIOPSMaximum"|"UtilizationMetricsEBSVolumeWriteIOPSMaximum"|"UtilizationMetricsVolumeReadOpsPerSecondMaximum"|"UtilizationMetricsVolumeWriteOpsPerSecondMaximum"|"UtilizationMetricsActiveConnectionCountMaximum"|"UtilizationMetricsPacketsInFromSourceMaximum"|"UtilizationMetricsPacketsInFromDestinationMaximum"|"UtilizationMetricsConsumedReadCapacityUnitsSum"|"UtilizationMetricsConsumedWriteCapacityUnitsSum"|"UtilizationMetricsNewConnectionsSum"|"UtilizationMetricsEngineCPUUtilizationMaximum"|"UtilizationMetricsCacheHitsSum"|"UtilizationMetricsCacheMissesSum"|"UtilizationMetricsKeyspaceHitsSum"|"UtilizationMetricsKeyspaceMissesSum"|"UtilizationMetricsIsIdleMinimum"|"UtilizationMetricsUserConnectedSum"|"UtilizationMetricsInvocationsSum"|"UtilizationMetricsGetTypeCmdsSum"|"UtilizationMetricsSetTypeCmdsSum"|"UtilizationMetricsElastiCacheProcessingUnitsSum"|"UtilizationMetricsCurrConnectionsSum"|"UtilizationMetricsDatabaseConnectionsSum"|"Finding"|"FindingDescription"|"Tags"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -1256,7 +1256,7 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
 #'       finding = "Optimized"|"NotOptimized",
 #'       utilizationMetrics = list(
 #'         list(
-#'           name = "VolumeReadOpsPerSecond"|"VolumeWriteOpsPerSecond"|"VolumeReadBytesPerSecond"|"VolumeWriteBytesPerSecond",
+#'           name = "VolumeReadOpsPerSecond"|"VolumeWriteOpsPerSecond"|"VolumeReadBytesPerSecond"|"VolumeWriteBytesPerSecond"|"VolumeIOPSExceeded"|"VolumeThroughputExceeded",
 #'           statistic = "Maximum"|"Average",
 #'           value = 123.0
 #'         )
@@ -1298,7 +1298,8 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
 #'       effectiveRecommendationPreferences = list(
 #'         savingsEstimationMode = list(
 #'           source = "PublicPricing"|"CostExplorerRightsizing"|"CostOptimizationHub"
-#'         )
+#'         ),
+#'         lookBackPeriod = "DAYS_14"|"DAYS_32"|"DAYS_93"
 #'       ),
 #'       tags = list(
 #'         list(
@@ -1454,7 +1455,7 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #'       recommendationSources = list(
 #'         list(
 #'           recommendationSourceArn = "string",
-#'           recommendationSourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"EcsService"|"License"|"RdsDBInstance"|"RdsDBInstanceStorage"|"AuroraDBClusterStorage"|"NatGateway"
+#'           recommendationSourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"EcsService"|"License"|"RdsDBInstance"|"RdsDBInstanceStorage"|"AuroraDBClusterStorage"|"NatGateway"|"DynamoDBTable"|"ElastiCacheCluster"|"MemoryDBCluster"|"DocumentDBCluster"|"WorkSpaces"|"SageMakerEndpoint"
 #'         )
 #'       ),
 #'       lastRefreshTimestamp = as.POSIXct(
@@ -1870,7 +1871,8 @@ computeoptimizer_get_ecs_service_recommendation_projected_metrics <- function(se
 #'       effectiveRecommendationPreferences = list(
 #'         savingsEstimationMode = list(
 #'           source = "PublicPricing"|"CostExplorerRightsizing"|"CostOptimizationHub"
-#'         )
+#'         ),
+#'         lookBackPeriod = "DAYS_14"|"DAYS_32"|"DAYS_93"
 #'       ),
 #'       tags = list(
 #'         list(
@@ -2178,7 +2180,7 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
 #'     list(
 #'       resourceArn = "string",
 #'       resourceId = "string",
-#'       resourceType = "EC2Instance"|"AutoScalingGroup"|"EBSVolume"|"ECSService"|"RDSDBInstance"|"NatGateway",
+#'       resourceType = "EC2Instance"|"AutoScalingGroup"|"EBSVolume"|"ECSService"|"RDSDBInstance"|"NatGateway"|"DynamoDBTable"|"ElastiCacheCluster"|"MemoryDBCluster"|"DocumentDBCluster"|"WorkSpaces"|"SageMakerEndpoint",
 #'       accountId = "string",
 #'       finding = "Idle"|"Unattached"|"Unused",
 #'       findingDescription = "string",
@@ -2198,9 +2200,17 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
 #'       ),
 #'       utilizationMetrics = list(
 #'         list(
-#'           name = "CPU"|"Memory"|"NetworkOutBytesPerSecond"|"NetworkInBytesPerSecond"|"DatabaseConnections"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"VolumeReadOpsPerSecond"|"VolumeWriteOpsPerSecond"|"ActiveConnectionCount"|"PacketsInFromSource"|"PacketsInFromDestination",
+#'           name = "CPU"|"Memory"|"NetworkOutBytesPerSecond"|"NetworkInBytesPerSecond"|"DatabaseConnections"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"VolumeReadOpsPerSecond"|"VolumeWriteOpsPerSecond"|"ActiveConnectionCount"|"PacketsInFromSource"|"PacketsInFromDestination"|"ConsumedReadCapacityUnits"|"ConsumedWriteCapacityUnits"|"ConsumedChangeDataCaptureUnits"|"NewConnections"|"EngineCPUUtilization"|"CacheHits"|"CacheMisses"|"KeyspaceHits"|"KeyspaceMisses"|"IsIdle"|"UserConnected"|"Invocations"|"GetTypeCmds"|"SetTypeCmds"|"ElastiCacheProcessingUnits"|"CurrConnections",
 #'           statistic = "Maximum"|"Average",
-#'           value = 123.0
+#'           value = 123.0,
+#'           dimensions = list(
+#'             list(
+#'               key = "string",
+#'               values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       lookBackPeriodInDays = 123.0,
@@ -2220,7 +2230,7 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
 #'       identifier = "string",
 #'       code = "string",
 #'       message = "string",
-#'       resourceType = "EC2Instance"|"AutoScalingGroup"|"EBSVolume"|"ECSService"|"RDSDBInstance"|"NatGateway"
+#'       resourceType = "EC2Instance"|"AutoScalingGroup"|"EBSVolume"|"ECSService"|"RDSDBInstance"|"NatGateway"|"DynamoDBTable"|"ElastiCacheCluster"|"MemoryDBCluster"|"DocumentDBCluster"|"WorkSpaces"|"SageMakerEndpoint"
 #'     )
 #'   )
 #' )
@@ -3026,7 +3036,7 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
 #'           value = 123.0
 #'         )
 #'       ),
-#'       recommendationResourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"EcsService"|"License"|"RdsDBInstance"|"RdsDBInstanceStorage"|"AuroraDBClusterStorage"|"NatGateway",
+#'       recommendationResourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"EcsService"|"License"|"RdsDBInstance"|"RdsDBInstanceStorage"|"AuroraDBClusterStorage"|"NatGateway"|"DynamoDBTable"|"ElastiCacheCluster"|"MemoryDBCluster"|"DocumentDBCluster"|"WorkSpaces"|"SageMakerEndpoint",
 #'       accountId = "string",
 #'       savingsOpportunity = list(
 #'         savingsOpportunityPercentage = 123.0,
@@ -3149,11 +3159,21 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' For more information, see [External metrics ingestion](https://docs.aws.amazon.com/compute-optimizer/latest/ug/external-metrics-ingestion.html) in the *Compute Optimizer User Guide*.
 #' @param lookBackPeriod The preference to control the number of days the utilization metrics of the Amazon Web Services resource are analyzed. When this preference isn't specified, we use the default value `DAYS_14`.
 #' 
-#' You can only set this preference for the Amazon EC2 instance and Auto Scaling group resource types.
+#' You can only set this preference for the Amazon EC2 instance, Auto Scaling group, Amazon EBS volume, Amazon ECS service on Fargate, Amazon RDS DB instance, and Aurora DB cluster storage resource types.
 #' 
-#' -   Amazon EC2 instance lookback preferences can be set at the organization, account, and resource levels.
+#' -   Lookback period preferences for Amazon EC2 instances, Amazon EBS volumes, Amazon ECS services, Amazon RDS DB instances, and Aurora DB cluster storage resource types can be set at the organization, account, and resource levels.
 #' 
 #' -   Auto Scaling group lookback preferences can only be set at the resource level.
+#' 
+#' -   Amazon EBS volume lookback preferences can be set at the organization, account, and resource levels.
+#' 
+#' -   Amazon ECS service on Fargate lookback preferences can be set at the organization, account, and resource levels.
+#' 
+#' -   Amazon RDS DB instance lookback preferences can be set at the organization, account, and resource levels.
+#' 
+#' -   Aurora DB cluster storage lookback preferences can be set at the organization, account, and resource levels.
+#' 
+#' -   Changing the lookback period for Amazon EBS volumes to 14 days does not affect the 32-day lookback period used to determine whether an Amazon EBS volume is unattached.
 #' @param utilizationPreferences The preference to control the resource’s CPU utilization threshold, CPU utilization headroom, and memory utilization headroom. When this preference isn't specified, we use the following default values.
 #' 
 #' CPU utilization:
@@ -3172,7 +3192,7 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' -   The threshold setting isn’t available for memory utilization.
 #' @param preferredResources The preference to control which resource type values are considered when generating rightsizing recommendations. You can specify this preference as a combination of include and exclude lists. You must specify either an `includeList` or `excludeList`. If the preference is an empty set of resource type values, an error occurs.
 #' 
-#' You can only set this preference for the Amazon EC2 instance and Auto Scaling group resource types.
+#' You can only set this preference for the Amazon EC2 instance, Auto Scaling group, Amazon EBS volume, Amazon ECS service, Amazon RDS DB instance, and Aurora DB cluster storage resource types.
 #' @param savingsEstimationMode The status of the savings estimation mode preference to create or update.
 #' 
 #' Specify the `AfterDiscounts` status to activate the preference, or specify `BeforeDiscounts` to deactivate the preference.

@@ -5,192 +5,160 @@ NULL
 
 .route53profiles$associate_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["associate_profile_input"]]))
 }
 
 .route53profiles$associate_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileAssociation = structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), Id = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "timestamp")), Name = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["associate_profile_output"]]))
 }
 
 .route53profiles$associate_resource_to_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceProperties = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["associate_resource_to_profile_input"]]))
 }
 
 .route53profiles$associate_resource_to_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileResourceAssociation = structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), Id = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "timestamp")), Name = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceProperties = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["associate_resource_to_profile_output"]]))
 }
 
 .route53profiles$create_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Name = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["create_profile_input"]]))
 }
 
 .route53profiles$create_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Profile = structure(list(Arn = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), Id = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "timestamp")), Name = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["create_profile_output"]]))
 }
 
 .route53profiles$delete_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileId = structure(logical(0), tags = list(location = "uri", locationName = "ProfileId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["delete_profile_input"]]))
 }
 
 .route53profiles$delete_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Profile = structure(list(Arn = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), Id = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "timestamp")), Name = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["delete_profile_output"]]))
 }
 
 .route53profiles$disassociate_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileId = structure(logical(0), tags = list(location = "uri", locationName = "ProfileId", type = "string")), ResourceId = structure(logical(0), tags = list(location = "uri", locationName = "ResourceId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["disassociate_profile_input"]]))
 }
 
 .route53profiles$disassociate_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileAssociation = structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), Id = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "timestamp")), Name = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["disassociate_profile_output"]]))
 }
 
 .route53profiles$disassociate_resource_from_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileId = structure(logical(0), tags = list(location = "uri", locationName = "ProfileId", type = "string")), ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["disassociate_resource_from_profile_input"]]))
 }
 
 .route53profiles$disassociate_resource_from_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileResourceAssociation = structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), Id = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "timestamp")), Name = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceProperties = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["disassociate_resource_from_profile_output"]]))
 }
 
 .route53profiles$get_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileId = structure(logical(0), tags = list(location = "uri", locationName = "ProfileId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["get_profile_input"]]))
 }
 
 .route53profiles$get_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Profile = structure(list(Arn = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), Id = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "timestamp")), Name = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["get_profile_output"]]))
 }
 
 .route53profiles$get_profile_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileAssociationId = structure(logical(0), tags = list(location = "uri", locationName = "ProfileAssociationId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["get_profile_association_input"]]))
 }
 
 .route53profiles$get_profile_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileAssociation = structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), Id = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "timestamp")), Name = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["get_profile_association_output"]]))
 }
 
 .route53profiles$get_profile_resource_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileResourceAssociationId = structure(logical(0), tags = list(location = "uri", locationName = "ProfileResourceAssociationId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["get_profile_resource_association_input"]]))
 }
 
 .route53profiles$get_profile_resource_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileResourceAssociation = structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), Id = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "timestamp")), Name = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceProperties = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["get_profile_resource_association_output"]]))
 }
 
 .route53profiles$list_profile_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), ProfileId = structure(logical(0), tags = list(location = "querystring", locationName = "profileId", type = "string")), ResourceId = structure(logical(0), tags = list(location = "querystring", locationName = "resourceId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["list_profile_associations_input"]]))
 }
 
 .route53profiles$list_profile_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ProfileAssociations = structure(list(structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), Id = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "timestamp")), Name = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["list_profile_associations_output"]]))
 }
 
 .route53profiles$list_profile_resource_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), ProfileId = structure(logical(0), tags = list(location = "uri", locationName = "ProfileId", type = "string")), ResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "resourceType", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["list_profile_resource_associations_input"]]))
 }
 
 .route53profiles$list_profile_resource_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ProfileResourceAssociations = structure(list(structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), Id = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "timestamp")), Name = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceProperties = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["list_profile_resource_associations_output"]]))
 }
 
 .route53profiles$list_profiles_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["list_profiles_input"]]))
 }
 
 .route53profiles$list_profiles_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ProfileSummaries = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["list_profiles_output"]]))
 }
 
 .route53profiles$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["list_tags_for_resource_input"]]))
 }
 
 .route53profiles$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["list_tags_for_resource_output"]]))
 }
 
 .route53profiles$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["tag_resource_input"]]))
 }
 
 .route53profiles$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["tag_resource_output"]]))
 }
 
 .route53profiles$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["untag_resource_input"]]))
 }
 
 .route53profiles$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["untag_resource_output"]]))
 }
 
 .route53profiles$update_profile_resource_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ProfileResourceAssociationId = structure(logical(0), tags = list(location = "uri", locationName = "ProfileResourceAssociationId", type = "string")), ResourceProperties = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["update_profile_resource_association_input"]]))
 }
 
 .route53profiles$update_profile_resource_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileResourceAssociation = structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), Id = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "timestamp")), Name = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProfileId = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceProperties = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .route53profiles_shapes[["update_profile_resource_association_output"]]))
 }
