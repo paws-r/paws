@@ -36,27 +36,37 @@ test_that("make_tests", {
     metadata = list(serviceAbbreviation = "api"),
     operations = list(
       CreateFoo = list(name = "CreateFoo"),
-      DescribeFoo = list(name = "DescribeFoo", input = list(shape = "DescribeFooShape")),
+      DescribeFoo = list(
+        name = "DescribeFoo",
+        input = list(shape = "DescribeFooShape")
+      ),
       ListBar = list(name = "ListBar"),
       ListBaz = list(name = "ListBaz", input = list(shape = "ListBazShape"))
     ),
     shapes = list(
-      DescribeFooShape = list(members = list(MaxResults = list()), required = list()),
+      DescribeFooShape = list(
+        members = list(MaxResults = list()),
+        required = list()
+      ),
       ListBazShape = list(members = list(Qux = list()), required = list("Qux"))
     )
   )
-  a <- make_tests(api)
-  e <- 'svc <- paws::api()
+  categories <- list(list(name = "widgets", services = list("api")))
+  a <- make_tests(api, categories)
+  e <- 'svc <- paws.widgets::api()
 
     test_that("describe_foo", {
+      skip_on_cran()
       expect_error(svc$describe_foo(), NA)
     })
 
     test_that("describe_foo", {
+      skip_on_cran()
       expect_error(svc$describe_foo(MaxResults = 20), NA)
     })
 
     test_that("list_bar", {
+      skip_on_cran()
       expect_error(svc$list_bar(), NA)
     })
   '

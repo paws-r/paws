@@ -5,14 +5,16 @@ TEST_DIR <- "tests/testthat"
 #'
 #' @param api_name Name of the API to make a package for.
 #' @param in_dir Directory containing API files.
+#' @param categories The AWS service categories, used to determine which
+#'   package a service's tests belong to.
 #'
 #' @keywords internal
-make_sdk_for_api <- function(api_name, in_dir) {
+make_sdk_for_api <- function(api_name, in_dir, categories) {
   api <- read_api(api_name, in_dir)
   result <- list(
     name = package_name(api),
     code = make_code_files(api),
-    tests = make_tests_files(api),
+    tests = make_tests_files(api, categories),
     docs = make_docs_files(api)
   )
   return(result)
@@ -68,9 +70,9 @@ make_service_files <- function(api, path) {
 }
 
 # Generate tests for the package.
-make_tests_files <- function(api, path) {
+make_tests_files <- function(api, categories) {
   result <- list()
-  tests <- make_tests(api)
+  tests <- make_tests(api, categories)
   filename <- paste0("test_", package_name(api), ".R")
   result[[file.path(TEST_DIR, filename)]] <- tests
   return(result)

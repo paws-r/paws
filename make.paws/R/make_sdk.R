@@ -51,7 +51,7 @@ make_sdk <- function(
     write_skeleton(out_doc_dir, version)
     for (api in apis) {
       cat(paste0(api, "\n"))
-      result <- make_sdk_for_api(api, in_dir)
+      result <- make_sdk_for_api(api, in_dir, categories)
       write_dict(result$code, temp_dir)
       write_dict(result$tests, temp_dir)
       write_dict(result$docs, out_doc_dir)

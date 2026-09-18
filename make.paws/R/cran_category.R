@@ -28,7 +28,7 @@ make_category <- function(category, service_names, sdk_dir, out_dir) {
   }
 
   package_dir <- file.path(out_dir, name)
-  write_skeleton_category(package_dir)
+  write_skeleton_category(package_dir, name)
   write_description_category(package_dir, name, title, description, version, imports)
   for (service in services) {
     copy_files(service_names[[service]], from = sdk_dir, to = package_dir)
@@ -66,6 +66,16 @@ get_category_package_name <- function(category) {
 
 get_package_name <- function(suffix) {
   sprintf("paws.%s", suffix)
+}
+
+# Return the package name for the category that a given service belongs to.
+get_service_package_name <- function(service, categories) {
+  for (category in categories) {
+    if (service %in% category$services) {
+      return(get_package_name(category$name))
+    }
+  }
+  return("paws")
 }
 
 # Get the stored AWS service categories and which services they include.
