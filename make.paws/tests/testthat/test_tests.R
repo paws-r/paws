@@ -10,6 +10,7 @@ test_that("make_test no arguments", {
   operation <- list(name = "foo")
   a <- make_test(operation, api, NULL, NA)
   e <- 'test_that("foo", {
+      skip_on_cran()
       expect_error(svc$foo(), NA)
     })
   '
@@ -23,6 +24,7 @@ test_that("make_test with arguments", {
   operation <- list(name = "foo")
   a <- make_test(operation, api, list('"bar"', 123), NA)
   e <- 'test_that("foo", {
+      skip_on_cran()
       expect_error(svc$foo("bar", 123), NA)
     })
   '
