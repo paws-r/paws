@@ -110,6 +110,11 @@ new_service <- function(metadata, handlers, cfgs = NULL, operation = Operation()
   if (is.null(signing_name)) {
     signing_name <- cfg$signing_name
   }
+  # Allow user to override signing_name via config
+  config_signing_name <- cfg$config$signing_name
+  if (!is.null(config_signing_name) && nzchar(config_signing_name)) {
+    signing_name <- config_signing_name
+  }
   custom_endpoint <- cfg$config$endpoint != "" || cfg$custom_endpoint
   client_info <- ClientInfo(
     service_name = metadata$service_name,
