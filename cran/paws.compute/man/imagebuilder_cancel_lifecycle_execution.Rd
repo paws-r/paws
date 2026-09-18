@@ -2,17 +2,17 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_cancel_lifecycle_execution}
 \alias{imagebuilder_cancel_lifecycle_execution}
-\title{Cancel a specific image lifecycle policy runtime instance}
+\title{Cancels a specific image lifecycle policy runtime instance}
 \usage{
 imagebuilder_cancel_lifecycle_execution(lifecycleExecutionId, clientToken)
 }
 \arguments{
 \item{lifecycleExecutionId}{[required] Identifies the specific runtime instance of the image lifecycle to cancel.}
 
-\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
-Cancel a specific image lifecycle policy runtime instance.
+Cancels a specific image lifecycle policy runtime instance.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_cancel_lifecycle_execution/} for full documentation.
 }

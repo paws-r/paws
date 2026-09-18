@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_list_queries}
 \alias{cloudtrail_list_queries}
-\title{Returns a list of queries and query statuses for the past seven days}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_list_queries(
   EventDataStore,
@@ -27,7 +28,7 @@ cloudtrail_list_queries(
 \item{QueryStatus}{The status of queries that you want to return in results. Valid values for \code{QueryStatus} include \code{QUEUED}, \code{RUNNING}, \code{FINISHED}, \code{FAILED}, \code{TIMED_OUT}, or \code{CANCELLED}.}
 }
 \description{
-Returns a list of queries and query statuses for the past seven days. You must specify an ARN value for \code{EventDataStore}. Optionally, to shorten the list of results, you can specify a time range, formatted as timestamps, by adding \code{StartTime} and \code{EndTime} parameters, and a \code{QueryStatus} value. Valid values for \code{QueryStatus} include \code{QUEUED}, \code{RUNNING}, \code{FINISHED}, \code{FAILED}, \code{TIMED_OUT}, or \code{CANCELLED}.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_list_queries/} for full documentation.
 }

@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_describe_query}
 \alias{cloudtrail_describe_query}
-\title{Returns metadata about a query, including query run time in
-milliseconds, number of events scanned and matched, and query status}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_describe_query(
   EventDataStore = NULL,
@@ -25,7 +25,7 @@ cloudtrail_describe_query(
 \item{EventDataStoreOwnerAccountId}{The account ID of the event data store owner.}
 }
 \description{
-Returns metadata about a query, including query run time in milliseconds, number of events scanned and matched, and query status. If the query results were delivered to an S3 bucket, the response also provides the S3 URI and the delivery status.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_describe_query/} for full documentation.
 }

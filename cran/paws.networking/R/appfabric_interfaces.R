@@ -5,312 +5,260 @@ NULL
 
 .appfabric$batch_get_user_access_tasks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(type = "string")), taskIdList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["batch_get_user_access_tasks_input"]]))
 }
 
 .appfabric$batch_get_user_access_tasks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(userAccessResultsList = structure(list(structure(list(app = structure(logical(0), tags = list(type = "string")), tenantId = structure(logical(0), tags = list(type = "string")), tenantDisplayName = structure(logical(0), tags = list(type = "string")), taskId = structure(logical(0), tags = list(type = "string")), resultStatus = structure(logical(0), tags = list(type = "string")), email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), userId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), userFullName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), userFirstName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), userLastName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), userStatus = structure(logical(0), tags = list(type = "string")), taskError = structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["batch_get_user_access_tasks_output"]]))
 }
 
 .appfabric$connect_app_authorization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string")), appAuthorizationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appAuthorizationIdentifier", type = "string")), authRequest = structure(list(redirectUri = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["connect_app_authorization_input"]]))
 }
 
 .appfabric$connect_app_authorization_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appAuthorizationSummary = structure(list(appAuthorizationArn = structure(logical(0), tags = list(type = "string")), appBundleArn = structure(logical(0), tags = list(type = "string")), app = structure(logical(0), tags = list(type = "string")), tenant = structure(list(tenantIdentifier = structure(logical(0), tags = list(type = "string")), tenantDisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["connect_app_authorization_output"]]))
 }
 
 .appfabric$create_app_authorization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string")), app = structure(logical(0), tags = list(type = "string")), credential = structure(list(oauth2Credential = structure(list(clientId = structure(logical(0), tags = list(type = "string")), clientSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), apiKeyCredential = structure(list(apiKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), tenant = structure(list(tenantIdentifier = structure(logical(0), tags = list(type = "string")), tenantDisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), authType = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["create_app_authorization_input"]]))
 }
 
 .appfabric$create_app_authorization_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appAuthorization = structure(list(appAuthorizationArn = structure(logical(0), tags = list(type = "string")), appBundleArn = structure(logical(0), tags = list(type = "string")), app = structure(logical(0), tags = list(type = "string")), tenant = structure(list(tenantIdentifier = structure(logical(0), tags = list(type = "string")), tenantDisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), authType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), persona = structure(logical(0), tags = list(type = "string")), authUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["create_app_authorization_output"]]))
 }
 
 .appfabric$create_app_bundle_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), customerManagedKeyIdentifier = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["create_app_bundle_input"]]))
 }
 
 .appfabric$create_app_bundle_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundle = structure(list(arn = structure(logical(0), tags = list(type = "string")), customerManagedKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["create_app_bundle_output"]]))
 }
 
 .appfabric$create_ingestion_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string")), app = structure(logical(0), tags = list(type = "string")), tenantId = structure(logical(0), tags = list(type = "string")), ingestionType = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["create_ingestion_input"]]))
 }
 
 .appfabric$create_ingestion_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ingestion = structure(list(arn = structure(logical(0), tags = list(type = "string")), appBundleArn = structure(logical(0), tags = list(type = "string")), app = structure(logical(0), tags = list(type = "string")), tenantId = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), state = structure(logical(0), tags = list(type = "string")), ingestionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["create_ingestion_output"]]))
 }
 
 .appfabric$create_ingestion_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string")), ingestionIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "ingestionIdentifier", type = "string")), processingConfiguration = structure(list(auditLog = structure(list(schema = structure(logical(0), tags = list(type = "string")), format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), destinationConfiguration = structure(list(auditLog = structure(list(destination = structure(list(s3Bucket = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), firehoseStream = structure(list(streamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["create_ingestion_destination_input"]]))
 }
 
 .appfabric$create_ingestion_destination_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ingestionDestination = structure(list(arn = structure(logical(0), tags = list(type = "string")), ingestionArn = structure(logical(0), tags = list(type = "string")), processingConfiguration = structure(list(auditLog = structure(list(schema = structure(logical(0), tags = list(type = "string")), format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), destinationConfiguration = structure(list(auditLog = structure(list(destination = structure(list(s3Bucket = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), firehoseStream = structure(list(streamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), status = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["create_ingestion_destination_output"]]))
 }
 
 .appfabric$delete_app_authorization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string")), appAuthorizationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appAuthorizationIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["delete_app_authorization_input"]]))
 }
 
 .appfabric$delete_app_authorization_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["delete_app_authorization_output"]]))
 }
 
 .appfabric$delete_app_bundle_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["delete_app_bundle_input"]]))
 }
 
 .appfabric$delete_app_bundle_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["delete_app_bundle_output"]]))
 }
 
 .appfabric$delete_ingestion_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string")), ingestionIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "ingestionIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["delete_ingestion_input"]]))
 }
 
 .appfabric$delete_ingestion_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["delete_ingestion_output"]]))
 }
 
 .appfabric$delete_ingestion_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string")), ingestionIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "ingestionIdentifier", type = "string")), ingestionDestinationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "ingestionDestinationIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["delete_ingestion_destination_input"]]))
 }
 
 .appfabric$delete_ingestion_destination_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["delete_ingestion_destination_output"]]))
 }
 
 .appfabric$get_app_authorization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string")), appAuthorizationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appAuthorizationIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["get_app_authorization_input"]]))
 }
 
 .appfabric$get_app_authorization_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appAuthorization = structure(list(appAuthorizationArn = structure(logical(0), tags = list(type = "string")), appBundleArn = structure(logical(0), tags = list(type = "string")), app = structure(logical(0), tags = list(type = "string")), tenant = structure(list(tenantIdentifier = structure(logical(0), tags = list(type = "string")), tenantDisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), authType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), persona = structure(logical(0), tags = list(type = "string")), authUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["get_app_authorization_output"]]))
 }
 
 .appfabric$get_app_bundle_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["get_app_bundle_input"]]))
 }
 
 .appfabric$get_app_bundle_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundle = structure(list(arn = structure(logical(0), tags = list(type = "string")), customerManagedKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["get_app_bundle_output"]]))
 }
 
 .appfabric$get_ingestion_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string")), ingestionIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "ingestionIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["get_ingestion_input"]]))
 }
 
 .appfabric$get_ingestion_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ingestion = structure(list(arn = structure(logical(0), tags = list(type = "string")), appBundleArn = structure(logical(0), tags = list(type = "string")), app = structure(logical(0), tags = list(type = "string")), tenantId = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), state = structure(logical(0), tags = list(type = "string")), ingestionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["get_ingestion_output"]]))
 }
 
 .appfabric$get_ingestion_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string")), ingestionIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "ingestionIdentifier", type = "string")), ingestionDestinationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "ingestionDestinationIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["get_ingestion_destination_input"]]))
 }
 
 .appfabric$get_ingestion_destination_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ingestionDestination = structure(list(arn = structure(logical(0), tags = list(type = "string")), ingestionArn = structure(logical(0), tags = list(type = "string")), processingConfiguration = structure(list(auditLog = structure(list(schema = structure(logical(0), tags = list(type = "string")), format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), destinationConfiguration = structure(list(auditLog = structure(list(destination = structure(list(s3Bucket = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), firehoseStream = structure(list(streamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), status = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["get_ingestion_destination_output"]]))
 }
 
 .appfabric$list_app_authorizations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["list_app_authorizations_input"]]))
 }
 
 .appfabric$list_app_authorizations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appAuthorizationSummaryList = structure(list(structure(list(appAuthorizationArn = structure(logical(0), tags = list(type = "string")), appBundleArn = structure(logical(0), tags = list(type = "string")), app = structure(logical(0), tags = list(type = "string")), tenant = structure(list(tenantIdentifier = structure(logical(0), tags = list(type = "string")), tenantDisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["list_app_authorizations_output"]]))
 }
 
 .appfabric$list_app_bundles_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["list_app_bundles_input"]]))
 }
 
 .appfabric$list_app_bundles_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleSummaryList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["list_app_bundles_output"]]))
 }
 
 .appfabric$list_ingestion_destinations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string")), ingestionIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "ingestionIdentifier", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["list_ingestion_destinations_input"]]))
 }
 
 .appfabric$list_ingestion_destinations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ingestionDestinations = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["list_ingestion_destinations_output"]]))
 }
 
 .appfabric$list_ingestions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["list_ingestions_input"]]))
 }
 
 .appfabric$list_ingestions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ingestions = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), app = structure(logical(0), tags = list(type = "string")), tenantId = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["list_ingestions_output"]]))
 }
 
 .appfabric$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["list_tags_for_resource_input"]]))
 }
 
 .appfabric$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["list_tags_for_resource_output"]]))
 }
 
 .appfabric$start_ingestion_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ingestionIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "ingestionIdentifier", type = "string")), appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["start_ingestion_input"]]))
 }
 
 .appfabric$start_ingestion_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["start_ingestion_output"]]))
 }
 
 .appfabric$start_user_access_tasks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(type = "string")), email = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["start_user_access_tasks_input"]]))
 }
 
 .appfabric$start_user_access_tasks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(userAccessTasksList = structure(list(structure(list(app = structure(logical(0), tags = list(type = "string")), tenantId = structure(logical(0), tags = list(type = "string")), taskId = structure(logical(0), tags = list(type = "string")), error = structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["start_user_access_tasks_output"]]))
 }
 
 .appfabric$stop_ingestion_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ingestionIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "ingestionIdentifier", type = "string")), appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["stop_ingestion_input"]]))
 }
 
 .appfabric$stop_ingestion_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["stop_ingestion_output"]]))
 }
 
 .appfabric$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["tag_resource_input"]]))
 }
 
 .appfabric$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["tag_resource_output"]]))
 }
 
 .appfabric$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["untag_resource_input"]]))
 }
 
 .appfabric$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["untag_resource_output"]]))
 }
 
 .appfabric$update_app_authorization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string")), appAuthorizationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appAuthorizationIdentifier", type = "string")), credential = structure(list(oauth2Credential = structure(list(clientId = structure(logical(0), tags = list(type = "string")), clientSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), apiKeyCredential = structure(list(apiKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), tenant = structure(list(tenantIdentifier = structure(logical(0), tags = list(type = "string")), tenantDisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["update_app_authorization_input"]]))
 }
 
 .appfabric$update_app_authorization_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appAuthorization = structure(list(appAuthorizationArn = structure(logical(0), tags = list(type = "string")), appBundleArn = structure(logical(0), tags = list(type = "string")), app = structure(logical(0), tags = list(type = "string")), tenant = structure(list(tenantIdentifier = structure(logical(0), tags = list(type = "string")), tenantDisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), authType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), persona = structure(logical(0), tags = list(type = "string")), authUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["update_app_authorization_output"]]))
 }
 
 .appfabric$update_ingestion_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appBundleIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "appBundleIdentifier", type = "string")), ingestionIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "ingestionIdentifier", type = "string")), ingestionDestinationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "ingestionDestinationIdentifier", type = "string")), destinationConfiguration = structure(list(auditLog = structure(list(destination = structure(list(s3Bucket = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), firehoseStream = structure(list(streamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["update_ingestion_destination_input"]]))
 }
 
 .appfabric$update_ingestion_destination_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ingestionDestination = structure(list(arn = structure(logical(0), tags = list(type = "string")), ingestionArn = structure(logical(0), tags = list(type = "string")), processingConfiguration = structure(list(auditLog = structure(list(schema = structure(logical(0), tags = list(type = "string")), format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), destinationConfiguration = structure(list(auditLog = structure(list(destination = structure(list(s3Bucket = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), firehoseStream = structure(list(streamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), status = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appfabric_shapes[["update_ingestion_destination_output"]]))
 }

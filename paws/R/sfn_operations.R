@@ -15,7 +15,7 @@ NULL
 #' @usage
 #' sfn_create_activity(name, tags, encryptionConfiguration)
 #'
-#' @param name &#91;required&#93; The name of the activity to create. This name must be unique for your Amazon Web Services account and region for 90 days. For more information, see [Limits Related to State Machine Executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions) in the *Step Functions Developer Guide*.
+#' @param name &#91;required&#93; The name of the activity to create. This name must be unique for your Amazon Web Services account and region.
 #' 
 #' A name must *not* contain:
 #' 
@@ -1038,8 +1038,6 @@ sfn_describe_state_machine_for_execution <- function(executionArn, includedData 
 #' @description
 #' Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine. This initiates a long poll, where the service holds the HTTP connection open and responds as soon as a task becomes available (i.e. an execution of a task of this type is needed.) The maximum time the service holds on to the request before responding is 60 seconds. If no task is available within 60 seconds, the poll returns a `taskToken` with a null string.
 #' 
-#' This API action isn't logged in CloudTrail.
-#' 
 #' Workers should set their client side socket timeout to at least 65 seconds (5 seconds higher than the maximum time the service may hold the poll request).
 #' 
 #' Polling with [`get_activity_task`][sfn_get_activity_task] can cause latency in some implementations. See [Avoid Latency When Polling for Activity Tasks](https://docs.aws.amazon.com/step-functions/latest/dg/sfn-best-practices.html) in the Step Functions Developer Guide.
@@ -1442,13 +1440,13 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #' 
 #' You can also provide a state machine [alias](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html) ARN or [version](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html) ARN to list the executions associated with a specific alias or version.
 #' 
-#' Results are sorted by time, with the most recent execution first.
+#' Results are sorted by time, with the most recent execution first. Running executions are sorted by their `startDate` or `redriveDate`, and other executions are sorted by their `stopDate`.
 #' 
 #' If `nextToken` is returned, there are more results available. The value of `nextToken` is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an *HTTP 400 InvalidToken* error.
 #' 
 #' This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
 #' 
-#' This API action is not supported by `EXPRESS` state machines.
+#' This API action is not supported by `EXPRESS` state machines. However, you may list `EXPRESS` children started by a map run using the `mapRunArn` parameter.
 #'
 #' @usage
 #' sfn_list_executions(stateMachineArn, statusFilter, maxResults,
@@ -2212,7 +2210,7 @@ sfn_send_task_success <- function(taskToken, output) {
 #' 
 #' To start executions of a state machine [version](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html), call [`start_execution`][sfn_start_execution] and provide the version ARN or the ARN of an [alias](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html) that points to the version.
 #' 
-#' [`start_execution`][sfn_start_execution] is idempotent for `STANDARD` workflows. For a `STANDARD` workflow, if you call [`start_execution`][sfn_start_execution] with the same name and input as a running execution, the call succeeds and return the same response as the original request. If the execution is closed or if the input is different, it returns a `400 ExecutionAlreadyExists` error. You can reuse names after 90 days.
+#' [`start_execution`][sfn_start_execution] is idempotent for `STANDARD` workflows. For a `STANDARD` workflow, if you call [`start_execution`][sfn_start_execution] with the same name and input as a running execution, the call succeeds and return the same response as the original request. If the execution is closed or if the input is different, it returns a `400 ExecutionAlreadyExists` error. You can reuse the name 90 days after it closes.
 #' 
 #' [`start_execution`][sfn_start_execution] isn't idempotent for `EXPRESS` workflows.
 #'
@@ -2240,7 +2238,7 @@ sfn_send_task_success <- function(taskToken, output) {
 #'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine:PROD>`
 #' 
 #'     Step Functions associates executions that you start with an alias ARN with that alias and the state machine version used for that execution.
-#' @param name Optional name of the execution. This name must be unique for your Amazon Web Services account, Region, and state machine for 90 days. For more information, see [Limits Related to State Machine Executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions) in the *Step Functions Developer Guide*.
+#' @param name Optional name of the execution. For STANDARD workflows, this name must be unique for your Amazon Web Services account, region, and state machine. If a previous execution with the same name exists, you can reuse the name 90 days after it closes. For EXPRESS workflows, execution names can be reused immediately. For more information, see [Limits Related to State Machine Executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions) in the *Step Functions Developer Guide*.
 #' 
 #' If you don't provide a name for the execution, Step Functions automatically generates a universally unique identifier (UUID) as the execution name.
 #' 
@@ -2323,8 +2321,6 @@ sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL, trac
 #' Starts a Synchronous Express state machine execution. [`start_sync_execution`][sfn_start_sync_execution] is not available for `STANDARD` workflows.
 #' 
 #' [`start_sync_execution`][sfn_start_sync_execution] will return a `200 OK` response, even if your execution fails, because the status code in the API response doesn't reflect function errors. Error codes are reserved for errors that prevent your execution from running, such as permissions errors, limit errors, or issues with your state machine code and configuration.
-#' 
-#' This API action isn't logged in CloudTrail.
 #'
 #' @usage
 #' sfn_start_sync_execution(stateMachineArn, name, input, traceHeader,

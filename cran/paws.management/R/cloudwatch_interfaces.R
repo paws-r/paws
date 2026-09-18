@@ -3,10 +3,19 @@
 #' @include cloudwatch_service.R
 NULL
 
+.cloudwatch$associate_dataset_kms_key_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["associate_dataset_kms_key_input"]]))
+}
+
+.cloudwatch$associate_dataset_kms_key_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["associate_dataset_kms_key_output"]]))
+}
+
 .cloudwatch$delete_alarm_mute_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlarmMuteRuleName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["delete_alarm_mute_rule_input"]]))
 }
 
 .cloudwatch$delete_alarm_mute_rule_output <- function(...) {
@@ -15,8 +24,7 @@ NULL
 
 .cloudwatch$delete_alarms_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlarmNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["delete_alarms_input"]]))
 }
 
 .cloudwatch$delete_alarms_output <- function(...) {
@@ -25,128 +33,107 @@ NULL
 
 .cloudwatch$delete_anomaly_detector_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Namespace = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Use SingleMetricAnomalyDetector.", type = "string")), MetricName = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Use SingleMetricAnomalyDetector.", type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "Use SingleMetricAnomalyDetector.", type = "list")), Stat = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Use SingleMetricAnomalyDetector.", type = "string")), SingleMetricAnomalyDetector = structure(list(AccountId = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Stat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricMathAnomalyDetector = structure(list(MetricDataQueries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Period = structure(logical(0), tags = list(type = "integer")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Expression = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), ReturnData = structure(logical(0), tags = list(type = "boolean")), Period = structure(logical(0), tags = list(type = "integer")), AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["delete_anomaly_detector_input"]]))
 }
 
 .cloudwatch$delete_anomaly_detector_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DeleteAnomalyDetectorResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["delete_anomaly_detector_output"]]))
 }
 
 .cloudwatch$delete_dashboards_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DashboardNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["delete_dashboards_input"]]))
 }
 
 .cloudwatch$delete_dashboards_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DeleteDashboardsResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["delete_dashboards_output"]]))
 }
 
 .cloudwatch$delete_insight_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["delete_insight_rules_input"]]))
 }
 
 .cloudwatch$delete_insight_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Failures = structure(list(structure(list(FailureResource = structure(logical(0), tags = list(type = "string")), ExceptionType = structure(logical(0), tags = list(type = "string")), FailureCode = structure(logical(0), tags = list(type = "string")), FailureDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DeleteInsightRulesResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["delete_insight_rules_output"]]))
 }
 
 .cloudwatch$delete_metric_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["delete_metric_stream_input"]]))
 }
 
 .cloudwatch$delete_metric_stream_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DeleteMetricStreamResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["delete_metric_stream_output"]]))
 }
 
 .cloudwatch$describe_alarm_contributors_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["describe_alarm_contributors_input"]]))
 }
 
 .cloudwatch$describe_alarm_contributors_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlarmContributors = structure(list(structure(list(ContributorId = structure(logical(0), tags = list(type = "string")), ContributorAttributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), StateReason = structure(logical(0), tags = list(type = "string")), StateTransitionedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeAlarmContributorsResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["describe_alarm_contributors_output"]]))
 }
 
 .cloudwatch$describe_alarm_history_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), AlarmContributorId = structure(logical(0), tags = list(type = "string")), AlarmTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HistoryItemType = structure(logical(0), tags = list(type = "string")), StartDate = structure(logical(0), tags = list(type = "timestamp")), EndDate = structure(logical(0), tags = list(type = "timestamp")), MaxRecords = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), ScanBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["describe_alarm_history_input"]]))
 }
 
 .cloudwatch$describe_alarm_history_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlarmHistoryItems = structure(list(structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), AlarmContributorId = structure(logical(0), tags = list(type = "string")), AlarmType = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), HistoryItemType = structure(logical(0), tags = list(type = "string")), HistorySummary = structure(logical(0), tags = list(type = "string")), HistoryData = structure(logical(0), tags = list(type = "string")), AlarmContributorAttributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeAlarmHistoryResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["describe_alarm_history_output"]]))
 }
 
 .cloudwatch$describe_alarms_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlarmNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AlarmNamePrefix = structure(logical(0), tags = list(type = "string")), AlarmTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ChildrenOfAlarmName = structure(logical(0), tags = list(type = "string")), ParentsOfAlarmName = structure(logical(0), tags = list(type = "string")), StateValue = structure(logical(0), tags = list(type = "string")), ActionPrefix = structure(logical(0), tags = list(type = "string")), MaxRecords = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["describe_alarms_input"]]))
 }
 
 .cloudwatch$describe_alarms_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CompositeAlarms = structure(list(structure(list(ActionsEnabled = structure(logical(0), tags = list(type = "boolean")), AlarmActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AlarmArn = structure(logical(0), tags = list(type = "string")), AlarmConfigurationUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), AlarmDescription = structure(logical(0), tags = list(type = "string")), AlarmName = structure(logical(0), tags = list(type = "string")), AlarmRule = structure(logical(0), tags = list(type = "string")), InsufficientDataActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OKActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StateReason = structure(logical(0), tags = list(type = "string")), StateReasonData = structure(logical(0), tags = list(type = "string")), StateUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), StateValue = structure(logical(0), tags = list(type = "string")), StateTransitionedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ActionsSuppressedBy = structure(logical(0), tags = list(type = "string")), ActionsSuppressedReason = structure(logical(0), tags = list(type = "string")), ActionsSuppressor = structure(logical(0), tags = list(type = "string")), ActionsSuppressorWaitPeriod = structure(logical(0), tags = list(type = "integer")), ActionsSuppressorExtensionPeriod = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricAlarms = structure(list(structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), AlarmArn = structure(logical(0), tags = list(type = "string")), AlarmDescription = structure(logical(0), tags = list(type = "string")), AlarmConfigurationUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ActionsEnabled = structure(logical(0), tags = list(type = "boolean")), OKActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AlarmActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InsufficientDataActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StateValue = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), StateReasonData = structure(logical(0), tags = list(type = "string")), StateUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), Statistic = structure(logical(0), tags = list(type = "string")), ExtendedStatistic = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Period = structure(logical(0), tags = list(type = "integer")), Unit = structure(logical(0), tags = list(type = "string")), EvaluationPeriods = structure(logical(0), tags = list(type = "integer")), DatapointsToAlarm = structure(logical(0), tags = list(type = "integer")), Threshold = structure(logical(0), tags = list(type = "double")), ComparisonOperator = structure(logical(0), tags = list(type = "string")), TreatMissingData = structure(logical(0), tags = list(type = "string")), EvaluateLowSampleCountPercentile = structure(logical(0), tags = list(type = "string")), Metrics = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Period = structure(logical(0), tags = list(type = "integer")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Expression = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), ReturnData = structure(logical(0), tags = list(type = "boolean")), Period = structure(logical(0), tags = list(type = "integer")), AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ThresholdMetricId = structure(logical(0), tags = list(type = "string")), EvaluationState = structure(logical(0), tags = list(type = "string")), StateTransitionedTimestamp = structure(logical(0), tags = list(type = "timestamp")), EvaluationCriteria = structure(list(PromQLCriteria = structure(list(Query = structure(logical(0), tags = list(type = "string")), PendingPeriod = structure(logical(0), tags = list(type = "integer")), RecoveryPeriod = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), EvaluationInterval = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeAlarmsResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["describe_alarms_output"]]))
 }
 
 .cloudwatch$describe_alarms_for_metric_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), Statistic = structure(logical(0), tags = list(type = "string")), ExtendedStatistic = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Period = structure(logical(0), tags = list(type = "integer")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["describe_alarms_for_metric_input"]]))
 }
 
 .cloudwatch$describe_alarms_for_metric_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MetricAlarms = structure(list(structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), AlarmArn = structure(logical(0), tags = list(type = "string")), AlarmDescription = structure(logical(0), tags = list(type = "string")), AlarmConfigurationUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ActionsEnabled = structure(logical(0), tags = list(type = "boolean")), OKActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AlarmActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InsufficientDataActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StateValue = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), StateReasonData = structure(logical(0), tags = list(type = "string")), StateUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), Statistic = structure(logical(0), tags = list(type = "string")), ExtendedStatistic = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Period = structure(logical(0), tags = list(type = "integer")), Unit = structure(logical(0), tags = list(type = "string")), EvaluationPeriods = structure(logical(0), tags = list(type = "integer")), DatapointsToAlarm = structure(logical(0), tags = list(type = "integer")), Threshold = structure(logical(0), tags = list(type = "double")), ComparisonOperator = structure(logical(0), tags = list(type = "string")), TreatMissingData = structure(logical(0), tags = list(type = "string")), EvaluateLowSampleCountPercentile = structure(logical(0), tags = list(type = "string")), Metrics = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Period = structure(logical(0), tags = list(type = "integer")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Expression = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), ReturnData = structure(logical(0), tags = list(type = "boolean")), Period = structure(logical(0), tags = list(type = "integer")), AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ThresholdMetricId = structure(logical(0), tags = list(type = "string")), EvaluationState = structure(logical(0), tags = list(type = "string")), StateTransitionedTimestamp = structure(logical(0), tags = list(type = "timestamp")), EvaluationCriteria = structure(list(PromQLCriteria = structure(list(Query = structure(logical(0), tags = list(type = "string")), PendingPeriod = structure(logical(0), tags = list(type = "integer")), RecoveryPeriod = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), EvaluationInterval = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeAlarmsForMetricResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["describe_alarms_for_metric_output"]]))
 }
 
 .cloudwatch$describe_anomaly_detectors_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Namespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AnomalyDetectorTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["describe_anomaly_detectors_input"]]))
 }
 
 .cloudwatch$describe_anomaly_detectors_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AnomalyDetectors = structure(list(structure(list(Namespace = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Use SingleMetricAnomalyDetector.Namespace property.", type = "string")), MetricName = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Use SingleMetricAnomalyDetector.MetricName property.", type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "Use SingleMetricAnomalyDetector.Dimensions property.", type = "list")), Stat = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Use SingleMetricAnomalyDetector.Stat property.", type = "string")), Configuration = structure(list(ExcludedTimeRanges = structure(list(structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricTimezone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StateValue = structure(logical(0), tags = list(type = "string")), MetricCharacteristics = structure(list(PeriodicSpikes = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), SingleMetricAnomalyDetector = structure(list(AccountId = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Stat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricMathAnomalyDetector = structure(list(MetricDataQueries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Period = structure(logical(0), tags = list(type = "integer")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Expression = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), ReturnData = structure(logical(0), tags = list(type = "boolean")), Period = structure(logical(0), tags = list(type = "integer")), AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeAnomalyDetectorsResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["describe_anomaly_detectors_output"]]))
 }
 
 .cloudwatch$describe_insight_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["describe_insight_rules_input"]]))
 }
 
 .cloudwatch$describe_insight_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), InsightRules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Schema = structure(logical(0), tags = list(type = "string")), Definition = structure(logical(0), tags = list(type = "string")), ManagedRule = structure(logical(0), tags = list(type = "boolean")), ApplyOnTransformedLogs = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeInsightRulesResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["describe_insight_rules_output"]]))
 }
 
 .cloudwatch$disable_alarm_actions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlarmNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["disable_alarm_actions_input"]]))
 }
 
 .cloudwatch$disable_alarm_actions_output <- function(...) {
@@ -155,20 +142,27 @@ NULL
 
 .cloudwatch$disable_insight_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["disable_insight_rules_input"]]))
 }
 
 .cloudwatch$disable_insight_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Failures = structure(list(structure(list(FailureResource = structure(logical(0), tags = list(type = "string")), ExceptionType = structure(logical(0), tags = list(type = "string")), FailureCode = structure(logical(0), tags = list(type = "string")), FailureDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DisableInsightRulesResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["disable_insight_rules_output"]]))
+}
+
+.cloudwatch$disassociate_dataset_kms_key_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["disassociate_dataset_kms_key_input"]]))
+}
+
+.cloudwatch$disassociate_dataset_kms_key_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["disassociate_dataset_kms_key_output"]]))
 }
 
 .cloudwatch$enable_alarm_actions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlarmNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["enable_alarm_actions_input"]]))
 }
 
 .cloudwatch$enable_alarm_actions_output <- function(...) {
@@ -177,188 +171,167 @@ NULL
 
 .cloudwatch$enable_insight_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["enable_insight_rules_input"]]))
 }
 
 .cloudwatch$enable_insight_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Failures = structure(list(structure(list(FailureResource = structure(logical(0), tags = list(type = "string")), ExceptionType = structure(logical(0), tags = list(type = "string")), FailureCode = structure(logical(0), tags = list(type = "string")), FailureDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "EnableInsightRulesResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["enable_insight_rules_output"]]))
 }
 
 .cloudwatch$get_alarm_mute_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlarmMuteRuleName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["get_alarm_mute_rule_input"]]))
 }
 
 .cloudwatch$get_alarm_mute_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), AlarmMuteRuleArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Rule = structure(list(Schedule = structure(list(Expression = structure(logical(0), tags = list(type = "string")), Duration = structure(logical(0), tags = list(type = "string")), Timezone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), MuteTargets = structure(list(AlarmNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), StartDate = structure(logical(0), tags = list(type = "timestamp")), ExpireDate = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), LastUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), MuteType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetAlarmMuteRuleResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["get_alarm_mute_rule_output"]]))
 }
 
 .cloudwatch$get_dashboard_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DashboardName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["get_dashboard_input"]]))
 }
 
 .cloudwatch$get_dashboard_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DashboardArn = structure(logical(0), tags = list(type = "string")), DashboardBody = structure(logical(0), tags = list(type = "string")), DashboardName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetDashboardResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["get_dashboard_output"]]))
+}
+
+.cloudwatch$get_dataset_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["get_dataset_input"]]))
+}
+
+.cloudwatch$get_dataset_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["get_dataset_output"]]))
 }
 
 .cloudwatch$get_insight_rule_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleName = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Period = structure(logical(0), tags = list(type = "integer")), MaxContributorCount = structure(logical(0), tags = list(type = "integer")), Metrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OrderBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["get_insight_rule_report_input"]]))
 }
 
 .cloudwatch$get_insight_rule_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyLabels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AggregationStatistic = structure(logical(0), tags = list(type = "string")), AggregateValue = structure(logical(0), tags = list(type = "double")), ApproximateUniqueCount = structure(logical(0), tags = list(type = "long")), Contributors = structure(list(structure(list(Keys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ApproximateAggregateValue = structure(logical(0), tags = list(type = "double")), Datapoints = structure(list(structure(list(Timestamp = structure(logical(0), tags = list(type = "timestamp")), ApproximateValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricDatapoints = structure(list(structure(list(Timestamp = structure(logical(0), tags = list(type = "timestamp")), UniqueContributors = structure(logical(0), tags = list(type = "double")), MaxContributorValue = structure(logical(0), tags = list(type = "double")), SampleCount = structure(logical(0), tags = list(type = "double")), Average = structure(logical(0), tags = list(type = "double")), Sum = structure(logical(0), tags = list(type = "double")), Minimum = structure(logical(0), tags = list(type = "double")), Maximum = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "GetInsightRuleReportResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["get_insight_rule_report_output"]]))
 }
 
 .cloudwatch$get_metric_data_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MetricDataQueries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Period = structure(logical(0), tags = list(type = "integer")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Expression = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), ReturnData = structure(logical(0), tags = list(type = "boolean")), Period = structure(logical(0), tags = list(type = "integer")), AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), NextToken = structure(logical(0), tags = list(type = "string")), ScanBy = structure(logical(0), tags = list(type = "string")), MaxDatapoints = structure(logical(0), tags = list(type = "integer")), LabelOptions = structure(list(Timezone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["get_metric_data_input"]]))
 }
 
 .cloudwatch$get_metric_data_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MetricDataResults = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), Timestamps = structure(list(structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "list")), Values = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "list")), StatusCode = structure(logical(0), tags = list(type = "string")), Messages = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), Messages = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "GetMetricDataResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["get_metric_data_output"]]))
 }
 
 .cloudwatch$get_metric_statistics_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Period = structure(logical(0), tags = list(type = "integer")), Statistics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ExtendedStatistics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["get_metric_statistics_input"]]))
 }
 
 .cloudwatch$get_metric_statistics_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Label = structure(logical(0), tags = list(type = "string")), Datapoints = structure(list(structure(list(Timestamp = structure(logical(0), tags = list(type = "timestamp")), SampleCount = structure(logical(0), tags = list(type = "double")), Average = structure(logical(0), tags = list(type = "double")), Sum = structure(logical(0), tags = list(type = "double")), Minimum = structure(logical(0), tags = list(type = "double")), Maximum = structure(logical(0), tags = list(type = "double")), Unit = structure(logical(0), tags = list(type = "string")), ExtendedStatistics = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "GetMetricStatisticsResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["get_metric_statistics_output"]]))
 }
 
 .cloudwatch$get_metric_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["get_metric_stream_input"]]))
 }
 
 .cloudwatch$get_metric_stream_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), IncludeFilters = structure(list(structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ExcludeFilters = structure(list(structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), FirehoseArn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), LastUpdateDate = structure(logical(0), tags = list(type = "timestamp")), OutputFormat = structure(logical(0), tags = list(type = "string")), StatisticsConfigurations = structure(list(structure(list(IncludeMetrics = structure(list(structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AdditionalStatistics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), IncludeLinkedAccountsMetrics = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", resultWrapper = "GetMetricStreamResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["get_metric_stream_output"]]))
 }
 
 .cloudwatch$get_metric_widget_image_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MetricWidget = structure(logical(0), tags = list(type = "string")), OutputFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["get_metric_widget_image_input"]]))
 }
 
 .cloudwatch$get_metric_widget_image_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MetricWidgetImage = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", resultWrapper = "GetMetricWidgetImageResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["get_metric_widget_image_output"]]))
 }
 
 .cloudwatch$get_o_tel_enrichment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["get_o_tel_enrichment_input"]]))
 }
 
 .cloudwatch$get_o_tel_enrichment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetOTelEnrichmentResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["get_o_tel_enrichment_output"]]))
 }
 
 .cloudwatch$list_alarm_mute_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), Statuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxRecords = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["list_alarm_mute_rules_input"]]))
 }
 
 .cloudwatch$list_alarm_mute_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlarmMuteRuleSummaries = structure(list(structure(list(AlarmMuteRuleArn = structure(logical(0), tags = list(type = "string")), ExpireDate = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), MuteType = structure(logical(0), tags = list(type = "string")), LastUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListAlarmMuteRulesResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["list_alarm_mute_rules_output"]]))
 }
 
 .cloudwatch$list_dashboards_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DashboardNamePrefix = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["list_dashboards_input"]]))
 }
 
 .cloudwatch$list_dashboards_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DashboardEntries = structure(list(structure(list(DashboardName = structure(logical(0), tags = list(type = "string")), DashboardArn = structure(logical(0), tags = list(type = "string")), LastModified = structure(logical(0), tags = list(type = "timestamp")), Size = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListDashboardsResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["list_dashboards_output"]]))
 }
 
 .cloudwatch$list_managed_insight_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["list_managed_insight_rules_input"]]))
 }
 
 .cloudwatch$list_managed_insight_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ManagedRules = structure(list(structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), ResourceARN = structure(logical(0), tags = list(type = "string")), RuleState = structure(list(RuleName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListManagedInsightRulesResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["list_managed_insight_rules_output"]]))
 }
 
 .cloudwatch$list_metric_streams_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["list_metric_streams_input"]]))
 }
 
 .cloudwatch$list_metric_streams_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Entries = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), LastUpdateDate = structure(logical(0), tags = list(type = "timestamp")), Name = structure(logical(0), tags = list(type = "string")), FirehoseArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), OutputFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ListMetricStreamsResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["list_metric_streams_output"]]))
 }
 
 .cloudwatch$list_metrics_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), RecentlyActive = structure(logical(0), tags = list(type = "string")), IncludeLinkedAccounts = structure(logical(0), tags = list(type = "boolean")), OwningAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["list_metrics_input"]]))
 }
 
 .cloudwatch$list_metrics_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Metrics = structure(list(structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), OwningAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ListMetricsResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["list_metrics_output"]]))
 }
 
 .cloudwatch$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["list_tags_for_resource_input"]]))
 }
 
 .cloudwatch$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ListTagsForResourceResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["list_tags_for_resource_output"]]))
 }
 
 .cloudwatch$put_alarm_mute_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Rule = structure(list(Schedule = structure(list(Expression = structure(logical(0), tags = list(type = "string")), Duration = structure(logical(0), tags = list(type = "string")), Timezone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), MuteTargets = structure(list(AlarmNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), StartDate = structure(logical(0), tags = list(type = "timestamp")), ExpireDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["put_alarm_mute_rule_input"]]))
 }
 
 .cloudwatch$put_alarm_mute_rule_output <- function(...) {
@@ -367,20 +340,17 @@ NULL
 
 .cloudwatch$put_anomaly_detector_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Namespace = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Use SingleMetricAnomalyDetector.", type = "string")), MetricName = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Use SingleMetricAnomalyDetector.", type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "Use SingleMetricAnomalyDetector.", type = "list")), Stat = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Use SingleMetricAnomalyDetector.", type = "string")), Configuration = structure(list(ExcludedTimeRanges = structure(list(structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricTimezone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricCharacteristics = structure(list(PeriodicSpikes = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), SingleMetricAnomalyDetector = structure(list(AccountId = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Stat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricMathAnomalyDetector = structure(list(MetricDataQueries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Period = structure(logical(0), tags = list(type = "integer")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Expression = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), ReturnData = structure(logical(0), tags = list(type = "boolean")), Period = structure(logical(0), tags = list(type = "integer")), AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["put_anomaly_detector_input"]]))
 }
 
 .cloudwatch$put_anomaly_detector_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "PutAnomalyDetectorResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["put_anomaly_detector_output"]]))
 }
 
 .cloudwatch$put_composite_alarm_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ActionsEnabled = structure(logical(0), tags = list(type = "boolean")), AlarmActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AlarmDescription = structure(logical(0), tags = list(type = "string")), AlarmName = structure(logical(0), tags = list(type = "string")), AlarmRule = structure(logical(0), tags = list(type = "string")), InsufficientDataActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OKActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ActionsSuppressor = structure(logical(0), tags = list(type = "string")), ActionsSuppressorWaitPeriod = structure(logical(0), tags = list(type = "integer")), ActionsSuppressorExtensionPeriod = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["put_composite_alarm_input"]]))
 }
 
 .cloudwatch$put_composite_alarm_output <- function(...) {
@@ -389,44 +359,46 @@ NULL
 
 .cloudwatch$put_dashboard_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DashboardName = structure(logical(0), tags = list(type = "string")), DashboardBody = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["put_dashboard_input"]]))
 }
 
 .cloudwatch$put_dashboard_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DashboardValidationMessages = structure(list(structure(list(DataPath = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "PutDashboardResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["put_dashboard_output"]]))
 }
 
 .cloudwatch$put_insight_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleName = structure(logical(0), tags = list(type = "string")), RuleState = structure(logical(0), tags = list(type = "string")), RuleDefinition = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ApplyOnTransformedLogs = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["put_insight_rule_input"]]))
 }
 
 .cloudwatch$put_insight_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "PutInsightRuleResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["put_insight_rule_output"]]))
+}
+
+.cloudwatch$put_log_alarm_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["put_log_alarm_input"]]))
+}
+
+.cloudwatch$put_log_alarm_output <- function(...) {
+  list()
 }
 
 .cloudwatch$put_managed_insight_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ManagedRules = structure(list(structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["put_managed_insight_rules_input"]]))
 }
 
 .cloudwatch$put_managed_insight_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Failures = structure(list(structure(list(FailureResource = structure(logical(0), tags = list(type = "string")), ExceptionType = structure(logical(0), tags = list(type = "string")), FailureCode = structure(logical(0), tags = list(type = "string")), FailureDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "PutManagedInsightRulesResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["put_managed_insight_rules_output"]]))
 }
 
 .cloudwatch$put_metric_alarm_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), AlarmDescription = structure(logical(0), tags = list(type = "string")), ActionsEnabled = structure(logical(0), tags = list(type = "boolean")), OKActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AlarmActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InsufficientDataActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), Statistic = structure(logical(0), tags = list(type = "string")), ExtendedStatistic = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Period = structure(logical(0), tags = list(type = "integer")), Unit = structure(logical(0), tags = list(type = "string")), EvaluationPeriods = structure(logical(0), tags = list(type = "integer")), DatapointsToAlarm = structure(logical(0), tags = list(type = "integer")), Threshold = structure(logical(0), tags = list(type = "double")), ComparisonOperator = structure(logical(0), tags = list(type = "string")), TreatMissingData = structure(logical(0), tags = list(type = "string")), EvaluateLowSampleCountPercentile = structure(logical(0), tags = list(type = "string")), Metrics = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), MetricStat = structure(list(Metric = structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Period = structure(logical(0), tags = list(type = "integer")), Stat = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Expression = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), ReturnData = structure(logical(0), tags = list(type = "boolean")), Period = structure(logical(0), tags = list(type = "integer")), AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ThresholdMetricId = structure(logical(0), tags = list(type = "string")), EvaluationCriteria = structure(list(PromQLCriteria = structure(list(Query = structure(logical(0), tags = list(type = "string")), PendingPeriod = structure(logical(0), tags = list(type = "integer")), RecoveryPeriod = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), EvaluationInterval = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["put_metric_alarm_input"]]))
 }
 
 .cloudwatch$put_metric_alarm_output <- function(...) {
@@ -435,8 +407,7 @@ NULL
 
 .cloudwatch$put_metric_data_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricData = structure(list(structure(list(MetricName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), Value = structure(logical(0), tags = list(type = "double")), StatisticValues = structure(list(SampleCount = structure(logical(0), tags = list(type = "double")), Sum = structure(logical(0), tags = list(type = "double")), Minimum = structure(logical(0), tags = list(type = "double")), Maximum = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), Values = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "list")), Counts = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "list")), Unit = structure(logical(0), tags = list(type = "string")), StorageResolution = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), EntityMetricData = structure(list(structure(list(Entity = structure(list(KeyAttributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), MetricData = structure(list(structure(list(MetricName = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), Value = structure(logical(0), tags = list(type = "double")), StatisticValues = structure(list(SampleCount = structure(logical(0), tags = list(type = "double")), Sum = structure(logical(0), tags = list(type = "double")), Minimum = structure(logical(0), tags = list(type = "double")), Maximum = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), Values = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "list")), Counts = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "list")), Unit = structure(logical(0), tags = list(type = "string")), StorageResolution = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), StrictEntityValidation = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["put_metric_data_input"]]))
 }
 
 .cloudwatch$put_metric_data_output <- function(...) {
@@ -445,20 +416,17 @@ NULL
 
 .cloudwatch$put_metric_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), IncludeFilters = structure(list(structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ExcludeFilters = structure(list(structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), FirehoseArn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), OutputFormat = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), StatisticsConfigurations = structure(list(structure(list(IncludeMetrics = structure(list(structure(list(Namespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AdditionalStatistics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), IncludeLinkedAccountsMetrics = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["put_metric_stream_input"]]))
 }
 
 .cloudwatch$put_metric_stream_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "PutMetricStreamResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["put_metric_stream_output"]]))
 }
 
 .cloudwatch$set_alarm_state_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AlarmName = structure(logical(0), tags = list(type = "string")), StateValue = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), StateReasonData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["set_alarm_state_input"]]))
 }
 
 .cloudwatch$set_alarm_state_output <- function(...) {
@@ -467,72 +435,60 @@ NULL
 
 .cloudwatch$start_metric_streams_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["start_metric_streams_input"]]))
 }
 
 .cloudwatch$start_metric_streams_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "StartMetricStreamsResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["start_metric_streams_output"]]))
 }
 
 .cloudwatch$start_o_tel_enrichment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["start_o_tel_enrichment_input"]]))
 }
 
 .cloudwatch$start_o_tel_enrichment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "StartOTelEnrichmentResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["start_o_tel_enrichment_output"]]))
 }
 
 .cloudwatch$stop_metric_streams_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["stop_metric_streams_input"]]))
 }
 
 .cloudwatch$stop_metric_streams_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "StopMetricStreamsResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["stop_metric_streams_output"]]))
 }
 
 .cloudwatch$stop_o_tel_enrichment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["stop_o_tel_enrichment_input"]]))
 }
 
 .cloudwatch$stop_o_tel_enrichment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "StopOTelEnrichmentResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["stop_o_tel_enrichment_output"]]))
 }
 
 .cloudwatch$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["tag_resource_input"]]))
 }
 
 .cloudwatch$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "TagResourceResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["tag_resource_output"]]))
 }
 
 .cloudwatch$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["untag_resource_input"]]))
 }
 
 .cloudwatch$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "UntagResourceResult"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatch_shapes[["untag_resource_output"]]))
 }

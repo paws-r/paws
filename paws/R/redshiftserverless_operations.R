@@ -299,6 +299,17 @@ redshiftserverless_create_endpoint_access <- function(endpointName, ownerAccount
 #'     namespaceArn = "string",
 #'     namespaceId = "string",
 #'     namespaceName = "string",
+#'     s3TablePublishStatus = list(
+#'       enabledAll = TRUE|FALSE,
+#'       lastIngestionTimes = list(
+#'         "string"
+#'       ),
+#'       s3TableGranularity = "namespace"|"account",
+#'       s3TableNamespace = "string",
+#'       s3Tables = list(
+#'         "string"
+#'       )
+#'     ),
 #'     status = "AVAILABLE"|"MODIFYING"|"DELETING"
 #'   )
 #' )
@@ -1123,6 +1134,17 @@ redshiftserverless_delete_endpoint_access <- function(endpointName) {
 #'     namespaceArn = "string",
 #'     namespaceId = "string",
 #'     namespaceName = "string",
+#'     s3TablePublishStatus = list(
+#'       enabledAll = TRUE|FALSE,
+#'       lastIngestionTimes = list(
+#'         "string"
+#'       ),
+#'       s3TableGranularity = "namespace"|"account",
+#'       s3TableNamespace = "string",
+#'       s3Tables = list(
+#'         "string"
+#'       )
+#'     ),
 #'     status = "AVAILABLE"|"MODIFYING"|"DELETING"
 #'   )
 #' )
@@ -1919,6 +1941,17 @@ redshiftserverless_get_identity_center_auth_token <- function(workgroupNames) {
 #'     namespaceArn = "string",
 #'     namespaceId = "string",
 #'     namespaceName = "string",
+#'     s3TablePublishStatus = list(
+#'       enabledAll = TRUE|FALSE,
+#'       lastIngestionTimes = list(
+#'         "string"
+#'       ),
+#'       s3TableGranularity = "namespace"|"account",
+#'       s3TableNamespace = "string",
+#'       s3Tables = list(
+#'         "string"
+#'       )
+#'     ),
 #'     status = "AVAILABLE"|"MODIFYING"|"DELETING"
 #'   )
 #' )
@@ -2916,6 +2949,17 @@ redshiftserverless_list_managed_workgroups <- function(maxResults = NULL, nextTo
 #'       namespaceArn = "string",
 #'       namespaceId = "string",
 #'       namespaceName = "string",
+#'       s3TablePublishStatus = list(
+#'         enabledAll = TRUE|FALSE,
+#'         lastIngestionTimes = list(
+#'           "string"
+#'         ),
+#'         s3TableGranularity = "namespace"|"account",
+#'         s3TableNamespace = "string",
+#'         s3Tables = list(
+#'           "string"
+#'         )
+#'       ),
 #'       status = "AVAILABLE"|"MODIFYING"|"DELETING"
 #'     )
 #'   ),
@@ -3832,9 +3876,12 @@ redshiftserverless_put_resource_policy <- function(policy, resourceArn) {
 #' Restore the data from a recovery point.
 #'
 #' @usage
-#' redshiftserverless_restore_from_recovery_point(namespaceName,
-#'   recoveryPointId, workgroupName)
+#' redshiftserverless_restore_from_recovery_point(maintainIntegration,
+#'   namespaceName, recoveryPointId, workgroupName)
 #'
+#' @param maintainIntegration If `true`, maintain existing data sharing, zero-ETL and S3 event integrations when restoring. Otherwise, integrations will not be maintained after the restore operation. Integrations are only maintained when restored to the same serverless namespace.
+#' 
+#' Default: true
 #' @param namespaceName &#91;required&#93; The name of the namespace to restore data into.
 #' @param recoveryPointId &#91;required&#93; The unique identifier of the recovery point to restore from.
 #' @param workgroupName &#91;required&#93; The name of the workgroup used to restore data.
@@ -3864,6 +3911,17 @@ redshiftserverless_put_resource_policy <- function(policy, resourceArn) {
 #'     namespaceArn = "string",
 #'     namespaceId = "string",
 #'     namespaceName = "string",
+#'     s3TablePublishStatus = list(
+#'       enabledAll = TRUE|FALSE,
+#'       lastIngestionTimes = list(
+#'         "string"
+#'       ),
+#'       s3TableGranularity = "namespace"|"account",
+#'       s3TableNamespace = "string",
+#'       s3Tables = list(
+#'         "string"
+#'       )
+#'     ),
 #'     status = "AVAILABLE"|"MODIFYING"|"DELETING"
 #'   ),
 #'   recoveryPointId = "string"
@@ -3873,6 +3931,7 @@ redshiftserverless_put_resource_policy <- function(policy, resourceArn) {
 #' @section Request syntax:
 #' ```
 #' svc$restore_from_recovery_point(
+#'   maintainIntegration = TRUE|FALSE,
 #'   namespaceName = "string",
 #'   recoveryPointId = "string",
 #'   workgroupName = "string"
@@ -3884,7 +3943,7 @@ redshiftserverless_put_resource_policy <- function(policy, resourceArn) {
 #' @rdname redshiftserverless_restore_from_recovery_point
 #'
 #' @aliases redshiftserverless_restore_from_recovery_point
-redshiftserverless_restore_from_recovery_point <- function(namespaceName, recoveryPointId, workgroupName) {
+redshiftserverless_restore_from_recovery_point <- function(maintainIntegration = NULL, namespaceName, recoveryPointId, workgroupName) {
   op <- new_operation(
     name = "RestoreFromRecoveryPoint",
     http_method = "POST",
@@ -3893,7 +3952,7 @@ redshiftserverless_restore_from_recovery_point <- function(namespaceName, recove
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftserverless$restore_from_recovery_point_input(namespaceName = namespaceName, recoveryPointId = recoveryPointId, workgroupName = workgroupName)
+  input <- .redshiftserverless$restore_from_recovery_point_input(maintainIntegration = maintainIntegration, namespaceName = namespaceName, recoveryPointId = recoveryPointId, workgroupName = workgroupName)
   output <- .redshiftserverless$restore_from_recovery_point_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config, op)
@@ -3910,10 +3969,13 @@ redshiftserverless_restore_from_recovery_point <- function(namespaceName, recove
 #'
 #' @usage
 #' redshiftserverless_restore_from_snapshot(adminPasswordSecretKmsKeyId,
-#'   manageAdminPassword, namespaceName, ownerAccount, snapshotArn,
-#'   snapshotName, workgroupName)
+#'   maintainIntegration, manageAdminPassword, namespaceName, ownerAccount,
+#'   snapshotArn, snapshotName, workgroupName)
 #'
 #' @param adminPasswordSecretKmsKeyId The ID of the Key Management Service (KMS) key used to encrypt and store the namespace's admin credentials secret.
+#' @param maintainIntegration If `true`, maintain existing data sharing, zero-ETL and S3 event integrations when restoring. Otherwise, integrations will not be maintained after the restore operation. Integrations are only maintained when restored to the same serverless namespace.
+#' 
+#' Default: true
 #' @param manageAdminPassword If `true`, Amazon Redshift uses Secrets Manager to manage the restored snapshot's admin credentials. If `MmanageAdminPassword` is false or not set, Amazon Redshift uses the admin credentials that the namespace or cluster had at the time the snapshot was taken.
 #' @param namespaceName &#91;required&#93; The name of the namespace to restore the snapshot to.
 #' @param ownerAccount The Amazon Web Services account that owns the snapshot.
@@ -3948,6 +4010,17 @@ redshiftserverless_restore_from_recovery_point <- function(namespaceName, recove
 #'     namespaceArn = "string",
 #'     namespaceId = "string",
 #'     namespaceName = "string",
+#'     s3TablePublishStatus = list(
+#'       enabledAll = TRUE|FALSE,
+#'       lastIngestionTimes = list(
+#'         "string"
+#'       ),
+#'       s3TableGranularity = "namespace"|"account",
+#'       s3TableNamespace = "string",
+#'       s3Tables = list(
+#'         "string"
+#'       )
+#'     ),
 #'     status = "AVAILABLE"|"MODIFYING"|"DELETING"
 #'   ),
 #'   ownerAccount = "string",
@@ -3959,6 +4032,7 @@ redshiftserverless_restore_from_recovery_point <- function(namespaceName, recove
 #' ```
 #' svc$restore_from_snapshot(
 #'   adminPasswordSecretKmsKeyId = "string",
+#'   maintainIntegration = TRUE|FALSE,
 #'   manageAdminPassword = TRUE|FALSE,
 #'   namespaceName = "string",
 #'   ownerAccount = "string",
@@ -3973,7 +4047,7 @@ redshiftserverless_restore_from_recovery_point <- function(namespaceName, recove
 #' @rdname redshiftserverless_restore_from_snapshot
 #'
 #' @aliases redshiftserverless_restore_from_snapshot
-redshiftserverless_restore_from_snapshot <- function(adminPasswordSecretKmsKeyId = NULL, manageAdminPassword = NULL, namespaceName, ownerAccount = NULL, snapshotArn = NULL, snapshotName = NULL, workgroupName) {
+redshiftserverless_restore_from_snapshot <- function(adminPasswordSecretKmsKeyId = NULL, maintainIntegration = NULL, manageAdminPassword = NULL, namespaceName, ownerAccount = NULL, snapshotArn = NULL, snapshotName = NULL, workgroupName) {
   op <- new_operation(
     name = "RestoreFromSnapshot",
     http_method = "POST",
@@ -3982,7 +4056,7 @@ redshiftserverless_restore_from_snapshot <- function(adminPasswordSecretKmsKeyId
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftserverless$restore_from_snapshot_input(adminPasswordSecretKmsKeyId = adminPasswordSecretKmsKeyId, manageAdminPassword = manageAdminPassword, namespaceName = namespaceName, ownerAccount = ownerAccount, snapshotArn = snapshotArn, snapshotName = snapshotName, workgroupName = workgroupName)
+  input <- .redshiftserverless$restore_from_snapshot_input(adminPasswordSecretKmsKeyId = adminPasswordSecretKmsKeyId, maintainIntegration = maintainIntegration, manageAdminPassword = manageAdminPassword, namespaceName = namespaceName, ownerAccount = ownerAccount, snapshotArn = snapshotArn, snapshotName = snapshotName, workgroupName = workgroupName)
   output <- .redshiftserverless$restore_from_snapshot_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config, op)
@@ -4487,23 +4561,45 @@ redshiftserverless_update_lakehouse_configuration <- function(catalogName = NULL
 #'
 #' @description
 #' Updates a namespace with the specified settings. Unless required, you can't update multiple parameters in one request. For example, you must specify both `adminUsername` and `adminUserPassword` to update either field, but you can't update both `kmsKeyId` and `logExports` in a single request.
+#' 
+#' Similarly, an S3 Tables log-publishing update (a request where `logDestinationType` is `s3table`) cannot be combined with any other namespace configuration change and must be submitted as its own request.
 #'
 #' @usage
 #' redshiftserverless_update_namespace(adminPasswordSecretKmsKeyId,
 #'   adminUserPassword, adminUsername, defaultIamRoleArn, iamRoles, kmsKeyId,
-#'   logExports, manageAdminPassword, namespaceName)
+#'   logDestinationType, logExports, manageAdminPassword, namespaceName,
+#'   s3TableAction, s3TableGranularity, s3TableKmsKeyId, s3TableNames)
 #'
 #' @param adminPasswordSecretKmsKeyId The ID of the Key Management Service (KMS) key used to encrypt and store the namespace's admin credentials secret. You can only use this parameter if `manageAdminPassword` is true.
 #' @param adminUserPassword The password of the administrator for the first database created in the namespace. This parameter must be updated together with `adminUsername`.
 #' 
 #' You can't use `adminUserPassword` if `manageAdminPassword` is true.
+#' 
+#' If your admin user account is locked, this operation also unlocks your account and resets the failed-login counter. This option is available only when account lockout security is enabled for the namespace.
 #' @param adminUsername The username of the administrator for the first database created in the namespace. This parameter must be updated together with `adminUserPassword`.
 #' @param defaultIamRoleArn The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. This parameter must be updated together with `iamRoles`.
 #' @param iamRoles A list of IAM roles to associate with the namespace. This parameter must be updated together with `defaultIamRoleArn`.
 #' @param kmsKeyId The ID of the Amazon Web Services Key Management Service key used to encrypt your data.
+#' @param logDestinationType The destination for the log data. Valid values are `s3table` and `cloudwatch`.
+#' 
+#' Set this to `s3table` to manage Amazon S3 Tables system-table publishing for the namespace.
 #' @param logExports The types of logs the namespace can export. The export types are `userlog`, `connectionlog`, and `useractivitylog`.
 #' @param manageAdminPassword If `true`, Amazon Redshift uses Secrets Manager to manage the namespace's admin credentials. You can't use `adminUserPassword` if `manageAdminPassword` is true. If `manageAdminPassword` is false or not set, Amazon Redshift uses `adminUserPassword` for the admin user account's password.
 #' @param namespaceName &#91;required&#93; The name of the namespace to update. You can't update the name of a namespace once it is created.
+#' @param s3TableAction Whether to enable or disable Amazon S3 Tables publishing. Valid values are `Enable` and `Disable`, matched case-insensitively.
+#' 
+#' When omitted, defaults to `Enable`. Valid only when `logDestinationType` is `s3table`.
+#' @param s3TableGranularity The scope of the Amazon S3 Tables destination. Valid values are `namespace` and `account`, matched case-insensitively. `namespace` scopes the published tables to this namespace; `account` scopes them to the Amazon Web Services account.
+#' 
+#' Required when enabling. Omitting this parameter or passing a blank value fails with `ValidationException`. Valid only when `logDestinationType` is `s3table`.
+#' @param s3TableKmsKeyId The identifier of the Key Management Service key used to encrypt the published Amazon S3 Tables data. When omitted, the data is encrypted with SSE-S3 (Amazon S3 managed keys).
+#' 
+#' Valid only when `logDestinationType` is `s3table`.
+#' @param s3TableNames The system tables to publish (on enable) or to stop publishing (on disable). Each value is either a system table view name that begins with `sys_` or the keyword `all`.
+#' 
+#' Omitting this parameter, passing an empty list, or including `all` each select every current and future system table. Each name must be 1-128 characters, and the list can contain up to 256 names.
+#' 
+#' Valid only when `logDestinationType` is `s3table`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4530,6 +4626,17 @@ redshiftserverless_update_lakehouse_configuration <- function(catalogName = NULL
 #'     namespaceArn = "string",
 #'     namespaceId = "string",
 #'     namespaceName = "string",
+#'     s3TablePublishStatus = list(
+#'       enabledAll = TRUE|FALSE,
+#'       lastIngestionTimes = list(
+#'         "string"
+#'       ),
+#'       s3TableGranularity = "namespace"|"account",
+#'       s3TableNamespace = "string",
+#'       s3Tables = list(
+#'         "string"
+#'       )
+#'     ),
 #'     status = "AVAILABLE"|"MODIFYING"|"DELETING"
 #'   )
 #' )
@@ -4546,11 +4653,18 @@ redshiftserverless_update_lakehouse_configuration <- function(catalogName = NULL
 #'     "string"
 #'   ),
 #'   kmsKeyId = "string",
+#'   logDestinationType = "s3table"|"cloudwatch",
 #'   logExports = list(
 #'     "useractivitylog"|"userlog"|"connectionlog"
 #'   ),
 #'   manageAdminPassword = TRUE|FALSE,
-#'   namespaceName = "string"
+#'   namespaceName = "string",
+#'   s3TableAction = "Enable"|"Disable",
+#'   s3TableGranularity = "namespace"|"account",
+#'   s3TableKmsKeyId = "string",
+#'   s3TableNames = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -4559,7 +4673,7 @@ redshiftserverless_update_lakehouse_configuration <- function(catalogName = NULL
 #' @rdname redshiftserverless_update_namespace
 #'
 #' @aliases redshiftserverless_update_namespace
-redshiftserverless_update_namespace <- function(adminPasswordSecretKmsKeyId = NULL, adminUserPassword = NULL, adminUsername = NULL, defaultIamRoleArn = NULL, iamRoles = NULL, kmsKeyId = NULL, logExports = NULL, manageAdminPassword = NULL, namespaceName) {
+redshiftserverless_update_namespace <- function(adminPasswordSecretKmsKeyId = NULL, adminUserPassword = NULL, adminUsername = NULL, defaultIamRoleArn = NULL, iamRoles = NULL, kmsKeyId = NULL, logDestinationType = NULL, logExports = NULL, manageAdminPassword = NULL, namespaceName, s3TableAction = NULL, s3TableGranularity = NULL, s3TableKmsKeyId = NULL, s3TableNames = NULL) {
   op <- new_operation(
     name = "UpdateNamespace",
     http_method = "POST",
@@ -4568,7 +4682,7 @@ redshiftserverless_update_namespace <- function(adminPasswordSecretKmsKeyId = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftserverless$update_namespace_input(adminPasswordSecretKmsKeyId = adminPasswordSecretKmsKeyId, adminUserPassword = adminUserPassword, adminUsername = adminUsername, defaultIamRoleArn = defaultIamRoleArn, iamRoles = iamRoles, kmsKeyId = kmsKeyId, logExports = logExports, manageAdminPassword = manageAdminPassword, namespaceName = namespaceName)
+  input <- .redshiftserverless$update_namespace_input(adminPasswordSecretKmsKeyId = adminPasswordSecretKmsKeyId, adminUserPassword = adminUserPassword, adminUsername = adminUsername, defaultIamRoleArn = defaultIamRoleArn, iamRoles = iamRoles, kmsKeyId = kmsKeyId, logDestinationType = logDestinationType, logExports = logExports, manageAdminPassword = manageAdminPassword, namespaceName = namespaceName, s3TableAction = s3TableAction, s3TableGranularity = s3TableGranularity, s3TableKmsKeyId = s3TableKmsKeyId, s3TableNames = s3TableNames)
   output <- .redshiftserverless$update_namespace_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config, op)

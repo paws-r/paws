@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_get_workflow}
 \alias{imagebuilder_get_workflow}
-\title{Get a workflow resource object}
+\title{Retrieves a workflow resource object}
 \usage{
 imagebuilder_get_workflow(workflowBuildVersionArn)
 }
@@ -10,7 +10,7 @@ imagebuilder_get_workflow(workflowBuildVersionArn)
 \item{workflowBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the workflow resource that you want to get.}
 }
 \description{
-Get a workflow resource object.
+Retrieves a workflow resource object.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_workflow/} for full documentation.
 }

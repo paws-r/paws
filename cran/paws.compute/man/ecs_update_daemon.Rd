@@ -11,7 +11,8 @@ ecs_update_daemon(
   deploymentConfiguration = NULL,
   propagateTags = NULL,
   enableECSManagedTags = NULL,
-  enableExecuteCommand = NULL
+  enableExecuteCommand = NULL,
+  critical = NULL
 )
 }
 \arguments{
@@ -28,6 +29,14 @@ ecs_update_daemon(
 \item{enableECSManagedTags}{Specifies whether to turn on Amazon ECS managed tags for the tasks in the daemon. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging your Amazon ECS resources} in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{enableExecuteCommand}{If \code{true}, the execute command functionality is turned on for all tasks in the daemon. If \code{false}, the execute command functionality is turned off.}
+
+\item{critical}{If the \code{critical} parameter of a daemon is \code{true}, and the daemon task fails, stops, or becomes unhealthy, Amazon ECS drains the container instance and stops the other tasks running on it. If the \code{critical} parameter is \code{false}, the daemon task failure doesn't affect the other tasks on the instance. The default value is \code{true}.
+
+A non-critical daemon doesn't block instance registration. The container instance becomes active and continues to run your other tasks, whether the daemon task fails during scale-out or during a deployment.
+
+Amazon ECS emits an EventBridge event when a daemon task fails to start, for both critical and non-critical daemons.
+
+Daemon task launch failures during a deployment are still counted by the deployment circuit breaker. The circuit breaker can roll back an unstable target revision.}
 }
 \description{
 Updates the specified daemon. When you update a daemon, a new deployment is triggered that progressively rolls out the changes to the container instances associated with the daemon's capacity providers. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Daemon deployments} in the \emph{Amazon Elastic Container Service Developer Guide}.

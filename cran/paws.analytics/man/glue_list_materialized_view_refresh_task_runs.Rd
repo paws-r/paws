@@ -17,7 +17,7 @@ glue_list_materialized_view_refresh_task_runs(
 
 \item{DatabaseName}{The database where the table resides.}
 
-\item{TableName}{The name of the table for which statistics is generated.}
+\item{TableName}{The name of the materialized view.}
 
 \item{MaxResults}{The maximum size of the response.}
 

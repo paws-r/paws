@@ -5,960 +5,800 @@ NULL
 
 .directoryservice$accept_shared_directory_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SharedDirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["accept_shared_directory_input"]]))
 }
 
 .directoryservice$accept_shared_directory_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SharedDirectory = structure(list(OwnerAccountId = structure(logical(0), tags = list(type = "string")), OwnerDirectoryId = structure(logical(0), tags = list(type = "string")), ShareMethod = structure(logical(0), tags = list(type = "string")), SharedAccountId = structure(logical(0), tags = list(type = "string")), SharedDirectoryId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), ShareNotes = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreatedDateTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["accept_shared_directory_output"]]))
 }
 
 .directoryservice$add_ip_routes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), IpRoutes = structure(list(structure(list(CidrIp = structure(logical(0), tags = list(type = "string")), CidrIpv6 = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdateSecurityGroupForDirectoryControllers = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["add_ip_routes_input"]]))
 }
 
 .directoryservice$add_ip_routes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["add_ip_routes_output"]]))
 }
 
 .directoryservice$add_region_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), RegionName = structure(logical(0), tags = list(type = "string")), VPCSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["add_region_input"]]))
 }
 
 .directoryservice$add_region_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["add_region_output"]]))
 }
 
 .directoryservice$add_tags_to_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["add_tags_to_resource_input"]]))
 }
 
 .directoryservice$add_tags_to_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["add_tags_to_resource_output"]]))
 }
 
 .directoryservice$cancel_schema_extension_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), SchemaExtensionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["cancel_schema_extension_input"]]))
 }
 
 .directoryservice$cancel_schema_extension_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["cancel_schema_extension_output"]]))
 }
 
 .directoryservice$connect_directory_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ShortName = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Description = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "string")), ConnectSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CustomerDnsIps = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CustomerDnsIpsV6 = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CustomerUserName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NetworkType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["connect_directory_input"]]))
 }
 
 .directoryservice$connect_directory_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["connect_directory_output"]]))
 }
 
 .directoryservice$create_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_alias_input"]]))
 }
 
 .directoryservice$create_alias_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_alias_output"]]))
 }
 
 .directoryservice$create_computer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), ComputerName = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), OrganizationalUnitDistinguishedName = structure(logical(0), tags = list(type = "string")), ComputerAttributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_computer_input"]]))
 }
 
 .directoryservice$create_computer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Computer = structure(list(ComputerId = structure(logical(0), tags = list(type = "string")), ComputerName = structure(logical(0), tags = list(type = "string")), ComputerAttributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_computer_output"]]))
 }
 
 .directoryservice$create_conditional_forwarder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), RemoteDomainName = structure(logical(0), tags = list(type = "string")), DnsIpAddrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DnsIpv6Addrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_conditional_forwarder_input"]]))
 }
 
 .directoryservice$create_conditional_forwarder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_conditional_forwarder_output"]]))
 }
 
 .directoryservice$create_directory_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ShortName = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Description = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "string")), VpcSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NetworkType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_directory_input"]]))
 }
 
 .directoryservice$create_directory_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_directory_output"]]))
 }
 
 .directoryservice$create_hybrid_ad_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretArn = structure(logical(0), tags = list(type = "string")), AssessmentId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_hybrid_ad_input"]]))
 }
 
 .directoryservice$create_hybrid_ad_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_hybrid_ad_output"]]))
 }
 
 .directoryservice$create_log_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), LogGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_log_subscription_input"]]))
 }
 
 .directoryservice$create_log_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_log_subscription_output"]]))
 }
 
 .directoryservice$create_microsoft_ad_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ShortName = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Description = structure(logical(0), tags = list(type = "string")), VpcSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Edition = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NetworkType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_microsoft_ad_input"]]))
 }
 
 .directoryservice$create_microsoft_ad_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_microsoft_ad_output"]]))
 }
 
 .directoryservice$create_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_snapshot_input"]]))
 }
 
 .directoryservice$create_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SnapshotId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_snapshot_output"]]))
 }
 
 .directoryservice$create_trust_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), RemoteDomainName = structure(logical(0), tags = list(type = "string")), TrustPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), TrustDirection = structure(logical(0), tags = list(type = "string")), TrustType = structure(logical(0), tags = list(type = "string")), ConditionalForwarderIpAddrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ConditionalForwarderIpv6Addrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SelectiveAuth = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_trust_input"]]))
 }
 
 .directoryservice$create_trust_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["create_trust_output"]]))
 }
 
 .directoryservice$delete_ad_assessment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AssessmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["delete_ad_assessment_input"]]))
 }
 
 .directoryservice$delete_ad_assessment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AssessmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["delete_ad_assessment_output"]]))
 }
 
 .directoryservice$delete_conditional_forwarder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), RemoteDomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["delete_conditional_forwarder_input"]]))
 }
 
 .directoryservice$delete_conditional_forwarder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["delete_conditional_forwarder_output"]]))
 }
 
 .directoryservice$delete_directory_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["delete_directory_input"]]))
 }
 
 .directoryservice$delete_directory_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["delete_directory_output"]]))
 }
 
 .directoryservice$delete_log_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["delete_log_subscription_input"]]))
 }
 
 .directoryservice$delete_log_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["delete_log_subscription_output"]]))
 }
 
 .directoryservice$delete_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SnapshotId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["delete_snapshot_input"]]))
 }
 
 .directoryservice$delete_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SnapshotId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["delete_snapshot_output"]]))
 }
 
 .directoryservice$delete_trust_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustId = structure(logical(0), tags = list(type = "string")), DeleteAssociatedConditionalForwarder = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["delete_trust_input"]]))
 }
 
 .directoryservice$delete_trust_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["delete_trust_output"]]))
 }
 
 .directoryservice$deregister_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), CertificateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["deregister_certificate_input"]]))
 }
 
 .directoryservice$deregister_certificate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["deregister_certificate_output"]]))
 }
 
 .directoryservice$deregister_event_topic_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), TopicName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["deregister_event_topic_input"]]))
 }
 
 .directoryservice$deregister_event_topic_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["deregister_event_topic_output"]]))
 }
 
 .directoryservice$describe_ad_assessment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AssessmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_ad_assessment_input"]]))
 }
 
 .directoryservice$describe_ad_assessment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Assessment = structure(list(AssessmentId = structure(logical(0), tags = list(type = "string")), DirectoryId = structure(logical(0), tags = list(type = "string")), DnsName = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdateDateTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), CustomerDnsIps = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SelfManagedInstanceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReportType = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AssessmentReports = structure(list(structure(list(DomainControllerIp = structure(logical(0), tags = list(type = "string")), Validations = structure(list(structure(list(Category = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdateDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_ad_assessment_output"]]))
 }
 
 .directoryservice$describe_ca_enrollment_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_ca_enrollment_policy_input"]]))
 }
 
 .directoryservice$describe_ca_enrollment_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), PcaConnectorArn = structure(logical(0), tags = list(type = "string")), CaEnrollmentPolicyStatus = structure(logical(0), tags = list(type = "string")), LastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), CaEnrollmentPolicyStatusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_ca_enrollment_policy_output"]]))
 }
 
 .directoryservice$describe_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), CertificateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_certificate_input"]]))
 }
 
 .directoryservice$describe_certificate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Certificate = structure(list(CertificateId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), CommonName = structure(logical(0), tags = list(type = "string")), RegisteredDateTime = structure(logical(0), tags = list(type = "timestamp")), ExpiryDateTime = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string")), ClientCertAuthSettings = structure(list(OCSPUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_certificate_output"]]))
 }
 
 .directoryservice$describe_client_authentication_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_client_authentication_settings_input"]]))
 }
 
 .directoryservice$describe_client_authentication_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientAuthenticationSettingsInfo = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), LastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_client_authentication_settings_output"]]))
 }
 
 .directoryservice$describe_conditional_forwarders_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), RemoteDomainNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_conditional_forwarders_input"]]))
 }
 
 .directoryservice$describe_conditional_forwarders_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConditionalForwarders = structure(list(structure(list(RemoteDomainName = structure(logical(0), tags = list(type = "string")), DnsIpAddrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DnsIpv6Addrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReplicationScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_conditional_forwarders_output"]]))
 }
 
 .directoryservice$describe_directories_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_directories_input"]]))
 }
 
 .directoryservice$describe_directories_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryDescriptions = structure(list(structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ShortName = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "string")), Edition = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), AccessUrl = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DnsIpAddrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DnsIpv6Addrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Stage = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), ShareMethod = structure(logical(0), tags = list(type = "string")), ShareNotes = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LaunchTime = structure(logical(0), tags = list(type = "timestamp")), StageLastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string")), VpcSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupId = structure(logical(0), tags = list(type = "string")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ConnectSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CustomerUserName = structure(logical(0), tags = list(type = "string")), SecurityGroupId = structure(logical(0), tags = list(type = "string")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ConnectIps = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ConnectIpsV6 = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), RadiusSettings = structure(list(RadiusServers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RadiusServersIpv6 = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RadiusPort = structure(logical(0), tags = list(type = "integer")), RadiusTimeout = structure(logical(0), tags = list(type = "integer")), RadiusRetries = structure(logical(0), tags = list(type = "integer")), SharedSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationProtocol = structure(logical(0), tags = list(type = "string")), DisplayLabel = structure(logical(0), tags = list(type = "string")), UseSameUsername = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), RadiusStatus = structure(logical(0), tags = list(type = "string")), StageReason = structure(logical(0), tags = list(type = "string")), SsoEnabled = structure(logical(0), tags = list(type = "boolean")), DesiredNumberOfDomainControllers = structure(logical(0), tags = list(type = "integer")), OwnerDirectoryDescription = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), DnsIpAddrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DnsIpv6Addrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), VpcSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupId = structure(logical(0), tags = list(type = "string")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), RadiusSettings = structure(list(RadiusServers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RadiusServersIpv6 = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RadiusPort = structure(logical(0), tags = list(type = "integer")), RadiusTimeout = structure(logical(0), tags = list(type = "integer")), RadiusRetries = structure(logical(0), tags = list(type = "integer")), SharedSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationProtocol = structure(logical(0), tags = list(type = "string")), DisplayLabel = structure(logical(0), tags = list(type = "string")), UseSameUsername = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), RadiusStatus = structure(logical(0), tags = list(type = "string")), NetworkType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RegionsInfo = structure(list(PrimaryRegion = structure(logical(0), tags = list(type = "string")), AdditionalRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), OsVersion = structure(logical(0), tags = list(type = "string")), HybridSettings = structure(list(SelfManagedDnsIpAddrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SelfManagedInstanceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), NetworkType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_directories_output"]]))
 }
 
 .directoryservice$describe_directory_data_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_directory_data_access_input"]]))
 }
 
 .directoryservice$describe_directory_data_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DataAccessStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_directory_data_access_output"]]))
 }
 
 .directoryservice$describe_domain_controllers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), DomainControllerIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_domain_controllers_input"]]))
 }
 
 .directoryservice$describe_domain_controllers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainControllers = structure(list(structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), DomainControllerId = structure(logical(0), tags = list(type = "string")), DnsIpAddr = structure(logical(0), tags = list(type = "string")), DnsIpv6Addr = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), LaunchTime = structure(logical(0), tags = list(type = "timestamp")), StatusLastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_domain_controllers_output"]]))
 }
 
 .directoryservice$describe_event_topics_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), TopicNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_event_topics_input"]]))
 }
 
 .directoryservice$describe_event_topics_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EventTopics = structure(list(structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), TopicName = structure(logical(0), tags = list(type = "string")), TopicArn = structure(logical(0), tags = list(type = "string")), CreatedDateTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_event_topics_output"]]))
 }
 
 .directoryservice$describe_hybrid_ad_update_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), UpdateType = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_hybrid_ad_update_input"]]))
 }
 
 .directoryservice$describe_hybrid_ad_update_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateActivities = structure(list(SelfManagedInstances = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), InitiatedBy = structure(logical(0), tags = list(type = "string")), NewValue = structure(list(InstanceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DnsIps = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), PreviousValue = structure(list(InstanceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DnsIps = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), StartTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), AssessmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), HybridAdministratorAccount = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), InitiatedBy = structure(logical(0), tags = list(type = "string")), NewValue = structure(list(InstanceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DnsIps = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), PreviousValue = structure(list(InstanceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DnsIps = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), StartTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), AssessmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_hybrid_ad_update_output"]]))
 }
 
 .directoryservice$describe_ldaps_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_ldaps_settings_input"]]))
 }
 
 .directoryservice$describe_ldaps_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LDAPSSettingsInfo = structure(list(structure(list(LDAPSStatus = structure(logical(0), tags = list(type = "string")), LDAPSStatusReason = structure(logical(0), tags = list(type = "string")), LastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_ldaps_settings_output"]]))
 }
 
 .directoryservice$describe_regions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), RegionName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_regions_input"]]))
 }
 
 .directoryservice$describe_regions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RegionsDescription = structure(list(structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), RegionName = structure(logical(0), tags = list(type = "string")), RegionType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), VpcSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), DesiredNumberOfDomainControllers = structure(logical(0), tags = list(type = "integer")), LaunchTime = structure(logical(0), tags = list(type = "timestamp")), StatusLastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_regions_output"]]))
 }
 
 .directoryservice$describe_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_settings_input"]]))
 }
 
 .directoryservice$describe_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), SettingEntries = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AllowedValues = structure(logical(0), tags = list(type = "string")), AppliedValue = structure(logical(0), tags = list(type = "string")), RequestedValue = structure(logical(0), tags = list(type = "string")), RequestStatus = structure(logical(0), tags = list(type = "string")), RequestDetailedStatus = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), RequestStatusMessage = structure(logical(0), tags = list(type = "string")), LastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), LastRequestedDateTime = structure(logical(0), tags = list(type = "timestamp")), DataType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_settings_output"]]))
 }
 
 .directoryservice$describe_shared_directories_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OwnerDirectoryId = structure(logical(0), tags = list(type = "string")), SharedDirectoryIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_shared_directories_input"]]))
 }
 
 .directoryservice$describe_shared_directories_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SharedDirectories = structure(list(structure(list(OwnerAccountId = structure(logical(0), tags = list(type = "string")), OwnerDirectoryId = structure(logical(0), tags = list(type = "string")), ShareMethod = structure(logical(0), tags = list(type = "string")), SharedAccountId = structure(logical(0), tags = list(type = "string")), SharedDirectoryId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), ShareNotes = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreatedDateTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_shared_directories_output"]]))
 }
 
 .directoryservice$describe_snapshots_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), SnapshotIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_snapshots_input"]]))
 }
 
 .directoryservice$describe_snapshots_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Snapshots = structure(list(structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), SnapshotId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_snapshots_output"]]))
 }
 
 .directoryservice$describe_trusts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), TrustIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_trusts_input"]]))
 }
 
 .directoryservice$describe_trusts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Trusts = structure(list(structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), TrustId = structure(logical(0), tags = list(type = "string")), RemoteDomainName = structure(logical(0), tags = list(type = "string")), TrustType = structure(logical(0), tags = list(type = "string")), TrustDirection = structure(logical(0), tags = list(type = "string")), TrustState = structure(logical(0), tags = list(type = "string")), CreatedDateTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), StateLastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), TrustStateReason = structure(logical(0), tags = list(type = "string")), SelectiveAuth = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_trusts_output"]]))
 }
 
 .directoryservice$describe_update_directory_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), UpdateType = structure(logical(0), tags = list(type = "string")), RegionName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_update_directory_input"]]))
 }
 
 .directoryservice$describe_update_directory_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateActivities = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), InitiatedBy = structure(logical(0), tags = list(type = "string")), NewValue = structure(list(OSUpdateSettings = structure(list(OSVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), PreviousValue = structure(list(OSUpdateSettings = structure(list(OSVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), StartTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["describe_update_directory_output"]]))
 }
 
 .directoryservice$disable_ca_enrollment_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["disable_ca_enrollment_policy_input"]]))
 }
 
 .directoryservice$disable_ca_enrollment_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["disable_ca_enrollment_policy_output"]]))
 }
 
 .directoryservice$disable_client_authentication_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["disable_client_authentication_input"]]))
 }
 
 .directoryservice$disable_client_authentication_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["disable_client_authentication_output"]]))
 }
 
 .directoryservice$disable_directory_data_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["disable_directory_data_access_input"]]))
 }
 
 .directoryservice$disable_directory_data_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["disable_directory_data_access_output"]]))
 }
 
 .directoryservice$disable_ldaps_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["disable_ldaps_input"]]))
 }
 
 .directoryservice$disable_ldaps_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["disable_ldaps_output"]]))
 }
 
 .directoryservice$disable_radius_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["disable_radius_input"]]))
 }
 
 .directoryservice$disable_radius_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["disable_radius_output"]]))
 }
 
 .directoryservice$disable_sso_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["disable_sso_input"]]))
 }
 
 .directoryservice$disable_sso_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["disable_sso_output"]]))
 }
 
 .directoryservice$enable_ca_enrollment_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), PcaConnectorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["enable_ca_enrollment_policy_input"]]))
 }
 
 .directoryservice$enable_ca_enrollment_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["enable_ca_enrollment_policy_output"]]))
 }
 
 .directoryservice$enable_client_authentication_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["enable_client_authentication_input"]]))
 }
 
 .directoryservice$enable_client_authentication_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["enable_client_authentication_output"]]))
 }
 
 .directoryservice$enable_directory_data_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["enable_directory_data_access_input"]]))
 }
 
 .directoryservice$enable_directory_data_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["enable_directory_data_access_output"]]))
 }
 
 .directoryservice$enable_ldaps_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["enable_ldaps_input"]]))
 }
 
 .directoryservice$enable_ldaps_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["enable_ldaps_output"]]))
 }
 
 .directoryservice$enable_radius_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), RadiusSettings = structure(list(RadiusServers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RadiusServersIpv6 = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RadiusPort = structure(logical(0), tags = list(type = "integer")), RadiusTimeout = structure(logical(0), tags = list(type = "integer")), RadiusRetries = structure(logical(0), tags = list(type = "integer")), SharedSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationProtocol = structure(logical(0), tags = list(type = "string")), DisplayLabel = structure(logical(0), tags = list(type = "string")), UseSameUsername = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["enable_radius_input"]]))
 }
 
 .directoryservice$enable_radius_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["enable_radius_output"]]))
 }
 
 .directoryservice$enable_sso_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["enable_sso_input"]]))
 }
 
 .directoryservice$enable_sso_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["enable_sso_output"]]))
 }
 
 .directoryservice$get_directory_limits_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["get_directory_limits_input"]]))
 }
 
 .directoryservice$get_directory_limits_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryLimits = structure(list(CloudOnlyDirectoriesLimit = structure(logical(0), tags = list(type = "integer")), CloudOnlyDirectoriesCurrentCount = structure(logical(0), tags = list(type = "integer")), CloudOnlyDirectoriesLimitReached = structure(logical(0), tags = list(type = "boolean")), CloudOnlyMicrosoftADLimit = structure(logical(0), tags = list(type = "integer")), CloudOnlyMicrosoftADCurrentCount = structure(logical(0), tags = list(type = "integer")), CloudOnlyMicrosoftADLimitReached = structure(logical(0), tags = list(type = "boolean")), ConnectedDirectoriesLimit = structure(logical(0), tags = list(type = "integer")), ConnectedDirectoriesCurrentCount = structure(logical(0), tags = list(type = "integer")), ConnectedDirectoriesLimitReached = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["get_directory_limits_output"]]))
 }
 
 .directoryservice$get_snapshot_limits_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["get_snapshot_limits_input"]]))
 }
 
 .directoryservice$get_snapshot_limits_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SnapshotLimits = structure(list(ManualSnapshotsLimit = structure(logical(0), tags = list(type = "integer")), ManualSnapshotsCurrentCount = structure(logical(0), tags = list(type = "integer")), ManualSnapshotsLimitReached = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["get_snapshot_limits_output"]]))
 }
 
 .directoryservice$list_ad_assessments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["list_ad_assessments_input"]]))
 }
 
 .directoryservice$list_ad_assessments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Assessments = structure(list(structure(list(AssessmentId = structure(logical(0), tags = list(type = "string")), DirectoryId = structure(logical(0), tags = list(type = "string")), DnsName = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdateDateTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), CustomerDnsIps = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReportType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["list_ad_assessments_output"]]))
 }
 
 .directoryservice$list_certificates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["list_certificates_input"]]))
 }
 
 .directoryservice$list_certificates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), CertificatesInfo = structure(list(structure(list(CertificateId = structure(logical(0), tags = list(type = "string")), CommonName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ExpiryDateTime = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["list_certificates_output"]]))
 }
 
 .directoryservice$list_ip_routes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["list_ip_routes_input"]]))
 }
 
 .directoryservice$list_ip_routes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IpRoutesInfo = structure(list(structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), CidrIp = structure(logical(0), tags = list(type = "string")), CidrIpv6 = structure(logical(0), tags = list(type = "string")), IpRouteStatusMsg = structure(logical(0), tags = list(type = "string")), AddedDateTime = structure(logical(0), tags = list(type = "timestamp")), IpRouteStatusReason = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["list_ip_routes_output"]]))
 }
 
 .directoryservice$list_log_subscriptions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["list_log_subscriptions_input"]]))
 }
 
 .directoryservice$list_log_subscriptions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LogSubscriptions = structure(list(structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), LogGroupName = structure(logical(0), tags = list(type = "string")), SubscriptionCreatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["list_log_subscriptions_output"]]))
 }
 
 .directoryservice$list_schema_extensions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["list_schema_extensions_input"]]))
 }
 
 .directoryservice$list_schema_extensions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SchemaExtensionsInfo = structure(list(structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), SchemaExtensionId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), SchemaExtensionStatus = structure(logical(0), tags = list(type = "string")), SchemaExtensionStatusReason = structure(logical(0), tags = list(type = "string")), StartDateTime = structure(logical(0), tags = list(type = "timestamp")), EndDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["list_schema_extensions_output"]]))
 }
 
 .directoryservice$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["list_tags_for_resource_input"]]))
 }
 
 .directoryservice$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["list_tags_for_resource_output"]]))
 }
 
 .directoryservice$register_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), CertificateData = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), ClientCertAuthSettings = structure(list(OCSPUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["register_certificate_input"]]))
 }
 
 .directoryservice$register_certificate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["register_certificate_output"]]))
 }
 
 .directoryservice$register_event_topic_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), TopicName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["register_event_topic_input"]]))
 }
 
 .directoryservice$register_event_topic_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["register_event_topic_output"]]))
 }
 
 .directoryservice$reject_shared_directory_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SharedDirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["reject_shared_directory_input"]]))
 }
 
 .directoryservice$reject_shared_directory_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SharedDirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["reject_shared_directory_output"]]))
 }
 
 .directoryservice$remove_ip_routes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), CidrIps = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CidrIpv6s = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["remove_ip_routes_input"]]))
 }
 
 .directoryservice$remove_ip_routes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["remove_ip_routes_output"]]))
 }
 
 .directoryservice$remove_region_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["remove_region_input"]]))
 }
 
 .directoryservice$remove_region_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["remove_region_output"]]))
 }
 
 .directoryservice$remove_tags_from_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["remove_tags_from_resource_input"]]))
 }
 
 .directoryservice$remove_tags_from_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["remove_tags_from_resource_output"]]))
 }
 
 .directoryservice$reset_user_password_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), NewPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["reset_user_password_input"]]))
 }
 
 .directoryservice$reset_user_password_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["reset_user_password_output"]]))
 }
 
 .directoryservice$restore_from_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SnapshotId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["restore_from_snapshot_input"]]))
 }
 
 .directoryservice$restore_from_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["restore_from_snapshot_output"]]))
 }
 
 .directoryservice$share_directory_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), ShareNotes = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ShareTarget = structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ShareMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["share_directory_input"]]))
 }
 
 .directoryservice$share_directory_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SharedDirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["share_directory_output"]]))
 }
 
 .directoryservice$start_ad_assessment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AssessmentConfiguration = structure(list(CustomerDnsIps = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DnsName = structure(logical(0), tags = list(type = "string")), VpcSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), InstanceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["start_ad_assessment_input"]]))
 }
 
 .directoryservice$start_ad_assessment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AssessmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["start_ad_assessment_output"]]))
 }
 
 .directoryservice$start_schema_extension_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), CreateSnapshotBeforeSchemaExtension = structure(logical(0), tags = list(type = "boolean")), LdifContent = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["start_schema_extension_input"]]))
 }
 
 .directoryservice$start_schema_extension_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SchemaExtensionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["start_schema_extension_output"]]))
 }
 
 .directoryservice$unshare_directory_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), UnshareTarget = structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["unshare_directory_input"]]))
 }
 
 .directoryservice$unshare_directory_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SharedDirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["unshare_directory_output"]]))
 }
 
 .directoryservice$update_conditional_forwarder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), RemoteDomainName = structure(logical(0), tags = list(type = "string")), DnsIpAddrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DnsIpv6Addrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["update_conditional_forwarder_input"]]))
 }
 
 .directoryservice$update_conditional_forwarder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["update_conditional_forwarder_output"]]))
 }
 
 .directoryservice$update_directory_setup_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), UpdateType = structure(logical(0), tags = list(type = "string")), OSUpdateSettings = structure(list(OSVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DirectorySizeUpdateSettings = structure(list(DirectorySize = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkUpdateSettings = structure(list(NetworkType = structure(logical(0), tags = list(type = "string")), CustomerDnsIpsV6 = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), CreateSnapshotBeforeUpdate = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["update_directory_setup_input"]]))
 }
 
 .directoryservice$update_directory_setup_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["update_directory_setup_output"]]))
 }
 
 .directoryservice$update_hybrid_ad_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), HybridAdministratorAccountUpdate = structure(list(SecretArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SelfManagedInstancesSettings = structure(list(CustomerDnsIps = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["update_hybrid_ad_input"]]))
 }
 
 .directoryservice$update_hybrid_ad_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), AssessmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["update_hybrid_ad_output"]]))
 }
 
 .directoryservice$update_number_of_domain_controllers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), DesiredNumber = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["update_number_of_domain_controllers_input"]]))
 }
 
 .directoryservice$update_number_of_domain_controllers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["update_number_of_domain_controllers_output"]]))
 }
 
 .directoryservice$update_radius_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), RadiusSettings = structure(list(RadiusServers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RadiusServersIpv6 = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RadiusPort = structure(logical(0), tags = list(type = "integer")), RadiusTimeout = structure(logical(0), tags = list(type = "integer")), RadiusRetries = structure(logical(0), tags = list(type = "integer")), SharedSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationProtocol = structure(logical(0), tags = list(type = "string")), DisplayLabel = structure(logical(0), tags = list(type = "string")), UseSameUsername = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["update_radius_input"]]))
 }
 
 .directoryservice$update_radius_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["update_radius_output"]]))
 }
 
 .directoryservice$update_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Settings = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["update_settings_input"]]))
 }
 
 .directoryservice$update_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["update_settings_output"]]))
 }
 
 .directoryservice$update_trust_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustId = structure(logical(0), tags = list(type = "string")), SelectiveAuth = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["update_trust_input"]]))
 }
 
 .directoryservice$update_trust_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestId = structure(logical(0), tags = list(type = "string")), TrustId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["update_trust_output"]]))
 }
 
 .directoryservice$verify_trust_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["verify_trust_input"]]))
 }
 
 .directoryservice$verify_trust_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrustId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directoryservice_shapes[["verify_trust_output"]]))
 }

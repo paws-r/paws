@@ -3,14 +3,14 @@
 #' @include bedrock_service.R
 NULL
 
-#' Batch delete the specified advanced prompt optimization jobs
+#' Deletes one or more advanced prompt optimization jobs
 #'
 #' @description
-#' Batch delete the specified advanced prompt optimization jobs.
+#' Deletes one or more advanced prompt optimization jobs.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_batch_delete_advanced_prompt_optimization_job/](https://www.paws-r-sdk.com/docs/bedrock_batch_delete_advanced_prompt_optimization_job/) for full documentation.
 #'
-#' @param jobIdentifiers &#91;required&#93; List of advanced prompt optimization job identifiers to delete.
+#' @param jobIdentifiers &#91;required&#93; A list of advanced prompt optimization job identifiers (ARNs or IDs) to delete.
 #'
 #' @keywords internal
 #'
@@ -97,21 +97,21 @@ bedrock_cancel_automated_reasoning_policy_build_workflow <- function(policyArn, 
 }
 .bedrock$operations$cancel_automated_reasoning_policy_build_workflow <- bedrock_cancel_automated_reasoning_policy_build_workflow
 
-#' Creates an asynchronous batch job for advanced prompt optimization
+#' Creates an advanced prompt optimization job
 #'
 #' @description
-#' Creates an asynchronous batch job for advanced prompt optimization.
+#' Creates an advanced prompt optimization job. The job optimizes your prompt templates for specific models using your evaluation dataset and criteria.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_create_advanced_prompt_optimization_job/](https://www.paws-r-sdk.com/docs/bedrock_create_advanced_prompt_optimization_job/) for full documentation.
 #'
-#' @param jobName &#91;required&#93; Name of the advanced prompt optimization job.
-#' @param jobDescription Description of the advanced prompt optimization job.
-#' @param clientToken Idempotency token for the request.
-#' @param inputConfig &#91;required&#93; Input data configuration for the advanced prompt optimization job.
-#' @param outputConfig &#91;required&#93; Output data configuration for the advanced prompt optimization job.
-#' @param encryptionKeyArn KMS key ARN for encrypting output data.
-#' @param tags Tags to associate with the job.
-#' @param modelConfigurations &#91;required&#93; Model configurations for advanced prompt optimization.
+#' @param jobName &#91;required&#93; A name for the advanced prompt optimization job.
+#' @param jobDescription A description of the advanced prompt optimization job.
+#' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock ignores the request but does not return an error.
+#' @param inputConfig &#91;required&#93; Specifies the S3 location of your JSONL input file containing prompt templates and evaluation samples.
+#' @param outputConfig &#91;required&#93; Specifies the S3 location where optimization results will be stored.
+#' @param encryptionKeyArn The Amazon Resource Name (ARN) of the KMS key used for encrypting the output data. If not specified, the output is encrypted with an Amazon-owned KMS key.
+#' @param tags Tags to associate with the advanced prompt optimization job.
+#' @param modelConfigurations &#91;required&#93; A list of model configurations specifying the target models for prompt optimization. You can specify up to 5 models.
 #'
 #' @keywords internal
 #'
@@ -263,11 +263,16 @@ bedrock_create_automated_reasoning_policy_version <- function(policyArn, clientR
 #' See [https://www.paws-r-sdk.com/docs/bedrock_create_custom_model/](https://www.paws-r-sdk.com/docs/bedrock_create_custom_model/) for full documentation.
 #'
 #' @param modelName &#91;required&#93; A unique name for the custom model.
-#' @param modelSourceConfig &#91;required&#93; The data source for the model. The Amazon S3 URI in the model source must be for the Amazon-managed Amazon S3 bucket containing your model artifacts.
+#' @param modelSourceConfig The data source for the model. The Amazon S3 URI in the model source must be for the Amazon-managed Amazon S3 bucket containing your model artifacts.
+#' @param customModelDataSource The data source for the custom model. Use this field to specify a SageMaker AI model package ARN as the source for your custom model. Amazon Bedrock resolves the model package to retrieve the model artifacts.
+#' 
+#' You can specify either `customModelDataSource` or `modelSourceConfig`, but not both.
 #' @param modelKmsKeyArn The Amazon Resource Name (ARN) of the customer managed KMS key to encrypt the custom model. If you don't provide a KMS key, Amazon Bedrock uses an Amazon Web Services-managed KMS key to encrypt the model.
 #' 
 #' If you provide a customer managed KMS key, your Amazon Bedrock service role must have permissions to use it. For more information see [Encryption of imported models](https://docs.aws.amazon.com/bedrock/latest/userguide/encryption-import-model.html).
 #' @param roleArn The Amazon Resource Name (ARN) of an IAM service role that Amazon Bedrock assumes to perform tasks on your behalf. This role must have permissions to access the Amazon S3 bucket containing your model artifacts and the KMS key (if specified). For more information, see [Setting up an IAM service role for importing models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-import-iam-role.html) in the Amazon Bedrock User Guide.
+#' 
+#' This field is required when you use `modelSourceConfig` with an Amazon S3 data source. It is not required when you use `customModelDataSource` with a model package ARN, because Amazon Bedrock uses its own credentials to access the model artifacts.
 #' @param modelTags A list of key-value pairs to associate with the custom model resource. You can use these tags to organize and identify your resources.
 #' 
 #' For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
@@ -276,7 +281,7 @@ bedrock_create_automated_reasoning_policy_version <- function(policyArn, clientR
 #' @keywords internal
 #'
 #' @rdname bedrock_create_custom_model
-bedrock_create_custom_model <- function(modelName, modelSourceConfig, modelKmsKeyArn = NULL, roleArn = NULL, modelTags = NULL, clientRequestToken = NULL) {
+bedrock_create_custom_model <- function(modelName, modelSourceConfig = NULL, customModelDataSource = NULL, modelKmsKeyArn = NULL, roleArn = NULL, modelTags = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "CreateCustomModel",
     http_method = "POST",
@@ -285,7 +290,7 @@ bedrock_create_custom_model <- function(modelName, modelSourceConfig, modelKmsKe
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrock$create_custom_model_input(modelName = modelName, modelSourceConfig = modelSourceConfig, modelKmsKeyArn = modelKmsKeyArn, roleArn = roleArn, modelTags = modelTags, clientRequestToken = clientRequestToken)
+  input <- .bedrock$create_custom_model_input(modelName = modelName, modelSourceConfig = modelSourceConfig, customModelDataSource = customModelDataSource, modelKmsKeyArn = modelKmsKeyArn, roleArn = roleArn, modelTags = modelTags, clientRequestToken = clientRequestToken)
   output <- .bedrock$create_custom_model_output()
   config <- get_config()
   svc <- .bedrock$service(config, op)
@@ -1331,14 +1336,45 @@ bedrock_export_automated_reasoning_policy_version <- function(policyArn) {
 }
 .bedrock$operations$export_automated_reasoning_policy_version <- bedrock_export_automated_reasoning_policy_version
 
-#' Retrieves the details and status of an advanced prompt optimization job
+#' Returns the account-wide data retention mode for Amazon Bedrock
 #'
 #' @description
-#' Retrieves the details and status of an advanced prompt optimization job.
+#' Returns the account-wide data retention mode for Amazon Bedrock.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_get_account_data_retention/](https://www.paws-r-sdk.com/docs/bedrock_get_account_data_retention/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_account_data_retention
+bedrock_get_account_data_retention <- function() {
+  op <- new_operation(
+    name = "GetAccountDataRetention",
+    http_method = "GET",
+    http_path = "/data-retention",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$get_account_data_retention_input()
+  output <- .bedrock$get_account_data_retention_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_account_data_retention <- bedrock_get_account_data_retention
+
+#' Gets information about an advanced prompt optimization job
+#'
+#' @description
+#' Gets information about an advanced prompt optimization job.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_get_advanced_prompt_optimization_job/](https://www.paws-r-sdk.com/docs/bedrock_get_advanced_prompt_optimization_job/) for full documentation.
 #'
-#' @param jobIdentifier &#91;required&#93; ARN or ID of the advanced prompt optimization job.
+#' @param jobIdentifier &#91;required&#93; The ARN or ID of the advanced prompt optimization job.
 #'
 #' @keywords internal
 #'
@@ -2157,17 +2193,17 @@ bedrock_get_use_case_for_model_access <- function() {
 }
 .bedrock$operations$get_use_case_for_model_access <- bedrock_get_use_case_for_model_access
 
-#' Lists all advanced prompt optimization jobs for the account
+#' Lists the advanced prompt optimization jobs in your account
 #'
 #' @description
-#' Lists all advanced prompt optimization jobs for the account.
+#' Lists the advanced prompt optimization jobs in your account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_list_advanced_prompt_optimization_jobs/](https://www.paws-r-sdk.com/docs/bedrock_list_advanced_prompt_optimization_jobs/) for full documentation.
 #'
-#' @param maxResults Maximum number of results to return.
-#' @param nextToken Pagination token for the next page of results.
-#' @param sortBy Field to sort by in the returned list of jobs.
-#' @param sortOrder Sort order for the results.
+#' @param maxResults The maximum number of results to return in the response.
+#' @param nextToken If the total number of results is greater than the `maxResults` value provided in the request, use this token in a subsequent request to get the next set of results.
+#' @param sortBy The field to sort the results by.
+#' @param sortOrder The sort order for the results.
 #'
 #' @keywords internal
 #'
@@ -2978,6 +3014,37 @@ bedrock_list_tags_for_resource <- function(resourceARN) {
 }
 .bedrock$operations$list_tags_for_resource <- bedrock_list_tags_for_resource
 
+#' Sets the account-wide data retention mode for Amazon Bedrock
+#'
+#' @description
+#' Sets the account-wide data retention mode for Amazon Bedrock.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_put_account_data_retention/](https://www.paws-r-sdk.com/docs/bedrock_put_account_data_retention/) for full documentation.
+#'
+#' @param mode &#91;required&#93; The data retention mode to set for the account.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_put_account_data_retention
+bedrock_put_account_data_retention <- function(mode) {
+  op <- new_operation(
+    name = "PutAccountDataRetention",
+    http_method = "PUT",
+    http_path = "/data-retention",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$put_account_data_retention_input(mode = mode)
+  output <- .bedrock$put_account_data_retention_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$put_account_data_retention <- bedrock_put_account_data_retention
+
 #' Sets the account-level enforced guardrail configuration
 #'
 #' @description
@@ -3205,14 +3272,14 @@ bedrock_start_automated_reasoning_policy_test_workflow <- function(policyArn, bu
 }
 .bedrock$operations$start_automated_reasoning_policy_test_workflow <- bedrock_start_automated_reasoning_policy_test_workflow
 
-#' Stops an in-progress advanced prompt optimization job
+#' Stops an advanced prompt optimization job that is in progress
 #'
 #' @description
-#' Stops an in-progress advanced prompt optimization job.
+#' Stops an advanced prompt optimization job that is in progress.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_stop_advanced_prompt_optimization_job/](https://www.paws-r-sdk.com/docs/bedrock_stop_advanced_prompt_optimization_job/) for full documentation.
 #'
-#' @param jobIdentifier &#91;required&#93; ARN or ID of the advanced prompt optimization job to stop.
+#' @param jobIdentifier &#91;required&#93; The ARN or ID of the advanced prompt optimization job to stop.
 #'
 #' @keywords internal
 #'

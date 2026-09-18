@@ -106,8 +106,11 @@ NULL
 #'  \link[=route53resolver_associate_resolver_endpoint_ip_address]{associate_resolver_endpoint_ip_address} \tab Adds IP addresses to an inbound or an outbound Resolver endpoint\cr
 #'  \link[=route53resolver_associate_resolver_query_log_config]{associate_resolver_query_log_config} \tab Associates an Amazon VPC with a specified query logging configuration\cr
 #'  \link[=route53resolver_associate_resolver_rule]{associate_resolver_rule} \tab Associates a Resolver rule with a VPC\cr
+#'  \link[=route53resolver_batch_create_firewall_rule]{batch_create_firewall_rule} \tab Creates multiple DNS Firewall rules in the specified rule group\cr
+#'  \link[=route53resolver_batch_delete_firewall_rule]{batch_delete_firewall_rule} \tab Deletes multiple DNS Firewall rules from the specified rule group\cr
+#'  \link[=route53resolver_batch_update_firewall_rule]{batch_update_firewall_rule} \tab Updates multiple DNS Firewall rules in the specified rule group\cr
 #'  \link[=route53resolver_create_firewall_domain_list]{create_firewall_domain_list} \tab Creates an empty firewall domain list for use in DNS Firewall rules\cr
-#'  \link[=route53resolver_create_firewall_rule]{create_firewall_rule} \tab Creates a single DNS Firewall rule in the specified rule group, using the specified domain list\cr
+#'  \link[=route53resolver_create_firewall_rule]{create_firewall_rule} \tab Creates a single DNS Firewall rule in the specified rule group\cr
 #'  \link[=route53resolver_create_firewall_rule_group]{create_firewall_rule_group} \tab Creates an empty DNS Firewall rule group for filtering DNS network traffic in a VPC\cr
 #'  \link[=route53resolver_create_outpost_resolver]{create_outpost_resolver} \tab Creates a Route 53 Resolver on an Outpost\cr
 #'  \link[=route53resolver_create_resolver_endpoint]{create_resolver_endpoint} \tab Creates a Resolver endpoint\cr
@@ -146,6 +149,7 @@ NULL
 #'  \link[=route53resolver_list_firewall_rule_group_associations]{list_firewall_rule_group_associations} \tab Retrieves the firewall rule group associations that you have defined\cr
 #'  \link[=route53resolver_list_firewall_rule_groups]{list_firewall_rule_groups} \tab Retrieves the minimal high-level information for the rule groups that you have defined\cr
 #'  \link[=route53resolver_list_firewall_rules]{list_firewall_rules} \tab Retrieves the firewall rules that you have defined for the specified firewall rule group\cr
+#'  \link[=route53resolver_list_firewall_rule_types]{list_firewall_rule_types} \tab Retrieves the rule-type variants that can be used in the FirewallRuleType field of CreateFirewallRule and UpdateFirewallRule\cr
 #'  \link[=route53resolver_list_outpost_resolvers]{list_outpost_resolvers} \tab Lists all the Resolvers on Outposts that were created using the current Amazon Web Services account\cr
 #'  \link[=route53resolver_list_resolver_configs]{list_resolver_configs} \tab Retrieves the Resolver configurations that you have defined\cr
 #'  \link[=route53resolver_list_resolver_dnssec_configs]{list_resolver_dnssec_configs} \tab Lists the configurations for DNSSEC validation that are associated with the current Amazon Web Services account\cr

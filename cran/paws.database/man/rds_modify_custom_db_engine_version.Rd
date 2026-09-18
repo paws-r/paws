@@ -26,11 +26,16 @@ RDS Custom for SQL Server supports the following values:
 \itemize{
 \item \code{custom-sqlserver-ee}
 \item \code{custom-sqlserver-se}
-\item \code{ccustom-sqlserver-web}
+\item \code{custom-sqlserver-web}
 \item \code{custom-sqlserver-dev}
 }
 
-RDS for SQL Server supports only \code{sqlserver-dev-ee}.}
+RDS for SQL Server supports the following values:
+\itemize{
+\item \code{sqlserver-ee} (Bring Your Own Media)
+\item \code{sqlserver-se} (Bring Your Own Media)
+\item \code{sqlserver-dev-ee}
+}}
 
 \item{EngineVersion}{[required] The custom engine version (CEV) that you want to modify. This option is required for RDS Custom for Oracle, but optional for Amazon RDS. The combination of \code{Engine} and \code{EngineVersion} is unique per customer per Amazon Web Services Region.}
 

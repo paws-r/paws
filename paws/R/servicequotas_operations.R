@@ -226,7 +226,8 @@ servicequotas_disassociate_service_quota_template <- function() {
 #'     QuotaContext = list(
 #'       ContextScope = "RESOURCE"|"ACCOUNT",
 #'       ContextScopeType = "string",
-#'       ContextId = "string"
+#'       ContextId = "string",
+#'       AdjustableAtLevel = "ACCOUNT"|"PER_RESOURCE"|"ALL"
 #'     ),
 #'     Description = "string"
 #'   )
@@ -489,7 +490,8 @@ servicequotas_get_quota_utilization_report <- function(ReportId, NextToken = NUL
 #'     QuotaContext = list(
 #'       ContextScope = "RESOURCE"|"ACCOUNT",
 #'       ContextScopeType = "string",
-#'       ContextId = "string"
+#'       ContextId = "string",
+#'       AdjustableAtLevel = "ACCOUNT"|"PER_RESOURCE"|"ALL"
 #'     )
 #'   )
 #' )
@@ -573,7 +575,8 @@ servicequotas_get_requested_service_quota_change <- function(RequestId) {
 #'     QuotaContext = list(
 #'       ContextScope = "RESOURCE"|"ACCOUNT",
 #'       ContextScopeType = "string",
-#'       ContextId = "string"
+#'       ContextId = "string",
+#'       AdjustableAtLevel = "ACCOUNT"|"PER_RESOURCE"|"ALL"
 #'     ),
 #'     Description = "string"
 #'   )
@@ -729,7 +732,8 @@ servicequotas_get_service_quota_increase_request_from_template <- function(Servi
 #'       QuotaContext = list(
 #'         ContextScope = "RESOURCE"|"ACCOUNT",
 #'         ContextScopeType = "string",
-#'         ContextId = "string"
+#'         ContextId = "string",
+#'         AdjustableAtLevel = "ACCOUNT"|"PER_RESOURCE"|"ALL"
 #'       ),
 #'       Description = "string"
 #'     )
@@ -818,7 +822,8 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
 #'       QuotaContext = list(
 #'         ContextScope = "RESOURCE"|"ACCOUNT",
 #'         ContextScopeType = "string",
-#'         ContextId = "string"
+#'         ContextId = "string",
+#'         AdjustableAtLevel = "ACCOUNT"|"PER_RESOURCE"|"ALL"
 #'       )
 #'     )
 #'   )
@@ -909,7 +914,8 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
 #'       QuotaContext = list(
 #'         ContextScope = "RESOURCE"|"ACCOUNT",
 #'         ContextScopeType = "string",
-#'         ContextId = "string"
+#'         ContextId = "string",
+#'         AdjustableAtLevel = "ACCOUNT"|"PER_RESOURCE"|"ALL"
 #'       )
 #'     )
 #'   )
@@ -1077,7 +1083,8 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
 #'       QuotaContext = list(
 #'         ContextScope = "RESOURCE"|"ACCOUNT",
 #'         ContextScopeType = "string",
-#'         ContextId = "string"
+#'         ContextId = "string",
+#'         AdjustableAtLevel = "ACCOUNT"|"PER_RESOURCE"|"ALL"
 #'       ),
 #'       Description = "string"
 #'     )
@@ -1345,7 +1352,8 @@ servicequotas_put_service_quota_increase_request_into_template <- function(Quota
 #'     QuotaContext = list(
 #'       ContextScope = "RESOURCE"|"ACCOUNT",
 #'       ContextScopeType = "string",
-#'       ContextId = "string"
+#'       ContextId = "string",
+#'       AdjustableAtLevel = "ACCOUNT"|"PER_RESOURCE"|"ALL"
 #'     )
 #'   )
 #' )

@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockagentcorecontrol_operations.R
 \name{bedrockagentcorecontrol_start_policy_generation}
 \alias{bedrockagentcorecontrol_start_policy_generation}
-\title{Initiates the AI-powered generation of Cedar policies from natural
+\title{Initiates the AI-powered generation of Dogwood policies from natural
 language descriptions within the AgentCore Policy system}
 \usage{
 bedrockagentcorecontrol_start_policy_generation(
@@ -18,14 +18,14 @@ bedrockagentcorecontrol_start_policy_generation(
 
 \item{resource}{[required] The resource information that provides context for policy generation. This helps the AI understand the target resources and generate appropriate access control rules.}
 
-\item{content}{[required] The natural language description of the desired policy behavior. This content is processed by AI to generate corresponding Cedar policy statements that match the described intent.}
+\item{content}{[required] The natural language description of the desired policy behavior. This content is processed by AI to generate corresponding Dogwood policy statements that match the described intent.}
 
 \item{name}{[required] A customer-assigned name for the policy generation request. This helps track and identify generation operations, especially when running multiple generations simultaneously.}
 
 \item{clientToken}{A unique, case-sensitive identifier to ensure the idempotency of the request. The AWS SDK automatically generates this token, so you don't need to provide it in most cases. If you retry a request with the same client token, the service returns the same response without starting a duplicate generation.}
 }
 \description{
-Initiates the AI-powered generation of Cedar policies from natural language descriptions within the AgentCore Policy system. This feature enables both technical and non-technical users to create policies by describing their authorization requirements in plain English, which is then automatically translated into formal Cedar policy statements. The generation process analyzes the natural language input along with the Gateway's tool context to produce validated policy options. Generated policy assets are automatically deleted after 7 days, so you should review and create policies from the generated assets within this timeframe. Once created, policies are permanent and not subject to this expiration. Generated policies should be reviewed and tested in log-only mode before deploying to production. Use this when you want to describe policy intent naturally rather than learning Cedar syntax, though generated policies may require refinement for complex scenarios.
+Initiates the AI-powered generation of Dogwood policies from natural language descriptions within the AgentCore Policy system. This feature enables both technical and non-technical users to create policies by describing their authorization requirements in plain English, which is then automatically translated into formal Dogwood policy statements. The generation process analyzes the natural language input along with the Gateway's tool context to produce validated policy options. Generated policy assets are automatically deleted after 7 days, so you should review and create policies from the generated assets within this timeframe. Once created, policies are permanent and not subject to this expiration. Generated policies should be reviewed and tested in log-only mode before deploying to production. Use this when you want to describe policy intent naturally rather than learning Dogwood syntax, though generated policies may require refinement for complex scenarios.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_start_policy_generation/} for full documentation.
 }

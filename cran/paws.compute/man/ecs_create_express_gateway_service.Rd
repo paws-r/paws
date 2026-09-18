@@ -7,22 +7,24 @@ applications on Amazon ECS with managed Amazon Web Services
 infrastructure}
 \usage{
 ecs_create_express_gateway_service(
-  executionRoleArn,
+  executionRoleArn = NULL,
   infrastructureRoleArn,
   serviceName = NULL,
   cluster = NULL,
   healthCheckPath = NULL,
-  primaryContainer,
+  primaryContainer = NULL,
   taskRoleArn = NULL,
   networkConfiguration = NULL,
   cpu = NULL,
   memory = NULL,
+  cpuArchitecture = NULL,
   scalingTarget = NULL,
-  tags = NULL
+  tags = NULL,
+  taskDefinitionArn = NULL
 )
 }
 \arguments{
-\item{executionRoleArn}{[required] The Amazon Resource Name (ARN) of the task execution role that grants the Amazon ECS container agent permission to make Amazon Web Services API calls on your behalf. This role is required for Amazon ECS to pull container images from Amazon ECR, send container logs to Amazon CloudWatch Logs, and retrieve sensitive data from Amazon Web Services Systems Manager Parameter Store or Amazon Web Services Secrets Manager.
+\item{executionRoleArn}{The Amazon Resource Name (ARN) of the task execution role that grants the Amazon ECS container agent permission to make Amazon Web Services API calls on your behalf. This role is required for Amazon ECS to pull container images from Amazon ECR, send container logs to Amazon CloudWatch Logs, and retrieve sensitive data from Amazon Web Services Systems Manager Parameter Store or Amazon Web Services Secrets Manager.
 
 The execution role must include the \code{AmazonECSTaskExecutionRolePolicy} managed policy or equivalent permissions. For Express services, this role is used during task startup and runtime for container management operations.}
 
@@ -40,7 +42,7 @@ If you don't specify a service name, Amazon ECS generates a unique name for the 
 
 If not specified, the default health check path is \verb{/ping}. The health check path must start with a forward slash and can include query parameters. Examples: \verb{/health}, \verb{/api/status}, \verb{/ping?format=json}.}
 
-\item{primaryContainer}{[required] The primary container configuration for the Express service. This defines the main application container that will receive traffic from the Application Load Balancer.
+\item{primaryContainer}{The primary container configuration for the Express service. This defines the main application container that will receive traffic from the Application Load Balancer.
 
 The primary container must specify at minimum a container image. You can also configure the container port (defaults to 80), logging configuration, environment variables, secrets, and startup commands. The container image can be from Amazon ECR, Docker Hub, or any other container registry accessible to your execution role.}
 
@@ -56,11 +58,29 @@ For Express services, you can specify custom security groups and subnets. If not
 
 \item{memory}{The amount of memory (in MiB) used by the task. This parameter determines the memory allocation for each task in the Express service. The default value for an express service is 512 MiB.}
 
+\item{cpuArchitecture}{The CPU architecture that the tasks in the Express service run on. Amazon ECS applies this value to the task definition revision that it registers for the service. If you don't specify a value, the default is \code{X86_64}.
+
+Valid values:
+\itemize{
+\item \code{X86_64} - The x86 64-bit architecture.
+\item \code{ARM64} - The 64-bit ARM architecture.
+}
+
+Make sure that the container image that you specify supports the architecture that you choose. The operating system family for an Express service is always \code{LINUX}.
+
+You can't specify \code{cpuArchitecture} when you also specify \code{taskDefinitionArn}, because this value applies only to a task definition that Amazon ECS registers on your behalf.}
+
 \item{scalingTarget}{The auto-scaling configuration for the Express service. This defines how the service automatically adjusts the number of running tasks based on demand.
 
 You can specify the minimum and maximum number of tasks, the scaling metric (CPU utilization, memory utilization, or request count per target), and the target value for the metric. If not specified, the default target value for an Express service is 60.}
 
 \item{tags}{The metadata that you apply to the Express service to help categorize and organize it. Each tag consists of a key and an optional value. You can apply up to 50 tags to a service.}
+
+\item{taskDefinitionArn}{The Amazon Resource Name (ARN) of a task definition to use to create the Express Gateway service. This allows you to manage your own task definition, giving you more control over the service configuration such as adding sidecar containers.
+
+The task definition must have a container named \code{Main} with a single TCP port mapping that includes a container port and port name. The task definition must also have \code{FARGATE} compatibility.
+
+If you provide a task definition ARN, you cannot also specify \code{primaryContainer}, \code{executionRoleArn}, \code{taskRoleArn}, \code{cpu}, \code{memory}, or \code{cpuArchitecture}.}
 }
 \description{
 Creates an Express service that simplifies deploying containerized web applications on Amazon ECS with managed Amazon Web Services infrastructure. This operation provisions and configures Application Load Balancers, target groups, security groups, and auto-scaling policies automatically.

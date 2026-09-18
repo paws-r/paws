@@ -5,44 +5,37 @@ NULL
 
 .voiceid$associate_fraudster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), FraudsterId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), WatchlistId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["associate_fraudster_input"]]))
 }
 
 .voiceid$associate_fraudster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Fraudster = structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DomainId = structure(logical(0), tags = list(type = "string")), GeneratedFraudsterId = structure(logical(0), tags = list(type = "string")), WatchlistIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["associate_fraudster_output"]]))
 }
 
 .voiceid$create_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ServerSideEncryptionConfiguration = structure(list(KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["create_domain_input"]]))
 }
 
 .voiceid$create_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Domain = structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DomainId = structure(logical(0), tags = list(type = "string")), DomainStatus = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ServerSideEncryptionConfiguration = structure(list(KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ServerSideEncryptionUpdateDetails = structure(list(Message = structure(logical(0), tags = list(type = "string")), OldKmsKeyId = structure(logical(0), tags = list(type = "string")), UpdateStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), WatchlistDetails = structure(list(DefaultWatchlistId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["create_domain_output"]]))
 }
 
 .voiceid$create_watchlist_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DomainId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["create_watchlist_input"]]))
 }
 
 .voiceid$create_watchlist_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Watchlist = structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DefaultWatchlist = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DomainId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), WatchlistId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["create_watchlist_output"]]))
 }
 
 .voiceid$delete_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["delete_domain_input"]]))
 }
 
 .voiceid$delete_domain_output <- function(...) {
@@ -51,8 +44,7 @@ NULL
 
 .voiceid$delete_fraudster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), FraudsterId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["delete_fraudster_input"]]))
 }
 
 .voiceid$delete_fraudster_output <- function(...) {
@@ -61,8 +53,7 @@ NULL
 
 .voiceid$delete_speaker_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), SpeakerId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["delete_speaker_input"]]))
 }
 
 .voiceid$delete_speaker_output <- function(...) {
@@ -71,8 +62,7 @@ NULL
 
 .voiceid$delete_watchlist_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), WatchlistId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["delete_watchlist_input"]]))
 }
 
 .voiceid$delete_watchlist_output <- function(...) {
@@ -81,264 +71,220 @@ NULL
 
 .voiceid$describe_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["describe_domain_input"]]))
 }
 
 .voiceid$describe_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Domain = structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DomainId = structure(logical(0), tags = list(type = "string")), DomainStatus = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ServerSideEncryptionConfiguration = structure(list(KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ServerSideEncryptionUpdateDetails = structure(list(Message = structure(logical(0), tags = list(type = "string")), OldKmsKeyId = structure(logical(0), tags = list(type = "string")), UpdateStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), WatchlistDetails = structure(list(DefaultWatchlistId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["describe_domain_output"]]))
 }
 
 .voiceid$describe_fraudster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), FraudsterId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["describe_fraudster_input"]]))
 }
 
 .voiceid$describe_fraudster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Fraudster = structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DomainId = structure(logical(0), tags = list(type = "string")), GeneratedFraudsterId = structure(logical(0), tags = list(type = "string")), WatchlistIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["describe_fraudster_output"]]))
 }
 
 .voiceid$describe_fraudster_registration_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["describe_fraudster_registration_job_input"]]))
 }
 
 .voiceid$describe_fraudster_registration_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Job = structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), DomainId = structure(logical(0), tags = list(type = "string")), EndedAt = structure(logical(0), tags = list(type = "timestamp")), FailureDetails = structure(list(Message = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), JobProgress = structure(list(PercentComplete = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), JobStatus = structure(logical(0), tags = list(type = "string")), OutputDataConfig = structure(list(KmsKeyId = structure(logical(0), tags = list(type = "string")), S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RegistrationConfig = structure(list(DuplicateRegistrationAction = structure(logical(0), tags = list(type = "string")), FraudsterSimilarityThreshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), WatchlistIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["describe_fraudster_registration_job_output"]]))
 }
 
 .voiceid$describe_speaker_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), SpeakerId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["describe_speaker_input"]]))
 }
 
 .voiceid$describe_speaker_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Speaker = structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), CustomerSpeakerId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DomainId = structure(logical(0), tags = list(type = "string")), GeneratedSpeakerId = structure(logical(0), tags = list(type = "string")), LastAccessedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["describe_speaker_output"]]))
 }
 
 .voiceid$describe_speaker_enrollment_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["describe_speaker_enrollment_job_input"]]))
 }
 
 .voiceid$describe_speaker_enrollment_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Job = structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), DomainId = structure(logical(0), tags = list(type = "string")), EndedAt = structure(logical(0), tags = list(type = "timestamp")), EnrollmentConfig = structure(list(ExistingEnrollmentAction = structure(logical(0), tags = list(type = "string")), FraudDetectionConfig = structure(list(FraudDetectionAction = structure(logical(0), tags = list(type = "string")), RiskThreshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), WatchlistIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), FailureDetails = structure(list(Message = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), JobProgress = structure(list(PercentComplete = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), JobStatus = structure(logical(0), tags = list(type = "string")), OutputDataConfig = structure(list(KmsKeyId = structure(logical(0), tags = list(type = "string")), S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["describe_speaker_enrollment_job_output"]]))
 }
 
 .voiceid$describe_watchlist_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), WatchlistId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["describe_watchlist_input"]]))
 }
 
 .voiceid$describe_watchlist_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Watchlist = structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DefaultWatchlist = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DomainId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), WatchlistId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["describe_watchlist_output"]]))
 }
 
 .voiceid$disassociate_fraudster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), FraudsterId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), WatchlistId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["disassociate_fraudster_input"]]))
 }
 
 .voiceid$disassociate_fraudster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Fraudster = structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DomainId = structure(logical(0), tags = list(type = "string")), GeneratedFraudsterId = structure(logical(0), tags = list(type = "string")), WatchlistIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["disassociate_fraudster_output"]]))
 }
 
 .voiceid$evaluate_session_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), SessionNameOrId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["evaluate_session_input"]]))
 }
 
 .voiceid$evaluate_session_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationResult = structure(list(AudioAggregationEndedAt = structure(logical(0), tags = list(type = "timestamp")), AudioAggregationStartedAt = structure(logical(0), tags = list(type = "timestamp")), AuthenticationResultId = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(AcceptanceThreshold = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), CustomerSpeakerId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Decision = structure(logical(0), tags = list(type = "string")), GeneratedSpeakerId = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), DomainId = structure(logical(0), tags = list(type = "string")), FraudDetectionResult = structure(list(AudioAggregationEndedAt = structure(logical(0), tags = list(type = "timestamp")), AudioAggregationStartedAt = structure(logical(0), tags = list(type = "timestamp")), Configuration = structure(list(RiskThreshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), WatchlistId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Decision = structure(logical(0), tags = list(type = "string")), FraudDetectionResultId = structure(logical(0), tags = list(type = "string")), Reasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RiskDetails = structure(list(KnownFraudsterRisk = structure(list(GeneratedFraudsterId = structure(logical(0), tags = list(type = "string")), RiskScore = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), VoiceSpoofingRisk = structure(list(RiskScore = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), SessionId = structure(logical(0), tags = list(type = "string")), SessionName = structure(logical(0), tags = list(type = "string")), StreamingStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["evaluate_session_output"]]))
 }
 
 .voiceid$list_domains_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["list_domains_input"]]))
 }
 
 .voiceid$list_domains_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainSummaries = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DomainId = structure(logical(0), tags = list(type = "string")), DomainStatus = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ServerSideEncryptionConfiguration = structure(list(KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ServerSideEncryptionUpdateDetails = structure(list(Message = structure(logical(0), tags = list(type = "string")), OldKmsKeyId = structure(logical(0), tags = list(type = "string")), UpdateStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), WatchlistDetails = structure(list(DefaultWatchlistId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["list_domains_output"]]))
 }
 
 .voiceid$list_fraudster_registration_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["list_fraudster_registration_jobs_input"]]))
 }
 
 .voiceid$list_fraudster_registration_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobSummaries = structure(list(structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DomainId = structure(logical(0), tags = list(type = "string")), EndedAt = structure(logical(0), tags = list(type = "timestamp")), FailureDetails = structure(list(Message = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), JobProgress = structure(list(PercentComplete = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), JobStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["list_fraudster_registration_jobs_output"]]))
 }
 
 .voiceid$list_fraudsters_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), WatchlistId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["list_fraudsters_input"]]))
 }
 
 .voiceid$list_fraudsters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FraudsterSummaries = structure(list(structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DomainId = structure(logical(0), tags = list(type = "string")), GeneratedFraudsterId = structure(logical(0), tags = list(type = "string")), WatchlistIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["list_fraudsters_output"]]))
 }
 
 .voiceid$list_speaker_enrollment_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["list_speaker_enrollment_jobs_input"]]))
 }
 
 .voiceid$list_speaker_enrollment_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobSummaries = structure(list(structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DomainId = structure(logical(0), tags = list(type = "string")), EndedAt = structure(logical(0), tags = list(type = "timestamp")), FailureDetails = structure(list(Message = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), JobProgress = structure(list(PercentComplete = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), JobStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["list_speaker_enrollment_jobs_output"]]))
 }
 
 .voiceid$list_speakers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["list_speakers_input"]]))
 }
 
 .voiceid$list_speakers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), SpeakerSummaries = structure(list(structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), CustomerSpeakerId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DomainId = structure(logical(0), tags = list(type = "string")), GeneratedSpeakerId = structure(logical(0), tags = list(type = "string")), LastAccessedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["list_speakers_output"]]))
 }
 
 .voiceid$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["list_tags_for_resource_input"]]))
 }
 
 .voiceid$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["list_tags_for_resource_output"]]))
 }
 
 .voiceid$list_watchlists_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["list_watchlists_input"]]))
 }
 
 .voiceid$list_watchlists_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), WatchlistSummaries = structure(list(structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DefaultWatchlist = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DomainId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), WatchlistId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["list_watchlists_output"]]))
 }
 
 .voiceid$opt_out_speaker_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainId = structure(logical(0), tags = list(type = "string")), SpeakerId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["opt_out_speaker_input"]]))
 }
 
 .voiceid$opt_out_speaker_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Speaker = structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), CustomerSpeakerId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DomainId = structure(logical(0), tags = list(type = "string")), GeneratedSpeakerId = structure(logical(0), tags = list(type = "string")), LastAccessedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["opt_out_speaker_output"]]))
 }
 
 .voiceid$start_fraudster_registration_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), DomainId = structure(logical(0), tags = list(type = "string")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JobName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), OutputDataConfig = structure(list(KmsKeyId = structure(logical(0), tags = list(type = "string")), S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RegistrationConfig = structure(list(DuplicateRegistrationAction = structure(logical(0), tags = list(type = "string")), FraudsterSimilarityThreshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), WatchlistIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["start_fraudster_registration_job_input"]]))
 }
 
 .voiceid$start_fraudster_registration_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Job = structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), DomainId = structure(logical(0), tags = list(type = "string")), EndedAt = structure(logical(0), tags = list(type = "timestamp")), FailureDetails = structure(list(Message = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), JobProgress = structure(list(PercentComplete = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), JobStatus = structure(logical(0), tags = list(type = "string")), OutputDataConfig = structure(list(KmsKeyId = structure(logical(0), tags = list(type = "string")), S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RegistrationConfig = structure(list(DuplicateRegistrationAction = structure(logical(0), tags = list(type = "string")), FraudsterSimilarityThreshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), WatchlistIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["start_fraudster_registration_job_output"]]))
 }
 
 .voiceid$start_speaker_enrollment_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), DomainId = structure(logical(0), tags = list(type = "string")), EnrollmentConfig = structure(list(ExistingEnrollmentAction = structure(logical(0), tags = list(type = "string")), FraudDetectionConfig = structure(list(FraudDetectionAction = structure(logical(0), tags = list(type = "string")), RiskThreshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), WatchlistIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JobName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), OutputDataConfig = structure(list(KmsKeyId = structure(logical(0), tags = list(type = "string")), S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["start_speaker_enrollment_job_input"]]))
 }
 
 .voiceid$start_speaker_enrollment_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Job = structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), DomainId = structure(logical(0), tags = list(type = "string")), EndedAt = structure(logical(0), tags = list(type = "timestamp")), EnrollmentConfig = structure(list(ExistingEnrollmentAction = structure(logical(0), tags = list(type = "string")), FraudDetectionConfig = structure(list(FraudDetectionAction = structure(logical(0), tags = list(type = "string")), RiskThreshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), WatchlistIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), FailureDetails = structure(list(Message = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), JobProgress = structure(list(PercentComplete = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), JobStatus = structure(logical(0), tags = list(type = "string")), OutputDataConfig = structure(list(KmsKeyId = structure(logical(0), tags = list(type = "string")), S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["start_speaker_enrollment_job_output"]]))
 }
 
 .voiceid$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["tag_resource_input"]]))
 }
 
 .voiceid$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["tag_resource_output"]]))
 }
 
 .voiceid$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["untag_resource_input"]]))
 }
 
 .voiceid$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["untag_resource_output"]]))
 }
 
 .voiceid$update_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DomainId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ServerSideEncryptionConfiguration = structure(list(KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["update_domain_input"]]))
 }
 
 .voiceid$update_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Domain = structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DomainId = structure(logical(0), tags = list(type = "string")), DomainStatus = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ServerSideEncryptionConfiguration = structure(list(KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ServerSideEncryptionUpdateDetails = structure(list(Message = structure(logical(0), tags = list(type = "string")), OldKmsKeyId = structure(logical(0), tags = list(type = "string")), UpdateStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), WatchlistDetails = structure(list(DefaultWatchlistId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["update_domain_output"]]))
 }
 
 .voiceid$update_watchlist_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DomainId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), WatchlistId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["update_watchlist_input"]]))
 }
 
 .voiceid$update_watchlist_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Watchlist = structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DefaultWatchlist = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DomainId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), WatchlistId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .voiceid_shapes[["update_watchlist_output"]]))
 }

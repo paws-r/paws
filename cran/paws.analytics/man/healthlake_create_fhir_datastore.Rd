@@ -11,7 +11,11 @@ healthlake_create_fhir_datastore(
   PreloadDataConfig = NULL,
   ClientToken = NULL,
   Tags = NULL,
-  IdentityProviderConfiguration = NULL
+  IdentityProviderConfiguration = NULL,
+  AnalyticsConfiguration = NULL,
+  NlpConfiguration = NULL,
+  ProfileConfiguration = NULL,
+  BackupConfiguration = NULL
 )
 }
 \arguments{
@@ -28,6 +32,14 @@ healthlake_create_fhir_datastore(
 \item{Tags}{The resource tags applied to a data store when it is created.}
 
 \item{IdentityProviderConfiguration}{The identity provider configuration to use for the data store.}
+
+\item{AnalyticsConfiguration}{The analytics configuration for the data store.}
+
+\item{NlpConfiguration}{The natural language processing (NLP) configuration for the data store.}
+
+\item{ProfileConfiguration}{The profile configuration for the data store.}
+
+\item{BackupConfiguration}{The backup configuration for the data store.}
 }
 \description{
 Create a FHIR-enabled data store.

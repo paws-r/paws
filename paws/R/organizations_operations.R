@@ -24,7 +24,9 @@ NULL
 #' 
 #' For more information, see [Responding to invitations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_accept-decline-invite.html) and [Enabling all features](https://docs.aws.amazon.com/organizations/latest/userguide/manage-begin-all-features-standard-migration.html#manage-approve-all-features-invite) in the *Organizations User Guide*.
 #' 
-#' When a handshake is accepted, Organizations logs membership events in CloudTrail, available only in the management account's event history. If the account was standalone and joined a new organization, an `AccountJoinedOrganization` event is logged with `joinedMethod:Invited` and `joinedTime` fields. If the account departed one organization and joined another, both an `AccountDepartedOrganization` event with `departedMethod:Left` and `departedTime` and an `AccountJoinedOrganization` event with `joinedMethod:Invited` and `joinedTime` are logged in their respective management accounts.
+#' When a handshake is accepted, Organizations logs membership events in CloudTrail, available only in the management account's event history. If the account was standalone and joined a new organization, an `AccountJoinedOrganization` event is logged with `joinedMethod:INVITED` and `joinedTime` fields. If the account departed one organization and joined another, both an `AccountDepartedOrganization` event with `departureMethod:LEFT` and `departureTime` and an `AccountJoinedOrganization` event with `joinedMethod:INVITED` and `joinedTime` are logged in their respective management accounts.
+#' 
+#' When a billing transfer (`TRANSFER_RESPONSIBILITY`) handshake is accepted, Organizations publishes a `ResponsibilityTransferAccepted` service event to CloudTrail. Each affected account receives this event, including upstream participants such as distributors in a chained transfer. For an example log entry, see [Example log entries: AcceptResponsibilityTransfer](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_cloudtrail-integration.html#Log-entries-accept-responsibility-transfer) in the *Organizations User Guide*.
 #'
 #' @usage
 #' organizations_accept_handshake(HandshakeId)
@@ -322,7 +324,7 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' 
 #' -   If the Amazon Web Services account you attempt to close is linked to an Amazon Web Services GovCloud (US) account, the [`close_account`][organizations_close_account] request will close both accounts. To learn important pre-closure details, see [Closing an Amazon Web Services GovCloud (US) account](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/Closing-govcloud-account.html) in the *Amazon Web Services GovCloud User Guide*.
 #' 
-#' After the permanent termination of the account after the 90-day waiting period, Organizations logs a membership event in CloudTrail. The event is an `AccountDepartedOrganization` event with `departedMethod:Cleaned` and `departedTime`. This event is available only in the management account's event history.
+#' After the permanent termination of the account after the 90-day waiting period, Organizations logs a membership event in CloudTrail. The event is an `AccountDepartedOrganization` event with `departureMethod:CLEANED` and `departureTime`. This event is available only in the management account's event history.
 #'
 #' @usage
 #' organizations_close_account(AccountId)
@@ -548,7 +550,7 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' 
 #' Calling [`create_gov_cloud_account`][organizations_create_gov_cloud_account] is an asynchronous request that Amazon Web Services performs in the background. Because [`create_gov_cloud_account`][organizations_create_gov_cloud_account] operates asynchronously, it can return a successful completion message even though account initialization might still be in progress. You might need to wait a few minutes before you can successfully access the account. To check the status of the request, do one of the following:
 #' 
-#' -   Use the `OperationId` response element from this operation to provide as a parameter to the [`describe_create_account_status`][organizations_describe_create_account_status] operation.
+#' -   Use the `Id` response element from this operation to provide as a parameter to the [`describe_create_account_status`][organizations_describe_create_account_status] operation.
 #' 
 #' -   Check the CloudTrail log for the `CreateAccountResult` event. For information on using CloudTrail with Organizations, see [Logging and monitoring in Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_security_incident-response.html) in the *Organizations User Guide*.
 #' 
@@ -692,7 +694,7 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #' 
 #' By default (or if you set the `FeatureSet` parameter to `ALL`), the new organization is created with all features enabled and service control policies automatically enabled in the root. If you instead choose to create the organization supporting only the consolidated billing features by setting the `FeatureSet` parameter to `CONSOLIDATED_BILLING`, no policy types are enabled by default and you can't use organization policies.
 #' 
-#' The `AccountJoinedOrganization` event is logged in CloudTrail and is available only in the management account's event history. This event includes `joinedMethod:Invited` and `joinedTime` fields to provide context on how and when the account joined the organization.
+#' The `AccountJoinedOrganization` event is logged in CloudTrail and is available only in the management account's event history. This event includes `joinedMethod:INVITED` and `joinedTime` fields to provide context on how and when the account joined the organization.
 #'
 #' @usage
 #' organizations_create_organization(FeatureSet)
@@ -1090,7 +1092,7 @@ organizations_decline_handshake <- function(HandshakeId) {
 #' @description
 #' Deletes the organization. You can delete an organization only by using credentials from the management account. The organization must be empty of member accounts.
 #' 
-#' When an organization is deleted, Organizations logs a membership event in CloudTrail. The event is an `AccountDepartedOrganization` event with `departedMethod:Left` and `departedTime`. This event is available only in the management account's event history.
+#' When an organization is deleted, Organizations logs a membership event in CloudTrail. The event is an `AccountDepartedOrganization` event with `departureMethod:LEFT` and `departureTime`. This event is available only in the management account's event history.
 #'
 #' @usage
 #' organizations_delete_organization()
@@ -2729,7 +2731,7 @@ organizations_invite_organization_to_transfer_responsibility <- function(Type, T
 #' 
 #' You can only call from operation from a member account.
 #' 
-#' When an account leaves an organization, Organizations logs a membership event in CloudTrail. The event is an `AccountDepartedOrganization` event with `departedMethod:Left` and `departedTime`. This event is available only in the management account's event history.
+#' When an account leaves an organization, Organizations logs a membership event in CloudTrail. The event is an `AccountDepartedOrganization` event with `departureMethod:LEFT` and `departureTime`. This event is available only in the management account's event history.
 #' 
 #' -   The management account in an organization with all features enabled can set service control policies (SCPs) that can restrict what administrators of member accounts can do. This includes preventing them from successfully calling [`leave_organization`][organizations_leave_organization] and leaving the organization.
 #' 
@@ -4711,7 +4713,7 @@ organizations_register_delegated_administrator <- function(AccountId, ServicePri
 #' 
 #' You can only call this operation from the management account. Member accounts can remove themselves with [`leave_organization`][organizations_leave_organization] instead.
 #' 
-#' When an account is removed from an organization, Organizations logs a membership event in CloudTrail. The event is an `AccountDepartedOrganization` event with `departedMethod:Removed` and `departedTime`. This event is available only in the management account's event history.
+#' When an account is removed from an organization, Organizations logs a membership event in CloudTrail. The event is an `AccountDepartedOrganization` event with `departureMethod:REMOVED` and `departureTime`. This event is available only in the management account's event history.
 #' 
 #' -   You can remove an account from your organization only if the account is configured with the information required to operate as a standalone account. When you create an account in an organization using the Organizations console, API, or CLI commands, the information required of standalone accounts is *not* automatically collected. For more information, see [Considerations before removing an account from an organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html) in the *Organizations User Guide*.
 #' 
@@ -4850,6 +4852,8 @@ organizations_tag_resource <- function(ResourceId, Tags) {
 #'
 #' @description
 #' Ends a transfer. A *transfer* is an arrangement between two management accounts where one account designates the other with specified responsibilities for their organization.
+#' 
+#' When a transfer ends, Organizations publishes a `ResponsibilityTransferTerminated` service event to CloudTrail. Each affected account receives this event, including upstream participants such as distributors in a chained transfer. For an example log entry, see [Example log entries: TerminateResponsibilityTransfer](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_cloudtrail-integration.html#Log-entries-terminate-responsibility-transfer) in the *Organizations User Guide*.
 #'
 #' @usage
 #' organizations_terminate_responsibility_transfer(Id, EndTimestamp)

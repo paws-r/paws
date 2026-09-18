@@ -5,156 +5,150 @@ NULL
 
 .marketplacecatalog$batch_describe_entities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EntityRequestList = structure(list(structure(list(Catalog = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["batch_describe_entities_input"]]))
 }
 
 .marketplacecatalog$batch_describe_entities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EntityDetails = structure(list(structure(list(EntityType = structure(logical(0), tags = list(type = "string")), EntityArn = structure(logical(0), tags = list(type = "string")), EntityIdentifier = structure(logical(0), tags = list(type = "string")), LastModifiedDate = structure(logical(0), tags = list(type = "string")), DetailsDocument = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "map")), Errors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["batch_describe_entities_output"]]))
 }
 
 .marketplacecatalog$cancel_change_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Catalog = structure(logical(0), tags = list(location = "querystring", locationName = "catalog", type = "string")), ChangeSetId = structure(logical(0), tags = list(location = "querystring", locationName = "changeSetId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["cancel_change_set_input"]]))
 }
 
 .marketplacecatalog$cancel_change_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ChangeSetId = structure(logical(0), tags = list(type = "string")), ChangeSetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["cancel_change_set_output"]]))
 }
 
 .marketplacecatalog$delete_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["delete_resource_policy_input"]]))
 }
 
 .marketplacecatalog$delete_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["delete_resource_policy_output"]]))
+}
+
+.marketplacecatalog$describe_assessment_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .marketplacecatalog_shapes[["describe_assessment_input"]]))
+}
+
+.marketplacecatalog$describe_assessment_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .marketplacecatalog_shapes[["describe_assessment_output"]]))
 }
 
 .marketplacecatalog$describe_change_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Catalog = structure(logical(0), tags = list(location = "querystring", locationName = "catalog", type = "string")), ChangeSetId = structure(logical(0), tags = list(location = "querystring", locationName = "changeSetId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["describe_change_set_input"]]))
 }
 
 .marketplacecatalog$describe_change_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ChangeSetId = structure(logical(0), tags = list(type = "string")), ChangeSetArn = structure(logical(0), tags = list(type = "string")), ChangeSetName = structure(logical(0), tags = list(type = "string")), Intent = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "string")), EndTime = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FailureCode = structure(logical(0), tags = list(type = "string")), FailureDescription = structure(logical(0), tags = list(type = "string")), ChangeSet = structure(list(structure(list(ChangeType = structure(logical(0), tags = list(type = "string")), Entity = structure(list(Type = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Details = structure(logical(0), tags = list(type = "string")), DetailsDocument = structure(list(), tags = list(type = "structure", document = TRUE)), ErrorDetailList = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ChangeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["describe_change_set_output"]]))
 }
 
 .marketplacecatalog$describe_entity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Catalog = structure(logical(0), tags = list(location = "querystring", locationName = "catalog", type = "string")), EntityId = structure(logical(0), tags = list(location = "querystring", locationName = "entityId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["describe_entity_input"]]))
 }
 
 .marketplacecatalog$describe_entity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EntityType = structure(logical(0), tags = list(type = "string")), EntityIdentifier = structure(logical(0), tags = list(type = "string")), EntityArn = structure(logical(0), tags = list(type = "string")), LastModifiedDate = structure(logical(0), tags = list(type = "string")), Details = structure(logical(0), tags = list(type = "string")), DetailsDocument = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["describe_entity_output"]]))
 }
 
 .marketplacecatalog$get_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["get_resource_policy_input"]]))
 }
 
 .marketplacecatalog$get_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["get_resource_policy_output"]]))
+}
+
+.marketplacecatalog$list_assessments_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .marketplacecatalog_shapes[["list_assessments_input"]]))
+}
+
+.marketplacecatalog$list_assessments_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .marketplacecatalog_shapes[["list_assessments_output"]]))
 }
 
 .marketplacecatalog$list_change_sets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Catalog = structure(logical(0), tags = list(type = "string")), FilterList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Sort = structure(list(SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["list_change_sets_input"]]))
 }
 
 .marketplacecatalog$list_change_sets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ChangeSetSummaryList = structure(list(structure(list(ChangeSetId = structure(logical(0), tags = list(type = "string")), ChangeSetArn = structure(logical(0), tags = list(type = "string")), ChangeSetName = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "string")), EndTime = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), EntityIdList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FailureCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["list_change_sets_output"]]))
 }
 
 .marketplacecatalog$list_entities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Catalog = structure(logical(0), tags = list(type = "string")), EntityType = structure(logical(0), tags = list(type = "string")), FilterList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Sort = structure(list(SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), OwnershipType = structure(logical(0), tags = list(type = "string")), EntityTypeFilters = structure(list(DataProductFilters = structure(list(EntityId = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ProductTitle = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), WildCardValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Visibility = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), LastModifiedDate = structure(list(DateRange = structure(list(AfterValue = structure(logical(0), tags = list(type = "string")), BeforeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), SaaSProductFilters = structure(list(EntityId = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ProductTitle = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), WildCardValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Visibility = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), LastModifiedDate = structure(list(DateRange = structure(list(AfterValue = structure(logical(0), tags = list(type = "string")), BeforeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), AmiProductFilters = structure(list(EntityId = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), LastModifiedDate = structure(list(DateRange = structure(list(AfterValue = structure(logical(0), tags = list(type = "string")), BeforeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ProductTitle = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), WildCardValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Visibility = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), OfferFilters = structure(list(EntityId = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Name = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), WildCardValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProductId = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ResaleAuthorizationId = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ReleaseDate = structure(list(DateRange = structure(list(AfterValue = structure(logical(0), tags = list(type = "string")), BeforeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), AvailabilityEndDate = structure(list(DateRange = structure(list(AfterValue = structure(logical(0), tags = list(type = "string")), BeforeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), BuyerAccounts = structure(list(WildCardValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), State = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Targeting = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), LastModifiedDate = structure(list(DateRange = structure(list(AfterValue = structure(logical(0), tags = list(type = "string")), BeforeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), OfferSetId = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), ContainerProductFilters = structure(list(EntityId = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), LastModifiedDate = structure(list(DateRange = structure(list(AfterValue = structure(logical(0), tags = list(type = "string")), BeforeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ProductTitle = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), WildCardValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Visibility = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResaleAuthorizationFilters = structure(list(EntityId = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Name = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), WildCardValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProductId = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), WildCardValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedDate = structure(list(DateRange = structure(list(AfterValue = structure(logical(0), tags = list(type = "string")), BeforeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), AvailabilityEndDate = structure(list(DateRange = structure(list(AfterValue = structure(logical(0), tags = list(type = "string")), BeforeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ManufacturerAccountId = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), WildCardValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProductName = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), WildCardValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ManufacturerLegalName = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), WildCardValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResellerAccountID = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), WildCardValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResellerLegalName = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), WildCardValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), OfferExtendedStatus = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), LastModifiedDate = structure(list(DateRange = structure(list(AfterValue = structure(logical(0), tags = list(type = "string")), BeforeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), MachineLearningProductFilters = structure(list(EntityId = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), LastModifiedDate = structure(list(DateRange = structure(list(AfterValue = structure(logical(0), tags = list(type = "string")), BeforeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ProductTitle = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), WildCardValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Visibility = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), OfferSetFilters = structure(list(EntityId = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Name = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), State = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ReleaseDate = structure(list(DateRange = structure(list(AfterValue = structure(logical(0), tags = list(type = "string")), BeforeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), AssociatedOfferIds = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), SolutionId = structure(list(ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), LastModifiedDate = structure(list(DateRange = structure(list(AfterValue = structure(logical(0), tags = list(type = "string")), BeforeValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), EntityTypeSort = structure(list(DataProductSort = structure(list(SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SaaSProductSort = structure(list(SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AmiProductSort = structure(list(SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OfferSort = structure(list(SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ContainerProductSort = structure(list(SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResaleAuthorizationSort = structure(list(SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MachineLearningProductSort = structure(list(SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OfferSetSort = structure(list(SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["list_entities_input"]]))
 }
 
 .marketplacecatalog$list_entities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EntitySummaryList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), EntityType = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string")), EntityArn = structure(logical(0), tags = list(type = "string")), LastModifiedDate = structure(logical(0), tags = list(type = "string")), Visibility = structure(logical(0), tags = list(type = "string")), AmiProductSummary = structure(list(ProductTitle = structure(logical(0), tags = list(type = "string")), Visibility = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ContainerProductSummary = structure(list(ProductTitle = structure(logical(0), tags = list(type = "string")), Visibility = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataProductSummary = structure(list(ProductTitle = structure(logical(0), tags = list(type = "string")), Visibility = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SaaSProductSummary = structure(list(ProductTitle = structure(logical(0), tags = list(type = "string")), Visibility = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OfferSummary = structure(list(Name = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ResaleAuthorizationId = structure(logical(0), tags = list(type = "string")), ReleaseDate = structure(logical(0), tags = list(type = "string")), AvailabilityEndDate = structure(logical(0), tags = list(type = "string")), BuyerAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), State = structure(logical(0), tags = list(type = "string")), Targeting = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OfferSetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResaleAuthorizationSummary = structure(list(Name = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProductName = structure(logical(0), tags = list(type = "string")), ManufacturerAccountId = structure(logical(0), tags = list(type = "string")), ManufacturerLegalName = structure(logical(0), tags = list(type = "string")), ResellerAccountID = structure(logical(0), tags = list(type = "string")), ResellerLegalName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), OfferExtendedStatus = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "string")), AvailabilityEndDate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MachineLearningProductSummary = structure(list(ProductTitle = structure(logical(0), tags = list(type = "string")), Visibility = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OfferSetSummary = structure(list(Name = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ReleaseDate = structure(logical(0), tags = list(type = "string")), AssociatedOfferIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SolutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["list_entities_output"]]))
 }
 
 .marketplacecatalog$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["list_tags_for_resource_input"]]))
 }
 
 .marketplacecatalog$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["list_tags_for_resource_output"]]))
 }
 
 .marketplacecatalog$put_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["put_resource_policy_input"]]))
 }
 
 .marketplacecatalog$put_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["put_resource_policy_output"]]))
 }
 
 .marketplacecatalog$start_change_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Catalog = structure(logical(0), tags = list(type = "string")), ChangeSet = structure(list(structure(list(ChangeType = structure(logical(0), tags = list(type = "string")), Entity = structure(list(Type = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EntityTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Details = structure(logical(0), tags = list(type = "string")), DetailsDocument = structure(list(), tags = list(type = "structure", document = TRUE)), ChangeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ChangeSetName = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ChangeSetTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Intent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["start_change_set_input"]]))
 }
 
 .marketplacecatalog$start_change_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ChangeSetId = structure(logical(0), tags = list(type = "string")), ChangeSetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["start_change_set_output"]]))
 }
 
 .marketplacecatalog$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["tag_resource_input"]]))
 }
 
 .marketplacecatalog$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["tag_resource_output"]]))
 }
 
 .marketplacecatalog$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["untag_resource_input"]]))
 }
 
 .marketplacecatalog$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacecatalog_shapes[["untag_resource_output"]]))
 }

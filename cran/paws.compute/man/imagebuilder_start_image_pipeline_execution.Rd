@@ -13,9 +13,9 @@ imagebuilder_start_image_pipeline_execution(
 \arguments{
 \item{imagePipelineArn}{[required] The Amazon Resource Name (ARN) of the image pipeline that you want to manually invoke.}
 
-\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 
-\item{tags}{Specify tags for Image Builder to apply to the image resource that's created When it starts pipeline execution.}
+\item{tags}{The tags for Image Builder to apply to the image resource that's created when pipeline execution starts.}
 }
 \description{
 Manually triggers a pipeline to create an image.

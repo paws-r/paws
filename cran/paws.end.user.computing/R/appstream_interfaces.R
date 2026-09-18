@@ -5,1068 +5,890 @@ NULL
 
 .appstream$associate_app_block_builder_app_block_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppBlockArn = structure(logical(0), tags = list(type = "string")), AppBlockBuilderName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["associate_app_block_builder_app_block_input"]]))
 }
 
 .appstream$associate_app_block_builder_app_block_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppBlockBuilderAppBlockAssociation = structure(list(AppBlockArn = structure(logical(0), tags = list(type = "string")), AppBlockBuilderName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["associate_app_block_builder_app_block_output"]]))
 }
 
 .appstream$associate_application_fleet_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FleetName = structure(logical(0), tags = list(type = "string")), ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["associate_application_fleet_input"]]))
 }
 
 .appstream$associate_application_fleet_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationFleetAssociation = structure(list(FleetName = structure(logical(0), tags = list(type = "string")), ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["associate_application_fleet_output"]]))
 }
 
 .appstream$associate_application_to_entitlement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StackName = structure(logical(0), tags = list(type = "string")), EntitlementName = structure(logical(0), tags = list(type = "string")), ApplicationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["associate_application_to_entitlement_input"]]))
 }
 
 .appstream$associate_application_to_entitlement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["associate_application_to_entitlement_output"]]))
 }
 
 .appstream$associate_fleet_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FleetName = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["associate_fleet_input"]]))
 }
 
 .appstream$associate_fleet_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["associate_fleet_output"]]))
 }
 
 .appstream$associate_software_to_image_builder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ImageBuilderName = structure(logical(0), tags = list(type = "string")), SoftwareNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["associate_software_to_image_builder_input"]]))
 }
 
 .appstream$associate_software_to_image_builder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["associate_software_to_image_builder_output"]]))
 }
 
 .appstream$batch_associate_user_stack_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserStackAssociations = structure(list(structure(list(StackName = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationType = structure(logical(0), tags = list(type = "string")), SendEmailNotification = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["batch_associate_user_stack_input"]]))
 }
 
 .appstream$batch_associate_user_stack_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(errors = structure(list(structure(list(UserStackAssociation = structure(list(StackName = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationType = structure(logical(0), tags = list(type = "string")), SendEmailNotification = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["batch_associate_user_stack_output"]]))
 }
 
 .appstream$batch_disassociate_user_stack_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserStackAssociations = structure(list(structure(list(StackName = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationType = structure(logical(0), tags = list(type = "string")), SendEmailNotification = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["batch_disassociate_user_stack_input"]]))
 }
 
 .appstream$batch_disassociate_user_stack_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(errors = structure(list(structure(list(UserStackAssociation = structure(list(StackName = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationType = structure(logical(0), tags = list(type = "string")), SendEmailNotification = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["batch_disassociate_user_stack_output"]]))
 }
 
 .appstream$copy_image_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SourceImageName = structure(logical(0), tags = list(type = "string")), DestinationImageName = structure(logical(0), tags = list(type = "string")), DestinationRegion = structure(logical(0), tags = list(type = "string")), DestinationImageDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["copy_image_input"]]))
 }
 
 .appstream$copy_image_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DestinationImageName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["copy_image_output"]]))
 }
 
 .appstream$create_app_block_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), SourceS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SetupScriptDetails = structure(list(ScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutablePath = structure(logical(0), tags = list(type = "string")), ExecutableParameters = structure(logical(0), tags = list(type = "string")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), PostSetupScriptDetails = structure(list(ScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutablePath = structure(logical(0), tags = list(type = "string")), ExecutableParameters = structure(logical(0), tags = list(type = "string")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), PackagingType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_app_block_input"]]))
 }
 
 .appstream$create_app_block_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppBlock = structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), SourceS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SetupScriptDetails = structure(list(ScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutablePath = structure(logical(0), tags = list(type = "string")), ExecutableParameters = structure(logical(0), tags = list(type = "string")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), PostSetupScriptDetails = structure(list(ScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutablePath = structure(logical(0), tags = list(type = "string")), ExecutableParameters = structure(logical(0), tags = list(type = "string")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), PackagingType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), AppBlockErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_app_block_output"]]))
 }
 
 .appstream$create_app_block_builder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Platform = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), IamRoleArn = structure(logical(0), tags = list(type = "string")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_app_block_builder_input"]]))
 }
 
 .appstream$create_app_block_builder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppBlockBuilder = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), IamRoleArn = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), AppBlockBuilderErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_app_block_builder_output"]]))
 }
 
 .appstream$create_app_block_builder_streaming_url_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppBlockBuilderName = structure(logical(0), tags = list(type = "string")), Validity = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_app_block_builder_streaming_url_input"]]))
 }
 
 .appstream$create_app_block_builder_streaming_url_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamingURL = structure(logical(0), tags = list(type = "string")), Expires = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_app_block_builder_streaming_url_output"]]))
 }
 
 .appstream$create_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), IconS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LaunchPath = structure(logical(0), tags = list(type = "string")), WorkingDirectory = structure(logical(0), tags = list(type = "string")), LaunchParameters = structure(logical(0), tags = list(type = "string")), Platforms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceFamilies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AppBlockArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_application_input"]]))
 }
 
 .appstream$create_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Application = structure(list(Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), IconURL = structure(logical(0), tags = list(type = "string")), LaunchPath = structure(logical(0), tags = list(type = "string")), LaunchParameters = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), WorkingDirectory = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), AppBlockArn = structure(logical(0), tags = list(type = "string")), IconS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Platforms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceFamilies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_application_output"]]))
 }
 
 .appstream$create_directory_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceAccountCredentials = structure(list(AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), CertificateBasedAuthProperties = structure(list(Status = structure(logical(0), tags = list(type = "string")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_directory_config_input"]]))
 }
 
 .appstream$create_directory_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryConfig = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceAccountCredentials = structure(list(AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), CertificateBasedAuthProperties = structure(list(Status = structure(logical(0), tags = list(type = "string")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_directory_config_output"]]))
 }
 
 .appstream$create_entitlement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AppVisibility = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_entitlement_input"]]))
 }
 
 .appstream$create_entitlement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entitlement = structure(list(Name = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AppVisibility = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_entitlement_output"]]))
 }
 
 .appstream$create_export_image_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ImageName = structure(logical(0), tags = list(type = "string")), AmiName = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), TagSpecifications = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), AmiDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_export_image_task_input"]]))
 }
 
 .appstream$create_export_image_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ExportImageTask = structure(list(TaskId = structure(logical(0), tags = list(type = "string")), ImageArn = structure(logical(0), tags = list(type = "string")), AmiName = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp")), AmiDescription = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), AmiId = structure(logical(0), tags = list(type = "string")), TagSpecifications = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ErrorDetails = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_export_image_task_output"]]))
 }
 
 .appstream$create_fleet_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ImageName = structure(logical(0), tags = list(type = "string")), ImageArn = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), FleetType = structure(logical(0), tags = list(type = "string")), ComputeCapacity = structure(list(DesiredInstances = structure(logical(0), tags = list(type = "integer")), DesiredSessions = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), MaxUserDurationInSeconds = structure(logical(0), tags = list(type = "integer")), DisconnectTimeoutInSeconds = structure(logical(0), tags = list(type = "integer")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), DomainJoinInfo = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), IdleDisconnectTimeoutInSeconds = structure(logical(0), tags = list(type = "integer")), IamRoleArn = structure(logical(0), tags = list(type = "string")), StreamView = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), MaxConcurrentSessions = structure(logical(0), tags = list(type = "integer")), UsbDeviceFilterStrings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SessionScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MaxSessionsPerInstance = structure(logical(0), tags = list(type = "integer")), RootVolumeConfig = structure(list(VolumeSizeInGb = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_fleet_input"]]))
 }
 
 .appstream$create_fleet_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Fleet = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ImageName = structure(logical(0), tags = list(type = "string")), ImageArn = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), FleetType = structure(logical(0), tags = list(type = "string")), ComputeCapacityStatus = structure(list(Desired = structure(logical(0), tags = list(type = "integer")), Running = structure(logical(0), tags = list(type = "integer")), InUse = structure(logical(0), tags = list(type = "integer")), Available = structure(logical(0), tags = list(type = "integer")), DesiredUserSessions = structure(logical(0), tags = list(type = "integer")), AvailableUserSessions = structure(logical(0), tags = list(type = "integer")), ActiveUserSessions = structure(logical(0), tags = list(type = "integer")), ActualUserSessions = structure(logical(0), tags = list(type = "integer")), Draining = structure(logical(0), tags = list(type = "integer")), DrainModeActiveUserSessions = structure(logical(0), tags = list(type = "integer")), DrainModeUnusedUserSessions = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), MaxUserDurationInSeconds = structure(logical(0), tags = list(type = "integer")), DisconnectTimeoutInSeconds = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), FleetErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), DomainJoinInfo = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IdleDisconnectTimeoutInSeconds = structure(logical(0), tags = list(type = "integer")), IamRoleArn = structure(logical(0), tags = list(type = "string")), StreamView = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), MaxConcurrentSessions = structure(logical(0), tags = list(type = "integer")), UsbDeviceFilterStrings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SessionScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MaxSessionsPerInstance = structure(logical(0), tags = list(type = "integer")), RootVolumeConfig = structure(list(VolumeSizeInGb = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_fleet_output"]]))
 }
 
 .appstream$create_image_builder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ImageName = structure(logical(0), tags = list(type = "string")), ImageArn = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), IamRoleArn = structure(logical(0), tags = list(type = "string")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), DomainJoinInfo = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RootVolumeConfig = structure(list(VolumeSizeInGb = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), SoftwaresToInstall = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SoftwaresToUninstall = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_image_builder_input"]]))
 }
 
 .appstream$create_image_builder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ImageBuilder = structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), ImageArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), InstanceType = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), DomainJoinInfo = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkAccessConfiguration = structure(list(EniPrivateIpAddress = structure(logical(0), tags = list(type = "string")), EniIpv6Addresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EniId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImageBuilderErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), AppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RootVolumeConfig = structure(list(VolumeSizeInGb = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), LatestAppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_image_builder_output"]]))
 }
 
 .appstream$create_image_builder_streaming_url_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Validity = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_image_builder_streaming_url_input"]]))
 }
 
 .appstream$create_image_builder_streaming_url_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamingURL = structure(logical(0), tags = list(type = "string")), Expires = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_image_builder_streaming_url_output"]]))
 }
 
 .appstream$create_imported_image_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), SourceAmiId = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), RuntimeValidationConfig = structure(list(IntendedInstanceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AgentSoftwareVersion = structure(logical(0), tags = list(type = "string")), AppCatalogConfig = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), AbsoluteAppPath = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AbsoluteIconPath = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AbsoluteManifestPath = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), WorkingDirectory = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LaunchParameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_imported_image_input"]]))
 }
 
 .appstream$create_imported_image_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Image = structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), BaseImageArn = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Visibility = structure(logical(0), tags = list(type = "string")), ImageBuilderSupported = structure(logical(0), tags = list(type = "boolean")), ImageBuilderName = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Applications = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), IconURL = structure(logical(0), tags = list(type = "string")), LaunchPath = structure(logical(0), tags = list(type = "string")), LaunchParameters = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), WorkingDirectory = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), AppBlockArn = structure(logical(0), tags = list(type = "string")), IconS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Platforms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceFamilies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), PublicBaseImageReleasedDate = structure(logical(0), tags = list(type = "timestamp")), AppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), ImagePermissions = structure(list(allowFleet = structure(logical(0), tags = list(type = "boolean")), allowImageBuilder = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ImageErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), LatestAppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), SupportedInstanceFamilies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DynamicAppProvidersEnabled = structure(logical(0), tags = list(type = "string")), ImageSharedWithOthers = structure(logical(0), tags = list(type = "string")), ManagedSoftwareIncluded = structure(logical(0), tags = list(type = "boolean")), ImageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_imported_image_output"]]))
 }
 
 .appstream$create_stack_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), StorageConnectors = structure(list(structure(list(ConnectorType = structure(logical(0), tags = list(type = "string")), ResourceIdentifier = structure(logical(0), tags = list(type = "string")), Domains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DomainsRequireAdminConsent = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RedirectURL = structure(logical(0), tags = list(type = "string")), FeedbackURL = structure(logical(0), tags = list(type = "string")), UserSettings = structure(list(structure(list(Action = structure(logical(0), tags = list(type = "string")), Permission = structure(logical(0), tags = list(type = "string")), MaximumLength = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ApplicationSettings = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SettingsGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EmbedHostDomains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StreamingExperienceSettings = structure(list(PreferredProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ContentRedirection = structure(list(HostToClient = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), AllowedUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DeniedUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), AgentAccessConfig = structure(list(Settings = structure(list(structure(list(AgentAction = structure(logical(0), tags = list(type = "string")), Permission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), S3BucketArn = structure(logical(0), tags = list(type = "string")), ScreenshotsUploadEnabled = structure(logical(0), tags = list(type = "boolean")), ScreenResolution = structure(logical(0), tags = list(type = "string")), ScreenImageFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_stack_input"]]))
 }
 
 .appstream$create_stack_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Stack = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), StorageConnectors = structure(list(structure(list(ConnectorType = structure(logical(0), tags = list(type = "string")), ResourceIdentifier = structure(logical(0), tags = list(type = "string")), Domains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DomainsRequireAdminConsent = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RedirectURL = structure(logical(0), tags = list(type = "string")), FeedbackURL = structure(logical(0), tags = list(type = "string")), StackErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UserSettings = structure(list(structure(list(Action = structure(logical(0), tags = list(type = "string")), Permission = structure(logical(0), tags = list(type = "string")), MaximumLength = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ApplicationSettings = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SettingsGroup = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EmbedHostDomains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StreamingExperienceSettings = structure(list(PreferredProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ContentRedirection = structure(list(HostToClient = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), AllowedUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DeniedUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), AgentAccessConfig = structure(list(Settings = structure(list(structure(list(AgentAction = structure(logical(0), tags = list(type = "string")), Permission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), S3BucketArn = structure(logical(0), tags = list(type = "string")), ScreenshotsUploadEnabled = structure(logical(0), tags = list(type = "boolean")), ScreenResolution = structure(logical(0), tags = list(type = "string")), ScreenImageFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_stack_output"]]))
 }
 
 .appstream$create_streaming_url_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StackName = structure(logical(0), tags = list(type = "string")), FleetName = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), ApplicationId = structure(logical(0), tags = list(type = "string")), Validity = structure(logical(0), tags = list(type = "long")), SessionContext = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_streaming_url_input"]]))
 }
 
 .appstream$create_streaming_url_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamingURL = structure(logical(0), tags = list(type = "string")), Expires = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_streaming_url_output"]]))
 }
 
 .appstream$create_theme_for_stack_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StackName = structure(logical(0), tags = list(type = "string")), FooterLinks = structure(list(structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), FooterLinkURL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TitleText = structure(logical(0), tags = list(type = "string")), ThemeStyling = structure(logical(0), tags = list(type = "string")), OrganizationLogoS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FaviconS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_theme_for_stack_input"]]))
 }
 
 .appstream$create_theme_for_stack_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Theme = structure(list(StackName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ThemeTitleText = structure(logical(0), tags = list(type = "string")), ThemeStyling = structure(logical(0), tags = list(type = "string")), ThemeFooterLinks = structure(list(structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), FooterLinkURL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ThemeOrganizationLogoURL = structure(logical(0), tags = list(type = "string")), ThemeFaviconURL = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_theme_for_stack_output"]]))
 }
 
 .appstream$create_updated_image_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(existingImageName = structure(logical(0), tags = list(type = "string")), newImageName = structure(logical(0), tags = list(type = "string")), newImageDescription = structure(logical(0), tags = list(type = "string")), newImageDisplayName = structure(logical(0), tags = list(type = "string")), newImageTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_updated_image_input"]]))
 }
 
 .appstream$create_updated_image_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(image = structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), BaseImageArn = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Visibility = structure(logical(0), tags = list(type = "string")), ImageBuilderSupported = structure(logical(0), tags = list(type = "boolean")), ImageBuilderName = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Applications = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), IconURL = structure(logical(0), tags = list(type = "string")), LaunchPath = structure(logical(0), tags = list(type = "string")), LaunchParameters = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), WorkingDirectory = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), AppBlockArn = structure(logical(0), tags = list(type = "string")), IconS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Platforms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceFamilies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), PublicBaseImageReleasedDate = structure(logical(0), tags = list(type = "timestamp")), AppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), ImagePermissions = structure(list(allowFleet = structure(logical(0), tags = list(type = "boolean")), allowImageBuilder = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ImageErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), LatestAppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), SupportedInstanceFamilies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DynamicAppProvidersEnabled = structure(logical(0), tags = list(type = "string")), ImageSharedWithOthers = structure(logical(0), tags = list(type = "string")), ManagedSoftwareIncluded = structure(logical(0), tags = list(type = "boolean")), ImageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), canUpdateImage = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_updated_image_output"]]))
 }
 
 .appstream$create_usage_report_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_usage_report_subscription_input"]]))
 }
 
 .appstream$create_usage_report_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), Schedule = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_usage_report_subscription_output"]]))
 }
 
 .appstream$create_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MessageAction = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LastName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_user_input"]]))
 }
 
 .appstream$create_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["create_user_output"]]))
 }
 
 .appstream$delete_app_block_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_app_block_input"]]))
 }
 
 .appstream$delete_app_block_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_app_block_output"]]))
 }
 
 .appstream$delete_app_block_builder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_app_block_builder_input"]]))
 }
 
 .appstream$delete_app_block_builder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_app_block_builder_output"]]))
 }
 
 .appstream$delete_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_application_input"]]))
 }
 
 .appstream$delete_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_application_output"]]))
 }
 
 .appstream$delete_directory_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_directory_config_input"]]))
 }
 
 .appstream$delete_directory_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_directory_config_output"]]))
 }
 
 .appstream$delete_entitlement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_entitlement_input"]]))
 }
 
 .appstream$delete_entitlement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_entitlement_output"]]))
 }
 
 .appstream$delete_fleet_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_fleet_input"]]))
 }
 
 .appstream$delete_fleet_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_fleet_output"]]))
 }
 
 .appstream$delete_image_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_image_input"]]))
 }
 
 .appstream$delete_image_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Image = structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), BaseImageArn = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Visibility = structure(logical(0), tags = list(type = "string")), ImageBuilderSupported = structure(logical(0), tags = list(type = "boolean")), ImageBuilderName = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Applications = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), IconURL = structure(logical(0), tags = list(type = "string")), LaunchPath = structure(logical(0), tags = list(type = "string")), LaunchParameters = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), WorkingDirectory = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), AppBlockArn = structure(logical(0), tags = list(type = "string")), IconS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Platforms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceFamilies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), PublicBaseImageReleasedDate = structure(logical(0), tags = list(type = "timestamp")), AppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), ImagePermissions = structure(list(allowFleet = structure(logical(0), tags = list(type = "boolean")), allowImageBuilder = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ImageErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), LatestAppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), SupportedInstanceFamilies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DynamicAppProvidersEnabled = structure(logical(0), tags = list(type = "string")), ImageSharedWithOthers = structure(logical(0), tags = list(type = "string")), ManagedSoftwareIncluded = structure(logical(0), tags = list(type = "boolean")), ImageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_image_output"]]))
 }
 
 .appstream$delete_image_builder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_image_builder_input"]]))
 }
 
 .appstream$delete_image_builder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ImageBuilder = structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), ImageArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), InstanceType = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), DomainJoinInfo = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkAccessConfiguration = structure(list(EniPrivateIpAddress = structure(logical(0), tags = list(type = "string")), EniIpv6Addresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EniId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImageBuilderErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), AppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RootVolumeConfig = structure(list(VolumeSizeInGb = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), LatestAppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_image_builder_output"]]))
 }
 
 .appstream$delete_image_permissions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), SharedAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_image_permissions_input"]]))
 }
 
 .appstream$delete_image_permissions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_image_permissions_output"]]))
 }
 
 .appstream$delete_stack_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_stack_input"]]))
 }
 
 .appstream$delete_stack_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_stack_output"]]))
 }
 
 .appstream$delete_theme_for_stack_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StackName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_theme_for_stack_input"]]))
 }
 
 .appstream$delete_theme_for_stack_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_theme_for_stack_output"]]))
 }
 
 .appstream$delete_usage_report_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_usage_report_subscription_input"]]))
 }
 
 .appstream$delete_usage_report_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_usage_report_subscription_output"]]))
 }
 
 .appstream$delete_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_user_input"]]))
 }
 
 .appstream$delete_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["delete_user_output"]]))
 }
 
 .appstream$describe_app_block_builder_app_block_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppBlockArn = structure(logical(0), tags = list(type = "string")), AppBlockBuilderName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_app_block_builder_app_block_associations_input"]]))
 }
 
 .appstream$describe_app_block_builder_app_block_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppBlockBuilderAppBlockAssociations = structure(list(structure(list(AppBlockArn = structure(logical(0), tags = list(type = "string")), AppBlockBuilderName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_app_block_builder_app_block_associations_output"]]))
 }
 
 .appstream$describe_app_block_builders_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_app_block_builders_input"]]))
 }
 
 .appstream$describe_app_block_builders_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppBlockBuilders = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), IamRoleArn = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), AppBlockBuilderErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_app_block_builders_output"]]))
 }
 
 .appstream$describe_app_blocks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_app_blocks_input"]]))
 }
 
 .appstream$describe_app_blocks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppBlocks = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), SourceS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SetupScriptDetails = structure(list(ScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutablePath = structure(logical(0), tags = list(type = "string")), ExecutableParameters = structure(logical(0), tags = list(type = "string")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), PostSetupScriptDetails = structure(list(ScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutablePath = structure(logical(0), tags = list(type = "string")), ExecutableParameters = structure(logical(0), tags = list(type = "string")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), PackagingType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), AppBlockErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_app_blocks_output"]]))
 }
 
 .appstream$describe_app_license_usage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BillingPeriod = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_app_license_usage_input"]]))
 }
 
 .appstream$describe_app_license_usage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppLicenseUsages = structure(list(structure(list(UserArn = structure(logical(0), tags = list(type = "string")), BillingPeriod = structure(logical(0), tags = list(type = "string")), OwnerAWSAccountId = structure(logical(0), tags = list(type = "string")), SubscriptionFirstUsedDate = structure(logical(0), tags = list(type = "timestamp")), SubscriptionLastUsedDate = structure(logical(0), tags = list(type = "timestamp")), LicenseType = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_app_license_usage_output"]]))
 }
 
 .appstream$describe_application_fleet_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FleetName = structure(logical(0), tags = list(type = "string")), ApplicationArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_application_fleet_associations_input"]]))
 }
 
 .appstream$describe_application_fleet_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationFleetAssociations = structure(list(structure(list(FleetName = structure(logical(0), tags = list(type = "string")), ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_application_fleet_associations_output"]]))
 }
 
 .appstream$describe_applications_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_applications_input"]]))
 }
 
 .appstream$describe_applications_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Applications = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), IconURL = structure(logical(0), tags = list(type = "string")), LaunchPath = structure(logical(0), tags = list(type = "string")), LaunchParameters = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), WorkingDirectory = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), AppBlockArn = structure(logical(0), tags = list(type = "string")), IconS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Platforms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceFamilies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_applications_output"]]))
 }
 
 .appstream$describe_directory_configs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_directory_configs_input"]]))
 }
 
 .appstream$describe_directory_configs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryConfigs = structure(list(structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceAccountCredentials = structure(list(AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), CertificateBasedAuthProperties = structure(list(Status = structure(logical(0), tags = list(type = "string")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_directory_configs_output"]]))
 }
 
 .appstream$describe_entitlements_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_entitlements_input"]]))
 }
 
 .appstream$describe_entitlements_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entitlements = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AppVisibility = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_entitlements_output"]]))
 }
 
 .appstream$describe_fleets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_fleets_input"]]))
 }
 
 .appstream$describe_fleets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Fleets = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ImageName = structure(logical(0), tags = list(type = "string")), ImageArn = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), FleetType = structure(logical(0), tags = list(type = "string")), ComputeCapacityStatus = structure(list(Desired = structure(logical(0), tags = list(type = "integer")), Running = structure(logical(0), tags = list(type = "integer")), InUse = structure(logical(0), tags = list(type = "integer")), Available = structure(logical(0), tags = list(type = "integer")), DesiredUserSessions = structure(logical(0), tags = list(type = "integer")), AvailableUserSessions = structure(logical(0), tags = list(type = "integer")), ActiveUserSessions = structure(logical(0), tags = list(type = "integer")), ActualUserSessions = structure(logical(0), tags = list(type = "integer")), Draining = structure(logical(0), tags = list(type = "integer")), DrainModeActiveUserSessions = structure(logical(0), tags = list(type = "integer")), DrainModeUnusedUserSessions = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), MaxUserDurationInSeconds = structure(logical(0), tags = list(type = "integer")), DisconnectTimeoutInSeconds = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), FleetErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), DomainJoinInfo = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IdleDisconnectTimeoutInSeconds = structure(logical(0), tags = list(type = "integer")), IamRoleArn = structure(logical(0), tags = list(type = "string")), StreamView = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), MaxConcurrentSessions = structure(logical(0), tags = list(type = "integer")), UsbDeviceFilterStrings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SessionScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MaxSessionsPerInstance = structure(logical(0), tags = list(type = "integer")), RootVolumeConfig = structure(list(VolumeSizeInGb = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_fleets_output"]]))
 }
 
 .appstream$describe_image_builders_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_image_builders_input"]]))
 }
 
 .appstream$describe_image_builders_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ImageBuilders = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), ImageArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), InstanceType = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), DomainJoinInfo = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkAccessConfiguration = structure(list(EniPrivateIpAddress = structure(logical(0), tags = list(type = "string")), EniIpv6Addresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EniId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImageBuilderErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), AppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RootVolumeConfig = structure(list(VolumeSizeInGb = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), LatestAppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_image_builders_output"]]))
 }
 
 .appstream$describe_image_permissions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), SharedAwsAccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_image_permissions_input"]]))
 }
 
 .appstream$describe_image_permissions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), SharedImagePermissionsList = structure(list(structure(list(sharedAccountId = structure(logical(0), tags = list(type = "string")), imagePermissions = structure(list(allowFleet = structure(logical(0), tags = list(type = "boolean")), allowImageBuilder = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_image_permissions_output"]]))
 }
 
 .appstream$describe_images_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Arns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Type = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_images_input"]]))
 }
 
 .appstream$describe_images_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Images = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), BaseImageArn = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Visibility = structure(logical(0), tags = list(type = "string")), ImageBuilderSupported = structure(logical(0), tags = list(type = "boolean")), ImageBuilderName = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Applications = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), IconURL = structure(logical(0), tags = list(type = "string")), LaunchPath = structure(logical(0), tags = list(type = "string")), LaunchParameters = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), WorkingDirectory = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), AppBlockArn = structure(logical(0), tags = list(type = "string")), IconS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Platforms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceFamilies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), PublicBaseImageReleasedDate = structure(logical(0), tags = list(type = "timestamp")), AppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), ImagePermissions = structure(list(allowFleet = structure(logical(0), tags = list(type = "boolean")), allowImageBuilder = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ImageErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), LatestAppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), SupportedInstanceFamilies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DynamicAppProvidersEnabled = structure(logical(0), tags = list(type = "string")), ImageSharedWithOthers = structure(logical(0), tags = list(type = "string")), ManagedSoftwareIncluded = structure(logical(0), tags = list(type = "boolean")), ImageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_images_output"]]))
 }
 
 .appstream$describe_sessions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StackName = structure(logical(0), tags = list(type = "string")), FleetName = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), AuthenticationType = structure(logical(0), tags = list(type = "string")), InstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_sessions_input"]]))
 }
 
 .appstream$describe_sessions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Sessions = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string")), FleetName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ConnectionState = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), MaxExpirationTime = structure(logical(0), tags = list(type = "timestamp")), AuthenticationType = structure(logical(0), tags = list(type = "string")), NetworkAccessConfiguration = structure(list(EniPrivateIpAddress = structure(logical(0), tags = list(type = "string")), EniIpv6Addresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EniId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InstanceId = structure(logical(0), tags = list(type = "string")), InstanceDrainStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_sessions_output"]]))
 }
 
 .appstream$describe_software_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AssociatedResource = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_software_associations_input"]]))
 }
 
 .appstream$describe_software_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AssociatedResource = structure(logical(0), tags = list(type = "string")), SoftwareAssociations = structure(list(structure(list(SoftwareName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), DeploymentError = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_software_associations_output"]]))
 }
 
 .appstream$describe_stacks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_stacks_input"]]))
 }
 
 .appstream$describe_stacks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Stacks = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), StorageConnectors = structure(list(structure(list(ConnectorType = structure(logical(0), tags = list(type = "string")), ResourceIdentifier = structure(logical(0), tags = list(type = "string")), Domains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DomainsRequireAdminConsent = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RedirectURL = structure(logical(0), tags = list(type = "string")), FeedbackURL = structure(logical(0), tags = list(type = "string")), StackErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UserSettings = structure(list(structure(list(Action = structure(logical(0), tags = list(type = "string")), Permission = structure(logical(0), tags = list(type = "string")), MaximumLength = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ApplicationSettings = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SettingsGroup = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EmbedHostDomains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StreamingExperienceSettings = structure(list(PreferredProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ContentRedirection = structure(list(HostToClient = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), AllowedUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DeniedUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), AgentAccessConfig = structure(list(Settings = structure(list(structure(list(AgentAction = structure(logical(0), tags = list(type = "string")), Permission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), S3BucketArn = structure(logical(0), tags = list(type = "string")), ScreenshotsUploadEnabled = structure(logical(0), tags = list(type = "boolean")), ScreenResolution = structure(logical(0), tags = list(type = "string")), ScreenImageFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_stacks_output"]]))
 }
 
 .appstream$describe_theme_for_stack_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StackName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_theme_for_stack_input"]]))
 }
 
 .appstream$describe_theme_for_stack_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Theme = structure(list(StackName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ThemeTitleText = structure(logical(0), tags = list(type = "string")), ThemeStyling = structure(logical(0), tags = list(type = "string")), ThemeFooterLinks = structure(list(structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), FooterLinkURL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ThemeOrganizationLogoURL = structure(logical(0), tags = list(type = "string")), ThemeFaviconURL = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_theme_for_stack_output"]]))
 }
 
 .appstream$describe_usage_report_subscriptions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_usage_report_subscriptions_input"]]))
 }
 
 .appstream$describe_usage_report_subscriptions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UsageReportSubscriptions = structure(list(structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), Schedule = structure(logical(0), tags = list(type = "string")), LastGeneratedReportDate = structure(logical(0), tags = list(type = "timestamp")), SubscriptionErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_usage_report_subscriptions_output"]]))
 }
 
 .appstream$describe_user_stack_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StackName = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationType = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_user_stack_associations_input"]]))
 }
 
 .appstream$describe_user_stack_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserStackAssociations = structure(list(structure(list(StackName = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationType = structure(logical(0), tags = list(type = "string")), SendEmailNotification = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_user_stack_associations_output"]]))
 }
 
 .appstream$describe_users_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationType = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_users_input"]]))
 }
 
 .appstream$describe_users_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Users = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Enabled = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LastName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), AuthenticationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["describe_users_output"]]))
 }
 
 .appstream$disable_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["disable_user_input"]]))
 }
 
 .appstream$disable_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["disable_user_output"]]))
 }
 
 .appstream$disassociate_app_block_builder_app_block_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppBlockArn = structure(logical(0), tags = list(type = "string")), AppBlockBuilderName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["disassociate_app_block_builder_app_block_input"]]))
 }
 
 .appstream$disassociate_app_block_builder_app_block_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["disassociate_app_block_builder_app_block_output"]]))
 }
 
 .appstream$disassociate_application_fleet_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FleetName = structure(logical(0), tags = list(type = "string")), ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["disassociate_application_fleet_input"]]))
 }
 
 .appstream$disassociate_application_fleet_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["disassociate_application_fleet_output"]]))
 }
 
 .appstream$disassociate_application_from_entitlement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StackName = structure(logical(0), tags = list(type = "string")), EntitlementName = structure(logical(0), tags = list(type = "string")), ApplicationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["disassociate_application_from_entitlement_input"]]))
 }
 
 .appstream$disassociate_application_from_entitlement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["disassociate_application_from_entitlement_output"]]))
 }
 
 .appstream$disassociate_fleet_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FleetName = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["disassociate_fleet_input"]]))
 }
 
 .appstream$disassociate_fleet_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["disassociate_fleet_output"]]))
 }
 
 .appstream$disassociate_software_from_image_builder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ImageBuilderName = structure(logical(0), tags = list(type = "string")), SoftwareNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["disassociate_software_from_image_builder_input"]]))
 }
 
 .appstream$disassociate_software_from_image_builder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["disassociate_software_from_image_builder_output"]]))
 }
 
 .appstream$drain_session_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["drain_session_instance_input"]]))
 }
 
 .appstream$drain_session_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["drain_session_instance_output"]]))
 }
 
 .appstream$enable_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["enable_user_input"]]))
 }
 
 .appstream$enable_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["enable_user_output"]]))
 }
 
 .appstream$expire_session_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["expire_session_input"]]))
 }
 
 .appstream$expire_session_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["expire_session_output"]]))
 }
 
 .appstream$get_export_image_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TaskId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["get_export_image_task_input"]]))
 }
 
 .appstream$get_export_image_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ExportImageTask = structure(list(TaskId = structure(logical(0), tags = list(type = "string")), ImageArn = structure(logical(0), tags = list(type = "string")), AmiName = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp")), AmiDescription = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), AmiId = structure(logical(0), tags = list(type = "string")), TagSpecifications = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ErrorDetails = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["get_export_image_task_output"]]))
 }
 
 .appstream$list_associated_fleets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StackName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["list_associated_fleets_input"]]))
 }
 
 .appstream$list_associated_fleets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["list_associated_fleets_output"]]))
 }
 
 .appstream$list_associated_stacks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FleetName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["list_associated_stacks_input"]]))
 }
 
 .appstream$list_associated_stacks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["list_associated_stacks_output"]]))
 }
 
 .appstream$list_entitled_applications_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StackName = structure(logical(0), tags = list(type = "string")), EntitlementName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["list_entitled_applications_input"]]))
 }
 
 .appstream$list_entitled_applications_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EntitledApplications = structure(list(structure(list(ApplicationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["list_entitled_applications_output"]]))
 }
 
 .appstream$list_export_image_tasks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["list_export_image_tasks_input"]]))
 }
 
 .appstream$list_export_image_tasks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ExportImageTasks = structure(list(structure(list(TaskId = structure(logical(0), tags = list(type = "string")), ImageArn = structure(logical(0), tags = list(type = "string")), AmiName = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp")), AmiDescription = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), AmiId = structure(logical(0), tags = list(type = "string")), TagSpecifications = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ErrorDetails = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["list_export_image_tasks_output"]]))
 }
 
 .appstream$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["list_tags_for_resource_input"]]))
 }
 
 .appstream$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["list_tags_for_resource_output"]]))
 }
 
 .appstream$start_app_block_builder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["start_app_block_builder_input"]]))
 }
 
 .appstream$start_app_block_builder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppBlockBuilder = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), IamRoleArn = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), AppBlockBuilderErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["start_app_block_builder_output"]]))
 }
 
 .appstream$start_fleet_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["start_fleet_input"]]))
 }
 
 .appstream$start_fleet_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["start_fleet_output"]]))
 }
 
 .appstream$start_image_builder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), AppstreamAgentVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["start_image_builder_input"]]))
 }
 
 .appstream$start_image_builder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ImageBuilder = structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), ImageArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), InstanceType = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), DomainJoinInfo = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkAccessConfiguration = structure(list(EniPrivateIpAddress = structure(logical(0), tags = list(type = "string")), EniIpv6Addresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EniId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImageBuilderErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), AppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RootVolumeConfig = structure(list(VolumeSizeInGb = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), LatestAppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["start_image_builder_output"]]))
 }
 
 .appstream$start_software_deployment_to_image_builder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ImageBuilderName = structure(logical(0), tags = list(type = "string")), RetryFailedDeployments = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["start_software_deployment_to_image_builder_input"]]))
 }
 
 .appstream$start_software_deployment_to_image_builder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["start_software_deployment_to_image_builder_output"]]))
 }
 
 .appstream$stop_app_block_builder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["stop_app_block_builder_input"]]))
 }
 
 .appstream$stop_app_block_builder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppBlockBuilder = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), IamRoleArn = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), AppBlockBuilderErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["stop_app_block_builder_output"]]))
 }
 
 .appstream$stop_fleet_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["stop_fleet_input"]]))
 }
 
 .appstream$stop_fleet_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["stop_fleet_output"]]))
 }
 
 .appstream$stop_image_builder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["stop_image_builder_input"]]))
 }
 
 .appstream$stop_image_builder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ImageBuilder = structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), ImageArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), InstanceType = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), DomainJoinInfo = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkAccessConfiguration = structure(list(EniPrivateIpAddress = structure(logical(0), tags = list(type = "string")), EniIpv6Addresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EniId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImageBuilderErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), AppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RootVolumeConfig = structure(list(VolumeSizeInGb = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), LatestAppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["stop_image_builder_output"]]))
 }
 
 .appstream$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["tag_resource_input"]]))
 }
 
 .appstream$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["tag_resource_output"]]))
 }
 
 .appstream$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["untag_resource_input"]]))
 }
 
 .appstream$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["untag_resource_output"]]))
 }
 
 .appstream$update_app_block_builder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), IamRoleArn = structure(logical(0), tags = list(type = "string")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttributesToDelete = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["update_app_block_builder_input"]]))
 }
 
 .appstream$update_app_block_builder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppBlockBuilder = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), IamRoleArn = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), AppBlockBuilderErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["update_app_block_builder_output"]]))
 }
 
 .appstream$update_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), IconS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LaunchPath = structure(logical(0), tags = list(type = "string")), WorkingDirectory = structure(logical(0), tags = list(type = "string")), LaunchParameters = structure(logical(0), tags = list(type = "string")), AppBlockArn = structure(logical(0), tags = list(type = "string")), AttributesToDelete = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["update_application_input"]]))
 }
 
 .appstream$update_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Application = structure(list(Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), IconURL = structure(logical(0), tags = list(type = "string")), LaunchPath = structure(logical(0), tags = list(type = "string")), LaunchParameters = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), WorkingDirectory = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), AppBlockArn = structure(logical(0), tags = list(type = "string")), IconS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Platforms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceFamilies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["update_application_output"]]))
 }
 
 .appstream$update_directory_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceAccountCredentials = structure(list(AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), CertificateBasedAuthProperties = structure(list(Status = structure(logical(0), tags = list(type = "string")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["update_directory_config_input"]]))
 }
 
 .appstream$update_directory_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryConfig = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceAccountCredentials = structure(list(AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), CertificateBasedAuthProperties = structure(list(Status = structure(logical(0), tags = list(type = "string")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["update_directory_config_output"]]))
 }
 
 .appstream$update_entitlement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AppVisibility = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["update_entitlement_input"]]))
 }
 
 .appstream$update_entitlement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entitlement = structure(list(Name = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AppVisibility = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["update_entitlement_output"]]))
 }
 
 .appstream$update_fleet_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ImageName = structure(logical(0), tags = list(type = "string")), ImageArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), ComputeCapacity = structure(list(DesiredInstances = structure(logical(0), tags = list(type = "integer")), DesiredSessions = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), MaxUserDurationInSeconds = structure(logical(0), tags = list(type = "integer")), DisconnectTimeoutInSeconds = structure(logical(0), tags = list(type = "integer")), DeleteVpcConfig = structure(logical(0), tags = list(deprecated = TRUE, type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), DomainJoinInfo = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IdleDisconnectTimeoutInSeconds = structure(logical(0), tags = list(type = "integer")), AttributesToDelete = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IamRoleArn = structure(logical(0), tags = list(type = "string")), StreamView = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), MaxConcurrentSessions = structure(logical(0), tags = list(type = "integer")), UsbDeviceFilterStrings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SessionScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MaxSessionsPerInstance = structure(logical(0), tags = list(type = "integer")), RootVolumeConfig = structure(list(VolumeSizeInGb = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["update_fleet_input"]]))
 }
 
 .appstream$update_fleet_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Fleet = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ImageName = structure(logical(0), tags = list(type = "string")), ImageArn = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), FleetType = structure(logical(0), tags = list(type = "string")), ComputeCapacityStatus = structure(list(Desired = structure(logical(0), tags = list(type = "integer")), Running = structure(logical(0), tags = list(type = "integer")), InUse = structure(logical(0), tags = list(type = "integer")), Available = structure(logical(0), tags = list(type = "integer")), DesiredUserSessions = structure(logical(0), tags = list(type = "integer")), AvailableUserSessions = structure(logical(0), tags = list(type = "integer")), ActiveUserSessions = structure(logical(0), tags = list(type = "integer")), ActualUserSessions = structure(logical(0), tags = list(type = "integer")), Draining = structure(logical(0), tags = list(type = "integer")), DrainModeActiveUserSessions = structure(logical(0), tags = list(type = "integer")), DrainModeUnusedUserSessions = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), MaxUserDurationInSeconds = structure(logical(0), tags = list(type = "integer")), DisconnectTimeoutInSeconds = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), FleetErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), DomainJoinInfo = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IdleDisconnectTimeoutInSeconds = structure(logical(0), tags = list(type = "integer")), IamRoleArn = structure(logical(0), tags = list(type = "string")), StreamView = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), MaxConcurrentSessions = structure(logical(0), tags = list(type = "integer")), UsbDeviceFilterStrings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SessionScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MaxSessionsPerInstance = structure(logical(0), tags = list(type = "integer")), RootVolumeConfig = structure(list(VolumeSizeInGb = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DisableIMDSV1 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["update_fleet_output"]]))
 }
 
 .appstream$update_image_permissions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), SharedAccountId = structure(logical(0), tags = list(type = "string")), ImagePermissions = structure(list(allowFleet = structure(logical(0), tags = list(type = "boolean")), allowImageBuilder = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["update_image_permissions_input"]]))
 }
 
 .appstream$update_image_permissions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["update_image_permissions_output"]]))
 }
 
 .appstream$update_stack_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), StorageConnectors = structure(list(structure(list(ConnectorType = structure(logical(0), tags = list(type = "string")), ResourceIdentifier = structure(logical(0), tags = list(type = "string")), Domains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DomainsRequireAdminConsent = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), DeleteStorageConnectors = structure(logical(0), tags = list(deprecated = TRUE, type = "boolean")), RedirectURL = structure(logical(0), tags = list(type = "string")), FeedbackURL = structure(logical(0), tags = list(type = "string")), AttributesToDelete = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), UserSettings = structure(list(structure(list(Action = structure(logical(0), tags = list(type = "string")), Permission = structure(logical(0), tags = list(type = "string")), MaximumLength = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ApplicationSettings = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SettingsGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EmbedHostDomains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StreamingExperienceSettings = structure(list(PreferredProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ContentRedirection = structure(list(HostToClient = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), AllowedUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DeniedUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), AgentAccessConfig = structure(list(Settings = structure(list(structure(list(AgentAction = structure(logical(0), tags = list(type = "string")), Permission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), S3BucketArn = structure(logical(0), tags = list(type = "string")), ScreenshotsUploadEnabled = structure(logical(0), tags = list(type = "boolean")), ScreenResolution = structure(logical(0), tags = list(type = "string")), ScreenImageFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["update_stack_input"]]))
 }
 
 .appstream$update_stack_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Stack = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), StorageConnectors = structure(list(structure(list(ConnectorType = structure(logical(0), tags = list(type = "string")), ResourceIdentifier = structure(logical(0), tags = list(type = "string")), Domains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DomainsRequireAdminConsent = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RedirectURL = structure(logical(0), tags = list(type = "string")), FeedbackURL = structure(logical(0), tags = list(type = "string")), StackErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UserSettings = structure(list(structure(list(Action = structure(logical(0), tags = list(type = "string")), Permission = structure(logical(0), tags = list(type = "string")), MaximumLength = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ApplicationSettings = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), SettingsGroup = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EmbedHostDomains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StreamingExperienceSettings = structure(list(PreferredProtocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ContentRedirection = structure(list(HostToClient = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), AllowedUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DeniedUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), AgentAccessConfig = structure(list(Settings = structure(list(structure(list(AgentAction = structure(logical(0), tags = list(type = "string")), Permission = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), S3BucketArn = structure(logical(0), tags = list(type = "string")), ScreenshotsUploadEnabled = structure(logical(0), tags = list(type = "boolean")), ScreenResolution = structure(logical(0), tags = list(type = "string")), ScreenImageFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["update_stack_output"]]))
 }
 
 .appstream$update_theme_for_stack_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StackName = structure(logical(0), tags = list(type = "string")), FooterLinks = structure(list(structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), FooterLinkURL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TitleText = structure(logical(0), tags = list(type = "string")), ThemeStyling = structure(logical(0), tags = list(type = "string")), OrganizationLogoS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FaviconS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string")), AttributesToDelete = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["update_theme_for_stack_input"]]))
 }
 
 .appstream$update_theme_for_stack_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Theme = structure(list(StackName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ThemeTitleText = structure(logical(0), tags = list(type = "string")), ThemeStyling = structure(logical(0), tags = list(type = "string")), ThemeFooterLinks = structure(list(structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), FooterLinkURL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ThemeOrganizationLogoURL = structure(logical(0), tags = list(type = "string")), ThemeFaviconURL = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .appstream_shapes[["update_theme_for_stack_output"]]))
 }

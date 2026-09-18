@@ -23,7 +23,8 @@ neptune_restore_db_cluster_from_snapshot(
   DeletionProtection = NULL,
   CopyTagsToSnapshot = NULL,
   ServerlessV2ScalingConfiguration = NULL,
-  StorageType = NULL
+  StorageType = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -113,6 +114,14 @@ For more information, see \href{https://docs.aws.amazon.com/neptune/latest/userg
 Valid values: \code{standard}, \code{iopt1}
 
 Default: \code{standard}}
+
+\item{NetworkType}{The network type of the DB cluster.
+
+Valid Values:
+\itemize{
+\item \strong{\code{IPV4}}   –   ( \emph{the default} ) The DB cluster uses only IPv4 addresses for communication.
+\item \strong{\code{DUAL}}   –   The DB cluster uses both IPv4 and IPv6 addresses for communication. The DB subnet group associated with the cluster must support IPv6.
+}}
 }
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot.

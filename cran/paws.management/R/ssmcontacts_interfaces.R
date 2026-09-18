@@ -5,468 +5,390 @@ NULL
 
 .ssmcontacts$accept_page_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PageId = structure(logical(0), tags = list(type = "string")), ContactChannelId = structure(logical(0), tags = list(type = "string")), AcceptType = structure(logical(0), tags = list(type = "string")), Note = structure(logical(0), tags = list(type = "string")), AcceptCode = structure(logical(0), tags = list(type = "string")), AcceptCodeValidation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["accept_page_input"]]))
 }
 
 .ssmcontacts$accept_page_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["accept_page_output"]]))
 }
 
 .ssmcontacts$activate_contact_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactChannelId = structure(logical(0), tags = list(type = "string")), ActivationCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["activate_contact_channel_input"]]))
 }
 
 .ssmcontacts$activate_contact_channel_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["activate_contact_channel_output"]]))
 }
 
 .ssmcontacts$create_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Alias = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Plan = structure(list(Stages = structure(list(structure(list(DurationInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), Targets = structure(list(structure(list(ChannelTargetInfo = structure(list(ContactChannelId = structure(logical(0), tags = list(type = "string")), RetryIntervalInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), ContactTargetInfo = structure(list(ContactId = structure(logical(0), tags = list(type = "string")), IsEssential = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RotationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["create_contact_input"]]))
 }
 
 .ssmcontacts$create_contact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["create_contact_output"]]))
 }
 
 .ssmcontacts$create_contact_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), DeliveryAddress = structure(list(SimpleAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeferActivation = structure(logical(0), tags = list(type = "boolean", box = TRUE)), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["create_contact_channel_input"]]))
 }
 
 .ssmcontacts$create_contact_channel_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactChannelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["create_contact_channel_output"]]))
 }
 
 .ssmcontacts$create_rotation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ContactIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartTime = structure(logical(0), tags = list(type = "timestamp")), TimeZoneId = structure(logical(0), tags = list(type = "string")), Recurrence = structure(list(MonthlySettings = structure(list(structure(list(DayOfMonth = structure(logical(0), tags = list(type = "integer")), HandOffTime = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), WeeklySettings = structure(list(structure(list(DayOfWeek = structure(logical(0), tags = list(type = "string")), HandOffTime = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), DailySettings = structure(list(structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NumberOfOnCalls = structure(logical(0), tags = list(box = TRUE, type = "integer")), ShiftCoverages = structure(list(structure(list(structure(list(Start = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), End = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map")), RecurrenceMultiplier = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IdempotencyToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["create_rotation_input"]]))
 }
 
 .ssmcontacts$create_rotation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["create_rotation_output"]]))
 }
 
 .ssmcontacts$create_rotation_override_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationId = structure(logical(0), tags = list(type = "string")), NewContactIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), IdempotencyToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["create_rotation_override_input"]]))
 }
 
 .ssmcontacts$create_rotation_override_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationOverrideId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["create_rotation_override_output"]]))
 }
 
 .ssmcontacts$deactivate_contact_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactChannelId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["deactivate_contact_channel_input"]]))
 }
 
 .ssmcontacts$deactivate_contact_channel_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["deactivate_contact_channel_output"]]))
 }
 
 .ssmcontacts$delete_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["delete_contact_input"]]))
 }
 
 .ssmcontacts$delete_contact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["delete_contact_output"]]))
 }
 
 .ssmcontacts$delete_contact_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactChannelId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["delete_contact_channel_input"]]))
 }
 
 .ssmcontacts$delete_contact_channel_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["delete_contact_channel_output"]]))
 }
 
 .ssmcontacts$delete_rotation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["delete_rotation_input"]]))
 }
 
 .ssmcontacts$delete_rotation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["delete_rotation_output"]]))
 }
 
 .ssmcontacts$delete_rotation_override_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationId = structure(logical(0), tags = list(type = "string")), RotationOverrideId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["delete_rotation_override_input"]]))
 }
 
 .ssmcontacts$delete_rotation_override_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["delete_rotation_override_output"]]))
 }
 
 .ssmcontacts$describe_engagement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EngagementId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["describe_engagement_input"]]))
 }
 
 .ssmcontacts$describe_engagement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), EngagementArn = structure(logical(0), tags = list(type = "string")), Sender = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string")), PublicSubject = structure(logical(0), tags = list(type = "string")), PublicContent = structure(logical(0), tags = list(type = "string")), IncidentId = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), StopTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["describe_engagement_output"]]))
 }
 
 .ssmcontacts$describe_page_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PageId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["describe_page_input"]]))
 }
 
 .ssmcontacts$describe_page_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PageArn = structure(logical(0), tags = list(type = "string")), EngagementArn = structure(logical(0), tags = list(type = "string")), ContactArn = structure(logical(0), tags = list(type = "string")), Sender = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string")), PublicSubject = structure(logical(0), tags = list(type = "string")), PublicContent = structure(logical(0), tags = list(type = "string")), IncidentId = structure(logical(0), tags = list(type = "string")), SentTime = structure(logical(0), tags = list(type = "timestamp")), ReadTime = structure(logical(0), tags = list(type = "timestamp")), DeliveryTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["describe_page_output"]]))
 }
 
 .ssmcontacts$get_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["get_contact_input"]]))
 }
 
 .ssmcontacts$get_contact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Plan = structure(list(Stages = structure(list(structure(list(DurationInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), Targets = structure(list(structure(list(ChannelTargetInfo = structure(list(ContactChannelId = structure(logical(0), tags = list(type = "string")), RetryIntervalInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), ContactTargetInfo = structure(list(ContactId = structure(logical(0), tags = list(type = "string")), IsEssential = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RotationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["get_contact_output"]]))
 }
 
 .ssmcontacts$get_contact_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactChannelId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["get_contact_channel_input"]]))
 }
 
 .ssmcontacts$get_contact_channel_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), ContactChannelArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), DeliveryAddress = structure(list(SimpleAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ActivationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["get_contact_channel_output"]]))
 }
 
 .ssmcontacts$get_contact_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["get_contact_policy_input"]]))
 }
 
 .ssmcontacts$get_contact_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["get_contact_policy_output"]]))
 }
 
 .ssmcontacts$get_rotation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["get_rotation_input"]]))
 }
 
 .ssmcontacts$get_rotation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ContactIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartTime = structure(logical(0), tags = list(type = "timestamp")), TimeZoneId = structure(logical(0), tags = list(type = "string")), Recurrence = structure(list(MonthlySettings = structure(list(structure(list(DayOfMonth = structure(logical(0), tags = list(type = "integer")), HandOffTime = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), WeeklySettings = structure(list(structure(list(DayOfWeek = structure(logical(0), tags = list(type = "string")), HandOffTime = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), DailySettings = structure(list(structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NumberOfOnCalls = structure(logical(0), tags = list(box = TRUE, type = "integer")), ShiftCoverages = structure(list(structure(list(structure(list(Start = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), End = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map")), RecurrenceMultiplier = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["get_rotation_output"]]))
 }
 
 .ssmcontacts$get_rotation_override_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationId = structure(logical(0), tags = list(type = "string")), RotationOverrideId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["get_rotation_override_input"]]))
 }
 
 .ssmcontacts$get_rotation_override_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationOverrideId = structure(logical(0), tags = list(type = "string")), RotationArn = structure(logical(0), tags = list(type = "string")), NewContactIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), CreateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["get_rotation_override_output"]]))
 }
 
 .ssmcontacts$list_contact_channels_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_contact_channels_input"]]))
 }
 
 .ssmcontacts$list_contact_channels_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ContactChannels = structure(list(structure(list(ContactChannelArn = structure(logical(0), tags = list(type = "string")), ContactArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), DeliveryAddress = structure(list(SimpleAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ActivationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_contact_channels_output"]]))
 }
 
 .ssmcontacts$list_contacts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), AliasPrefix = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_contacts_input"]]))
 }
 
 .ssmcontacts$list_contacts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Contacts = structure(list(structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_contacts_output"]]))
 }
 
 .ssmcontacts$list_engagements_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), IncidentId = structure(logical(0), tags = list(type = "string")), TimeRangeValue = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_engagements_input"]]))
 }
 
 .ssmcontacts$list_engagements_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Engagements = structure(list(structure(list(EngagementArn = structure(logical(0), tags = list(type = "string")), ContactArn = structure(logical(0), tags = list(type = "string")), Sender = structure(logical(0), tags = list(type = "string")), IncidentId = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), StopTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_engagements_output"]]))
 }
 
 .ssmcontacts$list_page_receipts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PageId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_page_receipts_input"]]))
 }
 
 .ssmcontacts$list_page_receipts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Receipts = structure(list(structure(list(ContactChannelArn = structure(logical(0), tags = list(type = "string")), ReceiptType = structure(logical(0), tags = list(type = "string")), ReceiptInfo = structure(logical(0), tags = list(type = "string")), ReceiptTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_page_receipts_output"]]))
 }
 
 .ssmcontacts$list_page_resolutions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), PageId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_page_resolutions_input"]]))
 }
 
 .ssmcontacts$list_page_resolutions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), PageResolutions = structure(list(structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), StageIndex = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_page_resolutions_output"]]))
 }
 
 .ssmcontacts$list_pages_by_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_pages_by_contact_input"]]))
 }
 
 .ssmcontacts$list_pages_by_contact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Pages = structure(list(structure(list(PageArn = structure(logical(0), tags = list(type = "string")), EngagementArn = structure(logical(0), tags = list(type = "string")), ContactArn = structure(logical(0), tags = list(type = "string")), Sender = structure(logical(0), tags = list(type = "string")), IncidentId = structure(logical(0), tags = list(type = "string")), SentTime = structure(logical(0), tags = list(type = "timestamp")), DeliveryTime = structure(logical(0), tags = list(type = "timestamp")), ReadTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_pages_by_contact_output"]]))
 }
 
 .ssmcontacts$list_pages_by_engagement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EngagementId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_pages_by_engagement_input"]]))
 }
 
 .ssmcontacts$list_pages_by_engagement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Pages = structure(list(structure(list(PageArn = structure(logical(0), tags = list(type = "string")), EngagementArn = structure(logical(0), tags = list(type = "string")), ContactArn = structure(logical(0), tags = list(type = "string")), Sender = structure(logical(0), tags = list(type = "string")), IncidentId = structure(logical(0), tags = list(type = "string")), SentTime = structure(logical(0), tags = list(type = "timestamp")), DeliveryTime = structure(logical(0), tags = list(type = "timestamp")), ReadTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_pages_by_engagement_output"]]))
 }
 
 .ssmcontacts$list_preview_rotation_shifts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationStartTime = structure(logical(0), tags = list(type = "timestamp")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Members = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TimeZoneId = structure(logical(0), tags = list(type = "string")), Recurrence = structure(list(MonthlySettings = structure(list(structure(list(DayOfMonth = structure(logical(0), tags = list(type = "integer")), HandOffTime = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), WeeklySettings = structure(list(structure(list(DayOfWeek = structure(logical(0), tags = list(type = "string")), HandOffTime = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), DailySettings = structure(list(structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NumberOfOnCalls = structure(logical(0), tags = list(box = TRUE, type = "integer")), ShiftCoverages = structure(list(structure(list(structure(list(Start = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), End = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map")), RecurrenceMultiplier = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure")), Overrides = structure(list(structure(list(NewMembers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_preview_rotation_shifts_input"]]))
 }
 
 .ssmcontacts$list_preview_rotation_shifts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationShifts = structure(list(structure(list(ContactIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string")), ShiftDetails = structure(list(OverriddenContactIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_preview_rotation_shifts_output"]]))
 }
 
 .ssmcontacts$list_rotation_overrides_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationId = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_rotation_overrides_input"]]))
 }
 
 .ssmcontacts$list_rotation_overrides_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationOverrides = structure(list(structure(list(RotationOverrideId = structure(logical(0), tags = list(type = "string")), NewContactIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), CreateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_rotation_overrides_output"]]))
 }
 
 .ssmcontacts$list_rotation_shifts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationId = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_rotation_shifts_input"]]))
 }
 
 .ssmcontacts$list_rotation_shifts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationShifts = structure(list(structure(list(ContactIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string")), ShiftDetails = structure(list(OverriddenContactIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_rotation_shifts_output"]]))
 }
 
 .ssmcontacts$list_rotations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationNamePrefix = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_rotations_input"]]))
 }
 
 .ssmcontacts$list_rotations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Rotations = structure(list(structure(list(RotationArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ContactIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartTime = structure(logical(0), tags = list(type = "timestamp")), TimeZoneId = structure(logical(0), tags = list(type = "string")), Recurrence = structure(list(MonthlySettings = structure(list(structure(list(DayOfMonth = structure(logical(0), tags = list(type = "integer")), HandOffTime = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), WeeklySettings = structure(list(structure(list(DayOfWeek = structure(logical(0), tags = list(type = "string")), HandOffTime = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), DailySettings = structure(list(structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NumberOfOnCalls = structure(logical(0), tags = list(box = TRUE, type = "integer")), ShiftCoverages = structure(list(structure(list(structure(list(Start = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), End = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map")), RecurrenceMultiplier = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_rotations_output"]]))
 }
 
 .ssmcontacts$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_tags_for_resource_input"]]))
 }
 
 .ssmcontacts$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["list_tags_for_resource_output"]]))
 }
 
 .ssmcontacts$put_contact_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["put_contact_policy_input"]]))
 }
 
 .ssmcontacts$put_contact_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["put_contact_policy_output"]]))
 }
 
 .ssmcontacts$send_activation_code_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactChannelId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["send_activation_code_input"]]))
 }
 
 .ssmcontacts$send_activation_code_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["send_activation_code_output"]]))
 }
 
 .ssmcontacts$start_engagement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactId = structure(logical(0), tags = list(type = "string")), Sender = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string")), PublicSubject = structure(logical(0), tags = list(type = "string")), PublicContent = structure(logical(0), tags = list(type = "string")), IncidentId = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["start_engagement_input"]]))
 }
 
 .ssmcontacts$start_engagement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EngagementArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["start_engagement_output"]]))
 }
 
 .ssmcontacts$stop_engagement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EngagementId = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["stop_engagement_input"]]))
 }
 
 .ssmcontacts$stop_engagement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["stop_engagement_output"]]))
 }
 
 .ssmcontacts$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["tag_resource_input"]]))
 }
 
 .ssmcontacts$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["tag_resource_output"]]))
 }
 
 .ssmcontacts$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["untag_resource_input"]]))
 }
 
 .ssmcontacts$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["untag_resource_output"]]))
 }
 
 .ssmcontacts$update_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactId = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Plan = structure(list(Stages = structure(list(structure(list(DurationInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), Targets = structure(list(structure(list(ChannelTargetInfo = structure(list(ContactChannelId = structure(logical(0), tags = list(type = "string")), RetryIntervalInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), ContactTargetInfo = structure(list(ContactId = structure(logical(0), tags = list(type = "string")), IsEssential = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RotationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["update_contact_input"]]))
 }
 
 .ssmcontacts$update_contact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["update_contact_output"]]))
 }
 
 .ssmcontacts$update_contact_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactChannelId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DeliveryAddress = structure(list(SimpleAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["update_contact_channel_input"]]))
 }
 
 .ssmcontacts$update_contact_channel_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["update_contact_channel_output"]]))
 }
 
 .ssmcontacts$update_rotation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RotationId = structure(logical(0), tags = list(type = "string")), ContactIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartTime = structure(logical(0), tags = list(type = "timestamp")), TimeZoneId = structure(logical(0), tags = list(type = "string")), Recurrence = structure(list(MonthlySettings = structure(list(structure(list(DayOfMonth = structure(logical(0), tags = list(type = "integer")), HandOffTime = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), WeeklySettings = structure(list(structure(list(DayOfWeek = structure(logical(0), tags = list(type = "string")), HandOffTime = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), DailySettings = structure(list(structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NumberOfOnCalls = structure(logical(0), tags = list(box = TRUE, type = "integer")), ShiftCoverages = structure(list(structure(list(structure(list(Start = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), End = structure(list(HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map")), RecurrenceMultiplier = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["update_rotation_input"]]))
 }
 
 .ssmcontacts$update_rotation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmcontacts_shapes[["update_rotation_output"]]))
 }

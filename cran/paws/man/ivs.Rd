@@ -102,7 +102,7 @@ You generate a signature using valid Amazon Web Services credentials that have p
 
 For more information:
 \itemize{
-\item Authentication and generating signatures — See \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html}{Authenticating Requests (Amazon Web Services Signature Version 4)} in the \emph{Amazon Web Services General Reference}.
+\item Authentication and generating signatures — See \href{https://docs.aws.amazon.com/AmazonS3/latest/API/}{Authenticating Requests (Amazon Web Services Signature Version 4)} in the \emph{Amazon Web Services General Reference}.
 \item Managing Amazon IVS permissions — See \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/security-iam.html}{Identity and Access Management} on the Security page of the \emph{Amazon IVS User Guide}.
 }
 
@@ -187,6 +187,7 @@ ARNs uniquely identify AWS resources. An ARN is required when you need to specif
 \link[paws.analytics:ivs_stop_stream]{stop_stream} \tab Disconnects the incoming RTMPS stream for the specified channel\cr
 \link[paws.analytics:ivs_tag_resource]{tag_resource} \tab Adds or updates tags for the Amazon Web Services resource with the specified ARN\cr
 \link[paws.analytics:ivs_untag_resource]{untag_resource} \tab Removes tags from the resource with the specified ARN\cr
+\link[paws.analytics:ivs_update_ad_configuration]{update_ad_configuration} \tab Updates a specified ad configuration\cr
 \link[paws.analytics:ivs_update_channel]{update_channel} \tab Updates a channel's configuration\cr
 \link[paws.analytics:ivs_update_playback_restriction_policy]{update_playback_restriction_policy} \tab Updates a specified playback restriction policy
 }

@@ -8,19 +8,19 @@ NULL
 #' @description
 #' Cancels a job in an Batch job queue. Jobs that are in a `SUBMITTED`, `PENDING`, or `RUNNABLE` state are cancelled and the job status is updated to `FAILED`.
 #' 
-#' A `PENDING` job is canceled after all dependency jobs are completed. Therefore, it may take longer than expected to cancel a job in `PENDING` status.
+#' A `PENDING` job is cancelled after all dependency jobs are completed. Therefore, it might take longer than expected to cancel a job in `PENDING` status.
 #' 
-#' When you try to cancel an array parent job in `PENDING`, Batch attempts to cancel all child jobs. The array parent job is canceled when all child jobs are completed.
+#' When you try to cancel an array parent job in `PENDING`, Batch attempts to cancel all child jobs. The array parent job is cancelled when all child jobs are completed.
 #' 
-#' Jobs that progressed to the `STARTING` or `RUNNING` state aren't canceled. However, the API operation still succeeds, even if no job is canceled. These jobs must be terminated with the [`terminate_job`][batch_terminate_job] operation.
+#' Jobs that progressed to the `STARTING` or `RUNNING` state aren't cancelled. However, the API operation still succeeds, even if no job is cancelled. These jobs must be terminated with the [`terminate_job`][batch_terminate_job] or [`terminate_jobs`][batch_terminate_jobs] operation.
 #'
 #' @usage
 #' batch_cancel_job(jobId, reason)
 #'
 #' @param jobId &#91;required&#93; The Batch job ID of the job to cancel.
-#' @param reason &#91;required&#93; A message to attach to the job that explains the reason for canceling it. This message is returned by future [`describe_jobs`][batch_describe_jobs] operations on the job. It is also recorded in the Batch activity logs.
+#' @param reason &#91;required&#93; A message to attach to the job that explains the reason for cancelling it. This message is returned by future [`describe_jobs`][batch_describe_jobs] operations on the job. It is also recorded in the Batch activity logs.
 #' 
-#' This parameter has as limit of 1024 characters.
+#' This parameter has a limit of 1024 characters.
 #'
 #' @return
 #' An empty list.
@@ -66,6 +66,78 @@ batch_cancel_job <- function(jobId, reason) {
 }
 .batch$operations$cancel_job <- batch_cancel_job
 
+#' Cancels up to 50 jobs in an Batch job queue
+#'
+#' @description
+#' Cancels up to 50 jobs in an Batch job queue. This is a bulk version of [`cancel_job`][batch_cancel_job]. Jobs that are in a `SUBMITTED`, `PENDING`, or `RUNNABLE` state are cancelled and the job status is updated to `FAILED`.
+#' 
+#' A `PENDING` job is cancelled after all dependency jobs are completed. Therefore, it might take longer than expected to cancel a job in `PENDING` status.
+#' 
+#' When you try to cancel an array parent job in `PENDING`, Batch attempts to cancel all child jobs. The array parent job is cancelled when all child jobs are completed.
+#' 
+#' Jobs that progressed to the `STARTING` or `RUNNING` state aren't cancelled. These jobs must be terminated with the [`terminate_job`][batch_terminate_job] or [`terminate_jobs`][batch_terminate_jobs] operation.
+#' 
+#' Batch reports the result for each job individually in the response. Jobs that were processed successfully are reported in the `successful` list. Jobs that encountered errors are reported in the `errors` list. The response returns an HTTP status code of `200` even when some jobs encountered errors, so check the `errors` list. Jobs that can't be found are treated as successfully processed.
+#'
+#' @usage
+#' batch_cancel_jobs(jobs, reason)
+#'
+#' @param jobs &#91;required&#93; An array of up to 50 Batch job IDs of the jobs to cancel.
+#' @param reason &#91;required&#93; A message to attach to the job that explains the reason for cancelling it. This message is returned by future [`describe_jobs`][batch_describe_jobs] operations on the job. It is also recorded in the Batch activity logs.
+#' 
+#' This parameter has a limit of 1024 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   successful = list(
+#'     "string"
+#'   ),
+#'   errors = list(
+#'     list(
+#'       job = "string",
+#'       code = "string",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_jobs(
+#'   jobs = list(
+#'     "string"
+#'   ),
+#'   reason = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname batch_cancel_jobs
+#'
+#' @aliases batch_cancel_jobs
+batch_cancel_jobs <- function(jobs, reason) {
+  op <- new_operation(
+    name = "CancelJobs",
+    http_method = "POST",
+    http_path = "/v1/canceljobs",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$cancel_jobs_input(jobs = jobs, reason = reason)
+  output <- .batch$cancel_jobs_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$cancel_jobs <- batch_cancel_jobs
+
 #' Creates an Batch compute environment
 #'
 #' @description
@@ -80,7 +152,7 @@ batch_cancel_job <- function(jobId, reason) {
 #' @usage
 #' batch_create_compute_environment(computeEnvironmentName, type, state,
 #'   unmanagedvCpus, computeResources, serviceRole, tags, eksConfiguration,
-#'   context)
+#'   context, ecsSettings)
 #'
 #' @param computeEnvironmentName &#91;required&#93; The name for your compute environment. It can be up to 128 characters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
 #' @param type &#91;required&#93; The type of the compute environment: `MANAGED` or `UNMANAGED`. For more information, see [Compute Environments](https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html) in the *Batch User Guide*.
@@ -115,6 +187,7 @@ batch_cancel_job <- function(jobId, reason) {
 #' 
 #' To create a compute environment that uses EKS resources, the caller must have permissions to call `eks:DescribeCluster`.
 #' @param context Reserved.
+#' @param ecsSettings The Amazon ECS settings for the compute environment. These settings control CloudWatch Container Insights collection for the compute environment.
 #'
 #' @return
 #' A list with the following syntax:
@@ -133,8 +206,8 @@ batch_cancel_job <- function(jobId, reason) {
 #'   state = "ENABLED"|"DISABLED",
 #'   unmanagedvCpus = 123,
 #'   computeResources = list(
-#'     type = "EC2"|"SPOT"|"FARGATE"|"FARGATE_SPOT",
-#'     allocationStrategy = "BEST_FIT"|"BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED"|"SPOT_PRICE_CAPACITY_OPTIMIZED",
+#'     type = "EC2"|"SPOT"|"FARGATE"|"FARGATE_SPOT"|"ECS_MANAGED_INSTANCES",
+#'     allocationStrategy = "BEST_FIT"|"BEST_FIT_PROGRESSIVE"|"BEST_FIT_PROGRESSIVE_ORDERED"|"SPOT_CAPACITY_OPTIMIZED"|"SPOT_PRICE_CAPACITY_OPTIMIZED"|"SPOT_CAPACITY_OPTIMIZED_PRIORITIZED",
 #'     minvCpus = 123,
 #'     maxvCpus = 123,
 #'     desiredvCpus = 123,
@@ -183,6 +256,46 @@ batch_cancel_job <- function(jobId, reason) {
 #'     ),
 #'     scalingPolicy = list(
 #'       minScaleDownDelayMinutes = 123
+#'     ),
+#'     managedInstancesProvider = list(
+#'       propagateTags = "string",
+#'       infrastructureRoleArn = "string",
+#'       instanceLaunchTemplate = list(
+#'         ec2InstanceProfileArn = "string",
+#'         networkConfiguration = list(
+#'           subnets = list(
+#'             "string"
+#'           ),
+#'           securityGroups = list(
+#'             "string"
+#'           )
+#'         ),
+#'         instanceRequirements = list(
+#'           allowedInstanceTypes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         capacityOptionType = "string",
+#'         storageConfiguration = list(
+#'           storageSizeGiB = 123
+#'         ),
+#'         monitoring = "string",
+#'         fipsEnabled = TRUE|FALSE,
+#'         capacityReservations = list(
+#'           reservationGroupArn = "string",
+#'           reservationPreference = "string"
+#'         ),
+#'         instanceMetadataTagsPropagation = TRUE|FALSE,
+#'         localStorageConfiguration = list(
+#'           useLocalStorage = TRUE|FALSE
+#'         )
+#'       ),
+#'       infrastructureOptimization = list(
+#'         scaleInAfter = 123
+#'       )
+#'     ),
+#'     capacityTags = list(
+#'       "string"
 #'     )
 #'   ),
 #'   serviceRole = "string",
@@ -193,7 +306,10 @@ batch_cancel_job <- function(jobId, reason) {
 #'     eksClusterArn = "string",
 #'     kubernetesNamespace = "string"
 #'   ),
-#'   context = "string"
+#'   context = "string",
+#'   ecsSettings = list(
+#'     containerInsights = "ENABLED"|"ENHANCED"|"DISABLED"
+#'   )
 #' )
 #' ```
 #'
@@ -276,7 +392,7 @@ batch_cancel_job <- function(jobId, reason) {
 #' @rdname batch_create_compute_environment
 #'
 #' @aliases batch_create_compute_environment
-batch_create_compute_environment <- function(computeEnvironmentName, type, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, tags = NULL, eksConfiguration = NULL, context = NULL) {
+batch_create_compute_environment <- function(computeEnvironmentName, type, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, tags = NULL, eksConfiguration = NULL, context = NULL, ecsSettings = NULL) {
   op <- new_operation(
     name = "CreateComputeEnvironment",
     http_method = "POST",
@@ -285,7 +401,7 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .batch$create_compute_environment_input(computeEnvironmentName = computeEnvironmentName, type = type, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, tags = tags, eksConfiguration = eksConfiguration, context = context)
+  input <- .batch$create_compute_environment_input(computeEnvironmentName = computeEnvironmentName, type = type, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, tags = tags, eksConfiguration = eksConfiguration, context = context, ecsSettings = ecsSettings)
   output <- .batch$create_compute_environment_output()
   config <- get_config()
   svc <- .batch$service(config, op)
@@ -416,7 +532,7 @@ batch_create_consumable_resource <- function(consumableResourceName, totalQuanti
 #'       serviceEnvironment = "string"
 #'     )
 #'   ),
-#'   jobQueueType = "EKS"|"ECS"|"ECS_FARGATE"|"SAGEMAKER_TRAINING",
+#'   jobQueueType = "EKS"|"ECS"|"ECS_FARGATE"|"SAGEMAKER_TRAINING"|"ECS_MANAGED_INSTANCES",
 #'   tags = list(
 #'     "string"
 #'   ),
@@ -1077,8 +1193,8 @@ batch_deregister_job_definition <- function(jobDefinition) {
 #'       status = "CREATING"|"UPDATING"|"DELETING"|"DELETED"|"VALID"|"INVALID",
 #'       statusReason = "string",
 #'       computeResources = list(
-#'         type = "EC2"|"SPOT"|"FARGATE"|"FARGATE_SPOT",
-#'         allocationStrategy = "BEST_FIT"|"BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED"|"SPOT_PRICE_CAPACITY_OPTIMIZED",
+#'         type = "EC2"|"SPOT"|"FARGATE"|"FARGATE_SPOT"|"ECS_MANAGED_INSTANCES",
+#'         allocationStrategy = "BEST_FIT"|"BEST_FIT_PROGRESSIVE"|"BEST_FIT_PROGRESSIVE_ORDERED"|"SPOT_CAPACITY_OPTIMIZED"|"SPOT_PRICE_CAPACITY_OPTIMIZED"|"SPOT_CAPACITY_OPTIMIZED_PRIORITIZED",
 #'         minvCpus = 123,
 #'         maxvCpus = 123,
 #'         desiredvCpus = 123,
@@ -1127,6 +1243,46 @@ batch_deregister_job_definition <- function(jobDefinition) {
 #'         ),
 #'         scalingPolicy = list(
 #'           minScaleDownDelayMinutes = 123
+#'         ),
+#'         managedInstancesProvider = list(
+#'           propagateTags = "string",
+#'           infrastructureRoleArn = "string",
+#'           instanceLaunchTemplate = list(
+#'             ec2InstanceProfileArn = "string",
+#'             networkConfiguration = list(
+#'               subnets = list(
+#'                 "string"
+#'               ),
+#'               securityGroups = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             instanceRequirements = list(
+#'               allowedInstanceTypes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             capacityOptionType = "string",
+#'             storageConfiguration = list(
+#'               storageSizeGiB = 123
+#'             ),
+#'             monitoring = "string",
+#'             fipsEnabled = TRUE|FALSE,
+#'             capacityReservations = list(
+#'               reservationGroupArn = "string",
+#'               reservationPreference = "string"
+#'             ),
+#'             instanceMetadataTagsPropagation = TRUE|FALSE,
+#'             localStorageConfiguration = list(
+#'               useLocalStorage = TRUE|FALSE
+#'             )
+#'           ),
+#'           infrastructureOptimization = list(
+#'             scaleInAfter = 123
+#'           )
+#'         ),
+#'         capacityTags = list(
+#'           "string"
 #'         )
 #'       ),
 #'       serviceRole = "string",
@@ -1140,7 +1296,10 @@ batch_deregister_job_definition <- function(jobDefinition) {
 #'       ),
 #'       containerOrchestrationType = "ECS"|"EKS",
 #'       uuid = "string",
-#'       context = "string"
+#'       context = "string",
+#'       ecsSettings = list(
+#'         containerInsights = "ENABLED"|"ENHANCED"|"DISABLED"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1691,7 +1850,8 @@ batch_describe_consumable_resource <- function(consumableResource) {
 #'                       )
 #'                     )
 #'                   ),
-#'                   enableExecuteCommand = TRUE|FALSE
+#'                   enableExecuteCommand = TRUE|FALSE,
+#'                   networkMode = "string"
 #'                 )
 #'               )
 #'             ),
@@ -1839,7 +1999,7 @@ batch_describe_consumable_resource <- function(consumableResource) {
 #'       ),
 #'       propagateTags = TRUE|FALSE,
 #'       platformCapabilities = list(
-#'         "EC2"|"FARGATE"
+#'         "EC2"|"FARGATE"|"MANAGED_INSTANCES"
 #'       ),
 #'       ecsProperties = list(
 #'         taskProperties = list(
@@ -1981,7 +2141,8 @@ batch_describe_consumable_resource <- function(consumableResource) {
 #'                 )
 #'               )
 #'             ),
-#'             enableExecuteCommand = TRUE|FALSE
+#'             enableExecuteCommand = TRUE|FALSE,
+#'             networkMode = "string"
 #'           )
 #'         )
 #'       ),
@@ -2212,7 +2373,7 @@ batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = N
 #'           serviceEnvironment = "string"
 #'         )
 #'       ),
-#'       jobQueueType = "EKS"|"ECS"|"ECS_FARGATE"|"SAGEMAKER_TRAINING",
+#'       jobQueueType = "EKS"|"ECS"|"ECS_FARGATE"|"SAGEMAKER_TRAINING"|"ECS_MANAGED_INSTANCES",
 #'       tags = list(
 #'         "string"
 #'       ),
@@ -2776,7 +2937,8 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'                       )
 #'                     )
 #'                   ),
-#'                   enableExecuteCommand = TRUE|FALSE
+#'                   enableExecuteCommand = TRUE|FALSE,
+#'                   networkMode = "string"
 #'                 )
 #'               )
 #'             ),
@@ -2935,7 +3097,7 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'       ),
 #'       propagateTags = TRUE|FALSE,
 #'       platformCapabilities = list(
-#'         "EC2"|"FARGATE"
+#'         "EC2"|"FARGATE"|"MANAGED_INSTANCES"
 #'       ),
 #'       eksProperties = list(
 #'         podProperties = list(
@@ -3250,7 +3412,8 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'                 )
 #'               )
 #'             ),
-#'             enableExecuteCommand = TRUE|FALSE
+#'             enableExecuteCommand = TRUE|FALSE,
+#'             networkMode = "string"
 #'           )
 #'         )
 #'       ),
@@ -3928,7 +4091,9 @@ batch_list_consumable_resources <- function(filters = NULL, maxResults = NULL, n
 #'         numNodes = 123,
 #'         nodeIndex = 123
 #'       ),
-#'       jobDefinition = "string"
+#'       jobDefinition = "string",
+#'       isCancelled = TRUE|FALSE,
+#'       isTerminated = TRUE|FALSE
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -4294,7 +4459,8 @@ batch_list_scheduling_policies <- function(maxResults = NULL, nextToken = NULL) 
 #'       status = "SUBMITTED"|"PENDING"|"RUNNABLE"|"SCHEDULED"|"STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED",
 #'       statusReason = "string",
 #'       startedAt = 123,
-#'       stoppedAt = 123
+#'       stoppedAt = 123,
+#'       isTerminated = TRUE|FALSE
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -4439,7 +4605,9 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' If the job runs on Amazon EKS resources, then you must not specify `propagateTags`.
 #' @param timeout The timeout configuration for jobs that are submitted with this job definition, after which Batch terminates your jobs if they have not finished. If a job is terminated due to a timeout, it isn't retried. The minimum value for the timeout is 60 seconds. Any timeout configuration that's specified during a [`submit_job`][batch_submit_job] operation overrides the timeout configuration defined here. For more information, see [Job Timeouts](https://docs.aws.amazon.com/batch/latest/userguide/job_timeouts.html) in the *Batch User Guide*.
 #' @param tags The tags that you apply to the job definition to help you categorize and organize your resources. Each tag consists of a key and an optional value. For more information, see [Tagging Amazon Web Services Resources](https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html) in *Batch User Guide*.
-#' @param platformCapabilities The platform capabilities required by the job definition. If no value is specified, it defaults to `EC2`. To run the job on Fargate resources, specify `FARGATE`.
+#' @param platformCapabilities The platform capabilities required by the job definition. If no value is specified, it defaults to `EC2`. To run the job on Fargate resources, specify `FARGATE`. To run the job on Amazon ECS Managed Instances, specify `MANAGED_INSTANCES`.
+#' 
+#' Jobs with the `MANAGED_INSTANCES` platform capability must use `ecsProperties` (not `containerProperties`) and do not support multi-node parallel jobs.
 #' 
 #' If the job runs on Amazon EKS resources, then you must not specify `platformCapabilities`.
 #' @param eksProperties An object with properties that are specific to Amazon EKS-based jobs. This must not be specified for Amazon ECS based job definitions.
@@ -4860,7 +5028,8 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'                   )
 #'                 )
 #'               ),
-#'               enableExecuteCommand = TRUE|FALSE
+#'               enableExecuteCommand = TRUE|FALSE,
+#'               networkMode = "string"
 #'             )
 #'           )
 #'         ),
@@ -5022,7 +5191,7 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'     "string"
 #'   ),
 #'   platformCapabilities = list(
-#'     "EC2"|"FARGATE"
+#'     "EC2"|"FARGATE"|"MANAGED_INSTANCES"
 #'   ),
 #'   eksProperties = list(
 #'     podProperties = list(
@@ -5292,7 +5461,8 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'             )
 #'           )
 #'         ),
-#'         enableExecuteCommand = TRUE|FALSE
+#'         enableExecuteCommand = TRUE|FALSE,
+#'         networkMode = "string"
 #'       )
 #'     )
 #'   ),
@@ -5921,9 +6091,9 @@ batch_tag_resource <- function(resourceArn, tags) {
 #' batch_terminate_job(jobId, reason)
 #'
 #' @param jobId &#91;required&#93; The Batch job ID of the job to terminate.
-#' @param reason &#91;required&#93; A message to attach to the job that explains the reason for canceling it. This message is returned by future [`describe_jobs`][batch_describe_jobs] operations on the job. It is also recorded in the Batch activity logs.
+#' @param reason &#91;required&#93; A message to attach to the job that explains the reason for terminating it. This message is returned by future [`describe_jobs`][batch_describe_jobs] operations on the job. It is also recorded in the Batch activity logs.
 #' 
-#' This parameter has as limit of 1024 characters.
+#' This parameter has a limit of 1024 characters.
 #'
 #' @return
 #' An empty list.
@@ -5969,6 +6139,72 @@ batch_terminate_job <- function(jobId, reason) {
 }
 .batch$operations$terminate_job <- batch_terminate_job
 
+#' Terminates up to 50 jobs in a job queue
+#'
+#' @description
+#' Terminates up to 50 jobs in a job queue. This is a bulk version of [`terminate_job`][batch_terminate_job]. Jobs that are in the `STARTING` or `RUNNING` state are terminated, which causes them to transition to `FAILED`. Jobs that have not progressed to the `STARTING` state are cancelled.
+#' 
+#' Batch reports the result for each job individually in the response. Jobs that were processed successfully are reported in the `successful` list. Jobs that encountered errors are reported in the `errors` list. The response returns an HTTP status code of `200` even when some jobs encountered errors, so check the `errors` list. Jobs that can't be found are treated as successfully processed.
+#'
+#' @usage
+#' batch_terminate_jobs(jobs, reason)
+#'
+#' @param jobs &#91;required&#93; An array of up to 50 Batch job IDs of the jobs to terminate.
+#' @param reason &#91;required&#93; A message to attach to the job that explains the reason for terminating it. This message is returned by future [`describe_jobs`][batch_describe_jobs] operations on the job. It is also recorded in the Batch activity logs.
+#' 
+#' This parameter has a limit of 1024 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   successful = list(
+#'     "string"
+#'   ),
+#'   errors = list(
+#'     list(
+#'       job = "string",
+#'       code = "string",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$terminate_jobs(
+#'   jobs = list(
+#'     "string"
+#'   ),
+#'   reason = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname batch_terminate_jobs
+#'
+#' @aliases batch_terminate_jobs
+batch_terminate_jobs <- function(jobs, reason) {
+  op <- new_operation(
+    name = "TerminateJobs",
+    http_method = "POST",
+    http_path = "/v1/terminatejobs",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$terminate_jobs_input(jobs = jobs, reason = reason)
+  output <- .batch$terminate_jobs_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$terminate_jobs <- batch_terminate_jobs
+
 #' Terminates a service job in a job queue
 #'
 #' @description
@@ -5978,7 +6214,7 @@ batch_terminate_job <- function(jobId, reason) {
 #' batch_terminate_service_job(jobId, reason)
 #'
 #' @param jobId &#91;required&#93; The service job ID of the service job to terminate.
-#' @param reason &#91;required&#93; A message to attach to the service job that explains the reason for canceling it. This message is returned by [`describe_service_job`][batch_describe_service_job] operations on the service job.
+#' @param reason &#91;required&#93; A message to attach to the service job that explains the reason for terminating it. This message is returned by [`describe_service_job`][batch_describe_service_job] operations on the service job.
 #'
 #' @return
 #' An empty list.
@@ -6014,6 +6250,70 @@ batch_terminate_service_job <- function(jobId, reason) {
   return(response)
 }
 .batch$operations$terminate_service_job <- batch_terminate_service_job
+
+#' Terminates up to 50 service jobs in a job queue
+#'
+#' @description
+#' Terminates up to 50 service jobs in a job queue. This is a bulk version of [`terminate_service_job`][batch_terminate_service_job].
+#' 
+#' Batch reports the result for each service job individually in the response. Service jobs that were processed successfully are reported in the `successful` list. Service jobs that encountered errors are reported in the `errors` list. The response returns an HTTP status code of `200` even when some service jobs encountered errors, so check the `errors` list. Service jobs that can't be found are treated as successfully processed.
+#'
+#' @usage
+#' batch_terminate_service_jobs(jobs, reason)
+#'
+#' @param jobs &#91;required&#93; An array of up to 50 service job IDs of the service jobs to terminate.
+#' @param reason &#91;required&#93; A message to attach to the service job that explains the reason for terminating it. This message is returned by [`describe_service_job`][batch_describe_service_job] operations on the service job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   successful = list(
+#'     "string"
+#'   ),
+#'   errors = list(
+#'     list(
+#'       job = "string",
+#'       code = "string",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$terminate_service_jobs(
+#'   jobs = list(
+#'     "string"
+#'   ),
+#'   reason = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname batch_terminate_service_jobs
+#'
+#' @aliases batch_terminate_service_jobs
+batch_terminate_service_jobs <- function(jobs, reason) {
+  op <- new_operation(
+    name = "TerminateServiceJobs",
+    http_method = "POST",
+    http_path = "/v1/terminateservicejobs",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$terminate_service_jobs_input(jobs = jobs, reason = reason)
+  output <- .batch$terminate_service_jobs_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$terminate_service_jobs <- batch_terminate_service_jobs
 
 #' Deletes specified tags from an Batch resource
 #'
@@ -6081,7 +6381,8 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @usage
 #' batch_update_compute_environment(computeEnvironment, state,
-#'   unmanagedvCpus, computeResources, serviceRole, updatePolicy, context)
+#'   unmanagedvCpus, computeResources, serviceRole, updatePolicy, context,
+#'   ecsSettings)
 #'
 #' @param computeEnvironment &#91;required&#93; The name or full Amazon Resource Name (ARN) of the compute environment to update.
 #' @param state The state of the compute environment. Compute environments in the `ENABLED` state can accept jobs from a queue and scale in or out automatically based on the workload demand of its associated queues.
@@ -6104,6 +6405,7 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' Depending on how you created your Batch service role, its ARN might contain the `service-role` path prefix. When you only specify the name of the service role, Batch assumes that your ARN doesn't use the `service-role` path prefix. Because of this, we recommend that you specify the full ARN of your service role when you create compute environments.
 #' @param updatePolicy Specifies the updated infrastructure update policy for the compute environment. For more information about infrastructure updates, see [Updating compute environments](https://docs.aws.amazon.com/batch/latest/userguide/updating-compute-environments.html) in the *Batch User Guide*.
 #' @param context Reserved.
+#' @param ecsSettings The Amazon ECS settings for the compute environment. These settings control CloudWatch Container Insights collection for the compute environment.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6130,7 +6432,7 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #'     securityGroupIds = list(
 #'       "string"
 #'     ),
-#'     allocationStrategy = "BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED"|"SPOT_PRICE_CAPACITY_OPTIMIZED",
+#'     allocationStrategy = "BEST_FIT_PROGRESSIVE"|"BEST_FIT_PROGRESSIVE_ORDERED"|"SPOT_CAPACITY_OPTIMIZED"|"SPOT_PRICE_CAPACITY_OPTIMIZED"|"SPOT_CAPACITY_OPTIMIZED_PRIORITIZED",
 #'     instanceTypes = list(
 #'       "string"
 #'     ),
@@ -6167,10 +6469,48 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #'       )
 #'     ),
 #'     updateToLatestImageVersion = TRUE|FALSE,
-#'     type = "EC2"|"SPOT"|"FARGATE"|"FARGATE_SPOT",
+#'     type = "EC2"|"SPOT"|"FARGATE"|"FARGATE_SPOT"|"ECS_MANAGED_INSTANCES",
 #'     imageId = "string",
 #'     scalingPolicy = list(
 #'       minScaleDownDelayMinutes = 123
+#'     ),
+#'     managedInstancesProvider = list(
+#'       propagateTags = "string",
+#'       infrastructureRoleArn = "string",
+#'       instanceLaunchTemplate = list(
+#'         ec2InstanceProfileArn = "string",
+#'         networkConfiguration = list(
+#'           subnets = list(
+#'             "string"
+#'           ),
+#'           securityGroups = list(
+#'             "string"
+#'           )
+#'         ),
+#'         instanceRequirements = list(
+#'           allowedInstanceTypes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         storageConfiguration = list(
+#'           storageSizeGiB = 123
+#'         ),
+#'         monitoring = "string",
+#'         capacityReservations = list(
+#'           reservationGroupArn = "string",
+#'           reservationPreference = "string"
+#'         ),
+#'         instanceMetadataTagsPropagation = TRUE|FALSE,
+#'         localStorageConfiguration = list(
+#'           useLocalStorage = TRUE|FALSE
+#'         )
+#'       ),
+#'       infrastructureOptimization = list(
+#'         scaleInAfter = 123
+#'       )
+#'     ),
+#'     capacityTags = list(
+#'       "string"
 #'     )
 #'   ),
 #'   serviceRole = "string",
@@ -6178,7 +6518,10 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #'     terminateJobsOnUpdate = TRUE|FALSE,
 #'     jobExecutionTimeoutMinutes = 123
 #'   ),
-#'   context = "string"
+#'   context = "string",
+#'   ecsSettings = list(
+#'     containerInsights = "ENABLED"|"ENHANCED"|"DISABLED"
+#'   )
 #' )
 #' ```
 #'
@@ -6197,7 +6540,7 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname batch_update_compute_environment
 #'
 #' @aliases batch_update_compute_environment
-batch_update_compute_environment <- function(computeEnvironment, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, updatePolicy = NULL, context = NULL) {
+batch_update_compute_environment <- function(computeEnvironment, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, updatePolicy = NULL, context = NULL, ecsSettings = NULL) {
   op <- new_operation(
     name = "UpdateComputeEnvironment",
     http_method = "POST",
@@ -6206,7 +6549,7 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, u
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .batch$update_compute_environment_input(computeEnvironment = computeEnvironment, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, updatePolicy = updatePolicy, context = context)
+  input <- .batch$update_compute_environment_input(computeEnvironment = computeEnvironment, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, updatePolicy = updatePolicy, context = context, ecsSettings = ecsSettings)
   output <- .batch$update_compute_environment_output()
   config <- get_config()
   svc <- .batch$service(config, op)

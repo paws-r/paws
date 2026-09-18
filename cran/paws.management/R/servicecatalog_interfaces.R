@@ -5,1080 +5,900 @@ NULL
 
 .servicecatalog$accept_portfolio_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string")), PortfolioShareType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["accept_portfolio_share_input"]]))
 }
 
 .servicecatalog$accept_portfolio_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["accept_portfolio_share_output"]]))
 }
 
 .servicecatalog$associate_budget_with_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BudgetName = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["associate_budget_with_resource_input"]]))
 }
 
 .servicecatalog$associate_budget_with_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["associate_budget_with_resource_output"]]))
 }
 
 .servicecatalog$associate_principal_with_portfolio_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string")), PrincipalARN = structure(logical(0), tags = list(type = "string")), PrincipalType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["associate_principal_with_portfolio_input"]]))
 }
 
 .servicecatalog$associate_principal_with_portfolio_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["associate_principal_with_portfolio_output"]]))
 }
 
 .servicecatalog$associate_product_with_portfolio_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string")), SourcePortfolioId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["associate_product_with_portfolio_input"]]))
 }
 
 .servicecatalog$associate_product_with_portfolio_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["associate_product_with_portfolio_output"]]))
 }
 
 .servicecatalog$associate_service_action_with_provisioning_artifact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), ServiceActionId = structure(logical(0), tags = list(type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["associate_service_action_with_provisioning_artifact_input"]]))
 }
 
 .servicecatalog$associate_service_action_with_provisioning_artifact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["associate_service_action_with_provisioning_artifact_output"]]))
 }
 
 .servicecatalog$associate_tag_option_with_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), TagOptionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["associate_tag_option_with_resource_input"]]))
 }
 
 .servicecatalog$associate_tag_option_with_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["associate_tag_option_with_resource_output"]]))
 }
 
 .servicecatalog$batch_associate_service_action_with_provisioning_artifact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceActionAssociations = structure(list(structure(list(ServiceActionId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AcceptLanguage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["batch_associate_service_action_with_provisioning_artifact_input"]]))
 }
 
 .servicecatalog$batch_associate_service_action_with_provisioning_artifact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FailedServiceActionAssociations = structure(list(structure(list(ServiceActionId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["batch_associate_service_action_with_provisioning_artifact_output"]]))
 }
 
 .servicecatalog$batch_disassociate_service_action_from_provisioning_artifact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceActionAssociations = structure(list(structure(list(ServiceActionId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AcceptLanguage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["batch_disassociate_service_action_from_provisioning_artifact_input"]]))
 }
 
 .servicecatalog$batch_disassociate_service_action_from_provisioning_artifact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FailedServiceActionAssociations = structure(list(structure(list(ServiceActionId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["batch_disassociate_service_action_from_provisioning_artifact_output"]]))
 }
 
 .servicecatalog$copy_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), SourceProductArn = structure(logical(0), tags = list(type = "string")), TargetProductId = structure(logical(0), tags = list(type = "string")), TargetProductName = structure(logical(0), tags = list(type = "string")), SourceProvisioningArtifactIdentifiers = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "list")), CopyOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["copy_product_input"]]))
 }
 
 .servicecatalog$copy_product_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CopyProductToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["copy_product_output"]]))
 }
 
 .servicecatalog$create_constraint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), Parameters = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["create_constraint_input"]]))
 }
 
 .servicecatalog$create_constraint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConstraintDetail = structure(list(ConstraintId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConstraintParameters = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["create_constraint_output"]]))
 }
 
 .servicecatalog$create_portfolio_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ProviderName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["create_portfolio_input"]]))
 }
 
 .servicecatalog$create_portfolio_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortfolioDetail = structure(list(Id = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), ProviderName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["create_portfolio_output"]]))
 }
 
 .servicecatalog$create_portfolio_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), OrganizationNode = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ShareTagOptions = structure(logical(0), tags = list(type = "boolean")), SharePrincipals = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["create_portfolio_share_input"]]))
 }
 
 .servicecatalog$create_portfolio_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortfolioShareToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["create_portfolio_share_output"]]))
 }
 
 .servicecatalog$create_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Distributor = structure(logical(0), tags = list(type = "string")), SupportDescription = structure(logical(0), tags = list(type = "string")), SupportEmail = structure(logical(0), tags = list(type = "string")), SupportUrl = structure(logical(0), tags = list(type = "string")), ProductType = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProvisioningArtifactParameters = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Info = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Type = structure(logical(0), tags = list(type = "string")), DisableTemplateValidation = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), SourceConnection = structure(list(Type = structure(logical(0), tags = list(type = "string")), ConnectionParameters = structure(list(CodeStar = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), Repository = structure(logical(0), tags = list(type = "string")), Branch = structure(logical(0), tags = list(type = "string")), ArtifactPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["create_product_input"]]))
 }
 
 .servicecatalog$create_product_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProductViewDetail = structure(list(ProductViewSummary = structure(list(Id = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ShortDescription = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Distributor = structure(logical(0), tags = list(type = "string")), HasDefaultPath = structure(logical(0), tags = list(type = "boolean")), SupportEmail = structure(logical(0), tags = list(type = "string")), SupportDescription = structure(logical(0), tags = list(type = "string")), SupportUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), ProductARN = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), SourceConnection = structure(list(Type = structure(logical(0), tags = list(type = "string")), ConnectionParameters = structure(list(CodeStar = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), Repository = structure(logical(0), tags = list(type = "string")), Branch = structure(logical(0), tags = list(type = "string")), ArtifactPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), LastSync = structure(list(LastSyncTime = structure(logical(0), tags = list(type = "timestamp")), LastSyncStatus = structure(logical(0), tags = list(type = "string")), LastSyncStatusMessage = structure(logical(0), tags = list(type = "string")), LastSuccessfulSyncTime = structure(logical(0), tags = list(type = "timestamp")), LastSuccessfulSyncProvisioningArtifactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), ProvisioningArtifactDetail = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), Active = structure(logical(0), tags = list(type = "boolean")), Guidance = structure(logical(0), tags = list(type = "string")), SourceRevision = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["create_product_output"]]))
 }
 
 .servicecatalog$create_provisioned_product_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PlanName = structure(logical(0), tags = list(type = "string")), PlanType = structure(logical(0), tags = list(type = "string")), NotificationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PathId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisionedProductName = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), ProvisioningParameters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), UsePreviousValue = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["create_provisioned_product_plan_input"]]))
 }
 
 .servicecatalog$create_provisioned_product_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PlanName = structure(logical(0), tags = list(type = "string")), PlanId = structure(logical(0), tags = list(type = "string")), ProvisionProductId = structure(logical(0), tags = list(type = "string")), ProvisionedProductName = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["create_provisioned_product_plan_output"]]))
 }
 
 .servicecatalog$create_provisioning_artifact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Info = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Type = structure(logical(0), tags = list(type = "string")), DisableTemplateValidation = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["create_provisioning_artifact_input"]]))
 }
 
 .servicecatalog$create_provisioning_artifact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProvisioningArtifactDetail = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), Active = structure(logical(0), tags = list(type = "boolean")), Guidance = structure(logical(0), tags = list(type = "string")), SourceRevision = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Info = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["create_provisioning_artifact_output"]]))
 }
 
 .servicecatalog$create_service_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), DefinitionType = structure(logical(0), tags = list(type = "string")), Definition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Description = structure(logical(0), tags = list(type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["create_service_action_input"]]))
 }
 
 .servicecatalog$create_service_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceActionDetail = structure(list(ServiceActionSummary = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DefinitionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Definition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["create_service_action_output"]]))
 }
 
 .servicecatalog$create_tag_option_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["create_tag_option_input"]]))
 }
 
 .servicecatalog$create_tag_option_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TagOptionDetail = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Active = structure(logical(0), tags = list(type = "boolean")), Id = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["create_tag_option_output"]]))
 }
 
 .servicecatalog$delete_constraint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["delete_constraint_input"]]))
 }
 
 .servicecatalog$delete_constraint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["delete_constraint_output"]]))
 }
 
 .servicecatalog$delete_portfolio_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["delete_portfolio_input"]]))
 }
 
 .servicecatalog$delete_portfolio_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["delete_portfolio_output"]]))
 }
 
 .servicecatalog$delete_portfolio_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), OrganizationNode = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["delete_portfolio_share_input"]]))
 }
 
 .servicecatalog$delete_portfolio_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortfolioShareToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["delete_portfolio_share_output"]]))
 }
 
 .servicecatalog$delete_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["delete_product_input"]]))
 }
 
 .servicecatalog$delete_product_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["delete_product_output"]]))
 }
 
 .servicecatalog$delete_provisioned_product_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PlanId = structure(logical(0), tags = list(type = "string")), IgnoreErrors = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["delete_provisioned_product_plan_input"]]))
 }
 
 .servicecatalog$delete_provisioned_product_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["delete_provisioned_product_plan_output"]]))
 }
 
 .servicecatalog$delete_provisioning_artifact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["delete_provisioning_artifact_input"]]))
 }
 
 .servicecatalog$delete_provisioning_artifact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["delete_provisioning_artifact_output"]]))
 }
 
 .servicecatalog$delete_service_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["delete_service_action_input"]]))
 }
 
 .servicecatalog$delete_service_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["delete_service_action_output"]]))
 }
 
 .servicecatalog$delete_tag_option_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["delete_tag_option_input"]]))
 }
 
 .servicecatalog$delete_tag_option_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["delete_tag_option_output"]]))
 }
 
 .servicecatalog$describe_constraint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_constraint_input"]]))
 }
 
 .servicecatalog$describe_constraint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConstraintDetail = structure(list(ConstraintId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConstraintParameters = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_constraint_output"]]))
 }
 
 .servicecatalog$describe_copy_product_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), CopyProductToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_copy_product_status_input"]]))
 }
 
 .servicecatalog$describe_copy_product_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CopyProductStatus = structure(logical(0), tags = list(type = "string")), TargetProductId = structure(logical(0), tags = list(type = "string")), StatusDetail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_copy_product_status_output"]]))
 }
 
 .servicecatalog$describe_portfolio_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_portfolio_input"]]))
 }
 
 .servicecatalog$describe_portfolio_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortfolioDetail = structure(list(Id = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), ProviderName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TagOptions = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Active = structure(logical(0), tags = list(type = "boolean")), Id = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Budgets = structure(list(structure(list(BudgetName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_portfolio_output"]]))
 }
 
 .servicecatalog$describe_portfolio_share_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortfolioShareToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_portfolio_share_status_input"]]))
 }
 
 .servicecatalog$describe_portfolio_share_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortfolioShareToken = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string")), OrganizationNodeValue = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ShareDetails = structure(list(SuccessfulShares = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ShareErrors = structure(list(structure(list(Accounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Message = structure(logical(0), tags = list(type = "string")), Error = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_portfolio_share_status_output"]]))
 }
 
 .servicecatalog$describe_portfolio_shares_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortfolioId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), PageToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_portfolio_shares_input"]]))
 }
 
 .servicecatalog$describe_portfolio_shares_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextPageToken = structure(logical(0), tags = list(type = "string")), PortfolioShareDetails = structure(list(structure(list(PrincipalId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Accepted = structure(logical(0), tags = list(type = "boolean")), ShareTagOptions = structure(logical(0), tags = list(type = "boolean")), SharePrincipals = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_portfolio_shares_output"]]))
 }
 
 .servicecatalog$describe_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_product_input"]]))
 }
 
 .servicecatalog$describe_product_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProductViewSummary = structure(list(Id = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ShortDescription = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Distributor = structure(logical(0), tags = list(type = "string")), HasDefaultPath = structure(logical(0), tags = list(type = "boolean")), SupportEmail = structure(logical(0), tags = list(type = "string")), SupportDescription = structure(logical(0), tags = list(type = "string")), SupportUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProvisioningArtifacts = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), Guidance = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Budgets = structure(list(structure(list(BudgetName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LaunchPaths = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_product_output"]]))
 }
 
 .servicecatalog$describe_product_as_admin_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SourcePortfolioId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_product_as_admin_input"]]))
 }
 
 .servicecatalog$describe_product_as_admin_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProductViewDetail = structure(list(ProductViewSummary = structure(list(Id = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ShortDescription = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Distributor = structure(logical(0), tags = list(type = "string")), HasDefaultPath = structure(logical(0), tags = list(type = "boolean")), SupportEmail = structure(logical(0), tags = list(type = "string")), SupportDescription = structure(logical(0), tags = list(type = "string")), SupportUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), ProductARN = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), SourceConnection = structure(list(Type = structure(logical(0), tags = list(type = "string")), ConnectionParameters = structure(list(CodeStar = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), Repository = structure(logical(0), tags = list(type = "string")), Branch = structure(logical(0), tags = list(type = "string")), ArtifactPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), LastSync = structure(list(LastSyncTime = structure(logical(0), tags = list(type = "timestamp")), LastSyncStatus = structure(logical(0), tags = list(type = "string")), LastSyncStatusMessage = structure(logical(0), tags = list(type = "string")), LastSuccessfulSyncTime = structure(logical(0), tags = list(type = "timestamp")), LastSuccessfulSyncProvisioningArtifactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), ProvisioningArtifactSummaries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), ProvisioningArtifactMetadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TagOptions = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Active = structure(logical(0), tags = list(type = "boolean")), Id = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Budgets = structure(list(structure(list(BudgetName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_product_as_admin_output"]]))
 }
 
 .servicecatalog$describe_product_view_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_product_view_input"]]))
 }
 
 .servicecatalog$describe_product_view_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProductViewSummary = structure(list(Id = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ShortDescription = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Distributor = structure(logical(0), tags = list(type = "string")), HasDefaultPath = structure(logical(0), tags = list(type = "boolean")), SupportEmail = structure(logical(0), tags = list(type = "string")), SupportDescription = structure(logical(0), tags = list(type = "string")), SupportUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProvisioningArtifacts = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), Guidance = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_product_view_output"]]))
 }
 
 .servicecatalog$describe_provisioned_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_provisioned_product_input"]]))
 }
 
 .servicecatalog$describe_provisioned_product_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProvisionedProductDetail = structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), IdempotencyToken = structure(logical(0), tags = list(type = "string")), LastRecordId = structure(logical(0), tags = list(type = "string")), LastProvisioningRecordId = structure(logical(0), tags = list(type = "string")), LastSuccessfulProvisioningRecordId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), LaunchRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CloudWatchDashboards = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_provisioned_product_output"]]))
 }
 
 .servicecatalog$describe_provisioned_product_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PlanId = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer")), PageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_provisioned_product_plan_input"]]))
 }
 
 .servicecatalog$describe_provisioned_product_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProvisionedProductPlanDetails = structure(list(CreatedTime = structure(logical(0), tags = list(type = "timestamp")), PathId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), PlanName = structure(logical(0), tags = list(type = "string")), PlanId = structure(logical(0), tags = list(type = "string")), ProvisionProductId = structure(logical(0), tags = list(type = "string")), ProvisionProductName = structure(logical(0), tags = list(type = "string")), PlanType = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp")), NotificationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ProvisioningParameters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), UsePreviousValue = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResourceChanges = structure(list(structure(list(Action = structure(logical(0), tags = list(type = "string")), LogicalResourceId = structure(logical(0), tags = list(type = "string")), PhysicalResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Replacement = structure(logical(0), tags = list(type = "string")), Scope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Details = structure(list(structure(list(Target = structure(list(Attribute = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), RequiresRecreation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Evaluation = structure(logical(0), tags = list(type = "string")), CausingEntity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_provisioned_product_plan_output"]]))
 }
 
 .servicecatalog$describe_provisioning_artifact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactName = structure(logical(0), tags = list(type = "string")), ProductName = structure(logical(0), tags = list(type = "string")), Verbose = structure(logical(0), tags = list(type = "boolean")), IncludeProvisioningArtifactParameters = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_provisioning_artifact_input"]]))
 }
 
 .servicecatalog$describe_provisioning_artifact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProvisioningArtifactDetail = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), Active = structure(logical(0), tags = list(type = "boolean")), Guidance = structure(logical(0), tags = list(type = "string")), SourceRevision = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Info = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Status = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactParameters = structure(list(structure(list(ParameterKey = structure(logical(0), tags = list(type = "string")), DefaultValue = structure(logical(0), tags = list(type = "string")), ParameterType = structure(logical(0), tags = list(type = "string")), IsNoEcho = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), ParameterConstraints = structure(list(AllowedValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowedPattern = structure(logical(0), tags = list(type = "string")), ConstraintDescription = structure(logical(0), tags = list(type = "string")), MaxLength = structure(logical(0), tags = list(type = "string")), MinLength = structure(logical(0), tags = list(type = "string")), MaxValue = structure(logical(0), tags = list(type = "string")), MinValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_provisioning_artifact_output"]]))
 }
 
 .servicecatalog$describe_provisioning_parameters_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProductName = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactName = structure(logical(0), tags = list(type = "string")), PathId = structure(logical(0), tags = list(type = "string")), PathName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_provisioning_parameters_input"]]))
 }
 
 .servicecatalog$describe_provisioning_parameters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProvisioningArtifactParameters = structure(list(structure(list(ParameterKey = structure(logical(0), tags = list(type = "string")), DefaultValue = structure(logical(0), tags = list(type = "string")), ParameterType = structure(logical(0), tags = list(type = "string")), IsNoEcho = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), ParameterConstraints = structure(list(AllowedValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowedPattern = structure(logical(0), tags = list(type = "string")), ConstraintDescription = structure(logical(0), tags = list(type = "string")), MaxLength = structure(logical(0), tags = list(type = "string")), MinLength = structure(logical(0), tags = list(type = "string")), MaxValue = structure(logical(0), tags = list(type = "string")), MinValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), ConstraintSummaries = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UsageInstructions = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TagOptions = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ProvisioningArtifactPreferences = structure(list(StackSetAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StackSetRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ProvisioningArtifactOutputs = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "This property is deprecated and returns the Id and Description of the Provisioning Artifact. Use ProvisioningArtifactOutputKeys instead to get the Keys and Descriptions of the outputs.", type = "list")), ProvisioningArtifactOutputKeys = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_provisioning_parameters_output"]]))
 }
 
 .servicecatalog$describe_record_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), PageToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_record_input"]]))
 }
 
 .servicecatalog$describe_record_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecordDetail = structure(list(RecordId = structure(logical(0), tags = list(type = "string")), ProvisionedProductName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp")), ProvisionedProductType = structure(logical(0), tags = list(type = "string")), RecordType = structure(logical(0), tags = list(type = "string")), ProvisionedProductId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), PathId = structure(logical(0), tags = list(type = "string")), RecordErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RecordTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LaunchRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RecordOutputs = structure(list(structure(list(OutputKey = structure(logical(0), tags = list(type = "string")), OutputValue = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_record_output"]]))
 }
 
 .servicecatalog$describe_service_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_service_action_input"]]))
 }
 
 .servicecatalog$describe_service_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceActionDetail = structure(list(ServiceActionSummary = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DefinitionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Definition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_service_action_output"]]))
 }
 
 .servicecatalog$describe_service_action_execution_parameters_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProvisionedProductId = structure(logical(0), tags = list(type = "string")), ServiceActionId = structure(logical(0), tags = list(type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_service_action_execution_parameters_input"]]))
 }
 
 .servicecatalog$describe_service_action_execution_parameters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceActionParameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), DefaultValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_service_action_execution_parameters_output"]]))
 }
 
 .servicecatalog$describe_tag_option_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_tag_option_input"]]))
 }
 
 .servicecatalog$describe_tag_option_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TagOptionDetail = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Active = structure(logical(0), tags = list(type = "boolean")), Id = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["describe_tag_option_output"]]))
 }
 
 .servicecatalog$disable_aws_organizations_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["disable_aws_organizations_access_input"]]))
 }
 
 .servicecatalog$disable_aws_organizations_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["disable_aws_organizations_access_output"]]))
 }
 
 .servicecatalog$disassociate_budget_from_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BudgetName = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["disassociate_budget_from_resource_input"]]))
 }
 
 .servicecatalog$disassociate_budget_from_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["disassociate_budget_from_resource_output"]]))
 }
 
 .servicecatalog$disassociate_principal_from_portfolio_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string")), PrincipalARN = structure(logical(0), tags = list(type = "string")), PrincipalType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["disassociate_principal_from_portfolio_input"]]))
 }
 
 .servicecatalog$disassociate_principal_from_portfolio_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["disassociate_principal_from_portfolio_output"]]))
 }
 
 .servicecatalog$disassociate_product_from_portfolio_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["disassociate_product_from_portfolio_input"]]))
 }
 
 .servicecatalog$disassociate_product_from_portfolio_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["disassociate_product_from_portfolio_output"]]))
 }
 
 .servicecatalog$disassociate_service_action_from_provisioning_artifact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), ServiceActionId = structure(logical(0), tags = list(type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["disassociate_service_action_from_provisioning_artifact_input"]]))
 }
 
 .servicecatalog$disassociate_service_action_from_provisioning_artifact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["disassociate_service_action_from_provisioning_artifact_output"]]))
 }
 
 .servicecatalog$disassociate_tag_option_from_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), TagOptionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["disassociate_tag_option_from_resource_input"]]))
 }
 
 .servicecatalog$disassociate_tag_option_from_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["disassociate_tag_option_from_resource_output"]]))
 }
 
 .servicecatalog$enable_aws_organizations_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["enable_aws_organizations_access_input"]]))
 }
 
 .servicecatalog$enable_aws_organizations_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["enable_aws_organizations_access_output"]]))
 }
 
 .servicecatalog$execute_provisioned_product_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PlanId = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["execute_provisioned_product_plan_input"]]))
 }
 
 .servicecatalog$execute_provisioned_product_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecordDetail = structure(list(RecordId = structure(logical(0), tags = list(type = "string")), ProvisionedProductName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp")), ProvisionedProductType = structure(logical(0), tags = list(type = "string")), RecordType = structure(logical(0), tags = list(type = "string")), ProvisionedProductId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), PathId = structure(logical(0), tags = list(type = "string")), RecordErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RecordTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LaunchRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["execute_provisioned_product_plan_output"]]))
 }
 
 .servicecatalog$execute_provisioned_product_service_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProvisionedProductId = structure(logical(0), tags = list(type = "string")), ServiceActionId = structure(logical(0), tags = list(type = "string")), ExecuteToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["execute_provisioned_product_service_action_input"]]))
 }
 
 .servicecatalog$execute_provisioned_product_service_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecordDetail = structure(list(RecordId = structure(logical(0), tags = list(type = "string")), ProvisionedProductName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp")), ProvisionedProductType = structure(logical(0), tags = list(type = "string")), RecordType = structure(logical(0), tags = list(type = "string")), ProvisionedProductId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), PathId = structure(logical(0), tags = list(type = "string")), RecordErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RecordTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LaunchRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["execute_provisioned_product_service_action_output"]]))
 }
 
 .servicecatalog$get_aws_organizations_access_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["get_aws_organizations_access_status_input"]]))
 }
 
 .servicecatalog$get_aws_organizations_access_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccessStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["get_aws_organizations_access_status_output"]]))
 }
 
 .servicecatalog$get_provisioned_product_outputs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProvisionedProductId = structure(logical(0), tags = list(type = "string")), ProvisionedProductName = structure(logical(0), tags = list(type = "string")), OutputKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PageSize = structure(logical(0), tags = list(type = "integer")), PageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["get_provisioned_product_outputs_input"]]))
 }
 
 .servicecatalog$get_provisioned_product_outputs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Outputs = structure(list(structure(list(OutputKey = structure(logical(0), tags = list(type = "string")), OutputValue = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["get_provisioned_product_outputs_output"]]))
 }
 
 .servicecatalog$import_as_provisioned_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), ProvisionedProductName = structure(logical(0), tags = list(type = "string")), PhysicalId = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["import_as_provisioned_product_input"]]))
 }
 
 .servicecatalog$import_as_provisioned_product_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecordDetail = structure(list(RecordId = structure(logical(0), tags = list(type = "string")), ProvisionedProductName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp")), ProvisionedProductType = structure(logical(0), tags = list(type = "string")), RecordType = structure(logical(0), tags = list(type = "string")), ProvisionedProductId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), PathId = structure(logical(0), tags = list(type = "string")), RecordErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RecordTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LaunchRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["import_as_provisioned_product_output"]]))
 }
 
 .servicecatalog$list_accepted_portfolio_shares_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PageToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer")), PortfolioShareType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_accepted_portfolio_shares_input"]]))
 }
 
 .servicecatalog$list_accepted_portfolio_shares_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortfolioDetails = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), ProviderName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_accepted_portfolio_shares_output"]]))
 }
 
 .servicecatalog$list_budgets_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer")), PageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_budgets_for_resource_input"]]))
 }
 
 .servicecatalog$list_budgets_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Budgets = structure(list(structure(list(BudgetName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_budgets_for_resource_output"]]))
 }
 
 .servicecatalog$list_constraints_for_portfolio_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer")), PageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_constraints_for_portfolio_input"]]))
 }
 
 .servicecatalog$list_constraints_for_portfolio_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConstraintDetails = structure(list(structure(list(ConstraintId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_constraints_for_portfolio_output"]]))
 }
 
 .servicecatalog$list_launch_paths_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer")), PageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_launch_paths_input"]]))
 }
 
 .servicecatalog$list_launch_paths_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LaunchPathSummaries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ConstraintSummaries = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_launch_paths_output"]]))
 }
 
 .servicecatalog$list_organization_portfolio_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string")), OrganizationNodeType = structure(logical(0), tags = list(type = "string")), PageToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_organization_portfolio_access_input"]]))
 }
 
 .servicecatalog$list_organization_portfolio_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationNodes = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_organization_portfolio_access_output"]]))
 }
 
 .servicecatalog$list_portfolio_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string")), OrganizationParentId = structure(logical(0), tags = list(type = "string")), PageToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_portfolio_access_input"]]))
 }
 
 .servicecatalog$list_portfolio_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_portfolio_access_output"]]))
 }
 
 .servicecatalog$list_portfolios_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PageToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_portfolios_input"]]))
 }
 
 .servicecatalog$list_portfolios_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortfolioDetails = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), ProviderName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_portfolios_output"]]))
 }
 
 .servicecatalog$list_portfolios_for_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), PageToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_portfolios_for_product_input"]]))
 }
 
 .servicecatalog$list_portfolios_for_product_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortfolioDetails = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), ProviderName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_portfolios_for_product_output"]]))
 }
 
 .servicecatalog$list_principals_for_portfolio_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer")), PageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_principals_for_portfolio_input"]]))
 }
 
 .servicecatalog$list_principals_for_portfolio_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Principals = structure(list(structure(list(PrincipalARN = structure(logical(0), tags = list(type = "string")), PrincipalType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_principals_for_portfolio_output"]]))
 }
 
 .servicecatalog$list_provisioned_product_plans_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProvisionProductId = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer")), PageToken = structure(logical(0), tags = list(type = "string")), AccessLevelFilter = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_provisioned_product_plans_input"]]))
 }
 
 .servicecatalog$list_provisioned_product_plans_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProvisionedProductPlans = structure(list(structure(list(PlanName = structure(logical(0), tags = list(type = "string")), PlanId = structure(logical(0), tags = list(type = "string")), ProvisionProductId = structure(logical(0), tags = list(type = "string")), ProvisionProductName = structure(logical(0), tags = list(type = "string")), PlanType = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_provisioned_product_plans_output"]]))
 }
 
 .servicecatalog$list_provisioning_artifacts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_provisioning_artifacts_input"]]))
 }
 
 .servicecatalog$list_provisioning_artifacts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProvisioningArtifactDetails = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), Active = structure(logical(0), tags = list(type = "boolean")), Guidance = structure(logical(0), tags = list(type = "string")), SourceRevision = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_provisioning_artifacts_output"]]))
 }
 
 .servicecatalog$list_provisioning_artifacts_for_service_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceActionId = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer")), PageToken = structure(logical(0), tags = list(type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_provisioning_artifacts_for_service_action_input"]]))
 }
 
 .servicecatalog$list_provisioning_artifacts_for_service_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProvisioningArtifactViews = structure(list(structure(list(ProductViewSummary = structure(list(Id = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ShortDescription = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Distributor = structure(logical(0), tags = list(type = "string")), HasDefaultPath = structure(logical(0), tags = list(type = "boolean")), SupportEmail = structure(logical(0), tags = list(type = "string")), SupportDescription = structure(logical(0), tags = list(type = "string")), SupportUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProvisioningArtifact = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), Guidance = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_provisioning_artifacts_for_service_action_output"]]))
 }
 
 .servicecatalog$list_record_history_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), AccessLevelFilter = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SearchFilter = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PageSize = structure(logical(0), tags = list(type = "integer")), PageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_record_history_input"]]))
 }
 
 .servicecatalog$list_record_history_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecordDetails = structure(list(structure(list(RecordId = structure(logical(0), tags = list(type = "string")), ProvisionedProductName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp")), ProvisionedProductType = structure(logical(0), tags = list(type = "string")), RecordType = structure(logical(0), tags = list(type = "string")), ProvisionedProductId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), PathId = structure(logical(0), tags = list(type = "string")), RecordErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RecordTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LaunchRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_record_history_output"]]))
 }
 
 .servicecatalog$list_resources_for_tag_option_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TagOptionId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer")), PageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_resources_for_tag_option_input"]]))
 }
 
 .servicecatalog$list_resources_for_tag_option_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceDetails = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), PageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_resources_for_tag_option_output"]]))
 }
 
 .servicecatalog$list_service_actions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer")), PageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_service_actions_input"]]))
 }
 
 .servicecatalog$list_service_actions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceActionSummaries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DefinitionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_service_actions_output"]]))
 }
 
 .servicecatalog$list_service_actions_for_provisioning_artifact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer")), PageToken = structure(logical(0), tags = list(type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_service_actions_for_provisioning_artifact_input"]]))
 }
 
 .servicecatalog$list_service_actions_for_provisioning_artifact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceActionSummaries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DefinitionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_service_actions_for_provisioning_artifact_output"]]))
 }
 
 .servicecatalog$list_stack_instances_for_provisioned_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProvisionedProductId = structure(logical(0), tags = list(type = "string")), PageToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_stack_instances_for_provisioned_product_input"]]))
 }
 
 .servicecatalog$list_stack_instances_for_provisioned_product_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StackInstances = structure(list(structure(list(Account = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), StackInstanceStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_stack_instances_for_provisioned_product_output"]]))
 }
 
 .servicecatalog$list_tag_options_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filters = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Active = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), PageSize = structure(logical(0), tags = list(type = "integer")), PageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_tag_options_input"]]))
 }
 
 .servicecatalog$list_tag_options_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TagOptionDetails = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Active = structure(logical(0), tags = list(type = "boolean")), Id = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["list_tag_options_output"]]))
 }
 
 .servicecatalog$notify_provision_product_engine_workflow_result_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkflowToken = structure(logical(0), tags = list(type = "string")), RecordId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string")), ResourceIdentifier = structure(list(UniqueTag = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Outputs = structure(list(structure(list(OutputKey = structure(logical(0), tags = list(type = "string")), OutputValue = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["notify_provision_product_engine_workflow_result_input"]]))
 }
 
 .servicecatalog$notify_provision_product_engine_workflow_result_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["notify_provision_product_engine_workflow_result_output"]]))
 }
 
 .servicecatalog$notify_terminate_provisioned_product_engine_workflow_result_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkflowToken = structure(logical(0), tags = list(type = "string")), RecordId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["notify_terminate_provisioned_product_engine_workflow_result_input"]]))
 }
 
 .servicecatalog$notify_terminate_provisioned_product_engine_workflow_result_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["notify_terminate_provisioned_product_engine_workflow_result_output"]]))
 }
 
 .servicecatalog$notify_update_provisioned_product_engine_workflow_result_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkflowToken = structure(logical(0), tags = list(type = "string")), RecordId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string")), Outputs = structure(list(structure(list(OutputKey = structure(logical(0), tags = list(type = "string")), OutputValue = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["notify_update_provisioned_product_engine_workflow_result_input"]]))
 }
 
 .servicecatalog$notify_update_provisioned_product_engine_workflow_result_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["notify_update_provisioned_product_engine_workflow_result_output"]]))
 }
 
 .servicecatalog$provision_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProductName = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactName = structure(logical(0), tags = list(type = "string")), PathId = structure(logical(0), tags = list(type = "string")), PathName = structure(logical(0), tags = list(type = "string")), ProvisionedProductName = structure(logical(0), tags = list(type = "string")), ProvisioningParameters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProvisioningPreferences = structure(list(StackSetAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StackSetRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StackSetFailureToleranceCount = structure(logical(0), tags = list(type = "integer")), StackSetFailureTolerancePercentage = structure(logical(0), tags = list(type = "integer")), StackSetMaxConcurrencyCount = structure(logical(0), tags = list(type = "integer")), StackSetMaxConcurrencyPercentage = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NotificationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ProvisionToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["provision_product_input"]]))
 }
 
 .servicecatalog$provision_product_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecordDetail = structure(list(RecordId = structure(logical(0), tags = list(type = "string")), ProvisionedProductName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp")), ProvisionedProductType = structure(logical(0), tags = list(type = "string")), RecordType = structure(logical(0), tags = list(type = "string")), ProvisionedProductId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), PathId = structure(logical(0), tags = list(type = "string")), RecordErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RecordTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LaunchRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["provision_product_output"]]))
 }
 
 .servicecatalog$reject_portfolio_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string")), PortfolioShareType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["reject_portfolio_share_input"]]))
 }
 
 .servicecatalog$reject_portfolio_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["reject_portfolio_share_output"]]))
 }
 
 .servicecatalog$scan_provisioned_products_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), AccessLevelFilter = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PageSize = structure(logical(0), tags = list(type = "integer")), PageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["scan_provisioned_products_input"]]))
 }
 
 .servicecatalog$scan_provisioned_products_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProvisionedProducts = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), IdempotencyToken = structure(logical(0), tags = list(type = "string")), LastRecordId = structure(logical(0), tags = list(type = "string")), LastProvisioningRecordId = structure(logical(0), tags = list(type = "string")), LastSuccessfulProvisioningRecordId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), LaunchRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["scan_provisioned_products_output"]]))
 }
 
 .servicecatalog$search_products_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), PageSize = structure(logical(0), tags = list(type = "integer")), SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string")), PageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["search_products_input"]]))
 }
 
 .servicecatalog$search_products_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProductViewSummaries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ShortDescription = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Distributor = structure(logical(0), tags = list(type = "string")), HasDefaultPath = structure(logical(0), tags = list(type = "boolean")), SupportEmail = structure(logical(0), tags = list(type = "string")), SupportDescription = structure(logical(0), tags = list(type = "string")), SupportUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProductViewAggregations = structure(list(structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), ApproximateCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["search_products_output"]]))
 }
 
 .servicecatalog$search_products_as_admin_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string")), PageToken = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer")), ProductSource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["search_products_as_admin_input"]]))
 }
 
 .servicecatalog$search_products_as_admin_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProductViewDetails = structure(list(structure(list(ProductViewSummary = structure(list(Id = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ShortDescription = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Distributor = structure(logical(0), tags = list(type = "string")), HasDefaultPath = structure(logical(0), tags = list(type = "boolean")), SupportEmail = structure(logical(0), tags = list(type = "string")), SupportDescription = structure(logical(0), tags = list(type = "string")), SupportUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), ProductARN = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), SourceConnection = structure(list(Type = structure(logical(0), tags = list(type = "string")), ConnectionParameters = structure(list(CodeStar = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), Repository = structure(logical(0), tags = list(type = "string")), Branch = structure(logical(0), tags = list(type = "string")), ArtifactPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), LastSync = structure(list(LastSyncTime = structure(logical(0), tags = list(type = "timestamp")), LastSyncStatus = structure(logical(0), tags = list(type = "string")), LastSyncStatusMessage = structure(logical(0), tags = list(type = "string")), LastSuccessfulSyncTime = structure(logical(0), tags = list(type = "timestamp")), LastSuccessfulSyncProvisioningArtifactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["search_products_as_admin_output"]]))
 }
 
 .servicecatalog$search_provisioned_products_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), AccessLevelFilter = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Filters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer")), PageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["search_provisioned_products_input"]]))
 }
 
 .servicecatalog$search_provisioned_products_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProvisionedProducts = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), IdempotencyToken = structure(logical(0), tags = list(type = "string")), LastRecordId = structure(logical(0), tags = list(type = "string")), LastProvisioningRecordId = structure(logical(0), tags = list(type = "string")), LastSuccessfulProvisioningRecordId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PhysicalId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProductName = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactName = structure(logical(0), tags = list(type = "string")), UserArn = structure(logical(0), tags = list(type = "string")), UserArnSession = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TotalResultsCount = structure(logical(0), tags = list(type = "integer")), NextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["search_provisioned_products_output"]]))
 }
 
 .servicecatalog$terminate_provisioned_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProvisionedProductName = structure(logical(0), tags = list(type = "string")), ProvisionedProductId = structure(logical(0), tags = list(type = "string")), TerminateToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), IgnoreErrors = structure(logical(0), tags = list(type = "boolean")), AcceptLanguage = structure(logical(0), tags = list(type = "string")), RetainPhysicalResources = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["terminate_provisioned_product_input"]]))
 }
 
 .servicecatalog$terminate_provisioned_product_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecordDetail = structure(list(RecordId = structure(logical(0), tags = list(type = "string")), ProvisionedProductName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp")), ProvisionedProductType = structure(logical(0), tags = list(type = "string")), RecordType = structure(logical(0), tags = list(type = "string")), ProvisionedProductId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), PathId = structure(logical(0), tags = list(type = "string")), RecordErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RecordTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LaunchRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["terminate_provisioned_product_output"]]))
 }
 
 .servicecatalog$update_constraint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Parameters = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_constraint_input"]]))
 }
 
 .servicecatalog$update_constraint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConstraintDetail = structure(list(ConstraintId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConstraintParameters = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_constraint_output"]]))
 }
 
 .servicecatalog$update_portfolio_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ProviderName = structure(logical(0), tags = list(type = "string")), AddTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RemoveTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_portfolio_input"]]))
 }
 
 .servicecatalog$update_portfolio_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortfolioDetail = structure(list(Id = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), ProviderName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_portfolio_output"]]))
 }
 
 .servicecatalog$update_portfolio_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), PortfolioId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), OrganizationNode = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ShareTagOptions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), SharePrincipals = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_portfolio_share_input"]]))
 }
 
 .servicecatalog$update_portfolio_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortfolioShareToken = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_portfolio_share_output"]]))
 }
 
 .servicecatalog$update_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Distributor = structure(logical(0), tags = list(type = "string")), SupportDescription = structure(logical(0), tags = list(type = "string")), SupportEmail = structure(logical(0), tags = list(type = "string")), SupportUrl = structure(logical(0), tags = list(type = "string")), AddTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RemoveTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SourceConnection = structure(list(Type = structure(logical(0), tags = list(type = "string")), ConnectionParameters = structure(list(CodeStar = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), Repository = structure(logical(0), tags = list(type = "string")), Branch = structure(logical(0), tags = list(type = "string")), ArtifactPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_product_input"]]))
 }
 
 .servicecatalog$update_product_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProductViewDetail = structure(list(ProductViewSummary = structure(list(Id = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ShortDescription = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Distributor = structure(logical(0), tags = list(type = "string")), HasDefaultPath = structure(logical(0), tags = list(type = "boolean")), SupportEmail = structure(logical(0), tags = list(type = "string")), SupportDescription = structure(logical(0), tags = list(type = "string")), SupportUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), ProductARN = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), SourceConnection = structure(list(Type = structure(logical(0), tags = list(type = "string")), ConnectionParameters = structure(list(CodeStar = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), Repository = structure(logical(0), tags = list(type = "string")), Branch = structure(logical(0), tags = list(type = "string")), ArtifactPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), LastSync = structure(list(LastSyncTime = structure(logical(0), tags = list(type = "timestamp")), LastSyncStatus = structure(logical(0), tags = list(type = "string")), LastSyncStatusMessage = structure(logical(0), tags = list(type = "string")), LastSuccessfulSyncTime = structure(logical(0), tags = list(type = "timestamp")), LastSuccessfulSyncProvisioningArtifactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_product_output"]]))
 }
 
 .servicecatalog$update_provisioned_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProvisionedProductName = structure(logical(0), tags = list(type = "string")), ProvisionedProductId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProductName = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactName = structure(logical(0), tags = list(type = "string")), PathId = structure(logical(0), tags = list(type = "string")), PathName = structure(logical(0), tags = list(type = "string")), ProvisioningParameters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), UsePreviousValue = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ProvisioningPreferences = structure(list(StackSetAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StackSetRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StackSetFailureToleranceCount = structure(logical(0), tags = list(type = "integer")), StackSetFailureTolerancePercentage = structure(logical(0), tags = list(type = "integer")), StackSetMaxConcurrencyCount = structure(logical(0), tags = list(type = "integer")), StackSetMaxConcurrencyPercentage = structure(logical(0), tags = list(type = "integer")), StackSetOperationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdateToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_provisioned_product_input"]]))
 }
 
 .servicecatalog$update_provisioned_product_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecordDetail = structure(list(RecordId = structure(logical(0), tags = list(type = "string")), ProvisionedProductName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), UpdatedTime = structure(logical(0), tags = list(type = "timestamp")), ProvisionedProductType = structure(logical(0), tags = list(type = "string")), RecordType = structure(logical(0), tags = list(type = "string")), ProvisionedProductId = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), PathId = structure(logical(0), tags = list(type = "string")), RecordErrors = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RecordTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LaunchRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_provisioned_product_output"]]))
 }
 
 .servicecatalog$update_provisioned_product_properties_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProvisionedProductId = structure(logical(0), tags = list(type = "string")), ProvisionedProductProperties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_provisioned_product_properties_input"]]))
 }
 
 .servicecatalog$update_provisioned_product_properties_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProvisionedProductId = structure(logical(0), tags = list(type = "string")), ProvisionedProductProperties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), RecordId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_provisioned_product_properties_output"]]))
 }
 
 .servicecatalog$update_provisioning_artifact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceptLanguage = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Active = structure(logical(0), tags = list(type = "boolean")), Guidance = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_provisioning_artifact_input"]]))
 }
 
 .servicecatalog$update_provisioning_artifact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProvisioningArtifactDetail = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), Active = structure(logical(0), tags = list(type = "boolean")), Guidance = structure(logical(0), tags = list(type = "string")), SourceRevision = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Info = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_provisioning_artifact_output"]]))
 }
 
 .servicecatalog$update_service_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Definition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Description = structure(logical(0), tags = list(type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_service_action_input"]]))
 }
 
 .servicecatalog$update_service_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceActionDetail = structure(list(ServiceActionSummary = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DefinitionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Definition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_service_action_output"]]))
 }
 
 .servicecatalog$update_tag_option_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Active = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_tag_option_input"]]))
 }
 
 .servicecatalog$update_tag_option_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TagOptionDetail = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Active = structure(logical(0), tags = list(type = "boolean")), Id = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .servicecatalog_shapes[["update_tag_option_output"]]))
 }

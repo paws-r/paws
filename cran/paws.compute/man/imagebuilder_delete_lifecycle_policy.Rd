@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_delete_lifecycle_policy}
 \alias{imagebuilder_delete_lifecycle_policy}
-\title{Delete the specified lifecycle policy resource}
+\title{Deletes the specified lifecycle policy resource}
 \usage{
 imagebuilder_delete_lifecycle_policy(lifecyclePolicyArn)
 }
@@ -10,7 +10,7 @@ imagebuilder_delete_lifecycle_policy(lifecyclePolicyArn)
 \item{lifecyclePolicyArn}{[required] The Amazon Resource Name (ARN) of the lifecycle policy resource to delete.}
 }
 \description{
-Delete the specified lifecycle policy resource.
+Deletes the specified lifecycle policy resource.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_delete_lifecycle_policy/} for full documentation.
 }

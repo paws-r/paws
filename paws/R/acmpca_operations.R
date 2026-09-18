@@ -26,7 +26,7 @@ NULL
 #' 
 #' -   In a CRL configuration, the `S3BucketName` parameter must conform to [Amazon S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
 #' 
-#' -   A configuration containing a custom Canonical Name (CNAME) parameter for CRLs or OCSP must conform to [RFC2396](https://www.ietf.org/rfc/rfc2396.txt) restrictions on the use of special characters in a CNAME.
+#' -   A configuration containing a custom Canonical Name (CNAME) parameter for CRLs or OCSP must conform to [RFC2396](https://www.rfc-editor.org/rfc/rfc2396.txt) restrictions on the use of special characters in a CNAME.
 #' 
 #' -   In a CRL or OCSP configuration, the value of a CNAME parameter must not include a protocol prefix such as "http://" or "https://".
 #' 
@@ -58,7 +58,7 @@ NULL
 #' svc$create_certificate_authority(
 #'   CertificateAuthorityConfiguration = list(
 #'     KeyAlgorithm = "RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87"|"SM2",
-#'     SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SM3WITHSM2"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87",
+#'     SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SHA256WITHRSA_PSS"|"SHA384WITHRSA_PSS"|"SHA512WITHRSA_PSS"|"SM3WITHSM2"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87",
 #'     Subject = list(
 #'       Country = "string",
 #'       Organization = "string",
@@ -560,7 +560,7 @@ acmpca_delete_policy <- function(ResourceArn) {
 #'     FailureReason = "REQUEST_TIMED_OUT"|"UNSUPPORTED_ALGORITHM"|"OTHER",
 #'     CertificateAuthorityConfiguration = list(
 #'       KeyAlgorithm = "RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87"|"SM2",
-#'       SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SM3WITHSM2"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87",
+#'       SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SHA256WITHRSA_PSS"|"SHA384WITHRSA_PSS"|"SHA512WITHRSA_PSS"|"SM3WITHSM2"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87",
 #'       Subject = list(
 #'         Country = "string",
 #'         Organization = "string",
@@ -1280,7 +1280,7 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #'   ),
 #'   CertificateAuthorityArn = "string",
 #'   Csr = raw,
-#'   SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SM3WITHSM2"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87",
+#'   SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SHA256WITHRSA_PSS"|"SHA384WITHRSA_PSS"|"SHA512WITHRSA_PSS"|"SM3WITHSM2"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87",
 #'   TemplateArn = "string",
 #'   Validity = list(
 #'     Value = 123,
@@ -1361,7 +1361,7 @@ acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthority
 #'       FailureReason = "REQUEST_TIMED_OUT"|"UNSUPPORTED_ALGORITHM"|"OTHER",
 #'       CertificateAuthorityConfiguration = list(
 #'         KeyAlgorithm = "RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87"|"SM2",
-#'         SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SM3WITHSM2"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87",
+#'         SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SHA256WITHRSA_PSS"|"SHA384WITHRSA_PSS"|"SHA512WITHRSA_PSS"|"SM3WITHSM2"|"ML_DSA_44"|"ML_DSA_65"|"ML_DSA_87",
 #'         Subject = list(
 #'           Country = "string",
 #'           Organization = "string",
@@ -1945,7 +1945,7 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' 
 #' -   In a CRL configuration, the `S3BucketName` parameter must conform to [Amazon S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
 #' 
-#' -   A configuration containing a custom Canonical Name (CNAME) parameter for CRLs or OCSP must conform to [RFC2396](https://www.ietf.org/rfc/rfc2396.txt) restrictions on the use of special characters in a CNAME.
+#' -   A configuration containing a custom Canonical Name (CNAME) parameter for CRLs or OCSP must conform to [RFC2396](https://www.rfc-editor.org/rfc/rfc2396.txt) restrictions on the use of special characters in a CNAME.
 #' 
 #' -   In a CRL or OCSP configuration, the value of a CNAME parameter must not include a protocol prefix such as "http://" or "https://".
 #' 

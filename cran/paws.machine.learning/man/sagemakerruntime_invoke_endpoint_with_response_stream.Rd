@@ -15,7 +15,8 @@ sagemakerruntime_invoke_endpoint_with_response_stream(
   TargetContainerHostname = NULL,
   InferenceId = NULL,
   InferenceComponentName = NULL,
-  SessionId = NULL
+  SessionId = NULL,
+  PrefixAwareId = NULL
 )
 }
 \arguments{
@@ -48,6 +49,10 @@ For information about how to use variant targeting to perform a/b testing, see \
 \item{SessionId}{The ID of a stateful session to handle your request.
 
 You can't create a stateful session by using the \code{\link[=sagemakerruntime_invoke_endpoint_with_response_stream]{invoke_endpoint_with_response_stream}} action. Instead, you can create one by using the \code{\link[=sagemakerruntime_invoke_endpoint]{invoke_endpoint}} action. In your request, you specify \code{NEW_SESSION} for the \code{SessionId} request parameter. The response to that request provides the session ID for the \code{NewSessionId} response parameter.}
+
+\item{PrefixAwareId}{An optional, stable identifier that serves as a routing hint for prefix-aware routing. The service routes requests with the same prefix and the same identifier to the same instance. If requests from different applications might have the same prompt prefix, set a different identifier for each application to differentiate their routing decisions.
+
+Applies only to endpoints configured with a \code{RoutingStrategy} of \code{PREFIX_AWARE}.}
 }
 \description{
 Invokes a model at the specified endpoint to return the inference response as a stream. The inference stream provides the response payload incrementally as a series of parts. Before you can get an inference stream, you must have access to a model that's deployed using Amazon SageMaker AI hosting services, and the container for that model must support inference streaming.

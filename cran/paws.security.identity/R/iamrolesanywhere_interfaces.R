@@ -5,360 +5,300 @@ NULL
 
 .iamrolesanywhere$create_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), requireInstanceProperties = structure(logical(0), tags = list(type = "boolean", box = TRUE)), sessionPolicy = structure(logical(0), tags = list(type = "string")), roleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), managedPolicyArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), acceptRoleSessionName = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["create_profile_input"]]))
 }
 
 .iamrolesanywhere$create_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profile = structure(list(profileId = structure(logical(0), tags = list(type = "string")), profileArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), requireInstanceProperties = structure(logical(0), tags = list(type = "boolean", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdBy = structure(logical(0), tags = list(type = "string")), sessionPolicy = structure(logical(0), tags = list(type = "string")), roleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), managedPolicyArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), acceptRoleSessionName = structure(logical(0), tags = list(type = "boolean", box = TRUE)), attributeMappings = structure(list(structure(list(certificateField = structure(logical(0), tags = list(type = "string")), mappingRules = structure(list(structure(list(specifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["create_profile_output"]]))
 }
 
 .iamrolesanywhere$create_trust_anchor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), source = structure(list(sourceType = structure(logical(0), tags = list(type = "string")), sourceData = structure(list(x509CertificateData = structure(logical(0), tags = list(type = "string")), acmPcaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), notificationSettings = structure(list(structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), event = structure(logical(0), tags = list(type = "string")), threshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), channel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["create_trust_anchor_input"]]))
 }
 
 .iamrolesanywhere$create_trust_anchor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trustAnchor = structure(list(trustAnchorId = structure(logical(0), tags = list(type = "string")), trustAnchorArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), source = structure(list(sourceType = structure(logical(0), tags = list(type = "string")), sourceData = structure(list(x509CertificateData = structure(logical(0), tags = list(type = "string")), acmPcaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), notificationSettings = structure(list(structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), event = structure(logical(0), tags = list(type = "string")), threshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), channel = structure(logical(0), tags = list(type = "string")), configuredBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["create_trust_anchor_output"]]))
 }
 
 .iamrolesanywhere$delete_attribute_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profileId = structure(logical(0), tags = list(location = "uri", locationName = "profileId", type = "string")), certificateField = structure(logical(0), tags = list(location = "querystring", locationName = "certificateField", type = "string")), specifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "specifiers", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["delete_attribute_mapping_input"]]))
 }
 
 .iamrolesanywhere$delete_attribute_mapping_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profile = structure(list(profileId = structure(logical(0), tags = list(type = "string")), profileArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), requireInstanceProperties = structure(logical(0), tags = list(type = "boolean", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdBy = structure(logical(0), tags = list(type = "string")), sessionPolicy = structure(logical(0), tags = list(type = "string")), roleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), managedPolicyArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), acceptRoleSessionName = structure(logical(0), tags = list(type = "boolean", box = TRUE)), attributeMappings = structure(list(structure(list(certificateField = structure(logical(0), tags = list(type = "string")), mappingRules = structure(list(structure(list(specifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["delete_attribute_mapping_output"]]))
 }
 
 .iamrolesanywhere$delete_crl_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(crlId = structure(logical(0), tags = list(location = "uri", locationName = "crlId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["delete_crl_input"]]))
 }
 
 .iamrolesanywhere$delete_crl_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(crl = structure(list(crlId = structure(logical(0), tags = list(type = "string")), crlArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), crlData = structure(logical(0), tags = list(type = "blob")), trustAnchorArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["delete_crl_output"]]))
 }
 
 .iamrolesanywhere$delete_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profileId = structure(logical(0), tags = list(location = "uri", locationName = "profileId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["delete_profile_input"]]))
 }
 
 .iamrolesanywhere$delete_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profile = structure(list(profileId = structure(logical(0), tags = list(type = "string")), profileArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), requireInstanceProperties = structure(logical(0), tags = list(type = "boolean", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdBy = structure(logical(0), tags = list(type = "string")), sessionPolicy = structure(logical(0), tags = list(type = "string")), roleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), managedPolicyArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), acceptRoleSessionName = structure(logical(0), tags = list(type = "boolean", box = TRUE)), attributeMappings = structure(list(structure(list(certificateField = structure(logical(0), tags = list(type = "string")), mappingRules = structure(list(structure(list(specifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["delete_profile_output"]]))
 }
 
 .iamrolesanywhere$delete_trust_anchor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trustAnchorId = structure(logical(0), tags = list(location = "uri", locationName = "trustAnchorId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["delete_trust_anchor_input"]]))
 }
 
 .iamrolesanywhere$delete_trust_anchor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trustAnchor = structure(list(trustAnchorId = structure(logical(0), tags = list(type = "string")), trustAnchorArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), source = structure(list(sourceType = structure(logical(0), tags = list(type = "string")), sourceData = structure(list(x509CertificateData = structure(logical(0), tags = list(type = "string")), acmPcaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), notificationSettings = structure(list(structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), event = structure(logical(0), tags = list(type = "string")), threshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), channel = structure(logical(0), tags = list(type = "string")), configuredBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["delete_trust_anchor_output"]]))
 }
 
 .iamrolesanywhere$disable_crl_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(crlId = structure(logical(0), tags = list(location = "uri", locationName = "crlId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["disable_crl_input"]]))
 }
 
 .iamrolesanywhere$disable_crl_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(crl = structure(list(crlId = structure(logical(0), tags = list(type = "string")), crlArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), crlData = structure(logical(0), tags = list(type = "blob")), trustAnchorArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["disable_crl_output"]]))
 }
 
 .iamrolesanywhere$disable_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profileId = structure(logical(0), tags = list(location = "uri", locationName = "profileId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["disable_profile_input"]]))
 }
 
 .iamrolesanywhere$disable_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profile = structure(list(profileId = structure(logical(0), tags = list(type = "string")), profileArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), requireInstanceProperties = structure(logical(0), tags = list(type = "boolean", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdBy = structure(logical(0), tags = list(type = "string")), sessionPolicy = structure(logical(0), tags = list(type = "string")), roleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), managedPolicyArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), acceptRoleSessionName = structure(logical(0), tags = list(type = "boolean", box = TRUE)), attributeMappings = structure(list(structure(list(certificateField = structure(logical(0), tags = list(type = "string")), mappingRules = structure(list(structure(list(specifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["disable_profile_output"]]))
 }
 
 .iamrolesanywhere$disable_trust_anchor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trustAnchorId = structure(logical(0), tags = list(location = "uri", locationName = "trustAnchorId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["disable_trust_anchor_input"]]))
 }
 
 .iamrolesanywhere$disable_trust_anchor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trustAnchor = structure(list(trustAnchorId = structure(logical(0), tags = list(type = "string")), trustAnchorArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), source = structure(list(sourceType = structure(logical(0), tags = list(type = "string")), sourceData = structure(list(x509CertificateData = structure(logical(0), tags = list(type = "string")), acmPcaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), notificationSettings = structure(list(structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), event = structure(logical(0), tags = list(type = "string")), threshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), channel = structure(logical(0), tags = list(type = "string")), configuredBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["disable_trust_anchor_output"]]))
 }
 
 .iamrolesanywhere$enable_crl_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(crlId = structure(logical(0), tags = list(location = "uri", locationName = "crlId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["enable_crl_input"]]))
 }
 
 .iamrolesanywhere$enable_crl_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(crl = structure(list(crlId = structure(logical(0), tags = list(type = "string")), crlArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), crlData = structure(logical(0), tags = list(type = "blob")), trustAnchorArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["enable_crl_output"]]))
 }
 
 .iamrolesanywhere$enable_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profileId = structure(logical(0), tags = list(location = "uri", locationName = "profileId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["enable_profile_input"]]))
 }
 
 .iamrolesanywhere$enable_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profile = structure(list(profileId = structure(logical(0), tags = list(type = "string")), profileArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), requireInstanceProperties = structure(logical(0), tags = list(type = "boolean", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdBy = structure(logical(0), tags = list(type = "string")), sessionPolicy = structure(logical(0), tags = list(type = "string")), roleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), managedPolicyArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), acceptRoleSessionName = structure(logical(0), tags = list(type = "boolean", box = TRUE)), attributeMappings = structure(list(structure(list(certificateField = structure(logical(0), tags = list(type = "string")), mappingRules = structure(list(structure(list(specifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["enable_profile_output"]]))
 }
 
 .iamrolesanywhere$enable_trust_anchor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trustAnchorId = structure(logical(0), tags = list(location = "uri", locationName = "trustAnchorId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["enable_trust_anchor_input"]]))
 }
 
 .iamrolesanywhere$enable_trust_anchor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trustAnchor = structure(list(trustAnchorId = structure(logical(0), tags = list(type = "string")), trustAnchorArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), source = structure(list(sourceType = structure(logical(0), tags = list(type = "string")), sourceData = structure(list(x509CertificateData = structure(logical(0), tags = list(type = "string")), acmPcaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), notificationSettings = structure(list(structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), event = structure(logical(0), tags = list(type = "string")), threshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), channel = structure(logical(0), tags = list(type = "string")), configuredBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["enable_trust_anchor_output"]]))
 }
 
 .iamrolesanywhere$get_crl_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(crlId = structure(logical(0), tags = list(location = "uri", locationName = "crlId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["get_crl_input"]]))
 }
 
 .iamrolesanywhere$get_crl_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(crl = structure(list(crlId = structure(logical(0), tags = list(type = "string")), crlArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), crlData = structure(logical(0), tags = list(type = "blob")), trustAnchorArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["get_crl_output"]]))
 }
 
 .iamrolesanywhere$get_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profileId = structure(logical(0), tags = list(location = "uri", locationName = "profileId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["get_profile_input"]]))
 }
 
 .iamrolesanywhere$get_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profile = structure(list(profileId = structure(logical(0), tags = list(type = "string")), profileArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), requireInstanceProperties = structure(logical(0), tags = list(type = "boolean", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdBy = structure(logical(0), tags = list(type = "string")), sessionPolicy = structure(logical(0), tags = list(type = "string")), roleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), managedPolicyArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), acceptRoleSessionName = structure(logical(0), tags = list(type = "boolean", box = TRUE)), attributeMappings = structure(list(structure(list(certificateField = structure(logical(0), tags = list(type = "string")), mappingRules = structure(list(structure(list(specifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["get_profile_output"]]))
 }
 
 .iamrolesanywhere$get_subject_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subjectId = structure(logical(0), tags = list(location = "uri", locationName = "subjectId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["get_subject_input"]]))
 }
 
 .iamrolesanywhere$get_subject_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subject = structure(list(subjectArn = structure(logical(0), tags = list(type = "string")), subjectId = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), x509Subject = structure(logical(0), tags = list(type = "string")), lastSeenAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), credentials = structure(list(structure(list(seenAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), serialNumber = structure(logical(0), tags = list(type = "string")), issuer = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), x509CertificateData = structure(logical(0), tags = list(type = "string")), failed = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), instanceProperties = structure(list(structure(list(seenAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), failed = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["get_subject_output"]]))
 }
 
 .iamrolesanywhere$get_trust_anchor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trustAnchorId = structure(logical(0), tags = list(location = "uri", locationName = "trustAnchorId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["get_trust_anchor_input"]]))
 }
 
 .iamrolesanywhere$get_trust_anchor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trustAnchor = structure(list(trustAnchorId = structure(logical(0), tags = list(type = "string")), trustAnchorArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), source = structure(list(sourceType = structure(logical(0), tags = list(type = "string")), sourceData = structure(list(x509CertificateData = structure(logical(0), tags = list(type = "string")), acmPcaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), notificationSettings = structure(list(structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), event = structure(logical(0), tags = list(type = "string")), threshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), channel = structure(logical(0), tags = list(type = "string")), configuredBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["get_trust_anchor_output"]]))
 }
 
 .iamrolesanywhere$import_crl_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), crlData = structure(logical(0), tags = list(type = "blob")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), trustAnchorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["import_crl_input"]]))
 }
 
 .iamrolesanywhere$import_crl_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(crl = structure(list(crlId = structure(logical(0), tags = list(type = "string")), crlArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), crlData = structure(logical(0), tags = list(type = "blob")), trustAnchorArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["import_crl_output"]]))
 }
 
 .iamrolesanywhere$list_crls_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), pageSize = structure(logical(0), tags = list(location = "querystring", locationName = "pageSize", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["list_crls_input"]]))
 }
 
 .iamrolesanywhere$list_crls_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), crls = structure(list(structure(list(crlId = structure(logical(0), tags = list(type = "string")), crlArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), crlData = structure(logical(0), tags = list(type = "blob")), trustAnchorArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["list_crls_output"]]))
 }
 
 .iamrolesanywhere$list_profiles_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), pageSize = structure(logical(0), tags = list(location = "querystring", locationName = "pageSize", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["list_profiles_input"]]))
 }
 
 .iamrolesanywhere$list_profiles_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), profiles = structure(list(structure(list(profileId = structure(logical(0), tags = list(type = "string")), profileArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), requireInstanceProperties = structure(logical(0), tags = list(type = "boolean", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdBy = structure(logical(0), tags = list(type = "string")), sessionPolicy = structure(logical(0), tags = list(type = "string")), roleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), managedPolicyArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), acceptRoleSessionName = structure(logical(0), tags = list(type = "boolean", box = TRUE)), attributeMappings = structure(list(structure(list(certificateField = structure(logical(0), tags = list(type = "string")), mappingRules = structure(list(structure(list(specifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["list_profiles_output"]]))
 }
 
 .iamrolesanywhere$list_subjects_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), pageSize = structure(logical(0), tags = list(location = "querystring", locationName = "pageSize", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["list_subjects_input"]]))
 }
 
 .iamrolesanywhere$list_subjects_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subjects = structure(list(structure(list(subjectArn = structure(logical(0), tags = list(type = "string")), subjectId = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), x509Subject = structure(logical(0), tags = list(type = "string")), lastSeenAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["list_subjects_output"]]))
 }
 
 .iamrolesanywhere$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["list_tags_for_resource_input"]]))
 }
 
 .iamrolesanywhere$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["list_tags_for_resource_output"]]))
 }
 
 .iamrolesanywhere$list_trust_anchors_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), pageSize = structure(logical(0), tags = list(location = "querystring", locationName = "pageSize", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["list_trust_anchors_input"]]))
 }
 
 .iamrolesanywhere$list_trust_anchors_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), trustAnchors = structure(list(structure(list(trustAnchorId = structure(logical(0), tags = list(type = "string")), trustAnchorArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), source = structure(list(sourceType = structure(logical(0), tags = list(type = "string")), sourceData = structure(list(x509CertificateData = structure(logical(0), tags = list(type = "string")), acmPcaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), notificationSettings = structure(list(structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), event = structure(logical(0), tags = list(type = "string")), threshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), channel = structure(logical(0), tags = list(type = "string")), configuredBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["list_trust_anchors_output"]]))
 }
 
 .iamrolesanywhere$put_attribute_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profileId = structure(logical(0), tags = list(location = "uri", locationName = "profileId", type = "string")), certificateField = structure(logical(0), tags = list(type = "string")), mappingRules = structure(list(structure(list(specifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["put_attribute_mapping_input"]]))
 }
 
 .iamrolesanywhere$put_attribute_mapping_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profile = structure(list(profileId = structure(logical(0), tags = list(type = "string")), profileArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), requireInstanceProperties = structure(logical(0), tags = list(type = "boolean", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdBy = structure(logical(0), tags = list(type = "string")), sessionPolicy = structure(logical(0), tags = list(type = "string")), roleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), managedPolicyArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), acceptRoleSessionName = structure(logical(0), tags = list(type = "boolean", box = TRUE)), attributeMappings = structure(list(structure(list(certificateField = structure(logical(0), tags = list(type = "string")), mappingRules = structure(list(structure(list(specifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["put_attribute_mapping_output"]]))
 }
 
 .iamrolesanywhere$put_notification_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trustAnchorId = structure(logical(0), tags = list(type = "string")), notificationSettings = structure(list(structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), event = structure(logical(0), tags = list(type = "string")), threshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), channel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["put_notification_settings_input"]]))
 }
 
 .iamrolesanywhere$put_notification_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trustAnchor = structure(list(trustAnchorId = structure(logical(0), tags = list(type = "string")), trustAnchorArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), source = structure(list(sourceType = structure(logical(0), tags = list(type = "string")), sourceData = structure(list(x509CertificateData = structure(logical(0), tags = list(type = "string")), acmPcaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), notificationSettings = structure(list(structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), event = structure(logical(0), tags = list(type = "string")), threshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), channel = structure(logical(0), tags = list(type = "string")), configuredBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["put_notification_settings_output"]]))
 }
 
 .iamrolesanywhere$reset_notification_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trustAnchorId = structure(logical(0), tags = list(type = "string")), notificationSettingKeys = structure(list(structure(list(event = structure(logical(0), tags = list(type = "string")), channel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["reset_notification_settings_input"]]))
 }
 
 .iamrolesanywhere$reset_notification_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trustAnchor = structure(list(trustAnchorId = structure(logical(0), tags = list(type = "string")), trustAnchorArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), source = structure(list(sourceType = structure(logical(0), tags = list(type = "string")), sourceData = structure(list(x509CertificateData = structure(logical(0), tags = list(type = "string")), acmPcaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), notificationSettings = structure(list(structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), event = structure(logical(0), tags = list(type = "string")), threshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), channel = structure(logical(0), tags = list(type = "string")), configuredBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["reset_notification_settings_output"]]))
 }
 
 .iamrolesanywhere$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["tag_resource_input"]]))
 }
 
 .iamrolesanywhere$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["tag_resource_output"]]))
 }
 
 .iamrolesanywhere$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["untag_resource_input"]]))
 }
 
 .iamrolesanywhere$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["untag_resource_output"]]))
 }
 
 .iamrolesanywhere$update_crl_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(crlId = structure(logical(0), tags = list(location = "uri", locationName = "crlId", type = "string")), name = structure(logical(0), tags = list(type = "string")), crlData = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["update_crl_input"]]))
 }
 
 .iamrolesanywhere$update_crl_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(crl = structure(list(crlId = structure(logical(0), tags = list(type = "string")), crlArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), crlData = structure(logical(0), tags = list(type = "blob")), trustAnchorArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["update_crl_output"]]))
 }
 
 .iamrolesanywhere$update_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profileId = structure(logical(0), tags = list(location = "uri", locationName = "profileId", type = "string")), name = structure(logical(0), tags = list(type = "string")), sessionPolicy = structure(logical(0), tags = list(type = "string")), roleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), managedPolicyArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), acceptRoleSessionName = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["update_profile_input"]]))
 }
 
 .iamrolesanywhere$update_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profile = structure(list(profileId = structure(logical(0), tags = list(type = "string")), profileArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), requireInstanceProperties = structure(logical(0), tags = list(type = "boolean", box = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdBy = structure(logical(0), tags = list(type = "string")), sessionPolicy = structure(logical(0), tags = list(type = "string")), roleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), managedPolicyArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), durationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), acceptRoleSessionName = structure(logical(0), tags = list(type = "boolean", box = TRUE)), attributeMappings = structure(list(structure(list(certificateField = structure(logical(0), tags = list(type = "string")), mappingRules = structure(list(structure(list(specifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["update_profile_output"]]))
 }
 
 .iamrolesanywhere$update_trust_anchor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trustAnchorId = structure(logical(0), tags = list(location = "uri", locationName = "trustAnchorId", type = "string")), name = structure(logical(0), tags = list(type = "string")), source = structure(list(sourceType = structure(logical(0), tags = list(type = "string")), sourceData = structure(list(x509CertificateData = structure(logical(0), tags = list(type = "string")), acmPcaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["update_trust_anchor_input"]]))
 }
 
 .iamrolesanywhere$update_trust_anchor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trustAnchor = structure(list(trustAnchorId = structure(logical(0), tags = list(type = "string")), trustAnchorArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), source = structure(list(sourceType = structure(logical(0), tags = list(type = "string")), sourceData = structure(list(x509CertificateData = structure(logical(0), tags = list(type = "string")), acmPcaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), notificationSettings = structure(list(structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), event = structure(logical(0), tags = list(type = "string")), threshold = structure(logical(0), tags = list(type = "integer", box = TRUE)), channel = structure(logical(0), tags = list(type = "string")), configuredBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .iamrolesanywhere_shapes[["update_trust_anchor_output"]]))
 }

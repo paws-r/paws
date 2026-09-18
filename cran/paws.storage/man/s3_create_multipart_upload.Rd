@@ -34,6 +34,9 @@ s3_create_multipart_upload(
   ObjectLockMode = NULL,
   ObjectLockRetainUntilDate = NULL,
   ObjectLockLegalHoldStatus = NULL,
+  ObjectLockEventHold = NULL,
+  ObjectLockEventHoldDurationDays = NULL,
+  ObjectLockEventHoldDurationYears = NULL,
   ExpectedBucketOwner = NULL,
   ChecksumAlgorithm = NULL,
   ChecksumType = NULL
@@ -273,6 +276,18 @@ This functionality is not supported for directory buckets.}
 This functionality is not supported for directory buckets.}
 
 \item{ObjectLockLegalHoldStatus}{Specifies whether you want to apply a legal hold to the uploaded object.
+
+This functionality is not supported for directory buckets.}
+
+\item{ObjectLockEventHold}{Specifies the event hold status to apply to the uploaded object. Set to \code{ON} to enable or \code{OFF} to disable.
+
+This functionality is not supported for directory buckets.}
+
+\item{ObjectLockEventHoldDurationDays}{Specifies the event hold duration in days to apply to the uploaded object. You cannot specify a duration in both days and years.
+
+This functionality is not supported for directory buckets.}
+
+\item{ObjectLockEventHoldDurationYears}{Specifies the event hold duration in years to apply to the uploaded object. You cannot specify a duration in both days and years.
 
 This functionality is not supported for directory buckets.}
 

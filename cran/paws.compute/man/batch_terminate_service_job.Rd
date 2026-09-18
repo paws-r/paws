@@ -9,7 +9,7 @@ batch_terminate_service_job(jobId, reason)
 \arguments{
 \item{jobId}{[required] The service job ID of the service job to terminate.}
 
-\item{reason}{[required] A message to attach to the service job that explains the reason for canceling it. This message is returned by \code{\link[=batch_describe_service_job]{describe_service_job}} operations on the service job.}
+\item{reason}{[required] A message to attach to the service job that explains the reason for terminating it. This message is returned by \code{\link[=batch_describe_service_job]{describe_service_job}} operations on the service job.}
 }
 \description{
 Terminates a service job in a job queue.

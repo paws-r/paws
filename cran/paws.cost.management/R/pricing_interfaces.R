@@ -5,60 +5,50 @@ NULL
 
 .pricing$describe_services_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), FormatVersion = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pricing_shapes[["describe_services_input"]]))
 }
 
 .pricing$describe_services_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Services = structure(list(structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), AttributeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), FormatVersion = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pricing_shapes[["describe_services_output"]]))
 }
 
 .pricing$get_attribute_values_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), AttributeName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pricing_shapes[["get_attribute_values_input"]]))
 }
 
 .pricing$get_attribute_values_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AttributeValues = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pricing_shapes[["get_attribute_values_output"]]))
 }
 
 .pricing$get_price_list_file_url_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PriceListArn = structure(logical(0), tags = list(type = "string")), FileFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pricing_shapes[["get_price_list_file_url_input"]]))
 }
 
 .pricing$get_price_list_file_url_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pricing_shapes[["get_price_list_file_url_output"]]))
 }
 
 .pricing$get_products_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Field = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), FormatVersion = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pricing_shapes[["get_products_input"]]))
 }
 
 .pricing$get_products_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FormatVersion = structure(logical(0), tags = list(type = "string")), PriceList = structure(list(structure(logical(0), tags = list(jsonvalue = TRUE, type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pricing_shapes[["get_products_output"]]))
 }
 
 .pricing$list_price_lists_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), EffectiveDate = structure(logical(0), tags = list(type = "timestamp")), RegionCode = structure(logical(0), tags = list(type = "string")), CurrencyCode = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pricing_shapes[["list_price_lists_input"]]))
 }
 
 .pricing$list_price_lists_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PriceLists = structure(list(structure(list(PriceListArn = structure(logical(0), tags = list(type = "string")), RegionCode = structure(logical(0), tags = list(type = "string")), CurrencyCode = structure(logical(0), tags = list(type = "string")), FileFormats = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .pricing_shapes[["list_price_lists_output"]]))
 }

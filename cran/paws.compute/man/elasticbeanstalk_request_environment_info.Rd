@@ -16,13 +16,13 @@ elasticbeanstalk_request_environment_info(
 
 If no such environment is found, \code{\link[=elasticbeanstalk_request_environment_info]{request_environment_info}} returns an \code{InvalidParameterValue} error.
 
-Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
+Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 
 \item{EnvironmentName}{The name of the environment of the requested data.
 
 If no such environment is found, \code{\link[=elasticbeanstalk_request_environment_info]{request_environment_info}} returns an \code{InvalidParameterValue} error.
 
-Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
+Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 
 \item{InfoType}{[required] The type of information to request.}
 }

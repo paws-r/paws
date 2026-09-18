@@ -44,7 +44,8 @@ rds_restore_db_cluster_to_point_in_time(
   EngineLifecycleSupport = NULL,
   TagSpecifications = NULL,
   EnableVPCNetworking = NULL,
-  EnableInternetAccessGateway = NULL
+  EnableInternetAccessGateway = NULL,
+  AssociatedRoles = NULL
 )
 }
 \arguments{
@@ -351,7 +352,7 @@ Constraints:
 \item Must be at least 30 minutes.
 }}
 
-\item{EngineLifecycleSupport}{The life cycle type for this DB cluster.
+\item{EngineLifecycleSupport}{The lifecycle type for this DB cluster.
 
 By default, this value is set to \code{open-source-rds-extended-support}, which enrolls your DB cluster into Amazon RDS Extended Support. At the end of standard support, you can avoid charges for Extended Support by setting the value to \code{open-source-rds-extended-support-disabled}. In this case, RDS automatically upgrades your restored DB cluster to a higher engine version, if the major engine version is past its end of standard support date.
 
@@ -385,6 +386,10 @@ Valid for Cluster Type: Aurora PostgreSQL clusters}
 This parameter must be used together with \code{EnableVPCNetworking} set to \code{false}. When both parameters are specified, IAM database authentication is required. You must also specify \code{EnableIAMDatabaseAuthentication}.
 
 Valid for Cluster Type: Aurora PostgreSQL clusters}
+
+\item{AssociatedRoles}{A list of Amazon Web Services Identity and Access Management (IAM) roles to associate with the DB cluster when it's restored to a point in time. Each role grants the DB cluster permission to access other Amazon Web Services on your behalf. For each role, specify a role ARN and, optionally, the feature name (such as \code{s3Import}, \code{s3Export}, or \code{Lambda}).
+
+Valid for Cluster Type: Aurora DB clusters only}
 }
 \description{
 Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before \code{LatestRestorableTime} for up to \code{BackupRetentionPeriod} days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group. Unless the \code{RestoreType} is set to \code{copy-on-write}, the restore may occur in a different Availability Zone (AZ) from the original DB cluster. The AZ where RDS restores the DB cluster depends on the AZs in the specified subnet group.

@@ -446,6 +446,71 @@ opensearchservice_associate_packages <- function(PackageList, DomainName) {
 }
 .opensearchservice$operations$associate_packages <- opensearchservice_associate_packages
 
+#' Attaches a data source to an OpenSearch application
+#'
+#' @description
+#' Attaches a data source to an OpenSearch application. The data source must be an Amazon OpenSearch Service domain. If both the application and the data source are active, the attachment completes immediately with a status of `ATTACHED`. Otherwise, the operation returns `PENDING` and completes the attachment automatically once both become active. If the attachment cannot be completed, its status becomes `FAILED`. This operation is idempotent: If the data source is already attached or pending, the operation returns the existing attachment.
+#'
+#' @usage
+#' opensearchservice_attach_data_source(id, dataSourceArn, workspaceId,
+#'   workspaceConfiguration, clientToken)
+#'
+#' @param id &#91;required&#93; The unique identifier or name of the OpenSearch application to attach the data source to. This is the same identifier used with [`update_application`][opensearchservice_update_application], [`get_application`][opensearchservice_get_application], and [`delete_application`][opensearchservice_delete_application].
+#' @param dataSourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the domain. See [Identifiers for IAM Entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/) in *Using Amazon Web Services Identity and Access Management* for more information.
+#' @param workspaceId The identifier of an existing workspace to update with the new data source. Mutually exclusive with `workspaceConfiguration`.
+#' @param workspaceConfiguration Configuration for creating a new workspace during the attachment. If specified, a workspace is created and linked to the data source after the attachment completes. Mutually exclusive with `workspaceId`.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the request. If you retry a request with the same client token and the same parameters, the retry succeeds without performing any further actions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attachmentId = "string",
+#'   id = "string",
+#'   arn = "string",
+#'   dataSourceArn = "string",
+#'   status = "PENDING"|"ATTACHED"|"FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$attach_data_source(
+#'   id = "string",
+#'   dataSourceArn = "string",
+#'   workspaceId = "string",
+#'   workspaceConfiguration = list(
+#'     name = "string",
+#'     workspaceType = "string"
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_attach_data_source
+#'
+#' @aliases opensearchservice_attach_data_source
+opensearchservice_attach_data_source <- function(id, dataSourceArn, workspaceId = NULL, workspaceConfiguration = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "AttachDataSource",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/application/{id}/attachDataSource",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$attach_data_source_input(id = id, dataSourceArn = dataSourceArn, workspaceId = workspaceId, workspaceConfiguration = workspaceConfiguration, clientToken = clientToken)
+  output <- .opensearchservice$attach_data_source_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$attach_data_source <- opensearchservice_attach_data_source
+
 #' Provides access to an Amazon OpenSearch Service domain through the use
 #' of an interface VPC endpoint
 #'
@@ -763,7 +828,8 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'   NodeToNodeEncryptionOptions, AdvancedOptions, LogPublishingOptions,
 #'   DomainEndpointOptions, AdvancedSecurityOptions, IdentityCenterOptions,
 #'   TagList, AutoTuneOptions, OffPeakWindowOptions, SoftwareUpdateOptions,
-#'   AIMLOptions, DeploymentStrategyOptions, AutomatedSnapshotPauseOptions)
+#'   AIMLOptions, DeploymentStrategyOptions, AutomatedSnapshotPauseOptions,
+#'   UseCase, EngineMode)
 #'
 #' @param DomainName &#91;required&#93; Name of the OpenSearch Service domain to create. Domain names are unique across the domains owned by an account within an Amazon Web Services Region.
 #' @param EngineVersion String of format Elasticsearch_X.Y or OpenSearch_X.Y to specify the engine version for the OpenSearch Service domain. For example, `OpenSearch_1.0` or `Elasticsearch_7.9`. For more information, see [Creating and managing Amazon OpenSearch Service domains](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomains).
@@ -802,6 +868,8 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #' Suspending snapshots reduces data protection. You cannot restore your domain to points in time when snapshots are suspended. Use this feature only for short-term operational needs such as migrations or maintenance windows.
 #' 
 #' Maximum suspension duration: 3 days.
+#' @param UseCase The primary use case for the domain. For valid values, see `DomainUseCase`.
+#' @param EngineMode The engine mode for the domain. For valid values and requirements, see `EngineMode`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1018,7 +1086,9 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'         "2015-01-01"
 #'       ),
 #'       State = "Active"|"Completed"|"Scheduled"|"Disabled"
-#'     )
+#'     ),
+#'     UseCase = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'     EngineMode = "GENERAL"|"OPTIMIZED"
 #'   )
 #' )
 #' ```
@@ -1204,7 +1274,9 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #'     EndTime = as.POSIXct(
 #'       "2015-01-01"
 #'     )
-#'   )
+#'   ),
+#'   UseCase = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'   EngineMode = "GENERAL"|"OPTIMIZED"
 #' )
 #' ```
 #'
@@ -1213,7 +1285,7 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #' @rdname opensearchservice_create_domain
 #'
 #' @aliases opensearchservice_create_domain
-opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, ClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, IdentityCenterOptions = NULL, TagList = NULL, AutoTuneOptions = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL, AIMLOptions = NULL, DeploymentStrategyOptions = NULL, AutomatedSnapshotPauseOptions = NULL) {
+opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, ClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, IdentityCenterOptions = NULL, TagList = NULL, AutoTuneOptions = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL, AIMLOptions = NULL, DeploymentStrategyOptions = NULL, AutomatedSnapshotPauseOptions = NULL, UseCase = NULL, EngineMode = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
@@ -1222,7 +1294,7 @@ opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, Cl
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$create_domain_input(DomainName = DomainName, EngineVersion = EngineVersion, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, IdentityCenterOptions = IdentityCenterOptions, TagList = TagList, AutoTuneOptions = AutoTuneOptions, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions, DeploymentStrategyOptions = DeploymentStrategyOptions, AutomatedSnapshotPauseOptions = AutomatedSnapshotPauseOptions)
+  input <- .opensearchservice$create_domain_input(DomainName = DomainName, EngineVersion = EngineVersion, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, IdentityCenterOptions = IdentityCenterOptions, TagList = TagList, AutoTuneOptions = AutoTuneOptions, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions, DeploymentStrategyOptions = DeploymentStrategyOptions, AutomatedSnapshotPauseOptions = AutomatedSnapshotPauseOptions, UseCase = UseCase, EngineMode = EngineMode)
   output <- .opensearchservice$create_domain_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -1954,7 +2026,9 @@ opensearchservice_delete_direct_query_data_source <- function(DataSourceName) {
 #'         "2015-01-01"
 #'       ),
 #'       State = "Active"|"Completed"|"Scheduled"|"Disabled"
-#'     )
+#'     ),
+#'     UseCase = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'     EngineMode = "GENERAL"|"OPTIMIZED"
 #'   )
 #' )
 #' ```
@@ -2386,6 +2460,62 @@ opensearchservice_deregister_capability <- function(applicationId, capabilityNam
 }
 .opensearchservice$operations$deregister_capability <- opensearchservice_deregister_capability
 
+#' Returns the current status and details of a specific data source
+#' attachment for an OpenSearch application
+#'
+#' @description
+#' Returns the current status and details of a specific data source attachment for an OpenSearch application. Throws a `ResourceNotFoundException` if no attachment record exists for the specified application and data source combination.
+#'
+#' @usage
+#' opensearchservice_describe_data_source_attachment(id, dataSourceArn)
+#'
+#' @param id &#91;required&#93; The unique identifier or name of the OpenSearch application.
+#' @param dataSourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the domain. See [Identifiers for IAM Entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/) in *Using Amazon Web Services Identity and Access Management* for more information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attachmentId = "string",
+#'   id = "string",
+#'   arn = "string",
+#'   dataSourceArn = "string",
+#'   status = "PENDING"|"ATTACHED"|"FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_data_source_attachment(
+#'   id = "string",
+#'   dataSourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_describe_data_source_attachment
+#'
+#' @aliases opensearchservice_describe_data_source_attachment
+opensearchservice_describe_data_source_attachment <- function(id, dataSourceArn) {
+  op <- new_operation(
+    name = "DescribeDataSourceAttachment",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/application/{id}/describeDataSourceAttachment",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$describe_data_source_attachment_input(id = id, dataSourceArn = dataSourceArn)
+  output <- .opensearchservice$describe_data_source_attachment_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$describe_data_source_attachment <- opensearchservice_describe_data_source_attachment
+
 #' Describes the domain configuration for the specified Amazon OpenSearch
 #' Service domain, including the domain ID, domain service endpoint, and
 #' domain ARN
@@ -2613,7 +2743,9 @@ opensearchservice_deregister_capability <- function(applicationId, capabilityNam
 #'         "2015-01-01"
 #'       ),
 #'       State = "Active"|"Completed"|"Scheduled"|"Disabled"
-#'     )
+#'     ),
+#'     UseCase = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'     EngineMode = "GENERAL"|"OPTIMIZED"
 #'   )
 #' )
 #' ```
@@ -3284,6 +3416,34 @@ opensearchservice_describe_domain_change_progress <- function(DomainName, Change
 #'         State = "RequiresIndexDocuments"|"Processing"|"Active",
 #'         PendingDeletion = TRUE|FALSE
 #'       )
+#'     ),
+#'     UseCase = list(
+#'       Options = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
+#'     ),
+#'     EngineMode = list(
+#'       Options = "GENERAL"|"OPTIMIZED",
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
 #'     )
 #'   )
 #' )
@@ -3685,7 +3845,9 @@ opensearchservice_describe_domain_nodes <- function(DomainName) {
 #'           "2015-01-01"
 #'         ),
 #'         State = "Active"|"Completed"|"Scheduled"|"Disabled"
-#'       )
+#'       ),
+#'       UseCase = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'       EngineMode = "GENERAL"|"OPTIMIZED"
 #'     )
 #'   )
 #' )
@@ -3965,7 +4127,9 @@ opensearchservice_describe_domains <- function(DomainNames) {
 #'         "2015-01-01"
 #'       ),
 #'       State = "Active"|"Completed"|"Scheduled"|"Disabled"
-#'     )
+#'     ),
+#'     UseCase = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'     EngineMode = "GENERAL"|"OPTIMIZED"
 #'   ),
 #'   DryRunResults = list(
 #'     DeploymentType = "string",
@@ -4672,6 +4836,59 @@ opensearchservice_describe_vpc_endpoints <- function(VpcEndpointIds) {
 }
 .opensearchservice$operations$describe_vpc_endpoints <- opensearchservice_describe_vpc_endpoints
 
+#' Removes a data source from an OpenSearch application
+#'
+#' @description
+#' Removes a data source from an OpenSearch application. The application must be in the `ACTIVE` state. This operation removes the data source saved object from the application and deletes the attachment record. Throws a `ConflictException` if the specified data source has a `PENDING` attachment, and a `ResourceNotFoundException` if the data source is not currently attached to the application.
+#'
+#' @usage
+#' opensearchservice_detach_data_source(id, dataSourceArn)
+#'
+#' @param id &#91;required&#93; The unique identifier or name of the OpenSearch application to detach the data source from.
+#' @param dataSourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the domain. See [Identifiers for IAM Entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/) in *Using Amazon Web Services Identity and Access Management* for more information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   arn = "string",
+#'   dataSourceArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$detach_data_source(
+#'   id = "string",
+#'   dataSourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_detach_data_source
+#'
+#' @aliases opensearchservice_detach_data_source
+opensearchservice_detach_data_source <- function(id, dataSourceArn) {
+  op <- new_operation(
+    name = "DetachDataSource",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/application/{id}/detachDataSource",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$detach_data_source_input(id = id, dataSourceArn = dataSourceArn)
+  output <- .opensearchservice$detach_data_source_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$detach_data_source <- opensearchservice_detach_data_source
+
 #' Removes a package from the specified Amazon OpenSearch Service domain
 #'
 #' @description
@@ -5314,6 +5531,74 @@ opensearchservice_get_index <- function(DomainName, IndexName) {
 }
 .opensearchservice$operations$get_index <- opensearchservice_get_index
 
+#' Retrieves the current status and progress of a migration job, including
+#' the number of exported and imported objects and error details if the
+#' migration failed
+#'
+#' @description
+#' Retrieves the current status and progress of a migration job, including the number of exported and imported objects and error details if the migration failed.
+#'
+#' @usage
+#' opensearchservice_get_migration(migrationId)
+#'
+#' @param migrationId &#91;required&#93; The unique identifier of the migration job to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   migrationId = "string",
+#'   status = "string",
+#'   applicationId = "string",
+#'   source = list(
+#'     datasourceArn = "string"
+#'   ),
+#'   exportedCount = 123,
+#'   importedCount = 123,
+#'   error = list(
+#'     code = "string",
+#'     message = "string"
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_migration(
+#'   migrationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_get_migration
+#'
+#' @aliases opensearchservice_get_migration
+opensearchservice_get_migration <- function(migrationId) {
+  op <- new_operation(
+    name = "GetMigration",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/app-migrations/{migrationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$get_migration_input(migrationId = migrationId)
+  output <- .opensearchservice$get_migration_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$get_migration <- opensearchservice_get_migration
+
 #' Returns a list of Amazon OpenSearch Service package versions, along with
 #' their creation time, commit message, and plugin properties (if the
 #' package is a zip plugin package)
@@ -5518,6 +5803,66 @@ opensearchservice_get_upgrade_status <- function(DomainName) {
 }
 .opensearchservice$operations$get_upgrade_status <- opensearchservice_get_upgrade_status
 
+#' Submits feedback for an existing insight in an Amazon OpenSearch Service
+#' domain
+#'
+#' @description
+#' Submits feedback for an existing insight in an Amazon OpenSearch Service domain. Allows users to provide a thumbs up or thumbs down rating and optional text feedback for a specific insight.
+#'
+#' @usage
+#' opensearchservice_insight_feedback(Entity, InsightId, Thumbs,
+#'   FeedbackText)
+#'
+#' @param Entity &#91;required&#93; The entity for which to submit insight feedback. Specifies the type and value of the entity, such as a domain name.
+#' @param InsightId &#91;required&#93; The unique identifier of the insight for which to submit feedback.
+#' @param Thumbs &#91;required&#93; The thumbs up or thumbs down feedback for the insight. Possible values are `Up` and `Down`.
+#' @param FeedbackText Optional text feedback providing additional details about the insight. Maximum length is 1000 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "SUCCESS"|"ERROR"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$insight_feedback(
+#'   Entity = list(
+#'     Type = "DomainName",
+#'     Value = "string"
+#'   ),
+#'   InsightId = "string",
+#'   Thumbs = "Up"|"Down",
+#'   FeedbackText = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_insight_feedback
+#'
+#' @aliases opensearchservice_insight_feedback
+opensearchservice_insight_feedback <- function(Entity, InsightId, Thumbs, FeedbackText = NULL) {
+  op <- new_operation(
+    name = "InsightFeedback",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/insight-feedback",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$insight_feedback_input(Entity = Entity, InsightId = InsightId, Thumbs = Thumbs, FeedbackText = FeedbackText)
+  output <- .opensearchservice$insight_feedback_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$insight_feedback <- opensearchservice_insight_feedback
+
 #' Lists all OpenSearch applications under your account
 #'
 #' @description
@@ -5587,6 +5932,69 @@ opensearchservice_list_applications <- function(nextToken = NULL, statuses = NUL
   return(response)
 }
 .opensearchservice$operations$list_applications <- opensearchservice_list_applications
+
+#' Returns a paginated list of all data source attachments for an
+#' OpenSearch application, including attachments in all states (PENDING,
+#' ATTACHED, and FAILED)
+#'
+#' @description
+#' Returns a paginated list of all data source attachments for an OpenSearch application, including attachments in all states (`PENDING`, `ATTACHED`, and `FAILED`).
+#'
+#' @usage
+#' opensearchservice_list_data_source_attachments(id, nextToken,
+#'   maxResults)
+#'
+#' @param id &#91;required&#93; The unique identifier or name of the OpenSearch application to list attachments for.
+#' @param nextToken The pagination token from a previous call to retrieve the next set of results.
+#' @param maxResults The maximum number of results to return per page. The default is 50.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attachments = list(
+#'     list(
+#'       attachmentId = "string",
+#'       dataSourceArn = "string",
+#'       status = "PENDING"|"ATTACHED"|"FAILED"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_data_source_attachments(
+#'   id = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_list_data_source_attachments
+#'
+#' @aliases opensearchservice_list_data_source_attachments
+opensearchservice_list_data_source_attachments <- function(id, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListDataSourceAttachments",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/application/{id}/listDataSourceAttachments",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$list_data_source_attachments_input(id = id, nextToken = nextToken, maxResults = maxResults)
+  output <- .opensearchservice$list_data_source_attachments_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$list_data_source_attachments <- opensearchservice_list_data_source_attachments
 
 #' Lists direct-query data sources for a specific domain
 #'
@@ -6094,6 +6502,84 @@ opensearchservice_list_instance_type_details <- function(EngineVersion, DomainNa
   return(response)
 }
 .opensearchservice$operations$list_instance_type_details <- opensearchservice_list_instance_type_details
+
+#' Lists migration jobs for an Amazon OpenSearch Service application
+#'
+#' @description
+#' Lists migration jobs for an Amazon OpenSearch Service application. You can filter results by migration status. Use pagination to ensure that the operation returns quickly and successfully.
+#'
+#' @usage
+#' opensearchservice_list_migrations(applicationId, status, maxResults,
+#'   nextToken)
+#'
+#' @param applicationId &#91;required&#93; The unique identifier of the OpenSearch application to list migrations for.
+#' @param status Filters the results by migration status. Valid values are `PENDING`, `IN_PROGRESS`, `SUCCEEDED`, and `FAILED`.
+#' @param maxResults The maximum number of results to return in a single call.
+#' @param nextToken The pagination token from a previous call to retrieve the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   migrations = list(
+#'     list(
+#'       migrationId = "string",
+#'       status = "string",
+#'       applicationId = "string",
+#'       source = list(
+#'         datasourceArn = "string"
+#'       ),
+#'       exportedCount = 123,
+#'       importedCount = 123,
+#'       error = list(
+#'         code = "string",
+#'         message = "string"
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_migrations(
+#'   applicationId = "string",
+#'   status = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_list_migrations
+#'
+#' @aliases opensearchservice_list_migrations
+opensearchservice_list_migrations <- function(applicationId, status = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListMigrations",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/app-migrations",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$list_migrations_input(applicationId = applicationId, status = status, maxResults = maxResults, nextToken = nextToken)
+  output <- .opensearchservice$list_migrations_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$list_migrations <- opensearchservice_list_migrations
 
 #' Lists all packages associated with an Amazon OpenSearch Service domain
 #'
@@ -6990,6 +7476,85 @@ opensearchservice_start_domain_maintenance <- function(DomainName, Action, NodeI
 }
 .opensearchservice$operations$start_domain_maintenance <- opensearchservice_start_domain_maintenance
 
+#' Initiates a migration job to migrate saved objects from a data source to
+#' an Amazon OpenSearch Service application workspace
+#'
+#' @description
+#' Initiates a migration job to migrate saved objects from a data source to an Amazon OpenSearch Service application workspace. Saved objects include dashboards, visualizations, index patterns, and searches. You can specify export filters to control the scope of the migration and a conflict resolution strategy for handling existing objects in the target workspace.
+#'
+#' @usage
+#' opensearchservice_start_migration(applicationId, migrationOptions,
+#'   clientToken)
+#'
+#' @param applicationId &#91;required&#93; The unique identifier of the OpenSearch application to migrate saved objects into.
+#' @param migrationOptions &#91;required&#93; The configuration options for the migration, including the source data source, target workspace, export filters, and conflict resolution strategy.
+#' @param clientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, Amazon OpenSearch Service ignores the request but does not return an error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   migrationId = "string",
+#'   status = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_migration(
+#'   applicationId = "string",
+#'   migrationOptions = list(
+#'     source = list(
+#'       datasourceArn = "string"
+#'     ),
+#'     workspace = list(
+#'       workspaceId = "string",
+#'       createWorkspace = TRUE|FALSE,
+#'       name = "string",
+#'       type = "string"
+#'     ),
+#'     exportOptions = list(
+#'       types = list(
+#'         "string"
+#'       ),
+#'       objects = list(
+#'         list(
+#'           type = "string",
+#'           id = "string"
+#'         )
+#'       ),
+#'       includeReferencesDeep = TRUE|FALSE
+#'     ),
+#'     conflictResolution = "string"
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_start_migration
+#'
+#' @aliases opensearchservice_start_migration
+opensearchservice_start_migration <- function(applicationId, migrationOptions, clientToken = NULL) {
+  op <- new_operation(
+    name = "StartMigration",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/app-migrations",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$start_migration_input(applicationId = applicationId, migrationOptions = migrationOptions, clientToken = clientToken)
+  output <- .opensearchservice$start_migration_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$start_migration <- opensearchservice_start_migration
+
 #' Schedules a service software update for an Amazon OpenSearch Service
 #' domain
 #'
@@ -7071,11 +7636,13 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 #' Updates the configuration and settings of an existing OpenSearch application.
 #'
 #' @usage
-#' opensearchservice_update_application(id, dataSources, appConfigs)
+#' opensearchservice_update_application(id, dataSources, appConfigs,
+#'   iamIdentityCenterOptions)
 #'
 #' @param id &#91;required&#93; The unique identifier for the OpenSearch application to be updated.
 #' @param dataSources The data sources to associate with the OpenSearch application.
 #' @param appConfigs The configuration settings to modify for the OpenSearch application.
+#' @param iamIdentityCenterOptions Configuration settings for integrating IAM Identity Center with the OpenSearch application.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7128,6 +7695,11 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 #'       key = "opensearchDashboards.dashboardAdmin.users"|"opensearchDashboards.dashboardAdmin.groups",
 #'       value = "string"
 #'     )
+#'   ),
+#'   iamIdentityCenterOptions = list(
+#'     enabled = TRUE|FALSE,
+#'     iamIdentityCenterInstanceArn = "string",
+#'     iamRoleForIdentityCenterApplicationArn = "string"
 #'   )
 #' )
 #' ```
@@ -7137,7 +7709,7 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 #' @rdname opensearchservice_update_application
 #'
 #' @aliases opensearchservice_update_application
-opensearchservice_update_application <- function(id, dataSources = NULL, appConfigs = NULL) {
+opensearchservice_update_application <- function(id, dataSources = NULL, appConfigs = NULL, iamIdentityCenterOptions = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "PUT",
@@ -7146,7 +7718,7 @@ opensearchservice_update_application <- function(id, dataSources = NULL, appConf
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$update_application_input(id = id, dataSources = dataSources, appConfigs = appConfigs)
+  input <- .opensearchservice$update_application_input(id = id, dataSources = dataSources, appConfigs = appConfigs, iamIdentityCenterOptions = iamIdentityCenterOptions)
   output <- .opensearchservice$update_application_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -7304,7 +7876,8 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'   NodeToNodeEncryptionOptions, AdvancedSecurityOptions,
 #'   IdentityCenterOptions, AutoTuneOptions, DryRun, DryRunMode,
 #'   OffPeakWindowOptions, SoftwareUpdateOptions, AIMLOptions,
-#'   DeploymentStrategyOptions, AutomatedSnapshotPauseOptions)
+#'   DeploymentStrategyOptions, AutomatedSnapshotPauseOptions, UseCase,
+#'   EngineMode)
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you're updating.
 #' @param ClusterConfig Changes that you want to make to the cluster configuration, such as the instance type and number of EC2 instances.
@@ -7345,6 +7918,8 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #' Suspending snapshots reduces data protection. You cannot restore your domain to points in time when snapshots are suspended. Use this feature only for short-term operational needs such as migrations or maintenance windows.
 #' 
 #' Maximum suspension duration: 3 days.
+#' @param UseCase The primary use case for the domain. For valid values, see `DomainUseCase`.
+#' @param EngineMode The engine mode for the domain. The engine mode can't be changed after the domain is created. For valid values, see `EngineMode`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7821,6 +8396,34 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'         State = "RequiresIndexDocuments"|"Processing"|"Active",
 #'         PendingDeletion = TRUE|FALSE
 #'       )
+#'     ),
+#'     UseCase = list(
+#'       Options = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
+#'     ),
+#'     EngineMode = list(
+#'       Options = "GENERAL"|"OPTIMIZED",
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
 #'     )
 #'   ),
 #'   DryRunResults = list(
@@ -8019,7 +8622,9 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #'     EndTime = as.POSIXct(
 #'       "2015-01-01"
 #'     )
-#'   )
+#'   ),
+#'   UseCase = "SEARCH"|"VECTOR"|"OBSERVABILITY"|"MIXED",
+#'   EngineMode = "GENERAL"|"OPTIMIZED"
 #' )
 #' ```
 #'
@@ -8028,7 +8633,7 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #' @rdname opensearchservice_update_domain_config
 #'
 #' @aliases opensearchservice_update_domain_config
-opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, IdentityCenterOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DryRunMode = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL, AIMLOptions = NULL, DeploymentStrategyOptions = NULL, AutomatedSnapshotPauseOptions = NULL) {
+opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, IdentityCenterOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DryRunMode = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL, AIMLOptions = NULL, DeploymentStrategyOptions = NULL, AutomatedSnapshotPauseOptions = NULL, UseCase = NULL, EngineMode = NULL) {
   op <- new_operation(
     name = "UpdateDomainConfig",
     http_method = "POST",
@@ -8037,7 +8642,7 @@ opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$update_domain_config_input(DomainName = DomainName, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, LogPublishingOptions = LogPublishingOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, DomainEndpointOptions = DomainEndpointOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, IdentityCenterOptions = IdentityCenterOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DryRunMode = DryRunMode, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions, DeploymentStrategyOptions = DeploymentStrategyOptions, AutomatedSnapshotPauseOptions = AutomatedSnapshotPauseOptions)
+  input <- .opensearchservice$update_domain_config_input(DomainName = DomainName, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, LogPublishingOptions = LogPublishingOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, DomainEndpointOptions = DomainEndpointOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, IdentityCenterOptions = IdentityCenterOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DryRunMode = DryRunMode, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions, DeploymentStrategyOptions = DeploymentStrategyOptions, AutomatedSnapshotPauseOptions = AutomatedSnapshotPauseOptions, UseCase = UseCase, EngineMode = EngineMode)
   output <- .opensearchservice$update_domain_config_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)

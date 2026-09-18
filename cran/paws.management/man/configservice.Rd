@@ -106,6 +106,7 @@ You can access and manage Config through the Amazon Web Services Management Cons
 \link[=configservice_delete_configuration_aggregator]{delete_configuration_aggregator} \tab Deletes the specified configuration aggregator and the aggregated data associated with the aggregator\cr
 \link[=configservice_delete_configuration_recorder]{delete_configuration_recorder} \tab Deletes the customer managed configuration recorder\cr
 \link[=configservice_delete_conformance_pack]{delete_conformance_pack} \tab Deletes the specified conformance pack and all the Config rules, remediation actions, and all evaluation results within that conformance pack\cr
+\link[=configservice_delete_connector]{delete_connector} \tab Deletes the specified connector\cr
 \link[=configservice_delete_delivery_channel]{delete_delivery_channel} \tab Deletes the delivery channel\cr
 \link[=configservice_delete_evaluation_results]{delete_evaluation_results} \tab Deletes the evaluation results for the specified Config rule\cr
 \link[=configservice_delete_organization_config_rule]{delete_organization_config_rule} \tab Deletes the specified organization Config rule and all of its evaluation results from all member accounts in that organization\cr
@@ -155,6 +156,7 @@ You can access and manage Config through the Amazon Web Services Management Cons
 \link[=configservice_get_compliance_summary_by_resource_type]{get_compliance_summary_by_resource_type} \tab Returns the number of resources that are compliant and the number that are noncompliant\cr
 \link[=configservice_get_conformance_pack_compliance_details]{get_conformance_pack_compliance_details} \tab Returns compliance details of a conformance pack for all Amazon Web Services resources that are monitered by conformance pack\cr
 \link[=configservice_get_conformance_pack_compliance_summary]{get_conformance_pack_compliance_summary} \tab Returns compliance details for the conformance pack based on the cumulative compliance results of all the rules in that conformance pack\cr
+\link[=configservice_get_connector]{get_connector} \tab Returns the details of the specified connector\cr
 \link[=configservice_get_custom_rule_policy]{get_custom_rule_policy} \tab Returns the policy definition containing the logic for your Config Custom Policy rule\cr
 \link[=configservice_get_discovered_resource_counts]{get_discovered_resource_counts} \tab Returns the resource types, the number of each resource type, and the total number of resources that Config is recording in this region for your Amazon Web Services account\cr
 \link[=configservice_get_organization_config_rule_detailed_status]{get_organization_config_rule_detailed_status} \tab Returns detailed status for each member account within an organization for a given organization Config rule\cr
@@ -166,6 +168,7 @@ You can access and manage Config through the Amazon Web Services Management Cons
 \link[=configservice_list_aggregate_discovered_resources]{list_aggregate_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions\cr
 \link[=configservice_list_configuration_recorders]{list_configuration_recorders} \tab Returns a list of configuration recorders depending on the filters you specify\cr
 \link[=configservice_list_conformance_pack_compliance_scores]{list_conformance_pack_compliance_scores} \tab Returns a list of conformance pack compliance scores\cr
+\link[=configservice_list_connectors]{list_connectors} \tab Returns a list of connectors depending on the filters you specify\cr
 \link[=configservice_list_discovered_resources]{list_discovered_resources} \tab Returns a list of resource resource identifiers for the specified resource types for the resources of that type\cr
 \link[=configservice_list_resource_evaluations]{list_resource_evaluations} \tab Returns a list of proactive resource evaluations\cr
 \link[=configservice_list_stored_queries]{list_stored_queries} \tab Lists the stored queries for a single Amazon Web Services account and a single Amazon Web Services Region\cr
@@ -175,6 +178,7 @@ You can access and manage Config through the Amazon Web Services Management Cons
 \link[=configservice_put_configuration_aggregator]{put_configuration_aggregator} \tab Creates and updates the configuration aggregator with the selected source accounts and regions\cr
 \link[=configservice_put_configuration_recorder]{put_configuration_recorder} \tab Creates or updates the customer managed configuration recorder\cr
 \link[=configservice_put_conformance_pack]{put_conformance_pack} \tab Creates or updates a conformance pack\cr
+\link[=configservice_put_connector]{put_connector} \tab Creates a connector that specifies the connection between a third-party cloud service provider and Config\cr
 \link[=configservice_put_delivery_channel]{put_delivery_channel} \tab Creates or updates a delivery channel to deliver configuration information and other compliance information\cr
 \link[=configservice_put_evaluations]{put_evaluations} \tab Used by an Lambda function to deliver evaluation results to Config\cr
 \link[=configservice_put_external_evaluation]{put_external_evaluation} \tab Add or updates the evaluations for process checks\cr
@@ -186,6 +190,7 @@ You can access and manage Config through the Amazon Web Services Management Cons
 \link[=configservice_put_retention_configuration]{put_retention_configuration} \tab Creates and updates the retention configuration with details about retention period (number of days) that Config stores your historical information\cr
 \link[=configservice_put_service_linked_configuration_recorder]{put_service_linked_configuration_recorder} \tab Creates a service-linked configuration recorder that is linked to a specific Amazon Web Services service based on the ServicePrincipal you specify\cr
 \link[=configservice_put_stored_query]{put_stored_query} \tab Saves a new query or updates an existing saved query\cr
+\link[=configservice_put_third_party_service_linked_configuration_recorder]{put_third_party_service_linked_configuration_recorder} \tab Creates or updates a service-linked configuration recorder that is linked to a third-party cloud service provider based on the ConnectorArn you specify\cr
 \link[=configservice_select_aggregate_resource_config]{select_aggregate_resource_config} \tab Accepts a structured query language (SQL) SELECT command and an aggregator to query configuration state of Amazon Web Services resources across multiple accounts and regions, performs the corresponding search, and returns resource configurations matching the properties\cr
 \link[=configservice_select_resource_config]{select_resource_config} \tab Accepts a structured query language (SQL) SELECT command, performs the corresponding search, and returns resource configurations matching the properties\cr
 \link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation} \tab Runs an on-demand evaluation for the specified Config rules against the last known configuration state of the resources\cr

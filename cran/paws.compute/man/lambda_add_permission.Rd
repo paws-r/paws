@@ -10,13 +10,13 @@ lambda_add_permission(
   Action,
   Principal,
   SourceArn = NULL,
+  FunctionUrlAuthType = NULL,
+  InvokedViaFunctionUrl = NULL,
   SourceAccount = NULL,
   EventSourceToken = NULL,
   Qualifier = NULL,
   RevisionId = NULL,
-  PrincipalOrgID = NULL,
-  FunctionUrlAuthType = NULL,
-  InvokedViaFunctionUrl = NULL
+  PrincipalOrgID = NULL
 )
 }
 \arguments{
@@ -41,6 +41,10 @@ You can append a version number or alias to any of the formats. The length const
 
 Note that Lambda configures the comparison using the \code{StringLike} operator.}
 
+\item{FunctionUrlAuthType}{The type of authentication that your function URL uses. Set to \code{AWS_IAM} if you want to restrict access to authenticated users only. Set to \code{NONE} if you want to bypass IAM authentication to create a public endpoint. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html}{Control access to Lambda function URLs}.}
+
+\item{InvokedViaFunctionUrl}{Indicates whether the permission applies when the function is invoked through a function URL.}
+
 \item{SourceAccount}{For Amazon Web Services service, the ID of the Amazon Web Services account that owns the resource. Use this together with \code{SourceArn} to ensure that the specified account owns the resource. It is possible for an Amazon S3 bucket to be deleted by its owner and recreated by another account.}
 
 \item{EventSourceToken}{For Alexa Smart Home functions, a token that the invoker must supply.}
@@ -50,10 +54,6 @@ Note that Lambda configures the comparison using the \code{StringLike} operator.
 \item{RevisionId}{Update the policy only if the revision ID matches the ID that's specified. Use this option to avoid modifying a policy that has changed since you last read it.}
 
 \item{PrincipalOrgID}{The identifier for your organization in Organizations. Use this to grant permissions to all the Amazon Web Services accounts under this organization.}
-
-\item{FunctionUrlAuthType}{The type of authentication that your function URL uses. Set to \code{AWS_IAM} if you want to restrict access to authenticated users only. Set to \code{NONE} if you want to bypass IAM authentication to create a public endpoint. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html}{Control access to Lambda function URLs}.}
-
-\item{InvokedViaFunctionUrl}{Indicates whether the permission applies when the function is invoked through a function URL.}
 }
 \description{
 Grants a \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#Principal_specifying}{principal} permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function. Note: Lambda does not support adding policies to version $LATEST.

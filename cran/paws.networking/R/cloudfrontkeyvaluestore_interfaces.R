@@ -5,72 +5,60 @@ NULL
 
 .cloudfrontkeyvaluestore$delete_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KvsARN = structure(logical(0), tags = list(location = "uri", locationName = "KvsARN", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), IfMatch = structure(logical(0), tags = list(location = "header", locationName = "If-Match", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudfrontkeyvaluestore_shapes[["delete_key_input"]]))
 }
 
 .cloudfrontkeyvaluestore$delete_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ItemCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), TotalSizeInBytes = structure(logical(0), tags = list(type = "long", box = TRUE)), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudfrontkeyvaluestore_shapes[["delete_key_output"]]))
 }
 
 .cloudfrontkeyvaluestore$describe_key_value_store_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KvsARN = structure(logical(0), tags = list(location = "uri", locationName = "KvsARN", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudfrontkeyvaluestore_shapes[["describe_key_value_store_input"]]))
 }
 
 .cloudfrontkeyvaluestore$describe_key_value_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ItemCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), TotalSizeInBytes = structure(logical(0), tags = list(type = "long", box = TRUE)), KvsARN = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string")), LastModified = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudfrontkeyvaluestore_shapes[["describe_key_value_store_output"]]))
 }
 
 .cloudfrontkeyvaluestore$get_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KvsARN = structure(logical(0), tags = list(location = "uri", locationName = "KvsARN", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudfrontkeyvaluestore_shapes[["get_key_input"]]))
 }
 
 .cloudfrontkeyvaluestore$get_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ItemCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), TotalSizeInBytes = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudfrontkeyvaluestore_shapes[["get_key_output"]]))
 }
 
 .cloudfrontkeyvaluestore$list_keys_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KvsARN = structure(logical(0), tags = list(location = "uri", locationName = "KvsARN", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudfrontkeyvaluestore_shapes[["list_keys_input"]]))
 }
 
 .cloudfrontkeyvaluestore$list_keys_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Items = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudfrontkeyvaluestore_shapes[["list_keys_output"]]))
 }
 
 .cloudfrontkeyvaluestore$put_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), KvsARN = structure(logical(0), tags = list(location = "uri", locationName = "KvsARN", type = "string")), IfMatch = structure(logical(0), tags = list(location = "header", locationName = "If-Match", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudfrontkeyvaluestore_shapes[["put_key_input"]]))
 }
 
 .cloudfrontkeyvaluestore$put_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ItemCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), TotalSizeInBytes = structure(logical(0), tags = list(type = "long", box = TRUE)), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudfrontkeyvaluestore_shapes[["put_key_output"]]))
 }
 
 .cloudfrontkeyvaluestore$update_keys_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KvsARN = structure(logical(0), tags = list(location = "uri", locationName = "KvsARN", type = "string")), IfMatch = structure(logical(0), tags = list(location = "header", locationName = "If-Match", type = "string")), Puts = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Deletes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudfrontkeyvaluestore_shapes[["update_keys_input"]]))
 }
 
 .cloudfrontkeyvaluestore$update_keys_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ItemCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), TotalSizeInBytes = structure(logical(0), tags = list(type = "long", box = TRUE)), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudfrontkeyvaluestore_shapes[["update_keys_output"]]))
 }

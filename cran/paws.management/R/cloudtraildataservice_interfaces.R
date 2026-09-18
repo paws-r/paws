@@ -5,12 +5,10 @@ NULL
 
 .cloudtraildataservice$put_audit_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(auditEvents = structure(list(structure(list(eventData = structure(logical(0), tags = list(type = "string")), eventDataChecksum = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), channelArn = structure(logical(0), tags = list(location = "querystring", locationName = "channelArn", type = "string")), externalId = structure(logical(0), tags = list(location = "querystring", locationName = "externalId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudtraildataservice_shapes[["put_audit_events_input"]]))
 }
 
 .cloudtraildataservice$put_audit_events_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(failed = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), successful = structure(list(structure(list(eventID = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudtraildataservice_shapes[["put_audit_events_output"]]))
 }

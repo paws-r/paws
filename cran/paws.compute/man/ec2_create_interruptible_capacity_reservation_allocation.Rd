@@ -10,7 +10,8 @@ ec2_create_interruptible_capacity_reservation_allocation(
   InstanceCount,
   ClientToken = NULL,
   DryRun = NULL,
-  TagSpecifications = NULL
+  TagSpecifications = NULL,
+  ZeroSizePreference = NULL
 )
 }
 \arguments{
@@ -23,6 +24,8 @@ ec2_create_interruptible_capacity_reservation_allocation(
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response.}
 
 \item{TagSpecifications}{The tags to apply to the interruptible Capacity Reservation during creation.}
+
+\item{ZeroSizePreference}{Specifies the behavior for the interruptible Capacity Reservation when you reduce its allocation to zero instances. Specify \code{retain} to keep the interruptible Capacity Reservation active at zero capacity so that you can allocate instances to it again later. Specify \code{default} to cancel the interruptible Capacity Reservation and return the capacity to your source Capacity Reservation. The default value is \code{default}.}
 }
 \description{
 Creates an interruptible Capacity Reservation by specifying the number of unused instances you want to allocate from your source reservation. This helps you make unused capacity available for other workloads within your account while maintaining control to reclaim it.

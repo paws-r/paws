@@ -8,7 +8,7 @@ other resource}
 kendra_tag_resource(ResourceARN, Tags)
 }
 \arguments{
-\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the index, FAQ, data source, or other resource to add a tag. For example, the ARN of an index is constructed as follows: \emph{arn:aws:kendra:your-region:your-account-id:index/index-id} For information on how to construct an ARN for all types of Amazon Kendra resources, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonkendra.html#amazonkendra-resources-for-iam-policies}{Resource types}.}
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the index, FAQ, data source, or other resource to add a tag. For example, the ARN of an index is constructed as follows: \emph{arn:aws:kendra:your-region:your-account-id:index/index-id} For information on how to construct an ARN for all types of Amazon Kendra resources, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/#amazonkendra-resources-for-iam-policies}{Resource types}.}
 
 \item{Tags}{[required] A list of tag keys to add to the index, FAQ, data source, or other resource. If a tag already exists, the existing value is replaced with the new value.}
 }

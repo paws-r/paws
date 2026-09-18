@@ -5,8 +5,7 @@ NULL
 
 .sqs$add_permission_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), AWSAccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", flattened = TRUE)), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["add_permission_input"]]))
 }
 
 .sqs$add_permission_output <- function(...) {
@@ -15,20 +14,17 @@ NULL
 
 .sqs$cancel_message_move_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TaskHandle = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["cancel_message_move_task_input"]]))
 }
 
 .sqs$cancel_message_move_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApproximateNumberOfMessagesMoved = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["cancel_message_move_task_output"]]))
 }
 
 .sqs$change_message_visibility_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string")), ReceiptHandle = structure(logical(0), tags = list(type = "string")), VisibilityTimeout = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["change_message_visibility_input"]]))
 }
 
 .sqs$change_message_visibility_output <- function(...) {
@@ -37,32 +33,27 @@ NULL
 
 .sqs$change_message_visibility_batch_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string")), Entries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ReceiptHandle = structure(logical(0), tags = list(type = "string")), VisibilityTimeout = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["change_message_visibility_batch_input"]]))
 }
 
 .sqs$change_message_visibility_batch_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Successful = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE)), Failed = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), SenderFault = structure(logical(0), tags = list(type = "boolean")), Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["change_message_visibility_batch_output"]]))
 }
 
 .sqs$create_queue_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueName = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", flattened = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["create_queue_input"]]))
 }
 
 .sqs$create_queue_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["create_queue_output"]]))
 }
 
 .sqs$delete_message_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string")), ReceiptHandle = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["delete_message_input"]]))
 }
 
 .sqs$delete_message_output <- function(...) {
@@ -71,20 +62,17 @@ NULL
 
 .sqs$delete_message_batch_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string")), Entries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ReceiptHandle = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["delete_message_batch_input"]]))
 }
 
 .sqs$delete_message_batch_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Successful = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE)), Failed = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), SenderFault = structure(logical(0), tags = list(type = "boolean")), Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["delete_message_batch_output"]]))
 }
 
 .sqs$delete_queue_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["delete_queue_input"]]))
 }
 
 .sqs$delete_queue_output <- function(...) {
@@ -93,80 +81,67 @@ NULL
 
 .sqs$get_queue_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string")), AttributeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["get_queue_attributes_input"]]))
 }
 
 .sqs$get_queue_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["get_queue_attributes_output"]]))
 }
 
 .sqs$get_queue_url_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueName = structure(logical(0), tags = list(type = "string")), QueueOwnerAWSAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["get_queue_url_input"]]))
 }
 
 .sqs$get_queue_url_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["get_queue_url_output"]]))
 }
 
 .sqs$list_dead_letter_source_queues_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["list_dead_letter_source_queues_input"]]))
 }
 
 .sqs$list_dead_letter_source_queues_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(queueUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", flattened = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["list_dead_letter_source_queues_output"]]))
 }
 
 .sqs$list_message_move_tasks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SourceArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["list_message_move_tasks_input"]]))
 }
 
 .sqs$list_message_move_tasks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Results = structure(list(structure(list(TaskHandle = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SourceArn = structure(logical(0), tags = list(type = "string")), DestinationArn = structure(logical(0), tags = list(type = "string")), MaxNumberOfMessagesPerSecond = structure(logical(0), tags = list(type = "integer")), ApproximateNumberOfMessagesMoved = structure(logical(0), tags = list(type = "long")), ApproximateNumberOfMessagesToMove = structure(logical(0), tags = list(type = "long")), FailureReason = structure(logical(0), tags = list(type = "string")), StartedTimestamp = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["list_message_move_tasks_output"]]))
 }
 
 .sqs$list_queue_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["list_queue_tags_input"]]))
 }
 
 .sqs$list_queue_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["list_queue_tags_output"]]))
 }
 
 .sqs$list_queues_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueNamePrefix = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["list_queues_input"]]))
 }
 
 .sqs$list_queues_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", flattened = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["list_queues_output"]]))
 }
 
 .sqs$purge_queue_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["purge_queue_input"]]))
 }
 
 .sqs$purge_queue_output <- function(...) {
@@ -175,20 +150,17 @@ NULL
 
 .sqs$receive_message_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string")), AttributeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(deprecated = TRUE, deprecatedMessage = "AttributeNames has been replaced by MessageSystemAttributeNames", type = "list", flattened = TRUE)), MessageSystemAttributeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", flattened = TRUE)), MessageAttributeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", flattened = TRUE)), MaxNumberOfMessages = structure(logical(0), tags = list(type = "integer")), VisibilityTimeout = structure(logical(0), tags = list(type = "integer")), WaitTimeSeconds = structure(logical(0), tags = list(type = "integer")), ReceiveRequestAttemptId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["receive_message_input"]]))
 }
 
 .sqs$receive_message_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Messages = structure(list(structure(list(MessageId = structure(logical(0), tags = list(type = "string")), ReceiptHandle = structure(logical(0), tags = list(type = "string")), MD5OfBody = structure(logical(0), tags = list(type = "string")), Body = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", flattened = TRUE)), MD5OfMessageAttributes = structure(logical(0), tags = list(type = "string")), MessageAttributes = structure(list(structure(list(StringValue = structure(logical(0), tags = list(type = "string")), BinaryValue = structure(logical(0), tags = list(type = "blob")), StringListValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(flattened = TRUE, type = "list")), BinaryListValues = structure(list(structure(logical(0), tags = list(type = "blob"))), tags = list(flattened = TRUE, type = "list")), DataType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map", flattened = TRUE))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["receive_message_output"]]))
 }
 
 .sqs$remove_permission_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["remove_permission_input"]]))
 }
 
 .sqs$remove_permission_output <- function(...) {
@@ -197,32 +169,27 @@ NULL
 
 .sqs$send_message_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string")), MessageBody = structure(logical(0), tags = list(type = "string")), DelaySeconds = structure(logical(0), tags = list(type = "integer")), MessageAttributes = structure(list(structure(list(StringValue = structure(logical(0), tags = list(type = "string")), BinaryValue = structure(logical(0), tags = list(type = "blob")), StringListValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(flattened = TRUE, type = "list")), BinaryListValues = structure(list(structure(logical(0), tags = list(type = "blob"))), tags = list(flattened = TRUE, type = "list")), DataType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map", flattened = TRUE)), MessageSystemAttributes = structure(list(structure(list(StringValue = structure(logical(0), tags = list(type = "string")), BinaryValue = structure(logical(0), tags = list(type = "blob")), StringListValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(flattened = TRUE, type = "list")), BinaryListValues = structure(list(structure(logical(0), tags = list(type = "blob"))), tags = list(flattened = TRUE, type = "list")), DataType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map", flattened = TRUE)), MessageDeduplicationId = structure(logical(0), tags = list(type = "string")), MessageGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["send_message_input"]]))
 }
 
 .sqs$send_message_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MD5OfMessageBody = structure(logical(0), tags = list(type = "string")), MD5OfMessageAttributes = structure(logical(0), tags = list(type = "string")), MD5OfMessageSystemAttributes = structure(logical(0), tags = list(type = "string")), MessageId = structure(logical(0), tags = list(type = "string")), SequenceNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["send_message_output"]]))
 }
 
 .sqs$send_message_batch_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string")), Entries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), MessageBody = structure(logical(0), tags = list(type = "string")), DelaySeconds = structure(logical(0), tags = list(type = "integer")), MessageAttributes = structure(list(structure(list(StringValue = structure(logical(0), tags = list(type = "string")), BinaryValue = structure(logical(0), tags = list(type = "blob")), StringListValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(flattened = TRUE, type = "list")), BinaryListValues = structure(list(structure(logical(0), tags = list(type = "blob"))), tags = list(flattened = TRUE, type = "list")), DataType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map", flattened = TRUE)), MessageSystemAttributes = structure(list(structure(list(StringValue = structure(logical(0), tags = list(type = "string")), BinaryValue = structure(logical(0), tags = list(type = "blob")), StringListValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(flattened = TRUE, type = "list")), BinaryListValues = structure(list(structure(logical(0), tags = list(type = "blob"))), tags = list(flattened = TRUE, type = "list")), DataType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map", flattened = TRUE)), MessageDeduplicationId = structure(logical(0), tags = list(type = "string")), MessageGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["send_message_batch_input"]]))
 }
 
 .sqs$send_message_batch_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Successful = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), MessageId = structure(logical(0), tags = list(type = "string")), MD5OfMessageBody = structure(logical(0), tags = list(type = "string")), MD5OfMessageAttributes = structure(logical(0), tags = list(type = "string")), MD5OfMessageSystemAttributes = structure(logical(0), tags = list(type = "string")), SequenceNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE)), Failed = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), SenderFault = structure(logical(0), tags = list(type = "boolean")), Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["send_message_batch_output"]]))
 }
 
 .sqs$set_queue_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["set_queue_attributes_input"]]))
 }
 
 .sqs$set_queue_attributes_output <- function(...) {
@@ -231,20 +198,17 @@ NULL
 
 .sqs$start_message_move_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SourceArn = structure(logical(0), tags = list(type = "string")), DestinationArn = structure(logical(0), tags = list(type = "string")), MaxNumberOfMessagesPerSecond = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["start_message_move_task_input"]]))
 }
 
 .sqs$start_message_move_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TaskHandle = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["start_message_move_task_output"]]))
 }
 
 .sqs$tag_queue_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["tag_queue_input"]]))
 }
 
 .sqs$tag_queue_output <- function(...) {
@@ -253,8 +217,7 @@ NULL
 
 .sqs$untag_queue_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .sqs_shapes[["untag_queue_input"]]))
 }
 
 .sqs$untag_queue_output <- function(...) {

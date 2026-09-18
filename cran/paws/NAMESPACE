@@ -192,7 +192,6 @@ export(organizations)
 export(paginate)
 export(paginate_lapply)
 export(paginate_sapply)
-export(panorama)
 export(paws_stream_parser)
 export(paymentcryptographycontrolplane)
 export(paymentcryptographydataplane)
@@ -287,11 +286,13 @@ export(workmailmessageflow)
 export(workspaces)
 export(workspacesweb)
 export(xray)
-importFrom(paws.common,config)
-importFrom(paws.common,credentials)
-importFrom(paws.common,creds)
-importFrom(paws.common,list_paginators)
-importFrom(paws.common,paginate)
-importFrom(paws.common,paginate_lapply)
-importFrom(paws.common,paginate_sapply)
-importFrom(paws.common,paws_stream_parser)
+importFrom(paws.common,
+  config,
+  credentials,
+  creds,
+  list_paginators,
+  paginate,
+  paginate_lapply,
+  paginate_sapply,
+  paws_stream_parser
+)

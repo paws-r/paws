@@ -5,1272 +5,1080 @@ NULL
 
 .bedrock$batch_delete_advanced_prompt_optimization_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["batch_delete_advanced_prompt_optimization_job_input"]]))
 }
 
 .bedrock$batch_delete_advanced_prompt_optimization_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(errors = structure(list(structure(list(jobIdentifier = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), advancedPromptOptimizationJobs = structure(list(structure(list(jobIdentifier = structure(logical(0), tags = list(type = "string")), jobStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["batch_delete_advanced_prompt_optimization_job_output"]]))
 }
 
 .bedrock$batch_delete_evaluation_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobIdentifiers = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["batch_delete_evaluation_job_input"]]))
 }
 
 .bedrock$batch_delete_evaluation_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(errors = structure(list(structure(list(jobIdentifier = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), evaluationJobs = structure(list(structure(list(jobIdentifier = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), jobStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["batch_delete_evaluation_job_output"]]))
 }
 
 .bedrock$cancel_automated_reasoning_policy_build_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), buildWorkflowId = structure(logical(0), tags = list(location = "uri", locationName = "buildWorkflowId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["cancel_automated_reasoning_policy_build_workflow_input"]]))
 }
 
 .bedrock$cancel_automated_reasoning_policy_build_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["cancel_automated_reasoning_policy_build_workflow_output"]]))
 }
 
 .bedrock$create_advanced_prompt_optimization_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), jobDescription = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), inputConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), outputConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), encryptionKeyArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), modelConfigurations = structure(list(structure(list(modelId = structure(logical(0), tags = list(type = "string")), inferenceConfig = structure(list(maxTokens = structure(logical(0), tags = list(type = "integer", box = TRUE)), temperature = structure(logical(0), tags = list(type = "float", box = TRUE)), topP = structure(logical(0), tags = list(type = "float", box = TRUE)), stopSequences = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), additionalModelRequestFields = structure(list(structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_advanced_prompt_optimization_job_input"]]))
 }
 
 .bedrock$create_advanced_prompt_optimization_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_advanced_prompt_optimization_job_output"]]))
 }
 
 .bedrock$create_automated_reasoning_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), policyDefinition = structure(list(version = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), rules = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), alternateExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), variables = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), kmsKeyId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_automated_reasoning_policy_input"]]))
 }
 
 .bedrock$create_automated_reasoning_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), definitionHash = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_automated_reasoning_policy_output"]]))
 }
 
 .bedrock$create_automated_reasoning_policy_test_case_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), guardContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), queryContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), expectedAggregatedFindingsResult = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), confidenceThreshold = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_automated_reasoning_policy_test_case_input"]]))
 }
 
 .bedrock$create_automated_reasoning_policy_test_case_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(type = "string")), testCaseId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_automated_reasoning_policy_test_case_output"]]))
 }
 
 .bedrock$create_automated_reasoning_policy_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), lastUpdatedDefinitionHash = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_automated_reasoning_policy_version_input"]]))
 }
 
 .bedrock$create_automated_reasoning_policy_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), definitionHash = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_automated_reasoning_policy_version_output"]]))
 }
 
 .bedrock$create_custom_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelName = structure(logical(0), tags = list(type = "string")), modelSourceConfig = structure(list(s3DataSource = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), modelKmsKeyArn = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), modelTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_custom_model_input"]]))
 }
 
 .bedrock$create_custom_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_custom_model_output"]]))
 }
 
 .bedrock$create_custom_model_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelDeploymentName = structure(logical(0), tags = list(type = "string")), modelArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_custom_model_deployment_input"]]))
 }
 
 .bedrock$create_custom_model_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(customModelDeploymentArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_custom_model_deployment_output"]]))
 }
 
 .bedrock$create_evaluation_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), jobDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), customerEncryptionKeyId = structure(logical(0), tags = list(type = "string")), jobTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), applicationType = structure(logical(0), tags = list(type = "string")), evaluationConfig = structure(list(automated = structure(list(datasetMetricConfigs = structure(list(structure(list(taskType = structure(logical(0), tags = list(type = "string")), dataset = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datasetLocation = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), metricNames = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), evaluatorModelConfig = structure(list(bedrockEvaluatorModels = structure(list(structure(list(modelIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE)), customMetricConfig = structure(list(customMetrics = structure(list(structure(list(customMetricDefinition = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), instructions = structure(logical(0), tags = list(type = "string")), ratingScale = structure(list(structure(list(definition = structure(logical(0), tags = list(type = "string")), value = structure(list(stringValue = structure(logical(0), tags = list(type = "string")), floatValue = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), evaluatorModelConfig = structure(list(bedrockEvaluatorModels = structure(list(structure(list(modelIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), human = structure(list(humanWorkflowConfig = structure(list(flowDefinitionArn = structure(logical(0), tags = list(type = "string")), instructions = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), customMetrics = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ratingMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), datasetMetricConfigs = structure(list(structure(list(taskType = structure(logical(0), tags = list(type = "string")), dataset = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datasetLocation = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), metricNames = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), inferenceConfig = structure(list(models = structure(list(structure(list(bedrockModel = structure(list(modelIdentifier = structure(logical(0), tags = list(type = "string")), inferenceParams = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), performanceConfig = structure(list(latency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), precomputedInferenceSource = structure(list(inferenceSourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), ragConfigs = structure(list(structure(list(knowledgeBaseConfig = structure(list(retrieveConfig = structure(list(knowledgeBaseId = structure(logical(0), tags = list(type = "string")), knowledgeBaseRetrievalConfiguration = structure(list(vectorSearchConfiguration = structure(list(numberOfResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), overrideSearchType = structure(logical(0), tags = list(type = "string")), filter = structure(list(equals = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), notEquals = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), greaterThan = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), greaterThanOrEquals = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), lessThan = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), lessThanOrEquals = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), "in" = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), notIn = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), startsWith = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), listContains = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), stringContains = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), andAll = structure(list(structure(logical(0), tags = list(type = "structure", sensitive = TRUE, union = TRUE))), tags = list(type = "list")), orAll = structure(list(structure(logical(0), tags = list(type = "structure", sensitive = TRUE, union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure", sensitive = TRUE, union = TRUE)), implicitFilterConfiguration = structure(list(metadataAttributes = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), modelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), rerankingConfiguration = structure(list(type = structure(logical(0), tags = list(type = "string")), bedrockRerankingConfiguration = structure(list(modelConfiguration = structure(list(modelArn = structure(logical(0), tags = list(type = "string")), additionalModelRequestFields = structure(list(structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), numberOfRerankedResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), metadataConfiguration = structure(list(selectionMode = structure(logical(0), tags = list(type = "string")), selectiveModeConfiguration = structure(list(fieldsToInclude = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), fieldsToExclude = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), retrieveAndGenerateConfig = structure(list(type = structure(logical(0), tags = list(type = "string")), knowledgeBaseConfiguration = structure(list(knowledgeBaseId = structure(logical(0), tags = list(type = "string")), modelArn = structure(logical(0), tags = list(type = "string")), retrievalConfiguration = structure(list(vectorSearchConfiguration = structure(list(numberOfResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), overrideSearchType = structure(logical(0), tags = list(type = "string")), filter = structure(list(equals = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), notEquals = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), greaterThan = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), greaterThanOrEquals = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), lessThan = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), lessThanOrEquals = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), "in" = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), notIn = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), startsWith = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), listContains = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), stringContains = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), andAll = structure(list(structure(logical(0), tags = list(type = "structure", sensitive = TRUE, union = TRUE))), tags = list(type = "list")), orAll = structure(list(structure(logical(0), tags = list(type = "structure", sensitive = TRUE, union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure", sensitive = TRUE, union = TRUE)), implicitFilterConfiguration = structure(list(metadataAttributes = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), modelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), rerankingConfiguration = structure(list(type = structure(logical(0), tags = list(type = "string")), bedrockRerankingConfiguration = structure(list(modelConfiguration = structure(list(modelArn = structure(logical(0), tags = list(type = "string")), additionalModelRequestFields = structure(list(structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), numberOfRerankedResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), metadataConfiguration = structure(list(selectionMode = structure(logical(0), tags = list(type = "string")), selectiveModeConfiguration = structure(list(fieldsToInclude = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), fieldsToExclude = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), generationConfiguration = structure(list(promptTemplate = structure(list(textPromptTemplate = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), guardrailConfiguration = structure(list(guardrailId = structure(logical(0), tags = list(type = "string")), guardrailVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), kbInferenceConfig = structure(list(textInferenceConfig = structure(list(temperature = structure(logical(0), tags = list(type = "float", box = TRUE)), topP = structure(logical(0), tags = list(type = "float", box = TRUE)), maxTokens = structure(logical(0), tags = list(type = "integer", box = TRUE)), stopSequences = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), additionalModelRequestFields = structure(list(structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), orchestrationConfiguration = structure(list(queryTransformationConfiguration = structure(list(type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), externalSourcesConfiguration = structure(list(modelArn = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(list(sourceType = structure(logical(0), tags = list(type = "string")), s3Location = structure(list(uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), byteContent = structure(list(identifier = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), contentType = structure(logical(0), tags = list(type = "string")), data = structure(logical(0), tags = list(type = "blob", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), generationConfiguration = structure(list(promptTemplate = structure(list(textPromptTemplate = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), guardrailConfiguration = structure(list(guardrailId = structure(logical(0), tags = list(type = "string")), guardrailVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), kbInferenceConfig = structure(list(textInferenceConfig = structure(list(temperature = structure(logical(0), tags = list(type = "float", box = TRUE)), topP = structure(logical(0), tags = list(type = "float", box = TRUE)), maxTokens = structure(logical(0), tags = list(type = "integer", box = TRUE)), stopSequences = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), additionalModelRequestFields = structure(list(structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), precomputedRagSourceConfig = structure(list(retrieveSourceConfig = structure(list(ragSourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), retrieveAndGenerateSourceConfig = structure(list(ragSourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE)), outputDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_evaluation_job_input"]]))
 }
 
 .bedrock$create_evaluation_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_evaluation_job_output"]]))
 }
 
 .bedrock$create_foundation_model_agreement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(offerToken = structure(logical(0), tags = list(type = "string")), modelId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_foundation_model_agreement_input"]]))
 }
 
 .bedrock$create_foundation_model_agreement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_foundation_model_agreement_output"]]))
 }
 
 .bedrock$create_guardrail_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), topicPolicyConfig = structure(list(topicsConfig = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), definition = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), examples = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), type = structure(logical(0), tags = list(type = "string")), inputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), tierConfig = structure(list(tierName = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), contentPolicyConfig = structure(list(filtersConfig = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), inputStrength = structure(logical(0), tags = list(type = "string")), outputStrength = structure(logical(0), tags = list(type = "string")), inputModalities = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), outputModalities = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), inputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), tierConfig = structure(list(tierName = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), wordPolicyConfig = structure(list(wordsConfig = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string")), inputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), managedWordListsConfig = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), inputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), sensitiveInformationPolicyConfig = structure(list(piiEntitiesConfig = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), action = structure(logical(0), tags = list(type = "string")), inputAction = structure(logical(0), tags = list(type = "string")), outputAction = structure(logical(0), tags = list(type = "string")), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), regexesConfig = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string")), action = structure(logical(0), tags = list(type = "string")), inputAction = structure(logical(0), tags = list(type = "string")), outputAction = structure(logical(0), tags = list(type = "string")), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), contextualGroundingPolicyConfig = structure(list(filtersConfig = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), threshold = structure(logical(0), tags = list(type = "double", box = TRUE)), action = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), automatedReasoningPolicyConfig = structure(list(policies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), confidenceThreshold = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), crossRegionConfig = structure(list(guardrailProfileIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), blockedInputMessaging = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), blockedOutputsMessaging = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), kmsKeyId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_guardrail_input"]]))
 }
 
 .bedrock$create_guardrail_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(guardrailId = structure(logical(0), tags = list(type = "string")), guardrailArn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_guardrail_output"]]))
 }
 
 .bedrock$create_guardrail_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(guardrailIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "guardrailIdentifier", type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_guardrail_version_input"]]))
 }
 
 .bedrock$create_guardrail_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(guardrailId = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_guardrail_version_output"]]))
 }
 
 .bedrock$create_inference_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(inferenceProfileName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), modelSource = structure(list(copyFrom = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_inference_profile_input"]]))
 }
 
 .bedrock$create_inference_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(inferenceProfileArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_inference_profile_output"]]))
 }
 
 .bedrock$create_marketplace_model_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelSourceIdentifier = structure(logical(0), tags = list(type = "string")), endpointConfig = structure(list(sageMaker = structure(list(initialInstanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), executionRole = structure(logical(0), tags = list(type = "string")), kmsEncryptionKey = structure(logical(0), tags = list(type = "string")), vpc = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), acceptEula = structure(logical(0), tags = list(type = "boolean")), endpointName = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_marketplace_model_endpoint_input"]]))
 }
 
 .bedrock$create_marketplace_model_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(marketplaceModelEndpoint = structure(list(endpointArn = structure(logical(0), tags = list(type = "string")), modelSourceIdentifier = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endpointConfig = structure(list(sageMaker = structure(list(initialInstanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), executionRole = structure(logical(0), tags = list(type = "string")), kmsEncryptionKey = structure(logical(0), tags = list(type = "string")), vpc = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), endpointStatus = structure(logical(0), tags = list(type = "string")), endpointStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_marketplace_model_endpoint_output"]]))
 }
 
 .bedrock$create_model_copy_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceModelArn = structure(logical(0), tags = list(type = "string")), targetModelName = structure(logical(0), tags = list(type = "string")), modelKmsKeyId = structure(logical(0), tags = list(type = "string")), targetModelTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_model_copy_job_input"]]))
 }
 
 .bedrock$create_model_copy_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_model_copy_job_output"]]))
 }
 
 .bedrock$create_model_customization_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), customModelName = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), baseModelIdentifier = structure(logical(0), tags = list(type = "string")), customizationType = structure(logical(0), tags = list(type = "string")), customModelKmsKeyId = structure(logical(0), tags = list(type = "string")), jobTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), customModelTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), trainingDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), invocationLogsConfig = structure(list(usePromptResponse = structure(logical(0), tags = list(type = "boolean")), invocationLogSource = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), requestMetadataFilters = structure(list(equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), notEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), andAll = structure(list(structure(list(equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), notEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), orAll = structure(list(structure(list(equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), notEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), validationDataConfig = structure(list(validators = structure(list(structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), outputDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), hyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), vpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), customizationConfig = structure(list(distillationConfig = structure(list(teacherModelConfig = structure(list(teacherModelIdentifier = structure(logical(0), tags = list(type = "string")), maxResponseLengthForInference = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), rftConfig = structure(list(graderConfig = structure(list(lambdaGrader = structure(list(lambdaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), hyperParameters = structure(list(epochCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), batchSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), learningRate = structure(logical(0), tags = list(type = "float", box = TRUE)), maxPromptLength = structure(logical(0), tags = list(type = "integer", box = TRUE)), trainingSamplePerPrompt = structure(logical(0), tags = list(type = "integer", box = TRUE)), inferenceMaxTokens = structure(logical(0), tags = list(type = "integer", box = TRUE)), reasoningEffort = structure(logical(0), tags = list(type = "string")), evalInterval = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_model_customization_job_input"]]))
 }
 
 .bedrock$create_model_customization_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_model_customization_job_output"]]))
 }
 
 .bedrock$create_model_import_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), importedModelName = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), modelDataSource = structure(list(s3DataSource = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), jobTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), importedModelTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(type = "string")), vpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), importedModelKmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_model_import_job_input"]]))
 }
 
 .bedrock$create_model_import_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_model_import_job_output"]]))
 }
 
 .bedrock$create_model_invocation_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), modelId = structure(logical(0), tags = list(type = "string")), inputDataConfig = structure(list(s3InputDataConfig = structure(list(s3InputFormat = structure(logical(0), tags = list(type = "string")), s3Uri = structure(logical(0), tags = list(type = "string")), s3BucketOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), outputDataConfig = structure(list(s3OutputDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), s3EncryptionKeyId = structure(logical(0), tags = list(type = "string")), s3BucketOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), vpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), timeoutDurationInHours = structure(logical(0), tags = list(type = "integer", box = TRUE)), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), modelInvocationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_model_invocation_job_input"]]))
 }
 
 .bedrock$create_model_invocation_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_model_invocation_job_output"]]))
 }
 
 .bedrock$create_prompt_router_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), promptRouterName = structure(logical(0), tags = list(type = "string")), models = structure(list(structure(list(modelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), routingCriteria = structure(list(responseQualityDifference = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), fallbackModel = structure(list(modelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_prompt_router_input"]]))
 }
 
 .bedrock$create_prompt_router_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(promptRouterArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_prompt_router_output"]]))
 }
 
 .bedrock$create_provisioned_model_throughput_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), modelUnits = structure(logical(0), tags = list(type = "integer", box = TRUE)), provisionedModelName = structure(logical(0), tags = list(type = "string")), modelId = structure(logical(0), tags = list(type = "string")), commitmentDuration = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_provisioned_model_throughput_input"]]))
 }
 
 .bedrock$create_provisioned_model_throughput_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(provisionedModelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["create_provisioned_model_throughput_output"]]))
 }
 
 .bedrock$delete_automated_reasoning_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), force = structure(logical(0), tags = list(location = "querystring", locationName = "force", type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_automated_reasoning_policy_input"]]))
 }
 
 .bedrock$delete_automated_reasoning_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_automated_reasoning_policy_output"]]))
 }
 
 .bedrock$delete_automated_reasoning_policy_build_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), buildWorkflowId = structure(logical(0), tags = list(location = "uri", locationName = "buildWorkflowId", type = "string")), lastUpdatedAt = structure(logical(0), tags = list(location = "querystring", locationName = "updatedAt", type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_automated_reasoning_policy_build_workflow_input"]]))
 }
 
 .bedrock$delete_automated_reasoning_policy_build_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_automated_reasoning_policy_build_workflow_output"]]))
 }
 
 .bedrock$delete_automated_reasoning_policy_test_case_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), testCaseId = structure(logical(0), tags = list(location = "uri", locationName = "testCaseId", type = "string")), lastUpdatedAt = structure(logical(0), tags = list(location = "querystring", locationName = "updatedAt", type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_automated_reasoning_policy_test_case_input"]]))
 }
 
 .bedrock$delete_automated_reasoning_policy_test_case_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_automated_reasoning_policy_test_case_output"]]))
 }
 
 .bedrock$delete_custom_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "modelIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_custom_model_input"]]))
 }
 
 .bedrock$delete_custom_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_custom_model_output"]]))
 }
 
 .bedrock$delete_custom_model_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(customModelDeploymentIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "customModelDeploymentIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_custom_model_deployment_input"]]))
 }
 
 .bedrock$delete_custom_model_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_custom_model_deployment_output"]]))
 }
 
 .bedrock$delete_enforced_guardrail_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configId = structure(logical(0), tags = list(location = "uri", locationName = "configId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_enforced_guardrail_configuration_input"]]))
 }
 
 .bedrock$delete_enforced_guardrail_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_enforced_guardrail_configuration_output"]]))
 }
 
 .bedrock$delete_foundation_model_agreement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_foundation_model_agreement_input"]]))
 }
 
 .bedrock$delete_foundation_model_agreement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_foundation_model_agreement_output"]]))
 }
 
 .bedrock$delete_guardrail_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(guardrailIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "guardrailIdentifier", type = "string")), guardrailVersion = structure(logical(0), tags = list(location = "querystring", locationName = "guardrailVersion", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_guardrail_input"]]))
 }
 
 .bedrock$delete_guardrail_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_guardrail_output"]]))
 }
 
 .bedrock$delete_imported_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "modelIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_imported_model_input"]]))
 }
 
 .bedrock$delete_imported_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_imported_model_output"]]))
 }
 
 .bedrock$delete_inference_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(inferenceProfileIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "inferenceProfileIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_inference_profile_input"]]))
 }
 
 .bedrock$delete_inference_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_inference_profile_output"]]))
 }
 
 .bedrock$delete_marketplace_model_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpointArn = structure(logical(0), tags = list(location = "uri", locationName = "endpointArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_marketplace_model_endpoint_input"]]))
 }
 
 .bedrock$delete_marketplace_model_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_marketplace_model_endpoint_output"]]))
 }
 
 .bedrock$delete_model_invocation_logging_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_model_invocation_logging_configuration_input"]]))
 }
 
 .bedrock$delete_model_invocation_logging_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_model_invocation_logging_configuration_output"]]))
 }
 
 .bedrock$delete_prompt_router_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(promptRouterArn = structure(logical(0), tags = list(location = "uri", locationName = "promptRouterArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_prompt_router_input"]]))
 }
 
 .bedrock$delete_prompt_router_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_prompt_router_output"]]))
 }
 
 .bedrock$delete_provisioned_model_throughput_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(provisionedModelId = structure(logical(0), tags = list(location = "uri", locationName = "provisionedModelId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_provisioned_model_throughput_input"]]))
 }
 
 .bedrock$delete_provisioned_model_throughput_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_provisioned_model_throughput_output"]]))
 }
 
 .bedrock$delete_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_resource_policy_input"]]))
 }
 
 .bedrock$delete_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["delete_resource_policy_output"]]))
 }
 
 .bedrock$deregister_marketplace_model_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpointArn = structure(logical(0), tags = list(location = "uri", locationName = "endpointArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["deregister_marketplace_model_endpoint_input"]]))
 }
 
 .bedrock$deregister_marketplace_model_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["deregister_marketplace_model_endpoint_output"]]))
 }
 
 .bedrock$export_automated_reasoning_policy_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["export_automated_reasoning_policy_version_input"]]))
 }
 
 .bedrock$export_automated_reasoning_policy_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyDefinition = structure(list(version = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), rules = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), alternateExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), variables = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "policyDefinition"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["export_automated_reasoning_policy_version_output"]]))
+}
+
+.bedrock$get_account_data_retention_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .bedrock_shapes[["get_account_data_retention_input"]]))
+}
+
+.bedrock$get_account_data_retention_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .bedrock_shapes[["get_account_data_retention_output"]]))
 }
 
 .bedrock$get_advanced_prompt_optimization_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "jobIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_advanced_prompt_optimization_job_input"]]))
 }
 
 .bedrock$get_advanced_prompt_optimization_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), jobDescription = structure(logical(0), tags = list(type = "string")), jobStatus = structure(logical(0), tags = list(type = "string")), inputConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), outputConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), encryptionKeyArn = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), failureMessage = structure(logical(0), tags = list(type = "string")), modelConfigurations = structure(list(structure(list(modelId = structure(logical(0), tags = list(type = "string")), inferenceConfig = structure(list(maxTokens = structure(logical(0), tags = list(type = "integer", box = TRUE)), temperature = structure(logical(0), tags = list(type = "float", box = TRUE)), topP = structure(logical(0), tags = list(type = "float", box = TRUE)), stopSequences = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), additionalModelRequestFields = structure(list(structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_advanced_prompt_optimization_job_output"]]))
 }
 
 .bedrock$get_automated_reasoning_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_automated_reasoning_policy_input"]]))
 }
 
 .bedrock$get_automated_reasoning_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), version = structure(logical(0), tags = list(type = "string")), policyId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), definitionHash = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_automated_reasoning_policy_output"]]))
 }
 
 .bedrock$get_automated_reasoning_policy_annotations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), buildWorkflowId = structure(logical(0), tags = list(location = "uri", locationName = "buildWorkflowId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_automated_reasoning_policy_annotations_input"]]))
 }
 
 .bedrock$get_automated_reasoning_policy_annotations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), buildWorkflowId = structure(logical(0), tags = list(type = "string")), annotations = structure(list(structure(list(addType = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), updateType = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), newName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(list(addTypeValue = structure(list(value = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateTypeValue = structure(list(value = structure(logical(0), tags = list(type = "string")), newValue = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), deleteTypeValue = structure(list(value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure")), deleteType = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), addVariable = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateVariable = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), newName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), deleteVariable = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), addRule = structure(list(expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateRule = structure(list(ruleId = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), deleteRule = structure(list(ruleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), addRuleFromNaturalLanguage = structure(list(naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateFromRulesFeedback = structure(list(ruleIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), feedback = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateFromScenarioFeedback = structure(list(ruleIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), scenarioExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), feedback = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), ingestContent = structure(list(content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), annotationSetHash = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_automated_reasoning_policy_annotations_output"]]))
 }
 
 .bedrock$get_automated_reasoning_policy_build_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), buildWorkflowId = structure(logical(0), tags = list(location = "uri", locationName = "buildWorkflowId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_automated_reasoning_policy_build_workflow_input"]]))
 }
 
 .bedrock$get_automated_reasoning_policy_build_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(type = "string")), buildWorkflowId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), buildWorkflowType = structure(logical(0), tags = list(type = "string")), documentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), documentContentType = structure(logical(0), tags = list(type = "string")), documentDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_automated_reasoning_policy_build_workflow_output"]]))
 }
 
 .bedrock$get_automated_reasoning_policy_build_workflow_result_assets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), buildWorkflowId = structure(logical(0), tags = list(location = "uri", locationName = "buildWorkflowId", type = "string")), assetType = structure(logical(0), tags = list(location = "querystring", locationName = "assetType", type = "string")), assetId = structure(logical(0), tags = list(location = "querystring", locationName = "assetId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_automated_reasoning_policy_build_workflow_result_assets_input"]]))
 }
 
 .bedrock$get_automated_reasoning_policy_build_workflow_result_assets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(type = "string")), buildWorkflowId = structure(logical(0), tags = list(type = "string")), buildWorkflowAssets = structure(list(policyDefinition = structure(list(version = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), rules = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), alternateExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), variables = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), qualityReport = structure(list(typeCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), variableCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), ruleCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), unusedTypes = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), unusedTypeValues = structure(list(structure(list(typeName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), valueName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), unusedVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), conflictingRules = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), disjointRuleSets = structure(list(structure(list(variables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), rules = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), buildLog = structure(list(entries = structure(list(structure(list(annotation = structure(list(addType = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), updateType = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), newName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(list(addTypeValue = structure(list(value = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateTypeValue = structure(list(value = structure(logical(0), tags = list(type = "string")), newValue = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), deleteTypeValue = structure(list(value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure")), deleteType = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), addVariable = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateVariable = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), newName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), deleteVariable = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), addRule = structure(list(expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateRule = structure(list(ruleId = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), deleteRule = structure(list(ruleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), addRuleFromNaturalLanguage = structure(list(naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateFromRulesFeedback = structure(list(ruleIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), feedback = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateFromScenarioFeedback = structure(list(ruleIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), scenarioExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), feedback = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), ingestContent = structure(list(content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), status = structure(logical(0), tags = list(type = "string")), buildSteps = structure(list(structure(list(context = structure(list(planning = structure(list(), tags = list(type = "structure")), mutation = structure(list(addType = structure(list(type = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), updateType = structure(list(type = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), deleteType = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), addVariable = structure(list(variable = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), updateVariable = structure(list(variable = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), deleteVariable = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), addRule = structure(list(rule = structure(list(id = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), alternateExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), updateRule = structure(list(rule = structure(list(id = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), alternateExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), deleteRule = structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure", union = TRUE)), priorElement = structure(list(policyDefinitionVariable = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), policyDefinitionType = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), policyDefinitionRule = structure(list(id = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), alternateExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), messages = structure(list(structure(list(message = structure(logical(0), tags = list(type = "string")), messageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), generatedTestCases = structure(list(generatedTestCases = structure(list(structure(list(queryContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), guardContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), expectedAggregatedFindingsResult = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), policyScenarios = structure(list(policyScenarios = structure(list(structure(list(expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), alternateExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), expectedResult = structure(logical(0), tags = list(type = "string")), ruleIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), assetManifest = structure(list(entries = structure(list(structure(list(assetType = structure(logical(0), tags = list(type = "string")), assetName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), document = structure(list(document = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), documentContentType = structure(logical(0), tags = list(type = "string")), documentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), documentDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), documentHash = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), fidelityReport = structure(list(coverageScore = structure(logical(0), tags = list(type = "double", box = TRUE)), accuracyScore = structure(logical(0), tags = list(type = "double", box = TRUE)), ruleReports = structure(list(structure(list(rule = structure(logical(0), tags = list(type = "string")), groundingStatements = structure(list(structure(list(documentId = structure(logical(0), tags = list(type = "string")), statementId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), groundingJustifications = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), accuracyScore = structure(logical(0), tags = list(type = "double", box = TRUE)), accuracyJustification = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "map")), variableReports = structure(list(structure(list(policyVariable = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), groundingStatements = structure(list(structure(list(documentId = structure(logical(0), tags = list(type = "string")), statementId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), groundingJustifications = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), accuracyScore = structure(logical(0), tags = list(type = "double", box = TRUE)), accuracyJustification = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "map")), documentSources = structure(list(structure(list(documentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), documentHash = structure(logical(0), tags = list(type = "string")), documentId = structure(logical(0), tags = list(type = "string")), atomicStatements = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), text = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), location = structure(list(lines = structure(list(structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), documentContent = structure(list(structure(list(pageNumber = structure(logical(0), tags = list(type = "integer", box = TRUE)), content = structure(list(structure(list(line = structure(list(lineNumber = structure(logical(0), tags = list(type = "integer", box = TRUE)), lineText = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_automated_reasoning_policy_build_workflow_result_assets_output"]]))
 }
 
 .bedrock$get_automated_reasoning_policy_next_scenario_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), buildWorkflowId = structure(logical(0), tags = list(location = "uri", locationName = "buildWorkflowId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_automated_reasoning_policy_next_scenario_input"]]))
 }
 
 .bedrock$get_automated_reasoning_policy_next_scenario_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(type = "string")), scenario = structure(list(expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), alternateExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), expectedResult = structure(logical(0), tags = list(type = "string")), ruleIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_automated_reasoning_policy_next_scenario_output"]]))
 }
 
 .bedrock$get_automated_reasoning_policy_test_case_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), testCaseId = structure(logical(0), tags = list(location = "uri", locationName = "testCaseId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_automated_reasoning_policy_test_case_input"]]))
 }
 
 .bedrock$get_automated_reasoning_policy_test_case_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(type = "string")), testCase = structure(list(testCaseId = structure(logical(0), tags = list(type = "string")), guardContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), queryContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), expectedAggregatedFindingsResult = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), confidenceThreshold = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_automated_reasoning_policy_test_case_output"]]))
 }
 
 .bedrock$get_automated_reasoning_policy_test_result_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), buildWorkflowId = structure(logical(0), tags = list(location = "uri", locationName = "buildWorkflowId", type = "string")), testCaseId = structure(logical(0), tags = list(location = "uri", locationName = "testCaseId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_automated_reasoning_policy_test_result_input"]]))
 }
 
 .bedrock$get_automated_reasoning_policy_test_result_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(testResult = structure(list(testCase = structure(list(testCaseId = structure(logical(0), tags = list(type = "string")), guardContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), queryContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), expectedAggregatedFindingsResult = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), confidenceThreshold = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), policyArn = structure(logical(0), tags = list(type = "string")), testRunStatus = structure(logical(0), tags = list(type = "string")), testFindings = structure(list(structure(list(valid = structure(list(translation = structure(list(premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedPremises = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedClaims = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), confidence = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), claimsTrueScenario = structure(list(statements = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), supportingRules = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), policyVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), logicWarning = structure(list(type = structure(logical(0), tags = list(type = "string")), premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), invalid = structure(list(translation = structure(list(premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedPremises = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedClaims = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), confidence = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), contradictingRules = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), policyVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), logicWarning = structure(list(type = structure(logical(0), tags = list(type = "string")), premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), satisfiable = structure(list(translation = structure(list(premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedPremises = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedClaims = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), confidence = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), claimsTrueScenario = structure(list(statements = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), claimsFalseScenario = structure(list(statements = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), logicWarning = structure(list(type = structure(logical(0), tags = list(type = "string")), premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), impossible = structure(list(translation = structure(list(premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedPremises = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedClaims = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), confidence = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), contradictingRules = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), policyVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), logicWarning = structure(list(type = structure(logical(0), tags = list(type = "string")), premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), translationAmbiguous = structure(list(options = structure(list(structure(list(translations = structure(list(structure(list(premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedPremises = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedClaims = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), confidence = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), differenceScenarios = structure(list(structure(list(statements = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), tooComplex = structure(list(), tags = list(type = "structure")), noTranslations = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), testRunResult = structure(logical(0), tags = list(type = "string")), aggregatedTestFindingsResult = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_automated_reasoning_policy_test_result_output"]]))
 }
 
 .bedrock$get_custom_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "modelIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_custom_model_input"]]))
 }
 
 .bedrock$get_custom_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelArn = structure(logical(0), tags = list(type = "string")), modelName = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), jobArn = structure(logical(0), tags = list(type = "string")), baseModelArn = structure(logical(0), tags = list(type = "string")), customizationType = structure(logical(0), tags = list(type = "string")), modelKmsKeyArn = structure(logical(0), tags = list(type = "string")), hyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), trainingDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), invocationLogsConfig = structure(list(usePromptResponse = structure(logical(0), tags = list(type = "boolean")), invocationLogSource = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), requestMetadataFilters = structure(list(equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), notEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), andAll = structure(list(structure(list(equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), notEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), orAll = structure(list(structure(list(equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), notEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), validationDataConfig = structure(list(validators = structure(list(structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), outputDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), trainingMetrics = structure(list(trainingLoss = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure")), validationMetrics = structure(list(structure(list(validationLoss = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), customizationConfig = structure(list(distillationConfig = structure(list(teacherModelConfig = structure(list(teacherModelIdentifier = structure(logical(0), tags = list(type = "string")), maxResponseLengthForInference = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), rftConfig = structure(list(graderConfig = structure(list(lambdaGrader = structure(list(lambdaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), hyperParameters = structure(list(epochCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), batchSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), learningRate = structure(logical(0), tags = list(type = "float", box = TRUE)), maxPromptLength = structure(logical(0), tags = list(type = "integer", box = TRUE)), trainingSamplePerPrompt = structure(logical(0), tags = list(type = "integer", box = TRUE)), inferenceMaxTokens = structure(logical(0), tags = list(type = "integer", box = TRUE)), reasoningEffort = structure(logical(0), tags = list(type = "string")), evalInterval = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), modelStatus = structure(logical(0), tags = list(type = "string")), failureMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_custom_model_output"]]))
 }
 
 .bedrock$get_custom_model_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(customModelDeploymentIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "customModelDeploymentIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_custom_model_deployment_input"]]))
 }
 
 .bedrock$get_custom_model_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(customModelDeploymentArn = structure(logical(0), tags = list(type = "string")), modelDeploymentName = structure(logical(0), tags = list(type = "string")), modelArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), updateDetails = structure(list(modelArn = structure(logical(0), tags = list(type = "string")), updateStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), failureMessage = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_custom_model_deployment_output"]]))
 }
 
 .bedrock$get_evaluation_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "jobIdentifier", type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_evaluation_job_input"]]))
 }
 
 .bedrock$get_evaluation_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), jobArn = structure(logical(0), tags = list(type = "string")), jobDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), roleArn = structure(logical(0), tags = list(type = "string")), customerEncryptionKeyId = structure(logical(0), tags = list(type = "string")), jobType = structure(logical(0), tags = list(type = "string")), applicationType = structure(logical(0), tags = list(type = "string")), evaluationConfig = structure(list(automated = structure(list(datasetMetricConfigs = structure(list(structure(list(taskType = structure(logical(0), tags = list(type = "string")), dataset = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datasetLocation = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), metricNames = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), evaluatorModelConfig = structure(list(bedrockEvaluatorModels = structure(list(structure(list(modelIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE)), customMetricConfig = structure(list(customMetrics = structure(list(structure(list(customMetricDefinition = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), instructions = structure(logical(0), tags = list(type = "string")), ratingScale = structure(list(structure(list(definition = structure(logical(0), tags = list(type = "string")), value = structure(list(stringValue = structure(logical(0), tags = list(type = "string")), floatValue = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), evaluatorModelConfig = structure(list(bedrockEvaluatorModels = structure(list(structure(list(modelIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), human = structure(list(humanWorkflowConfig = structure(list(flowDefinitionArn = structure(logical(0), tags = list(type = "string")), instructions = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), customMetrics = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ratingMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), datasetMetricConfigs = structure(list(structure(list(taskType = structure(logical(0), tags = list(type = "string")), dataset = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), datasetLocation = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), metricNames = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), inferenceConfig = structure(list(models = structure(list(structure(list(bedrockModel = structure(list(modelIdentifier = structure(logical(0), tags = list(type = "string")), inferenceParams = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), performanceConfig = structure(list(latency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), precomputedInferenceSource = structure(list(inferenceSourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), ragConfigs = structure(list(structure(list(knowledgeBaseConfig = structure(list(retrieveConfig = structure(list(knowledgeBaseId = structure(logical(0), tags = list(type = "string")), knowledgeBaseRetrievalConfiguration = structure(list(vectorSearchConfiguration = structure(list(numberOfResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), overrideSearchType = structure(logical(0), tags = list(type = "string")), filter = structure(list(equals = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), notEquals = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), greaterThan = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), greaterThanOrEquals = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), lessThan = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), lessThanOrEquals = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), "in" = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), notIn = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), startsWith = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), listContains = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), stringContains = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), andAll = structure(list(structure(logical(0), tags = list(type = "structure", sensitive = TRUE, union = TRUE))), tags = list(type = "list")), orAll = structure(list(structure(logical(0), tags = list(type = "structure", sensitive = TRUE, union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure", sensitive = TRUE, union = TRUE)), implicitFilterConfiguration = structure(list(metadataAttributes = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), modelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), rerankingConfiguration = structure(list(type = structure(logical(0), tags = list(type = "string")), bedrockRerankingConfiguration = structure(list(modelConfiguration = structure(list(modelArn = structure(logical(0), tags = list(type = "string")), additionalModelRequestFields = structure(list(structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), numberOfRerankedResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), metadataConfiguration = structure(list(selectionMode = structure(logical(0), tags = list(type = "string")), selectiveModeConfiguration = structure(list(fieldsToInclude = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), fieldsToExclude = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), retrieveAndGenerateConfig = structure(list(type = structure(logical(0), tags = list(type = "string")), knowledgeBaseConfiguration = structure(list(knowledgeBaseId = structure(logical(0), tags = list(type = "string")), modelArn = structure(logical(0), tags = list(type = "string")), retrievalConfiguration = structure(list(vectorSearchConfiguration = structure(list(numberOfResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), overrideSearchType = structure(logical(0), tags = list(type = "string")), filter = structure(list(equals = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), notEquals = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), greaterThan = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), greaterThanOrEquals = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), lessThan = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), lessThanOrEquals = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), "in" = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), notIn = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), startsWith = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), listContains = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), stringContains = structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure")), andAll = structure(list(structure(logical(0), tags = list(type = "structure", sensitive = TRUE, union = TRUE))), tags = list(type = "list")), orAll = structure(list(structure(logical(0), tags = list(type = "structure", sensitive = TRUE, union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure", sensitive = TRUE, union = TRUE)), implicitFilterConfiguration = structure(list(metadataAttributes = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), modelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), rerankingConfiguration = structure(list(type = structure(logical(0), tags = list(type = "string")), bedrockRerankingConfiguration = structure(list(modelConfiguration = structure(list(modelArn = structure(logical(0), tags = list(type = "string")), additionalModelRequestFields = structure(list(structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), numberOfRerankedResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), metadataConfiguration = structure(list(selectionMode = structure(logical(0), tags = list(type = "string")), selectiveModeConfiguration = structure(list(fieldsToInclude = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), fieldsToExclude = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), generationConfiguration = structure(list(promptTemplate = structure(list(textPromptTemplate = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), guardrailConfiguration = structure(list(guardrailId = structure(logical(0), tags = list(type = "string")), guardrailVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), kbInferenceConfig = structure(list(textInferenceConfig = structure(list(temperature = structure(logical(0), tags = list(type = "float", box = TRUE)), topP = structure(logical(0), tags = list(type = "float", box = TRUE)), maxTokens = structure(logical(0), tags = list(type = "integer", box = TRUE)), stopSequences = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), additionalModelRequestFields = structure(list(structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "map"))), tags = list(type = "structure")), orchestrationConfiguration = structure(list(queryTransformationConfiguration = structure(list(type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), externalSourcesConfiguration = structure(list(modelArn = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(list(sourceType = structure(logical(0), tags = list(type = "string")), s3Location = structure(list(uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), byteContent = structure(list(identifier = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), contentType = structure(logical(0), tags = list(type = "string")), data = structure(logical(0), tags = list(type = "blob", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), generationConfiguration = structure(list(promptTemplate = structure(list(textPromptTemplate = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), guardrailConfiguration = structure(list(guardrailId = structure(logical(0), tags = list(type = "string")), guardrailVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), kbInferenceConfig = structure(list(textInferenceConfig = structure(list(temperature = structure(logical(0), tags = list(type = "float", box = TRUE)), topP = structure(logical(0), tags = list(type = "float", box = TRUE)), maxTokens = structure(logical(0), tags = list(type = "integer", box = TRUE)), stopSequences = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), additionalModelRequestFields = structure(list(structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), precomputedRagSourceConfig = structure(list(retrieveSourceConfig = structure(list(ragSourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), retrieveAndGenerateSourceConfig = structure(list(ragSourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE)), outputDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), failureMessages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_evaluation_job_output"]]))
 }
 
 .bedrock$get_foundation_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "modelIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_foundation_model_input"]]))
 }
 
 .bedrock$get_foundation_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelDetails = structure(list(modelArn = structure(logical(0), tags = list(type = "string")), modelId = structure(logical(0), tags = list(type = "string")), modelName = structure(logical(0), tags = list(type = "string")), providerName = structure(logical(0), tags = list(type = "string")), inputModalities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), outputModalities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), responseStreamingSupported = structure(logical(0), tags = list(type = "boolean", box = TRUE)), customizationsSupported = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), inferenceTypesSupported = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), modelLifecycle = structure(list(status = structure(logical(0), tags = list(type = "string")), startOfLifeTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endOfLifeTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), legacyTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), publicExtendedAccessTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_foundation_model_output"]]))
 }
 
 .bedrock$get_foundation_model_availability_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelId = structure(logical(0), tags = list(location = "uri", locationName = "modelId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_foundation_model_availability_input"]]))
 }
 
 .bedrock$get_foundation_model_availability_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string")), agreementAvailability = structure(list(status = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), authorizationStatus = structure(logical(0), tags = list(type = "string")), entitlementAvailability = structure(logical(0), tags = list(type = "string")), regionAvailability = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_foundation_model_availability_output"]]))
 }
 
 .bedrock$get_guardrail_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(guardrailIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "guardrailIdentifier", type = "string")), guardrailVersion = structure(logical(0), tags = list(location = "querystring", locationName = "guardrailVersion", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_guardrail_input"]]))
 }
 
 .bedrock$get_guardrail_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), guardrailId = structure(logical(0), tags = list(type = "string")), guardrailArn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), topicPolicy = structure(list(topics = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), definition = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), examples = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), type = structure(logical(0), tags = list(type = "string")), inputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), tier = structure(list(tierName = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), contentPolicy = structure(list(filters = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), inputStrength = structure(logical(0), tags = list(type = "string")), outputStrength = structure(logical(0), tags = list(type = "string")), inputModalities = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), outputModalities = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), inputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), tier = structure(list(tierName = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), wordPolicy = structure(list(words = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string")), inputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), managedWordLists = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), inputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), sensitiveInformationPolicy = structure(list(piiEntities = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), action = structure(logical(0), tags = list(type = "string")), inputAction = structure(logical(0), tags = list(type = "string")), outputAction = structure(logical(0), tags = list(type = "string")), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), regexes = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string")), action = structure(logical(0), tags = list(type = "string")), inputAction = structure(logical(0), tags = list(type = "string")), outputAction = structure(logical(0), tags = list(type = "string")), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), contextualGroundingPolicy = structure(list(filters = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), threshold = structure(logical(0), tags = list(type = "double", box = TRUE)), action = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), automatedReasoningPolicy = structure(list(policies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), confidenceThreshold = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), crossRegionDetails = structure(list(guardrailProfileId = structure(logical(0), tags = list(type = "string")), guardrailProfileArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), statusReasons = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), failureRecommendations = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), blockedInputMessaging = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), blockedOutputsMessaging = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_guardrail_output"]]))
 }
 
 .bedrock$get_imported_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "modelIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_imported_model_input"]]))
 }
 
 .bedrock$get_imported_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelArn = structure(logical(0), tags = list(type = "string")), modelName = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), jobArn = structure(logical(0), tags = list(type = "string")), modelDataSource = structure(list(s3DataSource = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), modelArchitecture = structure(logical(0), tags = list(type = "string")), modelKmsKeyArn = structure(logical(0), tags = list(type = "string")), instructSupported = structure(logical(0), tags = list(type = "boolean", box = TRUE)), customModelUnits = structure(list(customModelUnitsPerModelCopy = structure(logical(0), tags = list(type = "integer", box = TRUE)), customModelUnitsVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_imported_model_output"]]))
 }
 
 .bedrock$get_inference_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(inferenceProfileIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "inferenceProfileIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_inference_profile_input"]]))
 }
 
 .bedrock$get_inference_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(inferenceProfileName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), inferenceProfileArn = structure(logical(0), tags = list(type = "string")), models = structure(list(structure(list(modelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), inferenceProfileId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_inference_profile_output"]]))
 }
 
 .bedrock$get_marketplace_model_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpointArn = structure(logical(0), tags = list(location = "uri", locationName = "endpointArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_marketplace_model_endpoint_input"]]))
 }
 
 .bedrock$get_marketplace_model_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(marketplaceModelEndpoint = structure(list(endpointArn = structure(logical(0), tags = list(type = "string")), modelSourceIdentifier = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endpointConfig = structure(list(sageMaker = structure(list(initialInstanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), executionRole = structure(logical(0), tags = list(type = "string")), kmsEncryptionKey = structure(logical(0), tags = list(type = "string")), vpc = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), endpointStatus = structure(logical(0), tags = list(type = "string")), endpointStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_marketplace_model_endpoint_output"]]))
 }
 
 .bedrock$get_model_copy_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(location = "uri", locationName = "jobArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_model_copy_job_input"]]))
 }
 
 .bedrock$get_model_copy_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), targetModelArn = structure(logical(0), tags = list(type = "string")), targetModelName = structure(logical(0), tags = list(type = "string")), sourceAccountId = structure(logical(0), tags = list(type = "string")), sourceModelArn = structure(logical(0), tags = list(type = "string")), targetModelKmsKeyArn = structure(logical(0), tags = list(type = "string")), targetModelTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), failureMessage = structure(logical(0), tags = list(type = "string")), sourceModelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_model_copy_job_output"]]))
 }
 
 .bedrock$get_model_customization_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "jobIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_model_customization_job_input"]]))
 }
 
 .bedrock$get_model_customization_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), outputModelName = structure(logical(0), tags = list(type = "string")), outputModelArn = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusDetails = structure(list(validationDetails = structure(list(status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure")), dataProcessingDetails = structure(list(status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure")), trainingDetails = structure(list(status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure")), failureMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), baseModelArn = structure(logical(0), tags = list(type = "string")), hyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), trainingDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), invocationLogsConfig = structure(list(usePromptResponse = structure(logical(0), tags = list(type = "boolean")), invocationLogSource = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), requestMetadataFilters = structure(list(equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), notEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), andAll = structure(list(structure(list(equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), notEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), orAll = structure(list(structure(list(equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), notEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), validationDataConfig = structure(list(validators = structure(list(structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), outputDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), customizationType = structure(logical(0), tags = list(type = "string")), outputModelKmsKeyArn = structure(logical(0), tags = list(type = "string")), trainingMetrics = structure(list(trainingLoss = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure")), validationMetrics = structure(list(structure(list(validationLoss = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), vpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), customizationConfig = structure(list(distillationConfig = structure(list(teacherModelConfig = structure(list(teacherModelIdentifier = structure(logical(0), tags = list(type = "string")), maxResponseLengthForInference = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), rftConfig = structure(list(graderConfig = structure(list(lambdaGrader = structure(list(lambdaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), hyperParameters = structure(list(epochCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), batchSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), learningRate = structure(logical(0), tags = list(type = "float", box = TRUE)), maxPromptLength = structure(logical(0), tags = list(type = "integer", box = TRUE)), trainingSamplePerPrompt = structure(logical(0), tags = list(type = "integer", box = TRUE)), inferenceMaxTokens = structure(logical(0), tags = list(type = "integer", box = TRUE)), reasoningEffort = structure(logical(0), tags = list(type = "string")), evalInterval = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_model_customization_job_output"]]))
 }
 
 .bedrock$get_model_import_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "jobIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_model_import_job_input"]]))
 }
 
 .bedrock$get_model_import_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), importedModelName = structure(logical(0), tags = list(type = "string")), importedModelArn = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), modelDataSource = structure(list(s3DataSource = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), status = structure(logical(0), tags = list(type = "string")), failureMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), vpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), importedModelKmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_model_import_job_output"]]))
 }
 
 .bedrock$get_model_invocation_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "jobIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_model_invocation_job_input"]]))
 }
 
 .bedrock$get_model_invocation_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), modelId = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), submitTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), inputDataConfig = structure(list(s3InputDataConfig = structure(list(s3InputFormat = structure(logical(0), tags = list(type = "string")), s3Uri = structure(logical(0), tags = list(type = "string")), s3BucketOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), outputDataConfig = structure(list(s3OutputDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), s3EncryptionKeyId = structure(logical(0), tags = list(type = "string")), s3BucketOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), vpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), timeoutDurationInHours = structure(logical(0), tags = list(type = "integer", box = TRUE)), jobExpirationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), modelInvocationType = structure(logical(0), tags = list(type = "string")), totalRecordCount = structure(logical(0), tags = list(type = "long", box = TRUE)), processedRecordCount = structure(logical(0), tags = list(type = "long", box = TRUE)), successRecordCount = structure(logical(0), tags = list(type = "long", box = TRUE)), errorRecordCount = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_model_invocation_job_output"]]))
 }
 
 .bedrock$get_model_invocation_logging_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_model_invocation_logging_configuration_input"]]))
 }
 
 .bedrock$get_model_invocation_logging_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(loggingConfig = structure(list(cloudWatchConfig = structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), largeDataDeliveryS3Config = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), keyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), s3Config = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), keyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), textDataDeliveryEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), imageDataDeliveryEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), embeddingDataDeliveryEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), videoDataDeliveryEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), audioDataDeliveryEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_model_invocation_logging_configuration_output"]]))
 }
 
 .bedrock$get_prompt_router_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(promptRouterArn = structure(logical(0), tags = list(location = "uri", locationName = "promptRouterArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_prompt_router_input"]]))
 }
 
 .bedrock$get_prompt_router_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(promptRouterName = structure(logical(0), tags = list(type = "string")), routingCriteria = structure(list(responseQualityDifference = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), promptRouterArn = structure(logical(0), tags = list(type = "string")), models = structure(list(structure(list(modelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), fallbackModel = structure(list(modelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_prompt_router_output"]]))
 }
 
 .bedrock$get_provisioned_model_throughput_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(provisionedModelId = structure(logical(0), tags = list(location = "uri", locationName = "provisionedModelId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_provisioned_model_throughput_input"]]))
 }
 
 .bedrock$get_provisioned_model_throughput_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelUnits = structure(logical(0), tags = list(type = "integer", box = TRUE)), desiredModelUnits = structure(logical(0), tags = list(type = "integer", box = TRUE)), provisionedModelName = structure(logical(0), tags = list(type = "string")), provisionedModelArn = structure(logical(0), tags = list(type = "string")), modelArn = structure(logical(0), tags = list(type = "string")), desiredModelArn = structure(logical(0), tags = list(type = "string")), foundationModelArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), failureMessage = structure(logical(0), tags = list(type = "string")), commitmentDuration = structure(logical(0), tags = list(type = "string")), commitmentExpirationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_provisioned_model_throughput_output"]]))
 }
 
 .bedrock$get_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_resource_policy_input"]]))
 }
 
 .bedrock$get_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourcePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_resource_policy_output"]]))
 }
 
 .bedrock$get_use_case_for_model_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_use_case_for_model_access_input"]]))
 }
 
 .bedrock$get_use_case_for_model_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(formData = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["get_use_case_for_model_access_output"]]))
 }
 
 .bedrock$list_advanced_prompt_optimization_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_advanced_prompt_optimization_jobs_input"]]))
 }
 
 .bedrock$list_advanced_prompt_optimization_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobSummaries = structure(list(structure(list(jobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), jobStatus = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_advanced_prompt_optimization_jobs_output"]]))
 }
 
 .bedrock$list_automated_reasoning_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "querystring", locationName = "policyArn", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_automated_reasoning_policies_input"]]))
 }
 
 .bedrock$list_automated_reasoning_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(automatedReasoningPolicySummaries = structure(list(structure(list(policyArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), version = structure(logical(0), tags = list(type = "string")), policyId = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_automated_reasoning_policies_output"]]))
 }
 
 .bedrock$list_automated_reasoning_policy_build_workflows_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_automated_reasoning_policy_build_workflows_input"]]))
 }
 
 .bedrock$list_automated_reasoning_policy_build_workflows_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(automatedReasoningPolicyBuildWorkflowSummaries = structure(list(structure(list(policyArn = structure(logical(0), tags = list(type = "string")), buildWorkflowId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), buildWorkflowType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_automated_reasoning_policy_build_workflows_output"]]))
 }
 
 .bedrock$list_automated_reasoning_policy_test_cases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_automated_reasoning_policy_test_cases_input"]]))
 }
 
 .bedrock$list_automated_reasoning_policy_test_cases_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(testCases = structure(list(structure(list(testCaseId = structure(logical(0), tags = list(type = "string")), guardContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), queryContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), expectedAggregatedFindingsResult = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), confidenceThreshold = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_automated_reasoning_policy_test_cases_output"]]))
 }
 
 .bedrock$list_automated_reasoning_policy_test_results_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), buildWorkflowId = structure(logical(0), tags = list(location = "uri", locationName = "buildWorkflowId", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_automated_reasoning_policy_test_results_input"]]))
 }
 
 .bedrock$list_automated_reasoning_policy_test_results_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(testResults = structure(list(structure(list(testCase = structure(list(testCaseId = structure(logical(0), tags = list(type = "string")), guardContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), queryContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), expectedAggregatedFindingsResult = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), confidenceThreshold = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), policyArn = structure(logical(0), tags = list(type = "string")), testRunStatus = structure(logical(0), tags = list(type = "string")), testFindings = structure(list(structure(list(valid = structure(list(translation = structure(list(premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedPremises = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedClaims = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), confidence = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), claimsTrueScenario = structure(list(statements = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), supportingRules = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), policyVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), logicWarning = structure(list(type = structure(logical(0), tags = list(type = "string")), premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), invalid = structure(list(translation = structure(list(premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedPremises = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedClaims = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), confidence = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), contradictingRules = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), policyVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), logicWarning = structure(list(type = structure(logical(0), tags = list(type = "string")), premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), satisfiable = structure(list(translation = structure(list(premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedPremises = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedClaims = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), confidence = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), claimsTrueScenario = structure(list(statements = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), claimsFalseScenario = structure(list(statements = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), logicWarning = structure(list(type = structure(logical(0), tags = list(type = "string")), premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), impossible = structure(list(translation = structure(list(premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedPremises = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedClaims = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), confidence = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), contradictingRules = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), policyVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), logicWarning = structure(list(type = structure(logical(0), tags = list(type = "string")), premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), translationAmbiguous = structure(list(options = structure(list(structure(list(translations = structure(list(structure(list(premises = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), claims = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedPremises = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), untranslatedClaims = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), confidence = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), differenceScenarios = structure(list(structure(list(statements = structure(list(structure(list(logic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), tooComplex = structure(list(), tags = list(type = "structure")), noTranslations = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), testRunResult = structure(logical(0), tags = list(type = "string")), aggregatedTestFindingsResult = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_automated_reasoning_policy_test_results_output"]]))
 }
 
 .bedrock$list_custom_model_deployments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createdBefore = structure(logical(0), tags = list(location = "querystring", locationName = "createdBefore", type = "timestamp", timestampFormat = "iso8601")), createdAfter = structure(logical(0), tags = list(location = "querystring", locationName = "createdAfter", type = "timestamp", timestampFormat = "iso8601")), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string")), statusEquals = structure(logical(0), tags = list(location = "querystring", locationName = "statusEquals", type = "string")), modelArnEquals = structure(logical(0), tags = list(location = "querystring", locationName = "modelArnEquals", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_custom_model_deployments_input"]]))
 }
 
 .bedrock$list_custom_model_deployments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), modelDeploymentSummaries = structure(list(structure(list(customModelDeploymentArn = structure(logical(0), tags = list(type = "string")), customModelDeploymentName = structure(logical(0), tags = list(type = "string")), modelArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), failureMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_custom_model_deployments_output"]]))
 }
 
 .bedrock$list_custom_models_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(creationTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeBefore", type = "timestamp", timestampFormat = "iso8601")), creationTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeAfter", type = "timestamp", timestampFormat = "iso8601")), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string")), baseModelArnEquals = structure(logical(0), tags = list(location = "querystring", locationName = "baseModelArnEquals", type = "string")), foundationModelArnEquals = structure(logical(0), tags = list(location = "querystring", locationName = "foundationModelArnEquals", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string")), isOwned = structure(logical(0), tags = list(location = "querystring", locationName = "isOwned", type = "boolean", box = TRUE)), modelStatus = structure(logical(0), tags = list(location = "querystring", locationName = "modelStatus", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_custom_models_input"]]))
 }
 
 .bedrock$list_custom_models_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), modelSummaries = structure(list(structure(list(modelArn = structure(logical(0), tags = list(type = "string")), modelName = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), baseModelArn = structure(logical(0), tags = list(type = "string")), baseModelName = structure(logical(0), tags = list(type = "string")), customizationType = structure(logical(0), tags = list(type = "string")), ownerAccountId = structure(logical(0), tags = list(type = "string")), modelStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_custom_models_output"]]))
 }
 
 .bedrock$list_enforced_guardrails_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_enforced_guardrails_configuration_input"]]))
 }
 
 .bedrock$list_enforced_guardrails_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(guardrailsConfig = structure(list(structure(list(configId = structure(logical(0), tags = list(type = "string")), guardrailArn = structure(logical(0), tags = list(type = "string")), guardrailId = structure(logical(0), tags = list(type = "string")), inputTags = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This field is being deprecated and will be removed once customers transition their existing policies to the new schema.", deprecatedSince = "2026-04-03", type = "string")), selectiveContentGuarding = structure(list(system = structure(logical(0), tags = list(type = "string")), messages = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), guardrailVersion = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdBy = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedBy = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), modelEnforcement = structure(list(includedModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), excludedModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_enforced_guardrails_configuration_output"]]))
 }
 
 .bedrock$list_evaluation_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(creationTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeAfter", type = "timestamp", timestampFormat = "iso8601")), creationTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeBefore", type = "timestamp", timestampFormat = "iso8601")), statusEquals = structure(logical(0), tags = list(location = "querystring", locationName = "statusEquals", type = "string")), applicationTypeEquals = structure(logical(0), tags = list(location = "querystring", locationName = "applicationTypeEquals", type = "string")), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_evaluation_jobs_input"]]))
 }
 
 .bedrock$list_evaluation_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), jobSummaries = structure(list(structure(list(jobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), jobType = structure(logical(0), tags = list(type = "string")), evaluationTaskTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), modelIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(deprecated = TRUE, deprecatedMessage = "Inference identifiers should be retrieved from the inferenceConfigSummary", deprecatedSince = "2025-03-07", type = "list")), ragIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(deprecated = TRUE, deprecatedMessage = "Inference identifiers should be retrieved from the inferenceConfigSummary", deprecatedSince = "2025-03-07", type = "list")), evaluatorModelIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), customMetricsEvaluatorModelIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), inferenceConfigSummary = structure(list(modelConfigSummary = structure(list(bedrockModelIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), precomputedInferenceSourceIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ragConfigSummary = structure(list(bedrockKnowledgeBaseIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), precomputedRagSourceIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), applicationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_evaluation_jobs_output"]]))
 }
 
 .bedrock$list_foundation_model_agreement_offers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelId = structure(logical(0), tags = list(location = "uri", locationName = "modelId", type = "string")), offerType = structure(logical(0), tags = list(location = "querystring", locationName = "offerType", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_foundation_model_agreement_offers_input"]]))
 }
 
 .bedrock$list_foundation_model_agreement_offers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string")), offers = structure(list(structure(list(offerId = structure(logical(0), tags = list(type = "string")), offerToken = structure(logical(0), tags = list(type = "string")), termDetails = structure(list(usageBasedPricingTerm = structure(list(rateCard = structure(list(structure(list(dimension = structure(logical(0), tags = list(type = "string")), price = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), legalTerm = structure(list(url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), supportTerm = structure(list(refundPolicyDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), validityTerm = structure(list(agreementDuration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_foundation_model_agreement_offers_output"]]))
 }
 
 .bedrock$list_foundation_models_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(byProvider = structure(logical(0), tags = list(location = "querystring", locationName = "byProvider", type = "string")), byCustomizationType = structure(logical(0), tags = list(location = "querystring", locationName = "byCustomizationType", type = "string")), byOutputModality = structure(logical(0), tags = list(location = "querystring", locationName = "byOutputModality", type = "string")), byInferenceType = structure(logical(0), tags = list(location = "querystring", locationName = "byInferenceType", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_foundation_models_input"]]))
 }
 
 .bedrock$list_foundation_models_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelSummaries = structure(list(structure(list(modelArn = structure(logical(0), tags = list(type = "string")), modelId = structure(logical(0), tags = list(type = "string")), modelName = structure(logical(0), tags = list(type = "string")), providerName = structure(logical(0), tags = list(type = "string")), inputModalities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), outputModalities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), responseStreamingSupported = structure(logical(0), tags = list(type = "boolean", box = TRUE)), customizationsSupported = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), inferenceTypesSupported = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), modelLifecycle = structure(list(status = structure(logical(0), tags = list(type = "string")), startOfLifeTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endOfLifeTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), legacyTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), publicExtendedAccessTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_foundation_models_output"]]))
 }
 
 .bedrock$list_guardrails_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(guardrailIdentifier = structure(logical(0), tags = list(location = "querystring", locationName = "guardrailIdentifier", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_guardrails_input"]]))
 }
 
 .bedrock$list_guardrails_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(guardrails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), version = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), crossRegionDetails = structure(list(guardrailProfileId = structure(logical(0), tags = list(type = "string")), guardrailProfileArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_guardrails_output"]]))
 }
 
 .bedrock$list_imported_models_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(creationTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeBefore", type = "timestamp", timestampFormat = "iso8601")), creationTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeAfter", type = "timestamp", timestampFormat = "iso8601")), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_imported_models_input"]]))
 }
 
 .bedrock$list_imported_models_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), modelSummaries = structure(list(structure(list(modelArn = structure(logical(0), tags = list(type = "string")), modelName = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), instructSupported = structure(logical(0), tags = list(type = "boolean", box = TRUE)), modelArchitecture = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_imported_models_output"]]))
 }
 
 .bedrock$list_inference_profiles_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), typeEquals = structure(logical(0), tags = list(location = "querystring", locationName = "type", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_inference_profiles_input"]]))
 }
 
 .bedrock$list_inference_profiles_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(inferenceProfileSummaries = structure(list(structure(list(inferenceProfileName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), inferenceProfileArn = structure(logical(0), tags = list(type = "string")), models = structure(list(structure(list(modelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), inferenceProfileId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_inference_profiles_output"]]))
 }
 
 .bedrock$list_marketplace_model_endpoints_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), modelSourceEquals = structure(logical(0), tags = list(location = "querystring", locationName = "modelSourceIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_marketplace_model_endpoints_input"]]))
 }
 
 .bedrock$list_marketplace_model_endpoints_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(marketplaceModelEndpoints = structure(list(structure(list(endpointArn = structure(logical(0), tags = list(type = "string")), modelSourceIdentifier = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_marketplace_model_endpoints_output"]]))
 }
 
 .bedrock$list_model_copy_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(creationTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeAfter", type = "timestamp", timestampFormat = "iso8601")), creationTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeBefore", type = "timestamp", timestampFormat = "iso8601")), statusEquals = structure(logical(0), tags = list(location = "querystring", locationName = "statusEquals", type = "string")), sourceAccountEquals = structure(logical(0), tags = list(location = "querystring", locationName = "sourceAccountEquals", type = "string")), sourceModelArnEquals = structure(logical(0), tags = list(location = "querystring", locationName = "sourceModelArnEquals", type = "string")), targetModelNameContains = structure(logical(0), tags = list(location = "querystring", locationName = "outputModelNameContains", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_model_copy_jobs_input"]]))
 }
 
 .bedrock$list_model_copy_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), modelCopyJobSummaries = structure(list(structure(list(jobArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), targetModelArn = structure(logical(0), tags = list(type = "string")), targetModelName = structure(logical(0), tags = list(type = "string")), sourceAccountId = structure(logical(0), tags = list(type = "string")), sourceModelArn = structure(logical(0), tags = list(type = "string")), targetModelKmsKeyArn = structure(logical(0), tags = list(type = "string")), targetModelTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), failureMessage = structure(logical(0), tags = list(type = "string")), sourceModelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_model_copy_jobs_output"]]))
 }
 
 .bedrock$list_model_customization_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(creationTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeAfter", type = "timestamp", timestampFormat = "iso8601")), creationTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeBefore", type = "timestamp", timestampFormat = "iso8601")), statusEquals = structure(logical(0), tags = list(location = "querystring", locationName = "statusEquals", type = "string")), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_model_customization_jobs_input"]]))
 }
 
 .bedrock$list_model_customization_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), modelCustomizationJobSummaries = structure(list(structure(list(jobArn = structure(logical(0), tags = list(type = "string")), baseModelArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusDetails = structure(list(validationDetails = structure(list(status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure")), dataProcessingDetails = structure(list(status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure")), trainingDetails = structure(list(status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), customModelArn = structure(logical(0), tags = list(type = "string")), customModelName = structure(logical(0), tags = list(type = "string")), customizationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_model_customization_jobs_output"]]))
 }
 
 .bedrock$list_model_import_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(creationTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeAfter", type = "timestamp", timestampFormat = "iso8601")), creationTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeBefore", type = "timestamp", timestampFormat = "iso8601")), statusEquals = structure(logical(0), tags = list(location = "querystring", locationName = "statusEquals", type = "string")), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_model_import_jobs_input"]]))
 }
 
 .bedrock$list_model_import_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), modelImportJobSummaries = structure(list(structure(list(jobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), importedModelArn = structure(logical(0), tags = list(type = "string")), importedModelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_model_import_jobs_output"]]))
 }
 
 .bedrock$list_model_invocation_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(submitTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "submitTimeAfter", type = "timestamp", timestampFormat = "iso8601")), submitTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "submitTimeBefore", type = "timestamp", timestampFormat = "iso8601")), statusEquals = structure(logical(0), tags = list(location = "querystring", locationName = "statusEquals", type = "string")), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_model_invocation_jobs_input"]]))
 }
 
 .bedrock$list_model_invocation_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), invocationJobSummaries = structure(list(structure(list(jobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), modelId = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), submitTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), inputDataConfig = structure(list(s3InputDataConfig = structure(list(s3InputFormat = structure(logical(0), tags = list(type = "string")), s3Uri = structure(logical(0), tags = list(type = "string")), s3BucketOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), outputDataConfig = structure(list(s3OutputDataConfig = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), s3EncryptionKeyId = structure(logical(0), tags = list(type = "string")), s3BucketOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), vpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), timeoutDurationInHours = structure(logical(0), tags = list(type = "integer", box = TRUE)), jobExpirationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), modelInvocationType = structure(logical(0), tags = list(type = "string")), totalRecordCount = structure(logical(0), tags = list(type = "long", box = TRUE)), processedRecordCount = structure(logical(0), tags = list(type = "long", box = TRUE)), successRecordCount = structure(logical(0), tags = list(type = "long", box = TRUE)), errorRecordCount = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_model_invocation_jobs_output"]]))
 }
 
 .bedrock$list_prompt_routers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), type = structure(logical(0), tags = list(location = "querystring", locationName = "type", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_prompt_routers_input"]]))
 }
 
 .bedrock$list_prompt_routers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(promptRouterSummaries = structure(list(structure(list(promptRouterName = structure(logical(0), tags = list(type = "string")), routingCriteria = structure(list(responseQualityDifference = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), promptRouterArn = structure(logical(0), tags = list(type = "string")), models = structure(list(structure(list(modelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), fallbackModel = structure(list(modelArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_prompt_routers_output"]]))
 }
 
 .bedrock$list_provisioned_model_throughputs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(creationTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeAfter", type = "timestamp", timestampFormat = "iso8601")), creationTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "creationTimeBefore", type = "timestamp", timestampFormat = "iso8601")), statusEquals = structure(logical(0), tags = list(location = "querystring", locationName = "statusEquals", type = "string")), modelArnEquals = structure(logical(0), tags = list(location = "querystring", locationName = "modelArnEquals", type = "string")), nameContains = structure(logical(0), tags = list(location = "querystring", locationName = "nameContains", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), sortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortOrder", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_provisioned_model_throughputs_input"]]))
 }
 
 .bedrock$list_provisioned_model_throughputs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), provisionedModelSummaries = structure(list(structure(list(provisionedModelName = structure(logical(0), tags = list(type = "string")), provisionedModelArn = structure(logical(0), tags = list(type = "string")), modelArn = structure(logical(0), tags = list(type = "string")), desiredModelArn = structure(logical(0), tags = list(type = "string")), foundationModelArn = structure(logical(0), tags = list(type = "string")), modelUnits = structure(logical(0), tags = list(type = "integer", box = TRUE)), desiredModelUnits = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(logical(0), tags = list(type = "string")), commitmentDuration = structure(logical(0), tags = list(type = "string")), commitmentExpirationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_provisioned_model_throughputs_output"]]))
 }
 
 .bedrock$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_tags_for_resource_input"]]))
 }
 
 .bedrock$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["list_tags_for_resource_output"]]))
+}
+
+.bedrock$put_account_data_retention_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .bedrock_shapes[["put_account_data_retention_input"]]))
+}
+
+.bedrock$put_account_data_retention_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .bedrock_shapes[["put_account_data_retention_output"]]))
 }
 
 .bedrock$put_enforced_guardrail_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configId = structure(logical(0), tags = list(type = "string")), guardrailInferenceConfig = structure(list(guardrailIdentifier = structure(logical(0), tags = list(type = "string")), guardrailVersion = structure(logical(0), tags = list(type = "string")), selectiveContentGuarding = structure(list(system = structure(logical(0), tags = list(type = "string")), messages = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), modelEnforcement = structure(list(includedModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), excludedModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["put_enforced_guardrail_configuration_input"]]))
 }
 
 .bedrock$put_enforced_guardrail_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configId = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["put_enforced_guardrail_configuration_output"]]))
 }
 
 .bedrock$put_model_invocation_logging_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(loggingConfig = structure(list(cloudWatchConfig = structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), largeDataDeliveryS3Config = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), keyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), s3Config = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), keyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), textDataDeliveryEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), imageDataDeliveryEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), embeddingDataDeliveryEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), videoDataDeliveryEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), audioDataDeliveryEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["put_model_invocation_logging_configuration_input"]]))
 }
 
 .bedrock$put_model_invocation_logging_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["put_model_invocation_logging_configuration_output"]]))
 }
 
 .bedrock$put_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), resourcePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["put_resource_policy_input"]]))
 }
 
 .bedrock$put_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["put_resource_policy_output"]]))
 }
 
 .bedrock$put_use_case_for_model_access_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(formData = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["put_use_case_for_model_access_input"]]))
 }
 
 .bedrock$put_use_case_for_model_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["put_use_case_for_model_access_output"]]))
 }
 
 .bedrock$register_marketplace_model_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpointIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "endpointIdentifier", type = "string")), modelSourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["register_marketplace_model_endpoint_input"]]))
 }
 
 .bedrock$register_marketplace_model_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(marketplaceModelEndpoint = structure(list(endpointArn = structure(logical(0), tags = list(type = "string")), modelSourceIdentifier = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endpointConfig = structure(list(sageMaker = structure(list(initialInstanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), executionRole = structure(logical(0), tags = list(type = "string")), kmsEncryptionKey = structure(logical(0), tags = list(type = "string")), vpc = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), endpointStatus = structure(logical(0), tags = list(type = "string")), endpointStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["register_marketplace_model_endpoint_output"]]))
 }
 
 .bedrock$start_automated_reasoning_policy_build_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), buildWorkflowType = structure(logical(0), tags = list(location = "uri", locationName = "buildWorkflowType", type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "header", locationName = "x-amz-client-token", type = "string")), sourceContent = structure(list(policyDefinition = structure(list(version = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), rules = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), alternateExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), variables = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), workflowContent = structure(list(documents = structure(list(structure(list(document = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), documentContentType = structure(logical(0), tags = list(type = "string")), documentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), documentDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), policyRepairAssets = structure(list(annotations = structure(list(structure(list(addType = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), updateType = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), newName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(list(addTypeValue = structure(list(value = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateTypeValue = structure(list(value = structure(logical(0), tags = list(type = "string")), newValue = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), deleteTypeValue = structure(list(value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure")), deleteType = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), addVariable = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateVariable = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), newName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), deleteVariable = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), addRule = structure(list(expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateRule = structure(list(ruleId = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), deleteRule = structure(list(ruleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), addRuleFromNaturalLanguage = structure(list(naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateFromRulesFeedback = structure(list(ruleIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), feedback = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateFromScenarioFeedback = structure(list(ruleIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), scenarioExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), feedback = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), ingestContent = structure(list(content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure")), generateFidelityReportContent = structure(list(documents = structure(list(structure(list(document = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), documentContentType = structure(logical(0), tags = list(type = "string")), documentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), documentDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "sourceContent"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["start_automated_reasoning_policy_build_workflow_input"]]))
 }
 
 .bedrock$start_automated_reasoning_policy_build_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(type = "string")), buildWorkflowId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["start_automated_reasoning_policy_build_workflow_output"]]))
 }
 
 .bedrock$start_automated_reasoning_policy_test_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), buildWorkflowId = structure(logical(0), tags = list(location = "uri", locationName = "buildWorkflowId", type = "string")), testCaseIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["start_automated_reasoning_policy_test_workflow_input"]]))
 }
 
 .bedrock$start_automated_reasoning_policy_test_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["start_automated_reasoning_policy_test_workflow_output"]]))
 }
 
 .bedrock$stop_advanced_prompt_optimization_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "jobIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["stop_advanced_prompt_optimization_job_input"]]))
 }
 
 .bedrock$stop_advanced_prompt_optimization_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["stop_advanced_prompt_optimization_job_output"]]))
 }
 
 .bedrock$stop_evaluation_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "jobIdentifier", type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["stop_evaluation_job_input"]]))
 }
 
 .bedrock$stop_evaluation_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["stop_evaluation_job_output"]]))
 }
 
 .bedrock$stop_model_customization_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "jobIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["stop_model_customization_job_input"]]))
 }
 
 .bedrock$stop_model_customization_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["stop_model_customization_job_output"]]))
 }
 
 .bedrock$stop_model_invocation_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "jobIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["stop_model_invocation_job_input"]]))
 }
 
 .bedrock$stop_model_invocation_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["stop_model_invocation_job_output"]]))
 }
 
 .bedrock$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceARN = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["tag_resource_input"]]))
 }
 
 .bedrock$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["tag_resource_output"]]))
 }
 
 .bedrock$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceARN = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["untag_resource_input"]]))
 }
 
 .bedrock$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["untag_resource_output"]]))
 }
 
 .bedrock$update_automated_reasoning_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), policyDefinition = structure(list(version = structure(logical(0), tags = list(type = "string")), types = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), rules = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), alternateExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), variables = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["update_automated_reasoning_policy_input"]]))
 }
 
 .bedrock$update_automated_reasoning_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), definitionHash = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["update_automated_reasoning_policy_output"]]))
 }
 
 .bedrock$update_automated_reasoning_policy_annotations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), buildWorkflowId = structure(logical(0), tags = list(location = "uri", locationName = "buildWorkflowId", type = "string")), annotations = structure(list(structure(list(addType = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(list(value = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), updateType = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), newName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), values = structure(list(structure(list(addTypeValue = structure(list(value = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateTypeValue = structure(list(value = structure(logical(0), tags = list(type = "string")), newValue = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), deleteTypeValue = structure(list(value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure")), deleteType = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), addVariable = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateVariable = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), newName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), deleteVariable = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), addRule = structure(list(expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateRule = structure(list(ruleId = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), deleteRule = structure(list(ruleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), addRuleFromNaturalLanguage = structure(list(naturalLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateFromRulesFeedback = structure(list(ruleIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), feedback = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), updateFromScenarioFeedback = structure(list(ruleIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), scenarioExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), feedback = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), ingestContent = structure(list(content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), lastUpdatedAnnotationSetHash = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["update_automated_reasoning_policy_annotations_input"]]))
 }
 
 .bedrock$update_automated_reasoning_policy_annotations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(type = "string")), buildWorkflowId = structure(logical(0), tags = list(type = "string")), annotationSetHash = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["update_automated_reasoning_policy_annotations_output"]]))
 }
 
 .bedrock$update_automated_reasoning_policy_test_case_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string")), testCaseId = structure(logical(0), tags = list(location = "uri", locationName = "testCaseId", type = "string")), guardContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), queryContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), expectedAggregatedFindingsResult = structure(logical(0), tags = list(type = "string")), confidenceThreshold = structure(logical(0), tags = list(type = "double", box = TRUE)), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["update_automated_reasoning_policy_test_case_input"]]))
 }
 
 .bedrock$update_automated_reasoning_policy_test_case_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(type = "string")), testCaseId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["update_automated_reasoning_policy_test_case_output"]]))
 }
 
 .bedrock$update_custom_model_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelArn = structure(logical(0), tags = list(type = "string")), customModelDeploymentIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "customModelDeploymentIdentifier", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["update_custom_model_deployment_input"]]))
 }
 
 .bedrock$update_custom_model_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(customModelDeploymentArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["update_custom_model_deployment_output"]]))
 }
 
 .bedrock$update_guardrail_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(guardrailIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "guardrailIdentifier", type = "string")), name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), topicPolicyConfig = structure(list(topicsConfig = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), definition = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), examples = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), type = structure(logical(0), tags = list(type = "string")), inputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), tierConfig = structure(list(tierName = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), contentPolicyConfig = structure(list(filtersConfig = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), inputStrength = structure(logical(0), tags = list(type = "string")), outputStrength = structure(logical(0), tags = list(type = "string")), inputModalities = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), outputModalities = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), inputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), tierConfig = structure(list(tierName = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), wordPolicyConfig = structure(list(wordsConfig = structure(list(structure(list(text = structure(logical(0), tags = list(type = "string")), inputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), managedWordListsConfig = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), inputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), outputAction = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), sensitiveInformationPolicyConfig = structure(list(piiEntitiesConfig = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), action = structure(logical(0), tags = list(type = "string")), inputAction = structure(logical(0), tags = list(type = "string")), outputAction = structure(logical(0), tags = list(type = "string")), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), regexesConfig = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string")), action = structure(logical(0), tags = list(type = "string")), inputAction = structure(logical(0), tags = list(type = "string")), outputAction = structure(logical(0), tags = list(type = "string")), inputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), outputEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), contextualGroundingPolicyConfig = structure(list(filtersConfig = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), threshold = structure(logical(0), tags = list(type = "double", box = TRUE)), action = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), automatedReasoningPolicyConfig = structure(list(policies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), confidenceThreshold = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), crossRegionConfig = structure(list(guardrailProfileIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), blockedInputMessaging = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), blockedOutputsMessaging = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["update_guardrail_input"]]))
 }
 
 .bedrock$update_guardrail_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(guardrailId = structure(logical(0), tags = list(type = "string")), guardrailArn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["update_guardrail_output"]]))
 }
 
 .bedrock$update_marketplace_model_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(endpointArn = structure(logical(0), tags = list(location = "uri", locationName = "endpointArn", type = "string")), endpointConfig = structure(list(sageMaker = structure(list(initialInstanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), executionRole = structure(logical(0), tags = list(type = "string")), kmsEncryptionKey = structure(logical(0), tags = list(type = "string")), vpc = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["update_marketplace_model_endpoint_input"]]))
 }
 
 .bedrock$update_marketplace_model_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(marketplaceModelEndpoint = structure(list(endpointArn = structure(logical(0), tags = list(type = "string")), modelSourceIdentifier = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endpointConfig = structure(list(sageMaker = structure(list(initialInstanceCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), executionRole = structure(logical(0), tags = list(type = "string")), kmsEncryptionKey = structure(logical(0), tags = list(type = "string")), vpc = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), endpointStatus = structure(logical(0), tags = list(type = "string")), endpointStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["update_marketplace_model_endpoint_output"]]))
 }
 
 .bedrock$update_provisioned_model_throughput_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(provisionedModelId = structure(logical(0), tags = list(location = "uri", locationName = "provisionedModelId", type = "string")), desiredProvisionedModelName = structure(logical(0), tags = list(type = "string")), desiredModelId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["update_provisioned_model_throughput_input"]]))
 }
 
 .bedrock$update_provisioned_model_throughput_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .bedrock_shapes[["update_provisioned_model_throughput_output"]]))
 }

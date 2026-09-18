@@ -5,8 +5,7 @@ NULL
 
 .fms$associate_admin_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AdminAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["associate_admin_account_input"]]))
 }
 
 .fms$associate_admin_account_output <- function(...) {
@@ -15,44 +14,37 @@ NULL
 
 .fms$associate_third_party_firewall_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ThirdPartyFirewall = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["associate_third_party_firewall_input"]]))
 }
 
 .fms$associate_third_party_firewall_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ThirdPartyFirewallStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["associate_third_party_firewall_output"]]))
 }
 
 .fms$batch_associate_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceSetIdentifier = structure(logical(0), tags = list(type = "string")), Items = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["batch_associate_resource_input"]]))
 }
 
 .fms$batch_associate_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceSetIdentifier = structure(logical(0), tags = list(type = "string")), FailedItems = structure(list(structure(list(URI = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["batch_associate_resource_output"]]))
 }
 
 .fms$batch_disassociate_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceSetIdentifier = structure(logical(0), tags = list(type = "string")), Items = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["batch_disassociate_resource_input"]]))
 }
 
 .fms$batch_disassociate_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceSetIdentifier = structure(logical(0), tags = list(type = "string")), FailedItems = structure(list(structure(list(URI = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["batch_disassociate_resource_output"]]))
 }
 
 .fms$delete_apps_list_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["delete_apps_list_input"]]))
 }
 
 .fms$delete_apps_list_output <- function(...) {
@@ -61,8 +53,7 @@ NULL
 
 .fms$delete_notification_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["delete_notification_channel_input"]]))
 }
 
 .fms$delete_notification_channel_output <- function(...) {
@@ -71,8 +62,7 @@ NULL
 
 .fms$delete_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), DeleteAllPolicyResources = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["delete_policy_input"]]))
 }
 
 .fms$delete_policy_output <- function(...) {
@@ -81,8 +71,7 @@ NULL
 
 .fms$delete_protocols_list_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["delete_protocols_list_input"]]))
 }
 
 .fms$delete_protocols_list_output <- function(...) {
@@ -91,8 +80,7 @@ NULL
 
 .fms$delete_resource_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["delete_resource_set_input"]]))
 }
 
 .fms$delete_resource_set_output <- function(...) {
@@ -101,8 +89,7 @@ NULL
 
 .fms$disassociate_admin_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["disassociate_admin_account_input"]]))
 }
 
 .fms$disassociate_admin_account_output <- function(...) {
@@ -111,296 +98,247 @@ NULL
 
 .fms$disassociate_third_party_firewall_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ThirdPartyFirewall = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["disassociate_third_party_firewall_input"]]))
 }
 
 .fms$disassociate_third_party_firewall_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ThirdPartyFirewallStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["disassociate_third_party_firewall_output"]]))
 }
 
 .fms$get_admin_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_admin_account_input"]]))
 }
 
 .fms$get_admin_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AdminAccount = structure(logical(0), tags = list(type = "string")), RoleStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_admin_account_output"]]))
 }
 
 .fms$get_admin_scope_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AdminAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_admin_scope_input"]]))
 }
 
 .fms$get_admin_scope_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AdminScope = structure(list(AccountScope = structure(list(Accounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAccountsEnabled = structure(logical(0), tags = list(type = "boolean")), ExcludeSpecifiedAccounts = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), OrganizationalUnitScope = structure(list(OrganizationalUnits = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllOrganizationalUnitsEnabled = structure(logical(0), tags = list(type = "boolean")), ExcludeSpecifiedOrganizationalUnits = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), RegionScope = structure(list(Regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllRegionsEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), PolicyTypeScope = structure(list(PolicyTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllPolicyTypesEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_admin_scope_output"]]))
 }
 
 .fms$get_apps_list_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListId = structure(logical(0), tags = list(type = "string")), DefaultList = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_apps_list_input"]]))
 }
 
 .fms$get_apps_list_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppsList = structure(list(ListId = structure(logical(0), tags = list(type = "string")), ListName = structure(logical(0), tags = list(type = "string")), ListUpdateToken = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), AppsList = structure(list(structure(list(AppName = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), PreviousAppsList = structure(list(structure(list(structure(list(AppName = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), AppsListArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_apps_list_output"]]))
 }
 
 .fms$get_compliance_detail_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), MemberAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_compliance_detail_input"]]))
 }
 
 .fms$get_compliance_detail_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyComplianceDetail = structure(list(PolicyOwner = structure(logical(0), tags = list(type = "string")), PolicyId = structure(logical(0), tags = list(type = "string")), MemberAccount = structure(logical(0), tags = list(type = "string")), Violators = structure(list(structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), ViolationReason = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), EvaluationLimitExceeded = structure(logical(0), tags = list(type = "boolean")), ExpiredAt = structure(logical(0), tags = list(type = "timestamp")), IssueInfoMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_compliance_detail_output"]]))
 }
 
 .fms$get_notification_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_notification_channel_input"]]))
 }
 
 .fms$get_notification_channel_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SnsTopicArn = structure(logical(0), tags = list(type = "string")), SnsRoleName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_notification_channel_output"]]))
 }
 
 .fms$get_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_policy_input"]]))
 }
 
 .fms$get_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), PolicyUpdateToken = structure(logical(0), tags = list(type = "string")), SecurityServicePolicyData = structure(list(Type = structure(logical(0), tags = list(type = "string")), ManagedServiceData = structure(logical(0), tags = list(type = "string")), PolicyOption = structure(list(NetworkFirewallPolicy = structure(list(FirewallDeploymentModel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ThirdPartyFirewallPolicy = structure(list(FirewallDeploymentModel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkAclCommonPolicy = structure(list(NetworkAclEntrySet = structure(list(FirstEntries = structure(list(structure(list(IcmpTypeCode = structure(list(Code = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Protocol = structure(logical(0), tags = list(type = "string")), PortRange = structure(list(From = structure(logical(0), tags = list(type = "integer")), To = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CidrBlock = structure(logical(0), tags = list(type = "string")), Ipv6CidrBlock = structure(logical(0), tags = list(type = "string")), RuleAction = structure(logical(0), tags = list(type = "string")), Egress = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ForceRemediateForFirstEntries = structure(logical(0), tags = list(type = "boolean")), LastEntries = structure(list(structure(list(IcmpTypeCode = structure(list(Code = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Protocol = structure(logical(0), tags = list(type = "string")), PortRange = structure(list(From = structure(logical(0), tags = list(type = "integer")), To = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CidrBlock = structure(logical(0), tags = list(type = "string")), Ipv6CidrBlock = structure(logical(0), tags = list(type = "string")), RuleAction = structure(logical(0), tags = list(type = "string")), Egress = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ForceRemediateForLastEntries = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceTypeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ExcludeResourceTags = structure(logical(0), tags = list(type = "boolean")), RemediationEnabled = structure(logical(0), tags = list(type = "boolean")), DeleteUnusedFMManagedResources = structure(logical(0), tags = list(type = "boolean")), IncludeMap = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), ExcludeMap = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), ResourceSetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PolicyDescription = structure(logical(0), tags = list(type = "string")), PolicyStatus = structure(logical(0), tags = list(type = "string")), ResourceTagLogicalOperator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_policy_output"]]))
 }
 
 .fms$get_protection_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), MemberAccountId = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_protection_status_input"]]))
 }
 
 .fms$get_protection_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AdminAccountId = structure(logical(0), tags = list(type = "string")), ServiceType = structure(logical(0), tags = list(type = "string")), Data = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_protection_status_output"]]))
 }
 
 .fms$get_protocols_list_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListId = structure(logical(0), tags = list(type = "string")), DefaultList = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_protocols_list_input"]]))
 }
 
 .fms$get_protocols_list_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProtocolsList = structure(list(ListId = structure(logical(0), tags = list(type = "string")), ListName = structure(logical(0), tags = list(type = "string")), ListUpdateToken = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), ProtocolsList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PreviousProtocolsList = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), ProtocolsListArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_protocols_list_output"]]))
 }
 
 .fms$get_resource_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_resource_set_input"]]))
 }
 
 .fms$get_resource_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceSet = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), UpdateToken = structure(logical(0), tags = list(type = "string")), ResourceTypeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), ResourceSetStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResourceSetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_resource_set_output"]]))
 }
 
 .fms$get_third_party_firewall_association_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ThirdPartyFirewall = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_third_party_firewall_association_status_input"]]))
 }
 
 .fms$get_third_party_firewall_association_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ThirdPartyFirewallStatus = structure(logical(0), tags = list(type = "string")), MarketplaceOnboardingStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_third_party_firewall_association_status_output"]]))
 }
 
 .fms$get_violation_details_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), MemberAccount = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_violation_details_input"]]))
 }
 
 .fms$get_violation_details_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ViolationDetail = structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), MemberAccount = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceViolations = structure(list(structure(list(AwsVPCSecurityGroupViolation = structure(list(ViolationTarget = structure(logical(0), tags = list(type = "string")), ViolationTargetDescription = structure(logical(0), tags = list(type = "string")), PartialMatches = structure(list(structure(list(Reference = structure(logical(0), tags = list(type = "string")), TargetViolationReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PossibleSecurityGroupRemediationActions = structure(list(structure(list(RemediationActionType = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), RemediationResult = structure(list(IPV4Range = structure(logical(0), tags = list(type = "string")), IPV6Range = structure(logical(0), tags = list(type = "string")), PrefixListId = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), FromPort = structure(logical(0), tags = list(type = "long")), ToPort = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), IsDefaultAction = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), AwsEc2NetworkInterfaceViolation = structure(list(ViolationTarget = structure(logical(0), tags = list(type = "string")), ViolatingSecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), AwsEc2InstanceViolation = structure(list(ViolationTarget = structure(logical(0), tags = list(type = "string")), AwsEc2NetworkInterfaceViolations = structure(list(structure(list(ViolationTarget = structure(logical(0), tags = list(type = "string")), ViolatingSecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), NetworkFirewallMissingFirewallViolation = structure(list(ViolationTarget = structure(logical(0), tags = list(type = "string")), VPC = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), TargetViolationReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkFirewallMissingSubnetViolation = structure(list(ViolationTarget = structure(logical(0), tags = list(type = "string")), VPC = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), TargetViolationReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkFirewallMissingExpectedRTViolation = structure(list(ViolationTarget = structure(logical(0), tags = list(type = "string")), VPC = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), CurrentRouteTable = structure(logical(0), tags = list(type = "string")), ExpectedRouteTable = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkFirewallPolicyModifiedViolation = structure(list(ViolationTarget = structure(logical(0), tags = list(type = "string")), CurrentPolicyDescription = structure(list(StatelessRuleGroups = structure(list(structure(list(RuleGroupName = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), StatelessDefaultActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatelessFragmentDefaultActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatelessCustomActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatefulRuleGroups = structure(list(structure(list(RuleGroupName = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), Override = structure(list(Action = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), StatefulDefaultActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatefulEngineOptions = structure(list(RuleOrder = structure(logical(0), tags = list(type = "string")), StreamExceptionPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ExpectedPolicyDescription = structure(list(StatelessRuleGroups = structure(list(structure(list(RuleGroupName = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), StatelessDefaultActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatelessFragmentDefaultActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatelessCustomActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatefulRuleGroups = structure(list(structure(list(RuleGroupName = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), Override = structure(list(Action = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), StatefulDefaultActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatefulEngineOptions = structure(list(RuleOrder = structure(logical(0), tags = list(type = "string")), StreamExceptionPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), NetworkFirewallInternetTrafficNotInspectedViolation = structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), SubnetAvailabilityZone = structure(logical(0), tags = list(type = "string")), RouteTableId = structure(logical(0), tags = list(type = "string")), ViolatingRoutes = structure(list(structure(list(DestinationType = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), Destination = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsRouteTableUsedInDifferentAZ = structure(logical(0), tags = list(type = "boolean")), CurrentFirewallSubnetRouteTable = structure(logical(0), tags = list(type = "string")), ExpectedFirewallEndpoint = structure(logical(0), tags = list(type = "string")), FirewallSubnetId = structure(logical(0), tags = list(type = "string")), ExpectedFirewallSubnetRoutes = structure(list(structure(list(IpV4Cidr = structure(logical(0), tags = list(type = "string")), PrefixListId = structure(logical(0), tags = list(type = "string")), IpV6Cidr = structure(logical(0), tags = list(type = "string")), ContributingSubnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowedTargets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RouteTableId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ActualFirewallSubnetRoutes = structure(list(structure(list(DestinationType = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), Destination = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), InternetGatewayId = structure(logical(0), tags = list(type = "string")), CurrentInternetGatewayRouteTable = structure(logical(0), tags = list(type = "string")), ExpectedInternetGatewayRoutes = structure(list(structure(list(IpV4Cidr = structure(logical(0), tags = list(type = "string")), PrefixListId = structure(logical(0), tags = list(type = "string")), IpV6Cidr = structure(logical(0), tags = list(type = "string")), ContributingSubnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowedTargets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RouteTableId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ActualInternetGatewayRoutes = structure(list(structure(list(DestinationType = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), Destination = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), VpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkFirewallInvalidRouteConfigurationViolation = structure(list(AffectedSubnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RouteTableId = structure(logical(0), tags = list(type = "string")), IsRouteTableUsedInDifferentAZ = structure(logical(0), tags = list(type = "boolean")), ViolatingRoute = structure(list(DestinationType = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), Destination = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CurrentFirewallSubnetRouteTable = structure(logical(0), tags = list(type = "string")), ExpectedFirewallEndpoint = structure(logical(0), tags = list(type = "string")), ActualFirewallEndpoint = structure(logical(0), tags = list(type = "string")), ExpectedFirewallSubnetId = structure(logical(0), tags = list(type = "string")), ActualFirewallSubnetId = structure(logical(0), tags = list(type = "string")), ExpectedFirewallSubnetRoutes = structure(list(structure(list(IpV4Cidr = structure(logical(0), tags = list(type = "string")), PrefixListId = structure(logical(0), tags = list(type = "string")), IpV6Cidr = structure(logical(0), tags = list(type = "string")), ContributingSubnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowedTargets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RouteTableId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ActualFirewallSubnetRoutes = structure(list(structure(list(DestinationType = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), Destination = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), InternetGatewayId = structure(logical(0), tags = list(type = "string")), CurrentInternetGatewayRouteTable = structure(logical(0), tags = list(type = "string")), ExpectedInternetGatewayRoutes = structure(list(structure(list(IpV4Cidr = structure(logical(0), tags = list(type = "string")), PrefixListId = structure(logical(0), tags = list(type = "string")), IpV6Cidr = structure(logical(0), tags = list(type = "string")), ContributingSubnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowedTargets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RouteTableId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ActualInternetGatewayRoutes = structure(list(structure(list(DestinationType = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), Destination = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), VpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkFirewallBlackHoleRouteDetectedViolation = structure(list(ViolationTarget = structure(logical(0), tags = list(type = "string")), RouteTableId = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), ViolatingRoutes = structure(list(structure(list(DestinationType = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), Destination = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), NetworkFirewallUnexpectedFirewallRoutesViolation = structure(list(FirewallSubnetId = structure(logical(0), tags = list(type = "string")), ViolatingRoutes = structure(list(structure(list(DestinationType = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), Destination = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RouteTableId = structure(logical(0), tags = list(type = "string")), FirewallEndpoint = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkFirewallUnexpectedGatewayRoutesViolation = structure(list(GatewayId = structure(logical(0), tags = list(type = "string")), ViolatingRoutes = structure(list(structure(list(DestinationType = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), Destination = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RouteTableId = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkFirewallMissingExpectedRoutesViolation = structure(list(ViolationTarget = structure(logical(0), tags = list(type = "string")), ExpectedRoutes = structure(list(structure(list(IpV4Cidr = structure(logical(0), tags = list(type = "string")), PrefixListId = structure(logical(0), tags = list(type = "string")), IpV6Cidr = structure(logical(0), tags = list(type = "string")), ContributingSubnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowedTargets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RouteTableId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), VpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DnsRuleGroupPriorityConflictViolation = structure(list(ViolationTarget = structure(logical(0), tags = list(type = "string")), ViolationTargetDescription = structure(logical(0), tags = list(type = "string")), ConflictingPriority = structure(logical(0), tags = list(type = "integer")), ConflictingPolicyId = structure(logical(0), tags = list(type = "string")), UnavailablePriorities = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "list"))), tags = list(type = "structure")), DnsDuplicateRuleGroupViolation = structure(list(ViolationTarget = structure(logical(0), tags = list(type = "string")), ViolationTargetDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DnsRuleGroupLimitExceededViolation = structure(list(ViolationTarget = structure(logical(0), tags = list(type = "string")), ViolationTargetDescription = structure(logical(0), tags = list(type = "string")), NumberOfRuleGroupsAlreadyAssociated = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), FirewallSubnetIsOutOfScopeViolation = structure(list(FirewallSubnetId = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetAvailabilityZone = structure(logical(0), tags = list(type = "string")), SubnetAvailabilityZoneId = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RouteHasOutOfScopeEndpointViolation = structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), RouteTableId = structure(logical(0), tags = list(type = "string")), ViolatingRoutes = structure(list(structure(list(DestinationType = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), Destination = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SubnetAvailabilityZone = structure(logical(0), tags = list(type = "string")), SubnetAvailabilityZoneId = structure(logical(0), tags = list(type = "string")), CurrentFirewallSubnetRouteTable = structure(logical(0), tags = list(type = "string")), FirewallSubnetId = structure(logical(0), tags = list(type = "string")), FirewallSubnetRoutes = structure(list(structure(list(DestinationType = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), Destination = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), InternetGatewayId = structure(logical(0), tags = list(type = "string")), CurrentInternetGatewayRouteTable = structure(logical(0), tags = list(type = "string")), InternetGatewayRoutes = structure(list(structure(list(DestinationType = structure(logical(0), tags = list(type = "string")), TargetType = structure(logical(0), tags = list(type = "string")), Destination = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ThirdPartyFirewallMissingFirewallViolation = structure(list(ViolationTarget = structure(logical(0), tags = list(type = "string")), VPC = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), TargetViolationReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ThirdPartyFirewallMissingSubnetViolation = structure(list(ViolationTarget = structure(logical(0), tags = list(type = "string")), VPC = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), TargetViolationReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ThirdPartyFirewallMissingExpectedRouteTableViolation = structure(list(ViolationTarget = structure(logical(0), tags = list(type = "string")), VPC = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), CurrentRouteTable = structure(logical(0), tags = list(type = "string")), ExpectedRouteTable = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FirewallSubnetMissingVPCEndpointViolation = structure(list(FirewallSubnetId = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetAvailabilityZone = structure(logical(0), tags = list(type = "string")), SubnetAvailabilityZoneId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InvalidNetworkAclEntriesViolation = structure(list(Vpc = structure(logical(0), tags = list(type = "string")), Subnet = structure(logical(0), tags = list(type = "string")), SubnetAvailabilityZone = structure(logical(0), tags = list(type = "string")), CurrentAssociatedNetworkAcl = structure(logical(0), tags = list(type = "string")), EntryViolations = structure(list(structure(list(ExpectedEntry = structure(list(EntryDetail = structure(list(IcmpTypeCode = structure(list(Code = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Protocol = structure(logical(0), tags = list(type = "string")), PortRange = structure(list(From = structure(logical(0), tags = list(type = "integer")), To = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CidrBlock = structure(logical(0), tags = list(type = "string")), Ipv6CidrBlock = structure(logical(0), tags = list(type = "string")), RuleAction = structure(logical(0), tags = list(type = "string")), Egress = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), EntryRuleNumber = structure(logical(0), tags = list(type = "integer")), EntryType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExpectedEvaluationOrder = structure(logical(0), tags = list(type = "string")), ActualEvaluationOrder = structure(logical(0), tags = list(type = "string")), EntryAtExpectedEvaluationOrder = structure(list(EntryDetail = structure(list(IcmpTypeCode = structure(list(Code = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Protocol = structure(logical(0), tags = list(type = "string")), PortRange = structure(list(From = structure(logical(0), tags = list(type = "integer")), To = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CidrBlock = structure(logical(0), tags = list(type = "string")), Ipv6CidrBlock = structure(logical(0), tags = list(type = "string")), RuleAction = structure(logical(0), tags = list(type = "string")), Egress = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), EntryRuleNumber = structure(logical(0), tags = list(type = "integer")), EntryType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EntriesWithConflicts = structure(list(structure(list(EntryDetail = structure(list(IcmpTypeCode = structure(list(Code = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Protocol = structure(logical(0), tags = list(type = "string")), PortRange = structure(list(From = structure(logical(0), tags = list(type = "integer")), To = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CidrBlock = structure(logical(0), tags = list(type = "string")), Ipv6CidrBlock = structure(logical(0), tags = list(type = "string")), RuleAction = structure(logical(0), tags = list(type = "string")), Egress = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), EntryRuleNumber = structure(logical(0), tags = list(type = "integer")), EntryType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EntryViolationReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), PossibleRemediationActions = structure(list(Description = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(list(Description = structure(logical(0), tags = list(type = "string")), OrderedRemediationActions = structure(list(structure(list(RemediationAction = structure(list(Description = structure(logical(0), tags = list(type = "string")), EC2CreateRouteAction = structure(list(Description = structure(logical(0), tags = list(type = "string")), DestinationCidrBlock = structure(logical(0), tags = list(type = "string")), DestinationPrefixListId = structure(logical(0), tags = list(type = "string")), DestinationIpv6CidrBlock = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GatewayId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RouteTableId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EC2ReplaceRouteAction = structure(list(Description = structure(logical(0), tags = list(type = "string")), DestinationCidrBlock = structure(logical(0), tags = list(type = "string")), DestinationPrefixListId = structure(logical(0), tags = list(type = "string")), DestinationIpv6CidrBlock = structure(logical(0), tags = list(type = "string")), GatewayId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RouteTableId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EC2DeleteRouteAction = structure(list(Description = structure(logical(0), tags = list(type = "string")), DestinationCidrBlock = structure(logical(0), tags = list(type = "string")), DestinationPrefixListId = structure(logical(0), tags = list(type = "string")), DestinationIpv6CidrBlock = structure(logical(0), tags = list(type = "string")), RouteTableId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EC2CopyRouteTableAction = structure(list(Description = structure(logical(0), tags = list(type = "string")), VpcId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RouteTableId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EC2ReplaceRouteTableAssociationAction = structure(list(Description = structure(logical(0), tags = list(type = "string")), AssociationId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RouteTableId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EC2AssociateRouteTableAction = structure(list(Description = structure(logical(0), tags = list(type = "string")), RouteTableId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SubnetId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GatewayId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EC2CreateRouteTableAction = structure(list(Description = structure(logical(0), tags = list(type = "string")), VpcId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), FMSPolicyUpdateFirewallCreationConfigAction = structure(list(Description = structure(logical(0), tags = list(type = "string")), FirewallCreationConfig = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreateNetworkAclAction = structure(list(Description = structure(logical(0), tags = list(type = "string")), Vpc = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FMSCanRemediate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ReplaceNetworkAclAssociationAction = structure(list(Description = structure(logical(0), tags = list(type = "string")), AssociationId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkAclId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FMSCanRemediate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CreateNetworkAclEntriesAction = structure(list(Description = structure(logical(0), tags = list(type = "string")), NetworkAclId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkAclEntriesToBeCreated = structure(list(structure(list(EntryDetail = structure(list(IcmpTypeCode = structure(list(Code = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Protocol = structure(logical(0), tags = list(type = "string")), PortRange = structure(list(From = structure(logical(0), tags = list(type = "integer")), To = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CidrBlock = structure(logical(0), tags = list(type = "string")), Ipv6CidrBlock = structure(logical(0), tags = list(type = "string")), RuleAction = structure(logical(0), tags = list(type = "string")), Egress = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), EntryRuleNumber = structure(logical(0), tags = list(type = "integer")), EntryType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), FMSCanRemediate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DeleteNetworkAclEntriesAction = structure(list(Description = structure(logical(0), tags = list(type = "string")), NetworkAclId = structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkAclEntriesToBeDeleted = structure(list(structure(list(EntryDetail = structure(list(IcmpTypeCode = structure(list(Code = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Protocol = structure(logical(0), tags = list(type = "string")), PortRange = structure(list(From = structure(logical(0), tags = list(type = "integer")), To = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CidrBlock = structure(logical(0), tags = list(type = "string")), Ipv6CidrBlock = structure(logical(0), tags = list(type = "string")), RuleAction = structure(logical(0), tags = list(type = "string")), Egress = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), EntryRuleNumber = structure(logical(0), tags = list(type = "integer")), EntryType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), FMSCanRemediate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), Order = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), IsDefaultAction = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), WebACLHasIncompatibleConfigurationViolation = structure(list(WebACLArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), WebACLHasOutOfScopeResourcesViolation = structure(list(WebACLArn = structure(logical(0), tags = list(type = "string")), OutOfScopeResourceList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), ResourceTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ResourceDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["get_violation_details_output"]]))
 }
 
 .fms$list_admin_accounts_for_organization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_admin_accounts_for_organization_input"]]))
 }
 
 .fms$list_admin_accounts_for_organization_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AdminAccounts = structure(list(structure(list(AdminAccount = structure(logical(0), tags = list(type = "string")), DefaultAdmin = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_admin_accounts_for_organization_output"]]))
 }
 
 .fms$list_admins_managing_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_admins_managing_account_input"]]))
 }
 
 .fms$list_admins_managing_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AdminAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_admins_managing_account_output"]]))
 }
 
 .fms$list_apps_lists_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DefaultLists = structure(logical(0), tags = list(type = "boolean")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_apps_lists_input"]]))
 }
 
 .fms$list_apps_lists_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppsLists = structure(list(structure(list(ListArn = structure(logical(0), tags = list(type = "string")), ListId = structure(logical(0), tags = list(type = "string")), ListName = structure(logical(0), tags = list(type = "string")), AppsList = structure(list(structure(list(AppName = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_apps_lists_output"]]))
 }
 
 .fms$list_compliance_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_compliance_status_input"]]))
 }
 
 .fms$list_compliance_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyComplianceStatusList = structure(list(structure(list(PolicyOwner = structure(logical(0), tags = list(type = "string")), PolicyId = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), MemberAccount = structure(logical(0), tags = list(type = "string")), EvaluationResults = structure(list(structure(list(ComplianceStatus = structure(logical(0), tags = list(type = "string")), ViolatorCount = structure(logical(0), tags = list(type = "long")), EvaluationLimitExceeded = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), IssueInfoMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_compliance_status_output"]]))
 }
 
 .fms$list_discovered_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MemberAccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceType = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_discovered_resources_input"]]))
 }
 
 .fms$list_discovered_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(URI = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_discovered_resources_output"]]))
 }
 
 .fms$list_member_accounts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_member_accounts_input"]]))
 }
 
 .fms$list_member_accounts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MemberAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_member_accounts_output"]]))
 }
 
 .fms$list_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_policies_input"]]))
 }
 
 .fms$list_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyList = structure(list(structure(list(PolicyArn = structure(logical(0), tags = list(type = "string")), PolicyId = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), SecurityServiceType = structure(logical(0), tags = list(type = "string")), RemediationEnabled = structure(logical(0), tags = list(type = "boolean")), DeleteUnusedFMManagedResources = structure(logical(0), tags = list(type = "boolean")), PolicyStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_policies_output"]]))
 }
 
 .fms$list_protocols_lists_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DefaultLists = structure(logical(0), tags = list(type = "boolean")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_protocols_lists_input"]]))
 }
 
 .fms$list_protocols_lists_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProtocolsLists = structure(list(structure(list(ListArn = structure(logical(0), tags = list(type = "string")), ListId = structure(logical(0), tags = list(type = "string")), ListName = structure(logical(0), tags = list(type = "string")), ProtocolsList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_protocols_lists_output"]]))
 }
 
 .fms$list_resource_set_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_resource_set_resources_input"]]))
 }
 
 .fms$list_resource_set_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(URI = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_resource_set_resources_output"]]))
 }
 
 .fms$list_resource_sets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_resource_sets_input"]]))
 }
 
 .fms$list_resource_sets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceSets = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), ResourceSetStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_resource_sets_output"]]))
 }
 
 .fms$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_tags_for_resource_input"]]))
 }
 
 .fms$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_tags_for_resource_output"]]))
 }
 
 .fms$list_third_party_firewall_firewall_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ThirdPartyFirewall = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_third_party_firewall_firewall_policies_input"]]))
 }
 
 .fms$list_third_party_firewall_firewall_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ThirdPartyFirewallFirewallPolicies = structure(list(structure(list(FirewallPolicyId = structure(logical(0), tags = list(type = "string")), FirewallPolicyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["list_third_party_firewall_firewall_policies_output"]]))
 }
 
 .fms$put_admin_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AdminAccount = structure(logical(0), tags = list(type = "string")), AdminScope = structure(list(AccountScope = structure(list(Accounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAccountsEnabled = structure(logical(0), tags = list(type = "boolean")), ExcludeSpecifiedAccounts = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), OrganizationalUnitScope = structure(list(OrganizationalUnits = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllOrganizationalUnitsEnabled = structure(logical(0), tags = list(type = "boolean")), ExcludeSpecifiedOrganizationalUnits = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), RegionScope = structure(list(Regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllRegionsEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), PolicyTypeScope = structure(list(PolicyTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllPolicyTypesEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["put_admin_account_input"]]))
 }
 
 .fms$put_admin_account_output <- function(...) {
@@ -409,20 +347,17 @@ NULL
 
 .fms$put_apps_list_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppsList = structure(list(ListId = structure(logical(0), tags = list(type = "string")), ListName = structure(logical(0), tags = list(type = "string")), ListUpdateToken = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), AppsList = structure(list(structure(list(AppName = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), PreviousAppsList = structure(list(structure(list(structure(list(AppName = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["put_apps_list_input"]]))
 }
 
 .fms$put_apps_list_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppsList = structure(list(ListId = structure(logical(0), tags = list(type = "string")), ListName = structure(logical(0), tags = list(type = "string")), ListUpdateToken = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), AppsList = structure(list(structure(list(AppName = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), PreviousAppsList = structure(list(structure(list(structure(list(AppName = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), AppsListArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["put_apps_list_output"]]))
 }
 
 .fms$put_notification_channel_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SnsTopicArn = structure(logical(0), tags = list(type = "string")), SnsRoleName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["put_notification_channel_input"]]))
 }
 
 .fms$put_notification_channel_output <- function(...) {
@@ -431,60 +366,50 @@ NULL
 
 .fms$put_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), PolicyUpdateToken = structure(logical(0), tags = list(type = "string")), SecurityServicePolicyData = structure(list(Type = structure(logical(0), tags = list(type = "string")), ManagedServiceData = structure(logical(0), tags = list(type = "string")), PolicyOption = structure(list(NetworkFirewallPolicy = structure(list(FirewallDeploymentModel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ThirdPartyFirewallPolicy = structure(list(FirewallDeploymentModel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkAclCommonPolicy = structure(list(NetworkAclEntrySet = structure(list(FirstEntries = structure(list(structure(list(IcmpTypeCode = structure(list(Code = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Protocol = structure(logical(0), tags = list(type = "string")), PortRange = structure(list(From = structure(logical(0), tags = list(type = "integer")), To = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CidrBlock = structure(logical(0), tags = list(type = "string")), Ipv6CidrBlock = structure(logical(0), tags = list(type = "string")), RuleAction = structure(logical(0), tags = list(type = "string")), Egress = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ForceRemediateForFirstEntries = structure(logical(0), tags = list(type = "boolean")), LastEntries = structure(list(structure(list(IcmpTypeCode = structure(list(Code = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Protocol = structure(logical(0), tags = list(type = "string")), PortRange = structure(list(From = structure(logical(0), tags = list(type = "integer")), To = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CidrBlock = structure(logical(0), tags = list(type = "string")), Ipv6CidrBlock = structure(logical(0), tags = list(type = "string")), RuleAction = structure(logical(0), tags = list(type = "string")), Egress = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ForceRemediateForLastEntries = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceTypeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ExcludeResourceTags = structure(logical(0), tags = list(type = "boolean")), RemediationEnabled = structure(logical(0), tags = list(type = "boolean")), DeleteUnusedFMManagedResources = structure(logical(0), tags = list(type = "boolean")), IncludeMap = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), ExcludeMap = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), ResourceSetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PolicyDescription = structure(logical(0), tags = list(type = "string")), PolicyStatus = structure(logical(0), tags = list(type = "string")), ResourceTagLogicalOperator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["put_policy_input"]]))
 }
 
 .fms$put_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string")), PolicyUpdateToken = structure(logical(0), tags = list(type = "string")), SecurityServicePolicyData = structure(list(Type = structure(logical(0), tags = list(type = "string")), ManagedServiceData = structure(logical(0), tags = list(type = "string")), PolicyOption = structure(list(NetworkFirewallPolicy = structure(list(FirewallDeploymentModel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ThirdPartyFirewallPolicy = structure(list(FirewallDeploymentModel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkAclCommonPolicy = structure(list(NetworkAclEntrySet = structure(list(FirstEntries = structure(list(structure(list(IcmpTypeCode = structure(list(Code = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Protocol = structure(logical(0), tags = list(type = "string")), PortRange = structure(list(From = structure(logical(0), tags = list(type = "integer")), To = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CidrBlock = structure(logical(0), tags = list(type = "string")), Ipv6CidrBlock = structure(logical(0), tags = list(type = "string")), RuleAction = structure(logical(0), tags = list(type = "string")), Egress = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ForceRemediateForFirstEntries = structure(logical(0), tags = list(type = "boolean")), LastEntries = structure(list(structure(list(IcmpTypeCode = structure(list(Code = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Protocol = structure(logical(0), tags = list(type = "string")), PortRange = structure(list(From = structure(logical(0), tags = list(type = "integer")), To = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CidrBlock = structure(logical(0), tags = list(type = "string")), Ipv6CidrBlock = structure(logical(0), tags = list(type = "string")), RuleAction = structure(logical(0), tags = list(type = "string")), Egress = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), ForceRemediateForLastEntries = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceTypeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ExcludeResourceTags = structure(logical(0), tags = list(type = "boolean")), RemediationEnabled = structure(logical(0), tags = list(type = "boolean")), DeleteUnusedFMManagedResources = structure(logical(0), tags = list(type = "boolean")), IncludeMap = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), ExcludeMap = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), ResourceSetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PolicyDescription = structure(logical(0), tags = list(type = "string")), PolicyStatus = structure(logical(0), tags = list(type = "string")), ResourceTagLogicalOperator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["put_policy_output"]]))
 }
 
 .fms$put_protocols_list_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProtocolsList = structure(list(ListId = structure(logical(0), tags = list(type = "string")), ListName = structure(logical(0), tags = list(type = "string")), ListUpdateToken = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), ProtocolsList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PreviousProtocolsList = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["put_protocols_list_input"]]))
 }
 
 .fms$put_protocols_list_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProtocolsList = structure(list(ListId = structure(logical(0), tags = list(type = "string")), ListName = structure(logical(0), tags = list(type = "string")), ListUpdateToken = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), ProtocolsList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PreviousProtocolsList = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), ProtocolsListArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["put_protocols_list_output"]]))
 }
 
 .fms$put_resource_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceSet = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), UpdateToken = structure(logical(0), tags = list(type = "string")), ResourceTypeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), ResourceSetStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["put_resource_set_input"]]))
 }
 
 .fms$put_resource_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceSet = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), UpdateToken = structure(logical(0), tags = list(type = "string")), ResourceTypeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), ResourceSetStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResourceSetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["put_resource_set_output"]]))
 }
 
 .fms$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["tag_resource_input"]]))
 }
 
 .fms$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["tag_resource_output"]]))
 }
 
 .fms$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["untag_resource_input"]]))
 }
 
 .fms$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fms_shapes[["untag_resource_output"]]))
 }

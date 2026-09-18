@@ -22,7 +22,7 @@ bedrockagentcorecontrol_list_policy_generation_assets(
 \item{maxResults}{The maximum number of policy generation assets to return in a single response. If not specified, the default is 10 assets per page, with a maximum of 100 per page. This helps control response size when dealing with policy generations that produce many alternative policy options.}
 }
 \description{
-Retrieves a list of generated policy assets from a policy generation request within the AgentCore Policy system. This operation returns the actual Cedar policies and related artifacts produced by the AI-powered policy generation process, allowing users to review and select from multiple generated policy options.
+Retrieves a list of generated policy assets from a policy generation request within the AgentCore Policy system. This operation returns the actual Dogwood policies and related artifacts produced by the AI-powered policy generation process, allowing users to review and select from multiple generated policy options.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_list_policy_generation_assets/} for full documentation.
 }

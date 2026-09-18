@@ -5,600 +5,500 @@ NULL
 
 .finspace$create_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), federationMode = structure(logical(0), tags = list(type = "string")), federationParameters = structure(list(samlMetadataDocument = structure(logical(0), tags = list(type = "string")), samlMetadataURL = structure(logical(0), tags = list(type = "string")), applicationCallBackURL = structure(logical(0), tags = list(type = "string")), federationURN = structure(logical(0), tags = list(type = "string")), federationProviderName = structure(logical(0), tags = list(type = "string")), attributeMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), superuserParameters = structure(list(emailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), firstName = structure(logical(0), tags = list(type = "string")), lastName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), dataBundles = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_environment_input"]]))
 }
 
 .finspace$create_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(type = "string")), environmentArn = structure(logical(0), tags = list(type = "string")), environmentUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_environment_output"]]))
 }
 
 .finspace$create_kx_changeset_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), databaseName = structure(logical(0), tags = list(location = "uri", locationName = "databaseName", type = "string")), changeRequests = structure(list(structure(list(changeType = structure(logical(0), tags = list(type = "string")), s3Path = structure(logical(0), tags = list(type = "string")), dbPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_kx_changeset_input"]]))
 }
 
 .finspace$create_kx_changeset_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(changesetId = structure(logical(0), tags = list(type = "string")), databaseName = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), changeRequests = structure(list(structure(list(changeType = structure(logical(0), tags = list(type = "string")), s3Path = structure(logical(0), tags = list(type = "string")), dbPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), errorInfo = structure(list(errorMessage = structure(logical(0), tags = list(type = "string")), errorType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_kx_changeset_output"]]))
 }
 
 .finspace$create_kx_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), clusterType = structure(logical(0), tags = list(type = "string")), tickerplantLogConfiguration = structure(list(tickerplantLogVolumes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), databases = structure(list(structure(list(databaseName = structure(logical(0), tags = list(type = "string")), cacheConfigurations = structure(list(structure(list(cacheType = structure(logical(0), tags = list(type = "string")), dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), dataviewName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), changesetId = structure(logical(0), tags = list(type = "string")), dataviewName = structure(logical(0), tags = list(type = "string")), dataviewConfiguration = structure(list(dataviewName = structure(logical(0), tags = list(type = "string")), dataviewVersionId = structure(logical(0), tags = list(type = "string")), changesetId = structure(logical(0), tags = list(type = "string")), segmentConfigurations = structure(list(structure(list(dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), volumeName = structure(logical(0), tags = list(type = "string")), onDemand = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), cacheStorageConfigurations = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), size = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), autoScalingConfiguration = structure(list(minNodeCount = structure(logical(0), tags = list(type = "integer")), maxNodeCount = structure(logical(0), tags = list(type = "integer")), autoScalingMetric = structure(logical(0), tags = list(type = "string")), metricTarget = structure(logical(0), tags = list(type = "double")), scaleInCooldownSeconds = structure(logical(0), tags = list(type = "double")), scaleOutCooldownSeconds = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), clusterDescription = structure(logical(0), tags = list(type = "string")), capacityConfiguration = structure(list(nodeType = structure(logical(0), tags = list(type = "string")), nodeCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), releaseLabel = structure(logical(0), tags = list(type = "string")), vpcConfiguration = structure(list(vpcId = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ipAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), initializationScript = structure(logical(0), tags = list(type = "string")), commandLineArguments = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), code = structure(list(s3Bucket = structure(logical(0), tags = list(type = "string")), s3Key = structure(logical(0), tags = list(type = "string")), s3ObjectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), executionRole = structure(logical(0), tags = list(type = "string")), savedownStorageConfiguration = structure(list(type = structure(logical(0), tags = list(type = "string")), size = structure(logical(0), tags = list(type = "integer")), volumeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), azMode = structure(logical(0), tags = list(type = "string")), availabilityZoneId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), scalingGroupConfiguration = structure(list(scalingGroupName = structure(logical(0), tags = list(type = "string")), memoryLimit = structure(logical(0), tags = list(type = "integer")), memoryReservation = structure(logical(0), tags = list(type = "integer")), nodeCount = structure(logical(0), tags = list(type = "integer")), cpu = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_kx_cluster_input"]]))
 }
 
 .finspace$create_kx_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), clusterType = structure(logical(0), tags = list(type = "string")), tickerplantLogConfiguration = structure(list(tickerplantLogVolumes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), volumes = structure(list(structure(list(volumeName = structure(logical(0), tags = list(type = "string")), volumeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), databases = structure(list(structure(list(databaseName = structure(logical(0), tags = list(type = "string")), cacheConfigurations = structure(list(structure(list(cacheType = structure(logical(0), tags = list(type = "string")), dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), dataviewName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), changesetId = structure(logical(0), tags = list(type = "string")), dataviewName = structure(logical(0), tags = list(type = "string")), dataviewConfiguration = structure(list(dataviewName = structure(logical(0), tags = list(type = "string")), dataviewVersionId = structure(logical(0), tags = list(type = "string")), changesetId = structure(logical(0), tags = list(type = "string")), segmentConfigurations = structure(list(structure(list(dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), volumeName = structure(logical(0), tags = list(type = "string")), onDemand = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), cacheStorageConfigurations = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), size = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), autoScalingConfiguration = structure(list(minNodeCount = structure(logical(0), tags = list(type = "integer")), maxNodeCount = structure(logical(0), tags = list(type = "integer")), autoScalingMetric = structure(logical(0), tags = list(type = "string")), metricTarget = structure(logical(0), tags = list(type = "double")), scaleInCooldownSeconds = structure(logical(0), tags = list(type = "double")), scaleOutCooldownSeconds = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), clusterDescription = structure(logical(0), tags = list(type = "string")), capacityConfiguration = structure(list(nodeType = structure(logical(0), tags = list(type = "string")), nodeCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), releaseLabel = structure(logical(0), tags = list(type = "string")), vpcConfiguration = structure(list(vpcId = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ipAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), initializationScript = structure(logical(0), tags = list(type = "string")), commandLineArguments = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), code = structure(list(s3Bucket = structure(logical(0), tags = list(type = "string")), s3Key = structure(logical(0), tags = list(type = "string")), s3ObjectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), executionRole = structure(logical(0), tags = list(type = "string")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), savedownStorageConfiguration = structure(list(type = structure(logical(0), tags = list(type = "string")), size = structure(logical(0), tags = list(type = "integer")), volumeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), azMode = structure(logical(0), tags = list(type = "string")), availabilityZoneId = structure(logical(0), tags = list(type = "string")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), scalingGroupConfiguration = structure(list(scalingGroupName = structure(logical(0), tags = list(type = "string")), memoryLimit = structure(logical(0), tags = list(type = "integer")), memoryReservation = structure(logical(0), tags = list(type = "integer")), nodeCount = structure(logical(0), tags = list(type = "integer")), cpu = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_kx_cluster_output"]]))
 }
 
 .finspace$create_kx_database_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), databaseName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_kx_database_input"]]))
 }
 
 .finspace$create_kx_database_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(databaseName = structure(logical(0), tags = list(type = "string")), databaseArn = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_kx_database_output"]]))
 }
 
 .finspace$create_kx_dataview_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), databaseName = structure(logical(0), tags = list(location = "uri", locationName = "databaseName", type = "string")), dataviewName = structure(logical(0), tags = list(type = "string")), azMode = structure(logical(0), tags = list(type = "string")), availabilityZoneId = structure(logical(0), tags = list(type = "string")), changesetId = structure(logical(0), tags = list(type = "string")), segmentConfigurations = structure(list(structure(list(dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), volumeName = structure(logical(0), tags = list(type = "string")), onDemand = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), autoUpdate = structure(logical(0), tags = list(type = "boolean")), readWrite = structure(logical(0), tags = list(type = "boolean")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_kx_dataview_input"]]))
 }
 
 .finspace$create_kx_dataview_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(dataviewName = structure(logical(0), tags = list(type = "string")), databaseName = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), azMode = structure(logical(0), tags = list(type = "string")), availabilityZoneId = structure(logical(0), tags = list(type = "string")), changesetId = structure(logical(0), tags = list(type = "string")), segmentConfigurations = structure(list(structure(list(dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), volumeName = structure(logical(0), tags = list(type = "string")), onDemand = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string")), autoUpdate = structure(logical(0), tags = list(type = "boolean")), readWrite = structure(logical(0), tags = list(type = "boolean")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_kx_dataview_output"]]))
 }
 
 .finspace$create_kx_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_kx_environment_input"]]))
 }
 
 .finspace$create_kx_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), environmentArn = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), creationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_kx_environment_output"]]))
 }
 
 .finspace$create_kx_scaling_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), scalingGroupName = structure(logical(0), tags = list(type = "string")), hostType = structure(logical(0), tags = list(type = "string")), availabilityZoneId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_kx_scaling_group_input"]]))
 }
 
 .finspace$create_kx_scaling_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(type = "string")), scalingGroupName = structure(logical(0), tags = list(type = "string")), hostType = structure(logical(0), tags = list(type = "string")), availabilityZoneId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_kx_scaling_group_output"]]))
 }
 
 .finspace$create_kx_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), userName = structure(logical(0), tags = list(type = "string")), iamRole = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_kx_user_input"]]))
 }
 
 .finspace$create_kx_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(userName = structure(logical(0), tags = list(type = "string")), userArn = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), iamRole = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_kx_user_output"]]))
 }
 
 .finspace$create_kx_volume_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), volumeType = structure(logical(0), tags = list(type = "string")), volumeName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), nas1Configuration = structure(list(type = structure(logical(0), tags = list(type = "string")), size = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), azMode = structure(logical(0), tags = list(type = "string")), availabilityZoneIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_kx_volume_input"]]))
 }
 
 .finspace$create_kx_volume_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(type = "string")), volumeName = structure(logical(0), tags = list(type = "string")), volumeType = structure(logical(0), tags = list(type = "string")), volumeArn = structure(logical(0), tags = list(type = "string")), nas1Configuration = structure(list(type = structure(logical(0), tags = list(type = "string")), size = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), azMode = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), availabilityZoneIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["create_kx_volume_output"]]))
 }
 
 .finspace$delete_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_environment_input"]]))
 }
 
 .finspace$delete_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_environment_output"]]))
 }
 
 .finspace$delete_kx_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), clusterName = structure(logical(0), tags = list(location = "uri", locationName = "clusterName", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_kx_cluster_input"]]))
 }
 
 .finspace$delete_kx_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_kx_cluster_output"]]))
 }
 
 .finspace$delete_kx_cluster_node_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), clusterName = structure(logical(0), tags = list(location = "uri", locationName = "clusterName", type = "string")), nodeId = structure(logical(0), tags = list(location = "uri", locationName = "nodeId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_kx_cluster_node_input"]]))
 }
 
 .finspace$delete_kx_cluster_node_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_kx_cluster_node_output"]]))
 }
 
 .finspace$delete_kx_database_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), databaseName = structure(logical(0), tags = list(location = "uri", locationName = "databaseName", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_kx_database_input"]]))
 }
 
 .finspace$delete_kx_database_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_kx_database_output"]]))
 }
 
 .finspace$delete_kx_dataview_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), databaseName = structure(logical(0), tags = list(location = "uri", locationName = "databaseName", type = "string")), dataviewName = structure(logical(0), tags = list(location = "uri", locationName = "dataviewName", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_kx_dataview_input"]]))
 }
 
 .finspace$delete_kx_dataview_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_kx_dataview_output"]]))
 }
 
 .finspace$delete_kx_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_kx_environment_input"]]))
 }
 
 .finspace$delete_kx_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_kx_environment_output"]]))
 }
 
 .finspace$delete_kx_scaling_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), scalingGroupName = structure(logical(0), tags = list(location = "uri", locationName = "scalingGroupName", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_kx_scaling_group_input"]]))
 }
 
 .finspace$delete_kx_scaling_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_kx_scaling_group_output"]]))
 }
 
 .finspace$delete_kx_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(userName = structure(logical(0), tags = list(location = "uri", locationName = "userName", type = "string")), environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_kx_user_input"]]))
 }
 
 .finspace$delete_kx_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_kx_user_output"]]))
 }
 
 .finspace$delete_kx_volume_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), volumeName = structure(logical(0), tags = list(location = "uri", locationName = "volumeName", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_kx_volume_input"]]))
 }
 
 .finspace$delete_kx_volume_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["delete_kx_volume_output"]]))
 }
 
 .finspace$get_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_environment_input"]]))
 }
 
 .finspace$get_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environment = structure(list(name = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), awsAccountId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), environmentUrl = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), environmentArn = structure(logical(0), tags = list(type = "string")), sageMakerStudioDomainUrl = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), dedicatedServiceAccountId = structure(logical(0), tags = list(type = "string")), federationMode = structure(logical(0), tags = list(type = "string")), federationParameters = structure(list(samlMetadataDocument = structure(logical(0), tags = list(type = "string")), samlMetadataURL = structure(logical(0), tags = list(type = "string")), applicationCallBackURL = structure(logical(0), tags = list(type = "string")), federationURN = structure(logical(0), tags = list(type = "string")), federationProviderName = structure(logical(0), tags = list(type = "string")), attributeMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_environment_output"]]))
 }
 
 .finspace$get_kx_changeset_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), databaseName = structure(logical(0), tags = list(location = "uri", locationName = "databaseName", type = "string")), changesetId = structure(logical(0), tags = list(location = "uri", locationName = "changesetId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_changeset_input"]]))
 }
 
 .finspace$get_kx_changeset_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(changesetId = structure(logical(0), tags = list(type = "string")), databaseName = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), changeRequests = structure(list(structure(list(changeType = structure(logical(0), tags = list(type = "string")), s3Path = structure(logical(0), tags = list(type = "string")), dbPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), activeFromTimestamp = structure(logical(0), tags = list(type = "timestamp")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), errorInfo = structure(list(errorMessage = structure(logical(0), tags = list(type = "string")), errorType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_changeset_output"]]))
 }
 
 .finspace$get_kx_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), clusterName = structure(logical(0), tags = list(location = "uri", locationName = "clusterName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_cluster_input"]]))
 }
 
 .finspace$get_kx_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(status = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), clusterType = structure(logical(0), tags = list(type = "string")), tickerplantLogConfiguration = structure(list(tickerplantLogVolumes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), volumes = structure(list(structure(list(volumeName = structure(logical(0), tags = list(type = "string")), volumeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), databases = structure(list(structure(list(databaseName = structure(logical(0), tags = list(type = "string")), cacheConfigurations = structure(list(structure(list(cacheType = structure(logical(0), tags = list(type = "string")), dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), dataviewName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), changesetId = structure(logical(0), tags = list(type = "string")), dataviewName = structure(logical(0), tags = list(type = "string")), dataviewConfiguration = structure(list(dataviewName = structure(logical(0), tags = list(type = "string")), dataviewVersionId = structure(logical(0), tags = list(type = "string")), changesetId = structure(logical(0), tags = list(type = "string")), segmentConfigurations = structure(list(structure(list(dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), volumeName = structure(logical(0), tags = list(type = "string")), onDemand = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), cacheStorageConfigurations = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), size = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), autoScalingConfiguration = structure(list(minNodeCount = structure(logical(0), tags = list(type = "integer")), maxNodeCount = structure(logical(0), tags = list(type = "integer")), autoScalingMetric = structure(logical(0), tags = list(type = "string")), metricTarget = structure(logical(0), tags = list(type = "double")), scaleInCooldownSeconds = structure(logical(0), tags = list(type = "double")), scaleOutCooldownSeconds = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), clusterDescription = structure(logical(0), tags = list(type = "string")), capacityConfiguration = structure(list(nodeType = structure(logical(0), tags = list(type = "string")), nodeCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), releaseLabel = structure(logical(0), tags = list(type = "string")), vpcConfiguration = structure(list(vpcId = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ipAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), initializationScript = structure(logical(0), tags = list(type = "string")), commandLineArguments = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), code = structure(list(s3Bucket = structure(logical(0), tags = list(type = "string")), s3Key = structure(logical(0), tags = list(type = "string")), s3ObjectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), executionRole = structure(logical(0), tags = list(type = "string")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), savedownStorageConfiguration = structure(list(type = structure(logical(0), tags = list(type = "string")), size = structure(logical(0), tags = list(type = "integer")), volumeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), azMode = structure(logical(0), tags = list(type = "string")), availabilityZoneId = structure(logical(0), tags = list(type = "string")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), scalingGroupConfiguration = structure(list(scalingGroupName = structure(logical(0), tags = list(type = "string")), memoryLimit = structure(logical(0), tags = list(type = "integer")), memoryReservation = structure(logical(0), tags = list(type = "integer")), nodeCount = structure(logical(0), tags = list(type = "integer")), cpu = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_cluster_output"]]))
 }
 
 .finspace$get_kx_connection_string_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(userArn = structure(logical(0), tags = list(location = "querystring", locationName = "userArn", type = "string")), environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), clusterName = structure(logical(0), tags = list(location = "querystring", locationName = "clusterName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_connection_string_input"]]))
 }
 
 .finspace$get_kx_connection_string_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(signedConnectionString = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_connection_string_output"]]))
 }
 
 .finspace$get_kx_database_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), databaseName = structure(logical(0), tags = list(location = "uri", locationName = "databaseName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_database_input"]]))
 }
 
 .finspace$get_kx_database_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(databaseName = structure(logical(0), tags = list(type = "string")), databaseArn = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), lastCompletedChangesetId = structure(logical(0), tags = list(type = "string")), numBytes = structure(logical(0), tags = list(type = "long")), numChangesets = structure(logical(0), tags = list(type = "integer")), numFiles = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_database_output"]]))
 }
 
 .finspace$get_kx_dataview_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), databaseName = structure(logical(0), tags = list(location = "uri", locationName = "databaseName", type = "string")), dataviewName = structure(logical(0), tags = list(location = "uri", locationName = "dataviewName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_dataview_input"]]))
 }
 
 .finspace$get_kx_dataview_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(databaseName = structure(logical(0), tags = list(type = "string")), dataviewName = structure(logical(0), tags = list(type = "string")), azMode = structure(logical(0), tags = list(type = "string")), availabilityZoneId = structure(logical(0), tags = list(type = "string")), changesetId = structure(logical(0), tags = list(type = "string")), segmentConfigurations = structure(list(structure(list(dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), volumeName = structure(logical(0), tags = list(type = "string")), onDemand = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), activeVersions = structure(list(structure(list(changesetId = structure(logical(0), tags = list(type = "string")), segmentConfigurations = structure(list(structure(list(dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), volumeName = structure(logical(0), tags = list(type = "string")), onDemand = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), attachedClusters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), versionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string")), autoUpdate = structure(logical(0), tags = list(type = "boolean")), readWrite = structure(logical(0), tags = list(type = "boolean")), environmentId = structure(logical(0), tags = list(type = "string")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_dataview_output"]]))
 }
 
 .finspace$get_kx_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_environment_input"]]))
 }
 
 .finspace$get_kx_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), awsAccountId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tgwStatus = structure(logical(0), tags = list(type = "string")), dnsStatus = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), environmentArn = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), dedicatedServiceAccountId = structure(logical(0), tags = list(type = "string")), transitGatewayConfiguration = structure(list(transitGatewayID = structure(logical(0), tags = list(type = "string")), routableCIDRSpace = structure(logical(0), tags = list(type = "string")), attachmentNetworkAclConfiguration = structure(list(structure(list(ruleNumber = structure(logical(0), tags = list(type = "integer")), protocol = structure(logical(0), tags = list(type = "string")), ruleAction = structure(logical(0), tags = list(type = "string")), portRange = structure(list(from = structure(logical(0), tags = list(type = "integer")), to = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), icmpTypeCode = structure(list(type = structure(logical(0), tags = list(type = "integer")), code = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), cidrBlock = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), customDNSConfiguration = structure(list(structure(list(customDNSServerName = structure(logical(0), tags = list(type = "string")), customDNSServerIP = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTimestamp = structure(logical(0), tags = list(type = "timestamp")), updateTimestamp = structure(logical(0), tags = list(type = "timestamp")), availabilityZoneIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), certificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_environment_output"]]))
 }
 
 .finspace$get_kx_scaling_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), scalingGroupName = structure(logical(0), tags = list(location = "uri", locationName = "scalingGroupName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_scaling_group_input"]]))
 }
 
 .finspace$get_kx_scaling_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(scalingGroupName = structure(logical(0), tags = list(type = "string")), scalingGroupArn = structure(logical(0), tags = list(type = "string")), hostType = structure(logical(0), tags = list(type = "string")), clusters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), availabilityZoneId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_scaling_group_output"]]))
 }
 
 .finspace$get_kx_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(userName = structure(logical(0), tags = list(location = "uri", locationName = "userName", type = "string")), environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_user_input"]]))
 }
 
 .finspace$get_kx_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(userName = structure(logical(0), tags = list(type = "string")), userArn = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), iamRole = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_user_output"]]))
 }
 
 .finspace$get_kx_volume_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), volumeName = structure(logical(0), tags = list(location = "uri", locationName = "volumeName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_volume_input"]]))
 }
 
 .finspace$get_kx_volume_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(type = "string")), volumeName = structure(logical(0), tags = list(type = "string")), volumeType = structure(logical(0), tags = list(type = "string")), volumeArn = structure(logical(0), tags = list(type = "string")), nas1Configuration = structure(list(type = structure(logical(0), tags = list(type = "string")), size = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string")), azMode = structure(logical(0), tags = list(type = "string")), availabilityZoneIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), attachedClusters = structure(list(structure(list(clusterName = structure(logical(0), tags = list(type = "string")), clusterType = structure(logical(0), tags = list(type = "string")), clusterStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["get_kx_volume_output"]]))
 }
 
 .finspace$list_environments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_environments_input"]]))
 }
 
 .finspace$list_environments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environments = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), awsAccountId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), environmentUrl = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), environmentArn = structure(logical(0), tags = list(type = "string")), sageMakerStudioDomainUrl = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), dedicatedServiceAccountId = structure(logical(0), tags = list(type = "string")), federationMode = structure(logical(0), tags = list(type = "string")), federationParameters = structure(list(samlMetadataDocument = structure(logical(0), tags = list(type = "string")), samlMetadataURL = structure(logical(0), tags = list(type = "string")), applicationCallBackURL = structure(logical(0), tags = list(type = "string")), federationURN = structure(logical(0), tags = list(type = "string")), federationProviderName = structure(logical(0), tags = list(type = "string")), attributeMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_environments_output"]]))
 }
 
 .finspace$list_kx_changesets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), databaseName = structure(logical(0), tags = list(location = "uri", locationName = "databaseName", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_changesets_input"]]))
 }
 
 .finspace$list_kx_changesets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(kxChangesets = structure(list(structure(list(changesetId = structure(logical(0), tags = list(type = "string")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), activeFromTimestamp = structure(logical(0), tags = list(type = "timestamp")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_changesets_output"]]))
 }
 
 .finspace$list_kx_cluster_nodes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), clusterName = structure(logical(0), tags = list(location = "uri", locationName = "clusterName", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_cluster_nodes_input"]]))
 }
 
 .finspace$list_kx_cluster_nodes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nodes = structure(list(structure(list(nodeId = structure(logical(0), tags = list(type = "string")), availabilityZoneId = structure(logical(0), tags = list(type = "string")), launchTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_cluster_nodes_output"]]))
 }
 
 .finspace$list_kx_clusters_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), clusterType = structure(logical(0), tags = list(location = "querystring", locationName = "clusterType", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_clusters_input"]]))
 }
 
 .finspace$list_kx_clusters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(kxClusterSummaries = structure(list(structure(list(status = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), clusterType = structure(logical(0), tags = list(type = "string")), clusterDescription = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), volumes = structure(list(structure(list(volumeName = structure(logical(0), tags = list(type = "string")), volumeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), initializationScript = structure(logical(0), tags = list(type = "string")), executionRole = structure(logical(0), tags = list(type = "string")), azMode = structure(logical(0), tags = list(type = "string")), availabilityZoneId = structure(logical(0), tags = list(type = "string")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_clusters_output"]]))
 }
 
 .finspace$list_kx_databases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_databases_input"]]))
 }
 
 .finspace$list_kx_databases_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(kxDatabases = structure(list(structure(list(databaseName = structure(logical(0), tags = list(type = "string")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_databases_output"]]))
 }
 
 .finspace$list_kx_dataviews_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), databaseName = structure(logical(0), tags = list(location = "uri", locationName = "databaseName", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_dataviews_input"]]))
 }
 
 .finspace$list_kx_dataviews_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(kxDataviews = structure(list(structure(list(environmentId = structure(logical(0), tags = list(type = "string")), databaseName = structure(logical(0), tags = list(type = "string")), dataviewName = structure(logical(0), tags = list(type = "string")), azMode = structure(logical(0), tags = list(type = "string")), availabilityZoneId = structure(logical(0), tags = list(type = "string")), changesetId = structure(logical(0), tags = list(type = "string")), segmentConfigurations = structure(list(structure(list(dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), volumeName = structure(logical(0), tags = list(type = "string")), onDemand = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), activeVersions = structure(list(structure(list(changesetId = structure(logical(0), tags = list(type = "string")), segmentConfigurations = structure(list(structure(list(dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), volumeName = structure(logical(0), tags = list(type = "string")), onDemand = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), attachedClusters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), versionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), autoUpdate = structure(logical(0), tags = list(type = "boolean")), readWrite = structure(logical(0), tags = list(type = "boolean")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_dataviews_output"]]))
 }
 
 .finspace$list_kx_environments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_environments_input"]]))
 }
 
 .finspace$list_kx_environments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environments = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), awsAccountId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tgwStatus = structure(logical(0), tags = list(type = "string")), dnsStatus = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), environmentArn = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), dedicatedServiceAccountId = structure(logical(0), tags = list(type = "string")), transitGatewayConfiguration = structure(list(transitGatewayID = structure(logical(0), tags = list(type = "string")), routableCIDRSpace = structure(logical(0), tags = list(type = "string")), attachmentNetworkAclConfiguration = structure(list(structure(list(ruleNumber = structure(logical(0), tags = list(type = "integer")), protocol = structure(logical(0), tags = list(type = "string")), ruleAction = structure(logical(0), tags = list(type = "string")), portRange = structure(list(from = structure(logical(0), tags = list(type = "integer")), to = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), icmpTypeCode = structure(list(type = structure(logical(0), tags = list(type = "integer")), code = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), cidrBlock = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), customDNSConfiguration = structure(list(structure(list(customDNSServerName = structure(logical(0), tags = list(type = "string")), customDNSServerIP = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTimestamp = structure(logical(0), tags = list(type = "timestamp")), updateTimestamp = structure(logical(0), tags = list(type = "timestamp")), availabilityZoneIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), certificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_environments_output"]]))
 }
 
 .finspace$list_kx_scaling_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_scaling_groups_input"]]))
 }
 
 .finspace$list_kx_scaling_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(scalingGroups = structure(list(structure(list(scalingGroupName = structure(logical(0), tags = list(type = "string")), hostType = structure(logical(0), tags = list(type = "string")), clusters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), availabilityZoneId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_scaling_groups_output"]]))
 }
 
 .finspace$list_kx_users_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_users_input"]]))
 }
 
 .finspace$list_kx_users_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(users = structure(list(structure(list(userArn = structure(logical(0), tags = list(type = "string")), userName = structure(logical(0), tags = list(type = "string")), iamRole = structure(logical(0), tags = list(type = "string")), createTimestamp = structure(logical(0), tags = list(type = "timestamp")), updateTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_users_output"]]))
 }
 
 .finspace$list_kx_volumes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), volumeType = structure(logical(0), tags = list(location = "querystring", locationName = "volumeType", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_volumes_input"]]))
 }
 
 .finspace$list_kx_volumes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(kxVolumeSummaries = structure(list(structure(list(volumeName = structure(logical(0), tags = list(type = "string")), volumeType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), azMode = structure(logical(0), tags = list(type = "string")), availabilityZoneIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_kx_volumes_output"]]))
 }
 
 .finspace$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_tags_for_resource_input"]]))
 }
 
 .finspace$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["list_tags_for_resource_output"]]))
 }
 
 .finspace$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["tag_resource_input"]]))
 }
 
 .finspace$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["tag_resource_output"]]))
 }
 
 .finspace$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["untag_resource_input"]]))
 }
 
 .finspace$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["untag_resource_output"]]))
 }
 
 .finspace$update_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), federationMode = structure(logical(0), tags = list(type = "string")), federationParameters = structure(list(samlMetadataDocument = structure(logical(0), tags = list(type = "string")), samlMetadataURL = structure(logical(0), tags = list(type = "string")), applicationCallBackURL = structure(logical(0), tags = list(type = "string")), federationURN = structure(logical(0), tags = list(type = "string")), federationProviderName = structure(logical(0), tags = list(type = "string")), attributeMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_environment_input"]]))
 }
 
 .finspace$update_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environment = structure(list(name = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), awsAccountId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), environmentUrl = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), environmentArn = structure(logical(0), tags = list(type = "string")), sageMakerStudioDomainUrl = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), dedicatedServiceAccountId = structure(logical(0), tags = list(type = "string")), federationMode = structure(logical(0), tags = list(type = "string")), federationParameters = structure(list(samlMetadataDocument = structure(logical(0), tags = list(type = "string")), samlMetadataURL = structure(logical(0), tags = list(type = "string")), applicationCallBackURL = structure(logical(0), tags = list(type = "string")), federationURN = structure(logical(0), tags = list(type = "string")), federationProviderName = structure(logical(0), tags = list(type = "string")), attributeMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_environment_output"]]))
 }
 
 .finspace$update_kx_cluster_code_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), clusterName = structure(logical(0), tags = list(location = "uri", locationName = "clusterName", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), code = structure(list(s3Bucket = structure(logical(0), tags = list(type = "string")), s3Key = structure(logical(0), tags = list(type = "string")), s3ObjectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), initializationScript = structure(logical(0), tags = list(type = "string")), commandLineArguments = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), deploymentConfiguration = structure(list(deploymentStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_kx_cluster_code_configuration_input"]]))
 }
 
 .finspace$update_kx_cluster_code_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_kx_cluster_code_configuration_output"]]))
 }
 
 .finspace$update_kx_cluster_databases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), clusterName = structure(logical(0), tags = list(location = "uri", locationName = "clusterName", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), databases = structure(list(structure(list(databaseName = structure(logical(0), tags = list(type = "string")), cacheConfigurations = structure(list(structure(list(cacheType = structure(logical(0), tags = list(type = "string")), dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), dataviewName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), changesetId = structure(logical(0), tags = list(type = "string")), dataviewName = structure(logical(0), tags = list(type = "string")), dataviewConfiguration = structure(list(dataviewName = structure(logical(0), tags = list(type = "string")), dataviewVersionId = structure(logical(0), tags = list(type = "string")), changesetId = structure(logical(0), tags = list(type = "string")), segmentConfigurations = structure(list(structure(list(dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), volumeName = structure(logical(0), tags = list(type = "string")), onDemand = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), deploymentConfiguration = structure(list(deploymentStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_kx_cluster_databases_input"]]))
 }
 
 .finspace$update_kx_cluster_databases_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_kx_cluster_databases_output"]]))
 }
 
 .finspace$update_kx_database_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), databaseName = structure(logical(0), tags = list(location = "uri", locationName = "databaseName", type = "string")), description = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_kx_database_input"]]))
 }
 
 .finspace$update_kx_database_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(databaseName = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_kx_database_output"]]))
 }
 
 .finspace$update_kx_dataview_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), databaseName = structure(logical(0), tags = list(location = "uri", locationName = "databaseName", type = "string")), dataviewName = structure(logical(0), tags = list(location = "uri", locationName = "dataviewName", type = "string")), description = structure(logical(0), tags = list(type = "string")), changesetId = structure(logical(0), tags = list(type = "string")), segmentConfigurations = structure(list(structure(list(dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), volumeName = structure(logical(0), tags = list(type = "string")), onDemand = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_kx_dataview_input"]]))
 }
 
 .finspace$update_kx_dataview_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(type = "string")), databaseName = structure(logical(0), tags = list(type = "string")), dataviewName = structure(logical(0), tags = list(type = "string")), azMode = structure(logical(0), tags = list(type = "string")), availabilityZoneId = structure(logical(0), tags = list(type = "string")), changesetId = structure(logical(0), tags = list(type = "string")), segmentConfigurations = structure(list(structure(list(dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), volumeName = structure(logical(0), tags = list(type = "string")), onDemand = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), activeVersions = structure(list(structure(list(changesetId = structure(logical(0), tags = list(type = "string")), segmentConfigurations = structure(list(structure(list(dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), volumeName = structure(logical(0), tags = list(type = "string")), onDemand = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), attachedClusters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), versionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), autoUpdate = structure(logical(0), tags = list(type = "boolean")), readWrite = structure(logical(0), tags = list(type = "boolean")), description = structure(logical(0), tags = list(type = "string")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_kx_dataview_output"]]))
 }
 
 .finspace$update_kx_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_kx_environment_input"]]))
 }
 
 .finspace$update_kx_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), awsAccountId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tgwStatus = structure(logical(0), tags = list(type = "string")), dnsStatus = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), environmentArn = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), dedicatedServiceAccountId = structure(logical(0), tags = list(type = "string")), transitGatewayConfiguration = structure(list(transitGatewayID = structure(logical(0), tags = list(type = "string")), routableCIDRSpace = structure(logical(0), tags = list(type = "string")), attachmentNetworkAclConfiguration = structure(list(structure(list(ruleNumber = structure(logical(0), tags = list(type = "integer")), protocol = structure(logical(0), tags = list(type = "string")), ruleAction = structure(logical(0), tags = list(type = "string")), portRange = structure(list(from = structure(logical(0), tags = list(type = "integer")), to = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), icmpTypeCode = structure(list(type = structure(logical(0), tags = list(type = "integer")), code = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), cidrBlock = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), customDNSConfiguration = structure(list(structure(list(customDNSServerName = structure(logical(0), tags = list(type = "string")), customDNSServerIP = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTimestamp = structure(logical(0), tags = list(type = "timestamp")), updateTimestamp = structure(logical(0), tags = list(type = "timestamp")), availabilityZoneIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_kx_environment_output"]]))
 }
 
 .finspace$update_kx_environment_network_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), transitGatewayConfiguration = structure(list(transitGatewayID = structure(logical(0), tags = list(type = "string")), routableCIDRSpace = structure(logical(0), tags = list(type = "string")), attachmentNetworkAclConfiguration = structure(list(structure(list(ruleNumber = structure(logical(0), tags = list(type = "integer")), protocol = structure(logical(0), tags = list(type = "string")), ruleAction = structure(logical(0), tags = list(type = "string")), portRange = structure(list(from = structure(logical(0), tags = list(type = "integer")), to = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), icmpTypeCode = structure(list(type = structure(logical(0), tags = list(type = "integer")), code = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), cidrBlock = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), customDNSConfiguration = structure(list(structure(list(customDNSServerName = structure(logical(0), tags = list(type = "string")), customDNSServerIP = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_kx_environment_network_input"]]))
 }
 
 .finspace$update_kx_environment_network_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), awsAccountId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tgwStatus = structure(logical(0), tags = list(type = "string")), dnsStatus = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), environmentArn = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), dedicatedServiceAccountId = structure(logical(0), tags = list(type = "string")), transitGatewayConfiguration = structure(list(transitGatewayID = structure(logical(0), tags = list(type = "string")), routableCIDRSpace = structure(logical(0), tags = list(type = "string")), attachmentNetworkAclConfiguration = structure(list(structure(list(ruleNumber = structure(logical(0), tags = list(type = "integer")), protocol = structure(logical(0), tags = list(type = "string")), ruleAction = structure(logical(0), tags = list(type = "string")), portRange = structure(list(from = structure(logical(0), tags = list(type = "integer")), to = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), icmpTypeCode = structure(list(type = structure(logical(0), tags = list(type = "integer")), code = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), cidrBlock = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), customDNSConfiguration = structure(list(structure(list(customDNSServerName = structure(logical(0), tags = list(type = "string")), customDNSServerIP = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTimestamp = structure(logical(0), tags = list(type = "timestamp")), updateTimestamp = structure(logical(0), tags = list(type = "timestamp")), availabilityZoneIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_kx_environment_network_output"]]))
 }
 
 .finspace$update_kx_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), userName = structure(logical(0), tags = list(location = "uri", locationName = "userName", type = "string")), iamRole = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_kx_user_input"]]))
 }
 
 .finspace$update_kx_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(userName = structure(logical(0), tags = list(type = "string")), userArn = structure(logical(0), tags = list(type = "string")), environmentId = structure(logical(0), tags = list(type = "string")), iamRole = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_kx_user_output"]]))
 }
 
 .finspace$update_kx_volume_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), volumeName = structure(logical(0), tags = list(location = "uri", locationName = "volumeName", type = "string")), description = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), nas1Configuration = structure(list(type = structure(logical(0), tags = list(type = "string")), size = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_kx_volume_input"]]))
 }
 
 .finspace$update_kx_volume_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(type = "string")), volumeName = structure(logical(0), tags = list(type = "string")), volumeType = structure(logical(0), tags = list(type = "string")), volumeArn = structure(logical(0), tags = list(type = "string")), nas1Configuration = structure(list(type = structure(logical(0), tags = list(type = "string")), size = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), createdTimestamp = structure(logical(0), tags = list(type = "timestamp")), azMode = structure(logical(0), tags = list(type = "string")), availabilityZoneIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), lastModifiedTimestamp = structure(logical(0), tags = list(type = "timestamp")), attachedClusters = structure(list(structure(list(clusterName = structure(logical(0), tags = list(type = "string")), clusterType = structure(logical(0), tags = list(type = "string")), clusterStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .finspace_shapes[["update_kx_volume_output"]]))
 }

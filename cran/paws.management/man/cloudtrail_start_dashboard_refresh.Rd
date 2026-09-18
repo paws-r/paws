@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_start_dashboard_refresh}
 \alias{cloudtrail_start_dashboard_refresh}
-\title{Starts a refresh of the specified dashboard}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_start_dashboard_refresh(DashboardId, QueryParameterValues = NULL)
 }
@@ -16,7 +17,7 @@ For custom dashboards, the following query parameters are valid: \verb{$StartTim
 For managed dashboards, the following query parameters are valid: \verb{$StartTime$}, \verb{$EndTime$}, \verb{$Period$}, and \verb{$EventDataStoreId$}. The \verb{$EventDataStoreId$} query parameter is required.}
 }
 \description{
-Starts a refresh of the specified dashboard.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_start_dashboard_refresh/} for full documentation.
 }

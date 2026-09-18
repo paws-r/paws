@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockagentcorecontrol_operations.R
 \name{bedrockagentcorecontrol_delete_agent_runtime_endpoint}
 \alias{bedrockagentcorecontrol_delete_agent_runtime_endpoint}
-\title{Deletes an AAgentCore Runtime endpoint}
+\title{Deletes an AgentCore Runtime endpoint}
 \usage{
 bedrockagentcorecontrol_delete_agent_runtime_endpoint(
   agentRuntimeId,
@@ -18,7 +18,7 @@ bedrockagentcorecontrol_delete_agent_runtime_endpoint(
 \item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the request.}
 }
 \description{
-Deletes an AAgentCore Runtime endpoint.
+Deletes an AgentCore Runtime endpoint.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_delete_agent_runtime_endpoint/} for full documentation.
 }

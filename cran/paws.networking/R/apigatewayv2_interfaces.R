@@ -5,212 +5,177 @@ NULL
 
 .apigatewayv2$create_api_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiKeySelectionExpression = structure(logical(0), tags = list(locationName = "apiKeySelectionExpression", type = "string")), CorsConfiguration = structure(list(AllowCredentials = structure(logical(0), tags = list(locationName = "allowCredentials", type = "boolean")), AllowHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowHeaders", type = "list")), AllowMethods = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowMethods", type = "list")), AllowOrigins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowOrigins", type = "list")), ExposeHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "exposeHeaders", type = "list")), MaxAge = structure(logical(0), tags = list(locationName = "maxAge", type = "integer"))), tags = list(locationName = "corsConfiguration", type = "structure")), CredentialsArn = structure(logical(0), tags = list(locationName = "credentialsArn", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisableSchemaValidation = structure(logical(0), tags = list(locationName = "disableSchemaValidation", type = "boolean")), DisableExecuteApiEndpoint = structure(logical(0), tags = list(locationName = "disableExecuteApiEndpoint", type = "boolean")), IpAddressType = structure(logical(0), tags = list(locationName = "ipAddressType", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), ProtocolType = structure(logical(0), tags = list(locationName = "protocolType", type = "string")), RouteKey = structure(logical(0), tags = list(locationName = "routeKey", type = "string")), RouteSelectionExpression = structure(logical(0), tags = list(locationName = "routeSelectionExpression", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), Target = structure(logical(0), tags = list(locationName = "target", type = "string")), Version = structure(logical(0), tags = list(locationName = "version", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_api_input"]]))
 }
 
 .apigatewayv2$create_api_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiEndpoint = structure(logical(0), tags = list(locationName = "apiEndpoint", type = "string")), ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), ApiKeySelectionExpression = structure(logical(0), tags = list(locationName = "apiKeySelectionExpression", type = "string")), CorsConfiguration = structure(list(AllowCredentials = structure(logical(0), tags = list(locationName = "allowCredentials", type = "boolean")), AllowHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowHeaders", type = "list")), AllowMethods = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowMethods", type = "list")), AllowOrigins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowOrigins", type = "list")), ExposeHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "exposeHeaders", type = "list")), MaxAge = structure(logical(0), tags = list(locationName = "maxAge", type = "integer"))), tags = list(locationName = "corsConfiguration", type = "structure")), CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisableSchemaValidation = structure(logical(0), tags = list(locationName = "disableSchemaValidation", type = "boolean")), DisableExecuteApiEndpoint = structure(logical(0), tags = list(locationName = "disableExecuteApiEndpoint", type = "boolean")), ImportInfo = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "importInfo", type = "list")), IpAddressType = structure(logical(0), tags = list(locationName = "ipAddressType", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), ProtocolType = structure(logical(0), tags = list(locationName = "protocolType", type = "string")), RouteSelectionExpression = structure(logical(0), tags = list(locationName = "routeSelectionExpression", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), Version = structure(logical(0), tags = list(locationName = "version", type = "string")), Warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "warnings", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_api_output"]]))
 }
 
 .apigatewayv2$create_api_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), ApiMappingKey = structure(logical(0), tags = list(locationName = "apiMappingKey", type = "string")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "domainName", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_api_mapping_input"]]))
 }
 
 .apigatewayv2$create_api_mapping_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), ApiMappingId = structure(logical(0), tags = list(locationName = "apiMappingId", type = "string")), ApiMappingKey = structure(logical(0), tags = list(locationName = "apiMappingKey", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_api_mapping_output"]]))
 }
 
 .apigatewayv2$create_authorizer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), AuthorizerCredentialsArn = structure(logical(0), tags = list(locationName = "authorizerCredentialsArn", type = "string")), AuthorizerPayloadFormatVersion = structure(logical(0), tags = list(locationName = "authorizerPayloadFormatVersion", type = "string")), AuthorizerResultTtlInSeconds = structure(logical(0), tags = list(locationName = "authorizerResultTtlInSeconds", type = "integer")), AuthorizerType = structure(logical(0), tags = list(locationName = "authorizerType", type = "string")), AuthorizerUri = structure(logical(0), tags = list(locationName = "authorizerUri", type = "string")), EnableSimpleResponses = structure(logical(0), tags = list(locationName = "enableSimpleResponses", type = "boolean")), IdentitySource = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "identitySource", type = "list")), IdentityValidationExpression = structure(logical(0), tags = list(locationName = "identityValidationExpression", type = "string")), JwtConfiguration = structure(list(Audience = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "audience", type = "list")), Issuer = structure(logical(0), tags = list(locationName = "issuer", type = "string"))), tags = list(locationName = "jwtConfiguration", type = "structure")), Name = structure(logical(0), tags = list(locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_authorizer_input"]]))
 }
 
 .apigatewayv2$create_authorizer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthorizerCredentialsArn = structure(logical(0), tags = list(locationName = "authorizerCredentialsArn", type = "string")), AuthorizerId = structure(logical(0), tags = list(locationName = "authorizerId", type = "string")), AuthorizerPayloadFormatVersion = structure(logical(0), tags = list(locationName = "authorizerPayloadFormatVersion", type = "string")), AuthorizerResultTtlInSeconds = structure(logical(0), tags = list(locationName = "authorizerResultTtlInSeconds", type = "integer")), AuthorizerType = structure(logical(0), tags = list(locationName = "authorizerType", type = "string")), AuthorizerUri = structure(logical(0), tags = list(locationName = "authorizerUri", type = "string")), EnableSimpleResponses = structure(logical(0), tags = list(locationName = "enableSimpleResponses", type = "boolean")), IdentitySource = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "identitySource", type = "list")), IdentityValidationExpression = structure(logical(0), tags = list(locationName = "identityValidationExpression", type = "string")), JwtConfiguration = structure(list(Audience = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "audience", type = "list")), Issuer = structure(logical(0), tags = list(locationName = "issuer", type = "string"))), tags = list(locationName = "jwtConfiguration", type = "structure")), Name = structure(logical(0), tags = list(locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_authorizer_output"]]))
 }
 
 .apigatewayv2$create_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), StageName = structure(logical(0), tags = list(locationName = "stageName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_deployment_input"]]))
 }
 
 .apigatewayv2$create_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoDeployed = structure(logical(0), tags = list(locationName = "autoDeployed", type = "boolean")), CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), DeploymentId = structure(logical(0), tags = list(locationName = "deploymentId", type = "string")), DeploymentStatus = structure(logical(0), tags = list(locationName = "deploymentStatus", type = "string")), DeploymentStatusMessage = structure(logical(0), tags = list(locationName = "deploymentStatusMessage", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_deployment_output"]]))
 }
 
 .apigatewayv2$create_domain_name_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(locationName = "domainName", type = "string")), DomainNameConfigurations = structure(list(structure(list(ApiGatewayDomainName = structure(logical(0), tags = list(locationName = "apiGatewayDomainName", type = "string")), CertificateArn = structure(logical(0), tags = list(locationName = "certificateArn", type = "string")), CertificateName = structure(logical(0), tags = list(locationName = "certificateName", type = "string")), CertificateUploadDate = structure(logical(0), tags = list(locationName = "certificateUploadDate", type = "timestamp", timestampFormat = "iso8601")), DomainNameStatus = structure(logical(0), tags = list(locationName = "domainNameStatus", type = "string")), DomainNameStatusMessage = structure(logical(0), tags = list(locationName = "domainNameStatusMessage", type = "string")), EndpointType = structure(logical(0), tags = list(locationName = "endpointType", type = "string")), HostedZoneId = structure(logical(0), tags = list(locationName = "hostedZoneId", type = "string")), IpAddressType = structure(logical(0), tags = list(locationName = "ipAddressType", type = "string")), SecurityPolicy = structure(logical(0), tags = list(locationName = "securityPolicy", type = "string")), OwnershipVerificationCertificateArn = structure(logical(0), tags = list(locationName = "ownershipVerificationCertificateArn", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "domainNameConfigurations", type = "list")), MutualTlsAuthentication = structure(list(TruststoreUri = structure(logical(0), tags = list(locationName = "truststoreUri", type = "string")), TruststoreVersion = structure(logical(0), tags = list(locationName = "truststoreVersion", type = "string"))), tags = list(locationName = "mutualTlsAuthentication", type = "structure")), RoutingMode = structure(logical(0), tags = list(locationName = "routingMode", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_domain_name_input"]]))
 }
 
 .apigatewayv2$create_domain_name_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiMappingSelectionExpression = structure(logical(0), tags = list(locationName = "apiMappingSelectionExpression", type = "string")), DomainName = structure(logical(0), tags = list(locationName = "domainName", type = "string")), DomainNameArn = structure(logical(0), tags = list(locationName = "domainNameArn", type = "string")), DomainNameConfigurations = structure(list(structure(list(ApiGatewayDomainName = structure(logical(0), tags = list(locationName = "apiGatewayDomainName", type = "string")), CertificateArn = structure(logical(0), tags = list(locationName = "certificateArn", type = "string")), CertificateName = structure(logical(0), tags = list(locationName = "certificateName", type = "string")), CertificateUploadDate = structure(logical(0), tags = list(locationName = "certificateUploadDate", type = "timestamp", timestampFormat = "iso8601")), DomainNameStatus = structure(logical(0), tags = list(locationName = "domainNameStatus", type = "string")), DomainNameStatusMessage = structure(logical(0), tags = list(locationName = "domainNameStatusMessage", type = "string")), EndpointType = structure(logical(0), tags = list(locationName = "endpointType", type = "string")), HostedZoneId = structure(logical(0), tags = list(locationName = "hostedZoneId", type = "string")), IpAddressType = structure(logical(0), tags = list(locationName = "ipAddressType", type = "string")), SecurityPolicy = structure(logical(0), tags = list(locationName = "securityPolicy", type = "string")), OwnershipVerificationCertificateArn = structure(logical(0), tags = list(locationName = "ownershipVerificationCertificateArn", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "domainNameConfigurations", type = "list")), MutualTlsAuthentication = structure(list(TruststoreUri = structure(logical(0), tags = list(locationName = "truststoreUri", type = "string")), TruststoreVersion = structure(logical(0), tags = list(locationName = "truststoreVersion", type = "string")), TruststoreWarnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "truststoreWarnings", type = "list"))), tags = list(locationName = "mutualTlsAuthentication", type = "structure")), RoutingMode = structure(logical(0), tags = list(locationName = "routingMode", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_domain_name_output"]]))
 }
 
 .apigatewayv2$create_integration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), ConnectionId = structure(logical(0), tags = list(locationName = "connectionId", type = "string")), ConnectionType = structure(logical(0), tags = list(locationName = "connectionType", type = "string")), ContentHandlingStrategy = structure(logical(0), tags = list(locationName = "contentHandlingStrategy", type = "string")), CredentialsArn = structure(logical(0), tags = list(locationName = "credentialsArn", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), IntegrationMethod = structure(logical(0), tags = list(locationName = "integrationMethod", type = "string")), IntegrationSubtype = structure(logical(0), tags = list(locationName = "integrationSubtype", type = "string")), IntegrationType = structure(logical(0), tags = list(locationName = "integrationType", type = "string")), IntegrationUri = structure(logical(0), tags = list(locationName = "integrationUri", type = "string")), PassthroughBehavior = structure(logical(0), tags = list(locationName = "passthroughBehavior", type = "string")), PayloadFormatVersion = structure(logical(0), tags = list(locationName = "payloadFormatVersion", type = "string")), RequestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestParameters", type = "map")), RequestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestTemplates", type = "map")), ResponseParameters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(locationName = "responseParameters", type = "map")), TemplateSelectionExpression = structure(logical(0), tags = list(locationName = "templateSelectionExpression", type = "string")), TimeoutInMillis = structure(logical(0), tags = list(locationName = "timeoutInMillis", type = "integer")), TlsConfig = structure(list(ServerNameToVerify = structure(logical(0), tags = list(locationName = "serverNameToVerify", type = "string"))), tags = list(locationName = "tlsConfig", type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_integration_input"]]))
 }
 
 .apigatewayv2$create_integration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), ConnectionId = structure(logical(0), tags = list(locationName = "connectionId", type = "string")), ConnectionType = structure(logical(0), tags = list(locationName = "connectionType", type = "string")), ContentHandlingStrategy = structure(logical(0), tags = list(locationName = "contentHandlingStrategy", type = "string")), CredentialsArn = structure(logical(0), tags = list(locationName = "credentialsArn", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), IntegrationId = structure(logical(0), tags = list(locationName = "integrationId", type = "string")), IntegrationMethod = structure(logical(0), tags = list(locationName = "integrationMethod", type = "string")), IntegrationResponseSelectionExpression = structure(logical(0), tags = list(locationName = "integrationResponseSelectionExpression", type = "string")), IntegrationSubtype = structure(logical(0), tags = list(locationName = "integrationSubtype", type = "string")), IntegrationType = structure(logical(0), tags = list(locationName = "integrationType", type = "string")), IntegrationUri = structure(logical(0), tags = list(locationName = "integrationUri", type = "string")), PassthroughBehavior = structure(logical(0), tags = list(locationName = "passthroughBehavior", type = "string")), PayloadFormatVersion = structure(logical(0), tags = list(locationName = "payloadFormatVersion", type = "string")), RequestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestParameters", type = "map")), RequestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestTemplates", type = "map")), ResponseParameters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(locationName = "responseParameters", type = "map")), TemplateSelectionExpression = structure(logical(0), tags = list(locationName = "templateSelectionExpression", type = "string")), TimeoutInMillis = structure(logical(0), tags = list(locationName = "timeoutInMillis", type = "integer")), TlsConfig = structure(list(ServerNameToVerify = structure(logical(0), tags = list(locationName = "serverNameToVerify", type = "string"))), tags = list(locationName = "tlsConfig", type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_integration_output"]]))
 }
 
 .apigatewayv2$create_integration_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), ContentHandlingStrategy = structure(logical(0), tags = list(locationName = "contentHandlingStrategy", type = "string")), IntegrationId = structure(logical(0), tags = list(location = "uri", locationName = "integrationId", type = "string")), IntegrationResponseKey = structure(logical(0), tags = list(locationName = "integrationResponseKey", type = "string")), ResponseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseParameters", type = "map")), ResponseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseTemplates", type = "map")), TemplateSelectionExpression = structure(logical(0), tags = list(locationName = "templateSelectionExpression", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_integration_response_input"]]))
 }
 
 .apigatewayv2$create_integration_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContentHandlingStrategy = structure(logical(0), tags = list(locationName = "contentHandlingStrategy", type = "string")), IntegrationResponseId = structure(logical(0), tags = list(locationName = "integrationResponseId", type = "string")), IntegrationResponseKey = structure(logical(0), tags = list(locationName = "integrationResponseKey", type = "string")), ResponseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseParameters", type = "map")), ResponseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseTemplates", type = "map")), TemplateSelectionExpression = structure(logical(0), tags = list(locationName = "templateSelectionExpression", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_integration_response_output"]]))
 }
 
 .apigatewayv2$create_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), ContentType = structure(logical(0), tags = list(locationName = "contentType", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Schema = structure(logical(0), tags = list(locationName = "schema", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_model_input"]]))
 }
 
 .apigatewayv2$create_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContentType = structure(logical(0), tags = list(locationName = "contentType", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), ModelId = structure(logical(0), tags = list(locationName = "modelId", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Schema = structure(logical(0), tags = list(locationName = "schema", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_model_output"]]))
 }
 
 .apigatewayv2$create_portal_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Authorization = structure(list(CognitoConfig = structure(list(AppClientId = structure(logical(0), tags = list(locationName = "appClientId", type = "string")), UserPoolArn = structure(logical(0), tags = list(locationName = "userPoolArn", type = "string")), UserPoolDomain = structure(logical(0), tags = list(locationName = "userPoolDomain", type = "string"))), tags = list(locationName = "cognitoConfig", type = "structure")), None = structure(list(), tags = list(locationName = "none", type = "structure"))), tags = list(locationName = "authorization", type = "structure")), EndpointConfiguration = structure(list(AcmManaged = structure(list(CertificateArn = structure(logical(0), tags = list(locationName = "certificateArn", type = "string")), DomainName = structure(logical(0), tags = list(locationName = "domainName", type = "string"))), tags = list(locationName = "acmManaged", type = "structure")), None = structure(list(), tags = list(locationName = "none", type = "structure"))), tags = list(locationName = "endpointConfiguration", type = "structure")), IncludedPortalProductArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "includedPortalProductArns", type = "list")), LogoUri = structure(logical(0), tags = list(locationName = "logoUri", type = "string")), PortalContent = structure(list(Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "displayName", type = "string")), Theme = structure(list(CustomColors = structure(list(AccentColor = structure(logical(0), tags = list(locationName = "accentColor", type = "string")), BackgroundColor = structure(logical(0), tags = list(locationName = "backgroundColor", type = "string")), ErrorValidationColor = structure(logical(0), tags = list(locationName = "errorValidationColor", type = "string")), HeaderColor = structure(logical(0), tags = list(locationName = "headerColor", type = "string")), NavigationColor = structure(logical(0), tags = list(locationName = "navigationColor", type = "string")), TextColor = structure(logical(0), tags = list(locationName = "textColor", type = "string"))), tags = list(locationName = "customColors", type = "structure")), LogoLastUploaded = structure(logical(0), tags = list(locationName = "logoLastUploaded", type = "timestamp", timestampFormat = "iso8601"))), tags = list(locationName = "theme", type = "structure"))), tags = list(locationName = "portalContent", type = "structure")), RumAppMonitorName = structure(logical(0), tags = list(locationName = "rumAppMonitorName", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_portal_input"]]))
 }
 
 .apigatewayv2$create_portal_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Authorization = structure(list(CognitoConfig = structure(list(AppClientId = structure(logical(0), tags = list(locationName = "appClientId", type = "string")), UserPoolArn = structure(logical(0), tags = list(locationName = "userPoolArn", type = "string")), UserPoolDomain = structure(logical(0), tags = list(locationName = "userPoolDomain", type = "string"))), tags = list(locationName = "cognitoConfig", type = "structure")), None = structure(list(), tags = list(locationName = "none", type = "structure"))), tags = list(locationName = "authorization", type = "structure")), EndpointConfiguration = structure(list(CertificateArn = structure(logical(0), tags = list(locationName = "certificateArn", type = "string")), DomainName = structure(logical(0), tags = list(locationName = "domainName", type = "string")), PortalDefaultDomainName = structure(logical(0), tags = list(locationName = "portalDefaultDomainName", type = "string")), PortalDomainHostedZoneId = structure(logical(0), tags = list(locationName = "portalDomainHostedZoneId", type = "string"))), tags = list(locationName = "endpointConfiguration", type = "structure")), IncludedPortalProductArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "includedPortalProductArns", type = "list")), LastModified = structure(logical(0), tags = list(locationName = "lastModified", type = "timestamp", timestampFormat = "iso8601")), LastPublished = structure(logical(0), tags = list(locationName = "lastPublished", type = "timestamp", timestampFormat = "iso8601")), LastPublishedDescription = structure(logical(0), tags = list(locationName = "lastPublishedDescription", type = "string")), PortalArn = structure(logical(0), tags = list(locationName = "portalArn", type = "string")), PortalContent = structure(list(Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "displayName", type = "string")), Theme = structure(list(CustomColors = structure(list(AccentColor = structure(logical(0), tags = list(locationName = "accentColor", type = "string")), BackgroundColor = structure(logical(0), tags = list(locationName = "backgroundColor", type = "string")), ErrorValidationColor = structure(logical(0), tags = list(locationName = "errorValidationColor", type = "string")), HeaderColor = structure(logical(0), tags = list(locationName = "headerColor", type = "string")), NavigationColor = structure(logical(0), tags = list(locationName = "navigationColor", type = "string")), TextColor = structure(logical(0), tags = list(locationName = "textColor", type = "string"))), tags = list(locationName = "customColors", type = "structure")), LogoLastUploaded = structure(logical(0), tags = list(locationName = "logoLastUploaded", type = "timestamp", timestampFormat = "iso8601"))), tags = list(locationName = "theme", type = "structure"))), tags = list(locationName = "portalContent", type = "structure")), PortalId = structure(logical(0), tags = list(locationName = "portalId", type = "string")), PublishStatus = structure(logical(0), tags = list(locationName = "publishStatus", type = "string")), RumAppMonitorName = structure(logical(0), tags = list(locationName = "rumAppMonitorName", type = "string")), StatusException = structure(list(Exception = structure(logical(0), tags = list(locationName = "exception", type = "string")), Message = structure(logical(0), tags = list(locationName = "message", type = "string"))), tags = list(locationName = "statusException", type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_portal_output"]]))
 }
 
 .apigatewayv2$create_portal_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "displayName", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_portal_product_input"]]))
 }
 
 .apigatewayv2$create_portal_product_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "displayName", type = "string")), DisplayOrder = structure(list(Contents = structure(list(structure(list(ProductRestEndpointPageArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "productRestEndpointPageArns", type = "list")), SectionName = structure(logical(0), tags = list(locationName = "sectionName", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "contents", type = "list")), OverviewPageArn = structure(logical(0), tags = list(locationName = "overviewPageArn", type = "string")), ProductPageArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "productPageArns", type = "list"))), tags = list(locationName = "displayOrder", type = "structure")), LastModified = structure(logical(0), tags = list(locationName = "lastModified", type = "timestamp", timestampFormat = "iso8601")), PortalProductArn = structure(logical(0), tags = list(locationName = "portalProductArn", type = "string")), PortalProductId = structure(logical(0), tags = list(locationName = "portalProductId", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_portal_product_output"]]))
 }
 
 .apigatewayv2$create_product_page_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DisplayContent = structure(list(Body = structure(logical(0), tags = list(locationName = "body", type = "string")), Title = structure(logical(0), tags = list(locationName = "title", type = "string"))), tags = list(locationName = "displayContent", type = "structure")), PortalProductId = structure(logical(0), tags = list(location = "uri", locationName = "portalProductId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_product_page_input"]]))
 }
 
 .apigatewayv2$create_product_page_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DisplayContent = structure(list(Body = structure(logical(0), tags = list(locationName = "body", type = "string")), Title = structure(logical(0), tags = list(locationName = "title", type = "string"))), tags = list(locationName = "displayContent", type = "structure")), LastModified = structure(logical(0), tags = list(locationName = "lastModified", type = "timestamp", timestampFormat = "iso8601")), ProductPageArn = structure(logical(0), tags = list(locationName = "productPageArn", type = "string")), ProductPageId = structure(logical(0), tags = list(locationName = "productPageId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_product_page_output"]]))
 }
 
 .apigatewayv2$create_product_rest_endpoint_page_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DisplayContent = structure(list(None = structure(list(), tags = list(locationName = "none", type = "structure")), Overrides = structure(list(Body = structure(logical(0), tags = list(locationName = "body", type = "string")), Endpoint = structure(logical(0), tags = list(locationName = "endpoint", type = "string")), OperationName = structure(logical(0), tags = list(locationName = "operationName", type = "string"))), tags = list(locationName = "overrides", type = "structure"))), tags = list(locationName = "displayContent", type = "structure")), PortalProductId = structure(logical(0), tags = list(location = "uri", locationName = "portalProductId", type = "string")), RestEndpointIdentifier = structure(list(IdentifierParts = structure(list(Method = structure(logical(0), tags = list(locationName = "method", type = "string")), Path = structure(logical(0), tags = list(locationName = "path", type = "string")), RestApiId = structure(logical(0), tags = list(locationName = "restApiId", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string"))), tags = list(locationName = "identifierParts", type = "structure"))), tags = list(locationName = "restEndpointIdentifier", type = "structure")), TryItState = structure(logical(0), tags = list(locationName = "tryItState", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_product_rest_endpoint_page_input"]]))
 }
 
 .apigatewayv2$create_product_rest_endpoint_page_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DisplayContent = structure(list(Body = structure(logical(0), tags = list(locationName = "body", type = "string")), Endpoint = structure(logical(0), tags = list(locationName = "endpoint", type = "string")), OperationName = structure(logical(0), tags = list(locationName = "operationName", type = "string"))), tags = list(locationName = "displayContent", type = "structure")), LastModified = structure(logical(0), tags = list(locationName = "lastModified", type = "timestamp", timestampFormat = "iso8601")), ProductRestEndpointPageArn = structure(logical(0), tags = list(locationName = "productRestEndpointPageArn", type = "string")), ProductRestEndpointPageId = structure(logical(0), tags = list(locationName = "productRestEndpointPageId", type = "string")), RestEndpointIdentifier = structure(list(IdentifierParts = structure(list(Method = structure(logical(0), tags = list(locationName = "method", type = "string")), Path = structure(logical(0), tags = list(locationName = "path", type = "string")), RestApiId = structure(logical(0), tags = list(locationName = "restApiId", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string"))), tags = list(locationName = "identifierParts", type = "structure"))), tags = list(locationName = "restEndpointIdentifier", type = "structure")), Status = structure(logical(0), tags = list(locationName = "status", type = "string")), StatusException = structure(list(Exception = structure(logical(0), tags = list(locationName = "exception", type = "string")), Message = structure(logical(0), tags = list(locationName = "message", type = "string"))), tags = list(locationName = "statusException", type = "structure")), TryItState = structure(logical(0), tags = list(locationName = "tryItState", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_product_rest_endpoint_page_output"]]))
 }
 
 .apigatewayv2$create_route_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), ApiKeyRequired = structure(logical(0), tags = list(locationName = "apiKeyRequired", type = "boolean")), AuthorizationScopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "authorizationScopes", type = "list")), AuthorizationType = structure(logical(0), tags = list(locationName = "authorizationType", type = "string")), AuthorizerId = structure(logical(0), tags = list(locationName = "authorizerId", type = "string")), ModelSelectionExpression = structure(logical(0), tags = list(locationName = "modelSelectionExpression", type = "string")), OperationName = structure(logical(0), tags = list(locationName = "operationName", type = "string")), RequestModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestModels", type = "map")), RequestParameters = structure(list(structure(list(Required = structure(logical(0), tags = list(locationName = "required", type = "boolean"))), tags = list(type = "structure"))), tags = list(locationName = "requestParameters", type = "map")), RouteKey = structure(logical(0), tags = list(locationName = "routeKey", type = "string")), RouteResponseSelectionExpression = structure(logical(0), tags = list(locationName = "routeResponseSelectionExpression", type = "string")), Target = structure(logical(0), tags = list(locationName = "target", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_route_input"]]))
 }
 
 .apigatewayv2$create_route_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), ApiKeyRequired = structure(logical(0), tags = list(locationName = "apiKeyRequired", type = "boolean")), AuthorizationScopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "authorizationScopes", type = "list")), AuthorizationType = structure(logical(0), tags = list(locationName = "authorizationType", type = "string")), AuthorizerId = structure(logical(0), tags = list(locationName = "authorizerId", type = "string")), ModelSelectionExpression = structure(logical(0), tags = list(locationName = "modelSelectionExpression", type = "string")), OperationName = structure(logical(0), tags = list(locationName = "operationName", type = "string")), RequestModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestModels", type = "map")), RequestParameters = structure(list(structure(list(Required = structure(logical(0), tags = list(locationName = "required", type = "boolean"))), tags = list(type = "structure"))), tags = list(locationName = "requestParameters", type = "map")), RouteId = structure(logical(0), tags = list(locationName = "routeId", type = "string")), RouteKey = structure(logical(0), tags = list(locationName = "routeKey", type = "string")), RouteResponseSelectionExpression = structure(logical(0), tags = list(locationName = "routeResponseSelectionExpression", type = "string")), Target = structure(logical(0), tags = list(locationName = "target", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_route_output"]]))
 }
 
 .apigatewayv2$create_route_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), ModelSelectionExpression = structure(logical(0), tags = list(locationName = "modelSelectionExpression", type = "string")), ResponseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseModels", type = "map")), ResponseParameters = structure(list(structure(list(Required = structure(logical(0), tags = list(locationName = "required", type = "boolean"))), tags = list(type = "structure"))), tags = list(locationName = "responseParameters", type = "map")), RouteId = structure(logical(0), tags = list(location = "uri", locationName = "routeId", type = "string")), RouteResponseKey = structure(logical(0), tags = list(locationName = "routeResponseKey", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_route_response_input"]]))
 }
 
 .apigatewayv2$create_route_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ModelSelectionExpression = structure(logical(0), tags = list(locationName = "modelSelectionExpression", type = "string")), ResponseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseModels", type = "map")), ResponseParameters = structure(list(structure(list(Required = structure(logical(0), tags = list(locationName = "required", type = "boolean"))), tags = list(type = "structure"))), tags = list(locationName = "responseParameters", type = "map")), RouteResponseId = structure(logical(0), tags = list(locationName = "routeResponseId", type = "string")), RouteResponseKey = structure(logical(0), tags = list(locationName = "routeResponseKey", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_route_response_output"]]))
 }
 
 .apigatewayv2$create_routing_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Actions = structure(list(structure(list(InvokeApi = structure(list(ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string")), StripBasePath = structure(logical(0), tags = list(locationName = "stripBasePath", type = "boolean"))), tags = list(locationName = "invokeApi", type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "actions", type = "list")), Conditions = structure(list(structure(list(MatchBasePaths = structure(list(AnyOf = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "anyOf", type = "list"))), tags = list(locationName = "matchBasePaths", type = "structure")), MatchHeaders = structure(list(AnyOf = structure(list(structure(list(Header = structure(logical(0), tags = list(locationName = "header", type = "string")), ValueGlob = structure(logical(0), tags = list(locationName = "valueGlob", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "anyOf", type = "list"))), tags = list(locationName = "matchHeaders", type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "conditions", type = "list")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "domainName", type = "string")), DomainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), Priority = structure(logical(0), tags = list(locationName = "priority", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_routing_rule_input"]]))
 }
 
 .apigatewayv2$create_routing_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Actions = structure(list(structure(list(InvokeApi = structure(list(ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string")), StripBasePath = structure(logical(0), tags = list(locationName = "stripBasePath", type = "boolean"))), tags = list(locationName = "invokeApi", type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "actions", type = "list")), Conditions = structure(list(structure(list(MatchBasePaths = structure(list(AnyOf = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "anyOf", type = "list"))), tags = list(locationName = "matchBasePaths", type = "structure")), MatchHeaders = structure(list(AnyOf = structure(list(structure(list(Header = structure(logical(0), tags = list(locationName = "header", type = "string")), ValueGlob = structure(logical(0), tags = list(locationName = "valueGlob", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "anyOf", type = "list"))), tags = list(locationName = "matchHeaders", type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "conditions", type = "list")), Priority = structure(logical(0), tags = list(locationName = "priority", type = "integer")), RoutingRuleArn = structure(logical(0), tags = list(locationName = "routingRuleArn", type = "string")), RoutingRuleId = structure(logical(0), tags = list(locationName = "routingRuleId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_routing_rule_output"]]))
 }
 
 .apigatewayv2$create_stage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccessLogSettings = structure(list(DestinationArn = structure(logical(0), tags = list(locationName = "destinationArn", type = "string")), Format = structure(logical(0), tags = list(locationName = "format", type = "string"))), tags = list(locationName = "accessLogSettings", type = "structure")), ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), AutoDeploy = structure(logical(0), tags = list(locationName = "autoDeploy", type = "boolean")), ClientCertificateId = structure(logical(0), tags = list(locationName = "clientCertificateId", type = "string")), DefaultRouteSettings = structure(list(DataTraceEnabled = structure(logical(0), tags = list(locationName = "dataTraceEnabled", type = "boolean")), DetailedMetricsEnabled = structure(logical(0), tags = list(locationName = "detailedMetricsEnabled", type = "boolean")), LoggingLevel = structure(logical(0), tags = list(locationName = "loggingLevel", type = "string")), ThrottlingBurstLimit = structure(logical(0), tags = list(locationName = "throttlingBurstLimit", type = "integer")), ThrottlingRateLimit = structure(logical(0), tags = list(locationName = "throttlingRateLimit", type = "double"))), tags = list(locationName = "defaultRouteSettings", type = "structure")), DeploymentId = structure(logical(0), tags = list(locationName = "deploymentId", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), RouteSettings = structure(list(structure(list(DataTraceEnabled = structure(logical(0), tags = list(locationName = "dataTraceEnabled", type = "boolean")), DetailedMetricsEnabled = structure(logical(0), tags = list(locationName = "detailedMetricsEnabled", type = "boolean")), LoggingLevel = structure(logical(0), tags = list(locationName = "loggingLevel", type = "string")), ThrottlingBurstLimit = structure(logical(0), tags = list(locationName = "throttlingBurstLimit", type = "integer")), ThrottlingRateLimit = structure(logical(0), tags = list(locationName = "throttlingRateLimit", type = "double"))), tags = list(type = "structure"))), tags = list(locationName = "routeSettings", type = "map")), StageName = structure(logical(0), tags = list(locationName = "stageName", type = "string")), StageVariables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "stageVariables", type = "map")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_stage_input"]]))
 }
 
 .apigatewayv2$create_stage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccessLogSettings = structure(list(DestinationArn = structure(logical(0), tags = list(locationName = "destinationArn", type = "string")), Format = structure(logical(0), tags = list(locationName = "format", type = "string"))), tags = list(locationName = "accessLogSettings", type = "structure")), ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), AutoDeploy = structure(logical(0), tags = list(locationName = "autoDeploy", type = "boolean")), ClientCertificateId = structure(logical(0), tags = list(locationName = "clientCertificateId", type = "string")), CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), DefaultRouteSettings = structure(list(DataTraceEnabled = structure(logical(0), tags = list(locationName = "dataTraceEnabled", type = "boolean")), DetailedMetricsEnabled = structure(logical(0), tags = list(locationName = "detailedMetricsEnabled", type = "boolean")), LoggingLevel = structure(logical(0), tags = list(locationName = "loggingLevel", type = "string")), ThrottlingBurstLimit = structure(logical(0), tags = list(locationName = "throttlingBurstLimit", type = "integer")), ThrottlingRateLimit = structure(logical(0), tags = list(locationName = "throttlingRateLimit", type = "double"))), tags = list(locationName = "defaultRouteSettings", type = "structure")), DeploymentId = structure(logical(0), tags = list(locationName = "deploymentId", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), LastDeploymentStatusMessage = structure(logical(0), tags = list(locationName = "lastDeploymentStatusMessage", type = "string")), LastUpdatedDate = structure(logical(0), tags = list(locationName = "lastUpdatedDate", type = "timestamp", timestampFormat = "iso8601")), RouteSettings = structure(list(structure(list(DataTraceEnabled = structure(logical(0), tags = list(locationName = "dataTraceEnabled", type = "boolean")), DetailedMetricsEnabled = structure(logical(0), tags = list(locationName = "detailedMetricsEnabled", type = "boolean")), LoggingLevel = structure(logical(0), tags = list(locationName = "loggingLevel", type = "string")), ThrottlingBurstLimit = structure(logical(0), tags = list(locationName = "throttlingBurstLimit", type = "integer")), ThrottlingRateLimit = structure(logical(0), tags = list(locationName = "throttlingRateLimit", type = "double"))), tags = list(type = "structure"))), tags = list(locationName = "routeSettings", type = "map")), StageName = structure(logical(0), tags = list(locationName = "stageName", type = "string")), StageVariables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "stageVariables", type = "map")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_stage_output"]]))
 }
 
 .apigatewayv2$create_vpc_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(locationName = "name", type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "securityGroupIds", type = "list")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "subnetIds", type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_vpc_link_input"]]))
 }
 
 .apigatewayv2$create_vpc_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "securityGroupIds", type = "list")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "subnetIds", type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), VpcLinkId = structure(logical(0), tags = list(locationName = "vpcLinkId", type = "string")), VpcLinkStatus = structure(logical(0), tags = list(locationName = "vpcLinkStatus", type = "string")), VpcLinkStatusMessage = structure(logical(0), tags = list(locationName = "vpcLinkStatusMessage", type = "string")), VpcLinkVersion = structure(logical(0), tags = list(locationName = "vpcLinkVersion", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["create_vpc_link_output"]]))
 }
 
 .apigatewayv2$delete_access_log_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), StageName = structure(logical(0), tags = list(location = "uri", locationName = "stageName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_access_log_settings_input"]]))
 }
 
 .apigatewayv2$delete_access_log_settings_output <- function(...) {
@@ -219,8 +184,7 @@ NULL
 
 .apigatewayv2$delete_api_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_api_input"]]))
 }
 
 .apigatewayv2$delete_api_output <- function(...) {
@@ -229,8 +193,7 @@ NULL
 
 .apigatewayv2$delete_api_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiMappingId = structure(logical(0), tags = list(location = "uri", locationName = "apiMappingId", type = "string")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "domainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_api_mapping_input"]]))
 }
 
 .apigatewayv2$delete_api_mapping_output <- function(...) {
@@ -239,8 +202,7 @@ NULL
 
 .apigatewayv2$delete_authorizer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), AuthorizerId = structure(logical(0), tags = list(location = "uri", locationName = "authorizerId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_authorizer_input"]]))
 }
 
 .apigatewayv2$delete_authorizer_output <- function(...) {
@@ -249,8 +211,7 @@ NULL
 
 .apigatewayv2$delete_cors_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_cors_configuration_input"]]))
 }
 
 .apigatewayv2$delete_cors_configuration_output <- function(...) {
@@ -259,8 +220,7 @@ NULL
 
 .apigatewayv2$delete_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), DeploymentId = structure(logical(0), tags = list(location = "uri", locationName = "deploymentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_deployment_input"]]))
 }
 
 .apigatewayv2$delete_deployment_output <- function(...) {
@@ -269,8 +229,7 @@ NULL
 
 .apigatewayv2$delete_domain_name_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "domainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_domain_name_input"]]))
 }
 
 .apigatewayv2$delete_domain_name_output <- function(...) {
@@ -279,8 +238,7 @@ NULL
 
 .apigatewayv2$delete_integration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), IntegrationId = structure(logical(0), tags = list(location = "uri", locationName = "integrationId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_integration_input"]]))
 }
 
 .apigatewayv2$delete_integration_output <- function(...) {
@@ -289,8 +247,7 @@ NULL
 
 .apigatewayv2$delete_integration_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), IntegrationId = structure(logical(0), tags = list(location = "uri", locationName = "integrationId", type = "string")), IntegrationResponseId = structure(logical(0), tags = list(location = "uri", locationName = "integrationResponseId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_integration_response_input"]]))
 }
 
 .apigatewayv2$delete_integration_response_output <- function(...) {
@@ -299,8 +256,7 @@ NULL
 
 .apigatewayv2$delete_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), ModelId = structure(logical(0), tags = list(location = "uri", locationName = "modelId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_model_input"]]))
 }
 
 .apigatewayv2$delete_model_output <- function(...) {
@@ -309,8 +265,7 @@ NULL
 
 .apigatewayv2$delete_portal_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortalId = structure(logical(0), tags = list(location = "uri", locationName = "portalId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_portal_input"]]))
 }
 
 .apigatewayv2$delete_portal_output <- function(...) {
@@ -319,8 +274,7 @@ NULL
 
 .apigatewayv2$delete_portal_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortalProductId = structure(logical(0), tags = list(location = "uri", locationName = "portalProductId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_portal_product_input"]]))
 }
 
 .apigatewayv2$delete_portal_product_output <- function(...) {
@@ -329,8 +283,7 @@ NULL
 
 .apigatewayv2$delete_portal_product_sharing_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortalProductId = structure(logical(0), tags = list(location = "uri", locationName = "portalProductId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_portal_product_sharing_policy_input"]]))
 }
 
 .apigatewayv2$delete_portal_product_sharing_policy_output <- function(...) {
@@ -339,8 +292,7 @@ NULL
 
 .apigatewayv2$delete_product_page_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortalProductId = structure(logical(0), tags = list(location = "uri", locationName = "portalProductId", type = "string")), ProductPageId = structure(logical(0), tags = list(location = "uri", locationName = "productPageId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_product_page_input"]]))
 }
 
 .apigatewayv2$delete_product_page_output <- function(...) {
@@ -349,8 +301,7 @@ NULL
 
 .apigatewayv2$delete_product_rest_endpoint_page_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortalProductId = structure(logical(0), tags = list(location = "uri", locationName = "portalProductId", type = "string")), ProductRestEndpointPageId = structure(logical(0), tags = list(location = "uri", locationName = "productRestEndpointPageId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_product_rest_endpoint_page_input"]]))
 }
 
 .apigatewayv2$delete_product_rest_endpoint_page_output <- function(...) {
@@ -359,8 +310,7 @@ NULL
 
 .apigatewayv2$delete_route_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), RouteId = structure(logical(0), tags = list(location = "uri", locationName = "routeId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_route_input"]]))
 }
 
 .apigatewayv2$delete_route_output <- function(...) {
@@ -369,8 +319,7 @@ NULL
 
 .apigatewayv2$delete_route_request_parameter_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), RequestParameterKey = structure(logical(0), tags = list(location = "uri", locationName = "requestParameterKey", type = "string")), RouteId = structure(logical(0), tags = list(location = "uri", locationName = "routeId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_route_request_parameter_input"]]))
 }
 
 .apigatewayv2$delete_route_request_parameter_output <- function(...) {
@@ -379,8 +328,7 @@ NULL
 
 .apigatewayv2$delete_route_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), RouteId = structure(logical(0), tags = list(location = "uri", locationName = "routeId", type = "string")), RouteResponseId = structure(logical(0), tags = list(location = "uri", locationName = "routeResponseId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_route_response_input"]]))
 }
 
 .apigatewayv2$delete_route_response_output <- function(...) {
@@ -389,8 +337,7 @@ NULL
 
 .apigatewayv2$delete_route_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), RouteKey = structure(logical(0), tags = list(location = "uri", locationName = "routeKey", type = "string")), StageName = structure(logical(0), tags = list(location = "uri", locationName = "stageName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_route_settings_input"]]))
 }
 
 .apigatewayv2$delete_route_settings_output <- function(...) {
@@ -399,8 +346,7 @@ NULL
 
 .apigatewayv2$delete_routing_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "domainName", type = "string")), DomainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), RoutingRuleId = structure(logical(0), tags = list(location = "uri", locationName = "routingRuleId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_routing_rule_input"]]))
 }
 
 .apigatewayv2$delete_routing_rule_output <- function(...) {
@@ -409,8 +355,7 @@ NULL
 
 .apigatewayv2$delete_stage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), StageName = structure(logical(0), tags = list(location = "uri", locationName = "stageName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_stage_input"]]))
 }
 
 .apigatewayv2$delete_stage_output <- function(...) {
@@ -419,32 +364,27 @@ NULL
 
 .apigatewayv2$delete_vpc_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcLinkId = structure(logical(0), tags = list(location = "uri", locationName = "vpcLinkId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_vpc_link_input"]]))
 }
 
 .apigatewayv2$delete_vpc_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["delete_vpc_link_output"]]))
 }
 
 .apigatewayv2$export_api_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), ExportVersion = structure(logical(0), tags = list(location = "querystring", locationName = "exportVersion", type = "string")), IncludeExtensions = structure(logical(0), tags = list(location = "querystring", locationName = "includeExtensions", type = "boolean")), OutputType = structure(logical(0), tags = list(location = "querystring", locationName = "outputType", type = "string")), Specification = structure(logical(0), tags = list(location = "uri", locationName = "specification", type = "string")), StageName = structure(logical(0), tags = list(location = "querystring", locationName = "stageName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["export_api_input"]]))
 }
 
 .apigatewayv2$export_api_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(body = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", payload = "body"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["export_api_output"]]))
 }
 
 .apigatewayv2$disable_portal_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortalId = structure(logical(0), tags = list(location = "uri", locationName = "portalId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["disable_portal_input"]]))
 }
 
 .apigatewayv2$disable_portal_output <- function(...) {
@@ -453,8 +393,7 @@ NULL
 
 .apigatewayv2$reset_authorizers_cache_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), StageName = structure(logical(0), tags = list(location = "uri", locationName = "stageName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["reset_authorizers_cache_input"]]))
 }
 
 .apigatewayv2$reset_authorizers_cache_output <- function(...) {
@@ -463,536 +402,447 @@ NULL
 
 .apigatewayv2$get_api_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_api_input"]]))
 }
 
 .apigatewayv2$get_api_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiEndpoint = structure(logical(0), tags = list(locationName = "apiEndpoint", type = "string")), ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), ApiKeySelectionExpression = structure(logical(0), tags = list(locationName = "apiKeySelectionExpression", type = "string")), CorsConfiguration = structure(list(AllowCredentials = structure(logical(0), tags = list(locationName = "allowCredentials", type = "boolean")), AllowHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowHeaders", type = "list")), AllowMethods = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowMethods", type = "list")), AllowOrigins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowOrigins", type = "list")), ExposeHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "exposeHeaders", type = "list")), MaxAge = structure(logical(0), tags = list(locationName = "maxAge", type = "integer"))), tags = list(locationName = "corsConfiguration", type = "structure")), CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisableSchemaValidation = structure(logical(0), tags = list(locationName = "disableSchemaValidation", type = "boolean")), DisableExecuteApiEndpoint = structure(logical(0), tags = list(locationName = "disableExecuteApiEndpoint", type = "boolean")), ImportInfo = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "importInfo", type = "list")), IpAddressType = structure(logical(0), tags = list(locationName = "ipAddressType", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), ProtocolType = structure(logical(0), tags = list(locationName = "protocolType", type = "string")), RouteSelectionExpression = structure(logical(0), tags = list(locationName = "routeSelectionExpression", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), Version = structure(logical(0), tags = list(locationName = "version", type = "string")), Warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "warnings", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_api_output"]]))
 }
 
 .apigatewayv2$get_api_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiMappingId = structure(logical(0), tags = list(location = "uri", locationName = "apiMappingId", type = "string")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "domainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_api_mapping_input"]]))
 }
 
 .apigatewayv2$get_api_mapping_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), ApiMappingId = structure(logical(0), tags = list(locationName = "apiMappingId", type = "string")), ApiMappingKey = structure(logical(0), tags = list(locationName = "apiMappingKey", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_api_mapping_output"]]))
 }
 
 .apigatewayv2$get_api_mappings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "domainName", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_api_mappings_input"]]))
 }
 
 .apigatewayv2$get_api_mappings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), ApiMappingId = structure(logical(0), tags = list(locationName = "apiMappingId", type = "string")), ApiMappingKey = structure(logical(0), tags = list(locationName = "apiMappingKey", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "items", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_api_mappings_output"]]))
 }
 
 .apigatewayv2$get_apis_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_apis_input"]]))
 }
 
 .apigatewayv2$get_apis_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(ApiEndpoint = structure(logical(0), tags = list(locationName = "apiEndpoint", type = "string")), ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), ApiKeySelectionExpression = structure(logical(0), tags = list(locationName = "apiKeySelectionExpression", type = "string")), CorsConfiguration = structure(list(AllowCredentials = structure(logical(0), tags = list(locationName = "allowCredentials", type = "boolean")), AllowHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowHeaders", type = "list")), AllowMethods = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowMethods", type = "list")), AllowOrigins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowOrigins", type = "list")), ExposeHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "exposeHeaders", type = "list")), MaxAge = structure(logical(0), tags = list(locationName = "maxAge", type = "integer"))), tags = list(locationName = "corsConfiguration", type = "structure")), CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisableSchemaValidation = structure(logical(0), tags = list(locationName = "disableSchemaValidation", type = "boolean")), DisableExecuteApiEndpoint = structure(logical(0), tags = list(locationName = "disableExecuteApiEndpoint", type = "boolean")), ImportInfo = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "importInfo", type = "list")), IpAddressType = structure(logical(0), tags = list(locationName = "ipAddressType", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), ProtocolType = structure(logical(0), tags = list(locationName = "protocolType", type = "string")), RouteSelectionExpression = structure(logical(0), tags = list(locationName = "routeSelectionExpression", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), Version = structure(logical(0), tags = list(locationName = "version", type = "string")), Warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "warnings", type = "list"))), tags = list(type = "structure"))), tags = list(locationName = "items", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_apis_output"]]))
 }
 
 .apigatewayv2$get_authorizer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), AuthorizerId = structure(logical(0), tags = list(location = "uri", locationName = "authorizerId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_authorizer_input"]]))
 }
 
 .apigatewayv2$get_authorizer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthorizerCredentialsArn = structure(logical(0), tags = list(locationName = "authorizerCredentialsArn", type = "string")), AuthorizerId = structure(logical(0), tags = list(locationName = "authorizerId", type = "string")), AuthorizerPayloadFormatVersion = structure(logical(0), tags = list(locationName = "authorizerPayloadFormatVersion", type = "string")), AuthorizerResultTtlInSeconds = structure(logical(0), tags = list(locationName = "authorizerResultTtlInSeconds", type = "integer")), AuthorizerType = structure(logical(0), tags = list(locationName = "authorizerType", type = "string")), AuthorizerUri = structure(logical(0), tags = list(locationName = "authorizerUri", type = "string")), EnableSimpleResponses = structure(logical(0), tags = list(locationName = "enableSimpleResponses", type = "boolean")), IdentitySource = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "identitySource", type = "list")), IdentityValidationExpression = structure(logical(0), tags = list(locationName = "identityValidationExpression", type = "string")), JwtConfiguration = structure(list(Audience = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "audience", type = "list")), Issuer = structure(logical(0), tags = list(locationName = "issuer", type = "string"))), tags = list(locationName = "jwtConfiguration", type = "structure")), Name = structure(logical(0), tags = list(locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_authorizer_output"]]))
 }
 
 .apigatewayv2$get_authorizers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_authorizers_input"]]))
 }
 
 .apigatewayv2$get_authorizers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(AuthorizerCredentialsArn = structure(logical(0), tags = list(locationName = "authorizerCredentialsArn", type = "string")), AuthorizerId = structure(logical(0), tags = list(locationName = "authorizerId", type = "string")), AuthorizerPayloadFormatVersion = structure(logical(0), tags = list(locationName = "authorizerPayloadFormatVersion", type = "string")), AuthorizerResultTtlInSeconds = structure(logical(0), tags = list(locationName = "authorizerResultTtlInSeconds", type = "integer")), AuthorizerType = structure(logical(0), tags = list(locationName = "authorizerType", type = "string")), AuthorizerUri = structure(logical(0), tags = list(locationName = "authorizerUri", type = "string")), EnableSimpleResponses = structure(logical(0), tags = list(locationName = "enableSimpleResponses", type = "boolean")), IdentitySource = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "identitySource", type = "list")), IdentityValidationExpression = structure(logical(0), tags = list(locationName = "identityValidationExpression", type = "string")), JwtConfiguration = structure(list(Audience = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "audience", type = "list")), Issuer = structure(logical(0), tags = list(locationName = "issuer", type = "string"))), tags = list(locationName = "jwtConfiguration", type = "structure")), Name = structure(logical(0), tags = list(locationName = "name", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "items", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_authorizers_output"]]))
 }
 
 .apigatewayv2$get_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), DeploymentId = structure(logical(0), tags = list(location = "uri", locationName = "deploymentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_deployment_input"]]))
 }
 
 .apigatewayv2$get_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoDeployed = structure(logical(0), tags = list(locationName = "autoDeployed", type = "boolean")), CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), DeploymentId = structure(logical(0), tags = list(locationName = "deploymentId", type = "string")), DeploymentStatus = structure(logical(0), tags = list(locationName = "deploymentStatus", type = "string")), DeploymentStatusMessage = structure(logical(0), tags = list(locationName = "deploymentStatusMessage", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_deployment_output"]]))
 }
 
 .apigatewayv2$get_deployments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_deployments_input"]]))
 }
 
 .apigatewayv2$get_deployments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(AutoDeployed = structure(logical(0), tags = list(locationName = "autoDeployed", type = "boolean")), CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), DeploymentId = structure(logical(0), tags = list(locationName = "deploymentId", type = "string")), DeploymentStatus = structure(logical(0), tags = list(locationName = "deploymentStatus", type = "string")), DeploymentStatusMessage = structure(logical(0), tags = list(locationName = "deploymentStatusMessage", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "items", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_deployments_output"]]))
 }
 
 .apigatewayv2$get_domain_name_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "domainName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_domain_name_input"]]))
 }
 
 .apigatewayv2$get_domain_name_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiMappingSelectionExpression = structure(logical(0), tags = list(locationName = "apiMappingSelectionExpression", type = "string")), DomainName = structure(logical(0), tags = list(locationName = "domainName", type = "string")), DomainNameArn = structure(logical(0), tags = list(locationName = "domainNameArn", type = "string")), DomainNameConfigurations = structure(list(structure(list(ApiGatewayDomainName = structure(logical(0), tags = list(locationName = "apiGatewayDomainName", type = "string")), CertificateArn = structure(logical(0), tags = list(locationName = "certificateArn", type = "string")), CertificateName = structure(logical(0), tags = list(locationName = "certificateName", type = "string")), CertificateUploadDate = structure(logical(0), tags = list(locationName = "certificateUploadDate", type = "timestamp", timestampFormat = "iso8601")), DomainNameStatus = structure(logical(0), tags = list(locationName = "domainNameStatus", type = "string")), DomainNameStatusMessage = structure(logical(0), tags = list(locationName = "domainNameStatusMessage", type = "string")), EndpointType = structure(logical(0), tags = list(locationName = "endpointType", type = "string")), HostedZoneId = structure(logical(0), tags = list(locationName = "hostedZoneId", type = "string")), IpAddressType = structure(logical(0), tags = list(locationName = "ipAddressType", type = "string")), SecurityPolicy = structure(logical(0), tags = list(locationName = "securityPolicy", type = "string")), OwnershipVerificationCertificateArn = structure(logical(0), tags = list(locationName = "ownershipVerificationCertificateArn", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "domainNameConfigurations", type = "list")), MutualTlsAuthentication = structure(list(TruststoreUri = structure(logical(0), tags = list(locationName = "truststoreUri", type = "string")), TruststoreVersion = structure(logical(0), tags = list(locationName = "truststoreVersion", type = "string")), TruststoreWarnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "truststoreWarnings", type = "list"))), tags = list(locationName = "mutualTlsAuthentication", type = "structure")), RoutingMode = structure(logical(0), tags = list(locationName = "routingMode", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_domain_name_output"]]))
 }
 
 .apigatewayv2$get_domain_names_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_domain_names_input"]]))
 }
 
 .apigatewayv2$get_domain_names_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(ApiMappingSelectionExpression = structure(logical(0), tags = list(locationName = "apiMappingSelectionExpression", type = "string")), DomainName = structure(logical(0), tags = list(locationName = "domainName", type = "string")), DomainNameArn = structure(logical(0), tags = list(locationName = "domainNameArn", type = "string")), DomainNameConfigurations = structure(list(structure(list(ApiGatewayDomainName = structure(logical(0), tags = list(locationName = "apiGatewayDomainName", type = "string")), CertificateArn = structure(logical(0), tags = list(locationName = "certificateArn", type = "string")), CertificateName = structure(logical(0), tags = list(locationName = "certificateName", type = "string")), CertificateUploadDate = structure(logical(0), tags = list(locationName = "certificateUploadDate", type = "timestamp", timestampFormat = "iso8601")), DomainNameStatus = structure(logical(0), tags = list(locationName = "domainNameStatus", type = "string")), DomainNameStatusMessage = structure(logical(0), tags = list(locationName = "domainNameStatusMessage", type = "string")), EndpointType = structure(logical(0), tags = list(locationName = "endpointType", type = "string")), HostedZoneId = structure(logical(0), tags = list(locationName = "hostedZoneId", type = "string")), IpAddressType = structure(logical(0), tags = list(locationName = "ipAddressType", type = "string")), SecurityPolicy = structure(logical(0), tags = list(locationName = "securityPolicy", type = "string")), OwnershipVerificationCertificateArn = structure(logical(0), tags = list(locationName = "ownershipVerificationCertificateArn", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "domainNameConfigurations", type = "list")), MutualTlsAuthentication = structure(list(TruststoreUri = structure(logical(0), tags = list(locationName = "truststoreUri", type = "string")), TruststoreVersion = structure(logical(0), tags = list(locationName = "truststoreVersion", type = "string")), TruststoreWarnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "truststoreWarnings", type = "list"))), tags = list(locationName = "mutualTlsAuthentication", type = "structure")), RoutingMode = structure(logical(0), tags = list(locationName = "routingMode", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))), tags = list(locationName = "items", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_domain_names_output"]]))
 }
 
 .apigatewayv2$get_integration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), IntegrationId = structure(logical(0), tags = list(location = "uri", locationName = "integrationId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_integration_input"]]))
 }
 
 .apigatewayv2$get_integration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), ConnectionId = structure(logical(0), tags = list(locationName = "connectionId", type = "string")), ConnectionType = structure(logical(0), tags = list(locationName = "connectionType", type = "string")), ContentHandlingStrategy = structure(logical(0), tags = list(locationName = "contentHandlingStrategy", type = "string")), CredentialsArn = structure(logical(0), tags = list(locationName = "credentialsArn", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), IntegrationId = structure(logical(0), tags = list(locationName = "integrationId", type = "string")), IntegrationMethod = structure(logical(0), tags = list(locationName = "integrationMethod", type = "string")), IntegrationResponseSelectionExpression = structure(logical(0), tags = list(locationName = "integrationResponseSelectionExpression", type = "string")), IntegrationSubtype = structure(logical(0), tags = list(locationName = "integrationSubtype", type = "string")), IntegrationType = structure(logical(0), tags = list(locationName = "integrationType", type = "string")), IntegrationUri = structure(logical(0), tags = list(locationName = "integrationUri", type = "string")), PassthroughBehavior = structure(logical(0), tags = list(locationName = "passthroughBehavior", type = "string")), PayloadFormatVersion = structure(logical(0), tags = list(locationName = "payloadFormatVersion", type = "string")), RequestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestParameters", type = "map")), RequestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestTemplates", type = "map")), ResponseParameters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(locationName = "responseParameters", type = "map")), TemplateSelectionExpression = structure(logical(0), tags = list(locationName = "templateSelectionExpression", type = "string")), TimeoutInMillis = structure(logical(0), tags = list(locationName = "timeoutInMillis", type = "integer")), TlsConfig = structure(list(ServerNameToVerify = structure(logical(0), tags = list(locationName = "serverNameToVerify", type = "string"))), tags = list(locationName = "tlsConfig", type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_integration_output"]]))
 }
 
 .apigatewayv2$get_integration_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), IntegrationId = structure(logical(0), tags = list(location = "uri", locationName = "integrationId", type = "string")), IntegrationResponseId = structure(logical(0), tags = list(location = "uri", locationName = "integrationResponseId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_integration_response_input"]]))
 }
 
 .apigatewayv2$get_integration_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContentHandlingStrategy = structure(logical(0), tags = list(locationName = "contentHandlingStrategy", type = "string")), IntegrationResponseId = structure(logical(0), tags = list(locationName = "integrationResponseId", type = "string")), IntegrationResponseKey = structure(logical(0), tags = list(locationName = "integrationResponseKey", type = "string")), ResponseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseParameters", type = "map")), ResponseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseTemplates", type = "map")), TemplateSelectionExpression = structure(logical(0), tags = list(locationName = "templateSelectionExpression", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_integration_response_output"]]))
 }
 
 .apigatewayv2$get_integration_responses_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), IntegrationId = structure(logical(0), tags = list(location = "uri", locationName = "integrationId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_integration_responses_input"]]))
 }
 
 .apigatewayv2$get_integration_responses_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(ContentHandlingStrategy = structure(logical(0), tags = list(locationName = "contentHandlingStrategy", type = "string")), IntegrationResponseId = structure(logical(0), tags = list(locationName = "integrationResponseId", type = "string")), IntegrationResponseKey = structure(logical(0), tags = list(locationName = "integrationResponseKey", type = "string")), ResponseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseParameters", type = "map")), ResponseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseTemplates", type = "map")), TemplateSelectionExpression = structure(logical(0), tags = list(locationName = "templateSelectionExpression", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "items", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_integration_responses_output"]]))
 }
 
 .apigatewayv2$get_integrations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_integrations_input"]]))
 }
 
 .apigatewayv2$get_integrations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), ConnectionId = structure(logical(0), tags = list(locationName = "connectionId", type = "string")), ConnectionType = structure(logical(0), tags = list(locationName = "connectionType", type = "string")), ContentHandlingStrategy = structure(logical(0), tags = list(locationName = "contentHandlingStrategy", type = "string")), CredentialsArn = structure(logical(0), tags = list(locationName = "credentialsArn", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), IntegrationId = structure(logical(0), tags = list(locationName = "integrationId", type = "string")), IntegrationMethod = structure(logical(0), tags = list(locationName = "integrationMethod", type = "string")), IntegrationResponseSelectionExpression = structure(logical(0), tags = list(locationName = "integrationResponseSelectionExpression", type = "string")), IntegrationSubtype = structure(logical(0), tags = list(locationName = "integrationSubtype", type = "string")), IntegrationType = structure(logical(0), tags = list(locationName = "integrationType", type = "string")), IntegrationUri = structure(logical(0), tags = list(locationName = "integrationUri", type = "string")), PassthroughBehavior = structure(logical(0), tags = list(locationName = "passthroughBehavior", type = "string")), PayloadFormatVersion = structure(logical(0), tags = list(locationName = "payloadFormatVersion", type = "string")), RequestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestParameters", type = "map")), RequestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestTemplates", type = "map")), ResponseParameters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(locationName = "responseParameters", type = "map")), TemplateSelectionExpression = structure(logical(0), tags = list(locationName = "templateSelectionExpression", type = "string")), TimeoutInMillis = structure(logical(0), tags = list(locationName = "timeoutInMillis", type = "integer")), TlsConfig = structure(list(ServerNameToVerify = structure(logical(0), tags = list(locationName = "serverNameToVerify", type = "string"))), tags = list(locationName = "tlsConfig", type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "items", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_integrations_output"]]))
 }
 
 .apigatewayv2$get_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), ModelId = structure(logical(0), tags = list(location = "uri", locationName = "modelId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_model_input"]]))
 }
 
 .apigatewayv2$get_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContentType = structure(logical(0), tags = list(locationName = "contentType", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), ModelId = structure(logical(0), tags = list(locationName = "modelId", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Schema = structure(logical(0), tags = list(locationName = "schema", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_model_output"]]))
 }
 
 .apigatewayv2$get_model_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), ModelId = structure(logical(0), tags = list(location = "uri", locationName = "modelId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_model_template_input"]]))
 }
 
 .apigatewayv2$get_model_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Value = structure(logical(0), tags = list(locationName = "value", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_model_template_output"]]))
 }
 
 .apigatewayv2$get_models_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_models_input"]]))
 }
 
 .apigatewayv2$get_models_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(ContentType = structure(logical(0), tags = list(locationName = "contentType", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), ModelId = structure(logical(0), tags = list(locationName = "modelId", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Schema = structure(logical(0), tags = list(locationName = "schema", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "items", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_models_output"]]))
 }
 
 .apigatewayv2$get_portal_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortalId = structure(logical(0), tags = list(location = "uri", locationName = "portalId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_portal_input"]]))
 }
 
 .apigatewayv2$get_portal_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Authorization = structure(list(CognitoConfig = structure(list(AppClientId = structure(logical(0), tags = list(locationName = "appClientId", type = "string")), UserPoolArn = structure(logical(0), tags = list(locationName = "userPoolArn", type = "string")), UserPoolDomain = structure(logical(0), tags = list(locationName = "userPoolDomain", type = "string"))), tags = list(locationName = "cognitoConfig", type = "structure")), None = structure(list(), tags = list(locationName = "none", type = "structure"))), tags = list(locationName = "authorization", type = "structure")), EndpointConfiguration = structure(list(CertificateArn = structure(logical(0), tags = list(locationName = "certificateArn", type = "string")), DomainName = structure(logical(0), tags = list(locationName = "domainName", type = "string")), PortalDefaultDomainName = structure(logical(0), tags = list(locationName = "portalDefaultDomainName", type = "string")), PortalDomainHostedZoneId = structure(logical(0), tags = list(locationName = "portalDomainHostedZoneId", type = "string"))), tags = list(locationName = "endpointConfiguration", type = "structure")), IncludedPortalProductArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "includedPortalProductArns", type = "list")), LastModified = structure(logical(0), tags = list(locationName = "lastModified", type = "timestamp", timestampFormat = "iso8601")), LastPublished = structure(logical(0), tags = list(locationName = "lastPublished", type = "timestamp", timestampFormat = "iso8601")), LastPublishedDescription = structure(logical(0), tags = list(locationName = "lastPublishedDescription", type = "string")), PortalArn = structure(logical(0), tags = list(locationName = "portalArn", type = "string")), PortalContent = structure(list(Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "displayName", type = "string")), Theme = structure(list(CustomColors = structure(list(AccentColor = structure(logical(0), tags = list(locationName = "accentColor", type = "string")), BackgroundColor = structure(logical(0), tags = list(locationName = "backgroundColor", type = "string")), ErrorValidationColor = structure(logical(0), tags = list(locationName = "errorValidationColor", type = "string")), HeaderColor = structure(logical(0), tags = list(locationName = "headerColor", type = "string")), NavigationColor = structure(logical(0), tags = list(locationName = "navigationColor", type = "string")), TextColor = structure(logical(0), tags = list(locationName = "textColor", type = "string"))), tags = list(locationName = "customColors", type = "structure")), LogoLastUploaded = structure(logical(0), tags = list(locationName = "logoLastUploaded", type = "timestamp", timestampFormat = "iso8601"))), tags = list(locationName = "theme", type = "structure"))), tags = list(locationName = "portalContent", type = "structure")), PortalId = structure(logical(0), tags = list(locationName = "portalId", type = "string")), Preview = structure(list(PreviewStatus = structure(logical(0), tags = list(locationName = "previewStatus", type = "string")), PreviewUrl = structure(logical(0), tags = list(locationName = "previewUrl", type = "string")), StatusException = structure(list(Exception = structure(logical(0), tags = list(locationName = "exception", type = "string")), Message = structure(logical(0), tags = list(locationName = "message", type = "string"))), tags = list(locationName = "statusException", type = "structure"))), tags = list(locationName = "preview", type = "structure")), PublishStatus = structure(logical(0), tags = list(locationName = "publishStatus", type = "string")), RumAppMonitorName = structure(logical(0), tags = list(locationName = "rumAppMonitorName", type = "string")), StatusException = structure(list(Exception = structure(logical(0), tags = list(locationName = "exception", type = "string")), Message = structure(logical(0), tags = list(locationName = "message", type = "string"))), tags = list(locationName = "statusException", type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_portal_output"]]))
 }
 
 .apigatewayv2$get_portal_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortalProductId = structure(logical(0), tags = list(location = "uri", locationName = "portalProductId", type = "string")), ResourceOwnerAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "resourceOwnerAccountId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_portal_product_input"]]))
 }
 
 .apigatewayv2$get_portal_product_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "displayName", type = "string")), DisplayOrder = structure(list(Contents = structure(list(structure(list(ProductRestEndpointPageArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "productRestEndpointPageArns", type = "list")), SectionName = structure(logical(0), tags = list(locationName = "sectionName", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "contents", type = "list")), OverviewPageArn = structure(logical(0), tags = list(locationName = "overviewPageArn", type = "string")), ProductPageArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "productPageArns", type = "list"))), tags = list(locationName = "displayOrder", type = "structure")), LastModified = structure(logical(0), tags = list(locationName = "lastModified", type = "timestamp", timestampFormat = "iso8601")), PortalProductArn = structure(logical(0), tags = list(locationName = "portalProductArn", type = "string")), PortalProductId = structure(logical(0), tags = list(locationName = "portalProductId", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_portal_product_output"]]))
 }
 
 .apigatewayv2$get_portal_product_sharing_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortalProductId = structure(logical(0), tags = list(location = "uri", locationName = "portalProductId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_portal_product_sharing_policy_input"]]))
 }
 
 .apigatewayv2$get_portal_product_sharing_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyDocument = structure(logical(0), tags = list(locationName = "policyDocument", type = "string")), PortalProductId = structure(logical(0), tags = list(locationName = "portalProductId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_portal_product_sharing_policy_output"]]))
 }
 
 .apigatewayv2$get_product_page_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortalProductId = structure(logical(0), tags = list(location = "uri", locationName = "portalProductId", type = "string")), ProductPageId = structure(logical(0), tags = list(location = "uri", locationName = "productPageId", type = "string")), ResourceOwnerAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "resourceOwnerAccountId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_product_page_input"]]))
 }
 
 .apigatewayv2$get_product_page_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DisplayContent = structure(list(Body = structure(logical(0), tags = list(locationName = "body", type = "string")), Title = structure(logical(0), tags = list(locationName = "title", type = "string"))), tags = list(locationName = "displayContent", type = "structure")), LastModified = structure(logical(0), tags = list(locationName = "lastModified", type = "timestamp", timestampFormat = "iso8601")), ProductPageArn = structure(logical(0), tags = list(locationName = "productPageArn", type = "string")), ProductPageId = structure(logical(0), tags = list(locationName = "productPageId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_product_page_output"]]))
 }
 
 .apigatewayv2$get_product_rest_endpoint_page_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IncludeRawDisplayContent = structure(logical(0), tags = list(location = "querystring", locationName = "includeRawDisplayContent", type = "string")), PortalProductId = structure(logical(0), tags = list(location = "uri", locationName = "portalProductId", type = "string")), ProductRestEndpointPageId = structure(logical(0), tags = list(location = "uri", locationName = "productRestEndpointPageId", type = "string")), ResourceOwnerAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "resourceOwnerAccountId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_product_rest_endpoint_page_input"]]))
 }
 
 .apigatewayv2$get_product_rest_endpoint_page_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DisplayContent = structure(list(Body = structure(logical(0), tags = list(locationName = "body", type = "string")), Endpoint = structure(logical(0), tags = list(locationName = "endpoint", type = "string")), OperationName = structure(logical(0), tags = list(locationName = "operationName", type = "string"))), tags = list(locationName = "displayContent", type = "structure")), LastModified = structure(logical(0), tags = list(locationName = "lastModified", type = "timestamp", timestampFormat = "iso8601")), ProductRestEndpointPageArn = structure(logical(0), tags = list(locationName = "productRestEndpointPageArn", type = "string")), ProductRestEndpointPageId = structure(logical(0), tags = list(locationName = "productRestEndpointPageId", type = "string")), RawDisplayContent = structure(logical(0), tags = list(locationName = "rawDisplayContent", type = "string")), RestEndpointIdentifier = structure(list(IdentifierParts = structure(list(Method = structure(logical(0), tags = list(locationName = "method", type = "string")), Path = structure(logical(0), tags = list(locationName = "path", type = "string")), RestApiId = structure(logical(0), tags = list(locationName = "restApiId", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string"))), tags = list(locationName = "identifierParts", type = "structure"))), tags = list(locationName = "restEndpointIdentifier", type = "structure")), Status = structure(logical(0), tags = list(locationName = "status", type = "string")), StatusException = structure(list(Exception = structure(logical(0), tags = list(locationName = "exception", type = "string")), Message = structure(logical(0), tags = list(locationName = "message", type = "string"))), tags = list(locationName = "statusException", type = "structure")), TryItState = structure(logical(0), tags = list(locationName = "tryItState", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_product_rest_endpoint_page_output"]]))
 }
 
 .apigatewayv2$get_route_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), RouteId = structure(logical(0), tags = list(location = "uri", locationName = "routeId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_route_input"]]))
 }
 
 .apigatewayv2$get_route_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), ApiKeyRequired = structure(logical(0), tags = list(locationName = "apiKeyRequired", type = "boolean")), AuthorizationScopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "authorizationScopes", type = "list")), AuthorizationType = structure(logical(0), tags = list(locationName = "authorizationType", type = "string")), AuthorizerId = structure(logical(0), tags = list(locationName = "authorizerId", type = "string")), ModelSelectionExpression = structure(logical(0), tags = list(locationName = "modelSelectionExpression", type = "string")), OperationName = structure(logical(0), tags = list(locationName = "operationName", type = "string")), RequestModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestModels", type = "map")), RequestParameters = structure(list(structure(list(Required = structure(logical(0), tags = list(locationName = "required", type = "boolean"))), tags = list(type = "structure"))), tags = list(locationName = "requestParameters", type = "map")), RouteId = structure(logical(0), tags = list(locationName = "routeId", type = "string")), RouteKey = structure(logical(0), tags = list(locationName = "routeKey", type = "string")), RouteResponseSelectionExpression = structure(logical(0), tags = list(locationName = "routeResponseSelectionExpression", type = "string")), Target = structure(logical(0), tags = list(locationName = "target", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_route_output"]]))
 }
 
 .apigatewayv2$get_route_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), RouteId = structure(logical(0), tags = list(location = "uri", locationName = "routeId", type = "string")), RouteResponseId = structure(logical(0), tags = list(location = "uri", locationName = "routeResponseId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_route_response_input"]]))
 }
 
 .apigatewayv2$get_route_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ModelSelectionExpression = structure(logical(0), tags = list(locationName = "modelSelectionExpression", type = "string")), ResponseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseModels", type = "map")), ResponseParameters = structure(list(structure(list(Required = structure(logical(0), tags = list(locationName = "required", type = "boolean"))), tags = list(type = "structure"))), tags = list(locationName = "responseParameters", type = "map")), RouteResponseId = structure(logical(0), tags = list(locationName = "routeResponseId", type = "string")), RouteResponseKey = structure(logical(0), tags = list(locationName = "routeResponseKey", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_route_response_output"]]))
 }
 
 .apigatewayv2$get_route_responses_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), RouteId = structure(logical(0), tags = list(location = "uri", locationName = "routeId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_route_responses_input"]]))
 }
 
 .apigatewayv2$get_route_responses_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(ModelSelectionExpression = structure(logical(0), tags = list(locationName = "modelSelectionExpression", type = "string")), ResponseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseModels", type = "map")), ResponseParameters = structure(list(structure(list(Required = structure(logical(0), tags = list(locationName = "required", type = "boolean"))), tags = list(type = "structure"))), tags = list(locationName = "responseParameters", type = "map")), RouteResponseId = structure(logical(0), tags = list(locationName = "routeResponseId", type = "string")), RouteResponseKey = structure(logical(0), tags = list(locationName = "routeResponseKey", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "items", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_route_responses_output"]]))
 }
 
 .apigatewayv2$get_routes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_routes_input"]]))
 }
 
 .apigatewayv2$get_routes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), ApiKeyRequired = structure(logical(0), tags = list(locationName = "apiKeyRequired", type = "boolean")), AuthorizationScopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "authorizationScopes", type = "list")), AuthorizationType = structure(logical(0), tags = list(locationName = "authorizationType", type = "string")), AuthorizerId = structure(logical(0), tags = list(locationName = "authorizerId", type = "string")), ModelSelectionExpression = structure(logical(0), tags = list(locationName = "modelSelectionExpression", type = "string")), OperationName = structure(logical(0), tags = list(locationName = "operationName", type = "string")), RequestModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestModels", type = "map")), RequestParameters = structure(list(structure(list(Required = structure(logical(0), tags = list(locationName = "required", type = "boolean"))), tags = list(type = "structure"))), tags = list(locationName = "requestParameters", type = "map")), RouteId = structure(logical(0), tags = list(locationName = "routeId", type = "string")), RouteKey = structure(logical(0), tags = list(locationName = "routeKey", type = "string")), RouteResponseSelectionExpression = structure(logical(0), tags = list(locationName = "routeResponseSelectionExpression", type = "string")), Target = structure(logical(0), tags = list(locationName = "target", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "items", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_routes_output"]]))
 }
 
 .apigatewayv2$get_routing_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "domainName", type = "string")), DomainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), RoutingRuleId = structure(logical(0), tags = list(location = "uri", locationName = "routingRuleId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_routing_rule_input"]]))
 }
 
 .apigatewayv2$get_routing_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Actions = structure(list(structure(list(InvokeApi = structure(list(ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string")), StripBasePath = structure(logical(0), tags = list(locationName = "stripBasePath", type = "boolean"))), tags = list(locationName = "invokeApi", type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "actions", type = "list")), Conditions = structure(list(structure(list(MatchBasePaths = structure(list(AnyOf = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "anyOf", type = "list"))), tags = list(locationName = "matchBasePaths", type = "structure")), MatchHeaders = structure(list(AnyOf = structure(list(structure(list(Header = structure(logical(0), tags = list(locationName = "header", type = "string")), ValueGlob = structure(logical(0), tags = list(locationName = "valueGlob", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "anyOf", type = "list"))), tags = list(locationName = "matchHeaders", type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "conditions", type = "list")), Priority = structure(logical(0), tags = list(locationName = "priority", type = "integer")), RoutingRuleArn = structure(logical(0), tags = list(locationName = "routingRuleArn", type = "string")), RoutingRuleId = structure(logical(0), tags = list(locationName = "routingRuleId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_routing_rule_output"]]))
 }
 
 .apigatewayv2$list_routing_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "domainName", type = "string")), DomainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["list_routing_rules_input"]]))
 }
 
 .apigatewayv2$list_routing_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string")), RoutingRules = structure(list(structure(list(Actions = structure(list(structure(list(InvokeApi = structure(list(ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string")), StripBasePath = structure(logical(0), tags = list(locationName = "stripBasePath", type = "boolean"))), tags = list(locationName = "invokeApi", type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "actions", type = "list")), Conditions = structure(list(structure(list(MatchBasePaths = structure(list(AnyOf = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "anyOf", type = "list"))), tags = list(locationName = "matchBasePaths", type = "structure")), MatchHeaders = structure(list(AnyOf = structure(list(structure(list(Header = structure(logical(0), tags = list(locationName = "header", type = "string")), ValueGlob = structure(logical(0), tags = list(locationName = "valueGlob", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "anyOf", type = "list"))), tags = list(locationName = "matchHeaders", type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "conditions", type = "list")), Priority = structure(logical(0), tags = list(locationName = "priority", type = "integer")), RoutingRuleArn = structure(logical(0), tags = list(locationName = "routingRuleArn", type = "string")), RoutingRuleId = structure(logical(0), tags = list(locationName = "routingRuleId", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "routingRules", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["list_routing_rules_output"]]))
 }
 
 .apigatewayv2$get_stage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), StageName = structure(logical(0), tags = list(location = "uri", locationName = "stageName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_stage_input"]]))
 }
 
 .apigatewayv2$get_stage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccessLogSettings = structure(list(DestinationArn = structure(logical(0), tags = list(locationName = "destinationArn", type = "string")), Format = structure(logical(0), tags = list(locationName = "format", type = "string"))), tags = list(locationName = "accessLogSettings", type = "structure")), ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), AutoDeploy = structure(logical(0), tags = list(locationName = "autoDeploy", type = "boolean")), ClientCertificateId = structure(logical(0), tags = list(locationName = "clientCertificateId", type = "string")), CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), DefaultRouteSettings = structure(list(DataTraceEnabled = structure(logical(0), tags = list(locationName = "dataTraceEnabled", type = "boolean")), DetailedMetricsEnabled = structure(logical(0), tags = list(locationName = "detailedMetricsEnabled", type = "boolean")), LoggingLevel = structure(logical(0), tags = list(locationName = "loggingLevel", type = "string")), ThrottlingBurstLimit = structure(logical(0), tags = list(locationName = "throttlingBurstLimit", type = "integer")), ThrottlingRateLimit = structure(logical(0), tags = list(locationName = "throttlingRateLimit", type = "double"))), tags = list(locationName = "defaultRouteSettings", type = "structure")), DeploymentId = structure(logical(0), tags = list(locationName = "deploymentId", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), LastDeploymentStatusMessage = structure(logical(0), tags = list(locationName = "lastDeploymentStatusMessage", type = "string")), LastUpdatedDate = structure(logical(0), tags = list(locationName = "lastUpdatedDate", type = "timestamp", timestampFormat = "iso8601")), RouteSettings = structure(list(structure(list(DataTraceEnabled = structure(logical(0), tags = list(locationName = "dataTraceEnabled", type = "boolean")), DetailedMetricsEnabled = structure(logical(0), tags = list(locationName = "detailedMetricsEnabled", type = "boolean")), LoggingLevel = structure(logical(0), tags = list(locationName = "loggingLevel", type = "string")), ThrottlingBurstLimit = structure(logical(0), tags = list(locationName = "throttlingBurstLimit", type = "integer")), ThrottlingRateLimit = structure(logical(0), tags = list(locationName = "throttlingRateLimit", type = "double"))), tags = list(type = "structure"))), tags = list(locationName = "routeSettings", type = "map")), StageName = structure(logical(0), tags = list(locationName = "stageName", type = "string")), StageVariables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "stageVariables", type = "map")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_stage_output"]]))
 }
 
 .apigatewayv2$get_stages_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_stages_input"]]))
 }
 
 .apigatewayv2$get_stages_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(AccessLogSettings = structure(list(DestinationArn = structure(logical(0), tags = list(locationName = "destinationArn", type = "string")), Format = structure(logical(0), tags = list(locationName = "format", type = "string"))), tags = list(locationName = "accessLogSettings", type = "structure")), ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), AutoDeploy = structure(logical(0), tags = list(locationName = "autoDeploy", type = "boolean")), ClientCertificateId = structure(logical(0), tags = list(locationName = "clientCertificateId", type = "string")), CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), DefaultRouteSettings = structure(list(DataTraceEnabled = structure(logical(0), tags = list(locationName = "dataTraceEnabled", type = "boolean")), DetailedMetricsEnabled = structure(logical(0), tags = list(locationName = "detailedMetricsEnabled", type = "boolean")), LoggingLevel = structure(logical(0), tags = list(locationName = "loggingLevel", type = "string")), ThrottlingBurstLimit = structure(logical(0), tags = list(locationName = "throttlingBurstLimit", type = "integer")), ThrottlingRateLimit = structure(logical(0), tags = list(locationName = "throttlingRateLimit", type = "double"))), tags = list(locationName = "defaultRouteSettings", type = "structure")), DeploymentId = structure(logical(0), tags = list(locationName = "deploymentId", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), LastDeploymentStatusMessage = structure(logical(0), tags = list(locationName = "lastDeploymentStatusMessage", type = "string")), LastUpdatedDate = structure(logical(0), tags = list(locationName = "lastUpdatedDate", type = "timestamp", timestampFormat = "iso8601")), RouteSettings = structure(list(structure(list(DataTraceEnabled = structure(logical(0), tags = list(locationName = "dataTraceEnabled", type = "boolean")), DetailedMetricsEnabled = structure(logical(0), tags = list(locationName = "detailedMetricsEnabled", type = "boolean")), LoggingLevel = structure(logical(0), tags = list(locationName = "loggingLevel", type = "string")), ThrottlingBurstLimit = structure(logical(0), tags = list(locationName = "throttlingBurstLimit", type = "integer")), ThrottlingRateLimit = structure(logical(0), tags = list(locationName = "throttlingRateLimit", type = "double"))), tags = list(type = "structure"))), tags = list(locationName = "routeSettings", type = "map")), StageName = structure(logical(0), tags = list(locationName = "stageName", type = "string")), StageVariables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "stageVariables", type = "map")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))), tags = list(locationName = "items", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_stages_output"]]))
 }
 
 .apigatewayv2$get_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resource-arn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_tags_input"]]))
 }
 
 .apigatewayv2$get_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_tags_output"]]))
 }
 
 .apigatewayv2$get_vpc_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcLinkId = structure(logical(0), tags = list(location = "uri", locationName = "vpcLinkId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_vpc_link_input"]]))
 }
 
 .apigatewayv2$get_vpc_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "securityGroupIds", type = "list")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "subnetIds", type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), VpcLinkId = structure(logical(0), tags = list(locationName = "vpcLinkId", type = "string")), VpcLinkStatus = structure(logical(0), tags = list(locationName = "vpcLinkStatus", type = "string")), VpcLinkStatusMessage = structure(logical(0), tags = list(locationName = "vpcLinkStatusMessage", type = "string")), VpcLinkVersion = structure(logical(0), tags = list(locationName = "vpcLinkVersion", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_vpc_link_output"]]))
 }
 
 .apigatewayv2$get_vpc_links_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_vpc_links_input"]]))
 }
 
 .apigatewayv2$get_vpc_links_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "securityGroupIds", type = "list")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "subnetIds", type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), VpcLinkId = structure(logical(0), tags = list(locationName = "vpcLinkId", type = "string")), VpcLinkStatus = structure(logical(0), tags = list(locationName = "vpcLinkStatus", type = "string")), VpcLinkStatusMessage = structure(logical(0), tags = list(locationName = "vpcLinkStatusMessage", type = "string")), VpcLinkVersion = structure(logical(0), tags = list(locationName = "vpcLinkVersion", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "items", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["get_vpc_links_output"]]))
 }
 
 .apigatewayv2$import_api_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Basepath = structure(logical(0), tags = list(location = "querystring", locationName = "basepath", type = "string")), Body = structure(logical(0), tags = list(locationName = "body", type = "string")), FailOnWarnings = structure(logical(0), tags = list(location = "querystring", locationName = "failOnWarnings", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["import_api_input"]]))
 }
 
 .apigatewayv2$import_api_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiEndpoint = structure(logical(0), tags = list(locationName = "apiEndpoint", type = "string")), ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), ApiKeySelectionExpression = structure(logical(0), tags = list(locationName = "apiKeySelectionExpression", type = "string")), CorsConfiguration = structure(list(AllowCredentials = structure(logical(0), tags = list(locationName = "allowCredentials", type = "boolean")), AllowHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowHeaders", type = "list")), AllowMethods = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowMethods", type = "list")), AllowOrigins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowOrigins", type = "list")), ExposeHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "exposeHeaders", type = "list")), MaxAge = structure(logical(0), tags = list(locationName = "maxAge", type = "integer"))), tags = list(locationName = "corsConfiguration", type = "structure")), CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisableSchemaValidation = structure(logical(0), tags = list(locationName = "disableSchemaValidation", type = "boolean")), DisableExecuteApiEndpoint = structure(logical(0), tags = list(locationName = "disableExecuteApiEndpoint", type = "boolean")), ImportInfo = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "importInfo", type = "list")), IpAddressType = structure(logical(0), tags = list(locationName = "ipAddressType", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), ProtocolType = structure(logical(0), tags = list(locationName = "protocolType", type = "string")), RouteSelectionExpression = structure(logical(0), tags = list(locationName = "routeSelectionExpression", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), Version = structure(logical(0), tags = list(locationName = "version", type = "string")), Warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "warnings", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["import_api_output"]]))
 }
 
 .apigatewayv2$list_portal_products_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), ResourceOwner = structure(logical(0), tags = list(location = "querystring", locationName = "resourceOwner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["list_portal_products_input"]]))
 }
 
 .apigatewayv2$list_portal_products_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "displayName", type = "string")), LastModified = structure(logical(0), tags = list(locationName = "lastModified", type = "timestamp", timestampFormat = "iso8601")), PortalProductArn = structure(logical(0), tags = list(locationName = "portalProductArn", type = "string")), PortalProductId = structure(logical(0), tags = list(locationName = "portalProductId", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))), tags = list(locationName = "items", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["list_portal_products_output"]]))
 }
 
 .apigatewayv2$list_portals_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["list_portals_input"]]))
 }
 
 .apigatewayv2$list_portals_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(Authorization = structure(list(CognitoConfig = structure(list(AppClientId = structure(logical(0), tags = list(locationName = "appClientId", type = "string")), UserPoolArn = structure(logical(0), tags = list(locationName = "userPoolArn", type = "string")), UserPoolDomain = structure(logical(0), tags = list(locationName = "userPoolDomain", type = "string"))), tags = list(locationName = "cognitoConfig", type = "structure")), None = structure(list(), tags = list(locationName = "none", type = "structure"))), tags = list(locationName = "authorization", type = "structure")), EndpointConfiguration = structure(list(CertificateArn = structure(logical(0), tags = list(locationName = "certificateArn", type = "string")), DomainName = structure(logical(0), tags = list(locationName = "domainName", type = "string")), PortalDefaultDomainName = structure(logical(0), tags = list(locationName = "portalDefaultDomainName", type = "string")), PortalDomainHostedZoneId = structure(logical(0), tags = list(locationName = "portalDomainHostedZoneId", type = "string"))), tags = list(locationName = "endpointConfiguration", type = "structure")), IncludedPortalProductArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "includedPortalProductArns", type = "list")), LastModified = structure(logical(0), tags = list(locationName = "lastModified", type = "timestamp", timestampFormat = "iso8601")), LastPublished = structure(logical(0), tags = list(locationName = "lastPublished", type = "timestamp", timestampFormat = "iso8601")), LastPublishedDescription = structure(logical(0), tags = list(locationName = "lastPublishedDescription", type = "string")), PortalArn = structure(logical(0), tags = list(locationName = "portalArn", type = "string")), PortalContent = structure(list(Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "displayName", type = "string")), Theme = structure(list(CustomColors = structure(list(AccentColor = structure(logical(0), tags = list(locationName = "accentColor", type = "string")), BackgroundColor = structure(logical(0), tags = list(locationName = "backgroundColor", type = "string")), ErrorValidationColor = structure(logical(0), tags = list(locationName = "errorValidationColor", type = "string")), HeaderColor = structure(logical(0), tags = list(locationName = "headerColor", type = "string")), NavigationColor = structure(logical(0), tags = list(locationName = "navigationColor", type = "string")), TextColor = structure(logical(0), tags = list(locationName = "textColor", type = "string"))), tags = list(locationName = "customColors", type = "structure")), LogoLastUploaded = structure(logical(0), tags = list(locationName = "logoLastUploaded", type = "timestamp", timestampFormat = "iso8601"))), tags = list(locationName = "theme", type = "structure"))), tags = list(locationName = "portalContent", type = "structure")), PortalId = structure(logical(0), tags = list(locationName = "portalId", type = "string")), Preview = structure(list(PreviewStatus = structure(logical(0), tags = list(locationName = "previewStatus", type = "string")), PreviewUrl = structure(logical(0), tags = list(locationName = "previewUrl", type = "string")), StatusException = structure(list(Exception = structure(logical(0), tags = list(locationName = "exception", type = "string")), Message = structure(logical(0), tags = list(locationName = "message", type = "string"))), tags = list(locationName = "statusException", type = "structure"))), tags = list(locationName = "preview", type = "structure")), PublishStatus = structure(logical(0), tags = list(locationName = "publishStatus", type = "string")), RumAppMonitorName = structure(logical(0), tags = list(locationName = "rumAppMonitorName", type = "string")), StatusException = structure(list(Exception = structure(logical(0), tags = list(locationName = "exception", type = "string")), Message = structure(logical(0), tags = list(locationName = "message", type = "string"))), tags = list(locationName = "statusException", type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))), tags = list(locationName = "items", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["list_portals_output"]]))
 }
 
 .apigatewayv2$list_product_pages_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), PortalProductId = structure(logical(0), tags = list(location = "uri", locationName = "portalProductId", type = "string")), ResourceOwnerAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "resourceOwnerAccountId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["list_product_pages_input"]]))
 }
 
 .apigatewayv2$list_product_pages_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(LastModified = structure(logical(0), tags = list(locationName = "lastModified", type = "timestamp", timestampFormat = "iso8601")), PageTitle = structure(logical(0), tags = list(locationName = "pageTitle", type = "string")), ProductPageArn = structure(logical(0), tags = list(locationName = "productPageArn", type = "string")), ProductPageId = structure(logical(0), tags = list(locationName = "productPageId", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "items", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["list_product_pages_output"]]))
 }
 
 .apigatewayv2$list_product_rest_endpoint_pages_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), PortalProductId = structure(logical(0), tags = list(location = "uri", locationName = "portalProductId", type = "string")), ResourceOwnerAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "resourceOwnerAccountId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["list_product_rest_endpoint_pages_input"]]))
 }
 
 .apigatewayv2$list_product_rest_endpoint_pages_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(Endpoint = structure(logical(0), tags = list(locationName = "endpoint", type = "string")), LastModified = structure(logical(0), tags = list(locationName = "lastModified", type = "timestamp", timestampFormat = "iso8601")), OperationName = structure(logical(0), tags = list(locationName = "operationName", type = "string")), ProductRestEndpointPageArn = structure(logical(0), tags = list(locationName = "productRestEndpointPageArn", type = "string")), ProductRestEndpointPageId = structure(logical(0), tags = list(locationName = "productRestEndpointPageId", type = "string")), RestEndpointIdentifier = structure(list(IdentifierParts = structure(list(Method = structure(logical(0), tags = list(locationName = "method", type = "string")), Path = structure(logical(0), tags = list(locationName = "path", type = "string")), RestApiId = structure(logical(0), tags = list(locationName = "restApiId", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string"))), tags = list(locationName = "identifierParts", type = "structure"))), tags = list(locationName = "restEndpointIdentifier", type = "structure")), Status = structure(logical(0), tags = list(locationName = "status", type = "string")), StatusException = structure(list(Exception = structure(logical(0), tags = list(locationName = "exception", type = "string")), Message = structure(logical(0), tags = list(locationName = "message", type = "string"))), tags = list(locationName = "statusException", type = "structure")), TryItState = structure(logical(0), tags = list(locationName = "tryItState", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "items", type = "list")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["list_product_rest_endpoint_pages_output"]]))
 }
 
 .apigatewayv2$preview_portal_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PortalId = structure(logical(0), tags = list(location = "uri", locationName = "portalId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["preview_portal_input"]]))
 }
 
 .apigatewayv2$preview_portal_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["preview_portal_output"]]))
 }
 
 .apigatewayv2$publish_portal_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Description = structure(logical(0), tags = list(locationName = "description", type = "string")), PortalId = structure(logical(0), tags = list(location = "uri", locationName = "portalId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["publish_portal_input"]]))
 }
 
 .apigatewayv2$publish_portal_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["publish_portal_output"]]))
 }
 
 .apigatewayv2$put_portal_product_sharing_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyDocument = structure(logical(0), tags = list(locationName = "policyDocument", type = "string")), PortalProductId = structure(logical(0), tags = list(location = "uri", locationName = "portalProductId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["put_portal_product_sharing_policy_input"]]))
 }
 
 .apigatewayv2$put_portal_product_sharing_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["put_portal_product_sharing_policy_output"]]))
 }
 
 .apigatewayv2$put_routing_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Actions = structure(list(structure(list(InvokeApi = structure(list(ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string")), StripBasePath = structure(logical(0), tags = list(locationName = "stripBasePath", type = "boolean"))), tags = list(locationName = "invokeApi", type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "actions", type = "list")), Conditions = structure(list(structure(list(MatchBasePaths = structure(list(AnyOf = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "anyOf", type = "list"))), tags = list(locationName = "matchBasePaths", type = "structure")), MatchHeaders = structure(list(AnyOf = structure(list(structure(list(Header = structure(logical(0), tags = list(locationName = "header", type = "string")), ValueGlob = structure(logical(0), tags = list(locationName = "valueGlob", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "anyOf", type = "list"))), tags = list(locationName = "matchHeaders", type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "conditions", type = "list")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "domainName", type = "string")), DomainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), Priority = structure(logical(0), tags = list(locationName = "priority", type = "integer")), RoutingRuleId = structure(logical(0), tags = list(location = "uri", locationName = "routingRuleId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["put_routing_rule_input"]]))
 }
 
 .apigatewayv2$put_routing_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Actions = structure(list(structure(list(InvokeApi = structure(list(ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string")), StripBasePath = structure(logical(0), tags = list(locationName = "stripBasePath", type = "boolean"))), tags = list(locationName = "invokeApi", type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "actions", type = "list")), Conditions = structure(list(structure(list(MatchBasePaths = structure(list(AnyOf = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "anyOf", type = "list"))), tags = list(locationName = "matchBasePaths", type = "structure")), MatchHeaders = structure(list(AnyOf = structure(list(structure(list(Header = structure(logical(0), tags = list(locationName = "header", type = "string")), ValueGlob = structure(logical(0), tags = list(locationName = "valueGlob", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "anyOf", type = "list"))), tags = list(locationName = "matchHeaders", type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "conditions", type = "list")), Priority = structure(logical(0), tags = list(locationName = "priority", type = "integer")), RoutingRuleArn = structure(logical(0), tags = list(locationName = "routingRuleArn", type = "string")), RoutingRuleId = structure(logical(0), tags = list(locationName = "routingRuleId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["put_routing_rule_output"]]))
 }
 
 .apigatewayv2$reimport_api_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), Basepath = structure(logical(0), tags = list(location = "querystring", locationName = "basepath", type = "string")), Body = structure(logical(0), tags = list(locationName = "body", type = "string")), FailOnWarnings = structure(logical(0), tags = list(location = "querystring", locationName = "failOnWarnings", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["reimport_api_input"]]))
 }
 
 .apigatewayv2$reimport_api_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiEndpoint = structure(logical(0), tags = list(locationName = "apiEndpoint", type = "string")), ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), ApiKeySelectionExpression = structure(logical(0), tags = list(locationName = "apiKeySelectionExpression", type = "string")), CorsConfiguration = structure(list(AllowCredentials = structure(logical(0), tags = list(locationName = "allowCredentials", type = "boolean")), AllowHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowHeaders", type = "list")), AllowMethods = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowMethods", type = "list")), AllowOrigins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowOrigins", type = "list")), ExposeHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "exposeHeaders", type = "list")), MaxAge = structure(logical(0), tags = list(locationName = "maxAge", type = "integer"))), tags = list(locationName = "corsConfiguration", type = "structure")), CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisableSchemaValidation = structure(logical(0), tags = list(locationName = "disableSchemaValidation", type = "boolean")), DisableExecuteApiEndpoint = structure(logical(0), tags = list(locationName = "disableExecuteApiEndpoint", type = "boolean")), ImportInfo = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "importInfo", type = "list")), IpAddressType = structure(logical(0), tags = list(locationName = "ipAddressType", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), ProtocolType = structure(logical(0), tags = list(locationName = "protocolType", type = "string")), RouteSelectionExpression = structure(logical(0), tags = list(locationName = "routeSelectionExpression", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), Version = structure(logical(0), tags = list(locationName = "version", type = "string")), Warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "warnings", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["reimport_api_output"]]))
 }
 
 .apigatewayv2$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resource-arn", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["tag_resource_input"]]))
 }
 
 .apigatewayv2$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["tag_resource_output"]]))
 }
 
 .apigatewayv2$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resource-arn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["untag_resource_input"]]))
 }
 
 .apigatewayv2$untag_resource_output <- function(...) {
@@ -1001,192 +851,160 @@ NULL
 
 .apigatewayv2$update_api_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), ApiKeySelectionExpression = structure(logical(0), tags = list(locationName = "apiKeySelectionExpression", type = "string")), CorsConfiguration = structure(list(AllowCredentials = structure(logical(0), tags = list(locationName = "allowCredentials", type = "boolean")), AllowHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowHeaders", type = "list")), AllowMethods = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowMethods", type = "list")), AllowOrigins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowOrigins", type = "list")), ExposeHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "exposeHeaders", type = "list")), MaxAge = structure(logical(0), tags = list(locationName = "maxAge", type = "integer"))), tags = list(locationName = "corsConfiguration", type = "structure")), CredentialsArn = structure(logical(0), tags = list(locationName = "credentialsArn", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisableSchemaValidation = structure(logical(0), tags = list(locationName = "disableSchemaValidation", type = "boolean")), DisableExecuteApiEndpoint = structure(logical(0), tags = list(locationName = "disableExecuteApiEndpoint", type = "boolean")), IpAddressType = structure(logical(0), tags = list(locationName = "ipAddressType", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), RouteKey = structure(logical(0), tags = list(locationName = "routeKey", type = "string")), RouteSelectionExpression = structure(logical(0), tags = list(locationName = "routeSelectionExpression", type = "string")), Target = structure(logical(0), tags = list(locationName = "target", type = "string")), Version = structure(logical(0), tags = list(locationName = "version", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_api_input"]]))
 }
 
 .apigatewayv2$update_api_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiEndpoint = structure(logical(0), tags = list(locationName = "apiEndpoint", type = "string")), ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), ApiKeySelectionExpression = structure(logical(0), tags = list(locationName = "apiKeySelectionExpression", type = "string")), CorsConfiguration = structure(list(AllowCredentials = structure(logical(0), tags = list(locationName = "allowCredentials", type = "boolean")), AllowHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowHeaders", type = "list")), AllowMethods = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowMethods", type = "list")), AllowOrigins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "allowOrigins", type = "list")), ExposeHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "exposeHeaders", type = "list")), MaxAge = structure(logical(0), tags = list(locationName = "maxAge", type = "integer"))), tags = list(locationName = "corsConfiguration", type = "structure")), CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisableSchemaValidation = structure(logical(0), tags = list(locationName = "disableSchemaValidation", type = "boolean")), DisableExecuteApiEndpoint = structure(logical(0), tags = list(locationName = "disableExecuteApiEndpoint", type = "boolean")), ImportInfo = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "importInfo", type = "list")), IpAddressType = structure(logical(0), tags = list(locationName = "ipAddressType", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), ProtocolType = structure(logical(0), tags = list(locationName = "protocolType", type = "string")), RouteSelectionExpression = structure(logical(0), tags = list(locationName = "routeSelectionExpression", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), Version = structure(logical(0), tags = list(locationName = "version", type = "string")), Warnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "warnings", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_api_output"]]))
 }
 
 .apigatewayv2$update_api_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), ApiMappingId = structure(logical(0), tags = list(location = "uri", locationName = "apiMappingId", type = "string")), ApiMappingKey = structure(logical(0), tags = list(locationName = "apiMappingKey", type = "string")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "domainName", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_api_mapping_input"]]))
 }
 
 .apigatewayv2$update_api_mapping_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(locationName = "apiId", type = "string")), ApiMappingId = structure(logical(0), tags = list(locationName = "apiMappingId", type = "string")), ApiMappingKey = structure(logical(0), tags = list(locationName = "apiMappingKey", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_api_mapping_output"]]))
 }
 
 .apigatewayv2$update_authorizer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), AuthorizerCredentialsArn = structure(logical(0), tags = list(locationName = "authorizerCredentialsArn", type = "string")), AuthorizerId = structure(logical(0), tags = list(location = "uri", locationName = "authorizerId", type = "string")), AuthorizerPayloadFormatVersion = structure(logical(0), tags = list(locationName = "authorizerPayloadFormatVersion", type = "string")), AuthorizerResultTtlInSeconds = structure(logical(0), tags = list(locationName = "authorizerResultTtlInSeconds", type = "integer")), AuthorizerType = structure(logical(0), tags = list(locationName = "authorizerType", type = "string")), AuthorizerUri = structure(logical(0), tags = list(locationName = "authorizerUri", type = "string")), EnableSimpleResponses = structure(logical(0), tags = list(locationName = "enableSimpleResponses", type = "boolean")), IdentitySource = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "identitySource", type = "list")), IdentityValidationExpression = structure(logical(0), tags = list(locationName = "identityValidationExpression", type = "string")), JwtConfiguration = structure(list(Audience = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "audience", type = "list")), Issuer = structure(logical(0), tags = list(locationName = "issuer", type = "string"))), tags = list(locationName = "jwtConfiguration", type = "structure")), Name = structure(logical(0), tags = list(locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_authorizer_input"]]))
 }
 
 .apigatewayv2$update_authorizer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthorizerCredentialsArn = structure(logical(0), tags = list(locationName = "authorizerCredentialsArn", type = "string")), AuthorizerId = structure(logical(0), tags = list(locationName = "authorizerId", type = "string")), AuthorizerPayloadFormatVersion = structure(logical(0), tags = list(locationName = "authorizerPayloadFormatVersion", type = "string")), AuthorizerResultTtlInSeconds = structure(logical(0), tags = list(locationName = "authorizerResultTtlInSeconds", type = "integer")), AuthorizerType = structure(logical(0), tags = list(locationName = "authorizerType", type = "string")), AuthorizerUri = structure(logical(0), tags = list(locationName = "authorizerUri", type = "string")), EnableSimpleResponses = structure(logical(0), tags = list(locationName = "enableSimpleResponses", type = "boolean")), IdentitySource = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "identitySource", type = "list")), IdentityValidationExpression = structure(logical(0), tags = list(locationName = "identityValidationExpression", type = "string")), JwtConfiguration = structure(list(Audience = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "audience", type = "list")), Issuer = structure(logical(0), tags = list(locationName = "issuer", type = "string"))), tags = list(locationName = "jwtConfiguration", type = "structure")), Name = structure(logical(0), tags = list(locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_authorizer_output"]]))
 }
 
 .apigatewayv2$update_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), DeploymentId = structure(logical(0), tags = list(location = "uri", locationName = "deploymentId", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_deployment_input"]]))
 }
 
 .apigatewayv2$update_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoDeployed = structure(logical(0), tags = list(locationName = "autoDeployed", type = "boolean")), CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), DeploymentId = structure(logical(0), tags = list(locationName = "deploymentId", type = "string")), DeploymentStatus = structure(logical(0), tags = list(locationName = "deploymentStatus", type = "string")), DeploymentStatusMessage = structure(logical(0), tags = list(locationName = "deploymentStatusMessage", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_deployment_output"]]))
 }
 
 .apigatewayv2$update_domain_name_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "domainName", type = "string")), DomainNameConfigurations = structure(list(structure(list(ApiGatewayDomainName = structure(logical(0), tags = list(locationName = "apiGatewayDomainName", type = "string")), CertificateArn = structure(logical(0), tags = list(locationName = "certificateArn", type = "string")), CertificateName = structure(logical(0), tags = list(locationName = "certificateName", type = "string")), CertificateUploadDate = structure(logical(0), tags = list(locationName = "certificateUploadDate", type = "timestamp", timestampFormat = "iso8601")), DomainNameStatus = structure(logical(0), tags = list(locationName = "domainNameStatus", type = "string")), DomainNameStatusMessage = structure(logical(0), tags = list(locationName = "domainNameStatusMessage", type = "string")), EndpointType = structure(logical(0), tags = list(locationName = "endpointType", type = "string")), HostedZoneId = structure(logical(0), tags = list(locationName = "hostedZoneId", type = "string")), IpAddressType = structure(logical(0), tags = list(locationName = "ipAddressType", type = "string")), SecurityPolicy = structure(logical(0), tags = list(locationName = "securityPolicy", type = "string")), OwnershipVerificationCertificateArn = structure(logical(0), tags = list(locationName = "ownershipVerificationCertificateArn", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "domainNameConfigurations", type = "list")), MutualTlsAuthentication = structure(list(TruststoreUri = structure(logical(0), tags = list(locationName = "truststoreUri", type = "string")), TruststoreVersion = structure(logical(0), tags = list(locationName = "truststoreVersion", type = "string"))), tags = list(locationName = "mutualTlsAuthentication", type = "structure")), RoutingMode = structure(logical(0), tags = list(locationName = "routingMode", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_domain_name_input"]]))
 }
 
 .apigatewayv2$update_domain_name_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiMappingSelectionExpression = structure(logical(0), tags = list(locationName = "apiMappingSelectionExpression", type = "string")), DomainName = structure(logical(0), tags = list(locationName = "domainName", type = "string")), DomainNameArn = structure(logical(0), tags = list(locationName = "domainNameArn", type = "string")), DomainNameConfigurations = structure(list(structure(list(ApiGatewayDomainName = structure(logical(0), tags = list(locationName = "apiGatewayDomainName", type = "string")), CertificateArn = structure(logical(0), tags = list(locationName = "certificateArn", type = "string")), CertificateName = structure(logical(0), tags = list(locationName = "certificateName", type = "string")), CertificateUploadDate = structure(logical(0), tags = list(locationName = "certificateUploadDate", type = "timestamp", timestampFormat = "iso8601")), DomainNameStatus = structure(logical(0), tags = list(locationName = "domainNameStatus", type = "string")), DomainNameStatusMessage = structure(logical(0), tags = list(locationName = "domainNameStatusMessage", type = "string")), EndpointType = structure(logical(0), tags = list(locationName = "endpointType", type = "string")), HostedZoneId = structure(logical(0), tags = list(locationName = "hostedZoneId", type = "string")), IpAddressType = structure(logical(0), tags = list(locationName = "ipAddressType", type = "string")), SecurityPolicy = structure(logical(0), tags = list(locationName = "securityPolicy", type = "string")), OwnershipVerificationCertificateArn = structure(logical(0), tags = list(locationName = "ownershipVerificationCertificateArn", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "domainNameConfigurations", type = "list")), MutualTlsAuthentication = structure(list(TruststoreUri = structure(logical(0), tags = list(locationName = "truststoreUri", type = "string")), TruststoreVersion = structure(logical(0), tags = list(locationName = "truststoreVersion", type = "string")), TruststoreWarnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "truststoreWarnings", type = "list"))), tags = list(locationName = "mutualTlsAuthentication", type = "structure")), RoutingMode = structure(logical(0), tags = list(locationName = "routingMode", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_domain_name_output"]]))
 }
 
 .apigatewayv2$update_integration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), ConnectionId = structure(logical(0), tags = list(locationName = "connectionId", type = "string")), ConnectionType = structure(logical(0), tags = list(locationName = "connectionType", type = "string")), ContentHandlingStrategy = structure(logical(0), tags = list(locationName = "contentHandlingStrategy", type = "string")), CredentialsArn = structure(logical(0), tags = list(locationName = "credentialsArn", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), IntegrationId = structure(logical(0), tags = list(location = "uri", locationName = "integrationId", type = "string")), IntegrationMethod = structure(logical(0), tags = list(locationName = "integrationMethod", type = "string")), IntegrationSubtype = structure(logical(0), tags = list(locationName = "integrationSubtype", type = "string")), IntegrationType = structure(logical(0), tags = list(locationName = "integrationType", type = "string")), IntegrationUri = structure(logical(0), tags = list(locationName = "integrationUri", type = "string")), PassthroughBehavior = structure(logical(0), tags = list(locationName = "passthroughBehavior", type = "string")), PayloadFormatVersion = structure(logical(0), tags = list(locationName = "payloadFormatVersion", type = "string")), RequestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestParameters", type = "map")), RequestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestTemplates", type = "map")), ResponseParameters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(locationName = "responseParameters", type = "map")), TemplateSelectionExpression = structure(logical(0), tags = list(locationName = "templateSelectionExpression", type = "string")), TimeoutInMillis = structure(logical(0), tags = list(locationName = "timeoutInMillis", type = "integer")), TlsConfig = structure(list(ServerNameToVerify = structure(logical(0), tags = list(locationName = "serverNameToVerify", type = "string"))), tags = list(locationName = "tlsConfig", type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_integration_input"]]))
 }
 
 .apigatewayv2$update_integration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), ConnectionId = structure(logical(0), tags = list(locationName = "connectionId", type = "string")), ConnectionType = structure(logical(0), tags = list(locationName = "connectionType", type = "string")), ContentHandlingStrategy = structure(logical(0), tags = list(locationName = "contentHandlingStrategy", type = "string")), CredentialsArn = structure(logical(0), tags = list(locationName = "credentialsArn", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), IntegrationId = structure(logical(0), tags = list(locationName = "integrationId", type = "string")), IntegrationMethod = structure(logical(0), tags = list(locationName = "integrationMethod", type = "string")), IntegrationResponseSelectionExpression = structure(logical(0), tags = list(locationName = "integrationResponseSelectionExpression", type = "string")), IntegrationSubtype = structure(logical(0), tags = list(locationName = "integrationSubtype", type = "string")), IntegrationType = structure(logical(0), tags = list(locationName = "integrationType", type = "string")), IntegrationUri = structure(logical(0), tags = list(locationName = "integrationUri", type = "string")), PassthroughBehavior = structure(logical(0), tags = list(locationName = "passthroughBehavior", type = "string")), PayloadFormatVersion = structure(logical(0), tags = list(locationName = "payloadFormatVersion", type = "string")), RequestParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestParameters", type = "map")), RequestTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestTemplates", type = "map")), ResponseParameters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(locationName = "responseParameters", type = "map")), TemplateSelectionExpression = structure(logical(0), tags = list(locationName = "templateSelectionExpression", type = "string")), TimeoutInMillis = structure(logical(0), tags = list(locationName = "timeoutInMillis", type = "integer")), TlsConfig = structure(list(ServerNameToVerify = structure(logical(0), tags = list(locationName = "serverNameToVerify", type = "string"))), tags = list(locationName = "tlsConfig", type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_integration_output"]]))
 }
 
 .apigatewayv2$update_integration_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), ContentHandlingStrategy = structure(logical(0), tags = list(locationName = "contentHandlingStrategy", type = "string")), IntegrationId = structure(logical(0), tags = list(location = "uri", locationName = "integrationId", type = "string")), IntegrationResponseId = structure(logical(0), tags = list(location = "uri", locationName = "integrationResponseId", type = "string")), IntegrationResponseKey = structure(logical(0), tags = list(locationName = "integrationResponseKey", type = "string")), ResponseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseParameters", type = "map")), ResponseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseTemplates", type = "map")), TemplateSelectionExpression = structure(logical(0), tags = list(locationName = "templateSelectionExpression", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_integration_response_input"]]))
 }
 
 .apigatewayv2$update_integration_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContentHandlingStrategy = structure(logical(0), tags = list(locationName = "contentHandlingStrategy", type = "string")), IntegrationResponseId = structure(logical(0), tags = list(locationName = "integrationResponseId", type = "string")), IntegrationResponseKey = structure(logical(0), tags = list(locationName = "integrationResponseKey", type = "string")), ResponseParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseParameters", type = "map")), ResponseTemplates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseTemplates", type = "map")), TemplateSelectionExpression = structure(logical(0), tags = list(locationName = "templateSelectionExpression", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_integration_response_output"]]))
 }
 
 .apigatewayv2$update_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), ContentType = structure(logical(0), tags = list(locationName = "contentType", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), ModelId = structure(logical(0), tags = list(location = "uri", locationName = "modelId", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Schema = structure(logical(0), tags = list(locationName = "schema", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_model_input"]]))
 }
 
 .apigatewayv2$update_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContentType = structure(logical(0), tags = list(locationName = "contentType", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), ModelId = structure(logical(0), tags = list(locationName = "modelId", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Schema = structure(logical(0), tags = list(locationName = "schema", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_model_output"]]))
 }
 
 .apigatewayv2$update_portal_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Authorization = structure(list(CognitoConfig = structure(list(AppClientId = structure(logical(0), tags = list(locationName = "appClientId", type = "string")), UserPoolArn = structure(logical(0), tags = list(locationName = "userPoolArn", type = "string")), UserPoolDomain = structure(logical(0), tags = list(locationName = "userPoolDomain", type = "string"))), tags = list(locationName = "cognitoConfig", type = "structure")), None = structure(list(), tags = list(locationName = "none", type = "structure"))), tags = list(locationName = "authorization", type = "structure")), EndpointConfiguration = structure(list(AcmManaged = structure(list(CertificateArn = structure(logical(0), tags = list(locationName = "certificateArn", type = "string")), DomainName = structure(logical(0), tags = list(locationName = "domainName", type = "string"))), tags = list(locationName = "acmManaged", type = "structure")), None = structure(list(), tags = list(locationName = "none", type = "structure"))), tags = list(locationName = "endpointConfiguration", type = "structure")), IncludedPortalProductArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "includedPortalProductArns", type = "list")), LogoUri = structure(logical(0), tags = list(locationName = "logoUri", type = "string")), PortalContent = structure(list(Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "displayName", type = "string")), Theme = structure(list(CustomColors = structure(list(AccentColor = structure(logical(0), tags = list(locationName = "accentColor", type = "string")), BackgroundColor = structure(logical(0), tags = list(locationName = "backgroundColor", type = "string")), ErrorValidationColor = structure(logical(0), tags = list(locationName = "errorValidationColor", type = "string")), HeaderColor = structure(logical(0), tags = list(locationName = "headerColor", type = "string")), NavigationColor = structure(logical(0), tags = list(locationName = "navigationColor", type = "string")), TextColor = structure(logical(0), tags = list(locationName = "textColor", type = "string"))), tags = list(locationName = "customColors", type = "structure")), LogoLastUploaded = structure(logical(0), tags = list(locationName = "logoLastUploaded", type = "timestamp", timestampFormat = "iso8601"))), tags = list(locationName = "theme", type = "structure"))), tags = list(locationName = "portalContent", type = "structure")), PortalId = structure(logical(0), tags = list(location = "uri", locationName = "portalId", type = "string")), RumAppMonitorName = structure(logical(0), tags = list(locationName = "rumAppMonitorName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_portal_input"]]))
 }
 
 .apigatewayv2$update_portal_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Authorization = structure(list(CognitoConfig = structure(list(AppClientId = structure(logical(0), tags = list(locationName = "appClientId", type = "string")), UserPoolArn = structure(logical(0), tags = list(locationName = "userPoolArn", type = "string")), UserPoolDomain = structure(logical(0), tags = list(locationName = "userPoolDomain", type = "string"))), tags = list(locationName = "cognitoConfig", type = "structure")), None = structure(list(), tags = list(locationName = "none", type = "structure"))), tags = list(locationName = "authorization", type = "structure")), EndpointConfiguration = structure(list(CertificateArn = structure(logical(0), tags = list(locationName = "certificateArn", type = "string")), DomainName = structure(logical(0), tags = list(locationName = "domainName", type = "string")), PortalDefaultDomainName = structure(logical(0), tags = list(locationName = "portalDefaultDomainName", type = "string")), PortalDomainHostedZoneId = structure(logical(0), tags = list(locationName = "portalDomainHostedZoneId", type = "string"))), tags = list(locationName = "endpointConfiguration", type = "structure")), IncludedPortalProductArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "includedPortalProductArns", type = "list")), LastModified = structure(logical(0), tags = list(locationName = "lastModified", type = "timestamp", timestampFormat = "iso8601")), LastPublished = structure(logical(0), tags = list(locationName = "lastPublished", type = "timestamp", timestampFormat = "iso8601")), LastPublishedDescription = structure(logical(0), tags = list(locationName = "lastPublishedDescription", type = "string")), PortalArn = structure(logical(0), tags = list(locationName = "portalArn", type = "string")), PortalContent = structure(list(Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "displayName", type = "string")), Theme = structure(list(CustomColors = structure(list(AccentColor = structure(logical(0), tags = list(locationName = "accentColor", type = "string")), BackgroundColor = structure(logical(0), tags = list(locationName = "backgroundColor", type = "string")), ErrorValidationColor = structure(logical(0), tags = list(locationName = "errorValidationColor", type = "string")), HeaderColor = structure(logical(0), tags = list(locationName = "headerColor", type = "string")), NavigationColor = structure(logical(0), tags = list(locationName = "navigationColor", type = "string")), TextColor = structure(logical(0), tags = list(locationName = "textColor", type = "string"))), tags = list(locationName = "customColors", type = "structure")), LogoLastUploaded = structure(logical(0), tags = list(locationName = "logoLastUploaded", type = "timestamp", timestampFormat = "iso8601"))), tags = list(locationName = "theme", type = "structure"))), tags = list(locationName = "portalContent", type = "structure")), PortalId = structure(logical(0), tags = list(locationName = "portalId", type = "string")), Preview = structure(list(PreviewStatus = structure(logical(0), tags = list(locationName = "previewStatus", type = "string")), PreviewUrl = structure(logical(0), tags = list(locationName = "previewUrl", type = "string")), StatusException = structure(list(Exception = structure(logical(0), tags = list(locationName = "exception", type = "string")), Message = structure(logical(0), tags = list(locationName = "message", type = "string"))), tags = list(locationName = "statusException", type = "structure"))), tags = list(locationName = "preview", type = "structure")), PublishStatus = structure(logical(0), tags = list(locationName = "publishStatus", type = "string")), RumAppMonitorName = structure(logical(0), tags = list(locationName = "rumAppMonitorName", type = "string")), StatusException = structure(list(Exception = structure(logical(0), tags = list(locationName = "exception", type = "string")), Message = structure(logical(0), tags = list(locationName = "message", type = "string"))), tags = list(locationName = "statusException", type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_portal_output"]]))
 }
 
 .apigatewayv2$update_portal_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "displayName", type = "string")), DisplayOrder = structure(list(Contents = structure(list(structure(list(ProductRestEndpointPageArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "productRestEndpointPageArns", type = "list")), SectionName = structure(logical(0), tags = list(locationName = "sectionName", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "contents", type = "list")), OverviewPageArn = structure(logical(0), tags = list(locationName = "overviewPageArn", type = "string")), ProductPageArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "productPageArns", type = "list"))), tags = list(locationName = "displayOrder", type = "structure")), PortalProductId = structure(logical(0), tags = list(location = "uri", locationName = "portalProductId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_portal_product_input"]]))
 }
 
 .apigatewayv2$update_portal_product_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Description = structure(logical(0), tags = list(locationName = "description", type = "string")), DisplayName = structure(logical(0), tags = list(locationName = "displayName", type = "string")), DisplayOrder = structure(list(Contents = structure(list(structure(list(ProductRestEndpointPageArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "productRestEndpointPageArns", type = "list")), SectionName = structure(logical(0), tags = list(locationName = "sectionName", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "contents", type = "list")), OverviewPageArn = structure(logical(0), tags = list(locationName = "overviewPageArn", type = "string")), ProductPageArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "productPageArns", type = "list"))), tags = list(locationName = "displayOrder", type = "structure")), LastModified = structure(logical(0), tags = list(locationName = "lastModified", type = "timestamp", timestampFormat = "iso8601")), PortalProductArn = structure(logical(0), tags = list(locationName = "portalProductArn", type = "string")), PortalProductId = structure(logical(0), tags = list(locationName = "portalProductId", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_portal_product_output"]]))
 }
 
 .apigatewayv2$update_product_page_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DisplayContent = structure(list(Body = structure(logical(0), tags = list(locationName = "body", type = "string")), Title = structure(logical(0), tags = list(locationName = "title", type = "string"))), tags = list(locationName = "displayContent", type = "structure")), PortalProductId = structure(logical(0), tags = list(location = "uri", locationName = "portalProductId", type = "string")), ProductPageId = structure(logical(0), tags = list(location = "uri", locationName = "productPageId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_product_page_input"]]))
 }
 
 .apigatewayv2$update_product_page_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DisplayContent = structure(list(Body = structure(logical(0), tags = list(locationName = "body", type = "string")), Title = structure(logical(0), tags = list(locationName = "title", type = "string"))), tags = list(locationName = "displayContent", type = "structure")), LastModified = structure(logical(0), tags = list(locationName = "lastModified", type = "timestamp", timestampFormat = "iso8601")), ProductPageArn = structure(logical(0), tags = list(locationName = "productPageArn", type = "string")), ProductPageId = structure(logical(0), tags = list(locationName = "productPageId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_product_page_output"]]))
 }
 
 .apigatewayv2$update_product_rest_endpoint_page_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DisplayContent = structure(list(None = structure(list(), tags = list(locationName = "none", type = "structure")), Overrides = structure(list(Body = structure(logical(0), tags = list(locationName = "body", type = "string")), Endpoint = structure(logical(0), tags = list(locationName = "endpoint", type = "string")), OperationName = structure(logical(0), tags = list(locationName = "operationName", type = "string"))), tags = list(locationName = "overrides", type = "structure"))), tags = list(locationName = "displayContent", type = "structure")), PortalProductId = structure(logical(0), tags = list(location = "uri", locationName = "portalProductId", type = "string")), ProductRestEndpointPageId = structure(logical(0), tags = list(location = "uri", locationName = "productRestEndpointPageId", type = "string")), TryItState = structure(logical(0), tags = list(locationName = "tryItState", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_product_rest_endpoint_page_input"]]))
 }
 
 .apigatewayv2$update_product_rest_endpoint_page_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DisplayContent = structure(list(Body = structure(logical(0), tags = list(locationName = "body", type = "string")), Endpoint = structure(logical(0), tags = list(locationName = "endpoint", type = "string")), OperationName = structure(logical(0), tags = list(locationName = "operationName", type = "string"))), tags = list(locationName = "displayContent", type = "structure")), LastModified = structure(logical(0), tags = list(locationName = "lastModified", type = "timestamp", timestampFormat = "iso8601")), ProductRestEndpointPageArn = structure(logical(0), tags = list(locationName = "productRestEndpointPageArn", type = "string")), ProductRestEndpointPageId = structure(logical(0), tags = list(locationName = "productRestEndpointPageId", type = "string")), RestEndpointIdentifier = structure(list(IdentifierParts = structure(list(Method = structure(logical(0), tags = list(locationName = "method", type = "string")), Path = structure(logical(0), tags = list(locationName = "path", type = "string")), RestApiId = structure(logical(0), tags = list(locationName = "restApiId", type = "string")), Stage = structure(logical(0), tags = list(locationName = "stage", type = "string"))), tags = list(locationName = "identifierParts", type = "structure"))), tags = list(locationName = "restEndpointIdentifier", type = "structure")), Status = structure(logical(0), tags = list(locationName = "status", type = "string")), StatusException = structure(list(Exception = structure(logical(0), tags = list(locationName = "exception", type = "string")), Message = structure(logical(0), tags = list(locationName = "message", type = "string"))), tags = list(locationName = "statusException", type = "structure")), TryItState = structure(logical(0), tags = list(locationName = "tryItState", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_product_rest_endpoint_page_output"]]))
 }
 
 .apigatewayv2$update_route_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), ApiKeyRequired = structure(logical(0), tags = list(locationName = "apiKeyRequired", type = "boolean")), AuthorizationScopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "authorizationScopes", type = "list")), AuthorizationType = structure(logical(0), tags = list(locationName = "authorizationType", type = "string")), AuthorizerId = structure(logical(0), tags = list(locationName = "authorizerId", type = "string")), ModelSelectionExpression = structure(logical(0), tags = list(locationName = "modelSelectionExpression", type = "string")), OperationName = structure(logical(0), tags = list(locationName = "operationName", type = "string")), RequestModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestModels", type = "map")), RequestParameters = structure(list(structure(list(Required = structure(logical(0), tags = list(locationName = "required", type = "boolean"))), tags = list(type = "structure"))), tags = list(locationName = "requestParameters", type = "map")), RouteId = structure(logical(0), tags = list(location = "uri", locationName = "routeId", type = "string")), RouteKey = structure(logical(0), tags = list(locationName = "routeKey", type = "string")), RouteResponseSelectionExpression = structure(logical(0), tags = list(locationName = "routeResponseSelectionExpression", type = "string")), Target = structure(logical(0), tags = list(locationName = "target", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_route_input"]]))
 }
 
 .apigatewayv2$update_route_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), ApiKeyRequired = structure(logical(0), tags = list(locationName = "apiKeyRequired", type = "boolean")), AuthorizationScopes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "authorizationScopes", type = "list")), AuthorizationType = structure(logical(0), tags = list(locationName = "authorizationType", type = "string")), AuthorizerId = structure(logical(0), tags = list(locationName = "authorizerId", type = "string")), ModelSelectionExpression = structure(logical(0), tags = list(locationName = "modelSelectionExpression", type = "string")), OperationName = structure(logical(0), tags = list(locationName = "operationName", type = "string")), RequestModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "requestModels", type = "map")), RequestParameters = structure(list(structure(list(Required = structure(logical(0), tags = list(locationName = "required", type = "boolean"))), tags = list(type = "structure"))), tags = list(locationName = "requestParameters", type = "map")), RouteId = structure(logical(0), tags = list(locationName = "routeId", type = "string")), RouteKey = structure(logical(0), tags = list(locationName = "routeKey", type = "string")), RouteResponseSelectionExpression = structure(logical(0), tags = list(locationName = "routeResponseSelectionExpression", type = "string")), Target = structure(logical(0), tags = list(locationName = "target", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_route_output"]]))
 }
 
 .apigatewayv2$update_route_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), ModelSelectionExpression = structure(logical(0), tags = list(locationName = "modelSelectionExpression", type = "string")), ResponseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseModels", type = "map")), ResponseParameters = structure(list(structure(list(Required = structure(logical(0), tags = list(locationName = "required", type = "boolean"))), tags = list(type = "structure"))), tags = list(locationName = "responseParameters", type = "map")), RouteId = structure(logical(0), tags = list(location = "uri", locationName = "routeId", type = "string")), RouteResponseId = structure(logical(0), tags = list(location = "uri", locationName = "routeResponseId", type = "string")), RouteResponseKey = structure(logical(0), tags = list(locationName = "routeResponseKey", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_route_response_input"]]))
 }
 
 .apigatewayv2$update_route_response_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ModelSelectionExpression = structure(logical(0), tags = list(locationName = "modelSelectionExpression", type = "string")), ResponseModels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "responseModels", type = "map")), ResponseParameters = structure(list(structure(list(Required = structure(logical(0), tags = list(locationName = "required", type = "boolean"))), tags = list(type = "structure"))), tags = list(locationName = "responseParameters", type = "map")), RouteResponseId = structure(logical(0), tags = list(locationName = "routeResponseId", type = "string")), RouteResponseKey = structure(logical(0), tags = list(locationName = "routeResponseKey", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_route_response_output"]]))
 }
 
 .apigatewayv2$update_stage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccessLogSettings = structure(list(DestinationArn = structure(logical(0), tags = list(locationName = "destinationArn", type = "string")), Format = structure(logical(0), tags = list(locationName = "format", type = "string"))), tags = list(locationName = "accessLogSettings", type = "structure")), ApiId = structure(logical(0), tags = list(location = "uri", locationName = "apiId", type = "string")), AutoDeploy = structure(logical(0), tags = list(locationName = "autoDeploy", type = "boolean")), ClientCertificateId = structure(logical(0), tags = list(locationName = "clientCertificateId", type = "string")), DefaultRouteSettings = structure(list(DataTraceEnabled = structure(logical(0), tags = list(locationName = "dataTraceEnabled", type = "boolean")), DetailedMetricsEnabled = structure(logical(0), tags = list(locationName = "detailedMetricsEnabled", type = "boolean")), LoggingLevel = structure(logical(0), tags = list(locationName = "loggingLevel", type = "string")), ThrottlingBurstLimit = structure(logical(0), tags = list(locationName = "throttlingBurstLimit", type = "integer")), ThrottlingRateLimit = structure(logical(0), tags = list(locationName = "throttlingRateLimit", type = "double"))), tags = list(locationName = "defaultRouteSettings", type = "structure")), DeploymentId = structure(logical(0), tags = list(locationName = "deploymentId", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), RouteSettings = structure(list(structure(list(DataTraceEnabled = structure(logical(0), tags = list(locationName = "dataTraceEnabled", type = "boolean")), DetailedMetricsEnabled = structure(logical(0), tags = list(locationName = "detailedMetricsEnabled", type = "boolean")), LoggingLevel = structure(logical(0), tags = list(locationName = "loggingLevel", type = "string")), ThrottlingBurstLimit = structure(logical(0), tags = list(locationName = "throttlingBurstLimit", type = "integer")), ThrottlingRateLimit = structure(logical(0), tags = list(locationName = "throttlingRateLimit", type = "double"))), tags = list(type = "structure"))), tags = list(locationName = "routeSettings", type = "map")), StageName = structure(logical(0), tags = list(location = "uri", locationName = "stageName", type = "string")), StageVariables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "stageVariables", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_stage_input"]]))
 }
 
 .apigatewayv2$update_stage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccessLogSettings = structure(list(DestinationArn = structure(logical(0), tags = list(locationName = "destinationArn", type = "string")), Format = structure(logical(0), tags = list(locationName = "format", type = "string"))), tags = list(locationName = "accessLogSettings", type = "structure")), ApiGatewayManaged = structure(logical(0), tags = list(locationName = "apiGatewayManaged", type = "boolean")), AutoDeploy = structure(logical(0), tags = list(locationName = "autoDeploy", type = "boolean")), ClientCertificateId = structure(logical(0), tags = list(locationName = "clientCertificateId", type = "string")), CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), DefaultRouteSettings = structure(list(DataTraceEnabled = structure(logical(0), tags = list(locationName = "dataTraceEnabled", type = "boolean")), DetailedMetricsEnabled = structure(logical(0), tags = list(locationName = "detailedMetricsEnabled", type = "boolean")), LoggingLevel = structure(logical(0), tags = list(locationName = "loggingLevel", type = "string")), ThrottlingBurstLimit = structure(logical(0), tags = list(locationName = "throttlingBurstLimit", type = "integer")), ThrottlingRateLimit = structure(logical(0), tags = list(locationName = "throttlingRateLimit", type = "double"))), tags = list(locationName = "defaultRouteSettings", type = "structure")), DeploymentId = structure(logical(0), tags = list(locationName = "deploymentId", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), LastDeploymentStatusMessage = structure(logical(0), tags = list(locationName = "lastDeploymentStatusMessage", type = "string")), LastUpdatedDate = structure(logical(0), tags = list(locationName = "lastUpdatedDate", type = "timestamp", timestampFormat = "iso8601")), RouteSettings = structure(list(structure(list(DataTraceEnabled = structure(logical(0), tags = list(locationName = "dataTraceEnabled", type = "boolean")), DetailedMetricsEnabled = structure(logical(0), tags = list(locationName = "detailedMetricsEnabled", type = "boolean")), LoggingLevel = structure(logical(0), tags = list(locationName = "loggingLevel", type = "string")), ThrottlingBurstLimit = structure(logical(0), tags = list(locationName = "throttlingBurstLimit", type = "integer")), ThrottlingRateLimit = structure(logical(0), tags = list(locationName = "throttlingRateLimit", type = "double"))), tags = list(type = "structure"))), tags = list(locationName = "routeSettings", type = "map")), StageName = structure(logical(0), tags = list(locationName = "stageName", type = "string")), StageVariables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "stageVariables", type = "map")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_stage_output"]]))
 }
 
 .apigatewayv2$update_vpc_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(locationName = "name", type = "string")), VpcLinkId = structure(logical(0), tags = list(location = "uri", locationName = "vpcLinkId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_vpc_link_input"]]))
 }
 
 .apigatewayv2$update_vpc_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreatedDate = structure(logical(0), tags = list(locationName = "createdDate", type = "timestamp", timestampFormat = "iso8601")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "securityGroupIds", type = "list")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "subnetIds", type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map")), VpcLinkId = structure(logical(0), tags = list(locationName = "vpcLinkId", type = "string")), VpcLinkStatus = structure(logical(0), tags = list(locationName = "vpcLinkStatus", type = "string")), VpcLinkStatusMessage = structure(logical(0), tags = list(locationName = "vpcLinkStatusMessage", type = "string")), VpcLinkVersion = structure(logical(0), tags = list(locationName = "vpcLinkVersion", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewayv2_shapes[["update_vpc_link_output"]]))
 }

@@ -7,10 +7,12 @@ including its current status, input payload, result or error
 information, and execution metadata such as start time and usage
 statistics}
 \usage{
-lambda_get_durable_execution(DurableExecutionArn)
+lambda_get_durable_execution(DurableExecutionArn, IncludeExecutionData = NULL)
 }
 \arguments{
 \item{DurableExecutionArn}{[required] The Amazon Resource Name (ARN) of the durable execution.}
+
+\item{IncludeExecutionData}{Specifies whether to include execution data such as input payload, result, and error information in the response. Set to \code{false} for a more compact response that includes only execution metadata. The default value is set to \code{true}.}
 }
 \description{
 Retrieves detailed information about a specific \href{https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html}{durable execution}, including its current status, input payload, result or error information, and execution metadata such as start time and usage statistics.

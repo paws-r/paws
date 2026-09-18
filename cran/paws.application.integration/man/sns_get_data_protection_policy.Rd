@@ -2,8 +2,8 @@
 % Please edit documentation in R/sns_operations.R
 \name{sns_get_data_protection_policy}
 \alias{sns_get_data_protection_policy}
-\title{Retrieves the specified inline DataProtectionPolicy document that is
-stored in the specified Amazon SNS topic}
+\title{Amazon SNS message data protection is no longer available to new
+customers}
 \usage{
 sns_get_data_protection_policy(ResourceArn)
 }
@@ -13,7 +13,7 @@ sns_get_data_protection_policy(ResourceArn)
 For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the Amazon Web Services General Reference.}
 }
 \description{
-Retrieves the specified inline \code{DataProtectionPolicy} document that is stored in the specified Amazon SNS topic.
+Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-message-data-protection-availability-change.html}{Amazon SNS message data protection availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/sns_get_data_protection_policy/} for full documentation.
 }

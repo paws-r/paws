@@ -43,7 +43,8 @@ rds_restore_db_cluster_from_s3(
   ManageMasterUserPassword = NULL,
   MasterUserSecretKmsKeyId = NULL,
   EngineLifecycleSupport = NULL,
-  TagSpecifications = NULL
+  TagSpecifications = NULL,
+  AssociatedRoles = NULL
 )
 }
 \arguments{
@@ -259,7 +260,7 @@ If you don't specify \code{MasterUserSecretKmsKeyId}, then the \code{aws/secrets
 
 There is a default KMS key for your Amazon Web Services account. Your Amazon Web Services account has a different default KMS key for each Amazon Web Services Region.}
 
-\item{EngineLifecycleSupport}{The life cycle type for this DB cluster.
+\item{EngineLifecycleSupport}{The lifecycle type for this DB cluster.
 
 By default, this value is set to \code{open-source-rds-extended-support}, which enrolls your DB cluster into Amazon RDS Extended Support. At the end of standard support, you can avoid charges for Extended Support by setting the value to \code{open-source-rds-extended-support-disabled}. In this case, RDS automatically upgrades your restored DB cluster to a higher engine version, if the major engine version is past its end of standard support date.
 
@@ -281,6 +282,8 @@ Valid Values:
 \itemize{
 \item \code{cluster-auto-backup} - The DB cluster's automated backup.
 }}
+
+\item{AssociatedRoles}{A list of Amazon Web Services Identity and Access Management (IAM) roles to associate with the DB cluster when it's restored from Amazon S3. Each role grants the DB cluster permission to access other Amazon Web Services on your behalf. For each role, specify a role ARN and, optionally, the feature name (such as \code{s3Import}, \code{s3Export}, or \code{Lambda}).}
 }
 \description{
 Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon S3 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket and the data must be created using the Percona XtraBackup utility as described in \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.ExtMySQL.html#AuroraMySQL.Migrating.ExtMySQL.S3}{Migrating Data from MySQL by Using an Amazon S3 Bucket} in the \emph{Amazon Aurora User Guide}.

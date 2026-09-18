@@ -5,224 +5,187 @@ NULL
 
 .secretsmanager$batch_get_secret_value_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretIdList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["batch_get_secret_value_input"]]))
 }
 
 .secretsmanager$batch_get_secret_value_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretValues = structure(list(structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), SecretBinary = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), SecretString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), VersionStages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreatedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), Errors = structure(list(structure(list(SecretId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["batch_get_secret_value_output"]]))
 }
 
 .secretsmanager$cancel_rotate_secret_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["cancel_rotate_secret_input"]]))
 }
 
 .secretsmanager$cancel_rotate_secret_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["cancel_rotate_secret_output"]]))
 }
 
 .secretsmanager$create_secret_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Description = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), SecretBinary = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), SecretString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AddReplicaRegions = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ForceOverwriteReplicaSecret = structure(logical(0), tags = list(type = "boolean")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["create_secret_input"]]))
 }
 
 .secretsmanager$create_secret_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), LastAccessedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["create_secret_output"]]))
 }
 
 .secretsmanager$delete_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["delete_resource_policy_input"]]))
 }
 
 .secretsmanager$delete_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["delete_resource_policy_output"]]))
 }
 
 .secretsmanager$delete_secret_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), RecoveryWindowInDays = structure(logical(0), tags = list(box = TRUE, type = "long")), ForceDeleteWithoutRecovery = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["delete_secret_input"]]))
 }
 
 .secretsmanager$delete_secret_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DeletionDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["delete_secret_output"]]))
 }
 
 .secretsmanager$describe_secret_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["describe_secret_input"]]))
 }
 
 .secretsmanager$describe_secret_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), RotationEnabled = structure(logical(0), tags = list(box = TRUE, type = "boolean")), RotationLambdaARN = structure(logical(0), tags = list(type = "string")), RotationRules = structure(list(AutomaticallyAfterDays = structure(logical(0), tags = list(box = TRUE, type = "long")), Duration = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExternalSecretRotationMetadata = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ExternalSecretRotationRoleArn = structure(logical(0), tags = list(type = "string")), LastRotatedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), LastChangedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), LastAccessedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), DeletedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), NextRotationDate = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), VersionIdsToStages = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), OwningService = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), PrimaryRegion = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), LastAccessedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["describe_secret_output"]]))
 }
 
 .secretsmanager$get_random_password_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PasswordLength = structure(logical(0), tags = list(box = TRUE, type = "long")), ExcludeCharacters = structure(logical(0), tags = list(type = "string")), ExcludeNumbers = structure(logical(0), tags = list(box = TRUE, type = "boolean")), ExcludePunctuation = structure(logical(0), tags = list(box = TRUE, type = "boolean")), ExcludeUppercase = structure(logical(0), tags = list(box = TRUE, type = "boolean")), ExcludeLowercase = structure(logical(0), tags = list(box = TRUE, type = "boolean")), IncludeSpace = structure(logical(0), tags = list(box = TRUE, type = "boolean")), RequireEachIncludedType = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["get_random_password_input"]]))
 }
 
 .secretsmanager$get_random_password_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RandomPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["get_random_password_output"]]))
 }
 
 .secretsmanager$get_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["get_resource_policy_input"]]))
 }
 
 .secretsmanager$get_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ResourcePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["get_resource_policy_output"]]))
 }
 
 .secretsmanager$get_secret_value_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), VersionStage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["get_secret_value_input"]]))
 }
 
 .secretsmanager$get_secret_value_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), SecretBinary = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), SecretString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), VersionStages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreatedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["get_secret_value_output"]]))
 }
 
 .secretsmanager$list_secret_version_ids_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), IncludeDeprecated = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["list_secret_version_ids_input"]]))
 }
 
 .secretsmanager$list_secret_version_ids_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Versions = structure(list(structure(list(VersionId = structure(logical(0), tags = list(type = "string")), VersionStages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LastAccessedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), CreatedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), KmsKeyIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["list_secret_version_ids_output"]]))
 }
 
 .secretsmanager$list_secrets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IncludePlannedDeletion = structure(logical(0), tags = list(box = TRUE, type = "boolean")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SortOrder = structure(logical(0), tags = list(type = "string")), SortBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["list_secrets_input"]]))
 }
 
 .secretsmanager$list_secrets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretList = structure(list(structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), RotationEnabled = structure(logical(0), tags = list(box = TRUE, type = "boolean")), RotationLambdaARN = structure(logical(0), tags = list(type = "string")), RotationRules = structure(list(AutomaticallyAfterDays = structure(logical(0), tags = list(box = TRUE, type = "long")), Duration = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExternalSecretRotationMetadata = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ExternalSecretRotationRoleArn = structure(logical(0), tags = list(type = "string")), LastRotatedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), LastChangedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), LastAccessedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), DeletedDate = structure(logical(0), tags = list(type = "timestamp")), NextRotationDate = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SecretVersionsToStages = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), OwningService = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp")), PrimaryRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["list_secrets_output"]]))
 }
 
 .secretsmanager$put_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), ResourcePolicy = structure(logical(0), tags = list(type = "string")), BlockPublicPolicy = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["put_resource_policy_input"]]))
 }
 
 .secretsmanager$put_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["put_resource_policy_output"]]))
 }
 
 .secretsmanager$put_secret_value_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), SecretBinary = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), SecretString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), VersionStages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RotationToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["put_secret_value_input"]]))
 }
 
 .secretsmanager$put_secret_value_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), VersionStages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["put_secret_value_output"]]))
 }
 
 .secretsmanager$remove_regions_from_replication_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), RemoveReplicaRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["remove_regions_from_replication_input"]]))
 }
 
 .secretsmanager$remove_regions_from_replication_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), LastAccessedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["remove_regions_from_replication_output"]]))
 }
 
 .secretsmanager$replicate_secret_to_regions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), AddReplicaRegions = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ForceOverwriteReplicaSecret = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["replicate_secret_to_regions_input"]]))
 }
 
 .secretsmanager$replicate_secret_to_regions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), ReplicationStatus = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), LastAccessedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["replicate_secret_to_regions_output"]]))
 }
 
 .secretsmanager$restore_secret_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["restore_secret_input"]]))
 }
 
 .secretsmanager$restore_secret_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["restore_secret_output"]]))
 }
 
 .secretsmanager$rotate_secret_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), RotationLambdaARN = structure(logical(0), tags = list(type = "string")), RotationRules = structure(list(AutomaticallyAfterDays = structure(logical(0), tags = list(box = TRUE, type = "long")), Duration = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExternalSecretRotationMetadata = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ExternalSecretRotationRoleArn = structure(logical(0), tags = list(type = "string")), RotateImmediately = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["rotate_secret_input"]]))
 }
 
 .secretsmanager$rotate_secret_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["rotate_secret_output"]]))
 }
 
 .secretsmanager$stop_replication_to_replica_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["stop_replication_to_replica_input"]]))
 }
 
 .secretsmanager$stop_replication_to_replica_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["stop_replication_to_replica_output"]]))
 }
 
 .secretsmanager$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["tag_resource_input"]]))
 }
 
 .secretsmanager$tag_resource_output <- function(...) {
@@ -231,8 +194,7 @@ NULL
 
 .secretsmanager$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["untag_resource_input"]]))
 }
 
 .secretsmanager$untag_resource_output <- function(...) {
@@ -241,36 +203,30 @@ NULL
 
 .secretsmanager$update_secret_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Description = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), SecretBinary = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), SecretString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["update_secret_input"]]))
 }
 
 .secretsmanager$update_secret_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["update_secret_output"]]))
 }
 
 .secretsmanager$update_secret_version_stage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), VersionStage = structure(logical(0), tags = list(type = "string")), RemoveFromVersionId = structure(logical(0), tags = list(box = TRUE, type = "string")), MoveToVersionId = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["update_secret_version_stage_input"]]))
 }
 
 .secretsmanager$update_secret_version_stage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["update_secret_version_stage_output"]]))
 }
 
 .secretsmanager$validate_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string")), ResourcePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["validate_resource_policy_input"]]))
 }
 
 .secretsmanager$validate_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyValidationPassed = structure(logical(0), tags = list(type = "boolean")), ValidationErrors = structure(list(structure(list(CheckName = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .secretsmanager_shapes[["validate_resource_policy_output"]]))
 }

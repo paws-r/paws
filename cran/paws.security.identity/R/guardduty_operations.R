@@ -108,6 +108,77 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 }
 .guardduty$operations$archive_findings <- guardduty_archive_findings
 
+#' Enables a custom detection rule for your account by creating an
+#' association
+#'
+#' @description
+#' Enables a custom detection rule for your account by creating an association. You specify the rule and the mode in which it operates.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_create_custom_detection_rule_association/](https://www.paws-r-sdk.com/docs/guardduty_create_custom_detection_rule_association/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param Mode &#91;required&#93; The rule execution mode. Valid values: `LIVE` | `DRY_RUN`.
+#' @param ClientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. Maximum 64 characters.
+#' @param Tags The tags to be added to the new custom detection rule association resource.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_create_custom_detection_rule_association
+guardduty_create_custom_detection_rule_association <- function(RuleId, Mode, ClientToken = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateCustomDetectionRuleAssociation",
+    http_method = "POST",
+    http_path = "/custom-detection-rule/association",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$create_custom_detection_rule_association_input(RuleId = RuleId, Mode = Mode, ClientToken = ClientToken, Tags = Tags)
+  output <- .guardduty$create_custom_detection_rule_association_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$create_custom_detection_rule_association <- guardduty_create_custom_detection_rule_association
+
+#' Creates an organization-level configuration that enables a custom
+#' detection rule across your organization
+#'
+#' @description
+#' Creates an organization-level configuration that enables a custom detection rule across your organization. This operation is available only to the delegated administrator account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_create_custom_detection_rule_org_configuration/](https://www.paws-r-sdk.com/docs/guardduty_create_custom_detection_rule_org_configuration/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param Mode &#91;required&#93; The execution mode of the organization configuration. Valid values: `LIVE` | `DRY_RUN`.
+#' @param IncludeAccountIds The account IDs to include in the organization configuration. Mutually exclusive with `ExcludeAccountIds`.
+#' @param ExcludeAccountIds The account IDs to exclude from the organization configuration. Mutually exclusive with `IncludeAccountIds`.
+#' @param ClientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_create_custom_detection_rule_org_configuration
+guardduty_create_custom_detection_rule_org_configuration <- function(RuleId, Mode, IncludeAccountIds = NULL, ExcludeAccountIds = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateCustomDetectionRuleOrgConfiguration",
+    http_method = "POST",
+    http_path = "/custom-detection-rule/org-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$create_custom_detection_rule_org_configuration_input(RuleId = RuleId, Mode = Mode, IncludeAccountIds = IncludeAccountIds, ExcludeAccountIds = ExcludeAccountIds, ClientToken = ClientToken)
+  output <- .guardduty$create_custom_detection_rule_org_configuration_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$create_custom_detection_rule_org_configuration <- guardduty_create_custom_detection_rule_org_configuration
+
 #' Creates a single GuardDuty detector
 #'
 #' @description
@@ -175,8 +246,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   createdAt
 #' 
 #'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
-#' 
-#' -   description
 #' 
 #' -   id
 #' 
@@ -512,10 +581,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   resource.rdsDbInstanceDetails.publiclyAccessible
 #' 
-#' -   resource.rdsDbInstanceDetails.tags.key
-#' 
-#' -   resource.rdsDbInstanceDetails.tags.value
-#' 
 #' -   resource.rdsDbInstanceDetails.vpcId
 #' 
 #' -   resource.rdsDbInstanceDetails.vpcSecurityGroups.status
@@ -613,8 +678,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   schemaVersion
 #' 
 #' -   service.action.actionType
-#' 
-#' -   service.action.awsApiCallAction.affectedResources
 #' 
 #' -   service.action.awsApiCallAction.api
 #' 
@@ -903,10 +966,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   service.archived
 #' 
 #' -   service.count
-#' 
-#' -   service.detection.anomaly.profiles
-#' 
-#' -   service.detection.anomaly.unusual.behavior
 #' 
 #' -   service.detection.sequence.actors.id
 #' 
@@ -1480,8 +1539,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #'     For more information, see [Findings severity levels](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings-severity.html) in the *Amazon GuardDuty User Guide*.
 #' 
-#' -   title
-#' 
 #' -   type
 #' 
 #' -   updatedAt
@@ -1554,6 +1611,47 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
   return(response)
 }
 .guardduty$operations$create_ip_set <- guardduty_create_ip_set
+
+#' This API is currently available as a preview
+#'
+#' @description
+#' This API is currently available as a preview. During the preview, you can initiate up to 10 investigations per account per day, with a total limit of 100 investigations per account. This feature is available in the following Amazon Web Services Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe (Stockholm), and Asia Pacific (Tokyo).
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_create_investigation/](https://www.paws-r-sdk.com/docs/guardduty_create_investigation/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector for the account in which the investigation is created.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in the GuardDuty console, or run the [`list_detectors`][guardduty_list_detectors] API.
+#' @param TriggerPrompt &#91;required&#93; A natural-language description of what to investigate. For example:
+#' 
+#' -   `"Investigate finding 1ab2c3d4e5f6a7b8c9d0e1f2a3b4c5d6 in account 123456789012"`
+#' 
+#' -   `"Analyze findings in account with id 123456789012"`
+#' 
+#' -   `"Analyze findings in my organization"`
+#' @param ClientToken The idempotency token for the create request.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_create_investigation
+guardduty_create_investigation <- function(DetectorId, TriggerPrompt, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateInvestigation",
+    http_method = "POST",
+    http_path = "/detector/{DetectorId}/investigation",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$create_investigation_input(DetectorId = DetectorId, TriggerPrompt = TriggerPrompt, ClientToken = ClientToken)
+  output <- .guardduty$create_investigation_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$create_investigation <- guardduty_create_investigation
 
 #' Creates a new Malware Protection plan for the protected resource
 #'
@@ -1853,6 +1951,70 @@ guardduty_decline_invitations <- function(AccountIds) {
   return(response)
 }
 .guardduty$operations$decline_invitations <- guardduty_decline_invitations
+
+#' Disables a custom detection rule by deleting its association
+#'
+#' @description
+#' Disables a custom detection rule by deleting its association. This operation is idempotent.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_delete_custom_detection_rule_association/](https://www.paws-r-sdk.com/docs/guardduty_delete_custom_detection_rule_association/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param AssociationId &#91;required&#93; The unique identifier for the association to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_delete_custom_detection_rule_association
+guardduty_delete_custom_detection_rule_association <- function(RuleId, AssociationId) {
+  op <- new_operation(
+    name = "DeleteCustomDetectionRuleAssociation",
+    http_method = "DELETE",
+    http_path = "/custom-detection-rule/rule/{RuleId}/association/{AssociationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$delete_custom_detection_rule_association_input(RuleId = RuleId, AssociationId = AssociationId)
+  output <- .guardduty$delete_custom_detection_rule_association_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$delete_custom_detection_rule_association <- guardduty_delete_custom_detection_rule_association
+
+#' Deletes the organization-level configuration for a custom detection rule
+#'
+#' @description
+#' Deletes the organization-level configuration for a custom detection rule. This operation is available only to the delegated administrator account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_delete_custom_detection_rule_org_configuration/](https://www.paws-r-sdk.com/docs/guardduty_delete_custom_detection_rule_org_configuration/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param Mode &#91;required&#93; The execution mode of the organization configuration to delete. Valid values: `LIVE` | `DRY_RUN`.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_delete_custom_detection_rule_org_configuration
+guardduty_delete_custom_detection_rule_org_configuration <- function(RuleId, Mode) {
+  op <- new_operation(
+    name = "DeleteCustomDetectionRuleOrgConfiguration",
+    http_method = "DELETE",
+    http_path = "/custom-detection-rule/org-configuration/{RuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$delete_custom_detection_rule_org_configuration_input(RuleId = RuleId, Mode = Mode)
+  output <- .guardduty$delete_custom_detection_rule_org_configuration_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$delete_custom_detection_rule_org_configuration <- guardduty_delete_custom_detection_rule_org_configuration
 
 #' Deletes an Amazon GuardDuty detector that is specified by the detector
 #' ID
@@ -2529,6 +2691,102 @@ guardduty_get_coverage_statistics <- function(DetectorId, FilterCriteria = NULL,
 }
 .guardduty$operations$get_coverage_statistics <- guardduty_get_coverage_statistics
 
+#' Returns details for a custom detection rule in GuardDuty, including its
+#' detection logic
+#'
+#' @description
+#' Returns details for a custom detection rule in GuardDuty, including its detection logic.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_custom_detection_rule/](https://www.paws-r-sdk.com/docs/guardduty_get_custom_detection_rule/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_custom_detection_rule
+guardduty_get_custom_detection_rule <- function(RuleId) {
+  op <- new_operation(
+    name = "GetCustomDetectionRule",
+    http_method = "GET",
+    http_path = "/custom-detection-rule/rule/{RuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$get_custom_detection_rule_input(RuleId = RuleId)
+  output <- .guardduty$get_custom_detection_rule_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_custom_detection_rule <- guardduty_get_custom_detection_rule
+
+#' Returns details for a custom detection rule association
+#'
+#' @description
+#' Returns details for a custom detection rule association.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_custom_detection_rule_association/](https://www.paws-r-sdk.com/docs/guardduty_get_custom_detection_rule_association/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param AssociationId &#91;required&#93; The unique identifier for the association.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_custom_detection_rule_association
+guardduty_get_custom_detection_rule_association <- function(RuleId, AssociationId) {
+  op <- new_operation(
+    name = "GetCustomDetectionRuleAssociation",
+    http_method = "GET",
+    http_path = "/custom-detection-rule/rule/{RuleId}/association/{AssociationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$get_custom_detection_rule_association_input(RuleId = RuleId, AssociationId = AssociationId)
+  output <- .guardduty$get_custom_detection_rule_association_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_custom_detection_rule_association <- guardduty_get_custom_detection_rule_association
+
+#' Returns the organization-level configuration for a custom detection rule
+#'
+#' @description
+#' Returns the organization-level configuration for a custom detection rule.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_custom_detection_rule_org_configuration/](https://www.paws-r-sdk.com/docs/guardduty_get_custom_detection_rule_org_configuration/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param Mode &#91;required&#93; The execution mode of the organization configuration to retrieve. Valid values: `LIVE` | `DRY_RUN`.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_custom_detection_rule_org_configuration
+guardduty_get_custom_detection_rule_org_configuration <- function(RuleId, Mode) {
+  op <- new_operation(
+    name = "GetCustomDetectionRuleOrgConfiguration",
+    http_method = "GET",
+    http_path = "/custom-detection-rule/org-configuration/{RuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$get_custom_detection_rule_org_configuration_input(RuleId = RuleId, Mode = Mode)
+  output <- .guardduty$get_custom_detection_rule_org_configuration_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_custom_detection_rule_org_configuration <- guardduty_get_custom_detection_rule_org_configuration
+
 #' Retrieves a GuardDuty detector specified by the detectorId
 #'
 #' @description
@@ -2706,6 +2964,40 @@ guardduty_get_ip_set <- function(DetectorId, IpSetId) {
   return(response)
 }
 .guardduty$operations$get_ip_set <- guardduty_get_ip_set
+
+#' This API is currently available as a preview
+#'
+#' @description
+#' This API is currently available as a preview. This feature is available in the following Amazon Web Services Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe (Stockholm), and Asia Pacific (Tokyo).
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_investigation/](https://www.paws-r-sdk.com/docs/guardduty_get_investigation/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector associated with the investigation.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in the GuardDuty console, or run the [`list_detectors`][guardduty_list_detectors] API.
+#' @param InvestigationId &#91;required&#93; The unique identifier of the investigation to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_investigation
+guardduty_get_investigation <- function(DetectorId, InvestigationId) {
+  op <- new_operation(
+    name = "GetInvestigation",
+    http_method = "GET",
+    http_path = "/detector/{DetectorId}/investigation/{InvestigationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$get_investigation_input(DetectorId = DetectorId, InvestigationId = InvestigationId)
+  output <- .guardduty$get_investigation_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_investigation <- guardduty_get_investigation
 
 #' Returns the count of all GuardDuty membership invitations that were sent
 #' to the current member account except the currently accepted invitation
@@ -3222,6 +3514,106 @@ guardduty_list_coverage <- function(DetectorId, NextToken = NULL, MaxResults = N
 }
 .guardduty$operations$list_coverage <- guardduty_list_coverage
 
+#' Returns all custom detection rule associations for your account
+#'
+#' @description
+#' Returns all custom detection rule associations for your account. You can filter by rule ID and mode.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_custom_detection_rule_associations/](https://www.paws-r-sdk.com/docs/guardduty_list_custom_detection_rule_associations/) for full documentation.
+#'
+#' @param MaxResults The maximum number of results to return in a single page. Minimum value of 1, maximum value of 100.
+#' @param NextToken A pagination token from a previous response. Use this token to retrieve the next page of results.
+#' @param RuleId The unique identifier for the custom detection rule to filter associations by.
+#' @param Mode The rule execution mode to filter associations by.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_custom_detection_rule_associations
+guardduty_list_custom_detection_rule_associations <- function(MaxResults = NULL, NextToken = NULL, RuleId = NULL, Mode = NULL) {
+  op <- new_operation(
+    name = "ListCustomDetectionRuleAssociations",
+    http_method = "GET",
+    http_path = "/custom-detection-rule/association",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RuleAssociations"),
+    stream_api = FALSE
+  )
+  input <- .guardduty$list_custom_detection_rule_associations_input(MaxResults = MaxResults, NextToken = NextToken, RuleId = RuleId, Mode = Mode)
+  output <- .guardduty$list_custom_detection_rule_associations_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_custom_detection_rule_associations <- guardduty_list_custom_detection_rule_associations
+
+#' Returns all organization-level configurations for custom detection rules
+#'
+#' @description
+#' Returns all organization-level configurations for custom detection rules. You can filter the results by status.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_custom_detection_rule_org_configurations/](https://www.paws-r-sdk.com/docs/guardduty_list_custom_detection_rule_org_configurations/) for full documentation.
+#'
+#' @param MaxResults The maximum number of results to return in a single page. Minimum value of 1, maximum value of 100.
+#' @param NextToken A pagination token from a previous response. Use this token to retrieve the next page of results.
+#' @param Status The configuration status to filter by.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_custom_detection_rule_org_configurations
+guardduty_list_custom_detection_rule_org_configurations <- function(MaxResults = NULL, NextToken = NULL, Status = NULL) {
+  op <- new_operation(
+    name = "ListCustomDetectionRuleOrgConfigurations",
+    http_method = "GET",
+    http_path = "/custom-detection-rule/org-configuration",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Configurations"),
+    stream_api = FALSE
+  )
+  input <- .guardduty$list_custom_detection_rule_org_configurations_input(MaxResults = MaxResults, NextToken = NextToken, Status = Status)
+  output <- .guardduty$list_custom_detection_rule_org_configurations_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_custom_detection_rule_org_configurations <- guardduty_list_custom_detection_rule_org_configurations
+
+#' Returns all available custom detection rules in GuardDuty
+#'
+#' @description
+#' Returns all available custom detection rules in GuardDuty. You can filter the results by data source, severity, tactic, technique, and service.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_custom_detection_rules/](https://www.paws-r-sdk.com/docs/guardduty_list_custom_detection_rules/) for full documentation.
+#'
+#' @param MaxResults The maximum number of results to return in a single page. Minimum value of 1, maximum value of 100.
+#' @param NextToken A pagination token from a previous response. Use this token to retrieve the next page of results.
+#' @param Filters A list of filter criteria to apply when listing custom detection rules.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_custom_detection_rules
+guardduty_list_custom_detection_rules <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListCustomDetectionRules",
+    http_method = "POST",
+    http_path = "/custom-detection-rule/rule",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Rules"),
+    stream_api = FALSE
+  )
+  input <- .guardduty$list_custom_detection_rules_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
+  output <- .guardduty$list_custom_detection_rules_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_custom_detection_rules <- guardduty_list_custom_detection_rules
+
 #' Lists detectorIds of all the existing Amazon GuardDuty detector
 #' resources
 #'
@@ -3465,6 +3857,42 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
   return(response)
 }
 .guardduty$operations$list_ip_sets <- guardduty_list_ip_sets
+
+#' This API is currently available as a preview
+#'
+#' @description
+#' This API is currently available as a preview. This feature is available in the following Amazon Web Services Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe (Stockholm), and Asia Pacific (Tokyo).
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_investigations/](https://www.paws-r-sdk.com/docs/guardduty_list_investigations/) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector whose investigations you want to list.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in the GuardDuty console, or run the [`list_detectors`][guardduty_list_detectors] API.
+#' @param SortCriteria Represents the criteria used for sorting investigations.
+#' @param MaxResults You can use this parameter to indicate the maximum number of items you want in the response. The default value is 50.
+#' @param NextToken You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the list action. For subsequent calls to the action, fill nextToken in the request with the value of NextToken from the previous response to continue listing data.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_investigations
+guardduty_list_investigations <- function(DetectorId, SortCriteria = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListInvestigations",
+    http_method = "POST",
+    http_path = "/detector/{DetectorId}/investigation/list",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Investigations"),
+    stream_api = FALSE
+  )
+  input <- .guardduty$list_investigations_input(DetectorId = DetectorId, SortCriteria = SortCriteria, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .guardduty$list_investigations_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_investigations <- guardduty_list_investigations
 
 #' Lists all GuardDuty membership invitations that were sent to the current
 #' Amazon Web Services account
@@ -4039,6 +4467,74 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .guardduty$operations$untag_resource <- guardduty_untag_resource
 
+#' Updates the mode of an existing custom detection rule association
+#'
+#' @description
+#' Updates the mode of an existing custom detection rule association.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_update_custom_detection_rule_association/](https://www.paws-r-sdk.com/docs/guardduty_update_custom_detection_rule_association/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param AssociationId &#91;required&#93; The unique identifier for the association to update.
+#' @param Mode &#91;required&#93; The rule execution mode. Valid values: `LIVE` | `DRY_RUN`.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_update_custom_detection_rule_association
+guardduty_update_custom_detection_rule_association <- function(RuleId, AssociationId, Mode) {
+  op <- new_operation(
+    name = "UpdateCustomDetectionRuleAssociation",
+    http_method = "PUT",
+    http_path = "/custom-detection-rule/rule/{RuleId}/association/{AssociationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$update_custom_detection_rule_association_input(RuleId = RuleId, AssociationId = AssociationId, Mode = Mode)
+  output <- .guardduty$update_custom_detection_rule_association_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$update_custom_detection_rule_association <- guardduty_update_custom_detection_rule_association
+
+#' Updates the organization-level configuration for a custom detection
+#' rule, including the mode and include/exclude account lists
+#'
+#' @description
+#' Updates the organization-level configuration for a custom detection rule, including the mode and include/exclude account lists.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_update_custom_detection_rule_org_configuration/](https://www.paws-r-sdk.com/docs/guardduty_update_custom_detection_rule_org_configuration/) for full documentation.
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param Mode &#91;required&#93; The execution mode of the organization configuration. Valid values: `LIVE` | `DRY_RUN`.
+#' @param IncludeAccountIds The account IDs to include in the organization configuration. Mutually exclusive with `ExcludeAccountIds`.
+#' @param ExcludeAccountIds The account IDs to exclude from the organization configuration. Mutually exclusive with `IncludeAccountIds`.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_update_custom_detection_rule_org_configuration
+guardduty_update_custom_detection_rule_org_configuration <- function(RuleId, Mode, IncludeAccountIds = NULL, ExcludeAccountIds = NULL) {
+  op <- new_operation(
+    name = "UpdateCustomDetectionRuleOrgConfiguration",
+    http_method = "PUT",
+    http_path = "/custom-detection-rule/org-configuration/{RuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$update_custom_detection_rule_org_configuration_input(RuleId = RuleId, Mode = Mode, IncludeAccountIds = IncludeAccountIds, ExcludeAccountIds = ExcludeAccountIds)
+  output <- .guardduty$update_custom_detection_rule_org_configuration_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$update_custom_detection_rule_org_configuration <- guardduty_update_custom_detection_rule_org_configuration
+
 #' Updates the GuardDuty detector specified by the detector ID
 #'
 #' @description
@@ -4107,8 +4603,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' -   createdAt
 #' 
 #'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
-#' 
-#' -   description
 #' 
 #' -   id
 #' 
@@ -4444,10 +4938,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' 
 #' -   resource.rdsDbInstanceDetails.publiclyAccessible
 #' 
-#' -   resource.rdsDbInstanceDetails.tags.key
-#' 
-#' -   resource.rdsDbInstanceDetails.tags.value
-#' 
 #' -   resource.rdsDbInstanceDetails.vpcId
 #' 
 #' -   resource.rdsDbInstanceDetails.vpcSecurityGroups.status
@@ -4545,8 +5035,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' -   schemaVersion
 #' 
 #' -   service.action.actionType
-#' 
-#' -   service.action.awsApiCallAction.affectedResources
 #' 
 #' -   service.action.awsApiCallAction.api
 #' 
@@ -4835,10 +5323,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' -   service.archived
 #' 
 #' -   service.count
-#' 
-#' -   service.detection.anomaly.profiles
-#' 
-#' -   service.detection.anomaly.unusual.behavior
 #' 
 #' -   service.detection.sequence.actors.id
 #' 
@@ -5411,8 +5895,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #'     -   **Critical**: `["9", "10"]`
 #' 
 #'     For more information, see [Findings severity levels](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings-severity.html) in the *Amazon GuardDuty User Guide*.
-#' 
-#' -   title
 #' 
 #' -   type
 #' 

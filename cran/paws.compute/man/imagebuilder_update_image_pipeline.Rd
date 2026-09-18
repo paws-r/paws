@@ -28,7 +28,7 @@ imagebuilder_update_image_pipeline(
 
 \item{description}{The description of the image pipeline.}
 
-\item{imageRecipeArn}{The Amazon Resource Name (ARN) of the image recipe that will be used to configure images updated by this image pipeline.}
+\item{imageRecipeArn}{The Amazon Resource Name (ARN) of the image recipe that configures images updated by this image pipeline.}
 
 \item{containerRecipeArn}{The Amazon Resource Name (ARN) of the container pipeline to update.}
 
@@ -38,13 +38,13 @@ imagebuilder_update_image_pipeline(
 
 \item{imageTestsConfiguration}{The image test configuration of the image pipeline.}
 
-\item{enhancedImageMetadataEnabled}{Collects additional information about the image being created, including the operating system (OS) version and package list. This information is used to enhance the overall experience of using EC2 Image Builder. Enabled by default.}
+\item{enhancedImageMetadataEnabled}{Specifies whether to collect additional information about the image being created, including the operating system (OS) version and package list. Defaults to \code{true}.}
 
 \item{schedule}{The schedule of the image pipeline.}
 
 \item{status}{The status of the image pipeline.}
 
-\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 
 \item{imageScanningConfiguration}{Contains settings for vulnerability scans.}
 
@@ -57,7 +57,7 @@ imagebuilder_update_image_pipeline(
 \item{imageTags}{The tags to be applied to the images produced by this pipeline.}
 }
 \description{
-Updates an image pipeline. Image pipelines enable you to automate the creation and distribution of images. You must specify exactly one recipe for your image, using either a \code{containerRecipeArn} or an \code{imageRecipeArn}.
+Updates an image pipeline. Use image pipelines to automate the creation and distribution of images. You must specify exactly one recipe for your image, using either a \code{containerRecipeArn} or an \code{imageRecipeArn}.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_update_image_pipeline/} for full documentation.
 }

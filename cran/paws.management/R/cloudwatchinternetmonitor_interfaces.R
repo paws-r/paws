@@ -5,192 +5,160 @@ NULL
 
 .cloudwatchinternetmonitor$create_monitor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MonitorName = structure(logical(0), tags = list(type = "string")), Resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), MaxCityNetworksToMonitor = structure(logical(0), tags = list(type = "integer", box = TRUE)), InternetMeasurementsLogDelivery = structure(list(S3Config = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), BucketPrefix = structure(logical(0), tags = list(type = "string")), LogDeliveryStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), TrafficPercentageToMonitor = structure(logical(0), tags = list(type = "integer", box = TRUE)), HealthEventsConfig = structure(list(AvailabilityScoreThreshold = structure(logical(0), tags = list(type = "double")), PerformanceScoreThreshold = structure(logical(0), tags = list(type = "double")), AvailabilityLocalHealthEventsConfig = structure(list(Status = structure(logical(0), tags = list(type = "string")), HealthScoreThreshold = structure(logical(0), tags = list(type = "double")), MinTrafficImpact = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), PerformanceLocalHealthEventsConfig = structure(list(Status = structure(logical(0), tags = list(type = "string")), HealthScoreThreshold = structure(logical(0), tags = list(type = "double")), MinTrafficImpact = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["create_monitor_input"]]))
 }
 
 .cloudwatchinternetmonitor$create_monitor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["create_monitor_output"]]))
 }
 
 .cloudwatchinternetmonitor$delete_monitor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MonitorName = structure(logical(0), tags = list(location = "uri", locationName = "MonitorName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["delete_monitor_input"]]))
 }
 
 .cloudwatchinternetmonitor$delete_monitor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["delete_monitor_output"]]))
 }
 
 .cloudwatchinternetmonitor$get_health_event_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MonitorName = structure(logical(0), tags = list(location = "uri", locationName = "MonitorName", type = "string")), EventId = structure(logical(0), tags = list(location = "uri", locationName = "EventId", type = "string")), LinkedAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "LinkedAccountId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["get_health_event_input"]]))
 }
 
 .cloudwatchinternetmonitor$get_health_event_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EventArn = structure(logical(0), tags = list(type = "string")), EventId = structure(logical(0), tags = list(type = "string")), StartedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), EndedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), CreatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), ImpactedLocations = structure(list(structure(list(ASName = structure(logical(0), tags = list(type = "string")), ASNumber = structure(logical(0), tags = list(type = "long", box = TRUE)), Country = structure(logical(0), tags = list(type = "string")), Subdivision = structure(logical(0), tags = list(type = "string")), Metro = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), Latitude = structure(logical(0), tags = list(type = "double", box = TRUE)), Longitude = structure(logical(0), tags = list(type = "double", box = TRUE)), CountryCode = structure(logical(0), tags = list(type = "string")), SubdivisionCode = structure(logical(0), tags = list(type = "string")), ServiceLocation = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CausedBy = structure(list(Networks = structure(list(structure(list(ASName = structure(logical(0), tags = list(type = "string")), ASNumber = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), AsPath = structure(list(structure(list(ASName = structure(logical(0), tags = list(type = "string")), ASNumber = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NetworkEventType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InternetHealth = structure(list(Availability = structure(list(ExperienceScore = structure(logical(0), tags = list(type = "double", box = TRUE)), PercentOfTotalTrafficImpacted = structure(logical(0), tags = list(type = "double", box = TRUE)), PercentOfClientLocationImpacted = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), Performance = structure(list(ExperienceScore = structure(logical(0), tags = list(type = "double", box = TRUE)), PercentOfTotalTrafficImpacted = structure(logical(0), tags = list(type = "double", box = TRUE)), PercentOfClientLocationImpacted = structure(logical(0), tags = list(type = "double", box = TRUE)), RoundTripTime = structure(list(P50 = structure(logical(0), tags = list(type = "double", box = TRUE)), P90 = structure(logical(0), tags = list(type = "double", box = TRUE)), P95 = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Ipv4Prefixes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), PercentOfTotalTrafficImpacted = structure(logical(0), tags = list(type = "double", box = TRUE)), ImpactType = structure(logical(0), tags = list(type = "string")), HealthScoreThreshold = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["get_health_event_output"]]))
 }
 
 .cloudwatchinternetmonitor$get_internet_event_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EventId = structure(logical(0), tags = list(location = "uri", locationName = "EventId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["get_internet_event_input"]]))
 }
 
 .cloudwatchinternetmonitor$get_internet_event_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EventId = structure(logical(0), tags = list(type = "string")), EventArn = structure(logical(0), tags = list(type = "string")), StartedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), EndedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), ClientLocation = structure(list(ASName = structure(logical(0), tags = list(type = "string")), ASNumber = structure(logical(0), tags = list(type = "long", box = TRUE)), Country = structure(logical(0), tags = list(type = "string")), Subdivision = structure(logical(0), tags = list(type = "string")), Metro = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), Latitude = structure(logical(0), tags = list(type = "double", box = TRUE)), Longitude = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), EventType = structure(logical(0), tags = list(type = "string")), EventStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["get_internet_event_output"]]))
 }
 
 .cloudwatchinternetmonitor$get_monitor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MonitorName = structure(logical(0), tags = list(location = "uri", locationName = "MonitorName", type = "string")), LinkedAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "LinkedAccountId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["get_monitor_input"]]))
 }
 
 .cloudwatchinternetmonitor$get_monitor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MonitorName = structure(logical(0), tags = list(type = "string")), MonitorArn = structure(logical(0), tags = list(type = "string")), Resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), ModifiedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), ProcessingStatus = structure(logical(0), tags = list(type = "string")), ProcessingStatusInfo = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), MaxCityNetworksToMonitor = structure(logical(0), tags = list(type = "integer", box = TRUE)), InternetMeasurementsLogDelivery = structure(list(S3Config = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), BucketPrefix = structure(logical(0), tags = list(type = "string")), LogDeliveryStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), TrafficPercentageToMonitor = structure(logical(0), tags = list(type = "integer", box = TRUE)), HealthEventsConfig = structure(list(AvailabilityScoreThreshold = structure(logical(0), tags = list(type = "double")), PerformanceScoreThreshold = structure(logical(0), tags = list(type = "double")), AvailabilityLocalHealthEventsConfig = structure(list(Status = structure(logical(0), tags = list(type = "string")), HealthScoreThreshold = structure(logical(0), tags = list(type = "double")), MinTrafficImpact = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), PerformanceLocalHealthEventsConfig = structure(list(Status = structure(logical(0), tags = list(type = "string")), HealthScoreThreshold = structure(logical(0), tags = list(type = "double")), MinTrafficImpact = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["get_monitor_output"]]))
 }
 
 .cloudwatchinternetmonitor$get_query_results_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MonitorName = structure(logical(0), tags = list(location = "uri", locationName = "MonitorName", type = "string")), QueryId = structure(logical(0), tags = list(location = "uri", locationName = "QueryId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["get_query_results_input"]]))
 }
 
 .cloudwatchinternetmonitor$get_query_results_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Fields = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Data = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["get_query_results_output"]]))
 }
 
 .cloudwatchinternetmonitor$get_query_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MonitorName = structure(logical(0), tags = list(location = "uri", locationName = "MonitorName", type = "string")), QueryId = structure(logical(0), tags = list(location = "uri", locationName = "QueryId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["get_query_status_input"]]))
 }
 
 .cloudwatchinternetmonitor$get_query_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["get_query_status_output"]]))
 }
 
 .cloudwatchinternetmonitor$list_health_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MonitorName = structure(logical(0), tags = list(location = "uri", locationName = "MonitorName", type = "string")), StartTime = structure(logical(0), tags = list(location = "querystring", locationName = "StartTime", type = "timestamp", timestampFormat = "iso8601")), EndTime = structure(logical(0), tags = list(location = "querystring", locationName = "EndTime", type = "timestamp", timestampFormat = "iso8601")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer", box = TRUE)), EventStatus = structure(logical(0), tags = list(location = "querystring", locationName = "EventStatus", type = "string")), LinkedAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "LinkedAccountId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["list_health_events_input"]]))
 }
 
 .cloudwatchinternetmonitor$list_health_events_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HealthEvents = structure(list(structure(list(EventArn = structure(logical(0), tags = list(type = "string")), EventId = structure(logical(0), tags = list(type = "string")), StartedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), EndedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), CreatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), ImpactedLocations = structure(list(structure(list(ASName = structure(logical(0), tags = list(type = "string")), ASNumber = structure(logical(0), tags = list(type = "long", box = TRUE)), Country = structure(logical(0), tags = list(type = "string")), Subdivision = structure(logical(0), tags = list(type = "string")), Metro = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), Latitude = structure(logical(0), tags = list(type = "double", box = TRUE)), Longitude = structure(logical(0), tags = list(type = "double", box = TRUE)), CountryCode = structure(logical(0), tags = list(type = "string")), SubdivisionCode = structure(logical(0), tags = list(type = "string")), ServiceLocation = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CausedBy = structure(list(Networks = structure(list(structure(list(ASName = structure(logical(0), tags = list(type = "string")), ASNumber = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), AsPath = structure(list(structure(list(ASName = structure(logical(0), tags = list(type = "string")), ASNumber = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NetworkEventType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InternetHealth = structure(list(Availability = structure(list(ExperienceScore = structure(logical(0), tags = list(type = "double", box = TRUE)), PercentOfTotalTrafficImpacted = structure(logical(0), tags = list(type = "double", box = TRUE)), PercentOfClientLocationImpacted = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), Performance = structure(list(ExperienceScore = structure(logical(0), tags = list(type = "double", box = TRUE)), PercentOfTotalTrafficImpacted = structure(logical(0), tags = list(type = "double", box = TRUE)), PercentOfClientLocationImpacted = structure(logical(0), tags = list(type = "double", box = TRUE)), RoundTripTime = structure(list(P50 = structure(logical(0), tags = list(type = "double", box = TRUE)), P90 = structure(logical(0), tags = list(type = "double", box = TRUE)), P95 = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Ipv4Prefixes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), PercentOfTotalTrafficImpacted = structure(logical(0), tags = list(type = "double", box = TRUE)), ImpactType = structure(logical(0), tags = list(type = "string")), HealthScoreThreshold = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["list_health_events_output"]]))
 }
 
 .cloudwatchinternetmonitor$list_internet_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "InternetEventMaxResults", type = "integer", box = TRUE)), StartTime = structure(logical(0), tags = list(location = "querystring", locationName = "StartTime", type = "timestamp", timestampFormat = "iso8601")), EndTime = structure(logical(0), tags = list(location = "querystring", locationName = "EndTime", type = "timestamp", timestampFormat = "iso8601")), EventStatus = structure(logical(0), tags = list(location = "querystring", locationName = "EventStatus", type = "string")), EventType = structure(logical(0), tags = list(location = "querystring", locationName = "EventType", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["list_internet_events_input"]]))
 }
 
 .cloudwatchinternetmonitor$list_internet_events_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InternetEvents = structure(list(structure(list(EventId = structure(logical(0), tags = list(type = "string")), EventArn = structure(logical(0), tags = list(type = "string")), StartedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), EndedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), ClientLocation = structure(list(ASName = structure(logical(0), tags = list(type = "string")), ASNumber = structure(logical(0), tags = list(type = "long", box = TRUE)), Country = structure(logical(0), tags = list(type = "string")), Subdivision = structure(logical(0), tags = list(type = "string")), Metro = structure(logical(0), tags = list(type = "string")), City = structure(logical(0), tags = list(type = "string")), Latitude = structure(logical(0), tags = list(type = "double", box = TRUE)), Longitude = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), EventType = structure(logical(0), tags = list(type = "string")), EventStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["list_internet_events_output"]]))
 }
 
 .cloudwatchinternetmonitor$list_monitors_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer", box = TRUE)), MonitorStatus = structure(logical(0), tags = list(location = "querystring", locationName = "MonitorStatus", type = "string")), IncludeLinkedAccounts = structure(logical(0), tags = list(location = "querystring", locationName = "IncludeLinkedAccounts", type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["list_monitors_input"]]))
 }
 
 .cloudwatchinternetmonitor$list_monitors_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Monitors = structure(list(structure(list(MonitorName = structure(logical(0), tags = list(type = "string")), MonitorArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ProcessingStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["list_monitors_output"]]))
 }
 
 .cloudwatchinternetmonitor$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["list_tags_for_resource_input"]]))
 }
 
 .cloudwatchinternetmonitor$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["list_tags_for_resource_output"]]))
 }
 
 .cloudwatchinternetmonitor$start_query_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MonitorName = structure(logical(0), tags = list(location = "uri", locationName = "MonitorName", type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), EndTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), QueryType = structure(logical(0), tags = list(type = "string")), FilterParameters = structure(list(structure(list(Field = structure(logical(0), tags = list(type = "string")), Operator = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), LinkedAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["start_query_input"]]))
 }
 
 .cloudwatchinternetmonitor$start_query_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["start_query_output"]]))
 }
 
 .cloudwatchinternetmonitor$stop_query_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MonitorName = structure(logical(0), tags = list(location = "uri", locationName = "MonitorName", type = "string")), QueryId = structure(logical(0), tags = list(location = "uri", locationName = "QueryId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["stop_query_input"]]))
 }
 
 .cloudwatchinternetmonitor$stop_query_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["stop_query_output"]]))
 }
 
 .cloudwatchinternetmonitor$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["tag_resource_input"]]))
 }
 
 .cloudwatchinternetmonitor$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["tag_resource_output"]]))
 }
 
 .cloudwatchinternetmonitor$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["untag_resource_input"]]))
 }
 
 .cloudwatchinternetmonitor$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["untag_resource_output"]]))
 }
 
 .cloudwatchinternetmonitor$update_monitor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MonitorName = structure(logical(0), tags = list(location = "uri", locationName = "MonitorName", type = "string")), ResourcesToAdd = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourcesToRemove = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), MaxCityNetworksToMonitor = structure(logical(0), tags = list(type = "integer", box = TRUE)), InternetMeasurementsLogDelivery = structure(list(S3Config = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), BucketPrefix = structure(logical(0), tags = list(type = "string")), LogDeliveryStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), TrafficPercentageToMonitor = structure(logical(0), tags = list(type = "integer", box = TRUE)), HealthEventsConfig = structure(list(AvailabilityScoreThreshold = structure(logical(0), tags = list(type = "double")), PerformanceScoreThreshold = structure(logical(0), tags = list(type = "double")), AvailabilityLocalHealthEventsConfig = structure(list(Status = structure(logical(0), tags = list(type = "string")), HealthScoreThreshold = structure(logical(0), tags = list(type = "double")), MinTrafficImpact = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), PerformanceLocalHealthEventsConfig = structure(list(Status = structure(logical(0), tags = list(type = "string")), HealthScoreThreshold = structure(logical(0), tags = list(type = "double")), MinTrafficImpact = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["update_monitor_input"]]))
 }
 
 .cloudwatchinternetmonitor$update_monitor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MonitorArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchinternetmonitor_shapes[["update_monitor_output"]]))
 }

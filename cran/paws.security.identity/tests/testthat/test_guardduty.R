@@ -1,5 +1,29 @@
 svc <- paws::guardduty()
 
+test_that("list_custom_detection_rule_associations", {
+  expect_error(svc$list_custom_detection_rule_associations(), NA)
+})
+
+test_that("list_custom_detection_rule_associations", {
+  expect_error(svc$list_custom_detection_rule_associations(MaxResults = 20), NA)
+})
+
+test_that("list_custom_detection_rule_org_configurations", {
+  expect_error(svc$list_custom_detection_rule_org_configurations(), NA)
+})
+
+test_that("list_custom_detection_rule_org_configurations", {
+  expect_error(svc$list_custom_detection_rule_org_configurations(MaxResults = 20), NA)
+})
+
+test_that("list_custom_detection_rules", {
+  expect_error(svc$list_custom_detection_rules(), NA)
+})
+
+test_that("list_custom_detection_rules", {
+  expect_error(svc$list_custom_detection_rules(MaxResults = 20), NA)
+})
+
 test_that("list_detectors", {
   expect_error(svc$list_detectors(), NA)
 })

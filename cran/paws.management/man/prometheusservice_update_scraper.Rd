@@ -10,7 +10,8 @@ prometheusservice_update_scraper(
   scrapeConfiguration = NULL,
   destination = NULL,
   roleConfiguration = NULL,
-  clientToken = NULL
+  clientToken = NULL,
+  exporters = NULL
 )
 }
 \arguments{
@@ -22,11 +23,13 @@ prometheusservice_update_scraper(
 
 For more information about configuring a scraper, see \href{https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html}{Using an Amazon Web Services managed collector} in the \emph{Amazon Managed Service for Prometheus User Guide}.}
 
-\item{destination}{The new Amazon Managed Service for Prometheus workspace to send metrics to.}
+\item{destination}{The new destination where the scraper sends metrics. Valid destinations are Amazon Managed Service for Prometheus workspaces and CloudWatch datasets.}
 
 \item{roleConfiguration}{Use this structure to enable cross-account access, so that you can use a target account to access Prometheus metrics from source accounts.}
 
 \item{clientToken}{A unique identifier that you can provide to ensure the idempotency of the request. Case-sensitive.}
+
+\item{exporters}{The exporter configurations for the scraper. You can configure at most one Amazon OpenSearch Service domain. If you don't specify a value, the existing exporter configuration remains unchanged.}
 }
 \description{
 Updates an existing scraper.

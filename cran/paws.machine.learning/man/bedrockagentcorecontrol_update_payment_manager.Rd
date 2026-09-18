@@ -10,7 +10,8 @@ bedrockagentcorecontrol_update_payment_manager(
   authorizerType = NULL,
   authorizerConfiguration = NULL,
   roleArn = NULL,
-  clientToken = NULL
+  clientToken = NULL,
+  kmsKeyArn = NULL
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ bedrockagentcorecontrol_update_payment_manager(
 \item{roleArn}{The updated Amazon Resource Name (ARN) of the IAM role for the payment manager.}
 
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
+
+\item{kmsKeyArn}{The updated Amazon Resource Name (ARN) of the customer managed KMS key used to encrypt sensitive payment manager data at rest.}
 }
 \description{
 Updates an existing payment manager. This operation uses PATCH semantics, so you only need to specify the fields you want to change.

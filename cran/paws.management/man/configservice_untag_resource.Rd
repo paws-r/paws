@@ -17,6 +17,7 @@ configservice_untag_resource(ResourceArn, TagKeys)
 \item \code{ConfigurationAggregator}
 \item \code{AggregationAuthorization}
 \item \code{StoredQuery}
+\item \code{Connector}
 }}
 
 \item{TagKeys}{[required] The keys of the tags to be removed.}

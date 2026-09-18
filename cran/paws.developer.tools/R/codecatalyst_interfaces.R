@@ -5,446 +5,372 @@ NULL
 
 .codecatalyst$create_access_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), expiresTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["create_access_token_input"]]))
 }
 
 .codecatalyst$create_access_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(secret = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string")), expiresTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), accessTokenId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["create_access_token_output"]]))
 }
 
 .codecatalyst$create_dev_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), repositories = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), branchName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(type = "string")), alias = structure(logical(0), tags = list(type = "string")), ides = structure(list(structure(list(runtime = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), instanceType = structure(logical(0), tags = list(type = "string")), inactivityTimeoutMinutes = structure(logical(0), tags = list(type = "integer")), persistentStorage = structure(list(sizeInGiB = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), vpcConnectionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["create_dev_environment_input"]]))
 }
 
 .codecatalyst$create_dev_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), vpcConnectionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["create_dev_environment_output"]]))
 }
 
 .codecatalyst$create_project_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), displayName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["create_project_input"]]))
 }
 
 .codecatalyst$create_project_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["create_project_output"]]))
 }
 
 .codecatalyst$create_source_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["create_source_repository_input"]]))
 }
 
 .codecatalyst$create_source_repository_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["create_source_repository_output"]]))
 }
 
 .codecatalyst$create_source_repository_branch_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), sourceRepositoryName = structure(logical(0), tags = list(location = "uri", locationName = "sourceRepositoryName", type = "string")), name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), headCommitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["create_source_repository_branch_input"]]))
 }
 
 .codecatalyst$create_source_repository_branch_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ref = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), headCommitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["create_source_repository_branch_output"]]))
 }
 
 .codecatalyst$delete_access_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["delete_access_token_input"]]))
 }
 
 .codecatalyst$delete_access_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["delete_access_token_output"]]))
 }
 
 .codecatalyst$delete_dev_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["delete_dev_environment_input"]]))
 }
 
 .codecatalyst$delete_dev_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["delete_dev_environment_output"]]))
 }
 
 .codecatalyst$delete_project_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["delete_project_input"]]))
 }
 
 .codecatalyst$delete_project_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["delete_project_output"]]))
 }
 
 .codecatalyst$delete_source_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["delete_source_repository_input"]]))
 }
 
 .codecatalyst$delete_source_repository_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["delete_source_repository_output"]]))
 }
 
 .codecatalyst$delete_space_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["delete_space_input"]]))
 }
 
 .codecatalyst$delete_space_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["delete_space_output"]]))
 }
 
 .codecatalyst$get_dev_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_dev_environment_input"]]))
 }
 
 .codecatalyst$get_dev_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), creatorId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), repositories = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), branchName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), alias = structure(logical(0), tags = list(type = "string")), ides = structure(list(structure(list(runtime = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), instanceType = structure(logical(0), tags = list(type = "string")), inactivityTimeoutMinutes = structure(logical(0), tags = list(type = "integer")), persistentStorage = structure(list(sizeInGiB = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), vpcConnectionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_dev_environment_output"]]))
 }
 
 .codecatalyst$get_project_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_project_input"]]))
 }
 
 .codecatalyst$get_project_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_project_output"]]))
 }
 
 .codecatalyst$get_source_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_source_repository_input"]]))
 }
 
 .codecatalyst$get_source_repository_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_source_repository_output"]]))
 }
 
 .codecatalyst$get_source_repository_clone_urls_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), sourceRepositoryName = structure(logical(0), tags = list(location = "uri", locationName = "sourceRepositoryName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_source_repository_clone_urls_input"]]))
 }
 
 .codecatalyst$get_source_repository_clone_urls_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(https = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_source_repository_clone_urls_output"]]))
 }
 
 .codecatalyst$get_space_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_space_input"]]))
 }
 
 .codecatalyst$get_space_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_space_output"]]))
 }
 
 .codecatalyst$get_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_subscription_input"]]))
 }
 
 .codecatalyst$get_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subscriptionType = structure(logical(0), tags = list(type = "string")), awsAccountName = structure(logical(0), tags = list(type = "string")), pendingSubscriptionType = structure(logical(0), tags = list(type = "string")), pendingSubscriptionStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_subscription_output"]]))
 }
 
 .codecatalyst$get_user_details_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "querystring", locationName = "id", type = "string")), userName = structure(logical(0), tags = list(location = "querystring", locationName = "userName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_user_details_input"]]))
 }
 
 .codecatalyst$get_user_details_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(userId = structure(logical(0), tags = list(type = "string")), userName = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string")), primaryEmail = structure(list(email = structure(logical(0), tags = list(type = "string")), verified = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_user_details_output"]]))
 }
 
 .codecatalyst$get_workflow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_workflow_input"]]))
 }
 
 .codecatalyst$get_workflow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), sourceRepositoryName = structure(logical(0), tags = list(type = "string")), sourceBranchName = structure(logical(0), tags = list(type = "string")), definition = structure(list(path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), runMode = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_workflow_output"]]))
 }
 
 .codecatalyst$get_workflow_run_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_workflow_run_input"]]))
 }
 
 .codecatalyst$get_workflow_run_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), workflowId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusReasons = structure(list(structure(list(), tags = list(type = "structure"))), tags = list(type = "list")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["get_workflow_run_output"]]))
 }
 
 .codecatalyst$list_access_tokens_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_access_tokens_input"]]))
 }
 
 .codecatalyst$list_access_tokens_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), expiresTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_access_tokens_output"]]))
 }
 
 .codecatalyst$list_dev_environment_sessions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), devEnvironmentId = structure(logical(0), tags = list(location = "uri", locationName = "devEnvironmentId", type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_dev_environment_sessions_input"]]))
 }
 
 .codecatalyst$list_dev_environment_sessions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(spaceName = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string")), devEnvironmentId = structure(logical(0), tags = list(type = "string")), startedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_dev_environment_sessions_output"]]))
 }
 
 .codecatalyst$list_dev_environments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(type = "string")), filters = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), comparisonOperator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_dev_environments_input"]]))
 }
 
 .codecatalyst$list_dev_environments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(spaceName = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), creatorId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), repositories = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), branchName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), alias = structure(logical(0), tags = list(type = "string")), ides = structure(list(structure(list(runtime = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), instanceType = structure(logical(0), tags = list(type = "string")), inactivityTimeoutMinutes = structure(logical(0), tags = list(type = "integer")), persistentStorage = structure(list(sizeInGiB = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), vpcConnectionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_dev_environments_output"]]))
 }
 
 .codecatalyst$list_event_logs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), eventName = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_event_logs_input"]]))
 }
 
 .codecatalyst$list_event_logs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), eventName = structure(logical(0), tags = list(type = "string")), eventType = structure(logical(0), tags = list(type = "string")), eventCategory = structure(logical(0), tags = list(type = "string")), eventSource = structure(logical(0), tags = list(type = "string")), eventTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), operationType = structure(logical(0), tags = list(type = "string")), userIdentity = structure(list(userType = structure(logical(0), tags = list(type = "string")), principalId = structure(logical(0), tags = list(type = "string")), userName = structure(logical(0), tags = list(type = "string")), awsAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), projectInformation = structure(list(name = structure(logical(0), tags = list(type = "string")), projectId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), requestId = structure(logical(0), tags = list(type = "string")), requestPayload = structure(list(contentType = structure(logical(0), tags = list(type = "string")), data = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), responsePayload = structure(list(contentType = structure(logical(0), tags = list(type = "string")), data = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), errorCode = structure(logical(0), tags = list(type = "string")), sourceIpAddress = structure(logical(0), tags = list(type = "string")), userAgent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_event_logs_output"]]))
 }
 
 .codecatalyst$list_projects_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), filters = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), comparisonOperator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_projects_input"]]))
 }
 
 .codecatalyst$list_projects_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_projects_output"]]))
 }
 
 .codecatalyst$list_source_repositories_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_source_repositories_input"]]))
 }
 
 .codecatalyst$list_source_repositories_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_source_repositories_output"]]))
 }
 
 .codecatalyst$list_source_repository_branches_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), sourceRepositoryName = structure(logical(0), tags = list(location = "uri", locationName = "sourceRepositoryName", type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_source_repository_branches_input"]]))
 }
 
 .codecatalyst$list_source_repository_branches_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(ref = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), headCommitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_source_repository_branches_output"]]))
 }
 
 .codecatalyst$list_spaces_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_spaces_input"]]))
 }
 
 .codecatalyst$list_spaces_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_spaces_output"]]))
 }
 
 .codecatalyst$list_workflow_runs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), workflowId = structure(logical(0), tags = list(location = "querystring", locationName = "workflowId", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), sortBy = structure(list(structure(list(), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_workflow_runs_input"]]))
 }
 
 .codecatalyst$list_workflow_runs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), workflowId = structure(logical(0), tags = list(type = "string")), workflowName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusReasons = structure(list(structure(list(), tags = list(type = "structure"))), tags = list(type = "list")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_workflow_runs_output"]]))
 }
 
 .codecatalyst$list_workflows_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), sortBy = structure(list(structure(list(), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_workflows_input"]]))
 }
 
 .codecatalyst$list_workflows_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), sourceRepositoryName = structure(logical(0), tags = list(type = "string")), sourceBranchName = structure(logical(0), tags = list(type = "string")), definition = structure(list(path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), runMode = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["list_workflows_output"]]))
 }
 
 .codecatalyst$start_dev_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), ides = structure(list(structure(list(runtime = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), instanceType = structure(logical(0), tags = list(type = "string")), inactivityTimeoutMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["start_dev_environment_input"]]))
 }
 
 .codecatalyst$start_dev_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["start_dev_environment_output"]]))
 }
 
 .codecatalyst$start_dev_environment_session_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), sessionConfiguration = structure(list(sessionType = structure(logical(0), tags = list(type = "string")), executeCommandSessionConfiguration = structure(list(command = structure(logical(0), tags = list(type = "string")), arguments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["start_dev_environment_session_input"]]))
 }
 
 .codecatalyst$start_dev_environment_session_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accessDetails = structure(list(streamUrl = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tokenValue = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE)), sessionId = structure(logical(0), tags = list(type = "string")), spaceName = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["start_dev_environment_session_output"]]))
 }
 
 .codecatalyst$start_workflow_run_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), workflowId = structure(logical(0), tags = list(location = "querystring", locationName = "workflowId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["start_workflow_run_input"]]))
 }
 
 .codecatalyst$start_workflow_run_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), workflowId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["start_workflow_run_output"]]))
 }
 
 .codecatalyst$stop_dev_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["stop_dev_environment_input"]]))
 }
 
 .codecatalyst$stop_dev_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["stop_dev_environment_output"]]))
 }
 
 .codecatalyst$stop_dev_environment_session_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), sessionId = structure(logical(0), tags = list(location = "uri", locationName = "sessionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["stop_dev_environment_session_input"]]))
 }
 
 .codecatalyst$stop_dev_environment_session_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["stop_dev_environment_session_output"]]))
 }
 
 .codecatalyst$update_dev_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), projectName = structure(logical(0), tags = list(location = "uri", locationName = "projectName", type = "string")), id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), alias = structure(logical(0), tags = list(type = "string")), ides = structure(list(structure(list(runtime = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), instanceType = structure(logical(0), tags = list(type = "string")), inactivityTimeoutMinutes = structure(logical(0), tags = list(type = "integer")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["update_dev_environment_input"]]))
 }
 
 .codecatalyst$update_dev_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), spaceName = structure(logical(0), tags = list(type = "string")), projectName = structure(logical(0), tags = list(type = "string")), alias = structure(logical(0), tags = list(type = "string")), ides = structure(list(structure(list(runtime = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), instanceType = structure(logical(0), tags = list(type = "string")), inactivityTimeoutMinutes = structure(logical(0), tags = list(type = "integer")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["update_dev_environment_output"]]))
 }
 
 .codecatalyst$update_project_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(location = "uri", locationName = "spaceName", type = "string")), name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["update_project_input"]]))
 }
 
 .codecatalyst$update_project_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(spaceName = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["update_project_output"]]))
 }
 
 .codecatalyst$update_space_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["update_space_input"]]))
 }
 
 .codecatalyst$update_space_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["update_space_output"]]))
 }
 
 .codecatalyst$verify_session_input <- function(...) {
@@ -453,6 +379,5 @@ NULL
 
 .codecatalyst$verify_session_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(identity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codecatalyst_shapes[["verify_session_output"]]))
 }

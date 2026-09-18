@@ -2,10 +2,11 @@
 % Please edit documentation in R/sesv2_operations.R
 \name{sesv2_put_configuration_set_suppression_options}
 \alias{sesv2_put_configuration_set_suppression_options}
-\title{Specify the account suppression list preferences for a configuration set}
+\title{Specify the suppression list preferences for a configuration set}
 \usage{
 sesv2_put_configuration_set_suppression_options(
   ConfigurationSetName,
+  SuppressionScope = NULL,
   SuppressedReasons = NULL,
   ValidationOptions = NULL
 )
@@ -13,16 +14,22 @@ sesv2_put_configuration_set_suppression_options(
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set to change the suppression list preferences for.}
 
-\item{SuppressedReasons}{A list that contains the reasons that email addresses are automatically added to the suppression list for your account. This list can contain any or all of the following:
+\item{SuppressionScope}{The suppression scope for the configuration set. This overrides the tenant or account suppression scope for emails sent using this configuration set. Can be one of the following:
 \itemize{
-\item \code{COMPLAINT} – Amazon SES adds an email address to the suppression list for your account when a message sent to that address results in a complaint.
-\item \code{BOUNCE} – Amazon SES adds an email address to the suppression list for your account when a message sent to that address results in a hard bounce.
+\item \code{TENANT} – Use the tenant's suppression list.
+\item \code{ACCOUNT} – Use the account-level suppression list.
+}}
+
+\item{SuppressedReasons}{A list that contains the reasons that email addresses are automatically added to the suppression list for your account or for a specific tenant. This list can contain any or all of the following:
+\itemize{
+\item \code{COMPLAINT} – Amazon SES adds an email address to the suppression list for your account or for a specific tenant when a message sent to that address results in a complaint.
+\item \code{BOUNCE} – Amazon SES adds an email address to the suppression list for your account or for a specific tenant when a message sent to that address results in a hard bounce.
 }}
 
 \item{ValidationOptions}{An object that contains information about the email address suppression preferences for the configuration set in the current Amazon Web Services Region.}
 }
 \description{
-Specify the account suppression list preferences for a configuration set.
+Specify the suppression list preferences for a configuration set. You can also use this operation to specify a \code{SuppressionScope} to override the suppression scope of the tenant or account for emails sent using this configuration set.
 
 See \url{https://www.paws-r-sdk.com/docs/sesv2_put_configuration_set_suppression_options/} for full documentation.
 }

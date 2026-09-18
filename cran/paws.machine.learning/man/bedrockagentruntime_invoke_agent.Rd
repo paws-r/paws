@@ -2,7 +2,8 @@
 % Please edit documentation in R/bedrockagentruntime_operations.R
 \name{bedrockagentruntime_invoke_agent}
 \alias{bedrockagentruntime_invoke_agent}
-\title{Sends a prompt for the agent to process and respond to}
+\title{Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no longer
+open to new customers}
 \usage{
 bedrockagentruntime_invoke_agent(
   agentAliasId,
@@ -51,7 +52,7 @@ If you include \code{returnControlInvocationResults} in the \code{sessionState} 
 To use agent streaming, you need permissions to perform the \code{bedrock:InvokeModelWithResponseStream} action.}
 }
 \description{
-Sends a prompt for the agent to process and respond to. Note the following fields for the request:
+Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no longer open to new customers. For capabilities similar to Bedrock Agents Classic, explore Amazon Bedrock AgentCore. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/agents-classic-maintenance-mode.html}{Amazon Bedrock Agents Classic availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentruntime_invoke_agent/} for full documentation.
 }

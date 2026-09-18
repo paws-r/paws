@@ -21,7 +21,8 @@ imagebuilder_create_image_pipeline(
   imageScanningConfiguration = NULL,
   workflows = NULL,
   executionRole = NULL,
-  loggingConfiguration = NULL
+  loggingConfiguration = NULL,
+  dryRun = NULL
 )
 }
 \arguments{
@@ -29,17 +30,17 @@ imagebuilder_create_image_pipeline(
 
 \item{description}{The description of the image pipeline.}
 
-\item{imageRecipeArn}{The Amazon Resource Name (ARN) of the image recipe that will be used to configure images created by this image pipeline.}
+\item{imageRecipeArn}{The Amazon Resource Name (ARN) of the image recipe that configures images created by this image pipeline.}
 
 \item{containerRecipeArn}{The Amazon Resource Name (ARN) of the container recipe that is used to configure images created by this container pipeline.}
 
-\item{infrastructureConfigurationArn}{[required] The Amazon Resource Name (ARN) of the infrastructure configuration that will be used to build images created by this image pipeline.}
+\item{infrastructureConfigurationArn}{[required] The Amazon Resource Name (ARN) of the infrastructure configuration that builds images created by this image pipeline.}
 
-\item{distributionConfigurationArn}{The Amazon Resource Name (ARN) of the distribution configuration that will be used to configure and distribute images created by this image pipeline.}
+\item{distributionConfigurationArn}{The Amazon Resource Name (ARN) of the distribution configuration that configures and distributes images created by this image pipeline.}
 
 \item{imageTestsConfiguration}{The image test configuration of the image pipeline.}
 
-\item{enhancedImageMetadataEnabled}{Collects additional information about the image being created, including the operating system (OS) version and package list. This information is used to enhance the overall experience of using EC2 Image Builder. Enabled by default.}
+\item{enhancedImageMetadataEnabled}{Specifies whether to collect additional information about the image being created, including the operating system (OS) version and package list. Defaults to \code{true}.}
 
 \item{schedule}{The schedule of the image pipeline.}
 
@@ -49,7 +50,7 @@ imagebuilder_create_image_pipeline(
 
 \item{imageTags}{The tags to be applied to the images produced by this pipeline.}
 
-\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 
 \item{imageScanningConfiguration}{Contains settings for vulnerability scans.}
 
@@ -57,10 +58,12 @@ imagebuilder_create_image_pipeline(
 
 \item{executionRole}{The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions.}
 
-\item{loggingConfiguration}{Define logging configuration for the image build process.}
+\item{loggingConfiguration}{Specifies the logging configuration for the image pipeline. Use this to define custom CloudWatch Logs log groups for your pipeline execution logs and image build logs. The service manages log groups with names starting with \verb{/aws/imagebuilder/} using the service-linked role. For custom log group names outside of this prefix, you must also provide an \code{executionRole}.}
+
+\item{dryRun}{Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a \code{DryRunOperationException} error response.}
 }
 \description{
-Creates a new image pipeline. Image pipelines enable you to automate the creation and distribution of images.
+Creates a new image pipeline. Use image pipelines to automate the creation and distribution of images.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_create_image_pipeline/} for full documentation.
 }

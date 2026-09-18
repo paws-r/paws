@@ -1902,6 +1902,94 @@ codecommit_get_blob <- function(repositoryName, blobId) {
 }
 .codecommit$operations$get_blob <- codecommit_get_blob
 
+#' Returns a structured, line-level diff between two blob versions in a
+#' repository
+#'
+#' @description
+#' Returns a structured, line-level diff between two blob versions in a repository. The diff is returned as an ordered list of hunks, where each hunk represents a contiguous run of changed lines together with any surrounding unchanged context lines.
+#' 
+#' Results are paginated. Use `MaxResults` and `NextToken` to retrieve additional pages.
+#' 
+#' For the typical usage workflow, see [`get_differences`][codecommit_get_differences].
+#'
+#' @usage
+#' codecommit_get_blob_differences(repositoryName, afterBlobId,
+#'   beforeBlobId, contextLines, ignoreWhitespace, MaxResults, NextToken)
+#'
+#' @param repositoryName &#91;required&#93; The name of the repository that contains the blobs to compare.
+#' @param afterBlobId &#91;required&#93; The ID of the "after" (destination) blob in the diff. Typically the value of `afterBlob.blobId` from a `Difference` object returned by [`get_differences`][codecommit_get_differences].
+#' @param beforeBlobId The ID of the "before" (source) blob in the diff. Typically the value of `beforeBlob.blobId` from a `Difference` object returned by [`get_differences`][codecommit_get_differences].
+#' 
+#' If you do not specify a value, the operation returns a diff against an empty before-state. This is equivalent to treating the file as newly added.
+#' @param contextLines The number of unchanged lines of context to include before and after each block of changes in a hunk. Valid values are 0 through 20. Defaults to `3`.
+#' @param ignoreWhitespace Specifies whether to ignore whitespace-only changes when computing the diff. When `true`, the operation treats lines that differ only in whitespace as unchanged. Defaults to `false`.
+#' @param MaxResults The maximum number of `DiffHunk` entries to return in a single response page. Defaults to `100`.
+#' @param NextToken An enumeration token that returns the next batch of results when present in a request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   hunks = list(
+#'     list(
+#'       beforeStartLine = 123,
+#'       beforeLineCount = 123,
+#'       afterStartLine = 123,
+#'       afterLineCount = 123,
+#'       changes = list(
+#'         list(
+#'           type = "CONTEXT"|"ADD"|"DELETE",
+#'           beforeLineNumber = 123,
+#'           afterLineNumber = 123,
+#'           content = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   isBinary = TRUE|FALSE,
+#'   beforeBlobSize = 123,
+#'   afterBlobSize = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_blob_differences(
+#'   repositoryName = "string",
+#'   afterBlobId = "string",
+#'   beforeBlobId = "string",
+#'   contextLines = 123,
+#'   ignoreWhitespace = TRUE|FALSE,
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_get_blob_differences
+#'
+#' @aliases codecommit_get_blob_differences
+codecommit_get_blob_differences <- function(repositoryName, afterBlobId, beforeBlobId = NULL, contextLines = NULL, ignoreWhitespace = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetBlobDifferences",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "isBinary", "beforeBlobSize", "afterBlobSize"), output_token = "NextToken", result_key = "hunks"),
+    stream_api = FALSE
+  )
+  input <- .codecommit$get_blob_differences_input(repositoryName = repositoryName, afterBlobId = afterBlobId, beforeBlobId = beforeBlobId, contextLines = contextLines, ignoreWhitespace = ignoreWhitespace, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .codecommit$get_blob_differences_output()
+  config <- get_config()
+  svc <- .codecommit$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$get_blob_differences <- codecommit_get_blob_differences
+
 #' Returns information about a repository branch, including its name and
 #' the last commit ID
 #'
@@ -2369,6 +2457,8 @@ codecommit_get_commit <- function(repositoryName, commitId) {
 #'
 #' @description
 #' Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID, or other fully qualified reference). Results can be limited to a specified path.
+#' 
+#' For line-level diff details, pass the `beforeBlob.blobId` and `afterBlob.blobId` values from a `Difference` object to [`get_blob_differences`][codecommit_get_blob_differences].
 #'
 #' @usage
 #' codecommit_get_differences(repositoryName, beforeCommitSpecifier,

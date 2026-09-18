@@ -5,44 +5,37 @@ NULL
 
 .timestreamwrite$create_batch_load_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string", sensitive = TRUE)), DataModelConfiguration = structure(list(DataModel = structure(list(TimeColumn = structure(logical(0), tags = list(type = "string")), TimeUnit = structure(logical(0), tags = list(type = "string")), DimensionMappings = structure(list(structure(list(SourceColumn = structure(logical(0), tags = list(type = "string")), DestinationColumn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiMeasureMappings = structure(list(TargetMultiMeasureName = structure(logical(0), tags = list(type = "string")), MultiMeasureAttributeMappings = structure(list(structure(list(SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMultiMeasureAttributeName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MixedMeasureMappings = structure(list(structure(list(MeasureName = structure(logical(0), tags = list(type = "string")), SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMeasureName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string")), MultiMeasureAttributeMappings = structure(list(structure(list(SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMultiMeasureAttributeName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MeasureNameColumn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataModelS3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), DataSourceConfiguration = structure(list(DataSourceS3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CsvConfiguration = structure(list(ColumnSeparator = structure(logical(0), tags = list(type = "string")), EscapeChar = structure(logical(0), tags = list(type = "string")), QuoteChar = structure(logical(0), tags = list(type = "string")), NullValue = structure(logical(0), tags = list(type = "string")), TrimWhiteSpace = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DataFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReportConfiguration = structure(list(ReportS3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string")), EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), TargetDatabaseName = structure(logical(0), tags = list(type = "string")), TargetTableName = structure(logical(0), tags = list(type = "string")), RecordVersion = structure(logical(0), tags = list(box = TRUE, type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["create_batch_load_task_input"]]))
 }
 
 .timestreamwrite$create_batch_load_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TaskId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["create_batch_load_task_output"]]))
 }
 
 .timestreamwrite$create_database_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatabaseName = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["create_database_input"]]))
 }
 
 .timestreamwrite$create_database_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Database = structure(list(Arn = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), TableCount = structure(logical(0), tags = list(type = "long")), KmsKeyId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["create_database_output"]]))
 }
 
 .timestreamwrite$create_table_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatabaseName = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string")), RetentionProperties = structure(list(MemoryStoreRetentionPeriodInHours = structure(logical(0), tags = list(type = "long")), MagneticStoreRetentionPeriodInDays = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MagneticStoreWriteProperties = structure(list(EnableMagneticStoreWrites = structure(logical(0), tags = list(type = "boolean")), MagneticStoreRejectedDataLocation = structure(list(S3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string")), EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Schema = structure(list(CompositePartitionKey = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), EnforcementInRecord = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["create_table_input"]]))
 }
 
 .timestreamwrite$create_table_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Table = structure(list(Arn = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), TableStatus = structure(logical(0), tags = list(type = "string")), RetentionProperties = structure(list(MemoryStoreRetentionPeriodInHours = structure(logical(0), tags = list(type = "long")), MagneticStoreRetentionPeriodInDays = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), MagneticStoreWriteProperties = structure(list(EnableMagneticStoreWrites = structure(logical(0), tags = list(type = "boolean")), MagneticStoreRejectedDataLocation = structure(list(S3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string")), EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Schema = structure(list(CompositePartitionKey = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), EnforcementInRecord = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["create_table_output"]]))
 }
 
 .timestreamwrite$delete_database_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatabaseName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["delete_database_input"]]))
 }
 
 .timestreamwrite$delete_database_output <- function(...) {
@@ -51,8 +44,7 @@ NULL
 
 .timestreamwrite$delete_table_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatabaseName = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["delete_table_input"]]))
 }
 
 .timestreamwrite$delete_table_output <- function(...) {
@@ -61,168 +53,140 @@ NULL
 
 .timestreamwrite$describe_batch_load_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TaskId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["describe_batch_load_task_input"]]))
 }
 
 .timestreamwrite$describe_batch_load_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BatchLoadTaskDescription = structure(list(TaskId = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), DataSourceConfiguration = structure(list(DataSourceS3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CsvConfiguration = structure(list(ColumnSeparator = structure(logical(0), tags = list(type = "string")), EscapeChar = structure(logical(0), tags = list(type = "string")), QuoteChar = structure(logical(0), tags = list(type = "string")), NullValue = structure(logical(0), tags = list(type = "string")), TrimWhiteSpace = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DataFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProgressReport = structure(list(RecordsProcessed = structure(logical(0), tags = list(type = "long")), RecordsIngested = structure(logical(0), tags = list(type = "long")), ParseFailures = structure(logical(0), tags = list(type = "long")), RecordIngestionFailures = structure(logical(0), tags = list(type = "long")), FileFailures = structure(logical(0), tags = list(type = "long")), BytesMetered = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), ReportConfiguration = structure(list(ReportS3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string")), EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), DataModelConfiguration = structure(list(DataModel = structure(list(TimeColumn = structure(logical(0), tags = list(type = "string")), TimeUnit = structure(logical(0), tags = list(type = "string")), DimensionMappings = structure(list(structure(list(SourceColumn = structure(logical(0), tags = list(type = "string")), DestinationColumn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiMeasureMappings = structure(list(TargetMultiMeasureName = structure(logical(0), tags = list(type = "string")), MultiMeasureAttributeMappings = structure(list(structure(list(SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMultiMeasureAttributeName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MixedMeasureMappings = structure(list(structure(list(MeasureName = structure(logical(0), tags = list(type = "string")), SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMeasureName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string")), MultiMeasureAttributeMappings = structure(list(structure(list(SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMultiMeasureAttributeName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MeasureNameColumn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataModelS3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), TargetDatabaseName = structure(logical(0), tags = list(type = "string")), TargetTableName = structure(logical(0), tags = list(type = "string")), TaskStatus = structure(logical(0), tags = list(type = "string")), RecordVersion = structure(logical(0), tags = list(type = "long")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), ResumableUntil = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["describe_batch_load_task_output"]]))
 }
 
 .timestreamwrite$describe_database_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatabaseName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["describe_database_input"]]))
 }
 
 .timestreamwrite$describe_database_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Database = structure(list(Arn = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), TableCount = structure(logical(0), tags = list(type = "long")), KmsKeyId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["describe_database_output"]]))
 }
 
 .timestreamwrite$describe_endpoints_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["describe_endpoints_input"]]))
 }
 
 .timestreamwrite$describe_endpoints_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Endpoints = structure(list(structure(list(Address = structure(logical(0), tags = list(type = "string")), CachePeriodInMinutes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["describe_endpoints_output"]]))
 }
 
 .timestreamwrite$describe_table_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatabaseName = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["describe_table_input"]]))
 }
 
 .timestreamwrite$describe_table_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Table = structure(list(Arn = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), TableStatus = structure(logical(0), tags = list(type = "string")), RetentionProperties = structure(list(MemoryStoreRetentionPeriodInHours = structure(logical(0), tags = list(type = "long")), MagneticStoreRetentionPeriodInDays = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), MagneticStoreWriteProperties = structure(list(EnableMagneticStoreWrites = structure(logical(0), tags = list(type = "boolean")), MagneticStoreRejectedDataLocation = structure(list(S3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string")), EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Schema = structure(list(CompositePartitionKey = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), EnforcementInRecord = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["describe_table_output"]]))
 }
 
 .timestreamwrite$list_batch_load_tasks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), TaskStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["list_batch_load_tasks_input"]]))
 }
 
 .timestreamwrite$list_batch_load_tasks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), BatchLoadTasks = structure(list(structure(list(TaskId = structure(logical(0), tags = list(type = "string")), TaskStatus = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), ResumableUntil = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["list_batch_load_tasks_output"]]))
 }
 
 .timestreamwrite$list_databases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["list_databases_input"]]))
 }
 
 .timestreamwrite$list_databases_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Databases = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), TableCount = structure(logical(0), tags = list(type = "long")), KmsKeyId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["list_databases_output"]]))
 }
 
 .timestreamwrite$list_tables_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatabaseName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["list_tables_input"]]))
 }
 
 .timestreamwrite$list_tables_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tables = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), TableStatus = structure(logical(0), tags = list(type = "string")), RetentionProperties = structure(list(MemoryStoreRetentionPeriodInHours = structure(logical(0), tags = list(type = "long")), MagneticStoreRetentionPeriodInDays = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), MagneticStoreWriteProperties = structure(list(EnableMagneticStoreWrites = structure(logical(0), tags = list(type = "boolean")), MagneticStoreRejectedDataLocation = structure(list(S3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string")), EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Schema = structure(list(CompositePartitionKey = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), EnforcementInRecord = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["list_tables_output"]]))
 }
 
 .timestreamwrite$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["list_tags_for_resource_input"]]))
 }
 
 .timestreamwrite$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["list_tags_for_resource_output"]]))
 }
 
 .timestreamwrite$resume_batch_load_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TaskId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["resume_batch_load_task_input"]]))
 }
 
 .timestreamwrite$resume_batch_load_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["resume_batch_load_task_output"]]))
 }
 
 .timestreamwrite$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["tag_resource_input"]]))
 }
 
 .timestreamwrite$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["tag_resource_output"]]))
 }
 
 .timestreamwrite$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["untag_resource_input"]]))
 }
 
 .timestreamwrite$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["untag_resource_output"]]))
 }
 
 .timestreamwrite$update_database_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatabaseName = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["update_database_input"]]))
 }
 
 .timestreamwrite$update_database_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Database = structure(list(Arn = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), TableCount = structure(logical(0), tags = list(type = "long")), KmsKeyId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["update_database_output"]]))
 }
 
 .timestreamwrite$update_table_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatabaseName = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string")), RetentionProperties = structure(list(MemoryStoreRetentionPeriodInHours = structure(logical(0), tags = list(type = "long")), MagneticStoreRetentionPeriodInDays = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), MagneticStoreWriteProperties = structure(list(EnableMagneticStoreWrites = structure(logical(0), tags = list(type = "boolean")), MagneticStoreRejectedDataLocation = structure(list(S3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string")), EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Schema = structure(list(CompositePartitionKey = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), EnforcementInRecord = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["update_table_input"]]))
 }
 
 .timestreamwrite$update_table_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Table = structure(list(Arn = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), TableStatus = structure(logical(0), tags = list(type = "string")), RetentionProperties = structure(list(MemoryStoreRetentionPeriodInHours = structure(logical(0), tags = list(type = "long")), MagneticStoreRetentionPeriodInDays = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), MagneticStoreWriteProperties = structure(list(EnableMagneticStoreWrites = structure(logical(0), tags = list(type = "boolean")), MagneticStoreRejectedDataLocation = structure(list(S3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string")), EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Schema = structure(list(CompositePartitionKey = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), EnforcementInRecord = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["update_table_output"]]))
 }
 
 .timestreamwrite$write_records_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatabaseName = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string")), CommonAttributes = structure(list(Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), DimensionValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MeasureName = structure(logical(0), tags = list(type = "string")), MeasureValue = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string")), Time = structure(logical(0), tags = list(type = "string")), TimeUnit = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(box = TRUE, type = "long")), MeasureValues = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Records = structure(list(structure(list(Dimensions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), DimensionValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MeasureName = structure(logical(0), tags = list(type = "string")), MeasureValue = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string")), Time = structure(logical(0), tags = list(type = "string")), TimeUnit = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(box = TRUE, type = "long")), MeasureValues = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["write_records_input"]]))
 }
 
 .timestreamwrite$write_records_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecordsIngested = structure(list(Total = structure(logical(0), tags = list(type = "integer")), MemoryStore = structure(logical(0), tags = list(type = "integer")), MagneticStore = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .timestreamwrite_shapes[["write_records_output"]]))
 }

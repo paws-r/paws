@@ -5,8 +5,7 @@ NULL
 
 .apigatewaymanagementapi$delete_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectionId = structure(logical(0), tags = list(location = "uri", locationName = "connectionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewaymanagementapi_shapes[["delete_connection_input"]]))
 }
 
 .apigatewaymanagementapi$delete_connection_output <- function(...) {
@@ -15,20 +14,17 @@ NULL
 
 .apigatewaymanagementapi$get_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectionId = structure(logical(0), tags = list(location = "uri", locationName = "connectionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewaymanagementapi_shapes[["get_connection_input"]]))
 }
 
 .apigatewaymanagementapi$get_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConnectedAt = structure(logical(0), tags = list(locationName = "connectedAt", type = "timestamp", timestampFormat = "iso8601")), Identity = structure(list(SourceIp = structure(logical(0), tags = list(locationName = "sourceIp", type = "string")), UserAgent = structure(logical(0), tags = list(locationName = "userAgent", type = "string"))), tags = list(locationName = "identity", type = "structure")), LastActiveAt = structure(logical(0), tags = list(locationName = "lastActiveAt", type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewaymanagementapi_shapes[["get_connection_output"]]))
 }
 
 .apigatewaymanagementapi$post_to_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Data = structure(logical(0), tags = list(type = "blob")), ConnectionId = structure(logical(0), tags = list(location = "uri", locationName = "connectionId", type = "string"))), tags = list(type = "structure", payload = "Data"))
-  return(populate(args, shape))
+  return(populate(args, .apigatewaymanagementapi_shapes[["post_to_connection_input"]]))
 }
 
 .apigatewaymanagementapi$post_to_connection_output <- function(...) {

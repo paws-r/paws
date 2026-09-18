@@ -6,7 +6,7 @@
 \usage{
 bedrockagentcorecontrol_create_gateway_target(
   gatewayIdentifier,
-  name,
+  name = NULL,
   description = NULL,
   clientToken = NULL,
   targetConfiguration,
@@ -18,7 +18,7 @@ bedrockagentcorecontrol_create_gateway_target(
 \arguments{
 \item{gatewayIdentifier}{[required] The identifier of the gateway to create a target for.}
 
-\item{name}{[required] The name of the gateway target. The name must be unique within the gateway.}
+\item{name}{The name of the gateway target. The name must be unique within the gateway.}
 
 \item{description}{The description of the gateway target.}
 

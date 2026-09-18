@@ -5,12 +5,20 @@
 \title{Stops logging information, such as queries and connection attempts, for
 the specified Amazon Redshift cluster}
 \usage{
-redshift_disable_logging(ClusterIdentifier)
+redshift_disable_logging(
+  ClusterIdentifier,
+  LogDestinationType = NULL,
+  LogExports = NULL
+)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The identifier of the cluster on which logging is to be stopped.
 
 Example: \code{examplecluster}}
+
+\item{LogDestinationType}{The log destination type. An enum with possible values of \code{s3}, \code{cloudwatch}, and \code{s3table}. When set to \code{s3table}, stops system table publishing. When omitted, the operation disables audit logging.}
+
+\item{LogExports}{The collection of log types to stop exporting. When \code{LogDestinationType} is \code{s3table}, the values are the names of the system tables to stop publishing. Omitting this parameter or passing \code{all} stops publishing all system tables.}
 }
 \description{
 Stops logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster.

@@ -5,132 +5,110 @@ NULL
 
 .connectparticipant$cancel_participant_authentication_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string")), ConnectionToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["cancel_participant_authentication_input"]]))
 }
 
 .connectparticipant$cancel_participant_authentication_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["cancel_participant_authentication_output"]]))
 }
 
 .connectparticipant$complete_attachment_upload_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AttachmentIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ConnectionToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["complete_attachment_upload_input"]]))
 }
 
 .connectparticipant$complete_attachment_upload_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["complete_attachment_upload_output"]]))
 }
 
 .connectparticipant$create_participant_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Type = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ParticipantToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string")), ConnectParticipant = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["create_participant_connection_input"]]))
 }
 
 .connectparticipant$create_participant_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Websocket = structure(list(Url = structure(logical(0), tags = list(type = "string")), ConnectionExpiry = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ConnectionCredentials = structure(list(ConnectionToken = structure(logical(0), tags = list(type = "string")), Expiry = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), WebRTCConnection = structure(list(Attendee = structure(list(AttendeeId = structure(logical(0), tags = list(type = "string")), JoinToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), Meeting = structure(list(MediaPlacement = structure(list(AudioHostUrl = structure(logical(0), tags = list(type = "string")), AudioFallbackUrl = structure(logical(0), tags = list(type = "string")), SignalingUrl = structure(logical(0), tags = list(type = "string")), EventIngestionUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MeetingFeatures = structure(list(Audio = structure(list(EchoReduction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), MeetingId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["create_participant_connection_output"]]))
 }
 
 .connectparticipant$describe_view_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ViewToken = structure(logical(0), tags = list(location = "uri", locationName = "ViewToken", type = "string")), ConnectionToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["describe_view_input"]]))
 }
 
 .connectparticipant$describe_view_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(View = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Version = structure(logical(0), tags = list(type = "integer")), Content = structure(list(InputSchema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Template = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Actions = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["describe_view_output"]]))
 }
 
 .connectparticipant$disconnect_participant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ConnectionToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["disconnect_participant_input"]]))
 }
 
 .connectparticipant$disconnect_participant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["disconnect_participant_output"]]))
 }
 
 .connectparticipant$get_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AttachmentId = structure(logical(0), tags = list(type = "string")), ConnectionToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string")), UrlExpiryInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["get_attachment_input"]]))
 }
 
 .connectparticipant$get_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Url = structure(logical(0), tags = list(type = "string")), UrlExpiry = structure(logical(0), tags = list(type = "string")), AttachmentSizeInBytes = structure(logical(0), tags = list(box = TRUE, type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["get_attachment_output"]]))
 }
 
 .connectparticipant$get_authentication_url_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string")), RedirectUri = structure(logical(0), tags = list(type = "string")), ConnectionToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["get_authentication_url_input"]]))
 }
 
 .connectparticipant$get_authentication_url_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuthenticationUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["get_authentication_url_output"]]))
 }
 
 .connectparticipant$get_transcript_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), ScanDirection = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string")), StartPosition = structure(list(Id = structure(logical(0), tags = list(type = "string")), AbsoluteTime = structure(logical(0), tags = list(type = "string")), MostRecent = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ConnectionToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["get_transcript_input"]]))
 }
 
 .connectparticipant$get_transcript_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InitialContactId = structure(logical(0), tags = list(type = "string")), Transcript = structure(list(structure(list(AbsoluteTime = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), ParticipantId = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), ParticipantRole = structure(logical(0), tags = list(type = "string")), Attachments = structure(list(structure(list(ContentType = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), AttachmentName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MessageMetadata = structure(list(MessageId = structure(logical(0), tags = list(type = "string")), Receipts = structure(list(structure(list(DeliveredTimestamp = structure(logical(0), tags = list(type = "string")), ReadTimestamp = structure(logical(0), tags = list(type = "string")), RecipientParticipantId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MessageProcessingStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RelatedContactId = structure(logical(0), tags = list(type = "string")), ContactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["get_transcript_output"]]))
 }
 
 .connectparticipant$send_event_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContentType = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ConnectionToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["send_event_input"]]))
 }
 
 .connectparticipant$send_event_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), AbsoluteTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["send_event_output"]]))
 }
 
 .connectparticipant$send_message_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContentType = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ConnectionToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["send_message_input"]]))
 }
 
 .connectparticipant$send_message_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), AbsoluteTime = structure(logical(0), tags = list(type = "string")), MessageMetadata = structure(list(MessageProcessingStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["send_message_output"]]))
 }
 
 .connectparticipant$start_attachment_upload_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContentType = structure(logical(0), tags = list(type = "string")), AttachmentSizeInBytes = structure(logical(0), tags = list(type = "long")), AttachmentName = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ConnectionToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["start_attachment_upload_input"]]))
 }
 
 .connectparticipant$start_attachment_upload_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AttachmentId = structure(logical(0), tags = list(type = "string")), UploadMetadata = structure(list(Url = structure(logical(0), tags = list(type = "string")), UrlExpiry = structure(logical(0), tags = list(type = "string")), HeadersToInclude = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .connectparticipant_shapes[["start_attachment_upload_output"]]))
 }

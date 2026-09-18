@@ -5,8 +5,7 @@ NULL
 
 .codedeploy$add_tags_to_on_premises_instances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), instanceNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["add_tags_to_on_premises_instances_input"]]))
 }
 
 .codedeploy$add_tags_to_on_premises_instances_output <- function(...) {
@@ -15,92 +14,77 @@ NULL
 
 .codedeploy$batch_get_application_revisions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), revisions = structure(list(structure(list(revisionType = structure(logical(0), tags = list(type = "string")), s3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), bundleType = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), eTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), gitHubLocation = structure(list(repository = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), string = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "RawString and String revision type are deprecated, use AppSpecContent type instead.")), appSpecContent = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["batch_get_application_revisions_input"]]))
 }
 
 .codedeploy$batch_get_application_revisions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), revisions = structure(list(structure(list(revisionLocation = structure(list(revisionType = structure(logical(0), tags = list(type = "string")), s3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), bundleType = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), eTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), gitHubLocation = structure(list(repository = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), string = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "RawString and String revision type are deprecated, use AppSpecContent type instead.")), appSpecContent = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), genericRevisionInfo = structure(list(description = structure(logical(0), tags = list(type = "string")), deploymentGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), firstUsedTime = structure(logical(0), tags = list(type = "timestamp")), lastUsedTime = structure(logical(0), tags = list(type = "timestamp")), registerTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["batch_get_application_revisions_output"]]))
 }
 
 .codedeploy$batch_get_applications_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["batch_get_applications_input"]]))
 }
 
 .codedeploy$batch_get_applications_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationsInfo = structure(list(structure(list(applicationId = structure(logical(0), tags = list(type = "string")), applicationName = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "timestamp")), linkedToGitHub = structure(logical(0), tags = list(type = "boolean")), gitHubAccountName = structure(logical(0), tags = list(type = "string")), computePlatform = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["batch_get_applications_output"]]))
 }
 
 .codedeploy$batch_get_deployment_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), deploymentGroupNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["batch_get_deployment_groups_input"]]))
 }
 
 .codedeploy$batch_get_deployment_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentGroupsInfo = structure(list(structure(list(applicationName = structure(logical(0), tags = list(type = "string")), deploymentGroupId = structure(logical(0), tags = list(type = "string")), deploymentGroupName = structure(logical(0), tags = list(type = "string")), deploymentConfigName = structure(logical(0), tags = list(type = "string")), ec2TagFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), onPremisesInstanceTagFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), autoScalingGroups = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), hook = structure(logical(0), tags = list(type = "string")), terminationHook = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), serviceRoleArn = structure(logical(0), tags = list(type = "string")), targetRevision = structure(list(revisionType = structure(logical(0), tags = list(type = "string")), s3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), bundleType = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), eTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), gitHubLocation = structure(list(repository = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), string = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "RawString and String revision type are deprecated, use AppSpecContent type instead.")), appSpecContent = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), triggerConfigurations = structure(list(structure(list(triggerName = structure(logical(0), tags = list(type = "string")), triggerTargetArn = structure(logical(0), tags = list(type = "string")), triggerEvents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), alarmConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), ignorePollAlarmFailure = structure(logical(0), tags = list(type = "boolean")), alarms = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), autoRollbackConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), deploymentStyle = structure(list(deploymentType = structure(logical(0), tags = list(type = "string")), deploymentOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), outdatedInstancesStrategy = structure(logical(0), tags = list(type = "string")), blueGreenDeploymentConfiguration = structure(list(terminateBlueInstancesOnDeploymentSuccess = structure(list(action = structure(logical(0), tags = list(type = "string")), terminationWaitTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), deploymentReadyOption = structure(list(actionOnTimeout = structure(logical(0), tags = list(type = "string")), waitTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), greenFleetProvisioningOption = structure(list(action = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), loadBalancerInfo = structure(list(elbInfoList = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), targetGroupInfoList = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), targetGroupPairInfoList = structure(list(structure(list(targetGroups = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), prodTrafficRoute = structure(list(listenerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), testTrafficRoute = structure(list(listenerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), lastSuccessfulDeployment = structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "timestamp")), createTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), lastAttemptedDeployment = structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "timestamp")), createTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ec2TagSet = structure(list(ec2TagSetList = structure(list(structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), onPremisesTagSet = structure(list(onPremisesTagSetList = structure(list(structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), computePlatform = structure(logical(0), tags = list(type = "string")), ecsServices = structure(list(structure(list(serviceName = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), terminationHookEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["batch_get_deployment_groups_output"]]))
 }
 
 .codedeploy$batch_get_deployment_instances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), instanceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["batch_get_deployment_instances_input"]]))
 }
 
 .codedeploy$batch_get_deployment_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(instancesSummary = structure(list(structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), instanceId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "InstanceStatus is deprecated, use TargetStatus instead.")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), lifecycleEvents = structure(list(structure(list(lifecycleEventName = structure(logical(0), tags = list(type = "string")), diagnostics = structure(list(errorCode = structure(logical(0), tags = list(type = "string")), scriptName = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), logTail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), instanceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "InstanceSummary is deprecated, use DeploymentTarget instead."))), tags = list(type = "list")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["batch_get_deployment_instances_output"]]))
 }
 
 .codedeploy$batch_get_deployment_targets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), targetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["batch_get_deployment_targets_input"]]))
 }
 
 .codedeploy$batch_get_deployment_targets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentTargets = structure(list(structure(list(deploymentTargetType = structure(logical(0), tags = list(type = "string")), instanceTarget = structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), targetId = structure(logical(0), tags = list(type = "string")), targetArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), lifecycleEvents = structure(list(structure(list(lifecycleEventName = structure(logical(0), tags = list(type = "string")), diagnostics = structure(list(errorCode = structure(logical(0), tags = list(type = "string")), scriptName = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), logTail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), instanceLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lambdaTarget = structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), targetId = structure(logical(0), tags = list(type = "string")), targetArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), lifecycleEvents = structure(list(structure(list(lifecycleEventName = structure(logical(0), tags = list(type = "string")), diagnostics = structure(list(errorCode = structure(logical(0), tags = list(type = "string")), scriptName = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), logTail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), lambdaFunctionInfo = structure(list(functionName = structure(logical(0), tags = list(type = "string")), functionAlias = structure(logical(0), tags = list(type = "string")), currentVersion = structure(logical(0), tags = list(type = "string")), targetVersion = structure(logical(0), tags = list(type = "string")), targetVersionWeight = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure")), ecsTarget = structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), targetId = structure(logical(0), tags = list(type = "string")), targetArn = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), lifecycleEvents = structure(list(structure(list(lifecycleEventName = structure(logical(0), tags = list(type = "string")), diagnostics = structure(list(errorCode = structure(logical(0), tags = list(type = "string")), scriptName = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), logTail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), taskSetsInfo = structure(list(structure(list(identifer = structure(logical(0), tags = list(type = "string")), desiredCount = structure(logical(0), tags = list(type = "long")), pendingCount = structure(logical(0), tags = list(type = "long")), runningCount = structure(logical(0), tags = list(type = "long")), status = structure(logical(0), tags = list(type = "string")), trafficWeight = structure(logical(0), tags = list(type = "double")), targetGroup = structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), taskSetLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), cloudFormationTarget = structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), targetId = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), lifecycleEvents = structure(list(structure(list(lifecycleEventName = structure(logical(0), tags = list(type = "string")), diagnostics = structure(list(errorCode = structure(logical(0), tags = list(type = "string")), scriptName = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), logTail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), targetVersionWeight = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["batch_get_deployment_targets_output"]]))
 }
 
 .codedeploy$batch_get_deployments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["batch_get_deployments_input"]]))
 }
 
 .codedeploy$batch_get_deployments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentsInfo = structure(list(structure(list(applicationName = structure(logical(0), tags = list(type = "string")), deploymentGroupName = structure(logical(0), tags = list(type = "string")), deploymentConfigName = structure(logical(0), tags = list(type = "string")), deploymentId = structure(logical(0), tags = list(type = "string")), previousRevision = structure(list(revisionType = structure(logical(0), tags = list(type = "string")), s3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), bundleType = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), eTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), gitHubLocation = structure(list(repository = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), string = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "RawString and String revision type are deprecated, use AppSpecContent type instead.")), appSpecContent = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), revision = structure(list(revisionType = structure(logical(0), tags = list(type = "string")), s3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), bundleType = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), eTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), gitHubLocation = structure(list(repository = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), string = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "RawString and String revision type are deprecated, use AppSpecContent type instead.")), appSpecContent = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), errorInformation = structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createTime = structure(logical(0), tags = list(type = "timestamp")), startTime = structure(logical(0), tags = list(type = "timestamp")), completeTime = structure(logical(0), tags = list(type = "timestamp")), deploymentOverview = structure(list(Pending = structure(logical(0), tags = list(type = "long")), InProgress = structure(logical(0), tags = list(type = "long")), Succeeded = structure(logical(0), tags = list(type = "long")), Failed = structure(logical(0), tags = list(type = "long")), Skipped = structure(logical(0), tags = list(type = "long")), Ready = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string")), creator = structure(logical(0), tags = list(type = "string")), ignoreApplicationStopFailures = structure(logical(0), tags = list(type = "boolean")), autoRollbackConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), updateOutdatedInstancesOnly = structure(logical(0), tags = list(type = "boolean")), rollbackInfo = structure(list(rollbackDeploymentId = structure(logical(0), tags = list(type = "string")), rollbackTriggeringDeploymentId = structure(logical(0), tags = list(type = "string")), rollbackMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), deploymentStyle = structure(list(deploymentType = structure(logical(0), tags = list(type = "string")), deploymentOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), targetInstances = structure(list(tagFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), autoScalingGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ec2TagSet = structure(list(ec2TagSetList = structure(list(structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), instanceTerminationWaitTimeStarted = structure(logical(0), tags = list(type = "boolean")), blueGreenDeploymentConfiguration = structure(list(terminateBlueInstancesOnDeploymentSuccess = structure(list(action = structure(logical(0), tags = list(type = "string")), terminationWaitTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), deploymentReadyOption = structure(list(actionOnTimeout = structure(logical(0), tags = list(type = "string")), waitTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), greenFleetProvisioningOption = structure(list(action = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), loadBalancerInfo = structure(list(elbInfoList = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), targetGroupInfoList = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), targetGroupPairInfoList = structure(list(structure(list(targetGroups = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), prodTrafficRoute = structure(list(listenerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), testTrafficRoute = structure(list(listenerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), additionalDeploymentStatusInfo = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "AdditionalDeploymentStatusInfo is deprecated, use DeploymentStatusMessageList instead.")), fileExistsBehavior = structure(logical(0), tags = list(type = "string")), deploymentStatusMessages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), computePlatform = structure(logical(0), tags = list(type = "string")), externalId = structure(logical(0), tags = list(type = "string")), relatedDeployments = structure(list(autoUpdateOutdatedInstancesRootDeploymentId = structure(logical(0), tags = list(type = "string")), autoUpdateOutdatedInstancesDeploymentIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), overrideAlarmConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), ignorePollAlarmFailure = structure(logical(0), tags = list(type = "boolean")), alarms = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["batch_get_deployments_output"]]))
 }
 
 .codedeploy$batch_get_on_premises_instances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(instanceNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["batch_get_on_premises_instances_input"]]))
 }
 
 .codedeploy$batch_get_on_premises_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(instanceInfos = structure(list(structure(list(instanceName = structure(logical(0), tags = list(type = "string")), iamSessionArn = structure(logical(0), tags = list(type = "string")), iamUserArn = structure(logical(0), tags = list(type = "string")), instanceArn = structure(logical(0), tags = list(type = "string")), registerTime = structure(logical(0), tags = list(type = "timestamp")), deregisterTime = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["batch_get_on_premises_instances_output"]]))
 }
 
 .codedeploy$continue_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), deploymentWaitType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["continue_deployment_input"]]))
 }
 
 .codedeploy$continue_deployment_output <- function(...) {
@@ -109,56 +93,47 @@ NULL
 
 .codedeploy$create_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), computePlatform = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["create_application_input"]]))
 }
 
 .codedeploy$create_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["create_application_output"]]))
 }
 
 .codedeploy$create_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), deploymentGroupName = structure(logical(0), tags = list(type = "string")), revision = structure(list(revisionType = structure(logical(0), tags = list(type = "string")), s3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), bundleType = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), eTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), gitHubLocation = structure(list(repository = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), string = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "RawString and String revision type are deprecated, use AppSpecContent type instead.")), appSpecContent = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), deploymentConfigName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), ignoreApplicationStopFailures = structure(logical(0), tags = list(type = "boolean")), targetInstances = structure(list(tagFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), autoScalingGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ec2TagSet = structure(list(ec2TagSetList = structure(list(structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), autoRollbackConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), updateOutdatedInstancesOnly = structure(logical(0), tags = list(type = "boolean")), fileExistsBehavior = structure(logical(0), tags = list(type = "string")), overrideAlarmConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), ignorePollAlarmFailure = structure(logical(0), tags = list(type = "boolean")), alarms = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["create_deployment_input"]]))
 }
 
 .codedeploy$create_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["create_deployment_output"]]))
 }
 
 .codedeploy$create_deployment_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentConfigName = structure(logical(0), tags = list(type = "string")), minimumHealthyHosts = structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), trafficRoutingConfig = structure(list(type = structure(logical(0), tags = list(type = "string")), timeBasedCanary = structure(list(canaryPercentage = structure(logical(0), tags = list(type = "integer")), canaryInterval = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), timeBasedLinear = structure(list(linearPercentage = structure(logical(0), tags = list(type = "integer")), linearInterval = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), computePlatform = structure(logical(0), tags = list(type = "string")), zonalConfig = structure(list(firstZoneMonitorDurationInSeconds = structure(logical(0), tags = list(type = "long")), monitorDurationInSeconds = structure(logical(0), tags = list(type = "long")), minimumHealthyHostsPerZone = structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["create_deployment_config_input"]]))
 }
 
 .codedeploy$create_deployment_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentConfigId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["create_deployment_config_output"]]))
 }
 
 .codedeploy$create_deployment_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), deploymentGroupName = structure(logical(0), tags = list(type = "string")), deploymentConfigName = structure(logical(0), tags = list(type = "string")), ec2TagFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), onPremisesInstanceTagFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), autoScalingGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), serviceRoleArn = structure(logical(0), tags = list(type = "string")), triggerConfigurations = structure(list(structure(list(triggerName = structure(logical(0), tags = list(type = "string")), triggerTargetArn = structure(logical(0), tags = list(type = "string")), triggerEvents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), alarmConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), ignorePollAlarmFailure = structure(logical(0), tags = list(type = "boolean")), alarms = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), autoRollbackConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), outdatedInstancesStrategy = structure(logical(0), tags = list(type = "string")), deploymentStyle = structure(list(deploymentType = structure(logical(0), tags = list(type = "string")), deploymentOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), blueGreenDeploymentConfiguration = structure(list(terminateBlueInstancesOnDeploymentSuccess = structure(list(action = structure(logical(0), tags = list(type = "string")), terminationWaitTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), deploymentReadyOption = structure(list(actionOnTimeout = structure(logical(0), tags = list(type = "string")), waitTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), greenFleetProvisioningOption = structure(list(action = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), loadBalancerInfo = structure(list(elbInfoList = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), targetGroupInfoList = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), targetGroupPairInfoList = structure(list(structure(list(targetGroups = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), prodTrafficRoute = structure(list(listenerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), testTrafficRoute = structure(list(listenerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ec2TagSet = structure(list(ec2TagSetList = structure(list(structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), ecsServices = structure(list(structure(list(serviceName = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), onPremisesTagSet = structure(list(onPremisesTagSetList = structure(list(structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), terminationHookEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["create_deployment_group_input"]]))
 }
 
 .codedeploy$create_deployment_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["create_deployment_group_output"]]))
 }
 
 .codedeploy$delete_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["delete_application_input"]]))
 }
 
 .codedeploy$delete_application_output <- function(...) {
@@ -167,8 +142,7 @@ NULL
 
 .codedeploy$delete_deployment_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentConfigName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["delete_deployment_config_input"]]))
 }
 
 .codedeploy$delete_deployment_config_output <- function(...) {
@@ -177,44 +151,37 @@ NULL
 
 .codedeploy$delete_deployment_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), deploymentGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["delete_deployment_group_input"]]))
 }
 
 .codedeploy$delete_deployment_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(hooksNotCleanedUp = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), hook = structure(logical(0), tags = list(type = "string")), terminationHook = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["delete_deployment_group_output"]]))
 }
 
 .codedeploy$delete_git_hub_account_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tokenName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["delete_git_hub_account_token_input"]]))
 }
 
 .codedeploy$delete_git_hub_account_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tokenName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["delete_git_hub_account_token_output"]]))
 }
 
 .codedeploy$delete_resources_by_external_id_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(externalId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["delete_resources_by_external_id_input"]]))
 }
 
 .codedeploy$delete_resources_by_external_id_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["delete_resources_by_external_id_output"]]))
 }
 
 .codedeploy$deregister_on_premises_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(instanceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["deregister_on_premises_instance_input"]]))
 }
 
 .codedeploy$deregister_on_premises_instance_output <- function(...) {
@@ -223,236 +190,197 @@ NULL
 
 .codedeploy$get_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["get_application_input"]]))
 }
 
 .codedeploy$get_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(application = structure(list(applicationId = structure(logical(0), tags = list(type = "string")), applicationName = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "timestamp")), linkedToGitHub = structure(logical(0), tags = list(type = "boolean")), gitHubAccountName = structure(logical(0), tags = list(type = "string")), computePlatform = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["get_application_output"]]))
 }
 
 .codedeploy$get_application_revision_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), revision = structure(list(revisionType = structure(logical(0), tags = list(type = "string")), s3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), bundleType = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), eTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), gitHubLocation = structure(list(repository = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), string = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "RawString and String revision type are deprecated, use AppSpecContent type instead.")), appSpecContent = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["get_application_revision_input"]]))
 }
 
 .codedeploy$get_application_revision_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), revision = structure(list(revisionType = structure(logical(0), tags = list(type = "string")), s3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), bundleType = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), eTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), gitHubLocation = structure(list(repository = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), string = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "RawString and String revision type are deprecated, use AppSpecContent type instead.")), appSpecContent = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), revisionInfo = structure(list(description = structure(logical(0), tags = list(type = "string")), deploymentGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), firstUsedTime = structure(logical(0), tags = list(type = "timestamp")), lastUsedTime = structure(logical(0), tags = list(type = "timestamp")), registerTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["get_application_revision_output"]]))
 }
 
 .codedeploy$get_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["get_deployment_input"]]))
 }
 
 .codedeploy$get_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentInfo = structure(list(applicationName = structure(logical(0), tags = list(type = "string")), deploymentGroupName = structure(logical(0), tags = list(type = "string")), deploymentConfigName = structure(logical(0), tags = list(type = "string")), deploymentId = structure(logical(0), tags = list(type = "string")), previousRevision = structure(list(revisionType = structure(logical(0), tags = list(type = "string")), s3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), bundleType = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), eTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), gitHubLocation = structure(list(repository = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), string = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "RawString and String revision type are deprecated, use AppSpecContent type instead.")), appSpecContent = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), revision = structure(list(revisionType = structure(logical(0), tags = list(type = "string")), s3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), bundleType = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), eTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), gitHubLocation = structure(list(repository = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), string = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "RawString and String revision type are deprecated, use AppSpecContent type instead.")), appSpecContent = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), errorInformation = structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createTime = structure(logical(0), tags = list(type = "timestamp")), startTime = structure(logical(0), tags = list(type = "timestamp")), completeTime = structure(logical(0), tags = list(type = "timestamp")), deploymentOverview = structure(list(Pending = structure(logical(0), tags = list(type = "long")), InProgress = structure(logical(0), tags = list(type = "long")), Succeeded = structure(logical(0), tags = list(type = "long")), Failed = structure(logical(0), tags = list(type = "long")), Skipped = structure(logical(0), tags = list(type = "long")), Ready = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string")), creator = structure(logical(0), tags = list(type = "string")), ignoreApplicationStopFailures = structure(logical(0), tags = list(type = "boolean")), autoRollbackConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), updateOutdatedInstancesOnly = structure(logical(0), tags = list(type = "boolean")), rollbackInfo = structure(list(rollbackDeploymentId = structure(logical(0), tags = list(type = "string")), rollbackTriggeringDeploymentId = structure(logical(0), tags = list(type = "string")), rollbackMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), deploymentStyle = structure(list(deploymentType = structure(logical(0), tags = list(type = "string")), deploymentOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), targetInstances = structure(list(tagFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), autoScalingGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ec2TagSet = structure(list(ec2TagSetList = structure(list(structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), instanceTerminationWaitTimeStarted = structure(logical(0), tags = list(type = "boolean")), blueGreenDeploymentConfiguration = structure(list(terminateBlueInstancesOnDeploymentSuccess = structure(list(action = structure(logical(0), tags = list(type = "string")), terminationWaitTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), deploymentReadyOption = structure(list(actionOnTimeout = structure(logical(0), tags = list(type = "string")), waitTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), greenFleetProvisioningOption = structure(list(action = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), loadBalancerInfo = structure(list(elbInfoList = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), targetGroupInfoList = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), targetGroupPairInfoList = structure(list(structure(list(targetGroups = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), prodTrafficRoute = structure(list(listenerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), testTrafficRoute = structure(list(listenerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), additionalDeploymentStatusInfo = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "AdditionalDeploymentStatusInfo is deprecated, use DeploymentStatusMessageList instead.")), fileExistsBehavior = structure(logical(0), tags = list(type = "string")), deploymentStatusMessages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), computePlatform = structure(logical(0), tags = list(type = "string")), externalId = structure(logical(0), tags = list(type = "string")), relatedDeployments = structure(list(autoUpdateOutdatedInstancesRootDeploymentId = structure(logical(0), tags = list(type = "string")), autoUpdateOutdatedInstancesDeploymentIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), overrideAlarmConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), ignorePollAlarmFailure = structure(logical(0), tags = list(type = "boolean")), alarms = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["get_deployment_output"]]))
 }
 
 .codedeploy$get_deployment_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentConfigName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["get_deployment_config_input"]]))
 }
 
 .codedeploy$get_deployment_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentConfigInfo = structure(list(deploymentConfigId = structure(logical(0), tags = list(type = "string")), deploymentConfigName = structure(logical(0), tags = list(type = "string")), minimumHealthyHosts = structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), createTime = structure(logical(0), tags = list(type = "timestamp")), computePlatform = structure(logical(0), tags = list(type = "string")), trafficRoutingConfig = structure(list(type = structure(logical(0), tags = list(type = "string")), timeBasedCanary = structure(list(canaryPercentage = structure(logical(0), tags = list(type = "integer")), canaryInterval = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), timeBasedLinear = structure(list(linearPercentage = structure(logical(0), tags = list(type = "integer")), linearInterval = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), zonalConfig = structure(list(firstZoneMonitorDurationInSeconds = structure(logical(0), tags = list(type = "long")), monitorDurationInSeconds = structure(logical(0), tags = list(type = "long")), minimumHealthyHostsPerZone = structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["get_deployment_config_output"]]))
 }
 
 .codedeploy$get_deployment_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), deploymentGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["get_deployment_group_input"]]))
 }
 
 .codedeploy$get_deployment_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentGroupInfo = structure(list(applicationName = structure(logical(0), tags = list(type = "string")), deploymentGroupId = structure(logical(0), tags = list(type = "string")), deploymentGroupName = structure(logical(0), tags = list(type = "string")), deploymentConfigName = structure(logical(0), tags = list(type = "string")), ec2TagFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), onPremisesInstanceTagFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), autoScalingGroups = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), hook = structure(logical(0), tags = list(type = "string")), terminationHook = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), serviceRoleArn = structure(logical(0), tags = list(type = "string")), targetRevision = structure(list(revisionType = structure(logical(0), tags = list(type = "string")), s3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), bundleType = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), eTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), gitHubLocation = structure(list(repository = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), string = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "RawString and String revision type are deprecated, use AppSpecContent type instead.")), appSpecContent = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), triggerConfigurations = structure(list(structure(list(triggerName = structure(logical(0), tags = list(type = "string")), triggerTargetArn = structure(logical(0), tags = list(type = "string")), triggerEvents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), alarmConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), ignorePollAlarmFailure = structure(logical(0), tags = list(type = "boolean")), alarms = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), autoRollbackConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), deploymentStyle = structure(list(deploymentType = structure(logical(0), tags = list(type = "string")), deploymentOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), outdatedInstancesStrategy = structure(logical(0), tags = list(type = "string")), blueGreenDeploymentConfiguration = structure(list(terminateBlueInstancesOnDeploymentSuccess = structure(list(action = structure(logical(0), tags = list(type = "string")), terminationWaitTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), deploymentReadyOption = structure(list(actionOnTimeout = structure(logical(0), tags = list(type = "string")), waitTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), greenFleetProvisioningOption = structure(list(action = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), loadBalancerInfo = structure(list(elbInfoList = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), targetGroupInfoList = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), targetGroupPairInfoList = structure(list(structure(list(targetGroups = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), prodTrafficRoute = structure(list(listenerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), testTrafficRoute = structure(list(listenerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), lastSuccessfulDeployment = structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "timestamp")), createTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), lastAttemptedDeployment = structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "timestamp")), createTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ec2TagSet = structure(list(ec2TagSetList = structure(list(structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), onPremisesTagSet = structure(list(onPremisesTagSetList = structure(list(structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), computePlatform = structure(logical(0), tags = list(type = "string")), ecsServices = structure(list(structure(list(serviceName = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), terminationHookEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["get_deployment_group_output"]]))
 }
 
 .codedeploy$get_deployment_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), instanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["get_deployment_instance_input"]]))
 }
 
 .codedeploy$get_deployment_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(instanceSummary = structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), instanceId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "InstanceStatus is deprecated, use TargetStatus instead.")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), lifecycleEvents = structure(list(structure(list(lifecycleEventName = structure(logical(0), tags = list(type = "string")), diagnostics = structure(list(errorCode = structure(logical(0), tags = list(type = "string")), scriptName = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), logTail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), instanceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "InstanceSummary is deprecated, use DeploymentTarget instead."))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["get_deployment_instance_output"]]))
 }
 
 .codedeploy$get_deployment_target_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), targetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["get_deployment_target_input"]]))
 }
 
 .codedeploy$get_deployment_target_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentTarget = structure(list(deploymentTargetType = structure(logical(0), tags = list(type = "string")), instanceTarget = structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), targetId = structure(logical(0), tags = list(type = "string")), targetArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), lifecycleEvents = structure(list(structure(list(lifecycleEventName = structure(logical(0), tags = list(type = "string")), diagnostics = structure(list(errorCode = structure(logical(0), tags = list(type = "string")), scriptName = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), logTail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), instanceLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lambdaTarget = structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), targetId = structure(logical(0), tags = list(type = "string")), targetArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), lifecycleEvents = structure(list(structure(list(lifecycleEventName = structure(logical(0), tags = list(type = "string")), diagnostics = structure(list(errorCode = structure(logical(0), tags = list(type = "string")), scriptName = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), logTail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), lambdaFunctionInfo = structure(list(functionName = structure(logical(0), tags = list(type = "string")), functionAlias = structure(logical(0), tags = list(type = "string")), currentVersion = structure(logical(0), tags = list(type = "string")), targetVersion = structure(logical(0), tags = list(type = "string")), targetVersionWeight = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure")), ecsTarget = structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), targetId = structure(logical(0), tags = list(type = "string")), targetArn = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), lifecycleEvents = structure(list(structure(list(lifecycleEventName = structure(logical(0), tags = list(type = "string")), diagnostics = structure(list(errorCode = structure(logical(0), tags = list(type = "string")), scriptName = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), logTail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), taskSetsInfo = structure(list(structure(list(identifer = structure(logical(0), tags = list(type = "string")), desiredCount = structure(logical(0), tags = list(type = "long")), pendingCount = structure(logical(0), tags = list(type = "long")), runningCount = structure(logical(0), tags = list(type = "long")), status = structure(logical(0), tags = list(type = "string")), trafficWeight = structure(logical(0), tags = list(type = "double")), targetGroup = structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), taskSetLabel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), cloudFormationTarget = structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), targetId = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), lifecycleEvents = structure(list(structure(list(lifecycleEventName = structure(logical(0), tags = list(type = "string")), diagnostics = structure(list(errorCode = structure(logical(0), tags = list(type = "string")), scriptName = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), logTail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), targetVersionWeight = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["get_deployment_target_output"]]))
 }
 
 .codedeploy$get_on_premises_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(instanceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["get_on_premises_instance_input"]]))
 }
 
 .codedeploy$get_on_premises_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(instanceInfo = structure(list(instanceName = structure(logical(0), tags = list(type = "string")), iamSessionArn = structure(logical(0), tags = list(type = "string")), iamUserArn = structure(logical(0), tags = list(type = "string")), instanceArn = structure(logical(0), tags = list(type = "string")), registerTime = structure(logical(0), tags = list(type = "timestamp")), deregisterTime = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["get_on_premises_instance_output"]]))
 }
 
 .codedeploy$list_application_revisions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), sortBy = structure(logical(0), tags = list(type = "string")), sortOrder = structure(logical(0), tags = list(type = "string")), s3Bucket = structure(logical(0), tags = list(type = "string")), s3KeyPrefix = structure(logical(0), tags = list(type = "string")), deployed = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_application_revisions_input"]]))
 }
 
 .codedeploy$list_application_revisions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(revisions = structure(list(structure(list(revisionType = structure(logical(0), tags = list(type = "string")), s3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), bundleType = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), eTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), gitHubLocation = structure(list(repository = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), string = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "RawString and String revision type are deprecated, use AppSpecContent type instead.")), appSpecContent = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_application_revisions_output"]]))
 }
 
 .codedeploy$list_applications_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_applications_input"]]))
 }
 
 .codedeploy$list_applications_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applications = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_applications_output"]]))
 }
 
 .codedeploy$list_deployment_configs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_deployment_configs_input"]]))
 }
 
 .codedeploy$list_deployment_configs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentConfigsList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_deployment_configs_output"]]))
 }
 
 .codedeploy$list_deployment_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_deployment_groups_input"]]))
 }
 
 .codedeploy$list_deployment_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), deploymentGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_deployment_groups_output"]]))
 }
 
 .codedeploy$list_deployment_instances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), instanceStatusFilter = structure(list(structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "InstanceStatus is deprecated, use TargetStatus instead."))), tags = list(type = "list")), instanceTypeFilter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_deployment_instances_input"]]))
 }
 
 .codedeploy$list_deployment_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(instancesList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_deployment_instances_output"]]))
 }
 
 .codedeploy$list_deployment_targets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), targetFilters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_deployment_targets_input"]]))
 }
 
 .codedeploy$list_deployment_targets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(targetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_deployment_targets_output"]]))
 }
 
 .codedeploy$list_deployments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), deploymentGroupName = structure(logical(0), tags = list(type = "string")), externalId = structure(logical(0), tags = list(type = "string")), includeOnlyStatuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), createTimeRange = structure(list(start = structure(logical(0), tags = list(type = "timestamp")), end = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_deployments_input"]]))
 }
 
 .codedeploy$list_deployments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deployments = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_deployments_output"]]))
 }
 
 .codedeploy$list_git_hub_account_token_names_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_git_hub_account_token_names_input"]]))
 }
 
 .codedeploy$list_git_hub_account_token_names_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tokenNameList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_git_hub_account_token_names_output"]]))
 }
 
 .codedeploy$list_on_premises_instances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(registrationStatus = structure(logical(0), tags = list(type = "string")), tagFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_on_premises_instances_input"]]))
 }
 
 .codedeploy$list_on_premises_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(instanceNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_on_premises_instances_output"]]))
 }
 
 .codedeploy$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_tags_for_resource_input"]]))
 }
 
 .codedeploy$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["list_tags_for_resource_output"]]))
 }
 
 .codedeploy$put_lifecycle_event_hook_execution_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), lifecycleEventHookExecutionId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["put_lifecycle_event_hook_execution_status_input"]]))
 }
 
 .codedeploy$put_lifecycle_event_hook_execution_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecycleEventHookExecutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["put_lifecycle_event_hook_execution_status_output"]]))
 }
 
 .codedeploy$register_application_revision_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), revision = structure(list(revisionType = structure(logical(0), tags = list(type = "string")), s3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), bundleType = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), eTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), gitHubLocation = structure(list(repository = structure(logical(0), tags = list(type = "string")), commitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), string = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "RawString and String revision type are deprecated, use AppSpecContent type instead.")), appSpecContent = structure(list(content = structure(logical(0), tags = list(type = "string")), sha256 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["register_application_revision_input"]]))
 }
 
 .codedeploy$register_application_revision_output <- function(...) {
@@ -461,8 +389,7 @@ NULL
 
 .codedeploy$register_on_premises_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(instanceName = structure(logical(0), tags = list(type = "string")), iamSessionArn = structure(logical(0), tags = list(type = "string")), iamUserArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["register_on_premises_instance_input"]]))
 }
 
 .codedeploy$register_on_premises_instance_output <- function(...) {
@@ -471,8 +398,7 @@ NULL
 
 .codedeploy$remove_tags_from_on_premises_instances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), instanceNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["remove_tags_from_on_premises_instances_input"]]))
 }
 
 .codedeploy$remove_tags_from_on_premises_instances_output <- function(...) {
@@ -481,8 +407,7 @@ NULL
 
 .codedeploy$skip_wait_time_for_instance_termination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["skip_wait_time_for_instance_termination_input"]]))
 }
 
 .codedeploy$skip_wait_time_for_instance_termination_output <- function(...) {
@@ -491,44 +416,37 @@ NULL
 
 .codedeploy$stop_deployment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deploymentId = structure(logical(0), tags = list(type = "string")), autoRollbackEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["stop_deployment_input"]]))
 }
 
 .codedeploy$stop_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["stop_deployment_output"]]))
 }
 
 .codedeploy$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["tag_resource_input"]]))
 }
 
 .codedeploy$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["tag_resource_output"]]))
 }
 
 .codedeploy$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["untag_resource_input"]]))
 }
 
 .codedeploy$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["untag_resource_output"]]))
 }
 
 .codedeploy$update_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), newApplicationName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["update_application_input"]]))
 }
 
 .codedeploy$update_application_output <- function(...) {
@@ -537,12 +455,10 @@ NULL
 
 .codedeploy$update_deployment_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationName = structure(logical(0), tags = list(type = "string")), currentDeploymentGroupName = structure(logical(0), tags = list(type = "string")), newDeploymentGroupName = structure(logical(0), tags = list(type = "string")), deploymentConfigName = structure(logical(0), tags = list(type = "string")), ec2TagFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), onPremisesInstanceTagFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), autoScalingGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), serviceRoleArn = structure(logical(0), tags = list(type = "string")), triggerConfigurations = structure(list(structure(list(triggerName = structure(logical(0), tags = list(type = "string")), triggerTargetArn = structure(logical(0), tags = list(type = "string")), triggerEvents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), alarmConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), ignorePollAlarmFailure = structure(logical(0), tags = list(type = "boolean")), alarms = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), autoRollbackConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), outdatedInstancesStrategy = structure(logical(0), tags = list(type = "string")), deploymentStyle = structure(list(deploymentType = structure(logical(0), tags = list(type = "string")), deploymentOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), blueGreenDeploymentConfiguration = structure(list(terminateBlueInstancesOnDeploymentSuccess = structure(list(action = structure(logical(0), tags = list(type = "string")), terminationWaitTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), deploymentReadyOption = structure(list(actionOnTimeout = structure(logical(0), tags = list(type = "string")), waitTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), greenFleetProvisioningOption = structure(list(action = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), loadBalancerInfo = structure(list(elbInfoList = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), targetGroupInfoList = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), targetGroupPairInfoList = structure(list(structure(list(targetGroups = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), prodTrafficRoute = structure(list(listenerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), testTrafficRoute = structure(list(listenerArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ec2TagSet = structure(list(ec2TagSetList = structure(list(structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), ecsServices = structure(list(structure(list(serviceName = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), onPremisesTagSet = structure(list(onPremisesTagSetList = structure(list(structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), terminationHookEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["update_deployment_group_input"]]))
 }
 
 .codedeploy$update_deployment_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(hooksNotCleanedUp = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), hook = structure(logical(0), tags = list(type = "string")), terminationHook = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .codedeploy_shapes[["update_deployment_group_output"]]))
 }

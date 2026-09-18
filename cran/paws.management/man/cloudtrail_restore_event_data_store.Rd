@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_restore_event_data_store}
 \alias{cloudtrail_restore_event_data_store}
-\title{Restores a deleted event data store specified by EventDataStore, which
-accepts an event data store ARN}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_restore_event_data_store(EventDataStore)
 }
@@ -11,7 +11,7 @@ cloudtrail_restore_event_data_store(EventDataStore)
 \item{EventDataStore}{[required] The ARN (or the ID suffix of the ARN) of the event data store that you want to restore.}
 }
 \description{
-Restores a deleted event data store specified by \code{EventDataStore}, which accepts an event data store ARN. You can only restore a deleted event data store within the seven-day wait period after deletion. Restoring an event data store can take several minutes, depending on the size of the event data store.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_restore_event_data_store/} for full documentation.
 }

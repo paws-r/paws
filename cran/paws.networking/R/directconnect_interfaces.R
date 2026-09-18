@@ -5,434 +5,392 @@ NULL
 
 .directconnect$accept_direct_connect_gateway_association_proposal_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), proposalId = structure(logical(0), tags = list(type = "string")), associatedGatewayOwnerAccount = structure(logical(0), tags = list(type = "string")), overrideAllowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["accept_direct_connect_gateway_association_proposal_input"]]))
 }
 
 .directconnect$accept_direct_connect_gateway_association_proposal_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayAssociation = structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayOwnerAccount = structure(logical(0), tags = list(type = "string")), associationState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string")), associatedGateway = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), associationId = structure(logical(0), tags = list(type = "string")), allowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), associatedCoreNetwork = structure(list(id = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), attachmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), virtualGatewayRegion = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), virtualGatewayOwnerAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["accept_direct_connect_gateway_association_proposal_output"]]))
 }
 
 .directconnect$allocate_connection_on_interconnect_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(bandwidth = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), interconnectId = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["allocate_connection_on_interconnect_input"]]))
 }
 
 .directconnect$allocate_connection_on_interconnect_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), connectionState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), partnerName = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partnerInterconnectMacSecCapable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["allocate_connection_on_interconnect_output"]]))
 }
 
 .directconnect$allocate_hosted_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["allocate_hosted_connection_input"]]))
 }
 
 .directconnect$allocate_hosted_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), connectionState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), partnerName = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partnerInterconnectMacSecCapable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["allocate_hosted_connection_output"]]))
 }
 
 .directconnect$allocate_private_virtual_interface_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), newPrivateVirtualInterfaceAllocation = structure(list(virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), mtu = structure(logical(0), tags = list(type = "integer")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["allocate_private_virtual_interface_input"]]))
 }
 
 .directconnect$allocate_private_virtual_interface_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), virtualInterfaceType = structure(logical(0), tags = list(type = "string")), virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), virtualInterfaceState = structure(logical(0), tags = list(type = "string")), customerRouterConfig = structure(logical(0), tags = list(type = "string")), mtu = structure(logical(0), tags = list(type = "integer")), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), tags = list(type = "string")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), bgpPeerState = structure(logical(0), tags = list(type = "string")), bgpStatus = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), region = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), siteLinkEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["allocate_private_virtual_interface_output"]]))
 }
 
 .directconnect$allocate_public_virtual_interface_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), newPublicVirtualInterfaceAllocation = structure(list(virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["allocate_public_virtual_interface_input"]]))
 }
 
 .directconnect$allocate_public_virtual_interface_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), virtualInterfaceType = structure(logical(0), tags = list(type = "string")), virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), virtualInterfaceState = structure(logical(0), tags = list(type = "string")), customerRouterConfig = structure(logical(0), tags = list(type = "string")), mtu = structure(logical(0), tags = list(type = "integer")), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), tags = list(type = "string")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), bgpPeerState = structure(logical(0), tags = list(type = "string")), bgpStatus = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), region = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), siteLinkEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["allocate_public_virtual_interface_output"]]))
 }
 
 .directconnect$allocate_transit_virtual_interface_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), newTransitVirtualInterfaceAllocation = structure(list(virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), mtu = structure(logical(0), tags = list(type = "integer")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["allocate_transit_virtual_interface_input"]]))
 }
 
 .directconnect$allocate_transit_virtual_interface_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterface = structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), virtualInterfaceType = structure(logical(0), tags = list(type = "string")), virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), virtualInterfaceState = structure(logical(0), tags = list(type = "string")), customerRouterConfig = structure(logical(0), tags = list(type = "string")), mtu = structure(logical(0), tags = list(type = "integer")), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), tags = list(type = "string")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), bgpPeerState = structure(logical(0), tags = list(type = "string")), bgpStatus = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), region = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), siteLinkEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["allocate_transit_virtual_interface_output"]]))
 }
 
 .directconnect$associate_connection_with_lag_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), lagId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["associate_connection_with_lag_input"]]))
 }
 
 .directconnect$associate_connection_with_lag_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), connectionState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), partnerName = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partnerInterconnectMacSecCapable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["associate_connection_with_lag_output"]]))
+}
+
+.directconnect$associate_connections_to_resiliency_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["associate_connections_to_resiliency_group_input"]]))
+}
+
+.directconnect$associate_connections_to_resiliency_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["associate_connections_to_resiliency_group_output"]]))
 }
 
 .directconnect$associate_hosted_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), parentConnectionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["associate_hosted_connection_input"]]))
 }
 
 .directconnect$associate_hosted_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), connectionState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), partnerName = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partnerInterconnectMacSecCapable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["associate_hosted_connection_output"]]))
 }
 
 .directconnect$associate_mac_sec_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), cak = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["associate_mac_sec_key_input"]]))
 }
 
 .directconnect$associate_mac_sec_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["associate_mac_sec_key_output"]]))
 }
 
 .directconnect$associate_virtual_interface_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceId = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["associate_virtual_interface_input"]]))
 }
 
 .directconnect$associate_virtual_interface_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), virtualInterfaceType = structure(logical(0), tags = list(type = "string")), virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), virtualInterfaceState = structure(logical(0), tags = list(type = "string")), customerRouterConfig = structure(logical(0), tags = list(type = "string")), mtu = structure(logical(0), tags = list(type = "integer")), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), tags = list(type = "string")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), bgpPeerState = structure(logical(0), tags = list(type = "string")), bgpStatus = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), region = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), siteLinkEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["associate_virtual_interface_output"]]))
 }
 
 .directconnect$confirm_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["confirm_connection_input"]]))
 }
 
 .directconnect$confirm_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["confirm_connection_output"]]))
 }
 
 .directconnect$confirm_customer_agreement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(agreementName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["confirm_customer_agreement_input"]]))
 }
 
 .directconnect$confirm_customer_agreement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["confirm_customer_agreement_output"]]))
 }
 
 .directconnect$confirm_private_virtual_interface_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceId = structure(logical(0), tags = list(type = "string")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["confirm_private_virtual_interface_input"]]))
 }
 
 .directconnect$confirm_private_virtual_interface_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["confirm_private_virtual_interface_output"]]))
 }
 
 .directconnect$confirm_public_virtual_interface_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["confirm_public_virtual_interface_input"]]))
 }
 
 .directconnect$confirm_public_virtual_interface_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["confirm_public_virtual_interface_output"]]))
 }
 
 .directconnect$confirm_transit_virtual_interface_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["confirm_transit_virtual_interface_input"]]))
 }
 
 .directconnect$confirm_transit_virtual_interface_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["confirm_transit_virtual_interface_output"]]))
 }
 
 .directconnect$create_bgp_peer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceId = structure(logical(0), tags = list(type = "string")), newBGPPeer = structure(list(asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_bgp_peer_input"]]))
 }
 
 .directconnect$create_bgp_peer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterface = structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), virtualInterfaceType = structure(logical(0), tags = list(type = "string")), virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), virtualInterfaceState = structure(logical(0), tags = list(type = "string")), customerRouterConfig = structure(logical(0), tags = list(type = "string")), mtu = structure(logical(0), tags = list(type = "integer")), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), tags = list(type = "string")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), bgpPeerState = structure(logical(0), tags = list(type = "string")), bgpStatus = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), region = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), siteLinkEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_bgp_peer_output"]]))
 }
 
 .directconnect$create_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), lagId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), requestMACSec = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_connection_input"]]))
 }
 
 .directconnect$create_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), connectionState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), partnerName = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partnerInterconnectMacSecCapable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_connection_output"]]))
 }
 
 .directconnect$create_direct_connect_gateway_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), amazonSideAsn = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_direct_connect_gateway_input"]]))
 }
 
 .directconnect$create_direct_connect_gateway_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGateway = structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayName = structure(logical(0), tags = list(type = "string")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), ownerAccount = structure(logical(0), tags = list(type = "string")), directConnectGatewayState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_direct_connect_gateway_output"]]))
 }
 
 .directconnect$create_direct_connect_gateway_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), gatewayId = structure(logical(0), tags = list(type = "string")), addAllowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), virtualGatewayId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_direct_connect_gateway_association_input"]]))
 }
 
 .directconnect$create_direct_connect_gateway_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayAssociation = structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayOwnerAccount = structure(logical(0), tags = list(type = "string")), associationState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string")), associatedGateway = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), associationId = structure(logical(0), tags = list(type = "string")), allowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), associatedCoreNetwork = structure(list(id = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), attachmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), virtualGatewayRegion = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), virtualGatewayOwnerAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_direct_connect_gateway_association_output"]]))
 }
 
 .directconnect$create_direct_connect_gateway_association_proposal_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayOwnerAccount = structure(logical(0), tags = list(type = "string")), gatewayId = structure(logical(0), tags = list(type = "string")), addAllowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), removeAllowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_direct_connect_gateway_association_proposal_input"]]))
 }
 
 .directconnect$create_direct_connect_gateway_association_proposal_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayAssociationProposal = structure(list(proposalId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayOwnerAccount = structure(logical(0), tags = list(type = "string")), proposalState = structure(logical(0), tags = list(type = "string")), associatedGateway = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), existingAllowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), requestedAllowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_direct_connect_gateway_association_proposal_output"]]))
 }
 
 .directconnect$create_interconnect_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(interconnectName = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), lagId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), requestMACSec = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_interconnect_input"]]))
 }
 
 .directconnect$create_interconnect_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(interconnectId = structure(logical(0), tags = list(type = "string")), interconnectName = structure(logical(0), tags = list(type = "string")), interconnectState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_interconnect_output"]]))
 }
 
 .directconnect$create_lag_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(numberOfConnections = structure(logical(0), tags = list(type = "integer")), location = structure(logical(0), tags = list(type = "string")), connectionsBandwidth = structure(logical(0), tags = list(type = "string")), lagName = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), childConnectionTags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), requestMACSec = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_lag_input"]]))
 }
 
 .directconnect$create_lag_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionsBandwidth = structure(logical(0), tags = list(type = "string")), numberOfConnections = structure(logical(0), tags = list(type = "integer")), lagId = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), lagName = structure(logical(0), tags = list(type = "string")), lagState = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), minimumLinks = structure(logical(0), tags = list(type = "integer")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), connections = structure(list(structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), connectionState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), partnerName = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partnerInterconnectMacSecCapable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), allowsHostedConnections = structure(logical(0), tags = list(type = "boolean")), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_lag_output"]]))
 }
 
 .directconnect$create_private_virtual_interface_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), newPrivateVirtualInterface = structure(list(virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), mtu = structure(logical(0), tags = list(type = "integer")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), enableSiteLink = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_private_virtual_interface_input"]]))
 }
 
 .directconnect$create_private_virtual_interface_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), virtualInterfaceType = structure(logical(0), tags = list(type = "string")), virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), virtualInterfaceState = structure(logical(0), tags = list(type = "string")), customerRouterConfig = structure(logical(0), tags = list(type = "string")), mtu = structure(logical(0), tags = list(type = "integer")), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), tags = list(type = "string")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), bgpPeerState = structure(logical(0), tags = list(type = "string")), bgpStatus = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), region = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), siteLinkEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_private_virtual_interface_output"]]))
 }
 
 .directconnect$create_public_virtual_interface_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), newPublicVirtualInterface = structure(list(virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_public_virtual_interface_input"]]))
 }
 
 .directconnect$create_public_virtual_interface_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), virtualInterfaceType = structure(logical(0), tags = list(type = "string")), virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), virtualInterfaceState = structure(logical(0), tags = list(type = "string")), customerRouterConfig = structure(logical(0), tags = list(type = "string")), mtu = structure(logical(0), tags = list(type = "integer")), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), tags = list(type = "string")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), bgpPeerState = structure(logical(0), tags = list(type = "string")), bgpStatus = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), region = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), siteLinkEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_public_virtual_interface_output"]]))
+}
+
+.directconnect$create_resiliency_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["create_resiliency_group_input"]]))
+}
+
+.directconnect$create_resiliency_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["create_resiliency_group_output"]]))
 }
 
 .directconnect$create_transit_virtual_interface_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), newTransitVirtualInterface = structure(list(virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), mtu = structure(logical(0), tags = list(type = "integer")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), enableSiteLink = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_transit_virtual_interface_input"]]))
 }
 
 .directconnect$create_transit_virtual_interface_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterface = structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), virtualInterfaceType = structure(logical(0), tags = list(type = "string")), virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), virtualInterfaceState = structure(logical(0), tags = list(type = "string")), customerRouterConfig = structure(logical(0), tags = list(type = "string")), mtu = structure(logical(0), tags = list(type = "integer")), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), tags = list(type = "string")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), bgpPeerState = structure(logical(0), tags = list(type = "string")), bgpStatus = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), region = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), siteLinkEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["create_transit_virtual_interface_output"]]))
 }
 
 .directconnect$delete_bgp_peer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceId = structure(logical(0), tags = list(type = "string")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), customerAddress = structure(logical(0), tags = list(type = "string")), bgpPeerId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["delete_bgp_peer_input"]]))
 }
 
 .directconnect$delete_bgp_peer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterface = structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), virtualInterfaceType = structure(logical(0), tags = list(type = "string")), virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), virtualInterfaceState = structure(logical(0), tags = list(type = "string")), customerRouterConfig = structure(logical(0), tags = list(type = "string")), mtu = structure(logical(0), tags = list(type = "integer")), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), tags = list(type = "string")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), bgpPeerState = structure(logical(0), tags = list(type = "string")), bgpStatus = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), region = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), siteLinkEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["delete_bgp_peer_output"]]))
 }
 
 .directconnect$delete_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["delete_connection_input"]]))
 }
 
 .directconnect$delete_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), connectionState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), partnerName = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partnerInterconnectMacSecCapable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["delete_connection_output"]]))
 }
 
 .directconnect$delete_direct_connect_gateway_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["delete_direct_connect_gateway_input"]]))
 }
 
 .directconnect$delete_direct_connect_gateway_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGateway = structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayName = structure(logical(0), tags = list(type = "string")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), ownerAccount = structure(logical(0), tags = list(type = "string")), directConnectGatewayState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["delete_direct_connect_gateway_output"]]))
 }
 
 .directconnect$delete_direct_connect_gateway_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(associationId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), virtualGatewayId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["delete_direct_connect_gateway_association_input"]]))
 }
 
 .directconnect$delete_direct_connect_gateway_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayAssociation = structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayOwnerAccount = structure(logical(0), tags = list(type = "string")), associationState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string")), associatedGateway = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), associationId = structure(logical(0), tags = list(type = "string")), allowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), associatedCoreNetwork = structure(list(id = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), attachmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), virtualGatewayRegion = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), virtualGatewayOwnerAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["delete_direct_connect_gateway_association_output"]]))
 }
 
 .directconnect$delete_direct_connect_gateway_association_proposal_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(proposalId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["delete_direct_connect_gateway_association_proposal_input"]]))
 }
 
 .directconnect$delete_direct_connect_gateway_association_proposal_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayAssociationProposal = structure(list(proposalId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayOwnerAccount = structure(logical(0), tags = list(type = "string")), proposalState = structure(logical(0), tags = list(type = "string")), associatedGateway = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), existingAllowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), requestedAllowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["delete_direct_connect_gateway_association_proposal_output"]]))
 }
 
 .directconnect$delete_interconnect_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(interconnectId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["delete_interconnect_input"]]))
 }
 
 .directconnect$delete_interconnect_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(interconnectState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["delete_interconnect_output"]]))
 }
 
 .directconnect$delete_lag_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lagId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["delete_lag_input"]]))
 }
 
 .directconnect$delete_lag_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionsBandwidth = structure(logical(0), tags = list(type = "string")), numberOfConnections = structure(logical(0), tags = list(type = "integer")), lagId = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), lagName = structure(logical(0), tags = list(type = "string")), lagState = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), minimumLinks = structure(logical(0), tags = list(type = "integer")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), connections = structure(list(structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), connectionState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), partnerName = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partnerInterconnectMacSecCapable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), allowsHostedConnections = structure(logical(0), tags = list(type = "boolean")), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["delete_lag_output"]]))
+}
+
+.directconnect$delete_resiliency_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["delete_resiliency_group_input"]]))
+}
+
+.directconnect$delete_resiliency_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["delete_resiliency_group_output"]]))
 }
 
 .directconnect$delete_virtual_interface_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["delete_virtual_interface_input"]]))
 }
 
 .directconnect$delete_virtual_interface_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["delete_virtual_interface_output"]]))
 }
 
 .directconnect$describe_connection_loa_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), providerName = structure(logical(0), tags = list(type = "string")), loaContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_connection_loa_input"]]))
 }
 
 .directconnect$describe_connection_loa_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(loa = structure(list(loaContent = structure(logical(0), tags = list(type = "blob")), loaContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_connection_loa_output"]]))
 }
 
 .directconnect$describe_connections_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_connections_input"]]))
 }
 
 .directconnect$describe_connections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connections = structure(list(structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), connectionState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), partnerName = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partnerInterconnectMacSecCapable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_connections_output"]]))
 }
 
 .directconnect$describe_connections_on_interconnect_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(interconnectId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_connections_on_interconnect_input"]]))
 }
 
 .directconnect$describe_connections_on_interconnect_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connections = structure(list(structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), connectionState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), partnerName = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partnerInterconnectMacSecCapable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_connections_on_interconnect_output"]]))
 }
 
 .directconnect$describe_customer_metadata_input <- function(...) {
@@ -441,116 +399,97 @@ NULL
 
 .directconnect$describe_customer_metadata_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(agreements = structure(list(structure(list(agreementName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nniPartnerType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_customer_metadata_output"]]))
 }
 
 .directconnect$describe_direct_connect_gateway_association_proposals_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), proposalId = structure(logical(0), tags = list(type = "string")), associatedGatewayId = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_direct_connect_gateway_association_proposals_input"]]))
 }
 
 .directconnect$describe_direct_connect_gateway_association_proposals_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayAssociationProposals = structure(list(structure(list(proposalId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayOwnerAccount = structure(logical(0), tags = list(type = "string")), proposalState = structure(logical(0), tags = list(type = "string")), associatedGateway = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), existingAllowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), requestedAllowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_direct_connect_gateway_association_proposals_output"]]))
 }
 
 .directconnect$describe_direct_connect_gateway_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(associationId = structure(logical(0), tags = list(type = "string")), associatedGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), virtualGatewayId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_direct_connect_gateway_associations_input"]]))
 }
 
 .directconnect$describe_direct_connect_gateway_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayAssociations = structure(list(structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayOwnerAccount = structure(logical(0), tags = list(type = "string")), associationState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string")), associatedGateway = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), associationId = structure(logical(0), tags = list(type = "string")), allowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), associatedCoreNetwork = structure(list(id = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), attachmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), virtualGatewayRegion = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), virtualGatewayOwnerAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_direct_connect_gateway_associations_output"]]))
 }
 
 .directconnect$describe_direct_connect_gateway_attachments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_direct_connect_gateway_attachments_input"]]))
 }
 
 .directconnect$describe_direct_connect_gateway_attachments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayAttachments = structure(list(structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), virtualInterfaceRegion = structure(logical(0), tags = list(type = "string")), virtualInterfaceOwnerAccount = structure(logical(0), tags = list(type = "string")), attachmentState = structure(logical(0), tags = list(type = "string")), attachmentType = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_direct_connect_gateway_attachments_output"]]))
 }
 
 .directconnect$describe_direct_connect_gateways_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_direct_connect_gateways_input"]]))
 }
 
 .directconnect$describe_direct_connect_gateways_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGateways = structure(list(structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayName = structure(logical(0), tags = list(type = "string")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), ownerAccount = structure(logical(0), tags = list(type = "string")), directConnectGatewayState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_direct_connect_gateways_output"]]))
 }
 
 .directconnect$describe_hosted_connections_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_hosted_connections_input"]]))
 }
 
 .directconnect$describe_hosted_connections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connections = structure(list(structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), connectionState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), partnerName = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partnerInterconnectMacSecCapable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_hosted_connections_output"]]))
 }
 
 .directconnect$describe_interconnect_loa_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(interconnectId = structure(logical(0), tags = list(type = "string")), providerName = structure(logical(0), tags = list(type = "string")), loaContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_interconnect_loa_input"]]))
 }
 
 .directconnect$describe_interconnect_loa_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(loa = structure(list(loaContent = structure(logical(0), tags = list(type = "blob")), loaContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_interconnect_loa_output"]]))
 }
 
 .directconnect$describe_interconnects_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(interconnectId = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_interconnects_input"]]))
 }
 
 .directconnect$describe_interconnects_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(interconnects = structure(list(structure(list(interconnectId = structure(logical(0), tags = list(type = "string")), interconnectName = structure(logical(0), tags = list(type = "string")), interconnectState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_interconnects_output"]]))
 }
 
 .directconnect$describe_lags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lagId = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_lags_input"]]))
 }
 
 .directconnect$describe_lags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lags = structure(list(structure(list(connectionsBandwidth = structure(logical(0), tags = list(type = "string")), numberOfConnections = structure(logical(0), tags = list(type = "integer")), lagId = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), lagName = structure(logical(0), tags = list(type = "string")), lagState = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), minimumLinks = structure(logical(0), tags = list(type = "integer")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), connections = structure(list(structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), connectionState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), partnerName = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partnerInterconnectMacSecCapable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), allowsHostedConnections = structure(logical(0), tags = list(type = "boolean")), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_lags_output"]]))
 }
 
 .directconnect$describe_loa_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), providerName = structure(logical(0), tags = list(type = "string")), loaContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_loa_input"]]))
 }
 
 .directconnect$describe_loa_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(loaContent = structure(logical(0), tags = list(type = "blob")), loaContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_loa_output"]]))
 }
 
 .directconnect$describe_locations_input <- function(...) {
@@ -559,32 +498,27 @@ NULL
 
 .directconnect$describe_locations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(locations = structure(list(structure(list(locationCode = structure(logical(0), tags = list(type = "string")), locationName = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), availablePortSpeeds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), availableProviders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), availableMacSecPortSpeeds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_locations_output"]]))
 }
 
 .directconnect$describe_router_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceId = structure(logical(0), tags = list(type = "string")), routerTypeIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_router_configuration_input"]]))
 }
 
 .directconnect$describe_router_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(customerRouterConfig = structure(logical(0), tags = list(type = "string")), router = structure(list(vendor = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), software = structure(logical(0), tags = list(type = "string")), xsltTemplateName = structure(logical(0), tags = list(type = "string")), xsltTemplateNameForMacSec = structure(logical(0), tags = list(type = "string")), routerTypeIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), virtualInterfaceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_router_configuration_output"]]))
 }
 
 .directconnect$describe_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_tags_input"]]))
 }
 
 .directconnect$describe_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceTags = structure(list(structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_tags_output"]]))
 }
 
 .directconnect$describe_virtual_gateways_input <- function(...) {
@@ -593,162 +527,205 @@ NULL
 
 .directconnect$describe_virtual_gateways_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualGateways = structure(list(structure(list(virtualGatewayId = structure(logical(0), tags = list(type = "string")), virtualGatewayState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_virtual_gateways_output"]]))
 }
 
 .directconnect$describe_virtual_interfaces_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_virtual_interfaces_input"]]))
 }
 
 .directconnect$describe_virtual_interfaces_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaces = structure(list(structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), virtualInterfaceType = structure(logical(0), tags = list(type = "string")), virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), virtualInterfaceState = structure(logical(0), tags = list(type = "string")), customerRouterConfig = structure(logical(0), tags = list(type = "string")), mtu = structure(logical(0), tags = list(type = "integer")), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), tags = list(type = "string")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), bgpPeerState = structure(logical(0), tags = list(type = "string")), bgpStatus = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), region = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), siteLinkEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["describe_virtual_interfaces_output"]]))
 }
 
 .directconnect$disassociate_connection_from_lag_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), lagId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["disassociate_connection_from_lag_input"]]))
 }
 
 .directconnect$disassociate_connection_from_lag_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), connectionState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), partnerName = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partnerInterconnectMacSecCapable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["disassociate_connection_from_lag_output"]]))
+}
+
+.directconnect$disassociate_connections_from_resiliency_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["disassociate_connections_from_resiliency_group_input"]]))
+}
+
+.directconnect$disassociate_connections_from_resiliency_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["disassociate_connections_from_resiliency_group_output"]]))
 }
 
 .directconnect$disassociate_mac_sec_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), secretARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["disassociate_mac_sec_key_input"]]))
 }
 
 .directconnect$disassociate_mac_sec_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["disassociate_mac_sec_key_output"]]))
+}
+
+.directconnect$get_resiliency_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["get_resiliency_group_input"]]))
+}
+
+.directconnect$get_resiliency_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["get_resiliency_group_output"]]))
+}
+
+.directconnect$list_resiliency_group_associations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["list_resiliency_group_associations_input"]]))
+}
+
+.directconnect$list_resiliency_group_associations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["list_resiliency_group_associations_output"]]))
+}
+
+.directconnect$list_resiliency_groups_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["list_resiliency_groups_input"]]))
+}
+
+.directconnect$list_resiliency_groups_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["list_resiliency_groups_output"]]))
+}
+
+.directconnect$list_virtual_interface_routes_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["list_virtual_interface_routes_input"]]))
+}
+
+.directconnect$list_virtual_interface_routes_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["list_virtual_interface_routes_output"]]))
 }
 
 .directconnect$list_virtual_interface_test_history_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(testId = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), bgpPeers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["list_virtual_interface_test_history_input"]]))
 }
 
 .directconnect$list_virtual_interface_test_history_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceTestHistory = structure(list(structure(list(testId = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), bgpPeers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), testDurationInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["list_virtual_interface_test_history_output"]]))
 }
 
 .directconnect$start_bgp_failover_test_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceId = structure(logical(0), tags = list(type = "string")), bgpPeers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), testDurationInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["start_bgp_failover_test_input"]]))
 }
 
 .directconnect$start_bgp_failover_test_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceTest = structure(list(testId = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), bgpPeers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), testDurationInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["start_bgp_failover_test_output"]]))
 }
 
 .directconnect$stop_bgp_failover_test_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["stop_bgp_failover_test_input"]]))
 }
 
 .directconnect$stop_bgp_failover_test_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceTest = structure(list(testId = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), bgpPeers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), testDurationInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["stop_bgp_failover_test_output"]]))
 }
 
 .directconnect$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["tag_resource_input"]]))
 }
 
 .directconnect$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["tag_resource_output"]]))
 }
 
 .directconnect$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["untag_resource_input"]]))
 }
 
 .directconnect$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["untag_resource_output"]]))
 }
 
 .directconnect$update_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionId = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["update_connection_input"]]))
 }
 
 .directconnect$update_connection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), connectionState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), partnerName = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partnerInterconnectMacSecCapable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["update_connection_output"]]))
+}
+
+.directconnect$update_connections_billing_mode_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["update_connections_billing_mode_input"]]))
+}
+
+.directconnect$update_connections_billing_mode_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["update_connections_billing_mode_output"]]))
 }
 
 .directconnect$update_direct_connect_gateway_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), newDirectConnectGatewayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["update_direct_connect_gateway_input"]]))
 }
 
 .directconnect$update_direct_connect_gateway_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGateway = structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayName = structure(logical(0), tags = list(type = "string")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), ownerAccount = structure(logical(0), tags = list(type = "string")), directConnectGatewayState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["update_direct_connect_gateway_output"]]))
 }
 
 .directconnect$update_direct_connect_gateway_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(associationId = structure(logical(0), tags = list(type = "string")), addAllowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), removeAllowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["update_direct_connect_gateway_association_input"]]))
 }
 
 .directconnect$update_direct_connect_gateway_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayAssociation = structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayOwnerAccount = structure(logical(0), tags = list(type = "string")), associationState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string")), associatedGateway = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), associationId = structure(logical(0), tags = list(type = "string")), allowedPrefixesToDirectConnectGateway = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), associatedCoreNetwork = structure(list(id = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), attachmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), virtualGatewayRegion = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), virtualGatewayOwnerAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["update_direct_connect_gateway_association_output"]]))
 }
 
 .directconnect$update_lag_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lagId = structure(logical(0), tags = list(type = "string")), lagName = structure(logical(0), tags = list(type = "string")), minimumLinks = structure(logical(0), tags = list(type = "integer")), encryptionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["update_lag_input"]]))
 }
 
 .directconnect$update_lag_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectionsBandwidth = structure(logical(0), tags = list(type = "string")), numberOfConnections = structure(logical(0), tags = list(type = "integer")), lagId = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), lagName = structure(logical(0), tags = list(type = "string")), lagState = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), minimumLinks = structure(logical(0), tags = list(type = "integer")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), connections = structure(list(structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), connectionName = structure(logical(0), tags = list(type = "string")), connectionState = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), bandwidth = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), partnerName = structure(logical(0), tags = list(type = "string")), loaIssueTime = structure(logical(0), tags = list(type = "timestamp")), lagId = structure(logical(0), tags = list(type = "string")), awsDevice = structure(logical(0), tags = list(type = "string", deprecated = TRUE)), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), portEncryptionStatus = structure(logical(0), tags = list(type = "string")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), partnerInterconnectMacSecCapable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), allowsHostedConnections = structure(logical(0), tags = list(type = "boolean")), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), hasLogicalRedundancy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), providerName = structure(logical(0), tags = list(type = "string")), macSecCapable = structure(logical(0), tags = list(type = "boolean")), encryptionMode = structure(logical(0), tags = list(type = "string")), macSecKeys = structure(list(structure(list(secretARN = structure(logical(0), tags = list(type = "string")), ckn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), startOn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["update_lag_output"]]))
+}
+
+.directconnect$update_resiliency_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["update_resiliency_group_input"]]))
+}
+
+.directconnect$update_resiliency_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .directconnect_shapes[["update_resiliency_group_output"]]))
 }
 
 .directconnect$update_virtual_interface_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualInterfaceId = structure(logical(0), tags = list(type = "string")), mtu = structure(logical(0), tags = list(type = "integer")), enableSiteLink = structure(logical(0), tags = list(type = "boolean")), virtualInterfaceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["update_virtual_interface_attributes_input"]]))
 }
 
 .directconnect$update_virtual_interface_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ownerAccount = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string")), connectionId = structure(logical(0), tags = list(type = "string")), virtualInterfaceType = structure(logical(0), tags = list(type = "string")), virtualInterfaceName = structure(logical(0), tags = list(type = "string")), vlan = structure(logical(0), tags = list(type = "integer")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), virtualInterfaceState = structure(logical(0), tags = list(type = "string")), customerRouterConfig = structure(logical(0), tags = list(type = "string")), mtu = structure(logical(0), tags = list(type = "integer")), jumboFrameCapable = structure(logical(0), tags = list(type = "boolean")), virtualGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayId = structure(logical(0), tags = list(type = "string")), routeFilterPrefixes = structure(list(structure(list(cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), bgpPeers = structure(list(structure(list(bgpPeerId = structure(logical(0), tags = list(type = "string")), asn = structure(logical(0), tags = list(type = "integer")), asnLong = structure(logical(0), tags = list(type = "long")), authKey = structure(logical(0), tags = list(type = "string")), addressFamily = structure(logical(0), tags = list(type = "string")), amazonAddress = structure(logical(0), tags = list(type = "string")), customerAddress = structure(logical(0), tags = list(type = "string")), bgpPeerState = structure(logical(0), tags = list(type = "string")), bgpStatus = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), region = structure(logical(0), tags = list(type = "string")), awsDeviceV2 = structure(logical(0), tags = list(type = "string")), awsLogicalDeviceId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), siteLinkEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .directconnect_shapes[["update_virtual_interface_attributes_output"]]))
 }

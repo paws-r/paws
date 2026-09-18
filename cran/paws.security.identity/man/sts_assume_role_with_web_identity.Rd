@@ -13,7 +13,8 @@ sts_assume_role_with_web_identity(
   ProviderId = NULL,
   PolicyArns = NULL,
   Policy = NULL,
-  DurationSeconds = NULL
+  DurationSeconds = NULL,
+  MinimumSessionTokenSize = NULL
 )
 }
 \arguments{
@@ -58,6 +59,8 @@ An Amazon Web Services conversion compresses the passed inline session policy, m
 By default, the value is set to \code{3600} seconds.
 
 The \code{DurationSeconds} parameter is separate from the duration of a console session that you might request using the returned credentials. The request to the federation endpoint for a console sign-in token takes a \code{SessionDuration} parameter that specifies the maximum length of the console session. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html}{Creating a URL that Enables Federated Users to Access the Amazon Web Services Management Console} in the \emph{IAM User Guide}.}
+
+\item{MinimumSessionTokenSize}{The minimum size, in bytes, of the session token that STS issues for the request. STS increases the session token to at least this size, regardless of its actual content. The value must not exceed 4,096 bytes. When set to 0 or not specified, the session token size is unchanged.}
 }
 \description{
 Returns a set of temporary security credentials for users who have been authenticated in a mobile or web application with a web identity provider. Example providers include the OAuth 2.0 providers Login with Amazon and Facebook, or any OpenID Connect-compatible identity provider such as Google or \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html}{Amazon Cognito federated identities}.

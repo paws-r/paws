@@ -7,7 +7,7 @@
 elasticbeanstalk_describe_applications(ApplicationNames = NULL)
 }
 \arguments{
-\item{ApplicationNames}{If specified, AWS Elastic Beanstalk restricts the returned descriptions to only include those with the specified names.}
+\item{ApplicationNames}{If specified, Elastic Beanstalk restricts the returned descriptions to only include those with the specified names.}
 }
 \description{
 Returns the descriptions of existing applications.

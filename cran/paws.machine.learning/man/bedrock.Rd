@@ -89,10 +89,10 @@ Describes the API operations for creating, managing, fine-turning, and evaluatin
 \section{Operations}{
 
 \tabular{ll}{
-\link[=bedrock_batch_delete_advanced_prompt_optimization_job]{batch_delete_advanced_prompt_optimization_job} \tab Batch delete the specified advanced prompt optimization jobs\cr
+\link[=bedrock_batch_delete_advanced_prompt_optimization_job]{batch_delete_advanced_prompt_optimization_job} \tab Deletes one or more advanced prompt optimization jobs\cr
 \link[=bedrock_batch_delete_evaluation_job]{batch_delete_evaluation_job} \tab Deletes a batch of evaluation jobs\cr
 \link[=bedrock_cancel_automated_reasoning_policy_build_workflow]{cancel_automated_reasoning_policy_build_workflow} \tab Cancels a running Automated Reasoning policy build workflow\cr
-\link[=bedrock_create_advanced_prompt_optimization_job]{create_advanced_prompt_optimization_job} \tab Creates an asynchronous batch job for advanced prompt optimization\cr
+\link[=bedrock_create_advanced_prompt_optimization_job]{create_advanced_prompt_optimization_job} \tab Creates an advanced prompt optimization job\cr
 \link[=bedrock_create_automated_reasoning_policy]{create_automated_reasoning_policy} \tab Creates an Automated Reasoning policy for Amazon Bedrock Guardrails\cr
 \link[=bedrock_create_automated_reasoning_policy_test_case]{create_automated_reasoning_policy_test_case} \tab Creates a test for an Automated Reasoning policy\cr
 \link[=bedrock_create_automated_reasoning_policy_version]{create_automated_reasoning_policy_version} \tab Creates a new version of an existing Automated Reasoning policy\cr
@@ -127,7 +127,8 @@ Describes the API operations for creating, managing, fine-turning, and evaluatin
 \link[=bedrock_delete_resource_policy]{delete_resource_policy} \tab Deletes a previously created Bedrock resource policy\cr
 \link[=bedrock_deregister_marketplace_model_endpoint]{deregister_marketplace_model_endpoint} \tab Deregisters an endpoint for a model from Amazon Bedrock Marketplace\cr
 \link[=bedrock_export_automated_reasoning_policy_version]{export_automated_reasoning_policy_version} \tab Exports the policy definition for an Automated Reasoning policy version\cr
-\link[=bedrock_get_advanced_prompt_optimization_job]{get_advanced_prompt_optimization_job} \tab Retrieves the details and status of an advanced prompt optimization job\cr
+\link[=bedrock_get_account_data_retention]{get_account_data_retention} \tab Returns the account-wide data retention mode for Amazon Bedrock\cr
+\link[=bedrock_get_advanced_prompt_optimization_job]{get_advanced_prompt_optimization_job} \tab Gets information about an advanced prompt optimization job\cr
 \link[=bedrock_get_automated_reasoning_policy]{get_automated_reasoning_policy} \tab Retrieves details about an Automated Reasoning policy or policy version\cr
 \link[=bedrock_get_automated_reasoning_policy_annotations]{get_automated_reasoning_policy_annotations} \tab Retrieves the current annotations for an Automated Reasoning policy build workflow\cr
 \link[=bedrock_get_automated_reasoning_policy_build_workflow]{get_automated_reasoning_policy_build_workflow} \tab Retrieves detailed information about an Automated Reasoning policy build workflow, including its status, configuration, and metadata\cr
@@ -153,7 +154,7 @@ Describes the API operations for creating, managing, fine-turning, and evaluatin
 \link[=bedrock_get_provisioned_model_throughput]{get_provisioned_model_throughput} \tab Returns details for a Provisioned Throughput\cr
 \link[=bedrock_get_resource_policy]{get_resource_policy} \tab Gets the resource policy document for a Bedrock resource\cr
 \link[=bedrock_get_use_case_for_model_access]{get_use_case_for_model_access} \tab Get usecase for model access\cr
-\link[=bedrock_list_advanced_prompt_optimization_jobs]{list_advanced_prompt_optimization_jobs} \tab Lists all advanced prompt optimization jobs for the account\cr
+\link[=bedrock_list_advanced_prompt_optimization_jobs]{list_advanced_prompt_optimization_jobs} \tab Lists the advanced prompt optimization jobs in your account\cr
 \link[=bedrock_list_automated_reasoning_policies]{list_automated_reasoning_policies} \tab Lists all Automated Reasoning policies in your account, with optional filtering by policy ARN\cr
 \link[=bedrock_list_automated_reasoning_policy_build_workflows]{list_automated_reasoning_policy_build_workflows} \tab Lists all build workflows for an Automated Reasoning policy, showing the history of policy creation and modification attempts\cr
 \link[=bedrock_list_automated_reasoning_policy_test_cases]{list_automated_reasoning_policy_test_cases} \tab Lists tests for an Automated Reasoning policy\cr
@@ -175,6 +176,7 @@ Describes the API operations for creating, managing, fine-turning, and evaluatin
 \link[=bedrock_list_prompt_routers]{list_prompt_routers} \tab Retrieves a list of prompt routers\cr
 \link[=bedrock_list_provisioned_model_throughputs]{list_provisioned_model_throughputs} \tab Lists the Provisioned Throughputs in the account\cr
 \link[=bedrock_list_tags_for_resource]{list_tags_for_resource} \tab List the tags associated with the specified resource\cr
+\link[=bedrock_put_account_data_retention]{put_account_data_retention} \tab Sets the account-wide data retention mode for Amazon Bedrock\cr
 \link[=bedrock_put_enforced_guardrail_configuration]{put_enforced_guardrail_configuration} \tab Sets the account-level enforced guardrail configuration\cr
 \link[=bedrock_put_model_invocation_logging_configuration]{put_model_invocation_logging_configuration} \tab Set the configuration values for model invocation logging\cr
 \link[=bedrock_put_resource_policy]{put_resource_policy} \tab Adds a resource policy for a Bedrock resource\cr
@@ -182,7 +184,7 @@ Describes the API operations for creating, managing, fine-turning, and evaluatin
 \link[=bedrock_register_marketplace_model_endpoint]{register_marketplace_model_endpoint} \tab Registers an existing Amazon SageMaker endpoint with Amazon Bedrock Marketplace, allowing it to be used with Amazon Bedrock APIs\cr
 \link[=bedrock_start_automated_reasoning_policy_build_workflow]{start_automated_reasoning_policy_build_workflow} \tab Starts a new build workflow for an Automated Reasoning policy\cr
 \link[=bedrock_start_automated_reasoning_policy_test_workflow]{start_automated_reasoning_policy_test_workflow} \tab Initiates a test workflow to validate Automated Reasoning policy tests\cr
-\link[=bedrock_stop_advanced_prompt_optimization_job]{stop_advanced_prompt_optimization_job} \tab Stops an in-progress advanced prompt optimization job\cr
+\link[=bedrock_stop_advanced_prompt_optimization_job]{stop_advanced_prompt_optimization_job} \tab Stops an advanced prompt optimization job that is in progress\cr
 \link[=bedrock_stop_evaluation_job]{stop_evaluation_job} \tab Stops an evaluation job that is current being created or running\cr
 \link[=bedrock_stop_model_customization_job]{stop_model_customization_job} \tab Stops an active model customization job\cr
 \link[=bedrock_stop_model_invocation_job]{stop_model_invocation_job} \tab Stops a batch inference job\cr

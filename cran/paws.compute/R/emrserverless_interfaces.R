@@ -5,264 +5,220 @@ NULL
 
 .emrserverless$cancel_job_run_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string")), jobRunId = structure(logical(0), tags = list(location = "uri", locationName = "jobRunId", type = "string")), shutdownGracePeriodInSeconds = structure(logical(0), tags = list(location = "querystring", locationName = "shutdownGracePeriodInSeconds", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["cancel_job_run_input"]]))
 }
 
 .emrserverless$cancel_job_run_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(type = "string")), jobRunId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["cancel_job_run_output"]]))
 }
 
 .emrserverless$create_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), initialCapacity = structure(list(structure(list(workerCount = structure(logical(0), tags = list(type = "long")), workerConfiguration = structure(list(cpu = structure(logical(0), tags = list(type = "string")), memory = structure(logical(0), tags = list(type = "string")), disk = structure(logical(0), tags = list(type = "string")), diskType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), maximumCapacity = structure(list(cpu = structure(logical(0), tags = list(type = "string")), memory = structure(logical(0), tags = list(type = "string")), disk = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), autoStartConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), autoStopConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), idleTimeoutMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), networkConfiguration = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), architecture = structure(logical(0), tags = list(type = "string")), imageConfiguration = structure(list(imageUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), workerTypeSpecifications = structure(list(structure(list(imageConfiguration = structure(list(imageUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), runtimeConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), monitoringConfiguration = structure(list(s3MonitoringConfiguration = structure(list(logUri = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), managedPersistenceMonitoringConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), cloudWatchLoggingConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), logGroupName = structure(logical(0), tags = list(type = "string")), logStreamNamePrefix = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string")), logTypes = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), prometheusMonitoringConfiguration = structure(list(remoteWriteUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), diskEncryptionConfiguration = structure(list(encryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), interactiveConfiguration = structure(list(studioEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), livyEndpointEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), sessionEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), schedulerConfiguration = structure(list(queueTimeoutMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxConcurrentRuns = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), identityCenterConfiguration = structure(list(identityCenterInstanceArn = structure(logical(0), tags = list(type = "string")), userBackgroundSessionsEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), jobLevelCostAllocationConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["create_application_input"]]))
 }
 
 .emrserverless$create_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["create_application_output"]]))
 }
 
 .emrserverless$delete_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["delete_application_input"]]))
 }
 
 .emrserverless$delete_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["delete_application_output"]]))
 }
 
 .emrserverless$get_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["get_application_input"]]))
 }
 
 .emrserverless$get_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(application = structure(list(applicationId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), stateDetails = structure(logical(0), tags = list(type = "string")), initialCapacity = structure(list(structure(list(workerCount = structure(logical(0), tags = list(type = "long")), workerConfiguration = structure(list(cpu = structure(logical(0), tags = list(type = "string")), memory = structure(logical(0), tags = list(type = "string")), disk = structure(logical(0), tags = list(type = "string")), diskType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), maximumCapacity = structure(list(cpu = structure(logical(0), tags = list(type = "string")), memory = structure(logical(0), tags = list(type = "string")), disk = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), autoStartConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), autoStopConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), idleTimeoutMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), networkConfiguration = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), architecture = structure(logical(0), tags = list(type = "string")), imageConfiguration = structure(list(imageUri = structure(logical(0), tags = list(type = "string")), resolvedImageDigest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), workerTypeSpecifications = structure(list(structure(list(imageConfiguration = structure(list(imageUri = structure(logical(0), tags = list(type = "string")), resolvedImageDigest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), runtimeConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), monitoringConfiguration = structure(list(s3MonitoringConfiguration = structure(list(logUri = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), managedPersistenceMonitoringConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), cloudWatchLoggingConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), logGroupName = structure(logical(0), tags = list(type = "string")), logStreamNamePrefix = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string")), logTypes = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), prometheusMonitoringConfiguration = structure(list(remoteWriteUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), diskEncryptionConfiguration = structure(list(encryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), interactiveConfiguration = structure(list(studioEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), livyEndpointEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), sessionEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), schedulerConfiguration = structure(list(queueTimeoutMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxConcurrentRuns = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), identityCenterConfiguration = structure(list(identityCenterInstanceArn = structure(logical(0), tags = list(type = "string")), identityCenterApplicationArn = structure(logical(0), tags = list(type = "string")), userBackgroundSessionsEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), jobLevelCostAllocationConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["get_application_output"]]))
 }
 
 .emrserverless$get_dashboard_for_job_run_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string")), jobRunId = structure(logical(0), tags = list(location = "uri", locationName = "jobRunId", type = "string")), attempt = structure(logical(0), tags = list(location = "querystring", locationName = "attempt", type = "integer", box = TRUE)), accessSystemProfileLogs = structure(logical(0), tags = list(location = "querystring", locationName = "accessSystemProfileLogs", type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["get_dashboard_for_job_run_input"]]))
 }
 
 .emrserverless$get_dashboard_for_job_run_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["get_dashboard_for_job_run_output"]]))
 }
 
 .emrserverless$get_job_run_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string")), jobRunId = structure(logical(0), tags = list(location = "uri", locationName = "jobRunId", type = "string")), attempt = structure(logical(0), tags = list(location = "querystring", locationName = "attempt", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["get_job_run_input"]]))
 }
 
 .emrserverless$get_job_run_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobRun = structure(list(applicationId = structure(logical(0), tags = list(type = "string")), jobRunId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdBy = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), executionRole = structure(logical(0), tags = list(type = "string")), executionIamPolicy = structure(list(policy = structure(logical(0), tags = list(type = "string")), policyArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), state = structure(logical(0), tags = list(type = "string")), stateDetails = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), configurationOverrides = structure(list(applicationConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), monitoringConfiguration = structure(list(s3MonitoringConfiguration = structure(list(logUri = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), managedPersistenceMonitoringConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), cloudWatchLoggingConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), logGroupName = structure(logical(0), tags = list(type = "string")), logStreamNamePrefix = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string")), logTypes = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), prometheusMonitoringConfiguration = structure(list(remoteWriteUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), diskEncryptionConfiguration = structure(list(encryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), jobDriver = structure(list(sparkSubmit = structure(list(entryPoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entryPointArguments = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), sparkSubmitParameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), hive = structure(list(query = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), initQueryFile = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), parameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), totalResourceUtilization = structure(list(vCPUHour = structure(logical(0), tags = list(type = "double", box = TRUE)), memoryGBHour = structure(logical(0), tags = list(type = "double", box = TRUE)), storageGBHour = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), networkConfiguration = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), totalExecutionDurationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), executionTimeoutMinutes = structure(logical(0), tags = list(box = TRUE, type = "long")), billedResourceUtilization = structure(list(vCPUHour = structure(logical(0), tags = list(type = "double", box = TRUE)), memoryGBHour = structure(logical(0), tags = list(type = "double", box = TRUE)), storageGBHour = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), mode = structure(logical(0), tags = list(type = "string")), retryPolicy = structure(list(maxAttempts = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxFailedAttemptsPerHour = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), attempt = structure(logical(0), tags = list(type = "integer", box = TRUE)), attemptCreatedAt = structure(logical(0), tags = list(type = "timestamp")), attemptUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), startedAt = structure(logical(0), tags = list(type = "timestamp")), endedAt = structure(logical(0), tags = list(type = "timestamp")), queuedDurationMilliseconds = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["get_job_run_output"]]))
 }
 
 .emrserverless$get_resource_dashboard_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string")), resourceId = structure(logical(0), tags = list(location = "querystring", locationName = "resourceId", type = "string")), resourceType = structure(logical(0), tags = list(location = "querystring", locationName = "resourceType", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["get_resource_dashboard_input"]]))
 }
 
 .emrserverless$get_resource_dashboard_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["get_resource_dashboard_output"]]))
 }
 
 .emrserverless$get_session_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string")), sessionId = structure(logical(0), tags = list(location = "uri", locationName = "sessionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["get_session_input"]]))
 }
 
 .emrserverless$get_session_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(session = structure(list(applicationId = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), stateDetails = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), executionRoleArn = structure(logical(0), tags = list(type = "string")), createdBy = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), startedAt = structure(logical(0), tags = list(type = "timestamp")), endedAt = structure(logical(0), tags = list(type = "timestamp")), idleSince = structure(logical(0), tags = list(type = "timestamp")), configurationOverrides = structure(list(runtimeConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), networkConfiguration = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), idleTimeoutMinutes = structure(logical(0), tags = list(box = TRUE, type = "long")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), totalResourceUtilization = structure(list(vCPUHour = structure(logical(0), tags = list(type = "double", box = TRUE)), memoryGBHour = structure(logical(0), tags = list(type = "double", box = TRUE)), storageGBHour = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), billedResourceUtilization = structure(list(vCPUHour = structure(logical(0), tags = list(type = "double", box = TRUE)), memoryGBHour = structure(logical(0), tags = list(type = "double", box = TRUE)), storageGBHour = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), totalExecutionDurationSeconds = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["get_session_output"]]))
 }
 
 .emrserverless$get_session_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string")), sessionId = structure(logical(0), tags = list(location = "uri", locationName = "sessionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["get_session_endpoint_input"]]))
 }
 
 .emrserverless$get_session_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), authToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), authTokenExpiresAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["get_session_endpoint_output"]]))
 }
 
 .emrserverless$list_applications_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), states = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "states", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["list_applications_input"]]))
 }
 
 .emrserverless$list_applications_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applications = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), stateDetails = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), architecture = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["list_applications_output"]]))
 }
 
 .emrserverless$list_job_run_attempts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string")), jobRunId = structure(logical(0), tags = list(location = "uri", locationName = "jobRunId", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["list_job_run_attempts_input"]]))
 }
 
 .emrserverless$list_job_run_attempts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobRunAttempts = structure(list(structure(list(applicationId = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), mode = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdBy = structure(logical(0), tags = list(type = "string")), jobCreatedAt = structure(logical(0), tags = list(type = "timestamp")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), executionRole = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), stateDetails = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), attempt = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["list_job_run_attempts_output"]]))
 }
 
 .emrserverless$list_job_runs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), createdAtAfter = structure(logical(0), tags = list(location = "querystring", locationName = "createdAtAfter", type = "timestamp")), createdAtBefore = structure(logical(0), tags = list(location = "querystring", locationName = "createdAtBefore", type = "timestamp")), states = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "states", type = "list")), mode = structure(logical(0), tags = list(location = "querystring", locationName = "mode", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["list_job_runs_input"]]))
 }
 
 .emrserverless$list_job_runs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobRuns = structure(list(structure(list(applicationId = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), mode = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdBy = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), executionRole = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), stateDetails = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), attempt = structure(logical(0), tags = list(type = "integer", box = TRUE)), attemptCreatedAt = structure(logical(0), tags = list(type = "timestamp")), attemptUpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["list_job_runs_output"]]))
 }
 
 .emrserverless$list_sessions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), states = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "states", type = "list")), createdAtAfter = structure(logical(0), tags = list(location = "querystring", locationName = "createdAtAfter", type = "timestamp")), createdAtBefore = structure(logical(0), tags = list(location = "querystring", locationName = "createdAtBefore", type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["list_sessions_input"]]))
 }
 
 .emrserverless$list_sessions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sessions = structure(list(structure(list(applicationId = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), stateDetails = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), executionRoleArn = structure(logical(0), tags = list(type = "string")), createdBy = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["list_sessions_output"]]))
 }
 
 .emrserverless$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["list_tags_for_resource_input"]]))
 }
 
 .emrserverless$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["list_tags_for_resource_output"]]))
 }
 
 .emrserverless$start_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["start_application_input"]]))
 }
 
 .emrserverless$start_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["start_application_output"]]))
 }
 
 .emrserverless$start_job_run_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), executionRoleArn = structure(logical(0), tags = list(type = "string")), executionIamPolicy = structure(list(policy = structure(logical(0), tags = list(type = "string")), policyArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), jobDriver = structure(list(sparkSubmit = structure(list(entryPoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), entryPointArguments = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), sparkSubmitParameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), hive = structure(list(query = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), initQueryFile = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), parameters = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), configurationOverrides = structure(list(applicationConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), monitoringConfiguration = structure(list(s3MonitoringConfiguration = structure(list(logUri = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), managedPersistenceMonitoringConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), cloudWatchLoggingConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), logGroupName = structure(logical(0), tags = list(type = "string")), logStreamNamePrefix = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string")), logTypes = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), prometheusMonitoringConfiguration = structure(list(remoteWriteUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), diskEncryptionConfiguration = structure(list(encryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), executionTimeoutMinutes = structure(logical(0), tags = list(box = TRUE, type = "long")), name = structure(logical(0), tags = list(type = "string")), mode = structure(logical(0), tags = list(type = "string")), retryPolicy = structure(list(maxAttempts = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxFailedAttemptsPerHour = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["start_job_run_input"]]))
 }
 
 .emrserverless$start_job_run_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(type = "string")), jobRunId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["start_job_run_output"]]))
 }
 
 .emrserverless$start_session_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), executionRoleArn = structure(logical(0), tags = list(type = "string")), configurationOverrides = structure(list(runtimeConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), idleTimeoutMinutes = structure(logical(0), tags = list(box = TRUE, type = "long")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["start_session_input"]]))
 }
 
 .emrserverless$start_session_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["start_session_output"]]))
 }
 
 .emrserverless$stop_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["stop_application_input"]]))
 }
 
 .emrserverless$stop_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["stop_application_output"]]))
 }
 
 .emrserverless$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["tag_resource_input"]]))
 }
 
 .emrserverless$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["tag_resource_output"]]))
 }
 
 .emrserverless$terminate_session_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string")), sessionId = structure(logical(0), tags = list(location = "uri", locationName = "sessionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["terminate_session_input"]]))
 }
 
 .emrserverless$terminate_session_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["terminate_session_output"]]))
 }
 
 .emrserverless$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["untag_resource_input"]]))
 }
 
 .emrserverless$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["untag_resource_output"]]))
 }
 
 .emrserverless$update_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), initialCapacity = structure(list(structure(list(workerCount = structure(logical(0), tags = list(type = "long")), workerConfiguration = structure(list(cpu = structure(logical(0), tags = list(type = "string")), memory = structure(logical(0), tags = list(type = "string")), disk = structure(logical(0), tags = list(type = "string")), diskType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), maximumCapacity = structure(list(cpu = structure(logical(0), tags = list(type = "string")), memory = structure(logical(0), tags = list(type = "string")), disk = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), autoStartConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), autoStopConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), idleTimeoutMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), networkConfiguration = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), architecture = structure(logical(0), tags = list(type = "string")), imageConfiguration = structure(list(imageUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), workerTypeSpecifications = structure(list(structure(list(imageConfiguration = structure(list(imageUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), interactiveConfiguration = structure(list(studioEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), livyEndpointEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), sessionEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), releaseLabel = structure(logical(0), tags = list(type = "string")), runtimeConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), monitoringConfiguration = structure(list(s3MonitoringConfiguration = structure(list(logUri = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), managedPersistenceMonitoringConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), cloudWatchLoggingConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), logGroupName = structure(logical(0), tags = list(type = "string")), logStreamNamePrefix = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string")), logTypes = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), prometheusMonitoringConfiguration = structure(list(remoteWriteUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), diskEncryptionConfiguration = structure(list(encryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), schedulerConfiguration = structure(list(queueTimeoutMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxConcurrentRuns = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), identityCenterConfiguration = structure(list(identityCenterInstanceArn = structure(logical(0), tags = list(type = "string")), userBackgroundSessionsEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), jobLevelCostAllocationConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["update_application_input"]]))
 }
 
 .emrserverless$update_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(application = structure(list(applicationId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), releaseLabel = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), stateDetails = structure(logical(0), tags = list(type = "string")), initialCapacity = structure(list(structure(list(workerCount = structure(logical(0), tags = list(type = "long")), workerConfiguration = structure(list(cpu = structure(logical(0), tags = list(type = "string")), memory = structure(logical(0), tags = list(type = "string")), disk = structure(logical(0), tags = list(type = "string")), diskType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), maximumCapacity = structure(list(cpu = structure(logical(0), tags = list(type = "string")), memory = structure(logical(0), tags = list(type = "string")), disk = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), autoStartConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), autoStopConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), idleTimeoutMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), networkConfiguration = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), architecture = structure(logical(0), tags = list(type = "string")), imageConfiguration = structure(list(imageUri = structure(logical(0), tags = list(type = "string")), resolvedImageDigest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), workerTypeSpecifications = structure(list(structure(list(imageConfiguration = structure(list(imageUri = structure(logical(0), tags = list(type = "string")), resolvedImageDigest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map")), runtimeConfiguration = structure(list(structure(list(classification = structure(logical(0), tags = list(type = "string")), properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), configurations = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), monitoringConfiguration = structure(list(s3MonitoringConfiguration = structure(list(logUri = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), managedPersistenceMonitoringConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), cloudWatchLoggingConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), logGroupName = structure(logical(0), tags = list(type = "string")), logStreamNamePrefix = structure(logical(0), tags = list(type = "string")), encryptionKeyArn = structure(logical(0), tags = list(type = "string")), logTypes = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), prometheusMonitoringConfiguration = structure(list(remoteWriteUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), diskEncryptionConfiguration = structure(list(encryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), encryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), interactiveConfiguration = structure(list(studioEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), livyEndpointEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), sessionEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), schedulerConfiguration = structure(list(queueTimeoutMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxConcurrentRuns = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), identityCenterConfiguration = structure(list(identityCenterInstanceArn = structure(logical(0), tags = list(type = "string")), identityCenterApplicationArn = structure(logical(0), tags = list(type = "string")), userBackgroundSessionsEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), jobLevelCostAllocationConfiguration = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emrserverless_shapes[["update_application_output"]]))
 }

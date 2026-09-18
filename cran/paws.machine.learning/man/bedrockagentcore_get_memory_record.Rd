@@ -4,12 +4,14 @@
 \alias{bedrockagentcore_get_memory_record}
 \title{Retrieves a specific memory record from an AgentCore Memory resource}
 \usage{
-bedrockagentcore_get_memory_record(memoryId, memoryRecordId)
+bedrockagentcore_get_memory_record(memoryId, memoryRecordId, namespace = NULL)
 }
 \arguments{
 \item{memoryId}{[required] The identifier of the AgentCore Memory resource containing the memory record.}
 
 \item{memoryRecordId}{[required] The identifier of the memory record to retrieve.}
+
+\item{namespace}{The namespace of the memory record to retrieve. This value is used for IAM condition key authorization.}
 }
 \description{
 Retrieves a specific memory record from an AgentCore Memory resource.

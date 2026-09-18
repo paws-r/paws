@@ -69,6 +69,41 @@ backup_cancel_legal_hold <- function(LegalHoldId, CancelDescription, RetainRecor
 }
 .backup$operations$cancel_legal_hold <- backup_cancel_legal_hold
 
+#' Creates a backup access point for an Amazon S3 recovery point
+#'
+#' @description
+#' Creates a backup access point for an Amazon S3 recovery point. A backup access point provides on-demand, read-only access to the backup data in a recovery point through an Amazon S3 access point, without initiating a restore.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_create_backup_access_point/](https://www.paws-r-sdk.com/docs/backup_create_backup_access_point/) for full documentation.
+#'
+#' @param AccessPointMetadata Metadata for the backup access point. For continuous (point-in-time) recovery points, you must include an `AccessPointInTime` timestamp (in format `2021-11-27T03:30:27Z`). The access point provides access to the content present in the backup at that specific time. You can specify any time within the continuous backup's retention period, up to the latest restorable time. For snapshot recovery points, do not include `AccessPointInTime`.
+#' @param AccessPointPolicy An optional resource-based policy, in JSON format, to apply to the underlying Amazon S3 access point. The policy controls how backup data can be accessed through the access point. If you do not specify a policy, access is governed by the caller's IAM permissions. For more information, see [Configuring IAM policies for using access points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-policies.html) in the *Amazon S3 User Guide*.
+#' @param Name &#91;required&#93; The name of the backup access point. This name is shared with the Amazon S3 access point namespace. It must be unique within your account and Region and cannot conflict with an existing Amazon S3 access point. For more information about access point naming, see [Access points naming rules, restrictions, and limitations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-restrictions-limitations-naming-rules.html) in the *Amazon S3 User Guide*.
+#' @param RecoveryPointArn &#91;required&#93; The Amazon Resource Name (ARN) of the recovery point for which to create the backup access point. The recovery point must be an Amazon S3 recovery point in the `AVAILABLE`, `STOPPED`, or `COMPLETED` state.
+#' @param Tags The tags to assign to the backup access point.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_create_backup_access_point
+backup_create_backup_access_point <- function(AccessPointMetadata = NULL, AccessPointPolicy = NULL, Name, RecoveryPointArn, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateBackupAccessPoint",
+    http_method = "PUT",
+    http_path = "/backup-access-point/create",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .backup$create_backup_access_point_input(AccessPointMetadata = AccessPointMetadata, AccessPointPolicy = AccessPointPolicy, Name = Name, RecoveryPointArn = RecoveryPointArn, Tags = Tags)
+  output <- .backup$create_backup_access_point_output()
+  config <- get_config()
+  svc <- .backup$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$create_backup_access_point <- backup_create_backup_access_point
+
 #' Creates a backup plan using a backup plan name and backup rules
 #'
 #' @description
@@ -475,6 +510,37 @@ backup_create_tiering_configuration <- function(TieringConfiguration, TieringCon
 }
 .backup$operations$create_tiering_configuration <- backup_create_tiering_configuration
 
+#' Deletes a backup access point
+#'
+#' @description
+#' Deletes a backup access point. This deletes the underlying Amazon S3 access point and, if no other backup access points remain for the recovery point, resumes lifecycle transitions for that recovery point.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_delete_backup_access_point/](https://www.paws-r-sdk.com/docs/backup_delete_backup_access_point/) for full documentation.
+#'
+#' @param AccessPointArn &#91;required&#93; The Amazon Resource Name (ARN) of the backup access point to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_delete_backup_access_point
+backup_delete_backup_access_point <- function(AccessPointArn) {
+  op <- new_operation(
+    name = "DeleteBackupAccessPoint",
+    http_method = "DELETE",
+    http_path = "/backup-access-point/delete/{AccessPointArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .backup$delete_backup_access_point_input(AccessPointArn = AccessPointArn)
+  output <- .backup$delete_backup_access_point_output()
+  config <- get_config()
+  svc <- .backup$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$delete_backup_access_point <- backup_delete_backup_access_point
+
 #' Deletes a backup plan
 #'
 #' @description
@@ -852,6 +918,38 @@ backup_delete_tiering_configuration <- function(TieringConfigurationName) {
   return(response)
 }
 .backup$operations$delete_tiering_configuration <- backup_delete_tiering_configuration
+
+#' Returns metadata about a backup access point, including its status and
+#' the details of the underlying Amazon S3 access point
+#'
+#' @description
+#' Returns metadata about a backup access point, including its status and the details of the underlying Amazon S3 access point.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_describe_backup_access_point/](https://www.paws-r-sdk.com/docs/backup_describe_backup_access_point/) for full documentation.
+#'
+#' @param AccessPointArn &#91;required&#93; The Amazon Resource Name (ARN) of the backup access point to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_describe_backup_access_point
+backup_describe_backup_access_point <- function(AccessPointArn) {
+  op <- new_operation(
+    name = "DescribeBackupAccessPoint",
+    http_method = "GET",
+    http_path = "/backup-access-point/{AccessPointArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .backup$describe_backup_access_point_input(AccessPointArn = AccessPointArn)
+  output <- .backup$describe_backup_access_point_output()
+  config <- get_config()
+  svc <- .backup$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$describe_backup_access_point <- backup_describe_backup_access_point
 
 #' Returns backup job details for the specified BackupJobId
 #'
@@ -1888,11 +1986,111 @@ backup_get_tiering_configuration <- function(TieringConfigurationName) {
 }
 .backup$operations$get_tiering_configuration <- backup_get_tiering_configuration
 
-#' This is a request for a summary of backup jobs created or running within
-#' the most recent 30 days
+#' Returns a list of the backup access points in your account and Region
 #'
 #' @description
-#' This is a request for a summary of backup jobs created or running within the most recent 30 days. You can include parameters AccountID, State, ResourceType, MessageCategory, AggregationPeriod, MaxResults, or NextToken to filter results.
+#' Returns a list of the backup access points in your account and Region.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_list_backup_access_points/](https://www.paws-r-sdk.com/docs/backup_list_backup_access_points/) for full documentation.
+#'
+#' @param MaxResults The maximum number of items to be returned.
+#' @param NextToken The next item following a partial list of returned items. For example, if a request is made to return `MaxResults` number of items, `NextToken` allows you to return more items in your list starting at the location pointed to by the next token.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_backup_access_points
+backup_list_backup_access_points <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListBackupAccessPoints",
+    http_method = "GET",
+    http_path = "/backup-access-point",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupAccessPoints"),
+    stream_api = FALSE
+  )
+  input <- .backup$list_backup_access_points_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .backup$list_backup_access_points_output()
+  config <- get_config()
+  svc <- .backup$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_backup_access_points <- backup_list_backup_access_points
+
+#' Returns the backup access points associated with the specified recovery
+#' point
+#'
+#' @description
+#' Returns the backup access points associated with the specified recovery point.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_list_backup_access_points_by_recovery_point/](https://www.paws-r-sdk.com/docs/backup_list_backup_access_points_by_recovery_point/) for full documentation.
+#'
+#' @param MaxResults The maximum number of items to be returned.
+#' @param NextToken The next item following a partial list of returned items. For example, if a request is made to return `MaxResults` number of items, `NextToken` allows you to return more items in your list starting at the location pointed to by the next token.
+#' @param RecoveryPointArn &#91;required&#93; The Amazon Resource Name (ARN) of the recovery point whose backup access points you want to list.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_backup_access_points_by_recovery_point
+backup_list_backup_access_points_by_recovery_point <- function(MaxResults = NULL, NextToken = NULL, RecoveryPointArn) {
+  op <- new_operation(
+    name = "ListBackupAccessPointsByRecoveryPoint",
+    http_method = "POST",
+    http_path = "/backup-access-point/recovery-point/{RecoveryPointArn}",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupAccessPoints"),
+    stream_api = FALSE
+  )
+  input <- .backup$list_backup_access_points_by_recovery_point_input(MaxResults = MaxResults, NextToken = NextToken, RecoveryPointArn = RecoveryPointArn)
+  output <- .backup$list_backup_access_points_by_recovery_point_output()
+  config <- get_config()
+  svc <- .backup$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_backup_access_points_by_recovery_point <- backup_list_backup_access_points_by_recovery_point
+
+#' Returns the backup access points associated with the specified resource,
+#' such as an Amazon S3 bucket
+#'
+#' @description
+#' Returns the backup access points associated with the specified resource, such as an Amazon S3 bucket.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_list_backup_access_points_by_resource/](https://www.paws-r-sdk.com/docs/backup_list_backup_access_points_by_resource/) for full documentation.
+#'
+#' @param MaxResults The maximum number of items to be returned.
+#' @param NextToken The next item following a partial list of returned items. For example, if a request is made to return `MaxResults` number of items, `NextToken` allows you to return more items in your list starting at the location pointed to by the next token.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose backup access points you want to list.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_backup_access_points_by_resource
+backup_list_backup_access_points_by_resource <- function(MaxResults = NULL, NextToken = NULL, ResourceArn) {
+  op <- new_operation(
+    name = "ListBackupAccessPointsByResource",
+    http_method = "POST",
+    http_path = "/backup-access-point/resource/{ResourceArn}",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupAccessPoints"),
+    stream_api = FALSE
+  )
+  input <- .backup$list_backup_access_points_by_resource_input(MaxResults = MaxResults, NextToken = NextToken, ResourceArn = ResourceArn)
+  output <- .backup$list_backup_access_points_by_resource_output()
+  config <- get_config()
+  svc <- .backup$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_backup_access_points_by_resource <- backup_list_backup_access_points_by_resource
+
+#' This is a request for a summary of backup jobs created or running within
+#' the most recent 14 days
+#'
+#' @description
+#' This is a request for a summary of backup jobs created or running within the most recent 14 days. You can include parameters AccountID, State, ResourceType, MessageCategory, AggregationPeriod, MaxResults, or NextToken to filter results.
 #'
 #' See [https://www.paws-r-sdk.com/docs/backup_list_backup_job_summaries/](https://www.paws-r-sdk.com/docs/backup_list_backup_job_summaries/) for full documentation.
 #'
@@ -2228,10 +2426,10 @@ backup_list_backup_vaults <- function(ByVaultType = NULL, ByShared = NULL, NextT
 .backup$operations$list_backup_vaults <- backup_list_backup_vaults
 
 #' This request obtains a list of copy jobs created or running within the
-#' the most recent 30 days
+#' the most recent 14 days
 #'
 #' @description
-#' This request obtains a list of copy jobs created or running within the the most recent 30 days. You can include parameters AccountID, State, ResourceType, MessageCategory, AggregationPeriod, MaxResults, or NextToken to filter results.
+#' This request obtains a list of copy jobs created or running within the the most recent 14 days. You can include parameters AccountID, State, ResourceType, MessageCategory, AggregationPeriod, MaxResults, or NextToken to filter results.
 #'
 #' See [https://www.paws-r-sdk.com/docs/backup_list_copy_job_summaries/](https://www.paws-r-sdk.com/docs/backup_list_copy_job_summaries/) for full documentation.
 #'
@@ -2496,12 +2694,13 @@ backup_list_legal_holds <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .backup$operations$list_legal_holds <- backup_list_legal_holds
 
-#' Returns an array of resources successfully backed up by Backup,
-#' including the time the resource was saved, an Amazon Resource Name (ARN)
-#' of the resource, and a resource type
+#' Returns an array of resources with recovery points created by Backup
+#' (regardless of the recovery point's status), including the time the
+#' resource was saved, an Amazon Resource Name (ARN) of the resource, and a
+#' resource type
 #'
 #' @description
-#' Returns an array of resources successfully backed up by Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type.
+#' Returns an array of resources with recovery points created by Backup (regardless of the recovery point's [status](https://docs.aws.amazon.com/aws-backup/latest/APIReference/API_DescribeRecoveryPoint.html#Backup-DescribeRecoveryPoint-response-Status)), including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type.
 #'
 #' See [https://www.paws-r-sdk.com/docs/backup_list_protected_resources/](https://www.paws-r-sdk.com/docs/backup_list_protected_resources/) for full documentation.
 #'
@@ -2693,7 +2892,7 @@ backup_list_recovery_points_by_legal_hold <- function(LegalHoldId, NextToken = N
 #' 
 #' If this is set to `TRUE`, the response will contain recovery points associated with the selected resources that are managed by Backup.
 #' 
-#' If this is set to `FALSE`, the response will contain all recovery points associated with the selected resource.
+#' If this is set to `FALSE`, the response will contain all recovery points associated with the selected resource, except for EBS snapshots copied within the same Region and account.
 #' 
 #' Type: Boolean
 #'
@@ -2826,10 +3025,10 @@ backup_list_restore_access_backup_vaults <- function(BackupVaultName, NextToken 
 .backup$operations$list_restore_access_backup_vaults <- backup_list_restore_access_backup_vaults
 
 #' This request obtains a summary of restore jobs created or running within
-#' the the most recent 30 days
+#' the the most recent 14 days
 #'
 #' @description
-#' This request obtains a summary of restore jobs created or running within the the most recent 30 days. You can include parameters AccountID, State, ResourceType, AggregationPeriod, MaxResults, or NextToken to filter results.
+#' This request obtains a summary of restore jobs created or running within the the most recent 14 days. You can include parameters AccountID, State, ResourceType, AggregationPeriod, MaxResults, or NextToken to filter results.
 #'
 #' See [https://www.paws-r-sdk.com/docs/backup_list_restore_job_summaries/](https://www.paws-r-sdk.com/docs/backup_list_restore_job_summaries/) for full documentation.
 #'
@@ -3064,10 +3263,10 @@ backup_list_restore_testing_selections <- function(MaxResults = NULL, NextToken 
 .backup$operations$list_restore_testing_selections <- backup_list_restore_testing_selections
 
 #' This is a request for a summary of scan jobs created or running within
-#' the most recent 30 days
+#' the most recent 14 days
 #'
 #' @description
-#' This is a request for a summary of scan jobs created or running within the most recent 30 days.
+#' This is a request for a summary of scan jobs created or running within the most recent 14 days.
 #'
 #' See [https://www.paws-r-sdk.com/docs/backup_list_scan_job_summaries/](https://www.paws-r-sdk.com/docs/backup_list_scan_job_summaries/) for full documentation.
 #'

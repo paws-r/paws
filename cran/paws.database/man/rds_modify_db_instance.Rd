@@ -68,7 +68,8 @@ rds_modify_db_instance(
   Engine = NULL,
   AdditionalStorageVolumes = NULL,
   TagSpecifications = NULL,
-  MasterUserAuthenticationType = NULL
+  MasterUserAuthenticationType = NULL,
+  EngineLifecycleSupport = NULL
 )
 }
 \arguments{
@@ -281,7 +282,7 @@ Valid Values:
 \itemize{
 \item RDS for Db2 - \code{bring-your-own-license}
 \item RDS for MariaDB - \code{general-public-license}
-\item RDS for Microsoft SQL Server - \code{license-included}
+\item RDS for Microsoft SQL Server - \code{license-included | bring-your-own-media}
 \item RDS for MySQL - \code{general-public-license}
 \item RDS for Oracle - \code{bring-your-own-license | license-included}
 \item RDS for PostgreSQL - \code{postgresql-license}
@@ -558,7 +559,7 @@ This parameter is only supported for Db2 DB instances and Oracle DB instances.
 
 \strong{Db2}
 
-Standby DB replicas are included in Db2 Advanced Edition (AE) and Db2 Standard Edition (SE). The main use case for standby replicas is cross-Region disaster recovery. Because it doesn't accept user connections, a standby replica can't serve a read-only workload.
+Standby DB replicas are included in Db2 Advanced Edition (AE), Db2 Community Edition (CE), and Db2 Standard Edition (SE). The main use case for standby replicas is cross-Region disaster recovery. Because it doesn't accept user connections, a standby replica can't serve a read-only workload.
 
 You can create a combination of standby and read-only DB replicas for the same primary DB instance. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/db2-replication.html}{Working with replicas for Amazon RDS for Db2} in the \emph{Amazon RDS User Guide}.
 
@@ -688,6 +689,16 @@ You can specify one of the following values:
 }
 
 This option is only valid for RDS for PostgreSQL and Aurora PostgreSQL engines.}
+
+\item{EngineLifecycleSupport}{The lifecycle type for this DB instance.
+
+This setting applies only to RDS for MySQL and RDS for PostgreSQL. For Amazon Aurora DB instances, the engine lifecycle support is managed by the DB cluster.
+
+You can use this setting to enroll your DB instance into Amazon RDS Extended Support or to opt out. With RDS Extended Support, you can run the selected major engine version on your DB instance past the end of standard support for that engine version. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Amazon RDS Extended Support with Amazon RDS} in the \emph{Amazon RDS User Guide}.
+
+Valid Values: \code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
+
+This setting doesn't apply to RDS Custom DB instances.}
 }
 \description{
 Modifies settings for a DB instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. To learn what modifications you can make to your DB instance, call \code{\link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications}} before you call \code{\link[=rds_modify_db_instance]{modify_db_instance}}.

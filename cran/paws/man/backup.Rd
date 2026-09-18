@@ -93,6 +93,7 @@ Backup is a unified backup service designed to protect Amazon Web Services servi
 \tabular{ll}{
 \link[paws.storage:backup_associate_backup_vault_mpa_approval_team]{associate_backup_vault_mpa_approval_team} \tab Associates an MPA approval team with a backup vault\cr
 \link[paws.storage:backup_cancel_legal_hold]{cancel_legal_hold} \tab Removes the specified legal hold on a recovery point\cr
+\link[paws.storage:backup_create_backup_access_point]{create_backup_access_point} \tab Creates a backup access point for an Amazon S3 recovery point\cr
 \link[paws.storage:backup_create_backup_plan]{create_backup_plan} \tab Creates a backup plan using a backup plan name and backup rules\cr
 \link[paws.storage:backup_create_backup_selection]{create_backup_selection} \tab Creates a JSON document that specifies a set of resources to assign to a backup plan\cr
 \link[paws.storage:backup_create_backup_vault]{create_backup_vault} \tab Creates a logical container where backups are stored\cr
@@ -104,6 +105,7 @@ Backup is a unified backup service designed to protect Amazon Web Services servi
 \link[paws.storage:backup_create_restore_testing_plan]{create_restore_testing_plan} \tab Creates a restore testing plan\cr
 \link[paws.storage:backup_create_restore_testing_selection]{create_restore_testing_selection} \tab This request can be sent after CreateRestoreTestingPlan request returns successfully\cr
 \link[paws.storage:backup_create_tiering_configuration]{create_tiering_configuration} \tab Creates a tiering configuration\cr
+\link[paws.storage:backup_delete_backup_access_point]{delete_backup_access_point} \tab Deletes a backup access point\cr
 \link[paws.storage:backup_delete_backup_plan]{delete_backup_plan} \tab Deletes a backup plan\cr
 \link[paws.storage:backup_delete_backup_selection]{delete_backup_selection} \tab Deletes the resource selection associated with a backup plan that is specified by the SelectionId\cr
 \link[paws.storage:backup_delete_backup_vault]{delete_backup_vault} \tab Deletes the backup vault identified by its name\cr
@@ -116,6 +118,7 @@ Backup is a unified backup service designed to protect Amazon Web Services servi
 \link[paws.storage:backup_delete_restore_testing_plan]{delete_restore_testing_plan} \tab This request deletes the specified restore testing plan\cr
 \link[paws.storage:backup_delete_restore_testing_selection]{delete_restore_testing_selection} \tab Input the Restore Testing Plan name and Restore Testing Selection name\cr
 \link[paws.storage:backup_delete_tiering_configuration]{delete_tiering_configuration} \tab Deletes the tiering configuration specified by a tiering configuration name\cr
+\link[paws.storage:backup_describe_backup_access_point]{describe_backup_access_point} \tab Returns metadata about a backup access point, including its status and the details of the underlying Amazon S3 access point\cr
 \link[paws.storage:backup_describe_backup_job]{describe_backup_job} \tab Returns backup job details for the specified BackupJobId\cr
 \link[paws.storage:backup_describe_backup_vault]{describe_backup_vault} \tab Returns metadata about a backup vault specified by its name\cr
 \link[paws.storage:backup_describe_copy_job]{describe_copy_job} \tab Returns metadata associated with creating a copy of a resource\cr
@@ -148,19 +151,22 @@ Backup is a unified backup service designed to protect Amazon Web Services servi
 \link[paws.storage:backup_get_restore_testing_selection]{get_restore_testing_selection} \tab Returns RestoreTestingSelection, which displays resources and elements of the restore testing plan\cr
 \link[paws.storage:backup_get_supported_resource_types]{get_supported_resource_types} \tab Returns the Amazon Web Services resource types supported by Backup\cr
 \link[paws.storage:backup_get_tiering_configuration]{get_tiering_configuration} \tab Returns TieringConfiguration details for the specified TieringConfigurationName\cr
+\link[paws.storage:backup_list_backup_access_points]{list_backup_access_points} \tab Returns a list of the backup access points in your account and Region\cr
+\link[paws.storage:backup_list_backup_access_points_by_recovery_point]{list_backup_access_points_by_recovery_point} \tab Returns the backup access points associated with the specified recovery point\cr
+\link[paws.storage:backup_list_backup_access_points_by_resource]{list_backup_access_points_by_resource} \tab Returns the backup access points associated with the specified resource, such as an Amazon S3 bucket\cr
 \link[paws.storage:backup_list_backup_jobs]{list_backup_jobs} \tab Returns a list of existing backup jobs for an authenticated account for the last 30 days\cr
-\link[paws.storage:backup_list_backup_job_summaries]{list_backup_job_summaries} \tab This is a request for a summary of backup jobs created or running within the most recent 30 days\cr
+\link[paws.storage:backup_list_backup_job_summaries]{list_backup_job_summaries} \tab This is a request for a summary of backup jobs created or running within the most recent 14 days\cr
 \link[paws.storage:backup_list_backup_plans]{list_backup_plans} \tab Lists the active backup plans for the account\cr
 \link[paws.storage:backup_list_backup_plan_templates]{list_backup_plan_templates} \tab Lists the backup plan templates\cr
 \link[paws.storage:backup_list_backup_plan_versions]{list_backup_plan_versions} \tab Returns version metadata of your backup plans, including Amazon Resource Names (ARNs), backup plan IDs, creation and deletion dates, plan names, and version IDs\cr
 \link[paws.storage:backup_list_backup_selections]{list_backup_selections} \tab Returns an array containing metadata of the resources associated with the target backup plan\cr
 \link[paws.storage:backup_list_backup_vaults]{list_backup_vaults} \tab Returns a list of recovery point storage containers along with information about them\cr
 \link[paws.storage:backup_list_copy_jobs]{list_copy_jobs} \tab Returns metadata about your copy jobs\cr
-\link[paws.storage:backup_list_copy_job_summaries]{list_copy_job_summaries} \tab This request obtains a list of copy jobs created or running within the the most recent 30 days\cr
+\link[paws.storage:backup_list_copy_job_summaries]{list_copy_job_summaries} \tab This request obtains a list of copy jobs created or running within the the most recent 14 days\cr
 \link[paws.storage:backup_list_frameworks]{list_frameworks} \tab Returns a list of all frameworks for an Amazon Web Services account and Amazon Web Services Region\cr
 \link[paws.storage:backup_list_indexed_recovery_points]{list_indexed_recovery_points} \tab This operation returns a list of recovery points that have an associated index, belonging to the specified account\cr
 \link[paws.storage:backup_list_legal_holds]{list_legal_holds} \tab This action returns metadata about active and previous legal holds\cr
-\link[paws.storage:backup_list_protected_resources]{list_protected_resources} \tab Returns an array of resources successfully backed up by Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type\cr
+\link[paws.storage:backup_list_protected_resources]{list_protected_resources} \tab Returns an array of resources with recovery points created by Backup (regardless of the recovery point's status), including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type\cr
 \link[paws.storage:backup_list_protected_resources_by_backup_vault]{list_protected_resources_by_backup_vault} \tab This request lists the protected resources corresponding to each backup vault\cr
 \link[paws.storage:backup_list_recovery_points_by_backup_vault]{list_recovery_points_by_backup_vault} \tab Returns detailed information about the recovery points stored in a backup vault\cr
 \link[paws.storage:backup_list_recovery_points_by_legal_hold]{list_recovery_points_by_legal_hold} \tab This action returns recovery point ARNs (Amazon Resource Names) of the specified legal hold\cr
@@ -170,11 +176,11 @@ Backup is a unified backup service designed to protect Amazon Web Services servi
 \link[paws.storage:backup_list_restore_access_backup_vaults]{list_restore_access_backup_vaults} \tab Returns a list of restore access backup vaults associated with a specified backup vault\cr
 \link[paws.storage:backup_list_restore_jobs]{list_restore_jobs} \tab Returns a list of jobs that Backup initiated to restore a saved resource, including details about the recovery process\cr
 \link[paws.storage:backup_list_restore_jobs_by_protected_resource]{list_restore_jobs_by_protected_resource} \tab This returns restore jobs that contain the specified protected resource\cr
-\link[paws.storage:backup_list_restore_job_summaries]{list_restore_job_summaries} \tab This request obtains a summary of restore jobs created or running within the the most recent 30 days\cr
+\link[paws.storage:backup_list_restore_job_summaries]{list_restore_job_summaries} \tab This request obtains a summary of restore jobs created or running within the the most recent 14 days\cr
 \link[paws.storage:backup_list_restore_testing_plans]{list_restore_testing_plans} \tab Returns a list of restore testing plans\cr
 \link[paws.storage:backup_list_restore_testing_selections]{list_restore_testing_selections} \tab Returns a list of restore testing selections\cr
 \link[paws.storage:backup_list_scan_jobs]{list_scan_jobs} \tab Returns a list of existing scan jobs for an authenticated account for the last 30 days\cr
-\link[paws.storage:backup_list_scan_job_summaries]{list_scan_job_summaries} \tab This is a request for a summary of scan jobs created or running within the most recent 30 days\cr
+\link[paws.storage:backup_list_scan_job_summaries]{list_scan_job_summaries} \tab This is a request for a summary of scan jobs created or running within the most recent 14 days\cr
 \link[paws.storage:backup_list_tags]{list_tags} \tab Returns the tags assigned to the resource, such as a target recovery point, backup plan, or backup vault\cr
 \link[paws.storage:backup_list_tiering_configurations]{list_tiering_configurations} \tab Returns a list of tiering configurations\cr
 \link[paws.storage:backup_put_backup_vault_access_policy]{put_backup_vault_access_policy} \tab Sets a resource-based policy that is used to manage access permissions on the target backup vault\cr

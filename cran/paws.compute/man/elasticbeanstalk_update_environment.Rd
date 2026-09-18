@@ -27,31 +27,31 @@ elasticbeanstalk_update_environment(
 
 \item{EnvironmentId}{The ID of the environment to update.
 
-If no environment with this ID exists, AWS Elastic Beanstalk returns an \code{InvalidParameterValue} error.
+If no environment with this ID exists, Elastic Beanstalk returns an \code{InvalidParameterValue} error.
 
-Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
+Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 
-\item{EnvironmentName}{The name of the environment to update. If no environment with this name exists, AWS Elastic Beanstalk returns an \code{InvalidParameterValue} error.
+\item{EnvironmentName}{The name of the environment to update. If no environment with this name exists, Elastic Beanstalk returns an \code{InvalidParameterValue} error.
 
-Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
+Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 
 \item{GroupName}{The name of the group to which the target environment belongs. Specify a group name only if the environment's name is specified in an environment manifest and not with the environment name or environment ID parameters. See \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html}{Environment Manifest (env.yaml)} for details.}
 
-\item{Description}{If this parameter is specified, AWS Elastic Beanstalk updates the description of this environment.}
+\item{Description}{If this parameter is specified, Elastic Beanstalk updates the description of this environment.}
 
 \item{Tier}{This specifies the tier to use to update the environment.
 
-Condition: At this time, if you change the tier version, name, or type, AWS Elastic Beanstalk returns \code{InvalidParameterValue} error.}
+Condition: At this time, if you change the tier version, name, or type, Elastic Beanstalk returns \code{InvalidParameterValue} error.}
 
-\item{VersionLabel}{If this parameter is specified, AWS Elastic Beanstalk deploys the named application version to the environment. If no such application version is found, returns an \code{InvalidParameterValue} error.}
+\item{VersionLabel}{If this parameter is specified, Elastic Beanstalk deploys the named application version to the environment. If no such application version is found, returns an \code{InvalidParameterValue} error.}
 
-\item{TemplateName}{If this parameter is specified, AWS Elastic Beanstalk deploys this configuration template to the environment. If no such configuration template is found, AWS Elastic Beanstalk returns an \code{InvalidParameterValue} error.}
+\item{TemplateName}{If this parameter is specified, Elastic Beanstalk deploys this configuration template to the environment. If no such configuration template is found, Elastic Beanstalk returns an \code{InvalidParameterValue} error.}
 
 \item{SolutionStackName}{This specifies the platform version that the environment will run after the environment is updated.}
 
 \item{PlatformArn}{The ARN of the platform, if used.}
 
-\item{OptionSettings}{If specified, AWS Elastic Beanstalk updates the configuration set associated with the running environment and sets the specified configuration options to the requested value.}
+\item{OptionSettings}{If specified, Elastic Beanstalk updates the configuration set associated with the running environment and sets the specified configuration options to the requested value.}
 
 \item{OptionsToRemove}{A list of custom user-defined configuration options to remove from the configuration set for this environment.}
 }

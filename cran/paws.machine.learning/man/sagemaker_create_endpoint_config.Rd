@@ -41,7 +41,7 @@ The KmsKeyId can be any of the following formats:
 
 The KMS key policy must grant permission to the IAM role that you specify in your \code{\link[=sagemaker_create_endpoint]{create_endpoint}}, \code{\link[=sagemaker_update_endpoint]{update_endpoint}} requests. For more information, refer to the Amazon Web Services Key Management Service section \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{Using Key Policies in Amazon Web Services KMS}
 
-Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are encrypted using a hardware module on the instance. You can't request a \code{KmsKeyId} when using an instance type with local storage. If any of the models that you specify in the \code{ProductionVariants} parameter use nitro-based instances with local storage, do not specify a value for the \code{KmsKeyId} parameter. If you specify a value for \code{KmsKeyId} when using any nitro-based instances with local storage, the call to \code{\link[=sagemaker_create_endpoint_config]{create_endpoint_config}} fails.
+Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are encrypted using a hardware module on the instance. If any of the models that you specify in the \code{ProductionVariants} parameter use nitro-based instances with local storage, the \code{KmsKeyId} parameter does not encrypt instance local storage.
 
 For a list of instance types that support local instance storage, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes}{Instance Store Volumes}.
 

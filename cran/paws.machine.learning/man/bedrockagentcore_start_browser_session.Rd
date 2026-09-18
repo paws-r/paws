@@ -16,6 +16,7 @@ bedrockagentcore_start_browser_session(
   proxyConfiguration = NULL,
   enterprisePolicies = NULL,
   certificates = NULL,
+  filesystemConfigurations = NULL,
   clientToken = NULL
 )
 }
@@ -41,6 +42,8 @@ bedrockagentcore_start_browser_session(
 \item{enterprisePolicies}{A list of files containing enterprise policies for the browser.}
 
 \item{certificates}{A list of certificates to install in the browser session.}
+
+\item{filesystemConfigurations}{The file system configurations to mount into the browser session. Use these configurations to mount your own Amazon Simple Storage Service (Amazon S3) Files or Amazon Elastic File System (Amazon EFS) access points. Your session can then read and write your data. If you don't specify this field, no additional file systems are mounted.}
 
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock AgentCore ignores the request, but does not return an error. This parameter helps prevent the creation of duplicate sessions if there are temporary network issues.}
 }

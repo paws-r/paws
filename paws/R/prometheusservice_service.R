@@ -103,7 +103,7 @@ NULL
 #'  \link[=prometheusservice_create_logging_configuration]{create_logging_configuration} \tab The CreateLoggingConfiguration operation creates rules and alerting logging configuration for the workspace\cr
 #'  \link[=prometheusservice_create_query_logging_configuration]{create_query_logging_configuration} \tab Creates a query logging configuration for the specified workspace\cr
 #'  \link[=prometheusservice_create_rule_groups_namespace]{create_rule_groups_namespace} \tab The CreateRuleGroupsNamespace operation creates a rule groups namespace within a workspace\cr
-#'  \link[=prometheusservice_create_scraper]{create_scraper} \tab The CreateScraper operation creates a scraper to collect metrics\cr
+#'  \link[=prometheusservice_create_scraper]{create_scraper} \tab Creates a scraper to collect metrics from Prometheus-compatible sources\cr
 #'  \link[=prometheusservice_create_workspace]{create_workspace} \tab Creates a Prometheus workspace\cr
 #'  \link[=prometheusservice_delete_alert_manager_definition]{delete_alert_manager_definition} \tab Deletes the alert manager definition from a workspace\cr
 #'  \link[=prometheusservice_delete_anomaly_detector]{delete_anomaly_detector} \tab Removes an anomaly detector from a workspace\cr

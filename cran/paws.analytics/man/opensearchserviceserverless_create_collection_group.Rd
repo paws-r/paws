@@ -10,6 +10,7 @@ opensearchserviceserverless_create_collection_group(
   description = NULL,
   tags = NULL,
   capacityLimits = NULL,
+  generation = NULL,
   clientToken = NULL
 )
 }
@@ -23,6 +24,8 @@ opensearchserviceserverless_create_collection_group(
 \item{tags}{An arbitrary set of tags (key–value pairs) to associate with the OpenSearch Serverless collection group.}
 
 \item{capacityLimits}{The capacity limits for the collection group, in OpenSearch Compute Units (OCUs). These limits control the maximum and minimum capacity for collections within the group.}
+
+\item{generation}{The generation of Amazon OpenSearch Serverless for the collection group. Valid values are \code{CLASSIC} and \code{NEXTGEN}.}
 
 \item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }

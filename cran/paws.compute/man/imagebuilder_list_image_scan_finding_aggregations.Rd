@@ -12,7 +12,7 @@ imagebuilder_list_image_scan_finding_aggregations(
 \arguments{
 \item{filter}{A filter name and value pair that is used to return a more specific list of results from a list operation. Filters can be used to match a set of resources by specific criteria, such as tags, attributes, or IDs.}
 
-\item{nextToken}{A token to specify where to start paginating. This is the nextToken from a previously truncated response.}
+\item{nextToken}{A token to specify where to start paginating. Use the \code{nextToken} value from a previously truncated response.}
 }
 \description{
 Returns a list of image scan aggregations for your account. You can filter by the type of key that Image Builder uses to group results. For example, if you want to get a list of findings by severity level for one of your pipelines, you might specify your pipeline with the \code{imagePipelineArn} filter. If you don't specify a filter, Image Builder returns an aggregation for your account.

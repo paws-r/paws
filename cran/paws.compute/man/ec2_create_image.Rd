@@ -8,6 +8,7 @@ is either running or stopped}
 ec2_create_image(
   TagSpecifications = NULL,
   SnapshotLocation = NULL,
+  BootModeOverride = NULL,
   DryRun = NULL,
   InstanceId,
   Name,
@@ -27,15 +28,27 @@ If you specify other values for \code{ResourceType}, the request fails.
 
 To tag an AMI or snapshot after it has been created, see \code{\link[=ec2_create_tags]{create_tags}}.}
 
-\item{SnapshotLocation}{Only supported for instances in Local Zones. If the source instance is not in a Local Zone, omit this parameter.
+\item{SnapshotLocation}{Only supported for instances in Local Zones and for instances on Outposts that support local snapshots. If the source instance is not in one of these locations, omit this parameter.
 
 The Amazon S3 location where the snapshots will be stored.
 \itemize{
-\item To create local snapshots in the same Local Zone as the source instance, specify \code{local}.
-\item To create regional snapshots in the parent Region of the Local Zone, specify \code{regional} or omit this parameter.
+\item To create local snapshots in the same Local Zone or on the same Outpost as the source instance, specify \code{local}.
+\item To create regional snapshots in the parent Region of the Local Zone or Outpost, specify \code{regional}.
 }
 
-Default: \code{regional}}
+If the source instance is in a Local Zone and you omit this parameter, regional snapshots are created in the parent Region of the Local Zone.
+
+If the source instance is on an Outpost that supports local snapshots, this parameter is required. If you omit it, the request fails with an \code{InvalidParameterValue} error.
+
+Default: \code{regional} (for instances in Local Zones only)}
+
+\item{BootModeOverride}{The boot mode of the new image, which overrides the default boot mode. By default, if you do not specify this parameter, the new image inherits the \code{boot-mode} from the source instance.
+
+A value of \code{uefi} indicates that the image only supports UEFI boot mode. You can specify this parameter only if the \code{current-instance-boot-mode} of the source instance is \code{uefi}. To find the \code{boot-mode} or \code{current-instance-boot-mode} of an instance, see \code{\link[=ec2_describe_instances]{describe_instances}}.
+
+The operating system contained in the AMI must be configured to support the specified boot mode.
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html}{Instance launch behavior with Amazon EC2 boot modes} in the \emph{Amazon EC2 User Guide}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 

@@ -554,6 +554,13 @@ billingconductor_create_pricing_plan <- function(ClientToken = NULL, Name, Descr
 #'   Tiering = list(
 #'     FreeTier = list(
 #'       Activated = TRUE|FALSE
+#'     ),
+#'     CustomTiers = list(
+#'       list(
+#'         BeginRangeInclusive = 123.0,
+#'         EndRangeExclusive = 123.0,
+#'         RateValue = 123.0
+#'       )
 #'     )
 #'   ),
 #'   UsageType = "string",
@@ -1604,6 +1611,13 @@ billingconductor_list_pricing_plans_associated_with_pricing_rule <- function(Bil
 #'       Tiering = list(
 #'         FreeTier = list(
 #'           Activated = TRUE|FALSE
+#'         ),
+#'         CustomTiers = list(
+#'           list(
+#'             BeginRangeInclusive = 123.0,
+#'             EndRangeExclusive = 123.0,
+#'             RateValue = 123.0
+#'           )
 #'         )
 #'       ),
 #'       UsageType = "string",
@@ -2203,6 +2217,13 @@ billingconductor_update_pricing_plan <- function(Arn, Name = NULL, Description =
 #'   Tiering = list(
 #'     FreeTier = list(
 #'       Activated = TRUE|FALSE
+#'     ),
+#'     CustomTiers = list(
+#'       list(
+#'         BeginRangeInclusive = 123.0,
+#'         EndRangeExclusive = 123.0,
+#'         RateValue = 123.0
+#'       )
 #'     )
 #'   ),
 #'   UsageType = "string",
@@ -2221,6 +2242,13 @@ billingconductor_update_pricing_plan <- function(Arn, Name = NULL, Description =
 #'   Tiering = list(
 #'     FreeTier = list(
 #'       Activated = TRUE|FALSE
+#'     ),
+#'     CustomTiers = list(
+#'       list(
+#'         BeginRangeInclusive = 123.0,
+#'         EndRangeExclusive = 123.0,
+#'         RateValue = 123.0
+#'       )
 #'     )
 #'   )
 #' )

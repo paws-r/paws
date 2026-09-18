@@ -83,17 +83,19 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
 #' @param BrowserConfigs CloudWatch Synthetics now supports multibrowser canaries for `syn-nodejs-puppeteer-11.0` and `syn-nodejs-playwright-3.0` runtimes. This feature allows you to run your canaries on both Firefox and Chrome browsers. To create a multibrowser canary, you need to specify the BrowserConfigs with a list of browsers you want to use.
 #' 
 #' If not specified, `browserConfigs` defaults to Chrome.
+#' @param AddReplicaLocations A list of locations (Amazon Web Services Regions) to add as replicas for the canary. Each location specifies a Region and optional VPC configuration for the replica. You can add up to 50 replica locations.
 #' @param Tags A list of key-value pairs to associate with the canary. You can associate as many as 50 tags with a canary.
 #' 
 #' Tags can help you organize and categorize your resources. You can also use them to scope user permissions, by granting a user permission to access or change only the resources that have certain tag values.
 #' 
 #' To have the tags that you apply to this canary also be applied to the Lambda function that the canary uses, specify this parameter with the value `lambda-function`.
 #' @param ArtifactConfig A structure that contains the configuration for canary artifacts, including the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.
+#' @param KmsKeyArn The Amazon Resource Name (ARN) of the customer-managed AWS Key Management Service (AWS KMS) key used to encrypt the canary's AWS Lambda function environment variables at rest. If you don't specify a value, the service uses an AWS-managed key.
 #'
 #' @keywords internal
 #'
 #' @rdname synthetics_create_canary
-synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRoleArn, Schedule, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, RuntimeVersion, VpcConfig = NULL, ResourcesToReplicateTags = NULL, ProvisionedResourceCleanup = NULL, BrowserConfigs = NULL, Tags = NULL, ArtifactConfig = NULL) {
+synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRoleArn, Schedule, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, RuntimeVersion, VpcConfig = NULL, ResourcesToReplicateTags = NULL, ProvisionedResourceCleanup = NULL, BrowserConfigs = NULL, AddReplicaLocations = NULL, Tags = NULL, ArtifactConfig = NULL, KmsKeyArn = NULL) {
   op <- new_operation(
     name = "CreateCanary",
     http_method = "POST",
@@ -102,7 +104,7 @@ synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .synthetics$create_canary_input(Name = Name, Code = Code, ArtifactS3Location = ArtifactS3Location, ExecutionRoleArn = ExecutionRoleArn, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, RuntimeVersion = RuntimeVersion, VpcConfig = VpcConfig, ResourcesToReplicateTags = ResourcesToReplicateTags, ProvisionedResourceCleanup = ProvisionedResourceCleanup, BrowserConfigs = BrowserConfigs, Tags = Tags, ArtifactConfig = ArtifactConfig)
+  input <- .synthetics$create_canary_input(Name = Name, Code = Code, ArtifactS3Location = ArtifactS3Location, ExecutionRoleArn = ExecutionRoleArn, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, RuntimeVersion = RuntimeVersion, VpcConfig = VpcConfig, ResourcesToReplicateTags = ResourcesToReplicateTags, ProvisionedResourceCleanup = ProvisionedResourceCleanup, BrowserConfigs = BrowserConfigs, AddReplicaLocations = AddReplicaLocations, Tags = Tags, ArtifactConfig = ArtifactConfig, KmsKeyArn = KmsKeyArn)
   output <- .synthetics$create_canary_output()
   config <- get_config()
   svc <- .synthetics$service(config, op)
@@ -860,11 +862,14 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param BrowserConfigs A structure that specifies the browser type to use for a canary run. CloudWatch Synthetics supports running canaries on both `CHROME` and `FIREFOX` browsers.
 #' 
 #' If not specified, `browserConfigs` defaults to Chrome.
+#' @param AddReplicaLocations A list of locations (Amazon Web Services Regions) to add as replicas for the canary. Each location specifies a Region and optional VPC configuration for the replica. You can add up to 50 replica locations.
+#' @param RemoveReplicaLocations A list of locations (Amazon Web Services Regions) to remove as replicas for the canary. You must specify at least one location to remove. All replicas can be removed in a single API call and you cannot remove the primary location.
+#' @param KmsKeyArn The Amazon Resource Name (ARN) of the customer-managed AWS Key Management Service (AWS KMS) key used to encrypt the canary's AWS Lambda function environment variables at rest. If you don't specify a value, the service uses an AWS-managed key. If you omit this parameter, the service retains the existing value. To revert to the AWS-managed key, set this parameter to an empty string.
 #'
 #' @keywords internal
 #'
 #' @rdname synthetics_update_canary
-synthetics_update_canary <- function(Name, Code = NULL, ExecutionRoleArn = NULL, RuntimeVersion = NULL, Schedule = NULL, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, VpcConfig = NULL, VisualReference = NULL, ArtifactS3Location = NULL, ArtifactConfig = NULL, ProvisionedResourceCleanup = NULL, DryRunId = NULL, VisualReferences = NULL, BrowserConfigs = NULL) {
+synthetics_update_canary <- function(Name, Code = NULL, ExecutionRoleArn = NULL, RuntimeVersion = NULL, Schedule = NULL, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, VpcConfig = NULL, VisualReference = NULL, ArtifactS3Location = NULL, ArtifactConfig = NULL, ProvisionedResourceCleanup = NULL, DryRunId = NULL, VisualReferences = NULL, BrowserConfigs = NULL, AddReplicaLocations = NULL, RemoveReplicaLocations = NULL, KmsKeyArn = NULL) {
   op <- new_operation(
     name = "UpdateCanary",
     http_method = "PATCH",
@@ -873,7 +878,7 @@ synthetics_update_canary <- function(Name, Code = NULL, ExecutionRoleArn = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .synthetics$update_canary_input(Name = Name, Code = Code, ExecutionRoleArn = ExecutionRoleArn, RuntimeVersion = RuntimeVersion, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, VpcConfig = VpcConfig, VisualReference = VisualReference, ArtifactS3Location = ArtifactS3Location, ArtifactConfig = ArtifactConfig, ProvisionedResourceCleanup = ProvisionedResourceCleanup, DryRunId = DryRunId, VisualReferences = VisualReferences, BrowserConfigs = BrowserConfigs)
+  input <- .synthetics$update_canary_input(Name = Name, Code = Code, ExecutionRoleArn = ExecutionRoleArn, RuntimeVersion = RuntimeVersion, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, VpcConfig = VpcConfig, VisualReference = VisualReference, ArtifactS3Location = ArtifactS3Location, ArtifactConfig = ArtifactConfig, ProvisionedResourceCleanup = ProvisionedResourceCleanup, DryRunId = DryRunId, VisualReferences = VisualReferences, BrowserConfigs = BrowserConfigs, AddReplicaLocations = AddReplicaLocations, RemoveReplicaLocations = RemoveReplicaLocations, KmsKeyArn = KmsKeyArn)
   output <- .synthetics$update_canary_output()
   config <- get_config()
   svc <- .synthetics$service(config, op)

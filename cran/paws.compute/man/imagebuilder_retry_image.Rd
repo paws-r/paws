@@ -2,17 +2,17 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_retry_image}
 \alias{imagebuilder_retry_image}
-\title{RetryImage retries an image distribution without rebuilding the image}
+\title{Retries an image distribution or test without rebuilding the image}
 \usage{
 imagebuilder_retry_image(imageBuildVersionArn, clientToken)
 }
 \arguments{
 \item{imageBuildVersionArn}{[required] The source image Amazon Resource Name (ARN) to retry.}
 
-\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
-RetryImage retries an image distribution without rebuilding the image.
+Retries an image distribution or test without rebuilding the image.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_retry_image/} for full documentation.
 }

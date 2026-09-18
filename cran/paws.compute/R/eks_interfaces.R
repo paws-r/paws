@@ -3,770 +3,702 @@
 #' @include eks_service.R
 NULL
 
+.eks$activate_certificate_authority_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .eks_shapes[["activate_certificate_authority_input"]]))
+}
+
+.eks$activate_certificate_authority_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .eks_shapes[["activate_certificate_authority_output"]]))
+}
+
 .eks$associate_access_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), principalArn = structure(logical(0), tags = list(location = "uri", locationName = "principalArn", type = "string")), policyArn = structure(logical(0), tags = list(type = "string")), accessScope = structure(list(type = structure(logical(0), tags = list(type = "string")), namespaces = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["associate_access_policy_input"]]))
 }
 
 .eks$associate_access_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(type = "string")), principalArn = structure(logical(0), tags = list(type = "string")), associatedAccessPolicy = structure(list(policyArn = structure(logical(0), tags = list(type = "string")), accessScope = structure(list(type = structure(logical(0), tags = list(type = "string")), namespaces = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), associatedAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["associate_access_policy_output"]]))
 }
 
 .eks$associate_encryption_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), encryptionConfig = structure(list(structure(list(resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), provider = structure(list(keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["associate_encryption_config_input"]]))
 }
 
 .eks$associate_encryption_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(update = structure(list(id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), params = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), errors = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["associate_encryption_config_output"]]))
 }
 
 .eks$associate_identity_provider_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), oidc = structure(list(identityProviderConfigName = structure(logical(0), tags = list(type = "string")), issuerUrl = structure(logical(0), tags = list(type = "string")), clientId = structure(logical(0), tags = list(type = "string")), usernameClaim = structure(logical(0), tags = list(type = "string")), usernamePrefix = structure(logical(0), tags = list(type = "string")), groupsClaim = structure(logical(0), tags = list(type = "string")), groupsPrefix = structure(logical(0), tags = list(type = "string")), requiredClaims = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["associate_identity_provider_config_input"]]))
 }
 
 .eks$associate_identity_provider_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(update = structure(list(id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), params = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), errors = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["associate_identity_provider_config_output"]]))
+}
+
+.eks$cancel_update_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .eks_shapes[["cancel_update_input"]]))
+}
+
+.eks$cancel_update_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .eks_shapes[["cancel_update_output"]]))
 }
 
 .eks$create_access_entry_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), principalArn = structure(logical(0), tags = list(type = "string")), kubernetesGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), username = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["create_access_entry_input"]]))
 }
 
 .eks$create_access_entry_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accessEntry = structure(list(clusterName = structure(logical(0), tags = list(type = "string")), principalArn = structure(logical(0), tags = list(type = "string")), kubernetesGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), accessEntryArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), username = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["create_access_entry_output"]]))
 }
 
 .eks$create_addon_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), addonName = structure(logical(0), tags = list(type = "string")), addonVersion = structure(logical(0), tags = list(type = "string")), serviceAccountRoleArn = structure(logical(0), tags = list(type = "string")), resolveConflicts = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), configurationValues = structure(logical(0), tags = list(type = "string")), podIdentityAssociations = structure(list(structure(list(serviceAccount = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), namespaceConfig = structure(list(namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["create_addon_input"]]))
 }
 
 .eks$create_addon_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(addon = structure(list(addonName = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), addonVersion = structure(logical(0), tags = list(type = "string")), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), addonArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), serviceAccountRoleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), publisher = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), marketplaceInformation = structure(list(productId = structure(logical(0), tags = list(type = "string")), productUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), configurationValues = structure(logical(0), tags = list(type = "string")), podIdentityAssociations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), namespaceConfig = structure(list(namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["create_addon_output"]]))
 }
 
 .eks$create_capability_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(capabilityName = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), type = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), configuration = structure(list(argoCd = structure(list(namespace = structure(logical(0), tags = list(type = "string")), awsIdc = structure(list(idcInstanceArn = structure(logical(0), tags = list(type = "string")), idcRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), rbacRoleMappings = structure(list(structure(list(role = structure(logical(0), tags = list(type = "string")), identities = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), networkAccess = structure(list(vpceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), deletePropagationPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["create_capability_input"]]))
 }
 
 .eks$create_capability_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(capability = structure(list(capabilityName = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), configuration = structure(list(argoCd = structure(list(namespace = structure(logical(0), tags = list(type = "string")), awsIdc = structure(list(idcInstanceArn = structure(logical(0), tags = list(type = "string")), idcRegion = structure(logical(0), tags = list(type = "string")), idcManagedApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), rbacRoleMappings = structure(list(structure(list(role = structure(logical(0), tags = list(type = "string")), identities = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), networkAccess = structure(list(vpceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), serverUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), deletePropagationPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["create_capability_output"]]))
+}
+
+.eks$create_certificate_authority_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .eks_shapes[["create_certificate_authority_input"]]))
+}
+
+.eks$create_certificate_authority_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .eks_shapes[["create_certificate_authority_output"]]))
 }
 
 .eks$create_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), resourcesVpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), endpointPublicAccess = structure(logical(0), tags = list(type = "boolean", box = TRUE)), endpointPrivateAccess = structure(logical(0), tags = list(type = "boolean", box = TRUE)), publicAccessCidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), kubernetesNetworkConfig = structure(list(serviceIpv4Cidr = structure(logical(0), tags = list(type = "string")), ipFamily = structure(logical(0), tags = list(type = "string")), elasticLoadBalancing = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), logging = structure(list(clusterLogging = structure(list(structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), encryptionConfig = structure(list(structure(list(resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), provider = structure(list(keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), outpostConfig = structure(list(outpostArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), controlPlaneInstanceType = structure(logical(0), tags = list(type = "string")), controlPlanePlacement = structure(list(groupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), accessConfig = structure(list(bootstrapClusterCreatorAdminPermissions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), authenticationMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), bootstrapSelfManagedAddons = structure(logical(0), tags = list(type = "boolean", box = TRUE)), upgradePolicy = structure(list(supportType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), zonalShiftConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), remoteNetworkConfig = structure(list(remoteNodeNetworks = structure(list(structure(list(cidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), remotePodNetworks = structure(list(structure(list(cidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), computeConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), nodePools = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nodeRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), storageConfig = structure(list(blockStorage = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), deletionProtection = structure(logical(0), tags = list(type = "boolean", box = TRUE)), controlPlaneScalingConfig = structure(list(tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["create_cluster_input"]]))
 }
 
 .eks$create_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cluster = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), resourcesVpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clusterSecurityGroupId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string")), endpointPublicAccess = structure(logical(0), tags = list(type = "boolean")), endpointPrivateAccess = structure(logical(0), tags = list(type = "boolean")), publicAccessCidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), kubernetesNetworkConfig = structure(list(serviceIpv4Cidr = structure(logical(0), tags = list(type = "string")), serviceIpv6Cidr = structure(logical(0), tags = list(type = "string")), ipFamily = structure(logical(0), tags = list(type = "string")), elasticLoadBalancing = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), logging = structure(list(clusterLogging = structure(list(structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), identity = structure(list(oidc = structure(list(issuer = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), certificateAuthority = structure(list(data = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(type = "string")), platformVersion = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), encryptionConfig = structure(list(structure(list(resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), provider = structure(list(keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), connectorConfig = structure(list(activationId = structure(logical(0), tags = list(type = "string")), activationCode = structure(logical(0), tags = list(type = "string")), activationExpiry = structure(logical(0), tags = list(type = "timestamp")), provider = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), id = structure(logical(0), tags = list(type = "string")), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), outpostConfig = structure(list(outpostArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), controlPlaneInstanceType = structure(logical(0), tags = list(type = "string")), controlPlanePlacement = structure(list(groupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), accessConfig = structure(list(bootstrapClusterCreatorAdminPermissions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), authenticationMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), upgradePolicy = structure(list(supportType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), zonalShiftConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), remoteNetworkConfig = structure(list(remoteNodeNetworks = structure(list(structure(list(cidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), remotePodNetworks = structure(list(structure(list(cidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), computeConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), nodePools = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nodeRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), storageConfig = structure(list(blockStorage = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), deletionProtection = structure(logical(0), tags = list(type = "boolean", box = TRUE)), controlPlaneScalingConfig = structure(list(tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["create_cluster_output"]]))
 }
 
 .eks$create_eks_anywhere_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), term = structure(list(duration = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), licenseQuantity = structure(logical(0), tags = list(type = "integer")), licenseType = structure(logical(0), tags = list(type = "string")), autoRenew = structure(logical(0), tags = list(type = "boolean")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["create_eks_anywhere_subscription_input"]]))
 }
 
 .eks$create_eks_anywhere_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subscription = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), effectiveDate = structure(logical(0), tags = list(type = "timestamp")), expirationDate = structure(logical(0), tags = list(type = "timestamp")), licenseQuantity = structure(logical(0), tags = list(type = "integer")), licenseType = structure(logical(0), tags = list(type = "string")), term = structure(list(duration = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), autoRenew = structure(logical(0), tags = list(type = "boolean")), licenseArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), licenses = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), token = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["create_eks_anywhere_subscription_output"]]))
 }
 
 .eks$create_fargate_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(fargateProfileName = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), podExecutionRoleArn = structure(logical(0), tags = list(type = "string")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), selectors = structure(list(structure(list(namespace = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["create_fargate_profile_input"]]))
 }
 
 .eks$create_fargate_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(fargateProfile = structure(list(fargateProfileName = structure(logical(0), tags = list(type = "string")), fargateProfileArn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), podExecutionRoleArn = structure(logical(0), tags = list(type = "string")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), selectors = structure(list(structure(list(namespace = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["create_fargate_profile_output"]]))
 }
 
 .eks$create_nodegroup_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nodegroupName = structure(logical(0), tags = list(type = "string")), scalingConfig = structure(list(minSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), desiredSize = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), diskSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), instanceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), amiType = structure(logical(0), tags = list(type = "string")), remoteAccess = structure(list(ec2SshKey = structure(logical(0), tags = list(type = "string")), sourceSecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), nodeRole = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), taints = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), effect = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), launchTemplate = structure(list(name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), updateConfig = structure(list(maxUnavailable = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxUnavailablePercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), updateStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), nodeRepairConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), maxUnhealthyNodeThresholdCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxUnhealthyNodeThresholdPercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxParallelNodesRepairedCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxParallelNodesRepairedPercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), nodeRepairConfigOverrides = structure(list(structure(list(nodeMonitoringCondition = structure(logical(0), tags = list(type = "string")), nodeUnhealthyReason = structure(logical(0), tags = list(type = "string")), minRepairWaitTimeMins = structure(logical(0), tags = list(type = "integer", box = TRUE)), repairAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), capacityType = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), releaseVersion = structure(logical(0), tags = list(type = "string")), warmPoolConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), minSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxGroupPreparedCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), poolState = structure(logical(0), tags = list(type = "string")), reuseOnScaleIn = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["create_nodegroup_input"]]))
 }
 
 .eks$create_nodegroup_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nodegroup = structure(list(nodegroupName = structure(logical(0), tags = list(type = "string")), nodegroupArn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), releaseVersion = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), capacityType = structure(logical(0), tags = list(type = "string")), scalingConfig = structure(list(minSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), desiredSize = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), instanceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), remoteAccess = structure(list(ec2SshKey = structure(logical(0), tags = list(type = "string")), sourceSecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), amiType = structure(logical(0), tags = list(type = "string")), nodeRole = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), taints = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), effect = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), resources = structure(list(autoScalingGroups = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), remoteAccessSecurityGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), diskSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), updateConfig = structure(list(maxUnavailable = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxUnavailablePercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), updateStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), nodeRepairConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), maxUnhealthyNodeThresholdCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxUnhealthyNodeThresholdPercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxParallelNodesRepairedCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxParallelNodesRepairedPercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), nodeRepairConfigOverrides = structure(list(structure(list(nodeMonitoringCondition = structure(logical(0), tags = list(type = "string")), nodeUnhealthyReason = structure(logical(0), tags = list(type = "string")), minRepairWaitTimeMins = structure(logical(0), tags = list(type = "integer", box = TRUE)), repairAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), launchTemplate = structure(list(name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), warmPoolConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), minSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxGroupPreparedCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), poolState = structure(logical(0), tags = list(type = "string")), reuseOnScaleIn = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["create_nodegroup_output"]]))
 }
 
 .eks$create_pod_identity_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), namespace = structure(logical(0), tags = list(type = "string")), serviceAccount = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), disableSessionTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), targetRoleArn = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["create_pod_identity_association_input"]]))
 }
 
 .eks$create_pod_identity_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(association = structure(list(clusterName = structure(logical(0), tags = list(type = "string")), namespace = structure(logical(0), tags = list(type = "string")), serviceAccount = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), associationArn = structure(logical(0), tags = list(type = "string")), associationId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), ownerArn = structure(logical(0), tags = list(type = "string")), disableSessionTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), targetRoleArn = structure(logical(0), tags = list(type = "string")), externalId = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["create_pod_identity_association_output"]]))
 }
 
 .eks$delete_access_entry_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), principalArn = structure(logical(0), tags = list(location = "uri", locationName = "principalArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["delete_access_entry_input"]]))
 }
 
 .eks$delete_access_entry_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["delete_access_entry_output"]]))
 }
 
 .eks$delete_addon_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), addonName = structure(logical(0), tags = list(location = "uri", locationName = "addonName", type = "string")), preserve = structure(logical(0), tags = list(location = "querystring", locationName = "preserve", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["delete_addon_input"]]))
 }
 
 .eks$delete_addon_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(addon = structure(list(addonName = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), addonVersion = structure(logical(0), tags = list(type = "string")), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), addonArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), serviceAccountRoleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), publisher = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), marketplaceInformation = structure(list(productId = structure(logical(0), tags = list(type = "string")), productUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), configurationValues = structure(logical(0), tags = list(type = "string")), podIdentityAssociations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), namespaceConfig = structure(list(namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["delete_addon_output"]]))
 }
 
 .eks$delete_capability_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), capabilityName = structure(logical(0), tags = list(location = "uri", locationName = "capabilityName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["delete_capability_input"]]))
 }
 
 .eks$delete_capability_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(capability = structure(list(capabilityName = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), configuration = structure(list(argoCd = structure(list(namespace = structure(logical(0), tags = list(type = "string")), awsIdc = structure(list(idcInstanceArn = structure(logical(0), tags = list(type = "string")), idcRegion = structure(logical(0), tags = list(type = "string")), idcManagedApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), rbacRoleMappings = structure(list(structure(list(role = structure(logical(0), tags = list(type = "string")), identities = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), networkAccess = structure(list(vpceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), serverUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), deletePropagationPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["delete_capability_output"]]))
+}
+
+.eks$delete_certificate_authority_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .eks_shapes[["delete_certificate_authority_input"]]))
+}
+
+.eks$delete_certificate_authority_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .eks_shapes[["delete_certificate_authority_output"]]))
 }
 
 .eks$delete_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["delete_cluster_input"]]))
 }
 
 .eks$delete_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cluster = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), resourcesVpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clusterSecurityGroupId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string")), endpointPublicAccess = structure(logical(0), tags = list(type = "boolean")), endpointPrivateAccess = structure(logical(0), tags = list(type = "boolean")), publicAccessCidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), kubernetesNetworkConfig = structure(list(serviceIpv4Cidr = structure(logical(0), tags = list(type = "string")), serviceIpv6Cidr = structure(logical(0), tags = list(type = "string")), ipFamily = structure(logical(0), tags = list(type = "string")), elasticLoadBalancing = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), logging = structure(list(clusterLogging = structure(list(structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), identity = structure(list(oidc = structure(list(issuer = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), certificateAuthority = structure(list(data = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(type = "string")), platformVersion = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), encryptionConfig = structure(list(structure(list(resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), provider = structure(list(keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), connectorConfig = structure(list(activationId = structure(logical(0), tags = list(type = "string")), activationCode = structure(logical(0), tags = list(type = "string")), activationExpiry = structure(logical(0), tags = list(type = "timestamp")), provider = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), id = structure(logical(0), tags = list(type = "string")), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), outpostConfig = structure(list(outpostArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), controlPlaneInstanceType = structure(logical(0), tags = list(type = "string")), controlPlanePlacement = structure(list(groupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), accessConfig = structure(list(bootstrapClusterCreatorAdminPermissions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), authenticationMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), upgradePolicy = structure(list(supportType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), zonalShiftConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), remoteNetworkConfig = structure(list(remoteNodeNetworks = structure(list(structure(list(cidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), remotePodNetworks = structure(list(structure(list(cidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), computeConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), nodePools = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nodeRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), storageConfig = structure(list(blockStorage = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), deletionProtection = structure(logical(0), tags = list(type = "boolean", box = TRUE)), controlPlaneScalingConfig = structure(list(tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["delete_cluster_output"]]))
 }
 
 .eks$delete_eks_anywhere_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["delete_eks_anywhere_subscription_input"]]))
 }
 
 .eks$delete_eks_anywhere_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subscription = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), effectiveDate = structure(logical(0), tags = list(type = "timestamp")), expirationDate = structure(logical(0), tags = list(type = "timestamp")), licenseQuantity = structure(logical(0), tags = list(type = "integer")), licenseType = structure(logical(0), tags = list(type = "string")), term = structure(list(duration = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), autoRenew = structure(logical(0), tags = list(type = "boolean")), licenseArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), licenses = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), token = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["delete_eks_anywhere_subscription_output"]]))
 }
 
 .eks$delete_fargate_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), fargateProfileName = structure(logical(0), tags = list(location = "uri", locationName = "fargateProfileName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["delete_fargate_profile_input"]]))
 }
 
 .eks$delete_fargate_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(fargateProfile = structure(list(fargateProfileName = structure(logical(0), tags = list(type = "string")), fargateProfileArn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), podExecutionRoleArn = structure(logical(0), tags = list(type = "string")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), selectors = structure(list(structure(list(namespace = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["delete_fargate_profile_output"]]))
 }
 
 .eks$delete_nodegroup_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nodegroupName = structure(logical(0), tags = list(location = "uri", locationName = "nodegroupName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["delete_nodegroup_input"]]))
 }
 
 .eks$delete_nodegroup_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nodegroup = structure(list(nodegroupName = structure(logical(0), tags = list(type = "string")), nodegroupArn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), releaseVersion = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), capacityType = structure(logical(0), tags = list(type = "string")), scalingConfig = structure(list(minSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), desiredSize = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), instanceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), remoteAccess = structure(list(ec2SshKey = structure(logical(0), tags = list(type = "string")), sourceSecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), amiType = structure(logical(0), tags = list(type = "string")), nodeRole = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), taints = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), effect = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), resources = structure(list(autoScalingGroups = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), remoteAccessSecurityGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), diskSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), updateConfig = structure(list(maxUnavailable = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxUnavailablePercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), updateStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), nodeRepairConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), maxUnhealthyNodeThresholdCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxUnhealthyNodeThresholdPercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxParallelNodesRepairedCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxParallelNodesRepairedPercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), nodeRepairConfigOverrides = structure(list(structure(list(nodeMonitoringCondition = structure(logical(0), tags = list(type = "string")), nodeUnhealthyReason = structure(logical(0), tags = list(type = "string")), minRepairWaitTimeMins = structure(logical(0), tags = list(type = "integer", box = TRUE)), repairAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), launchTemplate = structure(list(name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), warmPoolConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), minSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxGroupPreparedCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), poolState = structure(logical(0), tags = list(type = "string")), reuseOnScaleIn = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["delete_nodegroup_output"]]))
 }
 
 .eks$delete_pod_identity_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), associationId = structure(logical(0), tags = list(location = "uri", locationName = "associationId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["delete_pod_identity_association_input"]]))
 }
 
 .eks$delete_pod_identity_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(association = structure(list(clusterName = structure(logical(0), tags = list(type = "string")), namespace = structure(logical(0), tags = list(type = "string")), serviceAccount = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), associationArn = structure(logical(0), tags = list(type = "string")), associationId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), ownerArn = structure(logical(0), tags = list(type = "string")), disableSessionTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), targetRoleArn = structure(logical(0), tags = list(type = "string")), externalId = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["delete_pod_identity_association_output"]]))
 }
 
 .eks$deregister_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["deregister_cluster_input"]]))
 }
 
 .eks$deregister_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cluster = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), resourcesVpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clusterSecurityGroupId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string")), endpointPublicAccess = structure(logical(0), tags = list(type = "boolean")), endpointPrivateAccess = structure(logical(0), tags = list(type = "boolean")), publicAccessCidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), kubernetesNetworkConfig = structure(list(serviceIpv4Cidr = structure(logical(0), tags = list(type = "string")), serviceIpv6Cidr = structure(logical(0), tags = list(type = "string")), ipFamily = structure(logical(0), tags = list(type = "string")), elasticLoadBalancing = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), logging = structure(list(clusterLogging = structure(list(structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), identity = structure(list(oidc = structure(list(issuer = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), certificateAuthority = structure(list(data = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(type = "string")), platformVersion = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), encryptionConfig = structure(list(structure(list(resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), provider = structure(list(keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), connectorConfig = structure(list(activationId = structure(logical(0), tags = list(type = "string")), activationCode = structure(logical(0), tags = list(type = "string")), activationExpiry = structure(logical(0), tags = list(type = "timestamp")), provider = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), id = structure(logical(0), tags = list(type = "string")), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), outpostConfig = structure(list(outpostArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), controlPlaneInstanceType = structure(logical(0), tags = list(type = "string")), controlPlanePlacement = structure(list(groupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), accessConfig = structure(list(bootstrapClusterCreatorAdminPermissions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), authenticationMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), upgradePolicy = structure(list(supportType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), zonalShiftConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), remoteNetworkConfig = structure(list(remoteNodeNetworks = structure(list(structure(list(cidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), remotePodNetworks = structure(list(structure(list(cidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), computeConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), nodePools = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nodeRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), storageConfig = structure(list(blockStorage = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), deletionProtection = structure(logical(0), tags = list(type = "boolean", box = TRUE)), controlPlaneScalingConfig = structure(list(tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["deregister_cluster_output"]]))
 }
 
 .eks$describe_access_entry_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), principalArn = structure(logical(0), tags = list(location = "uri", locationName = "principalArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_access_entry_input"]]))
 }
 
 .eks$describe_access_entry_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accessEntry = structure(list(clusterName = structure(logical(0), tags = list(type = "string")), principalArn = structure(logical(0), tags = list(type = "string")), kubernetesGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), accessEntryArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), username = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_access_entry_output"]]))
 }
 
 .eks$describe_addon_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), addonName = structure(logical(0), tags = list(location = "uri", locationName = "addonName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_addon_input"]]))
 }
 
 .eks$describe_addon_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(addon = structure(list(addonName = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), addonVersion = structure(logical(0), tags = list(type = "string")), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), addonArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), serviceAccountRoleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), publisher = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), marketplaceInformation = structure(list(productId = structure(logical(0), tags = list(type = "string")), productUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), configurationValues = structure(logical(0), tags = list(type = "string")), podIdentityAssociations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), namespaceConfig = structure(list(namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_addon_output"]]))
 }
 
 .eks$describe_addon_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(addonName = structure(logical(0), tags = list(location = "querystring", locationName = "addonName", type = "string")), addonVersion = structure(logical(0), tags = list(location = "querystring", locationName = "addonVersion", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_addon_configuration_input"]]))
 }
 
 .eks$describe_addon_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(addonName = structure(logical(0), tags = list(type = "string")), addonVersion = structure(logical(0), tags = list(type = "string")), configurationSchema = structure(logical(0), tags = list(type = "string")), podIdentityConfiguration = structure(list(structure(list(serviceAccount = structure(logical(0), tags = list(type = "string")), recommendedManagedPolicies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_addon_configuration_output"]]))
 }
 
 .eks$describe_addon_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(kubernetesVersion = structure(logical(0), tags = list(location = "querystring", locationName = "kubernetesVersion", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), addonName = structure(logical(0), tags = list(location = "querystring", locationName = "addonName", type = "string")), types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "types", type = "list")), publishers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "publishers", type = "list")), owners = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "owners", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_addon_versions_input"]]))
 }
 
 .eks$describe_addon_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(addons = structure(list(structure(list(addonName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), addonVersions = structure(list(structure(list(addonVersion = structure(logical(0), tags = list(type = "string")), architecture = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), computeTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), compatibilities = structure(list(structure(list(clusterVersion = structure(logical(0), tags = list(type = "string")), platformVersions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), defaultVersion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), requiresConfiguration = structure(logical(0), tags = list(type = "boolean")), requiresIamPermissions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), publisher = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), marketplaceInformation = structure(list(productId = structure(logical(0), tags = list(type = "string")), productUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), defaultNamespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_addon_versions_output"]]))
 }
 
 .eks$describe_capability_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), capabilityName = structure(logical(0), tags = list(location = "uri", locationName = "capabilityName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_capability_input"]]))
 }
 
 .eks$describe_capability_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(capability = structure(list(capabilityName = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), configuration = structure(list(argoCd = structure(list(namespace = structure(logical(0), tags = list(type = "string")), awsIdc = structure(list(idcInstanceArn = structure(logical(0), tags = list(type = "string")), idcRegion = structure(logical(0), tags = list(type = "string")), idcManagedApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), rbacRoleMappings = structure(list(structure(list(role = structure(logical(0), tags = list(type = "string")), identities = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), networkAccess = structure(list(vpceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), serverUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), deletePropagationPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_capability_output"]]))
+}
+
+.eks$describe_certificate_authority_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .eks_shapes[["describe_certificate_authority_input"]]))
+}
+
+.eks$describe_certificate_authority_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .eks_shapes[["describe_certificate_authority_output"]]))
 }
 
 .eks$describe_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_cluster_input"]]))
 }
 
 .eks$describe_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cluster = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), resourcesVpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clusterSecurityGroupId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string")), endpointPublicAccess = structure(logical(0), tags = list(type = "boolean")), endpointPrivateAccess = structure(logical(0), tags = list(type = "boolean")), publicAccessCidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), kubernetesNetworkConfig = structure(list(serviceIpv4Cidr = structure(logical(0), tags = list(type = "string")), serviceIpv6Cidr = structure(logical(0), tags = list(type = "string")), ipFamily = structure(logical(0), tags = list(type = "string")), elasticLoadBalancing = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), logging = structure(list(clusterLogging = structure(list(structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), identity = structure(list(oidc = structure(list(issuer = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), certificateAuthority = structure(list(data = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(type = "string")), platformVersion = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), encryptionConfig = structure(list(structure(list(resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), provider = structure(list(keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), connectorConfig = structure(list(activationId = structure(logical(0), tags = list(type = "string")), activationCode = structure(logical(0), tags = list(type = "string")), activationExpiry = structure(logical(0), tags = list(type = "timestamp")), provider = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), id = structure(logical(0), tags = list(type = "string")), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), outpostConfig = structure(list(outpostArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), controlPlaneInstanceType = structure(logical(0), tags = list(type = "string")), controlPlanePlacement = structure(list(groupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), accessConfig = structure(list(bootstrapClusterCreatorAdminPermissions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), authenticationMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), upgradePolicy = structure(list(supportType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), zonalShiftConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), remoteNetworkConfig = structure(list(remoteNodeNetworks = structure(list(structure(list(cidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), remotePodNetworks = structure(list(structure(list(cidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), computeConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), nodePools = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nodeRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), storageConfig = structure(list(blockStorage = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), deletionProtection = structure(logical(0), tags = list(type = "boolean", box = TRUE)), controlPlaneScalingConfig = structure(list(tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_cluster_output"]]))
 }
 
 .eks$describe_cluster_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterType = structure(logical(0), tags = list(location = "querystring", locationName = "clusterType", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), defaultOnly = structure(logical(0), tags = list(location = "querystring", locationName = "defaultOnly", type = "boolean", box = TRUE)), includeAll = structure(logical(0), tags = list(location = "querystring", locationName = "includeAll", type = "boolean", box = TRUE)), clusterVersions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "clusterVersions", type = "list")), status = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "status has been replaced by versionStatus", deprecatedSince = "2025-02-15", location = "querystring", locationName = "status", type = "string")), versionStatus = structure(logical(0), tags = list(location = "querystring", locationName = "versionStatus", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_cluster_versions_input"]]))
 }
 
 .eks$describe_cluster_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), clusterVersions = structure(list(structure(list(clusterVersion = structure(logical(0), tags = list(type = "string")), clusterType = structure(logical(0), tags = list(type = "string")), defaultPlatformVersion = structure(logical(0), tags = list(type = "string")), defaultVersion = structure(logical(0), tags = list(type = "boolean")), releaseDate = structure(logical(0), tags = list(type = "timestamp")), endOfStandardSupportDate = structure(logical(0), tags = list(type = "timestamp")), endOfExtendedSupportDate = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), versionStatus = structure(logical(0), tags = list(type = "string")), kubernetesPatchVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_cluster_versions_output"]]))
 }
 
 .eks$describe_eks_anywhere_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_eks_anywhere_subscription_input"]]))
 }
 
 .eks$describe_eks_anywhere_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subscription = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), effectiveDate = structure(logical(0), tags = list(type = "timestamp")), expirationDate = structure(logical(0), tags = list(type = "timestamp")), licenseQuantity = structure(logical(0), tags = list(type = "integer")), licenseType = structure(logical(0), tags = list(type = "string")), term = structure(list(duration = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), autoRenew = structure(logical(0), tags = list(type = "boolean")), licenseArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), licenses = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), token = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_eks_anywhere_subscription_output"]]))
 }
 
 .eks$describe_fargate_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), fargateProfileName = structure(logical(0), tags = list(location = "uri", locationName = "fargateProfileName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_fargate_profile_input"]]))
 }
 
 .eks$describe_fargate_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(fargateProfile = structure(list(fargateProfileName = structure(logical(0), tags = list(type = "string")), fargateProfileArn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), podExecutionRoleArn = structure(logical(0), tags = list(type = "string")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), selectors = structure(list(structure(list(namespace = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_fargate_profile_output"]]))
 }
 
 .eks$describe_identity_provider_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), identityProviderConfig = structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_identity_provider_config_input"]]))
 }
 
 .eks$describe_identity_provider_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(identityProviderConfig = structure(list(oidc = structure(list(identityProviderConfigName = structure(logical(0), tags = list(type = "string")), identityProviderConfigArn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), issuerUrl = structure(logical(0), tags = list(type = "string")), clientId = structure(logical(0), tags = list(type = "string")), usernameClaim = structure(logical(0), tags = list(type = "string")), usernamePrefix = structure(logical(0), tags = list(type = "string")), groupsClaim = structure(logical(0), tags = list(type = "string")), groupsPrefix = structure(logical(0), tags = list(type = "string")), requiredClaims = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_identity_provider_config_output"]]))
 }
 
 .eks$describe_insight_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_insight_input"]]))
 }
 
 .eks$describe_insight_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(insight = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), category = structure(logical(0), tags = list(type = "string")), kubernetesVersion = structure(logical(0), tags = list(type = "string")), lastRefreshTime = structure(logical(0), tags = list(type = "timestamp")), lastTransitionTime = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string")), insightStatus = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), recommendation = structure(logical(0), tags = list(type = "string")), additionalInfo = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), resources = structure(list(structure(list(insightStatus = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), kubernetesResourceUri = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), categorySpecificSummary = structure(list(deprecationDetails = structure(list(structure(list(usage = structure(logical(0), tags = list(type = "string")), replacedWith = structure(logical(0), tags = list(type = "string")), stopServingVersion = structure(logical(0), tags = list(type = "string")), startServingReplacementVersion = structure(logical(0), tags = list(type = "string")), clientStats = structure(list(structure(list(userAgent = structure(logical(0), tags = list(type = "string")), numberOfRequestsLast30Days = structure(logical(0), tags = list(type = "integer")), lastRequestTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), addonCompatibilityDetails = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), compatibleVersions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_insight_output"]]))
 }
 
 .eks$describe_insights_refresh_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_insights_refresh_input"]]))
 }
 
 .eks$describe_insights_refresh_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(message = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startedAt = structure(logical(0), tags = list(type = "timestamp")), endedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_insights_refresh_output"]]))
 }
 
 .eks$describe_nodegroup_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nodegroupName = structure(logical(0), tags = list(location = "uri", locationName = "nodegroupName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_nodegroup_input"]]))
 }
 
 .eks$describe_nodegroup_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nodegroup = structure(list(nodegroupName = structure(logical(0), tags = list(type = "string")), nodegroupArn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), releaseVersion = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), capacityType = structure(logical(0), tags = list(type = "string")), scalingConfig = structure(list(minSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), desiredSize = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), instanceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), remoteAccess = structure(list(ec2SshKey = structure(logical(0), tags = list(type = "string")), sourceSecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), amiType = structure(logical(0), tags = list(type = "string")), nodeRole = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), taints = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), effect = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), resources = structure(list(autoScalingGroups = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), remoteAccessSecurityGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), diskSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), updateConfig = structure(list(maxUnavailable = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxUnavailablePercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), updateStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), nodeRepairConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), maxUnhealthyNodeThresholdCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxUnhealthyNodeThresholdPercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxParallelNodesRepairedCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxParallelNodesRepairedPercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), nodeRepairConfigOverrides = structure(list(structure(list(nodeMonitoringCondition = structure(logical(0), tags = list(type = "string")), nodeUnhealthyReason = structure(logical(0), tags = list(type = "string")), minRepairWaitTimeMins = structure(logical(0), tags = list(type = "integer", box = TRUE)), repairAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), launchTemplate = structure(list(name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), warmPoolConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), minSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxGroupPreparedCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), poolState = structure(logical(0), tags = list(type = "string")), reuseOnScaleIn = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_nodegroup_output"]]))
 }
 
 .eks$describe_pod_identity_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), associationId = structure(logical(0), tags = list(location = "uri", locationName = "associationId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_pod_identity_association_input"]]))
 }
 
 .eks$describe_pod_identity_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(association = structure(list(clusterName = structure(logical(0), tags = list(type = "string")), namespace = structure(logical(0), tags = list(type = "string")), serviceAccount = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), associationArn = structure(logical(0), tags = list(type = "string")), associationId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), ownerArn = structure(logical(0), tags = list(type = "string")), disableSessionTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), targetRoleArn = structure(logical(0), tags = list(type = "string")), externalId = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_pod_identity_association_output"]]))
 }
 
 .eks$describe_update_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), updateId = structure(logical(0), tags = list(location = "uri", locationName = "updateId", type = "string")), nodegroupName = structure(logical(0), tags = list(location = "querystring", locationName = "nodegroupName", type = "string")), addonName = structure(logical(0), tags = list(location = "querystring", locationName = "addonName", type = "string")), capabilityName = structure(logical(0), tags = list(location = "querystring", locationName = "capabilityName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_update_input"]]))
 }
 
 .eks$describe_update_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(update = structure(list(id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), params = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), errors = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["describe_update_output"]]))
 }
 
 .eks$disassociate_access_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), principalArn = structure(logical(0), tags = list(location = "uri", locationName = "principalArn", type = "string")), policyArn = structure(logical(0), tags = list(location = "uri", locationName = "policyArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["disassociate_access_policy_input"]]))
 }
 
 .eks$disassociate_access_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["disassociate_access_policy_output"]]))
 }
 
 .eks$disassociate_identity_provider_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), identityProviderConfig = structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["disassociate_identity_provider_config_input"]]))
 }
 
 .eks$disassociate_identity_provider_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(update = structure(list(id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), params = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), errors = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["disassociate_identity_provider_config_output"]]))
 }
 
 .eks$list_access_entries_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), associatedPolicyArn = structure(logical(0), tags = list(location = "querystring", locationName = "associatedPolicyArn", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_access_entries_input"]]))
 }
 
 .eks$list_access_entries_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accessEntries = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_access_entries_output"]]))
 }
 
 .eks$list_access_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_access_policies_input"]]))
 }
 
 .eks$list_access_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accessPolicies = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_access_policies_output"]]))
 }
 
 .eks$list_addons_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_addons_input"]]))
 }
 
 .eks$list_addons_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(addons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_addons_output"]]))
 }
 
 .eks$list_associated_access_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), principalArn = structure(logical(0), tags = list(location = "uri", locationName = "principalArn", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_associated_access_policies_input"]]))
 }
 
 .eks$list_associated_access_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(type = "string")), principalArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), associatedAccessPolicies = structure(list(structure(list(policyArn = structure(logical(0), tags = list(type = "string")), accessScope = structure(list(type = structure(logical(0), tags = list(type = "string")), namespaces = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), associatedAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_associated_access_policies_output"]]))
 }
 
 .eks$list_capabilities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_capabilities_input"]]))
 }
 
 .eks$list_capabilities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(capabilities = structure(list(structure(list(capabilityName = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_capabilities_output"]]))
+}
+
+.eks$list_certificate_authorities_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .eks_shapes[["list_certificate_authorities_input"]]))
+}
+
+.eks$list_certificate_authorities_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .eks_shapes[["list_certificate_authorities_output"]]))
 }
 
 .eks$list_clusters_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), include = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "include", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_clusters_input"]]))
 }
 
 .eks$list_clusters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_clusters_output"]]))
 }
 
 .eks$list_eks_anywhere_subscriptions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), includeStatus = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "includeStatus", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_eks_anywhere_subscriptions_input"]]))
 }
 
 .eks$list_eks_anywhere_subscriptions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subscriptions = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), effectiveDate = structure(logical(0), tags = list(type = "timestamp")), expirationDate = structure(logical(0), tags = list(type = "timestamp")), licenseQuantity = structure(logical(0), tags = list(type = "integer")), licenseType = structure(logical(0), tags = list(type = "string")), term = structure(list(duration = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), autoRenew = structure(logical(0), tags = list(type = "boolean")), licenseArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), licenses = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), token = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_eks_anywhere_subscriptions_output"]]))
 }
 
 .eks$list_fargate_profiles_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_fargate_profiles_input"]]))
 }
 
 .eks$list_fargate_profiles_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(fargateProfileNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_fargate_profiles_output"]]))
 }
 
 .eks$list_identity_provider_configs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_identity_provider_configs_input"]]))
 }
 
 .eks$list_identity_provider_configs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(identityProviderConfigs = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_identity_provider_configs_output"]]))
 }
 
 .eks$list_insights_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), filter = structure(list(categories = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), kubernetesVersions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), statuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_insights_input"]]))
 }
 
 .eks$list_insights_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(insights = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), category = structure(logical(0), tags = list(type = "string")), kubernetesVersion = structure(logical(0), tags = list(type = "string")), lastRefreshTime = structure(logical(0), tags = list(type = "timestamp")), lastTransitionTime = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string")), insightStatus = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_insights_output"]]))
 }
 
 .eks$list_nodegroups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_nodegroups_input"]]))
 }
 
 .eks$list_nodegroups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nodegroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_nodegroups_output"]]))
 }
 
 .eks$list_pod_identity_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), namespace = structure(logical(0), tags = list(location = "querystring", locationName = "namespace", type = "string")), serviceAccount = structure(logical(0), tags = list(location = "querystring", locationName = "serviceAccount", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_pod_identity_associations_input"]]))
 }
 
 .eks$list_pod_identity_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(associations = structure(list(structure(list(clusterName = structure(logical(0), tags = list(type = "string")), namespace = structure(logical(0), tags = list(type = "string")), serviceAccount = structure(logical(0), tags = list(type = "string")), associationArn = structure(logical(0), tags = list(type = "string")), associationId = structure(logical(0), tags = list(type = "string")), ownerArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_pod_identity_associations_output"]]))
 }
 
 .eks$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_tags_for_resource_input"]]))
 }
 
 .eks$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_tags_for_resource_output"]]))
 }
 
 .eks$list_updates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nodegroupName = structure(logical(0), tags = list(location = "querystring", locationName = "nodegroupName", type = "string")), addonName = structure(logical(0), tags = list(location = "querystring", locationName = "addonName", type = "string")), capabilityName = structure(logical(0), tags = list(location = "querystring", locationName = "capabilityName", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_updates_input"]]))
 }
 
 .eks$list_updates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(updateIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["list_updates_output"]]))
 }
 
 .eks$register_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), connectorConfig = structure(list(roleArn = structure(logical(0), tags = list(type = "string")), provider = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["register_cluster_input"]]))
 }
 
 .eks$register_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(cluster = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), resourcesVpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clusterSecurityGroupId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string")), endpointPublicAccess = structure(logical(0), tags = list(type = "boolean")), endpointPrivateAccess = structure(logical(0), tags = list(type = "boolean")), publicAccessCidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), kubernetesNetworkConfig = structure(list(serviceIpv4Cidr = structure(logical(0), tags = list(type = "string")), serviceIpv6Cidr = structure(logical(0), tags = list(type = "string")), ipFamily = structure(logical(0), tags = list(type = "string")), elasticLoadBalancing = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), logging = structure(list(clusterLogging = structure(list(structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), identity = structure(list(oidc = structure(list(issuer = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), certificateAuthority = structure(list(data = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(type = "string")), platformVersion = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), encryptionConfig = structure(list(structure(list(resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), provider = structure(list(keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), connectorConfig = structure(list(activationId = structure(logical(0), tags = list(type = "string")), activationCode = structure(logical(0), tags = list(type = "string")), activationExpiry = structure(logical(0), tags = list(type = "timestamp")), provider = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), id = structure(logical(0), tags = list(type = "string")), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), outpostConfig = structure(list(outpostArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), controlPlaneInstanceType = structure(logical(0), tags = list(type = "string")), controlPlanePlacement = structure(list(groupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), accessConfig = structure(list(bootstrapClusterCreatorAdminPermissions = structure(logical(0), tags = list(type = "boolean", box = TRUE)), authenticationMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), upgradePolicy = structure(list(supportType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), zonalShiftConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), remoteNetworkConfig = structure(list(remoteNodeNetworks = structure(list(structure(list(cidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), remotePodNetworks = structure(list(structure(list(cidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), computeConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), nodePools = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nodeRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), storageConfig = structure(list(blockStorage = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), deletionProtection = structure(logical(0), tags = list(type = "boolean", box = TRUE)), controlPlaneScalingConfig = structure(list(tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["register_cluster_output"]]))
 }
 
 .eks$start_insights_refresh_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["start_insights_refresh_input"]]))
 }
 
 .eks$start_insights_refresh_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(message = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["start_insights_refresh_output"]]))
 }
 
 .eks$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["tag_resource_input"]]))
 }
 
 .eks$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["tag_resource_output"]]))
 }
 
 .eks$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["untag_resource_input"]]))
 }
 
 .eks$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["untag_resource_output"]]))
 }
 
 .eks$update_access_entry_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), principalArn = structure(logical(0), tags = list(location = "uri", locationName = "principalArn", type = "string")), kubernetesGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), username = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_access_entry_input"]]))
 }
 
 .eks$update_access_entry_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accessEntry = structure(list(clusterName = structure(logical(0), tags = list(type = "string")), principalArn = structure(logical(0), tags = list(type = "string")), kubernetesGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), accessEntryArn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), username = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_access_entry_output"]]))
 }
 
 .eks$update_addon_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), addonName = structure(logical(0), tags = list(location = "uri", locationName = "addonName", type = "string")), addonVersion = structure(logical(0), tags = list(type = "string")), serviceAccountRoleArn = structure(logical(0), tags = list(type = "string")), resolveConflicts = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), configurationValues = structure(logical(0), tags = list(type = "string")), podIdentityAssociations = structure(list(structure(list(serviceAccount = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_addon_input"]]))
 }
 
 .eks$update_addon_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(update = structure(list(id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), params = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), errors = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_addon_output"]]))
 }
 
 .eks$update_capability_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), capabilityName = structure(logical(0), tags = list(location = "uri", locationName = "capabilityName", type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), configuration = structure(list(argoCd = structure(list(rbacRoleMappings = structure(list(addOrUpdateRoleMappings = structure(list(structure(list(role = structure(logical(0), tags = list(type = "string")), identities = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), removeRoleMappings = structure(list(structure(list(role = structure(logical(0), tags = list(type = "string")), identities = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), networkAccess = structure(list(vpceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), deletePropagationPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_capability_input"]]))
 }
 
 .eks$update_capability_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(update = structure(list(id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), params = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), errors = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_capability_output"]]))
 }
 
 .eks$update_cluster_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), resourcesVpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), endpointPublicAccess = structure(logical(0), tags = list(type = "boolean", box = TRUE)), endpointPrivateAccess = structure(logical(0), tags = list(type = "boolean", box = TRUE)), publicAccessCidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), logging = structure(list(clusterLogging = structure(list(structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), accessConfig = structure(list(authenticationMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), upgradePolicy = structure(list(supportType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), zonalShiftConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), computeConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), nodePools = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nodeRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), kubernetesNetworkConfig = structure(list(serviceIpv4Cidr = structure(logical(0), tags = list(type = "string")), ipFamily = structure(logical(0), tags = list(type = "string")), elasticLoadBalancing = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), storageConfig = structure(list(blockStorage = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), remoteNetworkConfig = structure(list(remoteNodeNetworks = structure(list(structure(list(cidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), remotePodNetworks = structure(list(structure(list(cidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), deletionProtection = structure(logical(0), tags = list(type = "boolean", box = TRUE)), controlPlaneScalingConfig = structure(list(tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_cluster_config_input"]]))
 }
 
 .eks$update_cluster_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(update = structure(list(id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), params = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), errors = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_cluster_config_output"]]))
 }
 
 .eks$update_cluster_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), version = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), force = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_cluster_version_input"]]))
 }
 
 .eks$update_cluster_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(update = structure(list(id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), params = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), errors = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_cluster_version_output"]]))
 }
 
 .eks$update_eks_anywhere_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), autoRenew = structure(logical(0), tags = list(type = "boolean")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_eks_anywhere_subscription_input"]]))
 }
 
 .eks$update_eks_anywhere_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subscription = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), effectiveDate = structure(logical(0), tags = list(type = "timestamp")), expirationDate = structure(logical(0), tags = list(type = "timestamp")), licenseQuantity = structure(logical(0), tags = list(type = "integer")), licenseType = structure(logical(0), tags = list(type = "string")), term = structure(list(duration = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), autoRenew = structure(logical(0), tags = list(type = "boolean")), licenseArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), licenses = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), token = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_eks_anywhere_subscription_output"]]))
 }
 
 .eks$update_nodegroup_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nodegroupName = structure(logical(0), tags = list(location = "uri", locationName = "nodegroupName", type = "string")), labels = structure(list(addOrUpdateLabels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), removeLabels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), taints = structure(list(addOrUpdateTaints = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), effect = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), removeTaints = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), effect = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), scalingConfig = structure(list(minSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), desiredSize = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), updateConfig = structure(list(maxUnavailable = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxUnavailablePercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), updateStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), nodeRepairConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), maxUnhealthyNodeThresholdCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxUnhealthyNodeThresholdPercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxParallelNodesRepairedCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxParallelNodesRepairedPercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), nodeRepairConfigOverrides = structure(list(structure(list(nodeMonitoringCondition = structure(logical(0), tags = list(type = "string")), nodeUnhealthyReason = structure(logical(0), tags = list(type = "string")), minRepairWaitTimeMins = structure(logical(0), tags = list(type = "integer", box = TRUE)), repairAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), warmPoolConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), minSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxGroupPreparedCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), poolState = structure(logical(0), tags = list(type = "string")), reuseOnScaleIn = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_nodegroup_config_input"]]))
 }
 
 .eks$update_nodegroup_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(update = structure(list(id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), params = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), errors = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_nodegroup_config_output"]]))
 }
 
 .eks$update_nodegroup_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), nodegroupName = structure(logical(0), tags = list(location = "uri", locationName = "nodegroupName", type = "string")), version = structure(logical(0), tags = list(type = "string")), releaseVersion = structure(logical(0), tags = list(type = "string")), launchTemplate = structure(list(name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), force = structure(logical(0), tags = list(type = "boolean")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_nodegroup_version_input"]]))
 }
 
 .eks$update_nodegroup_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(update = structure(list(id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), params = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), errors = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_nodegroup_version_output"]]))
 }
 
 .eks$update_pod_identity_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), associationId = structure(logical(0), tags = list(location = "uri", locationName = "associationId", type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), disableSessionTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), targetRoleArn = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_pod_identity_association_input"]]))
 }
 
 .eks$update_pod_identity_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(association = structure(list(clusterName = structure(logical(0), tags = list(type = "string")), namespace = structure(logical(0), tags = list(type = "string")), serviceAccount = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), associationArn = structure(logical(0), tags = list(type = "string")), associationId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), createdAt = structure(logical(0), tags = list(type = "timestamp")), modifiedAt = structure(logical(0), tags = list(type = "timestamp")), ownerArn = structure(logical(0), tags = list(type = "string")), disableSessionTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), targetRoleArn = structure(logical(0), tags = list(type = "string")), externalId = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .eks_shapes[["update_pod_identity_association_output"]]))
 }

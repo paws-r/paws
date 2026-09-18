@@ -671,6 +671,41 @@ securityhub_create_configuration_policy <- function(Name, Description = NULL, Co
 }
 .securityhub$operations$create_configuration_policy <- securityhub_create_configuration_policy
 
+#' Creates a connector to a third-party cloud provider in Security Hub CSPM
+#'
+#' @description
+#' Creates a connector to a third-party cloud provider in Security Hub CSPM. A connector establishes a connection between Security Hub CSPM and a third-party cloud provider, enabling Security Hub CSPM to ingest security findings and resource data from the connected environment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_create_connector/](https://www.paws-r-sdk.com/docs/securityhub_create_connector/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the connector. Must be unique within the account.
+#' @param Description The description of the connector.
+#' @param Provider &#91;required&#93; The configuration for the cloud provider to connect to. Currently supports Azure.
+#' @param Tags The tags to add to the connector resource.
+#' @param ClientToken A unique identifier used to ensure idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_create_connector
+securityhub_create_connector <- function(Name, Description = NULL, Provider, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateConnector",
+    http_method = "POST",
+    http_path = "/connectors",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$create_connector_input(Name = Name, Description = Description, Provider = Provider, Tags = Tags, ClientToken = ClientToken)
+  output <- .securityhub$create_connector_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$create_connector <- securityhub_create_connector
+
 #' Grants permission to create a connectorV2 based on input parameters
 #'
 #' @description
@@ -1011,6 +1046,37 @@ securityhub_delete_configuration_policy <- function(Identifier) {
   return(response)
 }
 .securityhub$operations$delete_configuration_policy <- securityhub_delete_configuration_policy
+
+#' Deletes a CSPM connector
+#'
+#' @description
+#' Deletes a CSPM connector. When you delete a connector, Security Hub CSPM stops ingesting findings and resource data from the connected cloud provider environment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_delete_connector/](https://www.paws-r-sdk.com/docs/securityhub_delete_connector/) for full documentation.
+#'
+#' @param ConnectorId &#91;required&#93; The unique identifier of the connector to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_delete_connector
+securityhub_delete_connector <- function(ConnectorId) {
+  op <- new_operation(
+    name = "DeleteConnector",
+    http_method = "DELETE",
+    http_path = "/connectors/{ConnectorId+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$delete_connector_input(ConnectorId = ConnectorId)
+  output <- .securityhub$delete_connector_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$delete_connector <- securityhub_delete_connector
 
 #' Grants permission to delete a connectorV2
 #'
@@ -1377,11 +1443,12 @@ securityhub_describe_security_hub_v2 <- function() {
 #' 
 #' For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value returned from the previous response.
 #' @param MaxResults The maximum number of standards to return.
+#' @param Providers A list of cloud providers to filter the standards by. For example, specify `Azure` to return only standards that evaluate Azure resources.
 #'
 #' @keywords internal
 #'
 #' @rdname securityhub_describe_standards
-securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL) {
+securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL, Providers = NULL) {
   op <- new_operation(
     name = "DescribeStandards",
     http_method = "GET",
@@ -1390,7 +1457,7 @@ securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL) 
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Standards"),
     stream_api = FALSE
   )
-  input <- .securityhub$describe_standards_input(NextToken = NextToken, MaxResults = MaxResults)
+  input <- .securityhub$describe_standards_input(NextToken = NextToken, MaxResults = MaxResults, Providers = Providers)
   output <- .securityhub$describe_standards_output()
   config <- get_config()
   svc <- .securityhub$service(config, op)
@@ -1530,11 +1597,43 @@ securityhub_disable_security_hub <- function() {
 }
 .securityhub$operations$disable_security_hub <- securityhub_disable_security_hub
 
+#' Disables an opt-in feature for the calling account in the current Amazon
+#' Web Services Region
+#'
+#' @description
+#' Disables an opt-in feature for the calling account in the current Amazon Web Services Region. The operation is idempotent. If the feature is already disabled, no changes are made. You cannot disable a feature that is managed by an organization policy.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_disable_security_hub_feature_v2/](https://www.paws-r-sdk.com/docs/securityhub_disable_security_hub_feature_v2/) for full documentation.
+#'
+#' @param FeatureName &#91;required&#93; The name of the feature to disable.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_disable_security_hub_feature_v2
+securityhub_disable_security_hub_feature_v2 <- function(FeatureName) {
+  op <- new_operation(
+    name = "DisableSecurityHubFeatureV2",
+    http_method = "DELETE",
+    http_path = "/hubv2/feature/{FeatureName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$disable_security_hub_feature_v2_input(FeatureName = FeatureName)
+  output <- .securityhub$disable_security_hub_feature_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$disable_security_hub_feature_v2 <- securityhub_disable_security_hub_feature_v2
+
 #' Disable the service for the current Amazon Web Services Region or
 #' specified Amazon Web Services Region
 #'
 #' @description
-#' Disable the service for the current Amazon Web Services Region or specified Amazon Web Services Region.
+#' Disable the service for the current Amazon Web Services Region or specified Amazon Web Services Region. Disabling the service also disables all opt-in features that are currently enabled in that Region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_disable_security_hub_v2/](https://www.paws-r-sdk.com/docs/securityhub_disable_security_hub_v2/) for full documentation.
 #'
@@ -1759,6 +1858,38 @@ securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards 
 }
 .securityhub$operations$enable_security_hub <- securityhub_enable_security_hub
 
+#' Enables an opt-in feature for the calling account in the current Amazon
+#' Web Services Region
+#'
+#' @description
+#' Enables an opt-in feature for the calling account in the current Amazon Web Services Region. The service must be enabled before you can enable a feature. The operation is idempotent. If the feature is already enabled, no changes are made. You cannot enable a feature that is managed by an organization policy.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_enable_security_hub_feature_v2/](https://www.paws-r-sdk.com/docs/securityhub_enable_security_hub_feature_v2/) for full documentation.
+#'
+#' @param FeatureName &#91;required&#93; The name of the feature to enable.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_enable_security_hub_feature_v2
+securityhub_enable_security_hub_feature_v2 <- function(FeatureName) {
+  op <- new_operation(
+    name = "EnableSecurityHubFeatureV2",
+    http_method = "POST",
+    http_path = "/hubv2/feature/{FeatureName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$enable_security_hub_feature_v2_input(FeatureName = FeatureName)
+  output <- .securityhub$enable_security_hub_feature_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$enable_security_hub_feature_v2 <- securityhub_enable_security_hub_feature_v2
+
 #' Enables the service in account for the current Amazon Web Services
 #' Region or specified Amazon Web Services Region
 #'
@@ -1980,6 +2111,37 @@ securityhub_get_configuration_policy_association <- function(Target) {
 }
 .securityhub$operations$get_configuration_policy_association <- securityhub_get_configuration_policy_association
 
+#' Retrieves details for a CSPM connector based on the connector ID
+#'
+#' @description
+#' Retrieves details for a CSPM connector based on the connector ID.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_connector/](https://www.paws-r-sdk.com/docs/securityhub_get_connector/) for full documentation.
+#'
+#' @param ConnectorId &#91;required&#93; The unique identifier of the connector to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_connector
+securityhub_get_connector <- function(ConnectorId) {
+  op <- new_operation(
+    name = "GetConnector",
+    http_method = "GET",
+    http_path = "/connectors/{ConnectorId+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$get_connector_input(ConnectorId = ConnectorId)
+  output <- .securityhub$get_connector_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_connector <- securityhub_get_connector
+
 #' Grants permission to retrieve details for a connectorV2 based on
 #' connector id
 #'
@@ -2024,11 +2186,12 @@ securityhub_get_connector_v2 <- function(ConnectorId) {
 #' 
 #' For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value returned from the previous response.
 #' @param MaxResults The maximum number of results to return in the response.
+#' @param Providers A list of cloud providers to filter the enabled standards by. For example, specify `Azure` to return only enabled standards that evaluate Azure resources.
 #'
 #' @keywords internal
 #'
 #' @rdname securityhub_get_enabled_standards
-securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, NextToken = NULL, MaxResults = NULL) {
+securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, NextToken = NULL, MaxResults = NULL, Providers = NULL) {
   op <- new_operation(
     name = "GetEnabledStandards",
     http_method = "POST",
@@ -2037,7 +2200,7 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StandardsSubscriptions"),
     stream_api = FALSE
   )
-  input <- .securityhub$get_enabled_standards_input(StandardsSubscriptionArns = StandardsSubscriptionArns, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .securityhub$get_enabled_standards_input(StandardsSubscriptionArns = StandardsSubscriptionArns, NextToken = NextToken, MaxResults = MaxResults, Providers = Providers)
   output <- .securityhub$get_enabled_standards_output()
   config <- get_config()
   svc <- .securityhub$service(config, op)
@@ -2807,6 +2970,41 @@ securityhub_list_configuration_policy_associations <- function(NextToken = NULL,
 }
 .securityhub$operations$list_configuration_policy_associations <- securityhub_list_configuration_policy_associations
 
+#' Lists the CSPM connectors and their metadata for the calling account
+#'
+#' @description
+#' Lists the CSPM connectors and their metadata for the calling account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_list_connectors/](https://www.paws-r-sdk.com/docs/securityhub_list_connectors/) for full documentation.
+#'
+#' @param NextToken The pagination token to request the next page of results.
+#' @param MaxResults The maximum number of results to return.
+#' @param ProviderName The name of the cloud provider to filter connectors by.
+#' @param ConnectorStatus The connectivity status to filter connectors by.
+#' @param EnablementStatus The enablement status to filter connectors by.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_connectors
+securityhub_list_connectors <- function(NextToken = NULL, MaxResults = NULL, ProviderName = NULL, ConnectorStatus = NULL, EnablementStatus = NULL) {
+  op <- new_operation(
+    name = "ListConnectors",
+    http_method = "GET",
+    http_path = "/connectors",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$list_connectors_input(NextToken = NextToken, MaxResults = MaxResults, ProviderName = ProviderName, ConnectorStatus = ConnectorStatus, EnablementStatus = EnablementStatus)
+  output <- .securityhub$list_connectors_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_connectors <- securityhub_list_connectors
+
 #' Grants permission to retrieve a list of connectorsV2 and their metadata
 #' for the calling account
 #'
@@ -2819,11 +3017,12 @@ securityhub_list_configuration_policy_associations <- function(NextToken = NULL,
 #' @param MaxResults The maximum number of results to be returned.
 #' @param ProviderName The name of the third-party provider.
 #' @param ConnectorStatus The status for the connectorV2.
+#' @param EnablementStatus The enablement status to filter connectors by.
 #'
 #' @keywords internal
 #'
 #' @rdname securityhub_list_connectors_v2
-securityhub_list_connectors_v2 <- function(NextToken = NULL, MaxResults = NULL, ProviderName = NULL, ConnectorStatus = NULL) {
+securityhub_list_connectors_v2 <- function(NextToken = NULL, MaxResults = NULL, ProviderName = NULL, ConnectorStatus = NULL, EnablementStatus = NULL) {
   op <- new_operation(
     name = "ListConnectorsV2",
     http_method = "GET",
@@ -2832,7 +3031,7 @@ securityhub_list_connectors_v2 <- function(NextToken = NULL, MaxResults = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .securityhub$list_connectors_v2_input(NextToken = NextToken, MaxResults = MaxResults, ProviderName = ProviderName, ConnectorStatus = ConnectorStatus)
+  input <- .securityhub$list_connectors_v2_input(NextToken = NextToken, MaxResults = MaxResults, ProviderName = ProviderName, ConnectorStatus = ConnectorStatus, EnablementStatus = EnablementStatus)
   output <- .securityhub$list_connectors_v2_output()
   config <- get_config()
   svc <- .securityhub$service(config, op)
@@ -2909,6 +3108,44 @@ securityhub_list_finding_aggregators <- function(NextToken = NULL, MaxResults = 
   return(response)
 }
 .securityhub$operations$list_finding_aggregators <- securityhub_list_finding_aggregators
+
+#' Lists the free trial status of Security Hub features
+#'
+#' @description
+#' Lists the free trial status of Security Hub features. A delegated Security Hub administrator can list the status for accounts in its organization. Any other account can list the status only for itself. Free trial status remains available after a feature is disabled.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_list_free_trial_statuses_v2/](https://www.paws-r-sdk.com/docs/securityhub_list_free_trial_statuses_v2/) for full documentation.
+#'
+#' @param AccountIds The Amazon Web Services account identifiers to list free trial status for. You can specify accounts other than your own only if you are a delegated Security Hub administrator.
+#' @param Statuses The free trial statuses to filter the results by. Valid values:
+#' 
+#' -   `ACTIVE` returns only features with an ongoing free trial period.
+#' 
+#' -   `INACTIVE` returns only features whose free trial period has ended, or that never started.
+#' @param MaxResults The maximum number of results to return. If you don't specify a value, Security Hub returns up to 100 results.
+#' @param NextToken The pagination token to request the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_free_trial_statuses_v2
+securityhub_list_free_trial_statuses_v2 <- function(AccountIds = NULL, Statuses = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListFreeTrialStatusesV2",
+    http_method = "POST",
+    http_path = "/freetrial/statusv2/list",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountFreeTrialStatuses"),
+    stream_api = FALSE
+  )
+  input <- .securityhub$list_free_trial_statuses_v2_input(AccountIds = AccountIds, Statuses = Statuses, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .securityhub$list_free_trial_statuses_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_free_trial_statuses_v2 <- securityhub_list_free_trial_statuses_v2
 
 #' We recommend using Organizations instead of Security Hub CSPM
 #' invitations to manage your member accounts
@@ -3028,11 +3265,12 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
 #' @param StandardsArn The Amazon Resource Name (ARN) of the standard that you want to view controls for.
 #' @param NextToken Optional pagination parameter.
 #' @param MaxResults An optional parameter that limits the total results of the API response to the specified number. If this parameter isn't provided in the request, the results include the first 25 security controls that apply to the specified standard. The results also include a `NextToken` parameter that you can use in a subsequent API call to get the next 25 controls. This repeats until all controls for the standard are returned.
+#' @param Providers A list of cloud providers to filter the security control definitions by. For example, specify `Azure` to return only controls that evaluate Azure resources.
 #'
 #' @keywords internal
 #'
 #' @rdname securityhub_list_security_control_definitions
-securityhub_list_security_control_definitions <- function(StandardsArn = NULL, NextToken = NULL, MaxResults = NULL) {
+securityhub_list_security_control_definitions <- function(StandardsArn = NULL, NextToken = NULL, MaxResults = NULL, Providers = NULL) {
   op <- new_operation(
     name = "ListSecurityControlDefinitions",
     http_method = "GET",
@@ -3041,7 +3279,7 @@ securityhub_list_security_control_definitions <- function(StandardsArn = NULL, N
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SecurityControlDefinitions"),
     stream_api = FALSE
   )
-  input <- .securityhub$list_security_control_definitions_input(StandardsArn = StandardsArn, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .securityhub$list_security_control_definitions_input(StandardsArn = StandardsArn, NextToken = NextToken, MaxResults = MaxResults, Providers = Providers)
   output <- .securityhub$list_security_control_definitions_output()
   config <- get_config()
   svc <- .securityhub$service(config, op)
@@ -3419,6 +3657,40 @@ securityhub_update_configuration_policy <- function(Identifier, Name = NULL, Des
   return(response)
 }
 .securityhub$operations$update_configuration_policy <- securityhub_update_configuration_policy
+
+#' Updates a CSPM connector's configuration, such as the scope or regions
+#' for the connected cloud provider
+#'
+#' @description
+#' Updates a CSPM connector's configuration, such as the scope or regions for the connected cloud provider.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_update_connector/](https://www.paws-r-sdk.com/docs/securityhub_update_connector/) for full documentation.
+#'
+#' @param ConnectorId &#91;required&#93; The unique identifier of the connector to update.
+#' @param Description The updated description of the connector.
+#' @param Provider The updated cloud provider configuration for the connector.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_update_connector
+securityhub_update_connector <- function(ConnectorId, Description = NULL, Provider = NULL) {
+  op <- new_operation(
+    name = "UpdateConnector",
+    http_method = "PATCH",
+    http_path = "/connectors/{ConnectorId+}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .securityhub$update_connector_input(ConnectorId = ConnectorId, Description = Description, Provider = Provider)
+  output <- .securityhub$update_connector_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$update_connector <- securityhub_update_connector
 
 #' Grants permission to update a connectorV2 based on its id and input
 #' parameters

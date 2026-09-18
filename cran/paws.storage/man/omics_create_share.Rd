@@ -14,7 +14,7 @@ omics_create_share(resourceArn, principalSubscriber, shareName = NULL)
 \item{shareName}{A name that the owner defines for the share.}
 }
 \description{
-Creates a cross-account shared resource. The resource owner makes an offer to share the resource with the principal subscriber (an AWS user with a different account than the resource owner).
+Creates a cross-account shared resource. The resource owner makes an offer to share the resource with the principal subscriber (an Amazon Web Services user with a different account than the resource owner).
 
 See \url{https://www.paws-r-sdk.com/docs/omics_create_share/} for full documentation.
 }

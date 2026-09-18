@@ -11,7 +11,8 @@ kinesis_put_record(
   ExplicitHashKey = NULL,
   SequenceNumberForOrdering = NULL,
   StreamARN = NULL,
-  StreamId = NULL
+  StreamId = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ kinesis_put_record(
 \item{StreamARN}{The ARN of the stream.}
 
 \item{StreamId}{Not Implemented. Reserved for future use.}
+
+\item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.}
 }
 \description{
 Writes a single data record into an Amazon Kinesis data stream. Call \code{\link[=kinesis_put_record]{put_record}} to send data into the stream for real-time ingestion and subsequent processing, one record at a time. Each shard can support writes up to 1,000 records per second, up to a maximum data write total of 10 MiB per second.

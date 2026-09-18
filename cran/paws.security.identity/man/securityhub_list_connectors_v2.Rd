@@ -9,7 +9,8 @@ securityhub_list_connectors_v2(
   NextToken = NULL,
   MaxResults = NULL,
   ProviderName = NULL,
-  ConnectorStatus = NULL
+  ConnectorStatus = NULL,
+  EnablementStatus = NULL
 )
 }
 \arguments{
@@ -20,6 +21,8 @@ securityhub_list_connectors_v2(
 \item{ProviderName}{The name of the third-party provider.}
 
 \item{ConnectorStatus}{The status for the connectorV2.}
+
+\item{EnablementStatus}{The enablement status to filter connectors by.}
 }
 \description{
 Grants permission to retrieve a list of connectorsV2 and their metadata for the calling account.

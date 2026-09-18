@@ -47,7 +47,7 @@ The following list describes restrictions on \code{StartTime} and \code{EndTime}
 
 The following are valid filter keys for a \code{\link[=connect_get_metric_data_v2]{get_metric_data_v2}} request:
 
-\code{AGENT} | \code{AGENT_HIERARCHY_LEVEL_ONE} | \code{AGENT_HIERARCHY_LEVEL_TWO} | \code{AGENT_HIERARCHY_LEVEL_THREE} | \code{AGENT_HIERARCHY_LEVEL_FOUR} | \code{AGENT_HIERARCHY_LEVEL_FIVE} | \code{ANSWERING_MACHINE_DETECTION_STATUS} | \code{BOT_ALIAS} | \code{BOT_ID} | \code{BOT_INTENT_NAME} | \code{BOT_LOCALE} | \code{BOT_VERSION} | \code{CAMPAIGN} | \code{CAMPAIGN_DELIVERY_EVENT_TYPE} | \code{CAMPAIGN_EXCLUDED_EVENT_TYPE} | \code{CASE_STATUS} | \code{CASE_TEMPLATE_ARN} | \code{CHANNEL} | \code{contact/segmentAttributes/connect:Subtype} | \code{contact/segmentAttributes/connect:ValidationTestType} | \code{DISCONNECT_REASON} | \code{EVALUATION_FORM} | \code{EVALUATION_QUESTION} | \code{EVALUATION_SECTION} | \code{EVALUATION_SOURCE} | \code{EVALUATOR_ID} | \code{FEATURE} | \code{FLOW_ACTION_ID} | \code{FLOW_TYPE} | \code{FLOWS_MODULE_RESOURCE_ID} | \code{FLOWS_NEXT_RESOURCE_ID} | \code{FLOWS_NEXT_RESOURCE_QUEUE_ID} | \code{FLOWS_OUTCOME_TYPE} | \code{FLOWS_RESOURCE_ID} | \code{FORM_VERSION} | \code{INITIATING_FLOW} | \code{INITIATION_METHOD} | \code{INVOKING_RESOURCE_PUBLISHED_TIMESTAMP} | \code{INVOKING_RESOURCE_TYPE} | \code{PARENT_FLOWS_RESOURCE_ID} | \code{Q_CONNECT_ENABLED} | `QU
+\code{AGENT} | \code{AI_AGENT} | \code{AI_AGENT_ID} | \code{AI_AGENT_NAME} | \code{AI_AGENT_TYPE} | \code{AI_PROMPT} | \code{AI_PROMPT_ID} | \code{AI_PROMPT_NAME} | \code{AI_PROMPT_TYPE} | \code{AI_TOOL_ID} | \code{AI_TOOL_NAME} | \code{AI_TOOL_TYPE} | \code{AI_USE_CASE} | \code{AGENT_HIERARCHY_LEVEL_ONE} | \code{AGENT_HIERARCHY_LEVEL_TWO} | \code{AGENT_HIERARCHY_LEVEL_THREE} | \code{AGENT_HIERARCHY_LEVEL_FOUR} | \code{AGENT_HIERARCHY_LEVEL_FIVE} | \code{ANSWERING_MACHINE_DETECTION_STATUS} | \code{BOT_ALIAS} | \code{BOT_ID} | \code{BOT_INTENT_NAME} | \code{BOT_LOCALE} | \code{BOT_VERSION} | \code{BROWSER_NAME} | \code{CAMPAIGN} | \code{CAMPAIGN_DELIVERY_EVENT_TYPE} | \code{CAMPAIGN_EXCLUDED_EVENT_TYPE} | \code{CASE_STATUS} | \code{CASE_TEMPLATE_ARN} | \code{CHANNEL} | \code{contact/segmentAttributes/connect:Subtype} | \code{contact/segmentAttributes/connect:ValidationTestType} | \code{DEVICE_MODEL} | \code{DEVICE_TYPE} | \code{DISCONNECT_REASON} | \code{EVALUATION_FORM} | \code{EVALUATION_QUESTION} | \code{EVALUATION_SECTION} | \code{EVALUATION_SOURCE} | \code{EVALUATOR_ID} | \code{FEATURE} | \code{FLOW_ACTION_ID} | \code{FLOW_TYPE} | \code{FLOWS_MODULE_RESOURCE_ID} | \code{FLOWS_NEXT_RESOURCE_ID} | `FLOWS_NEXT
 
 The following filter keys correspond to Connect Customer resources and are used for authorizing requests. A \code{\link[=connect_get_metric_data_v2]{get_metric_data_v2}} request requires at least one of these filters:
 
@@ -60,7 +60,7 @@ You can use up to 5 filter keys in a single request, and up to 100 filter values
 \item VOICE, CHAT, TASK, and EMAIL are valid filter values for the \code{CHANNEL} filter key. They do not count towards the limit of 100 filter values. For example, a \code{\link[=connect_get_metric_data_v2]{get_metric_data_v2}} request can filter by 50 queues, 35 agents, and 15 routing profiles for a total of 100 filter values, along with 4 channel filters.
 \item \code{contact_lens_conversational_analytics} is a valid filter value for the \code{FEATURE} filter key. It is available only for contacts analyzed by Contact Lens conversational analytics.
 \item \code{connect:Chat}, \code{connect:SMS}, \code{connect:Telephony}, and \code{connect:WebRTC} are valid filter value examples (not exhaustive) for the \code{contact/segmentAttributes/connect:Subtype} filter key.
-\item \code{ROUTING_STEP_EXPRESSION} accepts a filter value up to 3,000 characters in length. This filter is case-sensitive and order-sensitive. JSON string fields must be sorted in ascending order, and JSON array order must be preserved.
+\item \code{ROUTING_STEP_EXPRESSION} accepts a filter value up to 3,000 characters in length. Filter values are case-sensitive. JSON object key order and whitespace may be arbitrary; array order and tree structure must be preserved.
 \item TRUE and FALSE are the only valid filter values for the \code{Q_CONNECT_ENABLED} filter key.
 \itemize{
 \item TRUE includes all contacts that had Connect AI Agents enabled as part of the flow.
@@ -75,7 +75,9 @@ You can use up to 5 filter keys in a single request, and up to 100 filter values
 
 If no grouping is specified, a summary of all metrics is returned.
 
-Valid grouping keys: \code{AGENT} | \code{AGENT_HIERARCHY_LEVEL_ONE} | \code{AGENT_HIERARCHY_LEVEL_TWO} | \code{AGENT_HIERARCHY_LEVEL_THREE} | \code{AGENT_HIERARCHY_LEVEL_FOUR} | \code{AGENT_HIERARCHY_LEVEL_FIVE} | \code{ANSWERING_MACHINE_DETECTION_STATUS} | \code{BOT_ID} | \code{BOT_ALIAS} | \code{BOT_VERSION} | \code{BOT_LOCALE} | \code{BOT_INTENT_NAME} | \code{CAMPAIGN} | \code{CAMPAIGN_DELIVERY_EVENT_TYPE} | \code{CAMPAIGN_EXCLUDED_EVENT_TYPE} | \code{CAMPAIGN_EXECUTION_TIMESTAMP} | \code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} | \code{CHANNEL} | \code{contact/segmentAttributes/connect:Subtype} | \code{DISCONNECT_REASON} | \code{EVALUATION_FORM} | \code{EVALUATION_SECTION} | \code{EVALUATION_QUESTION} | \code{EVALUATION_SOURCE} | \code{EVALUATOR_ID} | \code{FLOWS_RESOURCE_ID} | \code{FLOWS_MODULE_RESOURCE_ID} | \code{FLOW_ACTION_ID} | \code{FLOW_TYPE} | \code{FLOWS_OUTCOME_TYPE} | \code{FORM_VERSION} | \code{INITIATION_METHOD} | \code{INVOKING_RESOURCE_PUBLISHED_TIMESTAMP} | \code{INVOKING_RESOURCE_TYPE} | \code{PARENT_FLOWS_RESOURCE_ID} | \code{Q_CONNECT_ENABLED} | \code{QUEUE} | \code{RESOURCE_PUBLISHED_TIMESTAMP} | \code{ROUTING_PROFILE} | \code{ROUTING_STEP_EXPRESSION} | `TEST_C
+Valid grouping keys: \code{AGENT} | \code{AI_AGENT} | \code{AI_AGENT_ID} | \code{AI_AGENT_NAME} | \code{AI_AGENT_NAME_VERSION} | \code{AI_AGENT_TYPE} | \code{AI_PROMPT} | \code{AI_PROMPT_ID} | \code{AI_PROMPT_NAME} | \code{AI_PROMPT_NAME_VERSION} | \code{AI_PROMPT_TYPE} | \code{AI_TOOL_ID} | \code{AI_TOOL_NAME} | \code{AI_TOOL_TYPE} | \code{AI_USE_CASE} | \code{AGENT_HIERARCHY_LEVEL_ONE} | \code{AGENT_HIERARCHY_LEVEL_TWO} | \code{AGENT_HIERARCHY_LEVEL_THREE} | \code{AGENT_HIERARCHY_LEVEL_FOUR} | \code{AGENT_HIERARCHY_LEVEL_FIVE} | \code{ANSWERING_MACHINE_DETECTION_STATUS} | \code{BOT_ID} | \code{BOT_ALIAS} | \code{BOT_VERSION} | \code{BOT_LOCALE} | \code{BOT_INTENT_NAME} | \code{BROWSER_NAME} | \code{CAMPAIGN} | \code{CAMPAIGN_DELIVERY_EVENT_TYPE} | \code{CAMPAIGN_EXCLUDED_EVENT_TYPE} | \code{CAMPAIGN_EXECUTION_TIMESTAMP} | \code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} | \code{CHANNEL} | \code{contact/segmentAttributes/connect:Subtype} | \code{DEVICE_MODEL} | \code{DEVICE_TYPE} | \code{DISCONNECT_REASON} | \code{EVALUATION_FORM} | \code{EVALUATION_SECTION} | \code{EVALUATION_QUESTION} | \code{EVALUATION_SOURCE} | \code{EVALUATOR_ID} | \code{FLOWS_RESOURCE_ID} | \code{FLOWS_MODULE_RESOURCE_ID} | `FLOW_ACTIO
+
+\code{AI_AGENT_NAME_VERSION}, \code{AI_PROMPT_NAME_VERSION}, and \code{KNOWLEDGE_ARTICLE_NAME} are valid groupings but not valid filters.
 
 API, SCHEDULE, and EVENT are the only valid filterValues for TEST_CASE_INVOCATION_METHOD.
 
@@ -347,7 +349,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Seconds
 
-Valid groupings and filters: Queue, Channel, Routing Profile, Agent, Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype, RoutingStepExpression
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent, Agent Hierarchy, AI Use Case, Feature, contact/segmentAttributes/connect:Subtype, RoutingStepExpression
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-handle-time}{Average handle time}
 
@@ -365,7 +367,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Percent
 
-Valid groupings and filters: AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-handoff-rate}{AI Handoff Rate}
 
@@ -373,9 +375,9 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Count
 
-Valid groupings and filters: AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
 
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-handoffs}{AI Handoffs}
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-handoffs}{AI Handoff Count}
 
 \strong{AI_AGENT_INVOCATION_SUCCESS}
 
@@ -403,7 +405,27 @@ Unit: Count
 
 Valid groupings and filters: AI Agent, AI Agent Name, AI Agent Type, AI Agent Name Version, AI Use Case, Channel, Queue, Routing Profile
 
-UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-agent-invocations}{AI Agent Invocations}
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-agent-invocations}{AI Agent Invocation Count}
+
+AI Agent Name Version is not a valid filter but a valid grouping.
+
+\strong{AI_AGENT_RESPONSE_HELPFUL}
+
+Unit: Count
+
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-agent-response-helpful}{AI Agent Response Helpful}
+
+AI Agent Name Version is not a valid filter but a valid grouping.
+
+\strong{AI_AGENT_RESPONSE_NOT_HELPFUL}
+
+Unit: Count
+
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-agent-response-not-helpful}{AI Agent Response Not Helpful}
 
 AI Agent Name Version is not a valid filter but a valid grouping.
 
@@ -411,7 +433,7 @@ AI Agent Name Version is not a valid filter but a valid grouping.
 
 Unit: Percent
 
-Valid groupings and filters: AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-response-completion-rate}{AI Response Completion Rate}
 
@@ -419,7 +441,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Count
 
-Valid groupings and filters: AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-involved-contacts}{AI Involved Contacts}
 
@@ -497,7 +519,7 @@ AI Agent Name Version is not a valid filter but a valid grouping.
 
 Unit: Count
 
-Valid groupings and filters: AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-ai-conversation-turns}{Average AI Conversation Turns}
 
@@ -521,6 +543,60 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 AI Agent Name Version is not a valid filter but a valid grouping.
 
+\strong{AI_TOOL_PARAMETER_ACCURACY}
+
+Unit: Double
+
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Tool ID, AI Tool Name, AI Tool Type, AI Use Case, Channel, Queue, Routing Profile
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-tool-parameter-accuracy}{AI Tool Parameter Accuracy}
+
+AI Agent Name Version is not a valid filter but a valid grouping.
+
+\strong{AI_TOOL_SELECTION_ACCURACY}
+
+Unit: Double
+
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Tool ID, AI Tool Name, AI Tool Type, AI Use Case, Channel, Queue, Routing Profile
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-tool-selection-accuracy}{AI Tool Selection Accuracy}
+
+AI Agent Name Version is not a valid filter but a valid grouping.
+
+\strong{AI_TOOL_UTILIZATION_ACCURACY}
+
+Unit: Double
+
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Tool ID, AI Tool Name, AI Tool Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-tool-utilization-accuracy}{AI Tool Utilization Accuracy}
+
+AI Agent Name Version is not a valid filter but a valid grouping.
+
+\strong{COMPLETENESS_SCORE}
+
+Unit: Double
+
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#completeness-score}{Completeness Score}
+
+\strong{FAITHFULNESS_SCORE}
+
+Unit: Double
+
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#faithfulness-score}{Faithfulness Score}
+
+\strong{GOAL_SUCCESS_RATE}
+
+Unit: Double
+
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#goal-success-rate}{Goal Success Rate}
+
 \strong{KNOWLEDGE_CONTENT_REFERENCES}
 
 Unit: Count
@@ -533,7 +609,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Percent
 
-Valid groupings and filters: AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#proactive-intents-engagement-rate}{Proactive Intent Engagement Rate}
 
@@ -541,7 +617,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Percent
 
-Valid groupings and filters: AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#proactive-intents-response-rate}{Proactive Intent Response Rate}
 
@@ -549,7 +625,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Count
 
-Valid groupings and filters: AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#proactive-intents-answered}{Proactive Intents Answered}
 
@@ -557,7 +633,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Count
 
-Valid groupings and filters: AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#proactive-intents-detected}{Proactive Intents Detected}
 
@@ -565,7 +641,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Count
 
-Valid groupings and filters: AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#proactive-intents-engaged}{Proactive Intents Engaged}
 
@@ -837,13 +913,13 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 \strong{CAMPAIGN_INTERACTIONS}
 
-This metric is available only for outbound campaigns using the email delivery mode.
+This metric is available only for outbound campaigns using the email, WhatsApp, and web notification delivery modes.
 
 Unit: Count
 
 Valid metric filter key: CAMPAIGN_INTERACTION_EVENT_TYPE
 
-Valid groupings and filters: Campaign
+Valid groupings and filters: Browser Name, Campaign, Channel, contact/segmentAttributes/connect:Subtype, Device Model, Device Type, Web Notification Type
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#campaign-interactions}{Campaign interactions}
 
@@ -1059,11 +1135,11 @@ Unit: Count
 
 Valid metric filter key: \code{ANSWERING_MACHINE_DETECTION_STATUS}, \code{CAMPAIGN_DELIVERY_EVENT_TYPE}, \code{DISCONNECT_REASON}
 
-Valid groupings and filters: Agent, Answering Machine Detection Status, Campaign, Campaign Delivery EventType, Channel, contact/segmentAttributes/connect:Subtype, Disconnect Reason, Queue, Routing Profile
+Valid groupings and filters: Agent, Answering Machine Detection Status, Browser Name, Campaign, Campaign Delivery EventType, Channel, contact/segmentAttributes/connect:Subtype, Device Model, Device Type, Disconnect Reason, Queue, Routing Profile, Web Notification Type
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#delivery-attempts}{Delivery attempts}
 
-Campaign Delivery EventType filter and grouping are only available for SMS and Email campaign delivery modes. Agent, Queue, Routing Profile, Answering Machine Detection Status and Disconnect Reason are only available for agent assisted voice and automated voice delivery modes.
+Campaign Delivery EventType filter and grouping are only available for SMS, Email, WhatsApp, and web notification campaign delivery modes. Agent, Queue, Routing Profile, Answering Machine Detection Status and Disconnect Reason are only available for agent assisted voice and automated voice delivery modes.
 
 \strong{DELIVERY_ATTEMPT_DISPOSITION_RATE}
 
@@ -1073,11 +1149,11 @@ Unit: Percent
 
 Valid metric filter key: \code{ANSWERING_MACHINE_DETECTION_STATUS}, \code{CAMPAIGN_DELIVERY_EVENT_TYPE}, \code{DISCONNECT_REASON}
 
-Valid groupings and filters: Agent, Answering Machine Detection Status, Campaign, Channel, contact/segmentAttributes/connect:Subtype, Disconnect Reason, Queue, Routing Profile
+Valid groupings and filters: Agent, Answering Machine Detection Status, Browser Name, Campaign, Channel, contact/segmentAttributes/connect:Subtype, Device Model, Device Type, Disconnect Reason, Queue, Routing Profile, Web Notification Type
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#delivery-attempt-disposition-rate}{Delivery attempt disposition rate}
 
-Campaign Delivery Event Type filter and grouping are only available for SMS and Email campaign delivery modes. Agent, Queue, Routing Profile, Answering Machine Detection Status and Disconnect Reason are only available for agent assisted voice and automated voice delivery modes.
+Campaign Delivery Event Type filter and grouping are only available for SMS, Email, WhatsApp, and web notification campaign delivery modes. Agent, Queue, Routing Profile, Answering Machine Detection Status and Disconnect Reason are only available for agent assisted voice and automated voice delivery modes.
 
 \strong{EVALUATIONS_PERFORMED}
 

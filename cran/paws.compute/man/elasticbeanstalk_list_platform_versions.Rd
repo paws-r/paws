@@ -2,7 +2,8 @@
 % Please edit documentation in R/elasticbeanstalk_operations.R
 \name{elasticbeanstalk_list_platform_versions}
 \alias{elasticbeanstalk_list_platform_versions}
-\title{Lists the platform versions available for your account in an AWS Region}
+\title{Lists the platform versions available for your account in an Amazon Web
+Services Region}
 \usage{
 elasticbeanstalk_list_platform_versions(
   Filters = NULL,
@@ -20,7 +21,7 @@ elasticbeanstalk_list_platform_versions(
 If no \code{NextToken} is specified, the first page is retrieved.}
 }
 \description{
-Lists the platform versions available for your account in an AWS Region. Provides summary information about each platform version. Compare to \code{\link[=elasticbeanstalk_describe_platform_version]{describe_platform_version}}, which provides full details about a single platform version.
+Lists the platform versions available for your account in an Amazon Web Services Region. Provides summary information about each platform version. Compare to \code{\link[=elasticbeanstalk_describe_platform_version]{describe_platform_version}}, which provides full details about a single platform version.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_list_platform_versions/} for full documentation.
 }

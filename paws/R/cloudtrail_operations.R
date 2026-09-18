@@ -63,10 +63,12 @@ cloudtrail_add_tags <- function(ResourceId, TagsList) {
 }
 .cloudtrail$operations$add_tags <- cloudtrail_add_tags
 
-#' Cancels a query if the query is not in a terminated state, such as
-#' CANCELLED, FAILED, TIMED_OUT, or FINISHED
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Cancels a query if the query is not in a terminated state, such as `CANCELLED`, `FAILED`, `TIMED_OUT`, or `FINISHED`. You must specify an ARN value for `EventDataStore`. The ID of the query that you want to cancel is also required. When you run [`cancel_query`][cloudtrail_cancel_query], the query status might show as `CANCELLED` even if the operation is not yet finished.
 #'
 #' @usage
@@ -120,10 +122,12 @@ cloudtrail_cancel_query <- function(EventDataStore = NULL, QueryId, EventDataSto
 }
 .cloudtrail$operations$cancel_query <- cloudtrail_cancel_query
 
-#' Creates a channel for CloudTrail to ingest events from a partner or
-#' external source
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Creates a channel for CloudTrail to ingest events from a partner or external source. After you create a channel, a CloudTrail Lake event data store can log events from the partner or source that you specify.
 #'
 #' @usage
@@ -202,9 +206,12 @@ cloudtrail_create_channel <- function(Name, Source, Destinations, Tags = NULL) {
 }
 .cloudtrail$operations$create_channel <- cloudtrail_create_channel
 
-#' Creates a custom dashboard or the Highlights dashboard
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Creates a custom dashboard or the Highlights dashboard.
 #' 
 #' -   **Custom dashboards** - Custom dashboards allow you to query events in any event data store type. You can add up to 10 widgets to a custom dashboard. You can manually refresh a custom dashboard, or you can set a refresh schedule.
@@ -327,9 +334,12 @@ cloudtrail_create_dashboard <- function(Name, RefreshSchedule = NULL, TagsList =
 }
 .cloudtrail$operations$create_dashboard <- cloudtrail_create_dashboard
 
-#' Creates a new event data store
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Creates a new event data store.
 #'
 #' @usage
@@ -521,7 +531,7 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #' cloudtrail_create_trail(Name, S3BucketName, S3KeyPrefix, SnsTopicName,
 #'   IncludeGlobalServiceEvents, IsMultiRegionTrail, EnableLogFileValidation,
 #'   CloudWatchLogsLogGroupArn, CloudWatchLogsRoleArn, KmsKeyId,
-#'   IsOrganizationTrail, TagsList)
+#'   IsOrganizationTrail, TagsList, RecursiveLogging)
 #'
 #' @param Name &#91;required&#93; Specifies the name of the trail. The name must meet the following requirements:
 #' 
@@ -537,7 +547,7 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #' @param S3BucketName &#91;required&#93; Specifies the name of the Amazon S3 bucket designated for publishing log files. For information about bucket naming rules, see [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) in the *Amazon Simple Storage Service User Guide*.
 #' @param S3KeyPrefix Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see [Finding Your CloudTrail Log Files](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/get-and-view-cloudtrail-log-files.html#cloudtrail-find-log-files). The maximum length is 200 characters.
 #' @param SnsTopicName Specifies the name or ARN of the Amazon SNS topic defined for notification of log file delivery. The maximum length is 256 characters.
-#' @param IncludeGlobalServiceEvents Specifies whether the trail is publishing events from global services such as IAM to the log files.
+#' @param IncludeGlobalServiceEvents Specifies whether the trail is publishing events from global services such as IAM to the log files. Setting this value to `true` only delivers global service events to the trail if the trail is multi-Region or if the trail's home Region is the partition leader Region (for example, us-east-1).
 #' @param IsMultiRegionTrail Specifies whether the trail is created in the current Region or in all Regions. The default is false, which creates a trail only in the Region where you are signed in. As a best practice, consider creating trails that log events in all Regions.
 #' @param EnableLogFileValidation Specifies whether log file integrity validation is enabled. The default is false.
 #' 
@@ -561,6 +571,7 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #' -   `12345678-1234-1234-1234-123456789012`
 #' @param IsOrganizationTrail Specifies whether the trail is created for all accounts in an organization in Organizations, or only for the current Amazon Web Services account. The default is false, and cannot be true unless the call is made on behalf of an Amazon Web Services account that is the management account or delegated administrator account for an organization in Organizations.
 #' @param TagsList A list of tags.
+#' @param RecursiveLogging Specifies whether recursive logging is enabled for the trail. If you set `RecursiveLogging` to `false`, CloudTrail suppresses events generated by CloudTrail when it delivers log files to your trail's destinations, including Amazon S3 and CloudWatch Logs. The default value is `true`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -578,7 +589,8 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #'   CloudWatchLogsLogGroupArn = "string",
 #'   CloudWatchLogsRoleArn = "string",
 #'   KmsKeyId = "string",
-#'   IsOrganizationTrail = TRUE|FALSE
+#'   IsOrganizationTrail = TRUE|FALSE,
+#'   RecursiveLogging = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -601,7 +613,8 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   RecursiveLogging = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -610,7 +623,7 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #' @rdname cloudtrail_create_trail
 #'
 #' @aliases cloudtrail_create_trail
-cloudtrail_create_trail <- function(Name, S3BucketName, S3KeyPrefix = NULL, SnsTopicName = NULL, IncludeGlobalServiceEvents = NULL, IsMultiRegionTrail = NULL, EnableLogFileValidation = NULL, CloudWatchLogsLogGroupArn = NULL, CloudWatchLogsRoleArn = NULL, KmsKeyId = NULL, IsOrganizationTrail = NULL, TagsList = NULL) {
+cloudtrail_create_trail <- function(Name, S3BucketName, S3KeyPrefix = NULL, SnsTopicName = NULL, IncludeGlobalServiceEvents = NULL, IsMultiRegionTrail = NULL, EnableLogFileValidation = NULL, CloudWatchLogsLogGroupArn = NULL, CloudWatchLogsRoleArn = NULL, KmsKeyId = NULL, IsOrganizationTrail = NULL, TagsList = NULL, RecursiveLogging = NULL) {
   op <- new_operation(
     name = "CreateTrail",
     http_method = "POST",
@@ -619,7 +632,7 @@ cloudtrail_create_trail <- function(Name, S3BucketName, S3KeyPrefix = NULL, SnsT
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudtrail$create_trail_input(Name = Name, S3BucketName = S3BucketName, S3KeyPrefix = S3KeyPrefix, SnsTopicName = SnsTopicName, IncludeGlobalServiceEvents = IncludeGlobalServiceEvents, IsMultiRegionTrail = IsMultiRegionTrail, EnableLogFileValidation = EnableLogFileValidation, CloudWatchLogsLogGroupArn = CloudWatchLogsLogGroupArn, CloudWatchLogsRoleArn = CloudWatchLogsRoleArn, KmsKeyId = KmsKeyId, IsOrganizationTrail = IsOrganizationTrail, TagsList = TagsList)
+  input <- .cloudtrail$create_trail_input(Name = Name, S3BucketName = S3BucketName, S3KeyPrefix = S3KeyPrefix, SnsTopicName = SnsTopicName, IncludeGlobalServiceEvents = IncludeGlobalServiceEvents, IsMultiRegionTrail = IsMultiRegionTrail, EnableLogFileValidation = EnableLogFileValidation, CloudWatchLogsLogGroupArn = CloudWatchLogsLogGroupArn, CloudWatchLogsRoleArn = CloudWatchLogsRoleArn, KmsKeyId = KmsKeyId, IsOrganizationTrail = IsOrganizationTrail, TagsList = TagsList, RecursiveLogging = RecursiveLogging)
   output <- .cloudtrail$create_trail_output()
   config <- get_config()
   svc <- .cloudtrail$service(config, op)
@@ -629,9 +642,12 @@ cloudtrail_create_trail <- function(Name, S3BucketName, S3KeyPrefix = NULL, SnsT
 }
 .cloudtrail$operations$create_trail <- cloudtrail_create_trail
 
-#' Deletes a channel
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Deletes a channel.
 #'
 #' @usage
@@ -673,9 +689,12 @@ cloudtrail_delete_channel <- function(Channel) {
 }
 .cloudtrail$operations$delete_channel <- cloudtrail_delete_channel
 
-#' Deletes the specified dashboard
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Deletes the specified dashboard. You cannot delete a dashboard that has termination protection enabled.
 #'
 #' @usage
@@ -717,10 +736,12 @@ cloudtrail_delete_dashboard <- function(DashboardId) {
 }
 .cloudtrail$operations$delete_dashboard <- cloudtrail_delete_dashboard
 
-#' Disables the event data store specified by EventDataStore, which accepts
-#' an event data store ARN
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Disables the event data store specified by `EventDataStore`, which accepts an event data store ARN. After you run [`delete_event_data_store`][cloudtrail_delete_event_data_store], the event data store enters a `PENDING_DELETION` state, and is automatically deleted after a wait period of seven days. `TerminationProtectionEnabled` must be set to `False` on the event data store and the `FederationStatus` must be `DISABLED`. You cannot delete an event data store if `TerminationProtectionEnabled` is `True` or the `FederationStatus` is `ENABLED`.
 #' 
 #' After you run [`delete_event_data_store`][cloudtrail_delete_event_data_store] on an event data store, you cannot run [`list_queries`][cloudtrail_list_queries], [`describe_query`][cloudtrail_describe_query], or [`get_query_results`][cloudtrail_get_query_results] on queries that are using an event data store in a `PENDING_DELETION` state. An event data store in the `PENDING_DELETION` state does not incur costs.
@@ -909,10 +930,12 @@ cloudtrail_deregister_organization_delegated_admin <- function(DelegatedAdminAcc
 }
 .cloudtrail$operations$deregister_organization_delegated_admin <- cloudtrail_deregister_organization_delegated_admin
 
-#' Returns metadata about a query, including query run time in
-#' milliseconds, number of events scanned and matched, and query status
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Returns metadata about a query, including query run time in milliseconds, number of events scanned and matched, and query status. If the query results were delivered to an S3 bucket, the response also provides the S3 URI and the delivery status.
 #' 
 #' You must specify either `QueryId` or `QueryAlias`. Specifying the `QueryAlias` parameter returns information about the last query run for the alias. You can provide `RefreshId` along with `QueryAlias` to view the query results of a dashboard query for the specified `RefreshId`.
@@ -1029,7 +1052,8 @@ cloudtrail_describe_query <- function(EventDataStore = NULL, QueryId = NULL, Que
 #'       KmsKeyId = "string",
 #'       HasCustomEventSelectors = TRUE|FALSE,
 #'       HasInsightSelectors = TRUE|FALSE,
-#'       IsOrganizationTrail = TRUE|FALSE
+#'       IsOrganizationTrail = TRUE|FALSE,
+#'       RecursiveLogging = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -1069,9 +1093,12 @@ cloudtrail_describe_trails <- function(trailNameList = NULL, includeShadowTrails
 }
 .cloudtrail$operations$describe_trails <- cloudtrail_describe_trails
 
-#' Disables Lake query federation on the specified event data store
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Disables Lake query federation on the specified event data store. When you disable federation, CloudTrail disables the integration with Glue, Lake Formation, and Amazon Athena. After disabling Lake query federation, you can no longer query your event data in Amazon Athena.
 #' 
 #' No CloudTrail Lake data is deleted when you disable federation and you can continue to run queries in CloudTrail Lake.
@@ -1121,9 +1148,12 @@ cloudtrail_disable_federation <- function(EventDataStore) {
 }
 .cloudtrail$operations$disable_federation <- cloudtrail_disable_federation
 
-#' Enables Lake query federation on the specified event data store
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Enables Lake query federation on the specified event data store. Federating an event data store lets you view the metadata associated with the event data store in the Glue [Data Catalog](https://docs.aws.amazon.com/glue/latest/dg/components-overview.html#data-catalog-intro) and run SQL queries against your event data using Amazon Athena. The table metadata stored in the Glue Data Catalog lets the Athena query engine know how to find, read, and process the data that you want to query.
 #' 
 #' When you enable Lake query federation, CloudTrail creates a managed database named `aws:cloudtrail` (if the database doesn't already exist) and a managed federated table in the Glue Data Catalog. The event data store ID is used for the table name. CloudTrail registers the role ARN and event data store in [Lake Formation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-federation-lake-formation.html), the service responsible for allowing fine-grained access control of the federated resources in the Glue Data Catalog.
@@ -1178,9 +1208,12 @@ cloudtrail_enable_federation <- function(EventDataStore, FederationRoleArn) {
 }
 .cloudtrail$operations$enable_federation <- cloudtrail_enable_federation
 
-#' Generates a query from a natural language prompt
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Generates a query from a natural language prompt. This operation uses generative artificial intelligence (generative AI) to produce a ready-to-use SQL query from the prompt.
 #' 
 #' The prompt can be a question or a statement about the event data in your event data store. For example, you can enter prompts like "What are my top errors in the past month?" and “Give me a list of users that used SNS.”
@@ -1241,9 +1274,12 @@ cloudtrail_generate_query <- function(EventDataStores, Prompt) {
 }
 .cloudtrail$operations$generate_query <- cloudtrail_generate_query
 
-#' Returns information about a specific channel
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Returns information about a specific channel.
 #'
 #' @usage
@@ -1340,9 +1376,12 @@ cloudtrail_get_channel <- function(Channel) {
 }
 .cloudtrail$operations$get_channel <- cloudtrail_get_channel
 
-#' Returns the specified dashboard
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Returns the specified dashboard.
 #'
 #' @usage
@@ -1490,10 +1529,12 @@ cloudtrail_get_event_configuration <- function(TrailName = NULL, EventDataStore 
 }
 .cloudtrail$operations$get_event_configuration <- cloudtrail_get_event_configuration
 
-#' Returns information about an event data store specified as either an ARN
-#' or the ID portion of the ARN
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Returns information about an event data store specified as either an ARN or the ID portion of the ARN.
 #'
 #' @usage
@@ -1715,9 +1756,12 @@ cloudtrail_get_event_selectors <- function(TrailName) {
 }
 .cloudtrail$operations$get_event_selectors <- cloudtrail_get_event_selectors
 
-#' Returns information about a specific import
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Returns information about a specific import.
 #'
 #' @usage
@@ -1878,9 +1922,12 @@ cloudtrail_get_insight_selectors <- function(TrailName = NULL, EventDataStore = 
 }
 .cloudtrail$operations$get_insight_selectors <- cloudtrail_get_insight_selectors
 
-#' Gets event data results of a query
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Gets event data results of a query. You must specify the `QueryID` value returned by the [`start_query`][cloudtrail_start_query] operation.
 #'
 #' @usage
@@ -2038,7 +2085,8 @@ cloudtrail_get_resource_policy <- function(ResourceArn) {
 #'     KmsKeyId = "string",
 #'     HasCustomEventSelectors = TRUE|FALSE,
 #'     HasInsightSelectors = TRUE|FALSE,
-#'     IsOrganizationTrail = TRUE|FALSE
+#'     IsOrganizationTrail = TRUE|FALSE,
+#'     RecursiveLogging = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -2155,9 +2203,12 @@ cloudtrail_get_trail_status <- function(Name) {
 }
 .cloudtrail$operations$get_trail_status <- cloudtrail_get_trail_status
 
-#' Lists the channels in the current account, and their source names
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Lists the channels in the current account, and their source names.
 #'
 #' @usage
@@ -2212,10 +2263,12 @@ cloudtrail_list_channels <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .cloudtrail$operations$list_channels <- cloudtrail_list_channels
 
-#' Returns information about all dashboards in the account, in the current
-#' Region
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Returns information about all dashboards in the account, in the current Region.
 #'
 #' @usage
@@ -2274,10 +2327,12 @@ cloudtrail_list_dashboards <- function(NamePrefix = NULL, Type = NULL, NextToken
 }
 .cloudtrail$operations$list_dashboards <- cloudtrail_list_dashboards
 
-#' Returns information about all event data stores in the account, in the
-#' current Region
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Returns information about all event data stores in the account, in the current Region.
 #'
 #' @usage
@@ -2371,9 +2426,12 @@ cloudtrail_list_event_data_stores <- function(NextToken = NULL, MaxResults = NUL
 }
 .cloudtrail$operations$list_event_data_stores <- cloudtrail_list_event_data_stores
 
-#' Returns a list of failures for the specified import
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Returns a list of failures for the specified import.
 #'
 #' @usage
@@ -2435,10 +2493,12 @@ cloudtrail_list_import_failures <- function(ImportId, MaxResults = NULL, NextTok
 }
 .cloudtrail$operations$list_import_failures <- cloudtrail_list_import_failures
 
-#' Returns information on all imports, or a select set of imports by
-#' ImportStatus or Destination
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Returns information on all imports, or a select set of imports by `ImportStatus` or `Destination`.
 #'
 #' @usage
@@ -2523,6 +2583,8 @@ cloudtrail_list_imports <- function(MaxResults = NULL, Destination = NULL, Impor
 #' All dimensions are optional. The default number of results returned is 50, with a maximum of 50 possible. The response includes a token that you can use to get the next page of results.
 #' 
 #' The rate of ListInsightsData requests is limited to two per second, per account, per Region. If this limit is exceeded, a throttling error occurs.
+#' 
+#' For data event Insights on organization trails, only the management account and delegated administrator accounts can call [`list_insights_data`][cloudtrail_list_insights_data]. For these callers, the API returns Insights events only for the caller's own account. Member accounts cannot call this API on organization trails.
 #'
 #' @usage
 #' cloudtrail_list_insights_data(InsightSource, DataType, Dimensions,
@@ -2627,6 +2689,8 @@ cloudtrail_list_insights_data <- function(InsightSource, DataType, Dimensions = 
 #' -   If [`list_insights_metric_data`][cloudtrail_list_insights_metric_data] is invoked with `TrailName` parameter, access to the [`list_insights_metric_data`][cloudtrail_list_insights_metric_data] API operation is linked to the `cloudtrail:LookupEvents` action and `cloudtrail:ListInsightsData`. To use this operation, you must have permissions to perform the `cloudtrail:LookupEvents` and `cloudtrail:ListInsightsData` action on the specific trail.
 #' 
 #' -   If [`list_insights_metric_data`][cloudtrail_list_insights_metric_data] is invoked without `TrailName` parameter, access to the [`list_insights_metric_data`][cloudtrail_list_insights_metric_data] API operation is linked to the `cloudtrail:LookupEvents` action only. To use this operation, you must have permissions to perform the `cloudtrail:LookupEvents` action.
+#' 
+#' For data event Insights on organization trails, only the management account and delegated administrator accounts can call [`list_insights_metric_data`][cloudtrail_list_insights_metric_data]. For these callers, the API returns Insights metrics only for the caller's own account. Member accounts cannot call this API on organization trails.
 #'
 #' @usage
 #' cloudtrail_list_insights_metric_data(TrailName, EventSource, EventName,
@@ -2791,9 +2855,12 @@ cloudtrail_list_public_keys <- function(StartTime = NULL, EndTime = NULL, NextTo
 }
 .cloudtrail$operations$list_public_keys <- cloudtrail_list_public_keys
 
-#' Returns a list of queries and query statuses for the past seven days
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Returns a list of queries and query statuses for the past seven days. You must specify an ARN value for `EventDataStore`. Optionally, to shorten the list of results, you can specify a time range, formatted as timestamps, by adding `StartTime` and `EndTime` parameters, and a `QueryStatus` value. Valid values for `QueryStatus` include `QUEUED`, `RUNNING`, `FINISHED`, `FAILED`, `TIMED_OUT`, or `CANCELLED`.
 #'
 #' @usage
@@ -3675,10 +3742,12 @@ cloudtrail_remove_tags <- function(ResourceId, TagsList) {
 }
 .cloudtrail$operations$remove_tags <- cloudtrail_remove_tags
 
-#' Restores a deleted event data store specified by EventDataStore, which
-#' accepts an event data store ARN
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Restores a deleted event data store specified by `EventDataStore`, which accepts an event data store ARN. You can only restore a deleted event data store within the seven-day wait period after deletion. Restoring an event data store can take several minutes, depending on the size of the event data store.
 #'
 #' @usage
@@ -3767,10 +3836,12 @@ cloudtrail_restore_event_data_store <- function(EventDataStore) {
 }
 .cloudtrail$operations$restore_event_data_store <- cloudtrail_restore_event_data_store
 
-#' Searches sample queries and returns a list of sample queries that are
-#' sorted by relevance
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Searches sample queries and returns a list of sample queries that are sorted by relevance. To search for sample queries, provide a natural language `SearchPhrase` in English.
 #'
 #' @usage
@@ -3829,9 +3900,12 @@ cloudtrail_search_sample_queries <- function(SearchPhrase, MaxResults = NULL, Ne
 }
 .cloudtrail$operations$search_sample_queries <- cloudtrail_search_sample_queries
 
-#' Starts a refresh of the specified dashboard
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Starts a refresh of the specified dashboard.
 #' 
 #' Each time a dashboard is refreshed, CloudTrail runs queries to populate the dashboard's widgets. CloudTrail must be granted permissions to run the [`start_query`][cloudtrail_start_query] operation on your behalf. To provide permissions, run the [`put_resource_policy`][cloudtrail_put_resource_policy] operation to attach a resource-based policy to each event data store. For more information, see [Example: Allow CloudTrail to run queries to populate a dashboard](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/security_iam_resource-based-policy-examples.html#security_iam_resource-based-policy-examples-eds-dashboard) in the *CloudTrail User Guide*.
@@ -3888,10 +3962,12 @@ cloudtrail_start_dashboard_refresh <- function(DashboardId, QueryParameterValues
 }
 .cloudtrail$operations$start_dashboard_refresh <- cloudtrail_start_dashboard_refresh
 
-#' Starts the ingestion of live events on an event data store specified as
-#' either an ARN or the ID portion of the ARN
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Starts the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To start ingestion, the event data store `Status` must be `STOPPED_INGESTION` and the `eventCategory` must be `Management`, `Data`, `NetworkActivity`, or `ConfigurationItem`.
 #'
 #' @usage
@@ -3933,10 +4009,12 @@ cloudtrail_start_event_data_store_ingestion <- function(EventDataStore) {
 }
 .cloudtrail$operations$start_event_data_store_ingestion <- cloudtrail_start_event_data_store_ingestion
 
-#' Starts an import of logged trail events from a source S3 bucket to a
-#' destination event data store
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Starts an import of logged trail events from a source S3 bucket to a destination event data store. By default, CloudTrail only imports events contained in the S3 bucket's `CloudTrail` prefix and the prefixes inside the `CloudTrail` prefix, and does not check prefixes for other Amazon Web Services services. If you want to import CloudTrail events contained in another prefix, you must include the prefix in the `S3LocationUri`. For more considerations about importing trail events, see [Considerations for copying trail events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-copy-trail-to-lake.html#cloudtrail-trail-copy-considerations) in the *CloudTrail User Guide*.
 #' 
 #' When you start a new import, the `Destinations` and `ImportSource` parameters are required. Before starting a new import, disable any access control lists (ACLs) attached to the source S3 bucket. For more information about disabling ACLs, see [Controlling ownership of objects and disabling ACLs for your bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html).
@@ -4080,9 +4158,12 @@ cloudtrail_start_logging <- function(Name) {
 }
 .cloudtrail$operations$start_logging <- cloudtrail_start_logging
 
-#' Starts a CloudTrail Lake query
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Starts a CloudTrail Lake query. Use the `QueryStatement` parameter to provide your SQL query, enclosed in single quotation marks. Use the optional `DeliveryS3Uri` parameter to deliver the query results to an S3 bucket.
 #' 
 #' [`start_query`][cloudtrail_start_query] requires you specify either the `QueryStatement` parameter, or a `QueryAlias` and any `QueryParameters`. In the current release, the `QueryAlias` and `QueryParameters` parameters are used only for the queries that populate the CloudTrail Lake dashboards.
@@ -4143,10 +4224,12 @@ cloudtrail_start_query <- function(QueryStatement = NULL, DeliveryS3Uri = NULL, 
 }
 .cloudtrail$operations$start_query <- cloudtrail_start_query
 
-#' Stops the ingestion of live events on an event data store specified as
-#' either an ARN or the ID portion of the ARN
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Stops the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To stop ingestion, the event data store `Status` must be `ENABLED` and the `eventCategory` must be `Management`, `Data`, `NetworkActivity`, or `ConfigurationItem`.
 #'
 #' @usage
@@ -4188,9 +4271,12 @@ cloudtrail_stop_event_data_store_ingestion <- function(EventDataStore) {
 }
 .cloudtrail$operations$stop_event_data_store_ingestion <- cloudtrail_stop_event_data_store_ingestion
 
-#' Stops a specified import
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Stops a specified import.
 #'
 #' @usage
@@ -4314,9 +4400,12 @@ cloudtrail_stop_logging <- function(Name) {
 }
 .cloudtrail$operations$stop_logging <- cloudtrail_stop_logging
 
-#' Updates a channel specified by a required channel ARN or UUID
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Updates a channel specified by a required channel ARN or UUID.
 #'
 #' @usage
@@ -4380,9 +4469,12 @@ cloudtrail_update_channel <- function(Channel, Destinations = NULL, Name = NULL)
 }
 .cloudtrail$operations$update_channel <- cloudtrail_update_channel
 
-#' Updates the specified dashboard
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Updates the specified dashboard.
 #' 
 #' To set a refresh schedule, CloudTrail must be granted permissions to run the [`start_dashboard_refresh`][cloudtrail_start_dashboard_refresh] operation to refresh the dashboard on your behalf. To provide permissions, run the [`put_resource_policy`][cloudtrail_put_resource_policy] operation to attach a resource-based policy to the dashboard. For more information, see [Resource-based policy example for a dashboard](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/security_iam_resource-based-policy-examples.html#security_iam_resource-based-policy-examples-dashboards) in the *CloudTrail User Guide*.
@@ -4490,9 +4582,12 @@ cloudtrail_update_dashboard <- function(DashboardId, Widgets = NULL, RefreshSche
 }
 .cloudtrail$operations$update_dashboard <- cloudtrail_update_dashboard
 
-#' Updates an event data store
+#' CloudTrail Lake will no longer be open to new customers starting May 31,
+#' 2026
 #'
 #' @description
+#' CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see [CloudTrail Lake availability change](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html).
+#' 
 #' Updates an event data store. The required `EventDataStore` value is an ARN or the ID portion of the ARN. Other parameters are optional, but at least one optional parameter must be specified, or CloudTrail throws an error. `RetentionPeriod` is in days, and valid values are integers between 7 and 3653 if the `BillingMode` is set to `EXTENDABLE_RETENTION_PRICING`, or between 7 and 2557 if `BillingMode` is set to `FIXED_RETENTION_PRICING`. By default, `TerminationProtection` is enabled.
 #' 
 #' For event data stores for CloudTrail events, `AdvancedEventSelectors` includes or excludes management, data, or network activity events in your event data store. For more information about `AdvancedEventSelectors`, see [AdvancedEventSelectors](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedEventSelector.html).
@@ -4672,7 +4767,7 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' cloudtrail_update_trail(Name, S3BucketName, S3KeyPrefix, SnsTopicName,
 #'   IncludeGlobalServiceEvents, IsMultiRegionTrail, EnableLogFileValidation,
 #'   CloudWatchLogsLogGroupArn, CloudWatchLogsRoleArn, KmsKeyId,
-#'   IsOrganizationTrail)
+#'   IsOrganizationTrail, RecursiveLogging)
 #'
 #' @param Name &#91;required&#93; Specifies the name of the trail or trail ARN. If `Name` is a trail name, the string must meet the following requirements:
 #' 
@@ -4692,7 +4787,7 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' @param S3BucketName Specifies the name of the Amazon S3 bucket designated for publishing log files. See [Amazon S3 Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
 #' @param S3KeyPrefix Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see [Finding Your CloudTrail Log Files](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/get-and-view-cloudtrail-log-files.html#cloudtrail-find-log-files). The maximum length is 200 characters.
 #' @param SnsTopicName Specifies the name or ARN of the Amazon SNS topic defined for notification of log file delivery. The maximum length is 256 characters.
-#' @param IncludeGlobalServiceEvents Specifies whether the trail is publishing events from global services such as IAM to the log files.
+#' @param IncludeGlobalServiceEvents Specifies whether the trail is publishing events from global services such as IAM to the log files. Setting this value to `true` only delivers global service events to the trail if the trail is multi-Region or if the trail's home Region is the partition leader Region (for example, us-east-1).
 #' @param IsMultiRegionTrail Specifies whether the trail applies only to the current Region or to all Regions. The default is false. If the trail exists only in the current Region and this value is set to true, shadow trails (replications of the trail) will be created in the other Regions. If the trail exists in all Regions and this value is set to false, the trail will remain in the Region where it was created, and its shadow trails in other Regions will be deleted. As a best practice, consider using trails that log events in all Regions.
 #' @param EnableLogFileValidation Specifies whether log file validation is enabled. The default is false.
 #' 
@@ -4717,6 +4812,7 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' @param IsOrganizationTrail Specifies whether the trail is applied to all accounts in an organization in Organizations, or only for the current Amazon Web Services account. The default is false, and cannot be true unless the call is made on behalf of an Amazon Web Services account that is the management account for an organization in Organizations. If the trail is not an organization trail and this is set to `true`, the trail will be created in all Amazon Web Services accounts that belong to the organization. If the trail is an organization trail and this is set to `false`, the trail will remain in the current Amazon Web Services account but be deleted from all member accounts in the organization.
 #' 
 #' Only the management account for the organization can convert an organization trail to a non-organization trail, or convert a non-organization trail to an organization trail.
+#' @param RecursiveLogging Specifies whether recursive logging is enabled for the trail. If you set `RecursiveLogging` to `false`, CloudTrail suppresses events generated by CloudTrail when it delivers log files to your trail's destinations, including Amazon S3 and CloudWatch Logs. The default value is `true`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4734,7 +4830,8 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #'   CloudWatchLogsLogGroupArn = "string",
 #'   CloudWatchLogsRoleArn = "string",
 #'   KmsKeyId = "string",
-#'   IsOrganizationTrail = TRUE|FALSE
+#'   IsOrganizationTrail = TRUE|FALSE,
+#'   RecursiveLogging = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4751,7 +4848,8 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #'   CloudWatchLogsLogGroupArn = "string",
 #'   CloudWatchLogsRoleArn = "string",
 #'   KmsKeyId = "string",
-#'   IsOrganizationTrail = TRUE|FALSE
+#'   IsOrganizationTrail = TRUE|FALSE,
+#'   RecursiveLogging = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4760,7 +4858,7 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' @rdname cloudtrail_update_trail
 #'
 #' @aliases cloudtrail_update_trail
-cloudtrail_update_trail <- function(Name, S3BucketName = NULL, S3KeyPrefix = NULL, SnsTopicName = NULL, IncludeGlobalServiceEvents = NULL, IsMultiRegionTrail = NULL, EnableLogFileValidation = NULL, CloudWatchLogsLogGroupArn = NULL, CloudWatchLogsRoleArn = NULL, KmsKeyId = NULL, IsOrganizationTrail = NULL) {
+cloudtrail_update_trail <- function(Name, S3BucketName = NULL, S3KeyPrefix = NULL, SnsTopicName = NULL, IncludeGlobalServiceEvents = NULL, IsMultiRegionTrail = NULL, EnableLogFileValidation = NULL, CloudWatchLogsLogGroupArn = NULL, CloudWatchLogsRoleArn = NULL, KmsKeyId = NULL, IsOrganizationTrail = NULL, RecursiveLogging = NULL) {
   op <- new_operation(
     name = "UpdateTrail",
     http_method = "POST",
@@ -4769,7 +4867,7 @@ cloudtrail_update_trail <- function(Name, S3BucketName = NULL, S3KeyPrefix = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudtrail$update_trail_input(Name = Name, S3BucketName = S3BucketName, S3KeyPrefix = S3KeyPrefix, SnsTopicName = SnsTopicName, IncludeGlobalServiceEvents = IncludeGlobalServiceEvents, IsMultiRegionTrail = IsMultiRegionTrail, EnableLogFileValidation = EnableLogFileValidation, CloudWatchLogsLogGroupArn = CloudWatchLogsLogGroupArn, CloudWatchLogsRoleArn = CloudWatchLogsRoleArn, KmsKeyId = KmsKeyId, IsOrganizationTrail = IsOrganizationTrail)
+  input <- .cloudtrail$update_trail_input(Name = Name, S3BucketName = S3BucketName, S3KeyPrefix = S3KeyPrefix, SnsTopicName = SnsTopicName, IncludeGlobalServiceEvents = IncludeGlobalServiceEvents, IsMultiRegionTrail = IsMultiRegionTrail, EnableLogFileValidation = EnableLogFileValidation, CloudWatchLogsLogGroupArn = CloudWatchLogsLogGroupArn, CloudWatchLogsRoleArn = CloudWatchLogsRoleArn, KmsKeyId = KmsKeyId, IsOrganizationTrail = IsOrganizationTrail, RecursiveLogging = RecursiveLogging)
   output <- .cloudtrail$update_trail_output()
   config <- get_config()
   svc <- .cloudtrail$service(config, op)

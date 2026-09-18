@@ -5,336 +5,280 @@ NULL
 
 .controltower$create_landing_zone_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(version = structure(logical(0), tags = list(type = "string")), remediationTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), manifest = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["create_landing_zone_input"]]))
 }
 
 .controltower$create_landing_zone_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["create_landing_zone_output"]]))
 }
 
 .controltower$delete_landing_zone_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(landingZoneIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["delete_landing_zone_input"]]))
 }
 
 .controltower$delete_landing_zone_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["delete_landing_zone_output"]]))
 }
 
 .controltower$disable_baseline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(enabledBaselineIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["disable_baseline_input"]]))
 }
 
 .controltower$disable_baseline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["disable_baseline_output"]]))
 }
 
 .controltower$disable_control_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlIdentifier = structure(logical(0), tags = list(type = "string")), targetIdentifier = structure(logical(0), tags = list(type = "string")), enabledControlIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["disable_control_input"]]))
 }
 
 .controltower$disable_control_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["disable_control_output"]]))
 }
 
 .controltower$enable_baseline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(baselineVersion = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), baselineIdentifier = structure(logical(0), tags = list(type = "string")), targetIdentifier = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["enable_baseline_input"]]))
 }
 
 .controltower$enable_baseline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["enable_baseline_output"]]))
 }
 
 .controltower$enable_control_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlIdentifier = structure(logical(0), tags = list(type = "string")), targetIdentifier = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), parameters = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["enable_control_input"]]))
 }
 
 .controltower$enable_control_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["enable_control_output"]]))
 }
 
 .controltower$get_baseline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(baselineIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["get_baseline_input"]]))
 }
 
 .controltower$get_baseline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["get_baseline_output"]]))
 }
 
 .controltower$get_baseline_operation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["get_baseline_operation_input"]]))
 }
 
 .controltower$get_baseline_operation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(baselineOperation = structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), statusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["get_baseline_operation_output"]]))
 }
 
 .controltower$get_control_operation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["get_control_operation_input"]]))
 }
 
 .controltower$get_control_operation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlOperation = structure(list(operationType = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), operationIdentifier = structure(logical(0), tags = list(type = "string")), controlIdentifier = structure(logical(0), tags = list(type = "string")), targetIdentifier = structure(logical(0), tags = list(type = "string")), enabledControlIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["get_control_operation_output"]]))
 }
 
 .controltower$get_enabled_baseline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(enabledBaselineIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["get_enabled_baseline_input"]]))
 }
 
 .controltower$get_enabled_baseline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(enabledBaselineDetails = structure(list(arn = structure(logical(0), tags = list(type = "string")), baselineIdentifier = structure(logical(0), tags = list(type = "string")), baselineVersion = structure(logical(0), tags = list(type = "string")), driftStatusSummary = structure(list(types = structure(list(inheritance = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), targetIdentifier = structure(logical(0), tags = list(type = "string")), parentIdentifier = structure(logical(0), tags = list(type = "string")), statusSummary = structure(list(status = structure(logical(0), tags = list(type = "string")), lastOperationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), parameters = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["get_enabled_baseline_output"]]))
 }
 
 .controltower$get_enabled_control_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(enabledControlIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["get_enabled_control_input"]]))
 }
 
 .controltower$get_enabled_control_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(enabledControlDetails = structure(list(arn = structure(logical(0), tags = list(type = "string")), controlIdentifier = structure(logical(0), tags = list(type = "string")), targetIdentifier = structure(logical(0), tags = list(type = "string")), statusSummary = structure(list(status = structure(logical(0), tags = list(type = "string")), lastOperationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), driftStatusSummary = structure(list(driftStatus = structure(logical(0), tags = list(type = "string")), types = structure(list(inheritance = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resource = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), parentIdentifier = structure(logical(0), tags = list(type = "string")), targetRegions = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), parameters = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["get_enabled_control_output"]]))
 }
 
 .controltower$get_landing_zone_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(landingZoneIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["get_landing_zone_input"]]))
 }
 
 .controltower$get_landing_zone_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(landingZone = structure(list(version = structure(logical(0), tags = list(type = "string")), remediationTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), arn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), latestAvailableVersion = structure(logical(0), tags = list(type = "string")), driftStatus = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), manifest = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["get_landing_zone_output"]]))
 }
 
 .controltower$get_landing_zone_operation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["get_landing_zone_operation_input"]]))
 }
 
 .controltower$get_landing_zone_operation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationDetails = structure(list(operationType = structure(logical(0), tags = list(type = "string")), operationIdentifier = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), statusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["get_landing_zone_operation_output"]]))
 }
 
 .controltower$list_baselines_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["list_baselines_input"]]))
 }
 
 .controltower$list_baselines_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(baselines = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["list_baselines_output"]]))
 }
 
 .controltower$list_control_operations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filter = structure(list(controlIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), targetIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabledControlIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), statuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), controlOperationTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["list_control_operations_input"]]))
 }
 
 .controltower$list_control_operations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlOperations = structure(list(structure(list(operationType = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), operationIdentifier = structure(logical(0), tags = list(type = "string")), controlIdentifier = structure(logical(0), tags = list(type = "string")), targetIdentifier = structure(logical(0), tags = list(type = "string")), enabledControlIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["list_control_operations_output"]]))
 }
 
 .controltower$list_enabled_baselines_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filter = structure(list(targetIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), baselineIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), parentIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), statuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), inheritanceDriftStatuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), includeChildren = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["list_enabled_baselines_input"]]))
 }
 
 .controltower$list_enabled_baselines_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(enabledBaselines = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), baselineIdentifier = structure(logical(0), tags = list(type = "string")), baselineVersion = structure(logical(0), tags = list(type = "string")), driftStatusSummary = structure(list(types = structure(list(inheritance = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), targetIdentifier = structure(logical(0), tags = list(type = "string")), parentIdentifier = structure(logical(0), tags = list(type = "string")), statusSummary = structure(list(status = structure(logical(0), tags = list(type = "string")), lastOperationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["list_enabled_baselines_output"]]))
 }
 
 .controltower$list_enabled_controls_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(targetIdentifier = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), filter = structure(list(controlIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), statuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), driftStatuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), parentIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), inheritanceDriftStatuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceDriftStatuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), includeChildren = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["list_enabled_controls_input"]]))
 }
 
 .controltower$list_enabled_controls_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(enabledControls = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), controlIdentifier = structure(logical(0), tags = list(type = "string")), targetIdentifier = structure(logical(0), tags = list(type = "string")), statusSummary = structure(list(status = structure(logical(0), tags = list(type = "string")), lastOperationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), driftStatusSummary = structure(list(driftStatus = structure(logical(0), tags = list(type = "string")), types = structure(list(inheritance = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resource = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), parentIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["list_enabled_controls_output"]]))
 }
 
 .controltower$list_landing_zone_operations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filter = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), statuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["list_landing_zone_operations_input"]]))
 }
 
 .controltower$list_landing_zone_operations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(landingZoneOperations = structure(list(structure(list(operationType = structure(logical(0), tags = list(type = "string")), operationIdentifier = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["list_landing_zone_operations_output"]]))
 }
 
 .controltower$list_landing_zones_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["list_landing_zones_input"]]))
 }
 
 .controltower$list_landing_zones_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(landingZones = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["list_landing_zones_output"]]))
 }
 
 .controltower$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["list_tags_for_resource_input"]]))
 }
 
 .controltower$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["list_tags_for_resource_output"]]))
 }
 
 .controltower$reset_enabled_baseline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(enabledBaselineIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["reset_enabled_baseline_input"]]))
 }
 
 .controltower$reset_enabled_baseline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["reset_enabled_baseline_output"]]))
 }
 
 .controltower$reset_enabled_control_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(enabledControlIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["reset_enabled_control_input"]]))
 }
 
 .controltower$reset_enabled_control_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["reset_enabled_control_output"]]))
 }
 
 .controltower$reset_landing_zone_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(landingZoneIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["reset_landing_zone_input"]]))
 }
 
 .controltower$reset_landing_zone_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["reset_landing_zone_output"]]))
 }
 
 .controltower$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["tag_resource_input"]]))
 }
 
 .controltower$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["tag_resource_output"]]))
 }
 
 .controltower$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["untag_resource_input"]]))
 }
 
 .controltower$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["untag_resource_output"]]))
 }
 
 .controltower$update_enabled_baseline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(baselineVersion = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), enabledBaselineIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["update_enabled_baseline_input"]]))
 }
 
 .controltower$update_enabled_baseline_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["update_enabled_baseline_output"]]))
 }
 
 .controltower$update_enabled_control_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(parameters = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), enabledControlIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["update_enabled_control_input"]]))
 }
 
 .controltower$update_enabled_control_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["update_enabled_control_output"]]))
 }
 
 .controltower$update_landing_zone_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(version = structure(logical(0), tags = list(type = "string")), remediationTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), landingZoneIdentifier = structure(logical(0), tags = list(type = "string")), manifest = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["update_landing_zone_input"]]))
 }
 
 .controltower$update_landing_zone_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .controltower_shapes[["update_landing_zone_output"]]))
 }

@@ -24,7 +24,7 @@ marketplacecatalog_start_change_set(
 
 \item{ChangeSetTags}{A list of objects specifying each key name and value for the \code{ChangeSetTags} property.}
 
-\item{Intent}{The intent related to the request. The default is \code{APPLY}. To test your request before applying changes to your entities, use \code{VALIDATE}. This feature is currently available for adding versions to single-AMI products. For more information, see \href{https://docs.aws.amazon.com/marketplace/latest/APIReference/work-with-single-ami-products.html#ami-add-version}{Add a new version}.}
+\item{Intent}{The intent related to the request. The default is \code{APPLY}. To test your request before applying changes to your entities, use \code{VALIDATE}. This feature is currently available for adding versions to single-AMI products. For more information, see \href{https://docs.aws.amazon.com/marketplace/latest/developerguide/work-with-single-ami-products.html#ami-add-version}{Add a new version}.}
 }
 \description{
 Allows you to request changes for your entities. Within a single \code{ChangeSet}, you can't start the same change type against the same entity multiple times. Additionally, when a \code{ChangeSet} is running, all the entities targeted by the different changes are locked until the change set has completed (either succeeded, cancelled, or failed). If you try to start a change set containing a change against an entity that is already locked, you will receive a \code{ResourceInUseException} error.

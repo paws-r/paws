@@ -2,7 +2,8 @@
 % Please edit documentation in R/elasticbeanstalk_operations.R
 \name{elasticbeanstalk_associate_environment_operations_role}
 \alias{elasticbeanstalk_associate_environment_operations_role}
-\title{Add or change the operations role used by an environment}
+\title{The operations role feature of Elastic Beanstalk is in beta release and
+is subject to change}
 \usage{
 elasticbeanstalk_associate_environment_operations_role(
   EnvironmentName,
@@ -15,7 +16,7 @@ elasticbeanstalk_associate_environment_operations_role(
 \item{OperationsRole}{[required] The Amazon Resource Name (ARN) of an existing IAM role to be used as the environment's operations role.}
 }
 \description{
-Add or change the operations role used by an environment. After this call is made, Elastic Beanstalk uses the associated operations role for permissions to downstream services during subsequent calls acting on this environment. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/}{Operations roles} in the \emph{AWS Elastic Beanstalk Developer Guide}.
+The operations role feature of Elastic Beanstalk is in beta release and is subject to change.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_associate_environment_operations_role/} for full documentation.
 }

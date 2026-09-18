@@ -2,8 +2,8 @@
 % Please edit documentation in R/elasticbeanstalk_operations.R
 \name{elasticbeanstalk_describe_instances_health}
 \alias{elasticbeanstalk_describe_instances_health}
-\title{Retrieves detailed information about the health of instances in your AWS
-Elastic Beanstalk}
+\title{Retrieves detailed information about the health of instances in your
+Elastic Beanstalk environments}
 \usage{
 elasticbeanstalk_describe_instances_health(
   EnvironmentName = NULL,
@@ -13,16 +13,16 @@ elasticbeanstalk_describe_instances_health(
 )
 }
 \arguments{
-\item{EnvironmentName}{Specify the AWS Elastic Beanstalk environment by name.}
+\item{EnvironmentName}{Specify the Elastic Beanstalk environment by name.}
 
-\item{EnvironmentId}{Specify the AWS Elastic Beanstalk environment by ID.}
+\item{EnvironmentId}{Specify the Elastic Beanstalk environment by ID.}
 
 \item{AttributeNames}{Specifies the response elements you wish to receive. To retrieve all attributes, set to \code{All}. If no attribute names are specified, returns a list of instances.}
 
 \item{NextToken}{Specify the pagination token returned by a previous call.}
 }
 \description{
-Retrieves detailed information about the health of instances in your AWS Elastic Beanstalk. This operation requires \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html}{enhanced health reporting}.
+Retrieves detailed information about the health of instances in your Elastic Beanstalk environments. This operation requires \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html}{enhanced health reporting}.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_instances_health/} for full documentation.
 }

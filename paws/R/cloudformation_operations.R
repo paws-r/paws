@@ -380,7 +380,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #'   RollbackConfiguration, NotificationARNs, Tags, ChangeSetName,
 #'   ClientToken, Description, ChangeSetType, ResourcesToImport,
 #'   IncludeNestedStacks, OnStackFailure, ImportExistingResources,
-#'   DeploymentMode)
+#'   DeploymentMode, DeploymentConfig, DisableValidation)
 #'
 #' @param StackName &#91;required&#93; The name or the unique ID of the stack for which you are creating a change set. CloudFormation generates the change set by comparing this stack's information with the information that you submit, such as a modified template or different parameter input values.
 #' @param TemplateBody A structure that contains the body of the revised template, with a minimum length of 1 byte and a maximum length of 51,200 bytes. CloudFormation generates the change set by comparing this template with the template of the stack that you specified.
@@ -480,6 +480,10 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' -   `REVERT_DRIFT` – Creates a drift-aware change set that brings actual resource states in line with template definitions. Provides a three-way comparison between actual state, previous deployment state, and desired state.
 #' 
 #' For more information, see [Using drift-aware change sets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/drift-aware-change-sets.html) in the *CloudFormation User Guide*.
+#' @param DeploymentConfig The deployment configuration for this stack operation, including the deployment mode.
+#' @param DisableValidation Set to `true` to disable pre-deployment validations in changeset or stack operations.
+#' 
+#' Default: `false`
 #'
 #' @return
 #' A list with the following syntax:
@@ -546,7 +550,12 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #'   IncludeNestedStacks = TRUE|FALSE,
 #'   OnStackFailure = "DO_NOTHING"|"ROLLBACK"|"DELETE",
 #'   ImportExistingResources = TRUE|FALSE,
-#'   DeploymentMode = "REVERT_DRIFT"
+#'   DeploymentMode = "REVERT_DRIFT",
+#'   DeploymentConfig = list(
+#'     Mode = "STANDARD"|"EXPRESS",
+#'     DisableRollback = TRUE|FALSE
+#'   ),
+#'   DisableValidation = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -555,7 +564,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' @rdname cloudformation_create_change_set
 #'
 #' @aliases cloudformation_create_change_set
-cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, NotificationARNs = NULL, Tags = NULL, ChangeSetName, ClientToken = NULL, Description = NULL, ChangeSetType = NULL, ResourcesToImport = NULL, IncludeNestedStacks = NULL, OnStackFailure = NULL, ImportExistingResources = NULL, DeploymentMode = NULL) {
+cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, NotificationARNs = NULL, Tags = NULL, ChangeSetName, ClientToken = NULL, Description = NULL, ChangeSetType = NULL, ResourcesToImport = NULL, IncludeNestedStacks = NULL, OnStackFailure = NULL, ImportExistingResources = NULL, DeploymentMode = NULL, DeploymentConfig = NULL, DisableValidation = NULL) {
   op <- new_operation(
     name = "CreateChangeSet",
     http_method = "POST",
@@ -564,7 +573,7 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudformation$create_change_set_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, NotificationARNs = NotificationARNs, Tags = Tags, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, ChangeSetType = ChangeSetType, ResourcesToImport = ResourcesToImport, IncludeNestedStacks = IncludeNestedStacks, OnStackFailure = OnStackFailure, ImportExistingResources = ImportExistingResources, DeploymentMode = DeploymentMode)
+  input <- .cloudformation$create_change_set_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, NotificationARNs = NotificationARNs, Tags = Tags, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, ChangeSetType = ChangeSetType, ResourcesToImport = ResourcesToImport, IncludeNestedStacks = IncludeNestedStacks, OnStackFailure = OnStackFailure, ImportExistingResources = ImportExistingResources, DeploymentMode = DeploymentMode, DeploymentConfig = DeploymentConfig, DisableValidation = DisableValidation)
   output <- .cloudformation$create_change_set_output()
   config <- get_config()
   svc <- .cloudformation$service(config, op)
@@ -656,7 +665,8 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
 #'   Parameters, DisableRollback, RollbackConfiguration, TimeoutInMinutes,
 #'   NotificationARNs, Capabilities, ResourceTypes, RoleARN, OnFailure,
 #'   StackPolicyBody, StackPolicyURL, Tags, ClientRequestToken,
-#'   EnableTerminationProtection, RetainExceptOnCreate)
+#'   EnableTerminationProtection, RetainExceptOnCreate, DeploymentConfig,
+#'   DisableValidation)
 #'
 #' @param StackName &#91;required&#93; The name that's associated with the stack. The name must be unique in the Region in which you are creating the stack.
 #' 
@@ -750,6 +760,10 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
 #' @param RetainExceptOnCreate When set to `true`, newly created resources are deleted when the operation rolls back. This includes newly created resources marked with a deletion policy of `Retain`.
 #' 
 #' Default: `false`
+#' @param DeploymentConfig The deployment configuration for this stack operation, including the deployment mode.
+#' @param DisableValidation Set to `true` to disable pre-deployment validations in changeset or stack operations.
+#' 
+#' Default: `false`
 #'
 #' @return
 #' A list with the following syntax:
@@ -806,7 +820,12 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
 #'   ),
 #'   ClientRequestToken = "string",
 #'   EnableTerminationProtection = TRUE|FALSE,
-#'   RetainExceptOnCreate = TRUE|FALSE
+#'   RetainExceptOnCreate = TRUE|FALSE,
+#'   DeploymentConfig = list(
+#'     Mode = "STANDARD"|"EXPRESS",
+#'     DisableRollback = TRUE|FALSE
+#'   ),
+#'   DisableValidation = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -815,7 +834,7 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
 #' @rdname cloudformation_create_stack
 #'
 #' @aliases cloudformation_create_stack
-cloudformation_create_stack <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, Parameters = NULL, DisableRollback = NULL, RollbackConfiguration = NULL, TimeoutInMinutes = NULL, NotificationARNs = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, OnFailure = NULL, StackPolicyBody = NULL, StackPolicyURL = NULL, Tags = NULL, ClientRequestToken = NULL, EnableTerminationProtection = NULL, RetainExceptOnCreate = NULL) {
+cloudformation_create_stack <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, Parameters = NULL, DisableRollback = NULL, RollbackConfiguration = NULL, TimeoutInMinutes = NULL, NotificationARNs = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, OnFailure = NULL, StackPolicyBody = NULL, StackPolicyURL = NULL, Tags = NULL, ClientRequestToken = NULL, EnableTerminationProtection = NULL, RetainExceptOnCreate = NULL, DeploymentConfig = NULL, DisableValidation = NULL) {
   op <- new_operation(
     name = "CreateStack",
     http_method = "POST",
@@ -824,7 +843,7 @@ cloudformation_create_stack <- function(StackName, TemplateBody = NULL, Template
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudformation$create_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, Parameters = Parameters, DisableRollback = DisableRollback, RollbackConfiguration = RollbackConfiguration, TimeoutInMinutes = TimeoutInMinutes, NotificationARNs = NotificationARNs, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, OnFailure = OnFailure, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, Tags = Tags, ClientRequestToken = ClientRequestToken, EnableTerminationProtection = EnableTerminationProtection, RetainExceptOnCreate = RetainExceptOnCreate)
+  input <- .cloudformation$create_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, Parameters = Parameters, DisableRollback = DisableRollback, RollbackConfiguration = RollbackConfiguration, TimeoutInMinutes = TimeoutInMinutes, NotificationARNs = NotificationARNs, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, OnFailure = OnFailure, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, Tags = Tags, ClientRequestToken = ClientRequestToken, EnableTerminationProtection = EnableTerminationProtection, RetainExceptOnCreate = RetainExceptOnCreate, DeploymentConfig = DeploymentConfig, DisableValidation = DisableValidation)
   output <- .cloudformation$create_stack_output()
   config <- get_config()
   svc <- .cloudformation$service(config, op)
@@ -1424,7 +1443,7 @@ cloudformation_delete_generated_template <- function(GeneratedTemplateName) {
 #'
 #' @usage
 #' cloudformation_delete_stack(StackName, RetainResources, RoleARN,
-#'   ClientRequestToken, DeletionMode)
+#'   ClientRequestToken, DeletionMode, DeploymentConfig)
 #'
 #' @param StackName &#91;required&#93; The name or the unique stack ID that's associated with the stack.
 #' @param RetainResources For stacks in the `DELETE_FAILED` state, a list of resource logical IDs that are associated with the resources you want to retain. During deletion, CloudFormation deletes the stack but doesn't delete the retained resources.
@@ -1443,6 +1462,7 @@ cloudformation_delete_generated_template <- function(GeneratedTemplateName) {
 #' -   `STANDARD` - Use the standard behavior. Specifying this value is the same as not specifying this parameter.
 #' 
 #' -   `FORCE_DELETE_STACK` - Delete the stack if it's stuck in a `DELETE_FAILED` state due to resource deletion failure.
+#' @param DeploymentConfig The deployment configuration for this stack operation, including the deployment mode.
 #'
 #' @return
 #' An empty list.
@@ -1456,7 +1476,11 @@ cloudformation_delete_generated_template <- function(GeneratedTemplateName) {
 #'   ),
 #'   RoleARN = "string",
 #'   ClientRequestToken = "string",
-#'   DeletionMode = "STANDARD"|"FORCE_DELETE_STACK"
+#'   DeletionMode = "STANDARD"|"FORCE_DELETE_STACK",
+#'   DeploymentConfig = list(
+#'     Mode = "STANDARD"|"EXPRESS",
+#'     DisableRollback = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
@@ -1465,7 +1489,7 @@ cloudformation_delete_generated_template <- function(GeneratedTemplateName) {
 #' @rdname cloudformation_delete_stack
 #'
 #' @aliases cloudformation_delete_stack
-cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleARN = NULL, ClientRequestToken = NULL, DeletionMode = NULL) {
+cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleARN = NULL, ClientRequestToken = NULL, DeletionMode = NULL, DeploymentConfig = NULL) {
   op <- new_operation(
     name = "DeleteStack",
     http_method = "POST",
@@ -1474,7 +1498,7 @@ cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleA
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudformation$delete_stack_input(StackName = StackName, RetainResources = RetainResources, RoleARN = RoleARN, ClientRequestToken = ClientRequestToken, DeletionMode = DeletionMode)
+  input <- .cloudformation$delete_stack_input(StackName = StackName, RetainResources = RetainResources, RoleARN = RoleARN, ClientRequestToken = ClientRequestToken, DeletionMode = DeletionMode, DeploymentConfig = DeploymentConfig)
   output <- .cloudformation$delete_stack_output()
   config <- get_config()
   svc <- .cloudformation$service(config, op)
@@ -1854,7 +1878,7 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #'         ResourceDriftIgnoredAttributes = list(
 #'           list(
 #'             Path = "string",
-#'             Reason = "MANAGED_BY_AWS"|"WRITE_ONLY_PROPERTY"
+#'             Reason = "MANAGED_BY_AWS"|"WRITE_ONLY_PROPERTY"|"SENSITIVE_PROPERTY"
 #'           )
 #'         ),
 #'         Details = list(
@@ -1899,7 +1923,11 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #'   RootChangeSetId = "string",
 #'   OnStackFailure = "DO_NOTHING"|"ROLLBACK"|"DELETE",
 #'   ImportExistingResources = TRUE|FALSE,
-#'   DeploymentMode = "REVERT_DRIFT"
+#'   DeploymentMode = "REVERT_DRIFT",
+#'   DeploymentConfig = list(
+#'     Mode = "STANDARD"|"EXPRESS",
+#'     DisableRollback = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
@@ -1924,7 +1952,7 @@ cloudformation_describe_change_set <- function(ChangeSetName, StackName = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Changes", non_aggregate_keys = list("ChangeSetName", "ChangeSetId", "StackId", "StackName", "Description", "Parameters", "CreationTime", "ExecutionStatus", "Status", "StatusReason", "NotificationARNs", "RollbackConfiguration", "Capabilities", "Tags", "ParentChangeSetId", "IncludeNestedStacks", "RootChangeSetId", "OnStackFailure", "ImportExistingResources", "StackDriftStatus", "DeploymentMode")),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Changes", non_aggregate_keys = list("ChangeSetName", "ChangeSetId", "StackId", "StackName", "Description", "Parameters", "CreationTime", "ExecutionStatus", "Status", "StatusReason", "NotificationARNs", "RollbackConfiguration", "Capabilities", "Tags", "ParentChangeSetId", "IncludeNestedStacks", "RootChangeSetId", "OnStackFailure", "ImportExistingResources", "StackDriftStatus", "DeploymentMode", "DeploymentConfig")),
     stream_api = FALSE
   )
   input <- .cloudformation$describe_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName, NextToken = NextToken, IncludePropertyValues = IncludePropertyValues)
@@ -2039,7 +2067,7 @@ cloudformation_describe_change_set_hooks <- function(ChangeSetName, StackName = 
 #' cloudformation_describe_events(StackName, ChangeSetName, OperationId,
 #'   Filters, NextToken)
 #'
-#' @param StackName The name or unique stack ID for which you want to retrieve events.
+#' @param StackName The name or unique stack ID for which you want to retrieve events. If you specified the name of a change set, specify the stack name or ID (ARN) of the change set you want to describe.
 #' @param ChangeSetName The name or Amazon Resource Name (ARN) of the change set for which you want to retrieve events.
 #' @param OperationId The unique identifier of the operation for which you want to retrieve events.
 #' @param Filters Filters to apply when retrieving events.
@@ -3281,6 +3309,10 @@ cloudformation_describe_stack_set_operation <- function(StackSetName, OperationI
 #'       StackStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_FAILED"|"ROLLBACK_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"REVIEW_IN_PROGRESS"|"IMPORT_IN_PROGRESS"|"IMPORT_COMPLETE"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE",
 #'       StackStatusReason = "string",
 #'       DisableRollback = TRUE|FALSE,
+#'       DeploymentConfig = list(
+#'         Mode = "STANDARD"|"EXPRESS",
+#'         DisableRollback = TRUE|FALSE
+#'       ),
 #'       NotificationARNs = list(
 #'         "string"
 #'       ),
@@ -6376,13 +6408,13 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
 #' 
 #' For information about generating a schema handler package for the extension you want to register, see [submit](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-cli-submit.html) in the *CloudFormation Command Line Interface (CLI) User Guide*.
 #' 
-#' The user registering the extension must be able to access the package in the S3 bucket. That's, the user needs to have [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html) permissions for the schema handler package. For more information, see [Actions, Resources, and Condition Keys for Amazon S3](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html) in the *Identity and Access Management User Guide*.
+#' The user registering the extension must be able to access the package in the S3 bucket. That's, the user needs to have [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html) permissions for the schema handler package. For more information, see [Actions, Resources, and Condition Keys for Amazon S3](https://docs.aws.amazon.com/service-authorization/latest/reference/) in the *Identity and Access Management User Guide*.
 #' @param LoggingConfig Specifies logging configuration information for an extension.
 #' @param ExecutionRoleArn The Amazon Resource Name (ARN) of the IAM role for CloudFormation to assume when invoking the extension.
 #' 
 #' For CloudFormation to assume the specified execution role, the role must contain a trust relationship with the CloudFormation service principal (`resources.cloudformation.amazonaws.com`). For more information about adding trust relationships, see [Modifying a role trust policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage.html#roles-managingrole_edit-trust-policy) in the *Identity and Access Management User Guide*.
 #' 
-#' If your extension calls Amazon Web Services APIs in any of its handlers, you must create an \emph{\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM execution role}} that includes the necessary permissions to call those Amazon Web Services APIs, and provision that execution role in your account. When CloudFormation needs to invoke the resource type handler, CloudFormation assumes this execution role to create a temporary session token, which it then passes to the resource type handler, thereby supplying your resource type with the appropriate credentials.
+#' If your extension calls Amazon Web Services APIs in any of its handlers, you must create an *\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM execution role}* that includes the necessary permissions to call those Amazon Web Services APIs, and provision that execution role in your account. When CloudFormation needs to invoke the resource type handler, CloudFormation assumes this execution role to create a temporary session token, which it then passes to the resource type handler, thereby supplying your resource type with the appropriate credentials.
 #' @param ClientRequestToken A unique identifier that acts as an idempotency key for this registration request. Specifying a client request token prevents CloudFormation from generating more than one version of an extension from the same registration request, even if the request is submitted multiple times.
 #'
 #' @return
@@ -6454,7 +6486,7 @@ cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPac
 #'
 #' @usage
 #' cloudformation_rollback_stack(StackName, RoleARN, ClientRequestToken,
-#'   RetainExceptOnCreate)
+#'   RetainExceptOnCreate, DeploymentConfig)
 #'
 #' @param StackName &#91;required&#93; The name that's associated with the stack.
 #' @param RoleARN The Amazon Resource Name (ARN) of an IAM role that CloudFormation assumes to rollback the stack.
@@ -6462,6 +6494,7 @@ cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPac
 #' @param RetainExceptOnCreate When set to `true`, newly created resources are deleted when the operation rolls back. This includes newly created resources marked with a deletion policy of `Retain`.
 #' 
 #' Default: `false`
+#' @param DeploymentConfig The deployment configuration for this stack operation, including the deployment mode.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6478,7 +6511,11 @@ cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPac
 #'   StackName = "string",
 #'   RoleARN = "string",
 #'   ClientRequestToken = "string",
-#'   RetainExceptOnCreate = TRUE|FALSE
+#'   RetainExceptOnCreate = TRUE|FALSE,
+#'   DeploymentConfig = list(
+#'     Mode = "STANDARD"|"EXPRESS",
+#'     DisableRollback = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
@@ -6487,7 +6524,7 @@ cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPac
 #' @rdname cloudformation_rollback_stack
 #'
 #' @aliases cloudformation_rollback_stack
-cloudformation_rollback_stack <- function(StackName, RoleARN = NULL, ClientRequestToken = NULL, RetainExceptOnCreate = NULL) {
+cloudformation_rollback_stack <- function(StackName, RoleARN = NULL, ClientRequestToken = NULL, RetainExceptOnCreate = NULL, DeploymentConfig = NULL) {
   op <- new_operation(
     name = "RollbackStack",
     http_method = "POST",
@@ -6496,7 +6533,7 @@ cloudformation_rollback_stack <- function(StackName, RoleARN = NULL, ClientReque
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudformation$rollback_stack_input(StackName = StackName, RoleARN = RoleARN, ClientRequestToken = ClientRequestToken, RetainExceptOnCreate = RetainExceptOnCreate)
+  input <- .cloudformation$rollback_stack_input(StackName = StackName, RoleARN = RoleARN, ClientRequestToken = ClientRequestToken, RetainExceptOnCreate = RetainExceptOnCreate, DeploymentConfig = DeploymentConfig)
   output <- .cloudformation$rollback_stack_output()
   config <- get_config()
   svc <- .cloudformation$service(config, op)
@@ -6704,7 +6741,7 @@ cloudformation_set_type_default_version <- function(Arn = NULL, Type = NULL, Typ
 #'
 #' @param StackName &#91;required&#93; The stack name or unique stack ID that includes the resource that you want to signal.
 #' @param LogicalResourceId &#91;required&#93; The logical ID of the resource that you want to signal. The logical ID is the name of the resource that given in the template.
-#' @param UniqueId &#91;required&#93; A unique ID of the signal. When you signal Amazon EC2 instances or Amazon EC2 Auto Scaling groups, specify the instance ID that you are signaling as the unique ID. If you send multiple signals to a single resource (such as signaling a wait condition), each signal requires a different unique ID.
+#' @param UniqueId &#91;required&#93; A unique ID of the signal. When you signal Amazon EC2 instances or Auto Scaling groups, specify the instance ID that you are signaling as the unique ID. If you send multiple signals to a single resource (such as signaling a wait condition), each signal requires a different unique ID.
 #' @param Status &#91;required&#93; The status of the signal, which is either success or failure. A failure signal causes CloudFormation to immediately fail the stack creation or update.
 #'
 #' @return
@@ -6907,7 +6944,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId, C
 #' 
 #' -   `PutObject`
 #' 
-#' For more information, see [Actions, Resources, and Condition Keys for Amazon S3](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html) in the *Identity and Access Management User Guide*.
+#' For more information, see [Actions, Resources, and Condition Keys for Amazon S3](https://docs.aws.amazon.com/service-authorization/latest/reference/) in the *Identity and Access Management User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7041,7 +7078,7 @@ cloudformation_update_generated_template <- function(GeneratedTemplateName, NewG
 #'   StackPolicyDuringUpdateURL, Parameters, Capabilities, ResourceTypes,
 #'   RoleARN, RollbackConfiguration, StackPolicyBody, StackPolicyURL,
 #'   NotificationARNs, Tags, DisableRollback, ClientRequestToken,
-#'   RetainExceptOnCreate)
+#'   RetainExceptOnCreate, DeploymentConfig, DisableValidation)
 #'
 #' @param StackName &#91;required&#93; The name or unique stack ID of the stack to update.
 #' @param TemplateBody Structure that contains the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes.
@@ -7143,6 +7180,10 @@ cloudformation_update_generated_template <- function(GeneratedTemplateName, NewG
 #' @param RetainExceptOnCreate When set to `true`, newly created resources are deleted when the operation rolls back. This includes newly created resources marked with a deletion policy of `Retain`.
 #' 
 #' Default: `false`
+#' @param DeploymentConfig The deployment configuration for this stack operation, including the deployment mode.
+#' @param DisableValidation Set to `true` to disable pre-deployment validations in changeset or stack operations.
+#' 
+#' Default: `false`
 #'
 #' @return
 #' A list with the following syntax:
@@ -7199,7 +7240,12 @@ cloudformation_update_generated_template <- function(GeneratedTemplateName, NewG
 #'   ),
 #'   DisableRollback = TRUE|FALSE,
 #'   ClientRequestToken = "string",
-#'   RetainExceptOnCreate = TRUE|FALSE
+#'   RetainExceptOnCreate = TRUE|FALSE,
+#'   DeploymentConfig = list(
+#'     Mode = "STANDARD"|"EXPRESS",
+#'     DisableRollback = TRUE|FALSE
+#'   ),
+#'   DisableValidation = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -7208,7 +7254,7 @@ cloudformation_update_generated_template <- function(GeneratedTemplateName, NewG
 #' @rdname cloudformation_update_stack
 #'
 #' @aliases cloudformation_update_stack
-cloudformation_update_stack <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, StackPolicyDuringUpdateBody = NULL, StackPolicyDuringUpdateURL = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, StackPolicyBody = NULL, StackPolicyURL = NULL, NotificationARNs = NULL, Tags = NULL, DisableRollback = NULL, ClientRequestToken = NULL, RetainExceptOnCreate = NULL) {
+cloudformation_update_stack <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, StackPolicyDuringUpdateBody = NULL, StackPolicyDuringUpdateURL = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, StackPolicyBody = NULL, StackPolicyURL = NULL, NotificationARNs = NULL, Tags = NULL, DisableRollback = NULL, ClientRequestToken = NULL, RetainExceptOnCreate = NULL, DeploymentConfig = NULL, DisableValidation = NULL) {
   op <- new_operation(
     name = "UpdateStack",
     http_method = "POST",
@@ -7217,7 +7263,7 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudformation$update_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, StackPolicyDuringUpdateBody = StackPolicyDuringUpdateBody, StackPolicyDuringUpdateURL = StackPolicyDuringUpdateURL, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, NotificationARNs = NotificationARNs, Tags = Tags, DisableRollback = DisableRollback, ClientRequestToken = ClientRequestToken, RetainExceptOnCreate = RetainExceptOnCreate)
+  input <- .cloudformation$update_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, StackPolicyDuringUpdateBody = StackPolicyDuringUpdateBody, StackPolicyDuringUpdateURL = StackPolicyDuringUpdateURL, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, NotificationARNs = NotificationARNs, Tags = Tags, DisableRollback = DisableRollback, ClientRequestToken = ClientRequestToken, RetainExceptOnCreate = RetainExceptOnCreate, DeploymentConfig = DeploymentConfig, DisableValidation = DisableValidation)
   output <- .cloudformation$update_stack_output()
   config <- get_config()
   svc <- .cloudformation$service(config, op)

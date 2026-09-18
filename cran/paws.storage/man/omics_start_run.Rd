@@ -26,7 +26,10 @@ omics_start_run(
   workflowOwnerId = NULL,
   workflowVersionName = NULL,
   networkingMode = NULL,
-  configurationName = NULL
+  scratchStorageMode = NULL,
+  configurationName = NULL,
+  sessionPolicy = NULL,
+  engineSettings = NULL
 )
 }
 \arguments{
@@ -36,7 +39,7 @@ omics_start_run(
 
 \item{runId}{The ID of a run to duplicate.}
 
-\item{roleArn}{[required] A service role for the run. The \code{roleArn} requires access to Amazon Web Services HealthOmics, S3, Cloudwatch logs, and EC2. An example \code{roleArn} is \verb{arn:aws:iam::123456789012:role/omics-service-role-serviceRole-W8O1XMPL7QZ}. In this example, the AWS account ID is \code{123456789012} and the role name is \code{omics-service-role-serviceRole-W8O1XMPL7QZ}.}
+\item{roleArn}{[required] A service role for the run. The \code{roleArn} requires access to Amazon Web Services HealthOmics, S3, Cloudwatch logs, and EC2. An example \code{roleArn} is \verb{arn:aws:iam::123456789012:role/omics-service-role-serviceRole-W8O1XMPL7QZ}. In this example, the Amazon Web Services account ID is \code{123456789012} and the role name is \code{omics-service-role-serviceRole-W8O1XMPL7QZ}.}
 
 \item{name}{A name for the run. This is recommended to view and organize runs in the Amazon Web Services HealthOmics console and CloudWatch logs.}
 
@@ -74,7 +77,13 @@ For more information about retention mode, see \href{https://docs.aws.amazon.com
 
 \item{networkingMode}{Optional configuration for run networking behavior. If not specified, this will default to RESTRICTED.}
 
+\item{scratchStorageMode}{Optional configuration for enabling scratch ephemeral storage mounted at /tmp. If not specified, this will default to SHARED. This configuration is applicable only for CPU tasks. For tasks using GPUs, scratch storage is always LOCAL.}
+
 \item{configurationName}{Optional configuration name to use for the workflow run.}
+
+\item{sessionPolicy}{Optional inline policy json for scoping down permissions via a session policy on the IAM role provided in the roleArn parameter.}
+
+\item{engineSettings}{Engine-specific settings for the workflow run. Use this field to specify configuration options that are specific to the workflow engine (for example, Nextflow profiles).}
 }
 \description{
 Starts a new run and returns details about the run, or duplicates an existing run. A run is a single invocation of a workflow. If you provide request IDs, Amazon Web Services HealthOmics identifies duplicate requests and starts the run only once. Monitor the progress of the run by calling the \code{\link[=omics_get_run]{get_run}} API operation.

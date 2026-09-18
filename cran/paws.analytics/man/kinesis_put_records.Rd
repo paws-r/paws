@@ -9,7 +9,8 @@ kinesis_put_records(
   Records,
   StreamName = NULL,
   StreamARN = NULL,
-  StreamId = NULL
+  StreamId = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -20,6 +21,8 @@ kinesis_put_records(
 \item{StreamARN}{The ARN of the stream.}
 
 \item{StreamId}{Not Implemented. Reserved for future use.}
+
+\item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.}
 }
 \description{
 Writes multiple data records into a Kinesis data stream in a single call (also referred to as a \code{\link[=kinesis_put_records]{put_records}} request). Use this operation to send data into the stream for data ingestion and processing.

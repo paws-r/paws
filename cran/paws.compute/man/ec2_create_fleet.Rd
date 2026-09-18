@@ -65,9 +65,9 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 
 \item{TagSpecifications}{The key-value pair for tagging the EC2 Fleet request on creation. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources}{Tag your resources}.
 
-If the fleet type is \code{instant}, specify a resource type of \code{fleet} to tag the fleet or \code{instance} to tag the instances at launch.
+If the fleet type is \code{instant}, specify a resource type of \code{fleet} to tag the fleet, \code{instance} to tag the instances at launch, \code{volume} to tag the volumes at launch, or \code{network-interface} to tag the network interfaces at launch.
 
-If the fleet type is \code{maintain} or \code{request}, specify a resource type of \code{fleet} to tag the fleet. You cannot specify a resource type of \code{instance}. To tag instances at launch, specify the tags in a \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template}{launch template}.}
+If the fleet type is \code{maintain} or \code{request}, specify a resource type of \code{fleet} to tag the fleet. You cannot specify a resource type of \code{instance}, \code{volume}, or \code{network-interface}. To tag instances at launch, specify the tags in a \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template}{launch template}.}
 
 \item{Context}{Reserved.}
 }

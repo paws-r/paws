@@ -6,13 +6,15 @@
 each}
 \usage{
 lambda_list_layers(
+  CompatibleArchitecture = NULL,
   CompatibleRuntime = NULL,
   Marker = NULL,
-  MaxItems = NULL,
-  CompatibleArchitecture = NULL
+  MaxItems = NULL
 )
 }
 \arguments{
+\item{CompatibleArchitecture}{The compatible \href{https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html}{instruction set architecture}.}
+
 \item{CompatibleRuntime}{A runtime identifier.
 
 The following list includes deprecated runtimes. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-deprecation-levels}{Runtime use after deprecation}.
@@ -22,8 +24,6 @@ For a list of all currently supported runtimes, see \href{https://docs.aws.amazo
 \item{Marker}{A pagination token returned by a previous call.}
 
 \item{MaxItems}{The maximum number of layers to return.}
-
-\item{CompatibleArchitecture}{The compatible \href{https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html}{instruction set architecture}.}
 }
 \description{
 Lists \href{https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html}{Lambda layers} and shows information about the latest version of each. Specify a \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier} to list only layers that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layers that are compatible with that \href{https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html}{instruction set architecture}.

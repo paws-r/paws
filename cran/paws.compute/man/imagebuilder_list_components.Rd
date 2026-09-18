@@ -28,9 +28,9 @@ imagebuilder_list_components(
 
 \item{byName}{Returns the list of components for the specified name.}
 
-\item{maxResults}{Specify the maximum number of items to return in a request.}
+\item{maxResults}{The maximum number of items to return in a single request.}
 
-\item{nextToken}{A token to specify where to start paginating. This is the nextToken from a previously truncated response.}
+\item{nextToken}{A token to specify where to start paginating. Use the \code{nextToken} value from a previously truncated response.}
 }
 \description{
 Returns the list of components that can be filtered by name, or by using the listed \code{filters} to streamline results. Newly created components can take up to two minutes to appear in the ListComponents API Results.

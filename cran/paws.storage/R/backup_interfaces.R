@@ -5,8 +5,7 @@ NULL
 
 .backup$associate_backup_vault_mpa_approval_team_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), MpaApprovalTeamArn = structure(logical(0), tags = list(type = "string")), RequesterComment = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["associate_backup_vault_mpa_approval_team_input"]]))
 }
 
 .backup$associate_backup_vault_mpa_approval_team_output <- function(...) {
@@ -15,164 +14,156 @@ NULL
 
 .backup$cancel_legal_hold_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LegalHoldId = structure(logical(0), tags = list(location = "uri", locationName = "legalHoldId", type = "string")), CancelDescription = structure(logical(0), tags = list(location = "querystring", locationName = "cancelDescription", type = "string")), RetainRecordInDays = structure(logical(0), tags = list(location = "querystring", locationName = "retainRecordInDays", type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["cancel_legal_hold_input"]]))
 }
 
 .backup$cancel_legal_hold_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["cancel_legal_hold_output"]]))
+}
+
+.backup$create_backup_access_point_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .backup_shapes[["create_backup_access_point_input"]]))
+}
+
+.backup$create_backup_access_point_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .backup_shapes[["create_backup_access_point_output"]]))
 }
 
 .backup$create_backup_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlan = structure(list(BackupPlanName = structure(logical(0), tags = list(type = "string")), Rules = structure(list(structure(list(RuleName = structure(logical(0), tags = list(type = "string")), TargetBackupVaultName = structure(logical(0), tags = list(type = "string")), TargetLogicallyAirGappedBackupVaultArn = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), StartWindowMinutes = structure(logical(0), tags = list(type = "long")), CompletionWindowMinutes = structure(logical(0), tags = list(type = "long")), Lifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RecoveryPointTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), CopyActions = structure(list(structure(list(Lifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationBackupVaultArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EnableContinuousBackup = structure(logical(0), tags = list(type = "boolean")), ScheduleExpressionTimezone = structure(logical(0), tags = list(type = "string")), IndexActions = structure(list(structure(list(ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScanActions = structure(list(structure(list(MalwareScanner = structure(logical(0), tags = list(type = "string")), ScanMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), AdvancedBackupSettings = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), BackupOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), ScanSettings = structure(list(structure(list(MalwareScanner = structure(logical(0), tags = list(type = "string")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ScannerRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), BackupPlanTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), CreatorRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_backup_plan_input"]]))
 }
 
 .backup$create_backup_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlanId = structure(logical(0), tags = list(type = "string")), BackupPlanArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), VersionId = structure(logical(0), tags = list(type = "string")), AdvancedBackupSettings = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), BackupOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_backup_plan_output"]]))
 }
 
 .backup$create_backup_selection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlanId = structure(logical(0), tags = list(location = "uri", locationName = "backupPlanId", type = "string")), BackupSelection = structure(list(SelectionName = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), Resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ListOfTags = structure(list(structure(list(ConditionType = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NotResources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Conditions = structure(list(StringEquals = structure(list(structure(list(ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), StringNotEquals = structure(list(structure(list(ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), StringLike = structure(list(structure(list(ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), StringNotLike = structure(list(structure(list(ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), CreatorRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_backup_selection_input"]]))
 }
 
 .backup$create_backup_selection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SelectionId = structure(logical(0), tags = list(type = "string")), BackupPlanId = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_backup_selection_output"]]))
 }
 
 .backup$create_backup_vault_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), BackupVaultTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), EncryptionKeyArn = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_backup_vault_input"]]))
 }
 
 .backup$create_backup_vault_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(type = "string")), BackupVaultArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_backup_vault_output"]]))
 }
 
 .backup$create_framework_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FrameworkName = structure(logical(0), tags = list(type = "string")), FrameworkDescription = structure(logical(0), tags = list(type = "string")), FrameworkControls = structure(list(structure(list(ControlName = structure(logical(0), tags = list(type = "string")), ControlInputParameters = structure(list(structure(list(ParameterName = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ControlScope = structure(list(ComplianceResourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ComplianceResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), FrameworkTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_framework_input"]]))
 }
 
 .backup$create_framework_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FrameworkName = structure(logical(0), tags = list(type = "string")), FrameworkArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_framework_output"]]))
 }
 
 .backup$create_legal_hold_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Title = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), RecoveryPointSelection = structure(list(VaultNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DateRange = structure(list(FromDate = structure(logical(0), tags = list(type = "timestamp")), ToDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_legal_hold_input"]]))
 }
 
 .backup$create_legal_hold_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Title = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LegalHoldId = structure(logical(0), tags = list(type = "string")), LegalHoldArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), RecoveryPointSelection = structure(list(VaultNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DateRange = structure(list(FromDate = structure(logical(0), tags = list(type = "timestamp")), ToDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_legal_hold_output"]]))
 }
 
 .backup$create_logically_air_gapped_backup_vault_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), BackupVaultTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), CreatorRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), MinRetentionDays = structure(logical(0), tags = list(type = "long")), MaxRetentionDays = structure(logical(0), tags = list(type = "long")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_logically_air_gapped_backup_vault_input"]]))
 }
 
 .backup$create_logically_air_gapped_backup_vault_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(type = "string")), BackupVaultArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), VaultState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_logically_air_gapped_backup_vault_output"]]))
 }
 
 .backup$create_report_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportPlanName = structure(logical(0), tags = list(type = "string")), ReportPlanDescription = structure(logical(0), tags = list(type = "string")), ReportDeliveryChannel = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyPrefix = structure(logical(0), tags = list(type = "string")), Formats = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ReportSetting = structure(list(ReportTemplate = structure(logical(0), tags = list(type = "string")), FrameworkArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NumberOfFrameworks = structure(logical(0), tags = list(type = "integer")), Accounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OrganizationUnits = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ReportPlanTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_report_plan_input"]]))
 }
 
 .backup$create_report_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportPlanName = structure(logical(0), tags = list(type = "string")), ReportPlanArn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_report_plan_output"]]))
 }
 
 .backup$create_restore_access_backup_vault_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SourceBackupVaultArn = structure(logical(0), tags = list(type = "string")), BackupVaultName = structure(logical(0), tags = list(type = "string")), BackupVaultTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), CreatorRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), RequesterComment = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_restore_access_backup_vault_input"]]))
 }
 
 .backup$create_restore_access_backup_vault_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreAccessBackupVaultArn = structure(logical(0), tags = list(type = "string")), VaultState = structure(logical(0), tags = list(type = "string")), RestoreAccessBackupVaultName = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_restore_access_backup_vault_output"]]))
 }
 
 .backup$create_restore_testing_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreatorRequestId = structure(logical(0), tags = list(type = "string")), RestoreTestingPlan = structure(list(RecoveryPointSelection = structure(list(Algorithm = structure(logical(0), tags = list(type = "string")), ExcludeVaults = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IncludeVaults = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RecoveryPointTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SelectionWindowDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), RestoreTestingPlanName = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), ScheduleExpressionTimezone = structure(logical(0), tags = list(type = "string")), StartWindowHours = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_restore_testing_plan_input"]]))
 }
 
 .backup$create_restore_testing_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), RestoreTestingPlanArn = structure(logical(0), tags = list(type = "string")), RestoreTestingPlanName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_restore_testing_plan_output"]]))
 }
 
 .backup$create_restore_testing_selection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreatorRequestId = structure(logical(0), tags = list(type = "string")), RestoreTestingPlanName = structure(logical(0), tags = list(location = "uri", locationName = "RestoreTestingPlanName", type = "string")), RestoreTestingSelection = structure(list(IamRoleArn = structure(logical(0), tags = list(type = "string")), ProtectedResourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ProtectedResourceConditions = structure(list(StringEquals = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), StringNotEquals = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ProtectedResourceType = structure(logical(0), tags = list(type = "string")), RestoreMetadataOverrides = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), RestoreTestingSelectionName = structure(logical(0), tags = list(type = "string")), ValidationWindowHours = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_restore_testing_selection_input"]]))
 }
 
 .backup$create_restore_testing_selection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), RestoreTestingPlanArn = structure(logical(0), tags = list(type = "string")), RestoreTestingPlanName = structure(logical(0), tags = list(type = "string")), RestoreTestingSelectionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_restore_testing_selection_output"]]))
 }
 
 .backup$create_tiering_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TieringConfiguration = structure(list(TieringConfigurationName = structure(logical(0), tags = list(type = "string")), BackupVaultName = structure(logical(0), tags = list(type = "string")), ResourceSelection = structure(list(structure(list(Resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TieringDownSettingsInDays = structure(logical(0), tags = list(type = "integer")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), TieringConfigurationTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), CreatorRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_tiering_configuration_input"]]))
 }
 
 .backup$create_tiering_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TieringConfigurationArn = structure(logical(0), tags = list(type = "string")), TieringConfigurationName = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["create_tiering_configuration_output"]]))
+}
+
+.backup$delete_backup_access_point_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .backup_shapes[["delete_backup_access_point_input"]]))
+}
+
+.backup$delete_backup_access_point_output <- function(...) {
+  list()
 }
 
 .backup$delete_backup_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlanId = structure(logical(0), tags = list(location = "uri", locationName = "backupPlanId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["delete_backup_plan_input"]]))
 }
 
 .backup$delete_backup_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlanId = structure(logical(0), tags = list(type = "string")), BackupPlanArn = structure(logical(0), tags = list(type = "string")), DeletionDate = structure(logical(0), tags = list(type = "timestamp")), VersionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["delete_backup_plan_output"]]))
 }
 
 .backup$delete_backup_selection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlanId = structure(logical(0), tags = list(location = "uri", locationName = "backupPlanId", type = "string")), SelectionId = structure(logical(0), tags = list(location = "uri", locationName = "selectionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["delete_backup_selection_input"]]))
 }
 
 .backup$delete_backup_selection_output <- function(...) {
@@ -181,8 +172,7 @@ NULL
 
 .backup$delete_backup_vault_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["delete_backup_vault_input"]]))
 }
 
 .backup$delete_backup_vault_output <- function(...) {
@@ -191,8 +181,7 @@ NULL
 
 .backup$delete_backup_vault_access_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["delete_backup_vault_access_policy_input"]]))
 }
 
 .backup$delete_backup_vault_access_policy_output <- function(...) {
@@ -201,8 +190,7 @@ NULL
 
 .backup$delete_backup_vault_lock_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["delete_backup_vault_lock_configuration_input"]]))
 }
 
 .backup$delete_backup_vault_lock_configuration_output <- function(...) {
@@ -211,8 +199,7 @@ NULL
 
 .backup$delete_backup_vault_notifications_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["delete_backup_vault_notifications_input"]]))
 }
 
 .backup$delete_backup_vault_notifications_output <- function(...) {
@@ -221,8 +208,7 @@ NULL
 
 .backup$delete_framework_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FrameworkName = structure(logical(0), tags = list(location = "uri", locationName = "frameworkName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["delete_framework_input"]]))
 }
 
 .backup$delete_framework_output <- function(...) {
@@ -231,8 +217,7 @@ NULL
 
 .backup$delete_recovery_point_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), RecoveryPointArn = structure(logical(0), tags = list(location = "uri", locationName = "recoveryPointArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["delete_recovery_point_input"]]))
 }
 
 .backup$delete_recovery_point_output <- function(...) {
@@ -241,8 +226,7 @@ NULL
 
 .backup$delete_report_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportPlanName = structure(logical(0), tags = list(location = "uri", locationName = "reportPlanName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["delete_report_plan_input"]]))
 }
 
 .backup$delete_report_plan_output <- function(...) {
@@ -251,8 +235,7 @@ NULL
 
 .backup$delete_restore_testing_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreTestingPlanName = structure(logical(0), tags = list(location = "uri", locationName = "RestoreTestingPlanName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["delete_restore_testing_plan_input"]]))
 }
 
 .backup$delete_restore_testing_plan_output <- function(...) {
@@ -261,8 +244,7 @@ NULL
 
 .backup$delete_restore_testing_selection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreTestingPlanName = structure(logical(0), tags = list(location = "uri", locationName = "RestoreTestingPlanName", type = "string")), RestoreTestingSelectionName = structure(logical(0), tags = list(location = "uri", locationName = "RestoreTestingSelectionName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["delete_restore_testing_selection_input"]]))
 }
 
 .backup$delete_restore_testing_selection_output <- function(...) {
@@ -271,164 +253,147 @@ NULL
 
 .backup$delete_tiering_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TieringConfigurationName = structure(logical(0), tags = list(location = "uri", locationName = "tieringConfigurationName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["delete_tiering_configuration_input"]]))
 }
 
 .backup$delete_tiering_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["delete_tiering_configuration_output"]]))
+}
+
+.backup$describe_backup_access_point_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .backup_shapes[["describe_backup_access_point_input"]]))
+}
+
+.backup$describe_backup_access_point_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .backup_shapes[["describe_backup_access_point_output"]]))
 }
 
 .backup$describe_backup_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupJobId = structure(logical(0), tags = list(location = "uri", locationName = "backupJobId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_backup_job_input"]]))
 }
 
 .backup$describe_backup_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), BackupJobId = structure(logical(0), tags = list(type = "string")), BackupVaultName = structure(logical(0), tags = list(type = "string")), RecoveryPointLifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), BackupVaultArn = structure(logical(0), tags = list(type = "string")), VaultType = structure(logical(0), tags = list(type = "string")), VaultLockState = structure(logical(0), tags = list(type = "string")), RecoveryPointArn = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string")), IsEncrypted = structure(logical(0), tags = list(type = "boolean")), ResourceArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), CompletionDate = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), PercentDone = structure(logical(0), tags = list(type = "string")), BackupSizeInBytes = structure(logical(0), tags = list(type = "long")), IamRoleArn = structure(logical(0), tags = list(type = "string")), CreatedBy = structure(list(BackupPlanId = structure(logical(0), tags = list(type = "string")), BackupPlanArn = structure(logical(0), tags = list(type = "string")), BackupPlanName = structure(logical(0), tags = list(type = "string")), BackupPlanVersion = structure(logical(0), tags = list(type = "string")), BackupRuleId = structure(logical(0), tags = list(type = "string")), BackupRuleName = structure(logical(0), tags = list(type = "string")), BackupRuleCron = structure(logical(0), tags = list(type = "string")), BackupRuleTimezone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResourceType = structure(logical(0), tags = list(type = "string")), BytesTransferred = structure(logical(0), tags = list(type = "long")), ExpectedCompletionDate = structure(logical(0), tags = list(type = "timestamp")), StartBy = structure(logical(0), tags = list(type = "timestamp")), BackupOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), BackupType = structure(logical(0), tags = list(type = "string")), ParentJobId = structure(logical(0), tags = list(type = "string")), IsParent = structure(logical(0), tags = list(type = "boolean")), NumberOfChildJobs = structure(logical(0), tags = list(type = "long")), ChildJobsInState = structure(list(structure(logical(0), tags = list(type = "long"))), tags = list(type = "map")), ResourceName = structure(logical(0), tags = list(type = "string")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), MessageCategory = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_backup_job_output"]]))
 }
 
 .backup$describe_backup_vault_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), BackupVaultAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "backupVaultAccountId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_backup_vault_input"]]))
 }
 
 .backup$describe_backup_vault_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(type = "string")), BackupVaultArn = structure(logical(0), tags = list(type = "string")), VaultType = structure(logical(0), tags = list(type = "string")), VaultState = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), NumberOfRecoveryPoints = structure(logical(0), tags = list(type = "long")), Locked = structure(logical(0), tags = list(type = "boolean")), MinRetentionDays = structure(logical(0), tags = list(type = "long")), MaxRetentionDays = structure(logical(0), tags = list(type = "long")), LockDate = structure(logical(0), tags = list(type = "timestamp")), SourceBackupVaultArn = structure(logical(0), tags = list(type = "string")), MpaApprovalTeamArn = structure(logical(0), tags = list(type = "string")), MpaSessionArn = structure(logical(0), tags = list(type = "string")), LatestMpaApprovalTeamUpdate = structure(list(MpaSessionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), ExpiryDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), EncryptionKeyType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_backup_vault_output"]]))
 }
 
 .backup$describe_copy_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CopyJobId = structure(logical(0), tags = list(location = "uri", locationName = "copyJobId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_copy_job_input"]]))
 }
 
 .backup$describe_copy_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CopyJob = structure(list(AccountId = structure(logical(0), tags = list(type = "string")), CopyJobId = structure(logical(0), tags = list(type = "string")), SourceBackupVaultArn = structure(logical(0), tags = list(type = "string")), SourceRecoveryPointArn = structure(logical(0), tags = list(type = "string")), DestinationBackupVaultArn = structure(logical(0), tags = list(type = "string")), DestinationVaultType = structure(logical(0), tags = list(type = "string")), DestinationVaultLockState = structure(logical(0), tags = list(type = "string")), DestinationRecoveryPointArn = structure(logical(0), tags = list(type = "string")), DestinationEncryptionKeyArn = structure(logical(0), tags = list(type = "string")), DestinationRecoveryPointLifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResourceArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), CompletionDate = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), BackupSizeInBytes = structure(logical(0), tags = list(type = "long")), IamRoleArn = structure(logical(0), tags = list(type = "string")), CreatedBy = structure(list(BackupPlanId = structure(logical(0), tags = list(type = "string")), BackupPlanArn = structure(logical(0), tags = list(type = "string")), BackupPlanName = structure(logical(0), tags = list(type = "string")), BackupPlanVersion = structure(logical(0), tags = list(type = "string")), BackupRuleId = structure(logical(0), tags = list(type = "string")), BackupRuleName = structure(logical(0), tags = list(type = "string")), BackupRuleCron = structure(logical(0), tags = list(type = "string")), BackupRuleTimezone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedByBackupJobId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ParentJobId = structure(logical(0), tags = list(type = "string")), IsParent = structure(logical(0), tags = list(type = "boolean")), CompositeMemberIdentifier = structure(logical(0), tags = list(type = "string")), NumberOfChildJobs = structure(logical(0), tags = list(type = "long")), ChildJobsInState = structure(list(structure(logical(0), tags = list(type = "long"))), tags = list(type = "map")), ResourceName = structure(logical(0), tags = list(type = "string")), MessageCategory = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_copy_job_output"]]))
 }
 
 .backup$describe_framework_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FrameworkName = structure(logical(0), tags = list(location = "uri", locationName = "frameworkName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_framework_input"]]))
 }
 
 .backup$describe_framework_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FrameworkName = structure(logical(0), tags = list(type = "string")), FrameworkArn = structure(logical(0), tags = list(type = "string")), FrameworkDescription = structure(logical(0), tags = list(type = "string")), FrameworkControls = structure(list(structure(list(ControlName = structure(logical(0), tags = list(type = "string")), ControlInputParameters = structure(list(structure(list(ParameterName = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ControlScope = structure(list(ComplianceResourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ComplianceResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), DeploymentStatus = structure(logical(0), tags = list(type = "string")), FrameworkStatus = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_framework_output"]]))
 }
 
 .backup$describe_global_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_global_settings_input"]]))
 }
 
 .backup$describe_global_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalSettings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_global_settings_output"]]))
 }
 
 .backup$describe_protected_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_protected_resource_input"]]))
 }
 
 .backup$describe_protected_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), LastBackupTime = structure(logical(0), tags = list(type = "timestamp")), ResourceName = structure(logical(0), tags = list(type = "string")), LastBackupVaultArn = structure(logical(0), tags = list(type = "string")), LastRecoveryPointArn = structure(logical(0), tags = list(type = "string")), LatestRestoreExecutionTimeMinutes = structure(logical(0), tags = list(type = "long")), LatestRestoreJobCreationDate = structure(logical(0), tags = list(type = "timestamp")), LatestRestoreRecoveryPointCreationDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_protected_resource_output"]]))
 }
 
 .backup$describe_recovery_point_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), RecoveryPointArn = structure(logical(0), tags = list(location = "uri", locationName = "recoveryPointArn", type = "string")), BackupVaultAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "backupVaultAccountId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_recovery_point_input"]]))
 }
 
 .backup$describe_recovery_point_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecoveryPointArn = structure(logical(0), tags = list(type = "string")), BackupVaultName = structure(logical(0), tags = list(type = "string")), BackupVaultArn = structure(logical(0), tags = list(type = "string")), SourceBackupVaultArn = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), CreatedBy = structure(list(BackupPlanId = structure(logical(0), tags = list(type = "string")), BackupPlanArn = structure(logical(0), tags = list(type = "string")), BackupPlanName = structure(logical(0), tags = list(type = "string")), BackupPlanVersion = structure(logical(0), tags = list(type = "string")), BackupRuleId = structure(logical(0), tags = list(type = "string")), BackupRuleName = structure(logical(0), tags = list(type = "string")), BackupRuleCron = structure(logical(0), tags = list(type = "string")), BackupRuleTimezone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IamRoleArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), CompletionDate = structure(logical(0), tags = list(type = "timestamp")), BackupSizeInBytes = structure(logical(0), tags = list(type = "long")), CalculatedLifecycle = structure(list(MoveToColdStorageAt = structure(logical(0), tags = list(type = "timestamp")), DeleteAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Lifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string")), IsEncrypted = structure(logical(0), tags = list(type = "boolean")), StorageClass = structure(logical(0), tags = list(type = "string")), LastRestoreTime = structure(logical(0), tags = list(type = "timestamp")), ParentRecoveryPointArn = structure(logical(0), tags = list(type = "string")), CompositeMemberIdentifier = structure(logical(0), tags = list(type = "string")), IsParent = structure(logical(0), tags = list(type = "boolean")), ResourceName = structure(logical(0), tags = list(type = "string")), VaultType = structure(logical(0), tags = list(type = "string")), IndexStatus = structure(logical(0), tags = list(type = "string")), IndexStatusMessage = structure(logical(0), tags = list(type = "string")), EncryptionKeyType = structure(logical(0), tags = list(type = "string")), ScanResults = structure(list(structure(list(MalwareScanner = structure(logical(0), tags = list(type = "string")), ScanJobState = structure(logical(0), tags = list(type = "string")), LastScanTimestamp = structure(logical(0), tags = list(type = "timestamp")), Findings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_recovery_point_output"]]))
 }
 
 .backup$describe_region_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_region_settings_input"]]))
 }
 
 .backup$describe_region_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceTypeOptInPreference = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), ResourceTypeManagementPreference = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_region_settings_output"]]))
 }
 
 .backup$describe_report_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportJobId = structure(logical(0), tags = list(location = "uri", locationName = "reportJobId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_report_job_input"]]))
 }
 
 .backup$describe_report_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportJob = structure(list(ReportJobId = structure(logical(0), tags = list(type = "string")), ReportPlanArn = structure(logical(0), tags = list(type = "string")), ReportTemplate = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), CompletionTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), ReportDestination = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3Keys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_report_job_output"]]))
 }
 
 .backup$describe_report_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportPlanName = structure(logical(0), tags = list(location = "uri", locationName = "reportPlanName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_report_plan_input"]]))
 }
 
 .backup$describe_report_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportPlan = structure(list(ReportPlanArn = structure(logical(0), tags = list(type = "string")), ReportPlanName = structure(logical(0), tags = list(type = "string")), ReportPlanDescription = structure(logical(0), tags = list(type = "string")), ReportSetting = structure(list(ReportTemplate = structure(logical(0), tags = list(type = "string")), FrameworkArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NumberOfFrameworks = structure(logical(0), tags = list(type = "integer")), Accounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OrganizationUnits = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ReportDeliveryChannel = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyPrefix = structure(logical(0), tags = list(type = "string")), Formats = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), DeploymentStatus = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastAttemptedExecutionTime = structure(logical(0), tags = list(type = "timestamp")), LastSuccessfulExecutionTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_report_plan_output"]]))
 }
 
 .backup$describe_restore_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreJobId = structure(logical(0), tags = list(location = "uri", locationName = "restoreJobId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_restore_job_input"]]))
 }
 
 .backup$describe_restore_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), RestoreJobId = structure(logical(0), tags = list(type = "string")), RecoveryPointArn = structure(logical(0), tags = list(type = "string")), SourceResourceArn = structure(logical(0), tags = list(type = "string")), BackupVaultArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), CompletionDate = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), PercentDone = structure(logical(0), tags = list(type = "string")), BackupSizeInBytes = structure(logical(0), tags = list(type = "long")), IamRoleArn = structure(logical(0), tags = list(type = "string")), ExpectedCompletionTimeMinutes = structure(logical(0), tags = list(type = "long")), CreatedResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), RecoveryPointCreationDate = structure(logical(0), tags = list(type = "timestamp")), CreatedBy = structure(list(RestoreTestingPlanArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ValidationStatus = structure(logical(0), tags = list(type = "string")), ValidationStatusMessage = structure(logical(0), tags = list(type = "string")), DeletionStatus = structure(logical(0), tags = list(type = "string")), DeletionStatusMessage = structure(logical(0), tags = list(type = "string")), IsParent = structure(logical(0), tags = list(type = "boolean")), ParentJobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_restore_job_output"]]))
 }
 
 .backup$describe_scan_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScanJobId = structure(logical(0), tags = list(location = "uri", locationName = "ScanJobId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_scan_job_input"]]))
 }
 
 .backup$describe_scan_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), BackupVaultArn = structure(logical(0), tags = list(type = "string")), BackupVaultName = structure(logical(0), tags = list(type = "string")), CompletionDate = structure(logical(0), tags = list(type = "timestamp")), ContinuousScanEndTime = structure(logical(0), tags = list(type = "timestamp")), ContinuousScanStartTime = structure(logical(0), tags = list(type = "timestamp")), CreatedBy = structure(list(BackupPlanArn = structure(logical(0), tags = list(type = "string")), BackupPlanId = structure(logical(0), tags = list(type = "string")), BackupPlanVersion = structure(logical(0), tags = list(type = "string")), BackupRuleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), IamRoleArn = structure(logical(0), tags = list(type = "string")), MalwareScanner = structure(logical(0), tags = list(type = "string")), RecoveryPointArn = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ScanBaseRecoveryPointArn = structure(logical(0), tags = list(type = "string")), ScanId = structure(logical(0), tags = list(type = "string")), ScanJobId = structure(logical(0), tags = list(type = "string")), ScanMode = structure(logical(0), tags = list(type = "string")), ScanResult = structure(list(ScanResultStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ScannerRoleArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["describe_scan_job_output"]]))
 }
 
 .backup$disassociate_backup_vault_mpa_approval_team_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), RequesterComment = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["disassociate_backup_vault_mpa_approval_team_input"]]))
 }
 
 .backup$disassociate_backup_vault_mpa_approval_team_output <- function(...) {
@@ -437,8 +402,7 @@ NULL
 
 .backup$disassociate_recovery_point_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), RecoveryPointArn = structure(logical(0), tags = list(location = "uri", locationName = "recoveryPointArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["disassociate_recovery_point_input"]]))
 }
 
 .backup$disassociate_recovery_point_output <- function(...) {
@@ -447,8 +411,7 @@ NULL
 
 .backup$disassociate_recovery_point_from_parent_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), RecoveryPointArn = structure(logical(0), tags = list(location = "uri", locationName = "recoveryPointArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["disassociate_recovery_point_from_parent_input"]]))
 }
 
 .backup$disassociate_recovery_point_from_parent_output <- function(...) {
@@ -457,182 +420,152 @@ NULL
 
 .backup$export_backup_plan_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlanId = structure(logical(0), tags = list(location = "uri", locationName = "backupPlanId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["export_backup_plan_template_input"]]))
 }
 
 .backup$export_backup_plan_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlanTemplateJson = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["export_backup_plan_template_output"]]))
 }
 
 .backup$get_backup_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlanId = structure(logical(0), tags = list(location = "uri", locationName = "backupPlanId", type = "string")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), MaxScheduledRunsPreview = structure(logical(0), tags = list(location = "querystring", locationName = "MaxScheduledRunsPreview", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_backup_plan_input"]]))
 }
 
 .backup$get_backup_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlan = structure(list(BackupPlanName = structure(logical(0), tags = list(type = "string")), Rules = structure(list(structure(list(RuleName = structure(logical(0), tags = list(type = "string")), TargetBackupVaultName = structure(logical(0), tags = list(type = "string")), TargetLogicallyAirGappedBackupVaultArn = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), StartWindowMinutes = structure(logical(0), tags = list(type = "long")), CompletionWindowMinutes = structure(logical(0), tags = list(type = "long")), Lifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RecoveryPointTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), RuleId = structure(logical(0), tags = list(type = "string")), CopyActions = structure(list(structure(list(Lifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationBackupVaultArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EnableContinuousBackup = structure(logical(0), tags = list(type = "boolean")), ScheduleExpressionTimezone = structure(logical(0), tags = list(type = "string")), IndexActions = structure(list(structure(list(ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScanActions = structure(list(structure(list(MalwareScanner = structure(logical(0), tags = list(type = "string")), ScanMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), AdvancedBackupSettings = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), BackupOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), ScanSettings = structure(list(structure(list(MalwareScanner = structure(logical(0), tags = list(type = "string")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ScannerRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), BackupPlanId = structure(logical(0), tags = list(type = "string")), BackupPlanArn = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), DeletionDate = structure(logical(0), tags = list(type = "timestamp")), LastExecutionDate = structure(logical(0), tags = list(type = "timestamp")), AdvancedBackupSettings = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), BackupOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), ScheduledRunsPreview = structure(list(structure(list(ExecutionTime = structure(logical(0), tags = list(type = "timestamp")), RuleId = structure(logical(0), tags = list(type = "string")), RuleExecutionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_backup_plan_output"]]))
 }
 
 .backup$get_backup_plan_from_json_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlanTemplateJson = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_backup_plan_from_json_input"]]))
 }
 
 .backup$get_backup_plan_from_json_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlan = structure(list(BackupPlanName = structure(logical(0), tags = list(type = "string")), Rules = structure(list(structure(list(RuleName = structure(logical(0), tags = list(type = "string")), TargetBackupVaultName = structure(logical(0), tags = list(type = "string")), TargetLogicallyAirGappedBackupVaultArn = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), StartWindowMinutes = structure(logical(0), tags = list(type = "long")), CompletionWindowMinutes = structure(logical(0), tags = list(type = "long")), Lifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RecoveryPointTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), RuleId = structure(logical(0), tags = list(type = "string")), CopyActions = structure(list(structure(list(Lifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationBackupVaultArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EnableContinuousBackup = structure(logical(0), tags = list(type = "boolean")), ScheduleExpressionTimezone = structure(logical(0), tags = list(type = "string")), IndexActions = structure(list(structure(list(ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScanActions = structure(list(structure(list(MalwareScanner = structure(logical(0), tags = list(type = "string")), ScanMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), AdvancedBackupSettings = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), BackupOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), ScanSettings = structure(list(structure(list(MalwareScanner = structure(logical(0), tags = list(type = "string")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ScannerRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_backup_plan_from_json_output"]]))
 }
 
 .backup$get_backup_plan_from_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlanTemplateId = structure(logical(0), tags = list(location = "uri", locationName = "templateId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_backup_plan_from_template_input"]]))
 }
 
 .backup$get_backup_plan_from_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlanDocument = structure(list(BackupPlanName = structure(logical(0), tags = list(type = "string")), Rules = structure(list(structure(list(RuleName = structure(logical(0), tags = list(type = "string")), TargetBackupVaultName = structure(logical(0), tags = list(type = "string")), TargetLogicallyAirGappedBackupVaultArn = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), StartWindowMinutes = structure(logical(0), tags = list(type = "long")), CompletionWindowMinutes = structure(logical(0), tags = list(type = "long")), Lifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RecoveryPointTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), RuleId = structure(logical(0), tags = list(type = "string")), CopyActions = structure(list(structure(list(Lifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationBackupVaultArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EnableContinuousBackup = structure(logical(0), tags = list(type = "boolean")), ScheduleExpressionTimezone = structure(logical(0), tags = list(type = "string")), IndexActions = structure(list(structure(list(ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScanActions = structure(list(structure(list(MalwareScanner = structure(logical(0), tags = list(type = "string")), ScanMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), AdvancedBackupSettings = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), BackupOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), ScanSettings = structure(list(structure(list(MalwareScanner = structure(logical(0), tags = list(type = "string")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ScannerRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_backup_plan_from_template_output"]]))
 }
 
 .backup$get_backup_selection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlanId = structure(logical(0), tags = list(location = "uri", locationName = "backupPlanId", type = "string")), SelectionId = structure(logical(0), tags = list(location = "uri", locationName = "selectionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_backup_selection_input"]]))
 }
 
 .backup$get_backup_selection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupSelection = structure(list(SelectionName = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), Resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ListOfTags = structure(list(structure(list(ConditionType = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NotResources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Conditions = structure(list(StringEquals = structure(list(structure(list(ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), StringNotEquals = structure(list(structure(list(ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), StringLike = structure(list(structure(list(ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), StringNotLike = structure(list(structure(list(ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), SelectionId = structure(logical(0), tags = list(type = "string")), BackupPlanId = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), CreatorRequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_backup_selection_output"]]))
 }
 
 .backup$get_backup_vault_access_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_backup_vault_access_policy_input"]]))
 }
 
 .backup$get_backup_vault_access_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(type = "string")), BackupVaultArn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_backup_vault_access_policy_output"]]))
 }
 
 .backup$get_backup_vault_notifications_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_backup_vault_notifications_input"]]))
 }
 
 .backup$get_backup_vault_notifications_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(type = "string")), BackupVaultArn = structure(logical(0), tags = list(type = "string")), SNSTopicArn = structure(logical(0), tags = list(type = "string")), BackupVaultEvents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_backup_vault_notifications_output"]]))
 }
 
 .backup$get_legal_hold_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LegalHoldId = structure(logical(0), tags = list(location = "uri", locationName = "legalHoldId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_legal_hold_input"]]))
 }
 
 .backup$get_legal_hold_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Title = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CancelDescription = structure(logical(0), tags = list(type = "string")), LegalHoldId = structure(logical(0), tags = list(type = "string")), LegalHoldArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), CancellationDate = structure(logical(0), tags = list(type = "timestamp")), RetainRecordUntil = structure(logical(0), tags = list(type = "timestamp")), RecoveryPointSelection = structure(list(VaultNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DateRange = structure(list(FromDate = structure(logical(0), tags = list(type = "timestamp")), ToDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_legal_hold_output"]]))
 }
 
 .backup$get_pitr_malware_scan_results_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecoveryPointArn = structure(logical(0), tags = list(location = "querystring", locationName = "RecoveryPointArn", type = "string")), BackupVaultName = structure(logical(0), tags = list(location = "querystring", locationName = "BackupVaultName", type = "string")), ScanEndTime = structure(logical(0), tags = list(location = "querystring", locationName = "ScanEndTime", type = "timestamp")), MalwareScanner = structure(logical(0), tags = list(location = "querystring", locationName = "MalwareScanner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_pitr_malware_scan_results_input"]]))
 }
 
 .backup$get_pitr_malware_scan_results_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScanEndTime = structure(logical(0), tags = list(type = "timestamp")), ScanResult = structure(list(ScanResultStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LastScanJobTime = structure(logical(0), tags = list(type = "timestamp")), ScanId = structure(logical(0), tags = list(type = "string")), ScanMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_pitr_malware_scan_results_output"]]))
 }
 
 .backup$get_recovery_point_index_details_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), RecoveryPointArn = structure(logical(0), tags = list(location = "uri", locationName = "recoveryPointArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_recovery_point_index_details_input"]]))
 }
 
 .backup$get_recovery_point_index_details_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecoveryPointArn = structure(logical(0), tags = list(type = "string")), BackupVaultArn = structure(logical(0), tags = list(type = "string")), SourceResourceArn = structure(logical(0), tags = list(type = "string")), IndexCreationDate = structure(logical(0), tags = list(type = "timestamp")), IndexDeletionDate = structure(logical(0), tags = list(type = "timestamp")), IndexCompletionDate = structure(logical(0), tags = list(type = "timestamp")), IndexStatus = structure(logical(0), tags = list(type = "string")), IndexStatusMessage = structure(logical(0), tags = list(type = "string")), TotalItemsIndexed = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_recovery_point_index_details_output"]]))
 }
 
 .backup$get_recovery_point_restore_metadata_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), RecoveryPointArn = structure(logical(0), tags = list(location = "uri", locationName = "recoveryPointArn", type = "string")), BackupVaultAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "backupVaultAccountId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_recovery_point_restore_metadata_input"]]))
 }
 
 .backup$get_recovery_point_restore_metadata_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultArn = structure(logical(0), tags = list(type = "string")), RecoveryPointArn = structure(logical(0), tags = list(type = "string")), RestoreMetadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_recovery_point_restore_metadata_output"]]))
 }
 
 .backup$get_restore_job_metadata_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreJobId = structure(logical(0), tags = list(location = "uri", locationName = "restoreJobId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_restore_job_metadata_input"]]))
 }
 
 .backup$get_restore_job_metadata_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreJobId = structure(logical(0), tags = list(type = "string")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_restore_job_metadata_output"]]))
 }
 
 .backup$get_restore_testing_inferred_metadata_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "BackupVaultAccountId", type = "string")), BackupVaultName = structure(logical(0), tags = list(location = "querystring", locationName = "BackupVaultName", type = "string")), RecoveryPointArn = structure(logical(0), tags = list(location = "querystring", locationName = "RecoveryPointArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_restore_testing_inferred_metadata_input"]]))
 }
 
 .backup$get_restore_testing_inferred_metadata_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InferredMetadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_restore_testing_inferred_metadata_output"]]))
 }
 
 .backup$get_restore_testing_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreTestingPlanName = structure(logical(0), tags = list(location = "uri", locationName = "RestoreTestingPlanName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_restore_testing_plan_input"]]))
 }
 
 .backup$get_restore_testing_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreTestingPlan = structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), LastExecutionTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), RecoveryPointSelection = structure(list(Algorithm = structure(logical(0), tags = list(type = "string")), ExcludeVaults = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IncludeVaults = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RecoveryPointTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SelectionWindowDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), RestoreTestingPlanArn = structure(logical(0), tags = list(type = "string")), RestoreTestingPlanName = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), ScheduleExpressionTimezone = structure(logical(0), tags = list(type = "string")), StartWindowHours = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_restore_testing_plan_output"]]))
 }
 
 .backup$get_restore_testing_selection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreTestingPlanName = structure(logical(0), tags = list(location = "uri", locationName = "RestoreTestingPlanName", type = "string")), RestoreTestingSelectionName = structure(logical(0), tags = list(location = "uri", locationName = "RestoreTestingSelectionName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_restore_testing_selection_input"]]))
 }
 
 .backup$get_restore_testing_selection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreTestingSelection = structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), ProtectedResourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ProtectedResourceConditions = structure(list(StringEquals = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), StringNotEquals = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ProtectedResourceType = structure(logical(0), tags = list(type = "string")), RestoreMetadataOverrides = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), RestoreTestingPlanName = structure(logical(0), tags = list(type = "string")), RestoreTestingSelectionName = structure(logical(0), tags = list(type = "string")), ValidationWindowHours = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_restore_testing_selection_output"]]))
 }
 
 .backup$get_supported_resource_types_input <- function(...) {
@@ -641,374 +574,342 @@ NULL
 
 .backup$get_supported_resource_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_supported_resource_types_output"]]))
 }
 
 .backup$get_tiering_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TieringConfigurationName = structure(logical(0), tags = list(location = "uri", locationName = "tieringConfigurationName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_tiering_configuration_input"]]))
 }
 
 .backup$get_tiering_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TieringConfiguration = structure(list(TieringConfigurationName = structure(logical(0), tags = list(type = "string")), TieringConfigurationArn = structure(logical(0), tags = list(type = "string")), BackupVaultName = structure(logical(0), tags = list(type = "string")), ResourceSelection = structure(list(structure(list(Resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TieringDownSettingsInDays = structure(logical(0), tags = list(type = "integer")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["get_tiering_configuration_output"]]))
+}
+
+.backup$list_backup_access_points_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .backup_shapes[["list_backup_access_points_input"]]))
+}
+
+.backup$list_backup_access_points_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .backup_shapes[["list_backup_access_points_output"]]))
+}
+
+.backup$list_backup_access_points_by_recovery_point_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .backup_shapes[["list_backup_access_points_by_recovery_point_input"]]))
+}
+
+.backup$list_backup_access_points_by_recovery_point_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .backup_shapes[["list_backup_access_points_by_recovery_point_output"]]))
+}
+
+.backup$list_backup_access_points_by_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .backup_shapes[["list_backup_access_points_by_resource_input"]]))
+}
+
+.backup$list_backup_access_points_by_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .backup_shapes[["list_backup_access_points_by_resource_output"]]))
 }
 
 .backup$list_backup_job_summaries_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "querystring", locationName = "AccountId", type = "string")), State = structure(logical(0), tags = list(location = "querystring", locationName = "State", type = "string")), ResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "ResourceType", type = "string")), MessageCategory = structure(logical(0), tags = list(location = "querystring", locationName = "MessageCategory", type = "string")), AggregationPeriod = structure(logical(0), tags = list(location = "querystring", locationName = "AggregationPeriod", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_backup_job_summaries_input"]]))
 }
 
 .backup$list_backup_job_summaries_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupJobSummaries = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), MessageCategory = structure(logical(0), tags = list(type = "string")), Count = structure(logical(0), tags = list(type = "integer")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), AggregationPeriod = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_backup_job_summaries_output"]]))
 }
 
 .backup$list_backup_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), ByResourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceArn", type = "string")), ByState = structure(logical(0), tags = list(location = "querystring", locationName = "state", type = "string")), ByBackupVaultName = structure(logical(0), tags = list(location = "querystring", locationName = "backupVaultName", type = "string")), ByCreatedBefore = structure(logical(0), tags = list(location = "querystring", locationName = "createdBefore", type = "timestamp")), ByCreatedAfter = structure(logical(0), tags = list(location = "querystring", locationName = "createdAfter", type = "timestamp")), ByResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "resourceType", type = "string")), ByAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "accountId", type = "string")), ByCompleteAfter = structure(logical(0), tags = list(location = "querystring", locationName = "completeAfter", type = "timestamp")), ByCompleteBefore = structure(logical(0), tags = list(location = "querystring", locationName = "completeBefore", type = "timestamp")), ByParentJobId = structure(logical(0), tags = list(location = "querystring", locationName = "parentJobId", type = "string")), ByMessageCategory = structure(logical(0), tags = list(location = "querystring", locationName = "messageCategory", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_backup_jobs_input"]]))
 }
 
 .backup$list_backup_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupJobs = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), BackupJobId = structure(logical(0), tags = list(type = "string")), BackupVaultName = structure(logical(0), tags = list(type = "string")), BackupVaultArn = structure(logical(0), tags = list(type = "string")), VaultType = structure(logical(0), tags = list(type = "string")), VaultLockState = structure(logical(0), tags = list(type = "string")), RecoveryPointArn = structure(logical(0), tags = list(type = "string")), RecoveryPointLifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string")), IsEncrypted = structure(logical(0), tags = list(type = "boolean")), ResourceArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), CompletionDate = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), PercentDone = structure(logical(0), tags = list(type = "string")), BackupSizeInBytes = structure(logical(0), tags = list(type = "long")), IamRoleArn = structure(logical(0), tags = list(type = "string")), CreatedBy = structure(list(BackupPlanId = structure(logical(0), tags = list(type = "string")), BackupPlanArn = structure(logical(0), tags = list(type = "string")), BackupPlanName = structure(logical(0), tags = list(type = "string")), BackupPlanVersion = structure(logical(0), tags = list(type = "string")), BackupRuleId = structure(logical(0), tags = list(type = "string")), BackupRuleName = structure(logical(0), tags = list(type = "string")), BackupRuleCron = structure(logical(0), tags = list(type = "string")), BackupRuleTimezone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExpectedCompletionDate = structure(logical(0), tags = list(type = "timestamp")), StartBy = structure(logical(0), tags = list(type = "timestamp")), ResourceType = structure(logical(0), tags = list(type = "string")), BytesTransferred = structure(logical(0), tags = list(type = "long")), BackupOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), BackupType = structure(logical(0), tags = list(type = "string")), ParentJobId = structure(logical(0), tags = list(type = "string")), IsParent = structure(logical(0), tags = list(type = "boolean")), ResourceName = structure(logical(0), tags = list(type = "string")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), MessageCategory = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_backup_jobs_output"]]))
 }
 
 .backup$list_backup_plan_templates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_backup_plan_templates_input"]]))
 }
 
 .backup$list_backup_plan_templates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), BackupPlanTemplatesList = structure(list(structure(list(BackupPlanTemplateId = structure(logical(0), tags = list(type = "string")), BackupPlanTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_backup_plan_templates_output"]]))
 }
 
 .backup$list_backup_plan_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlanId = structure(logical(0), tags = list(location = "uri", locationName = "backupPlanId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_backup_plan_versions_input"]]))
 }
 
 .backup$list_backup_plan_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), BackupPlanVersionsList = structure(list(structure(list(BackupPlanArn = structure(logical(0), tags = list(type = "string")), BackupPlanId = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), DeletionDate = structure(logical(0), tags = list(type = "timestamp")), VersionId = structure(logical(0), tags = list(type = "string")), BackupPlanName = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), LastExecutionDate = structure(logical(0), tags = list(type = "timestamp")), AdvancedBackupSettings = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), BackupOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_backup_plan_versions_output"]]))
 }
 
 .backup$list_backup_plans_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), IncludeDeleted = structure(logical(0), tags = list(location = "querystring", locationName = "includeDeleted", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_backup_plans_input"]]))
 }
 
 .backup$list_backup_plans_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), BackupPlansList = structure(list(structure(list(BackupPlanArn = structure(logical(0), tags = list(type = "string")), BackupPlanId = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), DeletionDate = structure(logical(0), tags = list(type = "timestamp")), VersionId = structure(logical(0), tags = list(type = "string")), BackupPlanName = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), LastExecutionDate = structure(logical(0), tags = list(type = "timestamp")), AdvancedBackupSettings = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), BackupOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_backup_plans_output"]]))
 }
 
 .backup$list_backup_selections_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlanId = structure(logical(0), tags = list(location = "uri", locationName = "backupPlanId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_backup_selections_input"]]))
 }
 
 .backup$list_backup_selections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), BackupSelectionsList = structure(list(structure(list(SelectionId = structure(logical(0), tags = list(type = "string")), SelectionName = structure(logical(0), tags = list(type = "string")), BackupPlanId = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_backup_selections_output"]]))
 }
 
 .backup$list_backup_vaults_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ByVaultType = structure(logical(0), tags = list(location = "querystring", locationName = "vaultType", type = "string")), ByShared = structure(logical(0), tags = list(location = "querystring", locationName = "shared", type = "boolean")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_backup_vaults_input"]]))
 }
 
 .backup$list_backup_vaults_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultList = structure(list(structure(list(BackupVaultName = structure(logical(0), tags = list(type = "string")), BackupVaultArn = structure(logical(0), tags = list(type = "string")), VaultType = structure(logical(0), tags = list(type = "string")), VaultState = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), NumberOfRecoveryPoints = structure(logical(0), tags = list(type = "long")), Locked = structure(logical(0), tags = list(type = "boolean")), MinRetentionDays = structure(logical(0), tags = list(type = "long")), MaxRetentionDays = structure(logical(0), tags = list(type = "long")), LockDate = structure(logical(0), tags = list(type = "timestamp")), EncryptionKeyType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_backup_vaults_output"]]))
 }
 
 .backup$list_copy_job_summaries_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "querystring", locationName = "AccountId", type = "string")), State = structure(logical(0), tags = list(location = "querystring", locationName = "State", type = "string")), ResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "ResourceType", type = "string")), MessageCategory = structure(logical(0), tags = list(location = "querystring", locationName = "MessageCategory", type = "string")), AggregationPeriod = structure(logical(0), tags = list(location = "querystring", locationName = "AggregationPeriod", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_copy_job_summaries_input"]]))
 }
 
 .backup$list_copy_job_summaries_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CopyJobSummaries = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), MessageCategory = structure(logical(0), tags = list(type = "string")), Count = structure(logical(0), tags = list(type = "integer")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), AggregationPeriod = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_copy_job_summaries_output"]]))
 }
 
 .backup$list_copy_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), ByResourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceArn", type = "string")), ByState = structure(logical(0), tags = list(location = "querystring", locationName = "state", type = "string")), ByCreatedBefore = structure(logical(0), tags = list(location = "querystring", locationName = "createdBefore", type = "timestamp")), ByCreatedAfter = structure(logical(0), tags = list(location = "querystring", locationName = "createdAfter", type = "timestamp")), ByResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "resourceType", type = "string")), ByDestinationVaultArn = structure(logical(0), tags = list(location = "querystring", locationName = "destinationVaultArn", type = "string")), ByAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "accountId", type = "string")), ByCompleteBefore = structure(logical(0), tags = list(location = "querystring", locationName = "completeBefore", type = "timestamp")), ByCompleteAfter = structure(logical(0), tags = list(location = "querystring", locationName = "completeAfter", type = "timestamp")), ByParentJobId = structure(logical(0), tags = list(location = "querystring", locationName = "parentJobId", type = "string")), ByMessageCategory = structure(logical(0), tags = list(location = "querystring", locationName = "messageCategory", type = "string")), BySourceRecoveryPointArn = structure(logical(0), tags = list(location = "querystring", locationName = "sourceRecoveryPointArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_copy_jobs_input"]]))
 }
 
 .backup$list_copy_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CopyJobs = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), CopyJobId = structure(logical(0), tags = list(type = "string")), SourceBackupVaultArn = structure(logical(0), tags = list(type = "string")), SourceRecoveryPointArn = structure(logical(0), tags = list(type = "string")), DestinationBackupVaultArn = structure(logical(0), tags = list(type = "string")), DestinationVaultType = structure(logical(0), tags = list(type = "string")), DestinationVaultLockState = structure(logical(0), tags = list(type = "string")), DestinationRecoveryPointArn = structure(logical(0), tags = list(type = "string")), DestinationEncryptionKeyArn = structure(logical(0), tags = list(type = "string")), DestinationRecoveryPointLifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResourceArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), CompletionDate = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), BackupSizeInBytes = structure(logical(0), tags = list(type = "long")), IamRoleArn = structure(logical(0), tags = list(type = "string")), CreatedBy = structure(list(BackupPlanId = structure(logical(0), tags = list(type = "string")), BackupPlanArn = structure(logical(0), tags = list(type = "string")), BackupPlanName = structure(logical(0), tags = list(type = "string")), BackupPlanVersion = structure(logical(0), tags = list(type = "string")), BackupRuleId = structure(logical(0), tags = list(type = "string")), BackupRuleName = structure(logical(0), tags = list(type = "string")), BackupRuleCron = structure(logical(0), tags = list(type = "string")), BackupRuleTimezone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedByBackupJobId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ParentJobId = structure(logical(0), tags = list(type = "string")), IsParent = structure(logical(0), tags = list(type = "boolean")), CompositeMemberIdentifier = structure(logical(0), tags = list(type = "string")), NumberOfChildJobs = structure(logical(0), tags = list(type = "long")), ChildJobsInState = structure(list(structure(logical(0), tags = list(type = "long"))), tags = list(type = "map")), ResourceName = structure(logical(0), tags = list(type = "string")), MessageCategory = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_copy_jobs_output"]]))
 }
 
 .backup$list_frameworks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_frameworks_input"]]))
 }
 
 .backup$list_frameworks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Frameworks = structure(list(structure(list(FrameworkName = structure(logical(0), tags = list(type = "string")), FrameworkArn = structure(logical(0), tags = list(type = "string")), FrameworkDescription = structure(logical(0), tags = list(type = "string")), NumberOfControls = structure(logical(0), tags = list(type = "integer")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), DeploymentStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_frameworks_output"]]))
 }
 
 .backup$list_indexed_recovery_points_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), SourceResourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "sourceResourceArn", type = "string")), CreatedBefore = structure(logical(0), tags = list(location = "querystring", locationName = "createdBefore", type = "timestamp")), CreatedAfter = structure(logical(0), tags = list(location = "querystring", locationName = "createdAfter", type = "timestamp")), ResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "resourceType", type = "string")), IndexStatus = structure(logical(0), tags = list(location = "querystring", locationName = "indexStatus", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_indexed_recovery_points_input"]]))
 }
 
 .backup$list_indexed_recovery_points_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IndexedRecoveryPoints = structure(list(structure(list(RecoveryPointArn = structure(logical(0), tags = list(type = "string")), SourceResourceArn = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), BackupCreationDate = structure(logical(0), tags = list(type = "timestamp")), ResourceType = structure(logical(0), tags = list(type = "string")), IndexCreationDate = structure(logical(0), tags = list(type = "timestamp")), IndexStatus = structure(logical(0), tags = list(type = "string")), IndexStatusMessage = structure(logical(0), tags = list(type = "string")), BackupVaultArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_indexed_recovery_points_output"]]))
 }
 
 .backup$list_legal_holds_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_legal_holds_input"]]))
 }
 
 .backup$list_legal_holds_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), LegalHolds = structure(list(structure(list(Title = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LegalHoldId = structure(logical(0), tags = list(type = "string")), LegalHoldArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), CancellationDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_legal_holds_output"]]))
 }
 
 .backup$list_protected_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_protected_resources_input"]]))
 }
 
 .backup$list_protected_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Results = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), LastBackupTime = structure(logical(0), tags = list(type = "timestamp")), ResourceName = structure(logical(0), tags = list(type = "string")), LastBackupVaultArn = structure(logical(0), tags = list(type = "string")), LastRecoveryPointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_protected_resources_output"]]))
 }
 
 .backup$list_protected_resources_by_backup_vault_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), BackupVaultAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "backupVaultAccountId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_protected_resources_by_backup_vault_input"]]))
 }
 
 .backup$list_protected_resources_by_backup_vault_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Results = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), LastBackupTime = structure(logical(0), tags = list(type = "timestamp")), ResourceName = structure(logical(0), tags = list(type = "string")), LastBackupVaultArn = structure(logical(0), tags = list(type = "string")), LastRecoveryPointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_protected_resources_by_backup_vault_output"]]))
 }
 
 .backup$list_recovery_points_by_backup_vault_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), BackupVaultAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "backupVaultAccountId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), ByResourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceArn", type = "string")), ByResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "resourceType", type = "string")), ByBackupPlanId = structure(logical(0), tags = list(location = "querystring", locationName = "backupPlanId", type = "string")), ByCreatedBefore = structure(logical(0), tags = list(location = "querystring", locationName = "createdBefore", type = "timestamp")), ByCreatedAfter = structure(logical(0), tags = list(location = "querystring", locationName = "createdAfter", type = "timestamp")), ByParentRecoveryPointArn = structure(logical(0), tags = list(location = "querystring", locationName = "parentRecoveryPointArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_recovery_points_by_backup_vault_input"]]))
 }
 
 .backup$list_recovery_points_by_backup_vault_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), RecoveryPoints = structure(list(structure(list(RecoveryPointArn = structure(logical(0), tags = list(type = "string")), BackupVaultName = structure(logical(0), tags = list(type = "string")), BackupVaultArn = structure(logical(0), tags = list(type = "string")), SourceBackupVaultArn = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), CreatedBy = structure(list(BackupPlanId = structure(logical(0), tags = list(type = "string")), BackupPlanArn = structure(logical(0), tags = list(type = "string")), BackupPlanName = structure(logical(0), tags = list(type = "string")), BackupPlanVersion = structure(logical(0), tags = list(type = "string")), BackupRuleId = structure(logical(0), tags = list(type = "string")), BackupRuleName = structure(logical(0), tags = list(type = "string")), BackupRuleCron = structure(logical(0), tags = list(type = "string")), BackupRuleTimezone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IamRoleArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), CompletionDate = structure(logical(0), tags = list(type = "timestamp")), BackupSizeInBytes = structure(logical(0), tags = list(type = "long")), CalculatedLifecycle = structure(list(MoveToColdStorageAt = structure(logical(0), tags = list(type = "timestamp")), DeleteAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Lifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string")), IsEncrypted = structure(logical(0), tags = list(type = "boolean")), LastRestoreTime = structure(logical(0), tags = list(type = "timestamp")), ParentRecoveryPointArn = structure(logical(0), tags = list(type = "string")), CompositeMemberIdentifier = structure(logical(0), tags = list(type = "string")), IsParent = structure(logical(0), tags = list(type = "boolean")), ResourceName = structure(logical(0), tags = list(type = "string")), VaultType = structure(logical(0), tags = list(type = "string")), IndexStatus = structure(logical(0), tags = list(type = "string")), IndexStatusMessage = structure(logical(0), tags = list(type = "string")), EncryptionKeyType = structure(logical(0), tags = list(type = "string")), AggregatedScanResult = structure(list(FailedScan = structure(logical(0), tags = list(type = "boolean")), Findings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LastComputed = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_recovery_points_by_backup_vault_output"]]))
 }
 
 .backup$list_recovery_points_by_legal_hold_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LegalHoldId = structure(logical(0), tags = list(location = "uri", locationName = "legalHoldId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_recovery_points_by_legal_hold_input"]]))
 }
 
 .backup$list_recovery_points_by_legal_hold_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecoveryPoints = structure(list(structure(list(RecoveryPointArn = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), BackupVaultName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_recovery_points_by_legal_hold_output"]]))
 }
 
 .backup$list_recovery_points_by_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), ManagedByAWSBackupOnly = structure(logical(0), tags = list(location = "querystring", locationName = "managedByAWSBackupOnly", type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_recovery_points_by_resource_input"]]))
 }
 
 .backup$list_recovery_points_by_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), RecoveryPoints = structure(list(structure(list(RecoveryPointArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string")), BackupSizeBytes = structure(logical(0), tags = list(type = "long")), BackupVaultName = structure(logical(0), tags = list(type = "string")), IsParent = structure(logical(0), tags = list(type = "boolean")), ParentRecoveryPointArn = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string")), VaultType = structure(logical(0), tags = list(type = "string")), IndexStatus = structure(logical(0), tags = list(type = "string")), IndexStatusMessage = structure(logical(0), tags = list(type = "string")), EncryptionKeyType = structure(logical(0), tags = list(type = "string")), AggregatedScanResult = structure(list(FailedScan = structure(logical(0), tags = list(type = "boolean")), Findings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LastComputed = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_recovery_points_by_resource_output"]]))
 }
 
 .backup$list_report_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ByReportPlanName = structure(logical(0), tags = list(location = "querystring", locationName = "ReportPlanName", type = "string")), ByCreationBefore = structure(logical(0), tags = list(location = "querystring", locationName = "CreationBefore", type = "timestamp")), ByCreationAfter = structure(logical(0), tags = list(location = "querystring", locationName = "CreationAfter", type = "timestamp")), ByStatus = structure(logical(0), tags = list(location = "querystring", locationName = "Status", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_report_jobs_input"]]))
 }
 
 .backup$list_report_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportJobs = structure(list(structure(list(ReportJobId = structure(logical(0), tags = list(type = "string")), ReportPlanArn = structure(logical(0), tags = list(type = "string")), ReportTemplate = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), CompletionTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), ReportDestination = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3Keys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_report_jobs_output"]]))
 }
 
 .backup$list_report_plans_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_report_plans_input"]]))
 }
 
 .backup$list_report_plans_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportPlans = structure(list(structure(list(ReportPlanArn = structure(logical(0), tags = list(type = "string")), ReportPlanName = structure(logical(0), tags = list(type = "string")), ReportPlanDescription = structure(logical(0), tags = list(type = "string")), ReportSetting = structure(list(ReportTemplate = structure(logical(0), tags = list(type = "string")), FrameworkArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NumberOfFrameworks = structure(logical(0), tags = list(type = "integer")), Accounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OrganizationUnits = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ReportDeliveryChannel = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyPrefix = structure(logical(0), tags = list(type = "string")), Formats = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), DeploymentStatus = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastAttemptedExecutionTime = structure(logical(0), tags = list(type = "timestamp")), LastSuccessfulExecutionTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_report_plans_output"]]))
 }
 
 .backup$list_restore_access_backup_vaults_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_restore_access_backup_vaults_input"]]))
 }
 
 .backup$list_restore_access_backup_vaults_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), RestoreAccessBackupVaults = structure(list(structure(list(RestoreAccessBackupVaultArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), ApprovalDate = structure(logical(0), tags = list(type = "timestamp")), VaultState = structure(logical(0), tags = list(type = "string")), LatestRevokeRequest = structure(list(MpaSessionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), InitiationDate = structure(logical(0), tags = list(type = "timestamp")), ExpiryDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_restore_access_backup_vaults_output"]]))
 }
 
 .backup$list_restore_job_summaries_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "querystring", locationName = "AccountId", type = "string")), State = structure(logical(0), tags = list(location = "querystring", locationName = "State", type = "string")), ResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "ResourceType", type = "string")), AggregationPeriod = structure(logical(0), tags = list(location = "querystring", locationName = "AggregationPeriod", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_restore_job_summaries_input"]]))
 }
 
 .backup$list_restore_job_summaries_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreJobSummaries = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Count = structure(logical(0), tags = list(type = "integer")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), AggregationPeriod = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_restore_job_summaries_output"]]))
 }
 
 .backup$list_restore_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), ByAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "accountId", type = "string")), ByResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "resourceType", type = "string")), ByCreatedBefore = structure(logical(0), tags = list(location = "querystring", locationName = "createdBefore", type = "timestamp")), ByCreatedAfter = structure(logical(0), tags = list(location = "querystring", locationName = "createdAfter", type = "timestamp")), ByStatus = structure(logical(0), tags = list(location = "querystring", locationName = "status", type = "string")), ByCompleteBefore = structure(logical(0), tags = list(location = "querystring", locationName = "completeBefore", type = "timestamp")), ByCompleteAfter = structure(logical(0), tags = list(location = "querystring", locationName = "completeAfter", type = "timestamp")), ByRestoreTestingPlanArn = structure(logical(0), tags = list(location = "querystring", locationName = "restoreTestingPlanArn", type = "string")), ByParentJobId = structure(logical(0), tags = list(location = "querystring", locationName = "parentJobId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_restore_jobs_input"]]))
 }
 
 .backup$list_restore_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreJobs = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), RestoreJobId = structure(logical(0), tags = list(type = "string")), RecoveryPointArn = structure(logical(0), tags = list(type = "string")), SourceResourceArn = structure(logical(0), tags = list(type = "string")), BackupVaultArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), CompletionDate = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), PercentDone = structure(logical(0), tags = list(type = "string")), BackupSizeInBytes = structure(logical(0), tags = list(type = "long")), IamRoleArn = structure(logical(0), tags = list(type = "string")), ExpectedCompletionTimeMinutes = structure(logical(0), tags = list(type = "long")), CreatedResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), RecoveryPointCreationDate = structure(logical(0), tags = list(type = "timestamp")), IsParent = structure(logical(0), tags = list(type = "boolean")), ParentJobId = structure(logical(0), tags = list(type = "string")), CreatedBy = structure(list(RestoreTestingPlanArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ValidationStatus = structure(logical(0), tags = list(type = "string")), ValidationStatusMessage = structure(logical(0), tags = list(type = "string")), DeletionStatus = structure(logical(0), tags = list(type = "string")), DeletionStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_restore_jobs_output"]]))
 }
 
 .backup$list_restore_jobs_by_protected_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), ByStatus = structure(logical(0), tags = list(location = "querystring", locationName = "status", type = "string")), ByRecoveryPointCreationDateAfter = structure(logical(0), tags = list(location = "querystring", locationName = "recoveryPointCreationDateAfter", type = "timestamp")), ByRecoveryPointCreationDateBefore = structure(logical(0), tags = list(location = "querystring", locationName = "recoveryPointCreationDateBefore", type = "timestamp")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_restore_jobs_by_protected_resource_input"]]))
 }
 
 .backup$list_restore_jobs_by_protected_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreJobs = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), RestoreJobId = structure(logical(0), tags = list(type = "string")), RecoveryPointArn = structure(logical(0), tags = list(type = "string")), SourceResourceArn = structure(logical(0), tags = list(type = "string")), BackupVaultArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), CompletionDate = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), PercentDone = structure(logical(0), tags = list(type = "string")), BackupSizeInBytes = structure(logical(0), tags = list(type = "long")), IamRoleArn = structure(logical(0), tags = list(type = "string")), ExpectedCompletionTimeMinutes = structure(logical(0), tags = list(type = "long")), CreatedResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), RecoveryPointCreationDate = structure(logical(0), tags = list(type = "timestamp")), IsParent = structure(logical(0), tags = list(type = "boolean")), ParentJobId = structure(logical(0), tags = list(type = "string")), CreatedBy = structure(list(RestoreTestingPlanArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ValidationStatus = structure(logical(0), tags = list(type = "string")), ValidationStatusMessage = structure(logical(0), tags = list(type = "string")), DeletionStatus = structure(logical(0), tags = list(type = "string")), DeletionStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_restore_jobs_by_protected_resource_output"]]))
 }
 
 .backup$list_restore_testing_plans_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_restore_testing_plans_input"]]))
 }
 
 .backup$list_restore_testing_plans_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), RestoreTestingPlans = structure(list(structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastExecutionTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), RestoreTestingPlanArn = structure(logical(0), tags = list(type = "string")), RestoreTestingPlanName = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), ScheduleExpressionTimezone = structure(logical(0), tags = list(type = "string")), StartWindowHours = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_restore_testing_plans_output"]]))
 }
 
 .backup$list_restore_testing_selections_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), RestoreTestingPlanName = structure(logical(0), tags = list(location = "uri", locationName = "RestoreTestingPlanName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_restore_testing_selections_input"]]))
 }
 
 .backup$list_restore_testing_selections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), RestoreTestingSelections = structure(list(structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), IamRoleArn = structure(logical(0), tags = list(type = "string")), ProtectedResourceType = structure(logical(0), tags = list(type = "string")), RestoreTestingPlanName = structure(logical(0), tags = list(type = "string")), RestoreTestingSelectionName = structure(logical(0), tags = list(type = "string")), ValidationWindowHours = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_restore_testing_selections_output"]]))
 }
 
 .backup$list_scan_job_summaries_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "querystring", locationName = "AccountId", type = "string")), ResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "ResourceType", type = "string")), MalwareScanner = structure(logical(0), tags = list(location = "querystring", locationName = "MalwareScanner", type = "string")), ScanResultStatus = structure(logical(0), tags = list(location = "querystring", locationName = "ScanResultStatus", type = "string")), State = structure(logical(0), tags = list(location = "querystring", locationName = "State", type = "string")), AggregationPeriod = structure(logical(0), tags = list(location = "querystring", locationName = "AggregationPeriod", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_scan_job_summaries_input"]]))
 }
 
 .backup$list_scan_job_summaries_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ScanJobSummaries = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Count = structure(logical(0), tags = list(type = "integer")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), MalwareScanner = structure(logical(0), tags = list(type = "string")), ScanResultStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AggregationPeriod = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_scan_job_summaries_output"]]))
 }
 
 .backup$list_scan_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ByAccountId = structure(logical(0), tags = list(location = "querystring", locationName = "ByAccountId", type = "string")), ByBackupVaultName = structure(logical(0), tags = list(location = "querystring", locationName = "ByBackupVaultName", type = "string")), ByCompleteAfter = structure(logical(0), tags = list(location = "querystring", locationName = "ByCompleteAfter", type = "timestamp")), ByCompleteBefore = structure(logical(0), tags = list(location = "querystring", locationName = "ByCompleteBefore", type = "timestamp")), ByMalwareScanner = structure(logical(0), tags = list(location = "querystring", locationName = "ByMalwareScanner", type = "string")), ByRecoveryPointArn = structure(logical(0), tags = list(location = "querystring", locationName = "ByRecoveryPointArn", type = "string")), ByResourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "ByResourceArn", type = "string")), ByResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "ByResourceType", type = "string")), ByScanResultStatus = structure(logical(0), tags = list(location = "querystring", locationName = "ByScanResultStatus", type = "string")), ByState = structure(logical(0), tags = list(location = "querystring", locationName = "ByState", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_scan_jobs_input"]]))
 }
 
 .backup$list_scan_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ScanJobs = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), BackupVaultArn = structure(logical(0), tags = list(type = "string")), BackupVaultName = structure(logical(0), tags = list(type = "string")), CompletionDate = structure(logical(0), tags = list(type = "timestamp")), ContinuousScanEndTime = structure(logical(0), tags = list(type = "timestamp")), ContinuousScanStartTime = structure(logical(0), tags = list(type = "timestamp")), CreatedBy = structure(list(BackupPlanArn = structure(logical(0), tags = list(type = "string")), BackupPlanId = structure(logical(0), tags = list(type = "string")), BackupPlanVersion = structure(logical(0), tags = list(type = "string")), BackupRuleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), IamRoleArn = structure(logical(0), tags = list(type = "string")), MalwareScanner = structure(logical(0), tags = list(type = "string")), RecoveryPointArn = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ScanBaseRecoveryPointArn = structure(logical(0), tags = list(type = "string")), ScanId = structure(logical(0), tags = list(type = "string")), ScanJobId = structure(logical(0), tags = list(type = "string")), ScanMode = structure(logical(0), tags = list(type = "string")), ScanResult = structure(list(ScanResultStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ScannerRoleArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_scan_jobs_output"]]))
 }
 
 .backup$list_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_tags_input"]]))
 }
 
 .backup$list_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_tags_output"]]))
 }
 
 .backup$list_tiering_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_tiering_configurations_input"]]))
 }
 
 .backup$list_tiering_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TieringConfigurations = structure(list(structure(list(TieringConfigurationArn = structure(logical(0), tags = list(type = "string")), TieringConfigurationName = structure(logical(0), tags = list(type = "string")), BackupVaultName = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["list_tiering_configurations_output"]]))
 }
 
 .backup$put_backup_vault_access_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["put_backup_vault_access_policy_input"]]))
 }
 
 .backup$put_backup_vault_access_policy_output <- function(...) {
@@ -1017,8 +918,7 @@ NULL
 
 .backup$put_backup_vault_lock_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), MinRetentionDays = structure(logical(0), tags = list(type = "long")), MaxRetentionDays = structure(logical(0), tags = list(type = "long")), ChangeableForDays = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["put_backup_vault_lock_configuration_input"]]))
 }
 
 .backup$put_backup_vault_lock_configuration_output <- function(...) {
@@ -1027,8 +927,7 @@ NULL
 
 .backup$put_backup_vault_notifications_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), SNSTopicArn = structure(logical(0), tags = list(type = "string")), BackupVaultEvents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["put_backup_vault_notifications_input"]]))
 }
 
 .backup$put_backup_vault_notifications_output <- function(...) {
@@ -1037,8 +936,7 @@ NULL
 
 .backup$put_restore_validation_result_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreJobId = structure(logical(0), tags = list(location = "uri", locationName = "restoreJobId", type = "string")), ValidationStatus = structure(logical(0), tags = list(type = "string")), ValidationStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["put_restore_validation_result_input"]]))
 }
 
 .backup$put_restore_validation_result_output <- function(...) {
@@ -1047,8 +945,7 @@ NULL
 
 .backup$revoke_restore_access_backup_vault_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), RestoreAccessBackupVaultArn = structure(logical(0), tags = list(location = "uri", locationName = "restoreAccessBackupVaultArn", type = "string")), RequesterComment = structure(logical(0), tags = list(location = "querystring", locationName = "requesterComment", type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["revoke_restore_access_backup_vault_input"]]))
 }
 
 .backup$revoke_restore_access_backup_vault_output <- function(...) {
@@ -1057,68 +954,57 @@ NULL
 
 .backup$start_backup_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(type = "string")), LogicallyAirGappedBackupVaultArn = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), StartWindowMinutes = structure(logical(0), tags = list(type = "long")), CompleteWindowMinutes = structure(logical(0), tags = list(type = "long")), Lifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RecoveryPointTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), BackupOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Index = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["start_backup_job_input"]]))
 }
 
 .backup$start_backup_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupJobId = structure(logical(0), tags = list(type = "string")), RecoveryPointArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), IsParent = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["start_backup_job_output"]]))
 }
 
 .backup$start_copy_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecoveryPointArn = structure(logical(0), tags = list(type = "string")), SourceBackupVaultName = structure(logical(0), tags = list(type = "string")), DestinationBackupVaultArn = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Lifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["start_copy_job_input"]]))
 }
 
 .backup$start_copy_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CopyJobId = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), IsParent = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["start_copy_job_output"]]))
 }
 
 .backup$start_report_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportPlanName = structure(logical(0), tags = list(location = "uri", locationName = "reportPlanName", type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["start_report_job_input"]]))
 }
 
 .backup$start_report_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportJobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["start_report_job_output"]]))
 }
 
 .backup$start_restore_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RecoveryPointArn = structure(logical(0), tags = list(type = "string")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), IamRoleArn = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), CopySourceTagsToRestoredResource = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["start_restore_job_input"]]))
 }
 
 .backup$start_restore_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreJobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["start_restore_job_output"]]))
 }
 
 .backup$start_scan_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(type = "string")), ContinuousScanEndTime = structure(logical(0), tags = list(type = "timestamp")), IamRoleArn = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(type = "string")), MalwareScanner = structure(logical(0), tags = list(type = "string")), RecoveryPointArn = structure(logical(0), tags = list(type = "string")), ScanBaseRecoveryPointArn = structure(logical(0), tags = list(type = "string")), ScanMode = structure(logical(0), tags = list(type = "string")), ScannerRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["start_scan_job_input"]]))
 }
 
 .backup$start_scan_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp")), ScanJobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["start_scan_job_output"]]))
 }
 
 .backup$stop_backup_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupJobId = structure(logical(0), tags = list(location = "uri", locationName = "backupJobId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["stop_backup_job_input"]]))
 }
 
 .backup$stop_backup_job_output <- function(...) {
@@ -1127,8 +1013,7 @@ NULL
 
 .backup$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["tag_resource_input"]]))
 }
 
 .backup$tag_resource_output <- function(...) {
@@ -1137,8 +1022,7 @@ NULL
 
 .backup$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), TagKeyList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["untag_resource_input"]]))
 }
 
 .backup$untag_resource_output <- function(...) {
@@ -1147,32 +1031,27 @@ NULL
 
 .backup$update_backup_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlanId = structure(logical(0), tags = list(location = "uri", locationName = "backupPlanId", type = "string")), BackupPlan = structure(list(BackupPlanName = structure(logical(0), tags = list(type = "string")), Rules = structure(list(structure(list(RuleName = structure(logical(0), tags = list(type = "string")), TargetBackupVaultName = structure(logical(0), tags = list(type = "string")), TargetLogicallyAirGappedBackupVaultArn = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), StartWindowMinutes = structure(logical(0), tags = list(type = "long")), CompletionWindowMinutes = structure(logical(0), tags = list(type = "long")), Lifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RecoveryPointTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), CopyActions = structure(list(structure(list(Lifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationBackupVaultArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EnableContinuousBackup = structure(logical(0), tags = list(type = "boolean")), ScheduleExpressionTimezone = structure(logical(0), tags = list(type = "string")), IndexActions = structure(list(structure(list(ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ScanActions = structure(list(structure(list(MalwareScanner = structure(logical(0), tags = list(type = "string")), ScanMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), AdvancedBackupSettings = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), BackupOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), ScanSettings = structure(list(structure(list(MalwareScanner = structure(logical(0), tags = list(type = "string")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ScannerRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_backup_plan_input"]]))
 }
 
 .backup$update_backup_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupPlanId = structure(logical(0), tags = list(type = "string")), BackupPlanArn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), VersionId = structure(logical(0), tags = list(type = "string")), AdvancedBackupSettings = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), BackupOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), ScanSettings = structure(list(structure(list(MalwareScanner = structure(logical(0), tags = list(type = "string")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ScannerRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_backup_plan_output"]]))
 }
 
 .backup$update_framework_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FrameworkName = structure(logical(0), tags = list(location = "uri", locationName = "frameworkName", type = "string")), FrameworkDescription = structure(logical(0), tags = list(type = "string")), FrameworkControls = structure(list(structure(list(ControlName = structure(logical(0), tags = list(type = "string")), ControlInputParameters = structure(list(structure(list(ParameterName = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ControlScope = structure(list(ComplianceResourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ComplianceResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_framework_input"]]))
 }
 
 .backup$update_framework_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FrameworkName = structure(logical(0), tags = list(type = "string")), FrameworkArn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_framework_output"]]))
 }
 
 .backup$update_global_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GlobalSettings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_global_settings_input"]]))
 }
 
 .backup$update_global_settings_output <- function(...) {
@@ -1181,32 +1060,27 @@ NULL
 
 .backup$update_recovery_point_index_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), RecoveryPointArn = structure(logical(0), tags = list(location = "uri", locationName = "recoveryPointArn", type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), Index = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_recovery_point_index_settings_input"]]))
 }
 
 .backup$update_recovery_point_index_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(type = "string")), RecoveryPointArn = structure(logical(0), tags = list(type = "string")), IndexStatus = structure(logical(0), tags = list(type = "string")), Index = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_recovery_point_index_settings_output"]]))
 }
 
 .backup$update_recovery_point_lifecycle_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultName = structure(logical(0), tags = list(location = "uri", locationName = "backupVaultName", type = "string")), RecoveryPointArn = structure(logical(0), tags = list(location = "uri", locationName = "recoveryPointArn", type = "string")), Lifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_recovery_point_lifecycle_input"]]))
 }
 
 .backup$update_recovery_point_lifecycle_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BackupVaultArn = structure(logical(0), tags = list(type = "string")), RecoveryPointArn = structure(logical(0), tags = list(type = "string")), Lifecycle = structure(list(MoveToColdStorageAfterDays = structure(logical(0), tags = list(type = "long")), DeleteAfterDays = structure(logical(0), tags = list(type = "long")), OptInToArchiveForSupportedResources = structure(logical(0), tags = list(type = "boolean")), DeleteAfterEvent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CalculatedLifecycle = structure(list(MoveToColdStorageAt = structure(logical(0), tags = list(type = "timestamp")), DeleteAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_recovery_point_lifecycle_output"]]))
 }
 
 .backup$update_region_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceTypeOptInPreference = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map")), ResourceTypeManagementPreference = structure(list(structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_region_settings_input"]]))
 }
 
 .backup$update_region_settings_output <- function(...) {
@@ -1215,48 +1089,40 @@ NULL
 
 .backup$update_report_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportPlanName = structure(logical(0), tags = list(location = "uri", locationName = "reportPlanName", type = "string")), ReportPlanDescription = structure(logical(0), tags = list(type = "string")), ReportDeliveryChannel = structure(list(S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyPrefix = structure(logical(0), tags = list(type = "string")), Formats = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ReportSetting = structure(list(ReportTemplate = structure(logical(0), tags = list(type = "string")), FrameworkArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NumberOfFrameworks = structure(logical(0), tags = list(type = "integer")), Accounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OrganizationUnits = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_report_plan_input"]]))
 }
 
 .backup$update_report_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportPlanName = structure(logical(0), tags = list(type = "string")), ReportPlanArn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_report_plan_output"]]))
 }
 
 .backup$update_restore_testing_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreTestingPlan = structure(list(RecoveryPointSelection = structure(list(Algorithm = structure(logical(0), tags = list(type = "string")), ExcludeVaults = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IncludeVaults = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RecoveryPointTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SelectionWindowDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), ScheduleExpressionTimezone = structure(logical(0), tags = list(type = "string")), StartWindowHours = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), RestoreTestingPlanName = structure(logical(0), tags = list(location = "uri", locationName = "RestoreTestingPlanName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_restore_testing_plan_input"]]))
 }
 
 .backup$update_restore_testing_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), RestoreTestingPlanArn = structure(logical(0), tags = list(type = "string")), RestoreTestingPlanName = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_restore_testing_plan_output"]]))
 }
 
 .backup$update_restore_testing_selection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RestoreTestingPlanName = structure(logical(0), tags = list(location = "uri", locationName = "RestoreTestingPlanName", type = "string")), RestoreTestingSelection = structure(list(IamRoleArn = structure(logical(0), tags = list(type = "string")), ProtectedResourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ProtectedResourceConditions = structure(list(StringEquals = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), StringNotEquals = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), RestoreMetadataOverrides = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), ValidationWindowHours = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), RestoreTestingSelectionName = structure(logical(0), tags = list(location = "uri", locationName = "RestoreTestingSelectionName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_restore_testing_selection_input"]]))
 }
 
 .backup$update_restore_testing_selection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), RestoreTestingPlanArn = structure(logical(0), tags = list(type = "string")), RestoreTestingPlanName = structure(logical(0), tags = list(type = "string")), RestoreTestingSelectionName = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_restore_testing_selection_output"]]))
 }
 
 .backup$update_tiering_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TieringConfigurationName = structure(logical(0), tags = list(location = "uri", locationName = "tieringConfigurationName", type = "string")), TieringConfiguration = structure(list(ResourceSelection = structure(list(structure(list(Resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TieringDownSettingsInDays = structure(logical(0), tags = list(type = "integer")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), BackupVaultName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_tiering_configuration_input"]]))
 }
 
 .backup$update_tiering_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TieringConfigurationArn = structure(logical(0), tags = list(type = "string")), TieringConfigurationName = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .backup_shapes[["update_tiering_configuration_output"]]))
 }

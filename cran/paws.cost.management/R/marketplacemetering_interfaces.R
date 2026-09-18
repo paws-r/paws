@@ -5,48 +5,40 @@ NULL
 
 .marketplacemetering$batch_meter_usage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UsageRecords = structure(list(structure(list(Timestamp = structure(logical(0), tags = list(type = "timestamp")), CustomerIdentifier = structure(logical(0), tags = list(type = "string")), Dimension = structure(logical(0), tags = list(type = "string")), Quantity = structure(logical(0), tags = list(type = "integer")), UsageAllocations = structure(list(structure(list(AllocatedUsageQuantity = structure(logical(0), tags = list(type = "integer")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), CustomerAWSAccountId = structure(logical(0), tags = list(type = "string")), LicenseArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ProductCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacemetering_shapes[["batch_meter_usage_input"]]))
 }
 
 .marketplacemetering$batch_meter_usage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Results = structure(list(structure(list(UsageRecord = structure(list(Timestamp = structure(logical(0), tags = list(type = "timestamp")), CustomerIdentifier = structure(logical(0), tags = list(type = "string")), Dimension = structure(logical(0), tags = list(type = "string")), Quantity = structure(logical(0), tags = list(type = "integer")), UsageAllocations = structure(list(structure(list(AllocatedUsageQuantity = structure(logical(0), tags = list(type = "integer")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), CustomerAWSAccountId = structure(logical(0), tags = list(type = "string")), LicenseArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MeteringRecordId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UnprocessedRecords = structure(list(structure(list(Timestamp = structure(logical(0), tags = list(type = "timestamp")), CustomerIdentifier = structure(logical(0), tags = list(type = "string")), Dimension = structure(logical(0), tags = list(type = "string")), Quantity = structure(logical(0), tags = list(type = "integer")), UsageAllocations = structure(list(structure(list(AllocatedUsageQuantity = structure(logical(0), tags = list(type = "integer")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), CustomerAWSAccountId = structure(logical(0), tags = list(type = "string")), LicenseArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacemetering_shapes[["batch_meter_usage_output"]]))
 }
 
 .marketplacemetering$meter_usage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProductCode = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), UsageDimension = structure(logical(0), tags = list(type = "string")), UsageQuantity = structure(logical(0), tags = list(type = "integer")), DryRun = structure(logical(0), tags = list(type = "boolean")), UsageAllocations = structure(list(structure(list(AllocatedUsageQuantity = structure(logical(0), tags = list(type = "integer")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacemetering_shapes[["meter_usage_input"]]))
 }
 
 .marketplacemetering$meter_usage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MeteringRecordId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacemetering_shapes[["meter_usage_output"]]))
 }
 
 .marketplacemetering$register_usage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProductCode = structure(logical(0), tags = list(type = "string")), PublicKeyVersion = structure(logical(0), tags = list(type = "integer")), Nonce = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacemetering_shapes[["register_usage_input"]]))
 }
 
 .marketplacemetering$register_usage_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PublicKeyRotationTimestamp = structure(logical(0), tags = list(type = "timestamp")), Signature = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacemetering_shapes[["register_usage_output"]]))
 }
 
 .marketplacemetering$resolve_customer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RegistrationToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacemetering_shapes[["resolve_customer_input"]]))
 }
 
 .marketplacemetering$resolve_customer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CustomerIdentifier = structure(logical(0), tags = list(type = "string")), ProductCode = structure(logical(0), tags = list(type = "string")), CustomerAWSAccountId = structure(logical(0), tags = list(type = "string")), LicenseArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .marketplacemetering_shapes[["resolve_customer_output"]]))
 }

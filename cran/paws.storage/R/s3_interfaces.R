@@ -5,56 +5,47 @@ NULL
 
 .s3$abort_multipart_upload_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), UploadId = structure(logical(0), tags = list(location = "querystring", locationName = "uploadId", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), IfMatchInitiatedTime = structure(logical(0), tags = list(location = "header", locationName = "x-amz-if-match-initiated-time", type = "timestamp", timestampFormat = "rfc822"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["abort_multipart_upload_input"]]))
 }
 
 .s3$abort_multipart_upload_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["abort_multipart_upload_output"]]))
 }
 
 .s3$complete_multipart_upload_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), MultipartUpload = structure(list(Parts = structure(list(structure(list(ETag = structure(logical(0), tags = list(type = "string")), ChecksumCRC32 = structure(logical(0), tags = list(type = "string")), ChecksumCRC32C = structure(logical(0), tags = list(type = "string")), ChecksumCRC64NVME = structure(logical(0), tags = list(type = "string")), ChecksumSHA1 = structure(logical(0), tags = list(type = "string")), ChecksumSHA256 = structure(logical(0), tags = list(type = "string")), ChecksumSHA512 = structure(logical(0), tags = list(type = "string")), ChecksumMD5 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH64 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH3 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH128 = structure(logical(0), tags = list(type = "string")), PartNumber = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(locationName = "Part", type = "list", flattened = TRUE))), tags = list(locationName = "CompleteMultipartUpload", type = "structure")), UploadId = structure(logical(0), tags = list(location = "querystring", locationName = "uploadId", type = "string")), ChecksumCRC32 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc32", type = "string")), ChecksumCRC32C = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc32c", type = "string")), ChecksumCRC64NVME = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc64nvme", type = "string")), ChecksumSHA1 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha1", type = "string")), ChecksumSHA256 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha256", type = "string")), ChecksumSHA512 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha512", type = "string")), ChecksumMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-md5", type = "string")), ChecksumXXHASH64 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash64", type = "string")), ChecksumXXHASH3 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash3", type = "string")), ChecksumXXHASH128 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash128", type = "string")), ChecksumType = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-type", type = "string")), MpuObjectSize = structure(logical(0), tags = list(location = "header", locationName = "x-amz-mp-object-size", type = "long")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), IfMatch = structure(logical(0), tags = list(location = "header", locationName = "If-Match", type = "string")), IfNoneMatch = structure(logical(0), tags = list(location = "header", locationName = "If-None-Match", type = "string")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKey = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key", type = "string", sensitive = TRUE)), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string"))), tags = list(type = "structure", payload = "MultipartUpload"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["complete_multipart_upload_input"]]))
 }
 
 .s3$complete_multipart_upload_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Location = structure(logical(0), tags = list(type = "string")), Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expiration", type = "string")), ETag = structure(logical(0), tags = list(type = "string")), ChecksumCRC32 = structure(logical(0), tags = list(type = "string")), ChecksumCRC32C = structure(logical(0), tags = list(type = "string")), ChecksumCRC64NVME = structure(logical(0), tags = list(type = "string")), ChecksumSHA1 = structure(logical(0), tags = list(type = "string")), ChecksumSHA256 = structure(logical(0), tags = list(type = "string")), ChecksumSHA512 = structure(logical(0), tags = list(type = "string")), ChecksumMD5 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH64 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH3 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH128 = structure(logical(0), tags = list(type = "string")), ChecksumType = structure(logical(0), tags = list(type = "string")), ServerSideEncryption = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption", type = "string")), VersionId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-version-id", type = "string")), SSEKMSKeyId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-aws-kms-key-id", type = "string", sensitive = TRUE)), BucketKeyEnabled = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-bucket-key-enabled", type = "boolean", box = TRUE)), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["complete_multipart_upload_output"]]))
 }
 
 .s3$copy_object_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ACL = structure(logical(0), tags = list(location = "header", locationName = "x-amz-acl", type = "string")), Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), CacheControl = structure(logical(0), tags = list(location = "header", locationName = "Cache-Control", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-algorithm", type = "string")), ContentDisposition = structure(logical(0), tags = list(location = "header", locationName = "Content-Disposition", type = "string")), ContentEncoding = structure(logical(0), tags = list(location = "header", locationName = "Content-Encoding", type = "string")), ContentLanguage = structure(logical(0), tags = list(location = "header", locationName = "Content-Language", type = "string")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), CopySource = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source", type = "string")), CopySourceIfMatch = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-if-match", type = "string")), CopySourceIfModifiedSince = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-if-modified-since", type = "timestamp")), CopySourceIfNoneMatch = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-if-none-match", type = "string")), CopySourceIfUnmodifiedSince = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-if-unmodified-since", type = "timestamp")), Expires = structure(logical(0), tags = list(location = "header", locationName = "Expires", type = "string")), GrantFullControl = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-full-control", type = "string")), GrantRead = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-read", type = "string")), GrantReadACP = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-read-acp", type = "string")), GrantWriteACP = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-write-acp", type = "string")), IfMatch = structure(logical(0), tags = list(location = "header", locationName = "If-Match", type = "string")), IfNoneMatch = structure(logical(0), tags = list(location = "header", locationName = "If-None-Match", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "headers", locationName = "x-amz-meta-", type = "map")), MetadataDirective = structure(logical(0), tags = list(location = "header", locationName = "x-amz-metadata-directive", type = "string")), TaggingDirective = structure(logical(0), tags = list(location = "header", locationName = "x-amz-tagging-directive", type = "string")), ServerSideEncryption = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption", type = "string")), StorageClass = structure(logical(0), tags = list(location = "header", locationName = "x-amz-storage-class", type = "string")), WebsiteRedirectLocation = structure(logical(0), tags = list(location = "header", locationName = "x-amz-website-redirect-location", type = "string")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKey = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key", type = "string", sensitive = TRUE)), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string")), SSEKMSKeyId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-aws-kms-key-id", type = "string", sensitive = TRUE)), SSEKMSEncryptionContext = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-context", type = "string", sensitive = TRUE)), BucketKeyEnabled = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-bucket-key-enabled", type = "boolean", box = TRUE)), CopySourceSSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-server-side-encryption-customer-algorithm", type = "string")), CopySourceSSECustomerKey = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-server-side-encryption-customer-key", type = "string", sensitive = TRUE)), CopySourceSSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-server-side-encryption-customer-key-MD5", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), Tagging = structure(logical(0), tags = list(location = "header", locationName = "x-amz-tagging", type = "string")), ObjectLockMode = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-lock-mode", type = "string")), ObjectLockRetainUntilDate = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-lock-retain-until-date", type = "timestamp", timestampFormat = "iso8601")), ObjectLockLegalHoldStatus = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-lock-legal-hold", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), ExpectedSourceBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-source-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["copy_object_input"]]))
 }
 
 .s3$copy_object_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CopyObjectResult = structure(list(ETag = structure(logical(0), tags = list(type = "string")), LastModified = structure(logical(0), tags = list(type = "timestamp")), ChecksumType = structure(logical(0), tags = list(type = "string")), ChecksumCRC32 = structure(logical(0), tags = list(type = "string")), ChecksumCRC32C = structure(logical(0), tags = list(type = "string")), ChecksumCRC64NVME = structure(logical(0), tags = list(type = "string")), ChecksumSHA1 = structure(logical(0), tags = list(type = "string")), ChecksumSHA256 = structure(logical(0), tags = list(type = "string")), ChecksumSHA512 = structure(logical(0), tags = list(type = "string")), ChecksumMD5 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH64 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH3 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH128 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Expiration = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expiration", type = "string")), CopySourceVersionId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-version-id", type = "string")), VersionId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-version-id", type = "string")), ServerSideEncryption = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption", type = "string")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string")), SSEKMSKeyId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-aws-kms-key-id", type = "string", sensitive = TRUE)), SSEKMSEncryptionContext = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-context", type = "string", sensitive = TRUE)), BucketKeyEnabled = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-bucket-key-enabled", type = "boolean", box = TRUE)), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure", payload = "CopyObjectResult"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["copy_object_output"]]))
 }
 
 .s3$create_bucket_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ACL = structure(logical(0), tags = list(location = "header", locationName = "x-amz-acl", type = "string")), Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), CreateBucketConfiguration = structure(list(LocationConstraint = structure(logical(0), tags = list(type = "string")), Location = structure(list(Type = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Bucket = structure(list(DataRedundancy = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", type = "list"))), tags = list(locationName = "CreateBucketConfiguration", type = "structure")), GrantFullControl = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-full-control", type = "string")), GrantRead = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-read", type = "string")), GrantReadACP = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-read-acp", type = "string")), GrantWrite = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-write", type = "string")), GrantWriteACP = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-write-acp", type = "string")), ObjectLockEnabledForBucket = structure(logical(0), tags = list(location = "header", locationName = "x-amz-bucket-object-lock-enabled", type = "boolean", box = TRUE)), ObjectOwnership = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-ownership", type = "string")), BucketNamespace = structure(logical(0), tags = list(location = "header", locationName = "x-amz-bucket-namespace", type = "string"))), tags = list(type = "structure", payload = "CreateBucketConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["create_bucket_input"]]))
 }
 
 .s3$create_bucket_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Location = structure(logical(0), tags = list(location = "header", locationName = "Location", type = "string")), BucketArn = structure(logical(0), tags = list(location = "header", locationName = "x-amz-bucket-arn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["create_bucket_output"]]))
 }
 
 .s3$create_bucket_metadata_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), MetadataConfiguration = structure(list(JournalTableConfiguration = structure(list(RecordExpiration = structure(list(Expiration = structure(logical(0), tags = list(type = "string")), Days = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure")), EncryptionConfiguration = structure(list(SseAlgorithm = structure(logical(0), tags = list(type = "string")), KmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), InventoryTableConfiguration = structure(list(ConfigurationState = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(SseAlgorithm = structure(logical(0), tags = list(type = "string")), KmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "MetadataConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "MetadataConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["create_bucket_metadata_configuration_input"]]))
 }
 
 .s3$create_bucket_metadata_configuration_output <- function(...) {
@@ -63,8 +54,7 @@ NULL
 
 .s3$create_bucket_metadata_table_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), MetadataTableConfiguration = structure(list(S3TablesDestination = structure(list(TableBucketArn = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "MetadataTableConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "MetadataTableConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["create_bucket_metadata_table_configuration_input"]]))
 }
 
 .s3$create_bucket_metadata_table_configuration_output <- function(...) {
@@ -73,32 +63,27 @@ NULL
 
 .s3$create_multipart_upload_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ACL = structure(logical(0), tags = list(location = "header", locationName = "x-amz-acl", type = "string")), Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), CacheControl = structure(logical(0), tags = list(location = "header", locationName = "Cache-Control", type = "string")), ContentDisposition = structure(logical(0), tags = list(location = "header", locationName = "Content-Disposition", type = "string")), ContentEncoding = structure(logical(0), tags = list(location = "header", locationName = "Content-Encoding", type = "string")), ContentLanguage = structure(logical(0), tags = list(location = "header", locationName = "Content-Language", type = "string")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), Expires = structure(logical(0), tags = list(location = "header", locationName = "Expires", type = "string")), GrantFullControl = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-full-control", type = "string")), GrantRead = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-read", type = "string")), GrantReadACP = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-read-acp", type = "string")), GrantWriteACP = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-write-acp", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "headers", locationName = "x-amz-meta-", type = "map")), ServerSideEncryption = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption", type = "string")), StorageClass = structure(logical(0), tags = list(location = "header", locationName = "x-amz-storage-class", type = "string")), WebsiteRedirectLocation = structure(logical(0), tags = list(location = "header", locationName = "x-amz-website-redirect-location", type = "string")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKey = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key", type = "string", sensitive = TRUE)), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string")), SSEKMSKeyId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-aws-kms-key-id", type = "string", sensitive = TRUE)), SSEKMSEncryptionContext = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-context", type = "string", sensitive = TRUE)), BucketKeyEnabled = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-bucket-key-enabled", type = "boolean", box = TRUE)), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), Tagging = structure(logical(0), tags = list(location = "header", locationName = "x-amz-tagging", type = "string")), ObjectLockMode = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-lock-mode", type = "string")), ObjectLockRetainUntilDate = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-lock-retain-until-date", type = "timestamp", timestampFormat = "iso8601")), ObjectLockLegalHoldStatus = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-lock-legal-hold", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-algorithm", type = "string")), ChecksumType = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-type", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["create_multipart_upload_input"]]))
 }
 
 .s3$create_multipart_upload_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AbortDate = structure(logical(0), tags = list(location = "header", locationName = "x-amz-abort-date", type = "timestamp")), AbortRuleId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-abort-rule-id", type = "string")), Bucket = structure(logical(0), tags = list(locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(type = "string")), UploadId = structure(logical(0), tags = list(type = "string")), ServerSideEncryption = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption", type = "string")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string")), SSEKMSKeyId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-aws-kms-key-id", type = "string", sensitive = TRUE)), SSEKMSEncryptionContext = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-context", type = "string", sensitive = TRUE)), BucketKeyEnabled = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-bucket-key-enabled", type = "boolean", box = TRUE)), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-algorithm", type = "string")), ChecksumType = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-type", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["create_multipart_upload_output"]]))
 }
 
 .s3$create_session_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SessionMode = structure(logical(0), tags = list(location = "header", locationName = "x-amz-create-session-mode", type = "string")), Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ServerSideEncryption = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption", type = "string")), SSEKMSKeyId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-aws-kms-key-id", type = "string", sensitive = TRUE)), SSEKMSEncryptionContext = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-context", type = "string", sensitive = TRUE)), BucketKeyEnabled = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-bucket-key-enabled", type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["create_session_input"]]))
 }
 
 .s3$create_session_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServerSideEncryption = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption", type = "string")), SSEKMSKeyId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-aws-kms-key-id", type = "string", sensitive = TRUE)), SSEKMSEncryptionContext = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-context", type = "string", sensitive = TRUE)), BucketKeyEnabled = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-bucket-key-enabled", type = "boolean", box = TRUE)), Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(locationName = "AccessKeyId", type = "string")), SecretAccessKey = structure(logical(0), tags = list(locationName = "SecretAccessKey", type = "string", sensitive = TRUE)), SessionToken = structure(logical(0), tags = list(locationName = "SessionToken", type = "string", sensitive = TRUE)), Expiration = structure(logical(0), tags = list(locationName = "Expiration", type = "timestamp"))), tags = list(locationName = "Credentials", type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["create_session_output"]]))
 }
 
 .s3$delete_bucket_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_bucket_input"]]))
 }
 
 .s3$delete_bucket_output <- function(...) {
@@ -107,8 +92,7 @@ NULL
 
 .s3$delete_bucket_analytics_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Id = structure(logical(0), tags = list(location = "querystring", locationName = "id", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_bucket_analytics_configuration_input"]]))
 }
 
 .s3$delete_bucket_analytics_configuration_output <- function(...) {
@@ -117,8 +101,7 @@ NULL
 
 .s3$delete_bucket_cors_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_bucket_cors_input"]]))
 }
 
 .s3$delete_bucket_cors_output <- function(...) {
@@ -127,8 +110,7 @@ NULL
 
 .s3$delete_bucket_encryption_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_bucket_encryption_input"]]))
 }
 
 .s3$delete_bucket_encryption_output <- function(...) {
@@ -137,8 +119,7 @@ NULL
 
 .s3$delete_bucket_intelligent_tiering_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Id = structure(logical(0), tags = list(location = "querystring", locationName = "id", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_bucket_intelligent_tiering_configuration_input"]]))
 }
 
 .s3$delete_bucket_intelligent_tiering_configuration_output <- function(...) {
@@ -147,8 +128,7 @@ NULL
 
 .s3$delete_bucket_inventory_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Id = structure(logical(0), tags = list(location = "querystring", locationName = "id", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_bucket_inventory_configuration_input"]]))
 }
 
 .s3$delete_bucket_inventory_configuration_output <- function(...) {
@@ -157,8 +137,7 @@ NULL
 
 .s3$delete_bucket_lifecycle_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_bucket_lifecycle_input"]]))
 }
 
 .s3$delete_bucket_lifecycle_output <- function(...) {
@@ -167,8 +146,7 @@ NULL
 
 .s3$delete_bucket_metadata_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_bucket_metadata_configuration_input"]]))
 }
 
 .s3$delete_bucket_metadata_configuration_output <- function(...) {
@@ -177,8 +155,7 @@ NULL
 
 .s3$delete_bucket_metadata_table_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_bucket_metadata_table_configuration_input"]]))
 }
 
 .s3$delete_bucket_metadata_table_configuration_output <- function(...) {
@@ -187,8 +164,7 @@ NULL
 
 .s3$delete_bucket_metrics_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Id = structure(logical(0), tags = list(location = "querystring", locationName = "id", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_bucket_metrics_configuration_input"]]))
 }
 
 .s3$delete_bucket_metrics_configuration_output <- function(...) {
@@ -197,8 +173,7 @@ NULL
 
 .s3$delete_bucket_ownership_controls_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_bucket_ownership_controls_input"]]))
 }
 
 .s3$delete_bucket_ownership_controls_output <- function(...) {
@@ -207,8 +182,7 @@ NULL
 
 .s3$delete_bucket_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_bucket_policy_input"]]))
 }
 
 .s3$delete_bucket_policy_output <- function(...) {
@@ -217,8 +191,7 @@ NULL
 
 .s3$delete_bucket_replication_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_bucket_replication_input"]]))
 }
 
 .s3$delete_bucket_replication_output <- function(...) {
@@ -227,8 +200,7 @@ NULL
 
 .s3$delete_bucket_tagging_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_bucket_tagging_input"]]))
 }
 
 .s3$delete_bucket_tagging_output <- function(...) {
@@ -237,8 +209,7 @@ NULL
 
 .s3$delete_bucket_website_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_bucket_website_input"]]))
 }
 
 .s3$delete_bucket_website_output <- function(...) {
@@ -247,44 +218,47 @@ NULL
 
 .s3$delete_object_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), MFA = structure(logical(0), tags = list(location = "header", locationName = "x-amz-mfa", type = "string")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), BypassGovernanceRetention = structure(logical(0), tags = list(location = "header", locationName = "x-amz-bypass-governance-retention", type = "boolean", box = TRUE)), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), IfMatch = structure(logical(0), tags = list(location = "header", locationName = "If-Match", type = "string")), IfMatchLastModifiedTime = structure(logical(0), tags = list(location = "header", locationName = "x-amz-if-match-last-modified-time", type = "timestamp", timestampFormat = "rfc822")), IfMatchSize = structure(logical(0), tags = list(location = "header", locationName = "x-amz-if-match-size", type = "long", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_object_input"]]))
 }
 
 .s3$delete_object_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeleteMarker = structure(logical(0), tags = list(location = "header", locationName = "x-amz-delete-marker", type = "boolean")), VersionId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-version-id", type = "string")), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_object_output"]]))
+}
+
+.s3$delete_object_annotation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .s3_shapes[["delete_object_annotation_input"]]))
+}
+
+.s3$delete_object_annotation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .s3_shapes[["delete_object_annotation_output"]]))
 }
 
 .s3$delete_object_tagging_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_object_tagging_input"]]))
 }
 
 .s3$delete_object_tagging_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VersionId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-version-id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_object_tagging_output"]]))
 }
 
 .s3$delete_objects_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Delete = structure(list(Objects = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), ETag = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "rfc822")), Size = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(locationName = "Object", type = "list", flattened = TRUE)), Quiet = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(locationName = "Delete", type = "structure")), MFA = structure(logical(0), tags = list(location = "header", locationName = "x-amz-mfa", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), BypassGovernanceRetention = structure(logical(0), tags = list(location = "header", locationName = "x-amz-bypass-governance-retention", type = "boolean", box = TRUE)), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string"))), tags = list(type = "structure", payload = "Delete"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_objects_input"]]))
 }
 
 .s3$delete_objects_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Deleted = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), DeleteMarker = structure(logical(0), tags = list(type = "boolean")), DeleteMarkerVersionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE)), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string")), Errors = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Error", type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_objects_output"]]))
 }
 
 .s3$delete_public_access_block_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["delete_public_access_block_input"]]))
 }
 
 .s3$delete_public_access_block_output <- function(...) {
@@ -293,572 +267,497 @@ NULL
 
 .s3$get_bucket_abac_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_abac_input"]]))
 }
 
 .s3$get_bucket_abac_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AbacStatus = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "AbacStatus"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_abac_output"]]))
 }
 
 .s3$get_bucket_accelerate_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_accelerate_configuration_input"]]))
 }
 
 .s3$get_bucket_accelerate_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string")), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_accelerate_configuration_output"]]))
 }
 
 .s3$get_bucket_acl_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_acl_input"]]))
 }
 
 .s3$get_bucket_acl_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Owner = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Grants = structure(list(structure(list(Grantee = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(locationName = "xsi:type", xmlAttribute = TRUE, type = "string")), URI = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Permission = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Grant", type = "structure"))), tags = list(locationNameList = "Grant", locationName = "AccessControlList", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_acl_output"]]))
 }
 
 .s3$get_bucket_analytics_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Id = structure(logical(0), tags = list(location = "querystring", locationName = "id", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_analytics_configuration_input"]]))
 }
 
 .s3$get_bucket_analytics_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AnalyticsConfiguration = structure(list(Id = structure(logical(0), tags = list(type = "string")), Filter = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tag = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), And = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", flattened = TRUE, locationName = "Tag", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), StorageClassAnalysis = structure(list(DataExport = structure(list(OutputSchemaVersion = structure(logical(0), tags = list(type = "string")), Destination = structure(list(S3BucketDestination = structure(list(Format = structure(logical(0), tags = list(type = "string")), BucketAccountId = structure(logical(0), tags = list(type = "string")), Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "AnalyticsConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_analytics_configuration_output"]]))
 }
 
 .s3$get_bucket_cors_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_cors_input"]]))
 }
 
 .s3$get_bucket_cors_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CORSRules = structure(list(structure(list(ID = structure(logical(0), tags = list(type = "string")), AllowedHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "AllowedHeader", type = "list", flattened = TRUE)), AllowedMethods = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "AllowedMethod", type = "list", flattened = TRUE)), AllowedOrigins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "AllowedOrigin", type = "list", flattened = TRUE)), ExposeHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "ExposeHeader", type = "list", flattened = TRUE)), MaxAgeSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(locationName = "CORSRule", type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_cors_output"]]))
 }
 
 .s3$get_bucket_encryption_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_encryption_input"]]))
 }
 
 .s3$get_bucket_encryption_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServerSideEncryptionConfiguration = structure(list(Rules = structure(list(structure(list(ApplyServerSideEncryptionByDefault = structure(list(SSEAlgorithm = structure(logical(0), tags = list(type = "string")), KMSMasterKeyID = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), BucketKeyEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), BlockedEncryptionTypes = structure(list(EncryptionType = structure(list(structure(logical(0), tags = list(locationName = "EncryptionType", type = "string"))), tags = list(locationNameList = "EncryptionType", type = "list", flattened = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "Rule", type = "list", flattened = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "ServerSideEncryptionConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_encryption_output"]]))
 }
 
 .s3$get_bucket_intelligent_tiering_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Id = structure(logical(0), tags = list(location = "querystring", locationName = "id", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_intelligent_tiering_configuration_input"]]))
 }
 
 .s3$get_bucket_intelligent_tiering_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IntelligentTieringConfiguration = structure(list(Id = structure(logical(0), tags = list(type = "string")), Filter = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tag = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), And = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", flattened = TRUE, locationName = "Tag", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Tierings = structure(list(structure(list(Days = structure(logical(0), tags = list(type = "integer", box = TRUE)), AccessTier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Tiering", type = "list", flattened = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "IntelligentTieringConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_intelligent_tiering_configuration_output"]]))
 }
 
 .s3$get_bucket_inventory_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Id = structure(logical(0), tags = list(location = "querystring", locationName = "id", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_inventory_configuration_input"]]))
 }
 
 .s3$get_bucket_inventory_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InventoryConfiguration = structure(list(Destination = structure(list(S3BucketDestination = structure(list(AccountId = structure(logical(0), tags = list(type = "string")), Bucket = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string")), Encryption = structure(list(SSES3 = structure(list(), tags = list(type = "structure", locationName = "SSE-S3")), SSEKMS = structure(list(KeyId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", locationName = "SSE-KMS"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), IsEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Filter = structure(list(Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Id = structure(logical(0), tags = list(type = "string")), IncludedObjectVersions = structure(logical(0), tags = list(type = "string")), OptionalFields = structure(list(structure(logical(0), tags = list(locationName = "Field", type = "string"))), tags = list(locationNameList = "Field", type = "list")), Schedule = structure(list(Frequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "InventoryConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_inventory_configuration_output"]]))
 }
 
 .s3$get_bucket_lifecycle_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_lifecycle_input"]]))
 }
 
 .s3$get_bucket_lifecycle_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Rules = structure(list(structure(list(Expiration = structure(list(Date = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Days = structure(logical(0), tags = list(type = "integer", box = TRUE)), ExpiredObjectDeleteMarker = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), ID = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Transition = structure(list(Date = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Days = structure(logical(0), tags = list(type = "integer", box = TRUE)), StorageClass = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NoncurrentVersionTransition = structure(list(NoncurrentDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), StorageClass = structure(logical(0), tags = list(type = "string")), NewerNoncurrentVersions = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), NoncurrentVersionExpiration = structure(list(NoncurrentDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), NewerNoncurrentVersions = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), AbortIncompleteMultipartUpload = structure(list(DaysAfterInitiation = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "Rule", type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_lifecycle_output"]]))
 }
 
 .s3$get_bucket_lifecycle_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_lifecycle_configuration_input"]]))
 }
 
 .s3$get_bucket_lifecycle_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Rules = structure(list(structure(list(Expiration = structure(list(Date = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Days = structure(logical(0), tags = list(type = "integer", box = TRUE)), ExpiredObjectDeleteMarker = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), ID = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(deprecated = TRUE, type = "string")), Filter = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tag = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObjectSizeGreaterThan = structure(logical(0), tags = list(type = "long", box = TRUE)), ObjectSizeLessThan = structure(logical(0), tags = list(type = "long", box = TRUE)), And = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", flattened = TRUE, locationName = "Tag", type = "list")), ObjectSizeGreaterThan = structure(logical(0), tags = list(type = "long", box = TRUE)), ObjectSizeLessThan = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Transitions = structure(list(structure(list(Date = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Days = structure(logical(0), tags = list(type = "integer", box = TRUE)), StorageClass = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Transition", type = "list", flattened = TRUE)), NoncurrentVersionTransitions = structure(list(structure(list(NoncurrentDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), StorageClass = structure(logical(0), tags = list(type = "string")), NewerNoncurrentVersions = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(locationName = "NoncurrentVersionTransition", type = "list", flattened = TRUE)), NoncurrentVersionExpiration = structure(list(NoncurrentDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), NewerNoncurrentVersions = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), AbortIncompleteMultipartUpload = structure(list(DaysAfterInitiation = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "Rule", type = "list", flattened = TRUE)), TransitionDefaultMinimumObjectSize = structure(logical(0), tags = list(location = "header", locationName = "x-amz-transition-default-minimum-object-size", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_lifecycle_configuration_output"]]))
 }
 
 .s3$get_bucket_location_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_location_input"]]))
 }
 
 .s3$get_bucket_location_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LocationConstraint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_location_output"]]))
 }
 
 .s3$get_bucket_logging_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_logging_input"]]))
 }
 
 .s3$get_bucket_logging_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LoggingEnabled = structure(list(TargetBucket = structure(logical(0), tags = list(type = "string")), TargetGrants = structure(list(structure(list(Grantee = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(locationName = "xsi:type", xmlAttribute = TRUE, type = "string")), URI = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Permission = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Grant", type = "structure"))), tags = list(locationNameList = "Grant", type = "list")), TargetPrefix = structure(logical(0), tags = list(type = "string")), TargetObjectKeyFormat = structure(list(SimplePrefix = structure(list(), tags = list(type = "structure", locationName = "SimplePrefix")), PartitionedPrefix = structure(list(PartitionDateSource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", locationName = "PartitionedPrefix"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_logging_output"]]))
 }
 
 .s3$get_bucket_metadata_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_metadata_configuration_input"]]))
 }
 
 .s3$get_bucket_metadata_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GetBucketMetadataConfigurationResult = structure(list(MetadataConfigurationResult = structure(list(DestinationResult = structure(list(TableBucketType = structure(logical(0), tags = list(type = "string")), TableBucketArn = structure(logical(0), tags = list(type = "string")), TableNamespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JournalTableConfigurationResult = structure(list(TableStatus = structure(logical(0), tags = list(type = "string")), Error = structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TableName = structure(logical(0), tags = list(type = "string")), TableArn = structure(logical(0), tags = list(type = "string")), RecordExpiration = structure(list(Expiration = structure(logical(0), tags = list(type = "string")), Days = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), InventoryTableConfigurationResult = structure(list(ConfigurationState = structure(logical(0), tags = list(type = "string")), TableStatus = structure(logical(0), tags = list(type = "string")), Error = structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TableName = structure(logical(0), tags = list(type = "string")), TableArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "GetBucketMetadataConfigurationResult"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_metadata_configuration_output"]]))
 }
 
 .s3$get_bucket_metadata_table_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_metadata_table_configuration_input"]]))
 }
 
 .s3$get_bucket_metadata_table_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GetBucketMetadataTableConfigurationResult = structure(list(MetadataTableConfigurationResult = structure(list(S3TablesDestinationResult = structure(list(TableBucketArn = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string")), TableArn = structure(logical(0), tags = list(type = "string")), TableNamespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Error = structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "GetBucketMetadataTableConfigurationResult"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_metadata_table_configuration_output"]]))
 }
 
 .s3$get_bucket_metrics_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Id = structure(logical(0), tags = list(location = "querystring", locationName = "id", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_metrics_configuration_input"]]))
 }
 
 .s3$get_bucket_metrics_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MetricsConfiguration = structure(list(Id = structure(logical(0), tags = list(type = "string")), Filter = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tag = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessPointArn = structure(logical(0), tags = list(type = "string")), And = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", flattened = TRUE, locationName = "Tag", type = "list")), AccessPointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "MetricsConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_metrics_configuration_output"]]))
 }
 
 .s3$get_bucket_notification_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_notification_input"]]))
 }
 
 .s3$get_bucket_notification_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TopicConfiguration = structure(list(Id = structure(logical(0), tags = list(type = "string")), Events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Event", type = "list", flattened = TRUE)), Event = structure(logical(0), tags = list(deprecated = TRUE, type = "string")), Topic = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), QueueConfiguration = structure(list(Id = structure(logical(0), tags = list(type = "string")), Event = structure(logical(0), tags = list(deprecated = TRUE, type = "string")), Events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Event", type = "list", flattened = TRUE)), Queue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CloudFunctionConfiguration = structure(list(Id = structure(logical(0), tags = list(type = "string")), Event = structure(logical(0), tags = list(deprecated = TRUE, type = "string")), Events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Event", type = "list", flattened = TRUE)), CloudFunction = structure(logical(0), tags = list(type = "string")), InvocationRole = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_notification_output"]]))
 }
 
 .s3$get_bucket_notification_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_notification_configuration_input"]]))
 }
 
 .s3$get_bucket_notification_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TopicConfigurations = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), TopicArn = structure(logical(0), tags = list(locationName = "Topic", type = "string")), Events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Event", type = "list", flattened = TRUE)), Filter = structure(list(Key = structure(list(FilterRules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "FilterRule", type = "list", flattened = TRUE))), tags = list(locationName = "S3Key", type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "TopicConfiguration", type = "list", flattened = TRUE)), QueueConfigurations = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), QueueArn = structure(logical(0), tags = list(locationName = "Queue", type = "string")), Events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Event", type = "list", flattened = TRUE)), Filter = structure(list(Key = structure(list(FilterRules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "FilterRule", type = "list", flattened = TRUE))), tags = list(locationName = "S3Key", type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "QueueConfiguration", type = "list", flattened = TRUE)), LambdaFunctionConfigurations = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), LambdaFunctionArn = structure(logical(0), tags = list(locationName = "CloudFunction", type = "string")), Events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Event", type = "list", flattened = TRUE)), Filter = structure(list(Key = structure(list(FilterRules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "FilterRule", type = "list", flattened = TRUE))), tags = list(locationName = "S3Key", type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "CloudFunctionConfiguration", type = "list", flattened = TRUE)), EventBridgeConfiguration = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_notification_configuration_output"]]))
 }
 
 .s3$get_bucket_ownership_controls_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_ownership_controls_input"]]))
 }
 
 .s3$get_bucket_ownership_controls_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OwnershipControls = structure(list(Rules = structure(list(structure(list(ObjectOwnership = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Rule", type = "list", flattened = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "OwnershipControls"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_ownership_controls_output"]]))
 }
 
 .s3$get_bucket_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_policy_input"]]))
 }
 
 .s3$get_bucket_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", payload = "Policy"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_policy_output"]]))
 }
 
 .s3$get_bucket_policy_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_policy_status_input"]]))
 }
 
 .s3$get_bucket_policy_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyStatus = structure(list(IsPublic = structure(logical(0), tags = list(locationName = "IsPublic", type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "PolicyStatus"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_policy_status_output"]]))
 }
 
 .s3$get_bucket_replication_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_replication_input"]]))
 }
 
 .s3$get_bucket_replication_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReplicationConfiguration = structure(list(Role = structure(logical(0), tags = list(type = "string")), Rules = structure(list(structure(list(ID = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer", box = TRUE)), Prefix = structure(logical(0), tags = list(deprecated = TRUE, type = "string")), Filter = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tag = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), And = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", flattened = TRUE, locationName = "Tag", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), SourceSelectionCriteria = structure(list(SseKmsEncryptedObjects = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReplicaModifications = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ExistingObjectReplication = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Destination = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Account = structure(logical(0), tags = list(type = "string")), StorageClass = structure(logical(0), tags = list(type = "string")), AccessControlTranslation = structure(list(Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionConfiguration = structure(list(ReplicaKmsKeyID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReplicationTime = structure(list(Status = structure(logical(0), tags = list(type = "string")), Time = structure(list(Minutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), Metrics = structure(list(Status = structure(logical(0), tags = list(type = "string")), EventThreshold = structure(list(Minutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), DeleteMarkerReplication = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "Rule", type = "list", flattened = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "ReplicationConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_replication_output"]]))
 }
 
 .s3$get_bucket_request_payment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_request_payment_input"]]))
 }
 
 .s3$get_bucket_request_payment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Payer = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_request_payment_output"]]))
 }
 
 .s3$get_bucket_tagging_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_tagging_input"]]))
 }
 
 .s3$get_bucket_tagging_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TagSet = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_tagging_output"]]))
 }
 
 .s3$get_bucket_versioning_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_versioning_input"]]))
 }
 
 .s3$get_bucket_versioning_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string")), MFADelete = structure(logical(0), tags = list(locationName = "MfaDelete", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_versioning_output"]]))
 }
 
 .s3$get_bucket_website_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_website_input"]]))
 }
 
 .s3$get_bucket_website_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RedirectAllRequestsTo = structure(list(HostName = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IndexDocument = structure(list(Suffix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ErrorDocument = structure(list(Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RoutingRules = structure(list(structure(list(Condition = structure(list(HttpErrorCodeReturnedEquals = structure(logical(0), tags = list(type = "string")), KeyPrefixEquals = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Redirect = structure(list(HostName = structure(logical(0), tags = list(type = "string")), HttpRedirectCode = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), ReplaceKeyPrefixWith = structure(logical(0), tags = list(type = "string")), ReplaceKeyWith = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "RoutingRule", type = "structure"))), tags = list(locationNameList = "RoutingRule", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_bucket_website_output"]]))
 }
 
 .s3$get_object_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), IfMatch = structure(logical(0), tags = list(location = "header", locationName = "If-Match", type = "string")), IfModifiedSince = structure(logical(0), tags = list(location = "header", locationName = "If-Modified-Since", type = "timestamp")), IfNoneMatch = structure(logical(0), tags = list(location = "header", locationName = "If-None-Match", type = "string")), IfUnmodifiedSince = structure(logical(0), tags = list(location = "header", locationName = "If-Unmodified-Since", type = "timestamp")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), Range = structure(logical(0), tags = list(location = "header", locationName = "Range", type = "string")), ResponseCacheControl = structure(logical(0), tags = list(location = "querystring", locationName = "response-cache-control", type = "string")), ResponseContentDisposition = structure(logical(0), tags = list(location = "querystring", locationName = "response-content-disposition", type = "string")), ResponseContentEncoding = structure(logical(0), tags = list(location = "querystring", locationName = "response-content-encoding", type = "string")), ResponseContentLanguage = structure(logical(0), tags = list(location = "querystring", locationName = "response-content-language", type = "string")), ResponseContentType = structure(logical(0), tags = list(location = "querystring", locationName = "response-content-type", type = "string")), ResponseExpires = structure(logical(0), tags = list(location = "querystring", locationName = "response-expires", type = "timestamp", timestampFormat = "rfc822")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKey = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key", type = "string", sensitive = TRUE)), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), PartNumber = structure(logical(0), tags = list(location = "querystring", locationName = "partNumber", type = "integer")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), ChecksumMode = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-mode", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_object_input"]]))
 }
 
 .s3$get_object_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Body = structure(logical(0), tags = list(streaming = TRUE, type = "blob")), DeleteMarker = structure(logical(0), tags = list(location = "header", locationName = "x-amz-delete-marker", type = "boolean")), AcceptRanges = structure(logical(0), tags = list(location = "header", locationName = "accept-ranges", type = "string")), Expiration = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expiration", type = "string")), Restore = structure(logical(0), tags = list(location = "header", locationName = "x-amz-restore", type = "string")), LastModified = structure(logical(0), tags = list(location = "header", locationName = "Last-Modified", type = "timestamp")), ContentLength = structure(logical(0), tags = list(location = "header", locationName = "Content-Length", type = "long")), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string")), ChecksumCRC32 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc32", type = "string")), ChecksumCRC32C = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc32c", type = "string")), ChecksumCRC64NVME = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc64nvme", type = "string")), ChecksumSHA1 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha1", type = "string")), ChecksumSHA256 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha256", type = "string")), ChecksumSHA512 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha512", type = "string")), ChecksumMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-md5", type = "string")), ChecksumXXHASH64 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash64", type = "string")), ChecksumXXHASH3 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash3", type = "string")), ChecksumXXHASH128 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash128", type = "string")), ChecksumType = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-type", type = "string")), MissingMeta = structure(logical(0), tags = list(location = "header", locationName = "x-amz-missing-meta", type = "integer")), VersionId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-version-id", type = "string")), CacheControl = structure(logical(0), tags = list(location = "header", locationName = "Cache-Control", type = "string")), ContentDisposition = structure(logical(0), tags = list(location = "header", locationName = "Content-Disposition", type = "string")), ContentEncoding = structure(logical(0), tags = list(location = "header", locationName = "Content-Encoding", type = "string")), ContentLanguage = structure(logical(0), tags = list(location = "header", locationName = "Content-Language", type = "string")), ContentRange = structure(logical(0), tags = list(location = "header", locationName = "Content-Range", type = "string")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), Expires = structure(logical(0), tags = list(location = "header", locationName = "Expires", type = "string")), WebsiteRedirectLocation = structure(logical(0), tags = list(location = "header", locationName = "x-amz-website-redirect-location", type = "string")), ServerSideEncryption = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption", type = "string")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "headers", locationName = "x-amz-meta-", type = "map")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string")), SSEKMSKeyId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-aws-kms-key-id", type = "string", sensitive = TRUE)), BucketKeyEnabled = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-bucket-key-enabled", type = "boolean", box = TRUE)), StorageClass = structure(logical(0), tags = list(location = "header", locationName = "x-amz-storage-class", type = "string")), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string")), ReplicationStatus = structure(logical(0), tags = list(location = "header", locationName = "x-amz-replication-status", type = "string")), PartsCount = structure(logical(0), tags = list(location = "header", locationName = "x-amz-mp-parts-count", type = "integer", box = TRUE)), TagCount = structure(logical(0), tags = list(location = "header", locationName = "x-amz-tagging-count", type = "integer", box = TRUE)), ObjectLockMode = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-lock-mode", type = "string")), ObjectLockRetainUntilDate = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-lock-retain-until-date", type = "timestamp", timestampFormat = "iso8601")), ObjectLockLegalHoldStatus = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-lock-legal-hold", type = "string"))), tags = list(type = "structure", payload = "Body"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_object_output"]]))
 }
 
 .s3$get_object_acl_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_object_acl_input"]]))
 }
 
 .s3$get_object_acl_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Owner = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Grants = structure(list(structure(list(Grantee = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(locationName = "xsi:type", xmlAttribute = TRUE, type = "string")), URI = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Permission = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Grant", type = "structure"))), tags = list(locationNameList = "Grant", locationName = "AccessControlList", type = "list")), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_object_acl_output"]]))
+}
+
+.s3$get_object_annotation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .s3_shapes[["get_object_annotation_input"]]))
+}
+
+.s3$get_object_annotation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .s3_shapes[["get_object_annotation_output"]]))
 }
 
 .s3$get_object_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), MaxParts = structure(logical(0), tags = list(location = "header", locationName = "x-amz-max-parts", type = "integer")), PartNumberMarker = structure(logical(0), tags = list(location = "header", locationName = "x-amz-part-number-marker", type = "integer")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKey = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key", type = "string", sensitive = TRUE)), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), ObjectAttributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "header", locationName = "x-amz-object-attributes", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_object_attributes_input"]]))
 }
 
 .s3$get_object_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeleteMarker = structure(logical(0), tags = list(location = "header", locationName = "x-amz-delete-marker", type = "boolean")), LastModified = structure(logical(0), tags = list(location = "header", locationName = "Last-Modified", type = "timestamp")), VersionId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-version-id", type = "string")), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string")), ETag = structure(logical(0), tags = list(type = "string")), Checksum = structure(list(ChecksumCRC32 = structure(logical(0), tags = list(type = "string")), ChecksumCRC32C = structure(logical(0), tags = list(type = "string")), ChecksumCRC64NVME = structure(logical(0), tags = list(type = "string")), ChecksumSHA1 = structure(logical(0), tags = list(type = "string")), ChecksumSHA256 = structure(logical(0), tags = list(type = "string")), ChecksumSHA512 = structure(logical(0), tags = list(type = "string")), ChecksumMD5 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH64 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH3 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH128 = structure(logical(0), tags = list(type = "string")), ChecksumType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObjectParts = structure(list(TotalPartsCount = structure(logical(0), tags = list(locationName = "PartsCount", type = "integer", box = TRUE)), PartNumberMarker = structure(logical(0), tags = list(type = "integer")), NextPartNumberMarker = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxParts = structure(logical(0), tags = list(type = "integer")), IsTruncated = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Parts = structure(list(structure(list(PartNumber = structure(logical(0), tags = list(type = "integer")), Size = structure(logical(0), tags = list(type = "long", box = TRUE)), ChecksumCRC32 = structure(logical(0), tags = list(type = "string")), ChecksumCRC32C = structure(logical(0), tags = list(type = "string")), ChecksumCRC64NVME = structure(logical(0), tags = list(type = "string")), ChecksumSHA1 = structure(logical(0), tags = list(type = "string")), ChecksumSHA256 = structure(logical(0), tags = list(type = "string")), ChecksumSHA512 = structure(logical(0), tags = list(type = "string")), ChecksumMD5 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH64 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH3 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH128 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Part", type = "list", flattened = TRUE))), tags = list(type = "structure")), StorageClass = structure(logical(0), tags = list(type = "string")), ObjectSize = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_object_attributes_output"]]))
 }
 
 .s3$get_object_legal_hold_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_object_legal_hold_input"]]))
 }
 
 .s3$get_object_legal_hold_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LegalHold = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "LegalHold", type = "structure"))), tags = list(type = "structure", payload = "LegalHold"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_object_legal_hold_output"]]))
 }
 
 .s3$get_object_lock_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_object_lock_configuration_input"]]))
 }
 
 .s3$get_object_lock_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ObjectLockConfiguration = structure(list(ObjectLockEnabled = structure(logical(0), tags = list(type = "string")), Rule = structure(list(DefaultRetention = structure(list(Mode = structure(logical(0), tags = list(type = "string")), Days = structure(logical(0), tags = list(type = "integer", box = TRUE)), Years = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "ObjectLockConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_object_lock_configuration_output"]]))
 }
 
 .s3$get_object_retention_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_object_retention_input"]]))
 }
 
 .s3$get_object_retention_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Retention = structure(list(Mode = structure(logical(0), tags = list(type = "string")), RetainUntilDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(locationName = "Retention", type = "structure"))), tags = list(type = "structure", payload = "Retention"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_object_retention_output"]]))
 }
 
 .s3$get_object_tagging_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_object_tagging_input"]]))
 }
 
 .s3$get_object_tagging_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VersionId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-version-id", type = "string")), TagSet = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_object_tagging_output"]]))
 }
 
 .s3$get_object_torrent_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_object_torrent_input"]]))
 }
 
 .s3$get_object_torrent_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Body = structure(logical(0), tags = list(streaming = TRUE, type = "blob")), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure", payload = "Body"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_object_torrent_output"]]))
 }
 
 .s3$get_public_access_block_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_public_access_block_input"]]))
 }
 
 .s3$get_public_access_block_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PublicAccessBlockConfiguration = structure(list(BlockPublicAcls = structure(logical(0), tags = list(locationName = "BlockPublicAcls", type = "boolean", box = TRUE)), IgnorePublicAcls = structure(logical(0), tags = list(locationName = "IgnorePublicAcls", type = "boolean", box = TRUE)), BlockPublicPolicy = structure(logical(0), tags = list(locationName = "BlockPublicPolicy", type = "boolean", box = TRUE)), RestrictPublicBuckets = structure(logical(0), tags = list(locationName = "RestrictPublicBuckets", type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "PublicAccessBlockConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["get_public_access_block_output"]]))
 }
 
 .s3$head_bucket_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["head_bucket_input"]]))
 }
 
 .s3$head_bucket_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BucketArn = structure(logical(0), tags = list(location = "header", locationName = "x-amz-bucket-arn", type = "string")), BucketLocationType = structure(logical(0), tags = list(location = "header", locationName = "x-amz-bucket-location-type", type = "string")), BucketLocationName = structure(logical(0), tags = list(location = "header", locationName = "x-amz-bucket-location-name", type = "string")), BucketRegion = structure(logical(0), tags = list(location = "header", locationName = "x-amz-bucket-region", type = "string")), AccessPointAlias = structure(logical(0), tags = list(location = "header", locationName = "x-amz-access-point-alias", type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["head_bucket_output"]]))
 }
 
 .s3$head_object_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), IfMatch = structure(logical(0), tags = list(location = "header", locationName = "If-Match", type = "string")), IfModifiedSince = structure(logical(0), tags = list(location = "header", locationName = "If-Modified-Since", type = "timestamp")), IfNoneMatch = structure(logical(0), tags = list(location = "header", locationName = "If-None-Match", type = "string")), IfUnmodifiedSince = structure(logical(0), tags = list(location = "header", locationName = "If-Unmodified-Since", type = "timestamp")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), Range = structure(logical(0), tags = list(location = "header", locationName = "Range", type = "string")), ResponseCacheControl = structure(logical(0), tags = list(location = "querystring", locationName = "response-cache-control", type = "string")), ResponseContentDisposition = structure(logical(0), tags = list(location = "querystring", locationName = "response-content-disposition", type = "string")), ResponseContentEncoding = structure(logical(0), tags = list(location = "querystring", locationName = "response-content-encoding", type = "string")), ResponseContentLanguage = structure(logical(0), tags = list(location = "querystring", locationName = "response-content-language", type = "string")), ResponseContentType = structure(logical(0), tags = list(location = "querystring", locationName = "response-content-type", type = "string")), ResponseExpires = structure(logical(0), tags = list(location = "querystring", locationName = "response-expires", type = "timestamp", timestampFormat = "rfc822")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKey = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key", type = "string", sensitive = TRUE)), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), PartNumber = structure(logical(0), tags = list(location = "querystring", locationName = "partNumber", type = "integer")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), ChecksumMode = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-mode", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["head_object_input"]]))
 }
 
 .s3$head_object_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DeleteMarker = structure(logical(0), tags = list(location = "header", locationName = "x-amz-delete-marker", type = "boolean")), AcceptRanges = structure(logical(0), tags = list(location = "header", locationName = "accept-ranges", type = "string")), Expiration = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expiration", type = "string")), Restore = structure(logical(0), tags = list(location = "header", locationName = "x-amz-restore", type = "string")), ArchiveStatus = structure(logical(0), tags = list(location = "header", locationName = "x-amz-archive-status", type = "string")), LastModified = structure(logical(0), tags = list(location = "header", locationName = "Last-Modified", type = "timestamp")), ContentLength = structure(logical(0), tags = list(location = "header", locationName = "Content-Length", type = "long")), ChecksumCRC32 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc32", type = "string")), ChecksumCRC32C = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc32c", type = "string")), ChecksumCRC64NVME = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc64nvme", type = "string")), ChecksumSHA1 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha1", type = "string")), ChecksumSHA256 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha256", type = "string")), ChecksumSHA512 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha512", type = "string")), ChecksumMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-md5", type = "string")), ChecksumXXHASH64 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash64", type = "string")), ChecksumXXHASH3 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash3", type = "string")), ChecksumXXHASH128 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash128", type = "string")), ChecksumType = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-type", type = "string")), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string")), MissingMeta = structure(logical(0), tags = list(location = "header", locationName = "x-amz-missing-meta", type = "integer")), VersionId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-version-id", type = "string")), CacheControl = structure(logical(0), tags = list(location = "header", locationName = "Cache-Control", type = "string")), ContentDisposition = structure(logical(0), tags = list(location = "header", locationName = "Content-Disposition", type = "string")), ContentEncoding = structure(logical(0), tags = list(location = "header", locationName = "Content-Encoding", type = "string")), ContentLanguage = structure(logical(0), tags = list(location = "header", locationName = "Content-Language", type = "string")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), ContentRange = structure(logical(0), tags = list(location = "header", locationName = "Content-Range", type = "string")), Expires = structure(logical(0), tags = list(location = "header", locationName = "Expires", type = "string")), WebsiteRedirectLocation = structure(logical(0), tags = list(location = "header", locationName = "x-amz-website-redirect-location", type = "string")), ServerSideEncryption = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption", type = "string")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "headers", locationName = "x-amz-meta-", type = "map")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string")), SSEKMSKeyId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-aws-kms-key-id", type = "string", sensitive = TRUE)), BucketKeyEnabled = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-bucket-key-enabled", type = "boolean", box = TRUE)), StorageClass = structure(logical(0), tags = list(location = "header", locationName = "x-amz-storage-class", type = "string")), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string")), ReplicationStatus = structure(logical(0), tags = list(location = "header", locationName = "x-amz-replication-status", type = "string")), PartsCount = structure(logical(0), tags = list(location = "header", locationName = "x-amz-mp-parts-count", type = "integer", box = TRUE)), TagCount = structure(logical(0), tags = list(location = "header", locationName = "x-amz-tagging-count", type = "integer", box = TRUE)), ObjectLockMode = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-lock-mode", type = "string")), ObjectLockRetainUntilDate = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-lock-retain-until-date", type = "timestamp", timestampFormat = "iso8601")), ObjectLockLegalHoldStatus = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-lock-legal-hold", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["head_object_output"]]))
 }
 
 .s3$list_bucket_analytics_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContinuationToken = structure(logical(0), tags = list(location = "querystring", locationName = "continuation-token", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_bucket_analytics_configurations_input"]]))
 }
 
 .s3$list_bucket_analytics_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IsTruncated = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ContinuationToken = structure(logical(0), tags = list(type = "string")), NextContinuationToken = structure(logical(0), tags = list(type = "string")), AnalyticsConfigurationList = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Filter = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tag = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), And = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", flattened = TRUE, locationName = "Tag", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), StorageClassAnalysis = structure(list(DataExport = structure(list(OutputSchemaVersion = structure(logical(0), tags = list(type = "string")), Destination = structure(list(S3BucketDestination = structure(list(Format = structure(logical(0), tags = list(type = "string")), BucketAccountId = structure(logical(0), tags = list(type = "string")), Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "AnalyticsConfiguration", type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_bucket_analytics_configurations_output"]]))
 }
 
 .s3$list_bucket_intelligent_tiering_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContinuationToken = structure(logical(0), tags = list(location = "querystring", locationName = "continuation-token", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_bucket_intelligent_tiering_configurations_input"]]))
 }
 
 .s3$list_bucket_intelligent_tiering_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IsTruncated = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ContinuationToken = structure(logical(0), tags = list(type = "string")), NextContinuationToken = structure(logical(0), tags = list(type = "string")), IntelligentTieringConfigurationList = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Filter = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tag = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), And = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", flattened = TRUE, locationName = "Tag", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Tierings = structure(list(structure(list(Days = structure(logical(0), tags = list(type = "integer", box = TRUE)), AccessTier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Tiering", type = "list", flattened = TRUE))), tags = list(type = "structure"))), tags = list(locationName = "IntelligentTieringConfiguration", type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_bucket_intelligent_tiering_configurations_output"]]))
 }
 
 .s3$list_bucket_inventory_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContinuationToken = structure(logical(0), tags = list(location = "querystring", locationName = "continuation-token", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_bucket_inventory_configurations_input"]]))
 }
 
 .s3$list_bucket_inventory_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContinuationToken = structure(logical(0), tags = list(type = "string")), InventoryConfigurationList = structure(list(structure(list(Destination = structure(list(S3BucketDestination = structure(list(AccountId = structure(logical(0), tags = list(type = "string")), Bucket = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string")), Encryption = structure(list(SSES3 = structure(list(), tags = list(type = "structure", locationName = "SSE-S3")), SSEKMS = structure(list(KeyId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", locationName = "SSE-KMS"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), IsEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Filter = structure(list(Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Id = structure(logical(0), tags = list(type = "string")), IncludedObjectVersions = structure(logical(0), tags = list(type = "string")), OptionalFields = structure(list(structure(logical(0), tags = list(locationName = "Field", type = "string"))), tags = list(locationNameList = "Field", type = "list")), Schedule = structure(list(Frequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "InventoryConfiguration", type = "list", flattened = TRUE)), IsTruncated = structure(logical(0), tags = list(type = "boolean", box = TRUE)), NextContinuationToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_bucket_inventory_configurations_output"]]))
 }
 
 .s3$list_bucket_metrics_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContinuationToken = structure(logical(0), tags = list(location = "querystring", locationName = "continuation-token", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_bucket_metrics_configurations_input"]]))
 }
 
 .s3$list_bucket_metrics_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IsTruncated = structure(logical(0), tags = list(type = "boolean", box = TRUE)), ContinuationToken = structure(logical(0), tags = list(type = "string")), NextContinuationToken = structure(logical(0), tags = list(type = "string")), MetricsConfigurationList = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Filter = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tag = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessPointArn = structure(logical(0), tags = list(type = "string")), And = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", flattened = TRUE, locationName = "Tag", type = "list")), AccessPointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "MetricsConfiguration", type = "list", flattened = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_bucket_metrics_configurations_output"]]))
 }
 
 .s3$list_buckets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxBuckets = structure(logical(0), tags = list(location = "querystring", locationName = "max-buckets", type = "integer", box = TRUE)), ContinuationToken = structure(logical(0), tags = list(location = "querystring", locationName = "continuation-token", type = "string")), Prefix = structure(logical(0), tags = list(location = "querystring", locationName = "prefix", type = "string")), BucketRegion = structure(logical(0), tags = list(location = "querystring", locationName = "bucket-region", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_buckets_input"]]))
 }
 
 .s3$list_buckets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Buckets = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), BucketRegion = structure(logical(0), tags = list(type = "string")), BucketArn = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Bucket", type = "structure"))), tags = list(locationNameList = "Bucket", type = "list")), Owner = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ContinuationToken = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_buckets_output"]]))
 }
 
 .s3$list_directory_buckets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContinuationToken = structure(logical(0), tags = list(location = "querystring", locationName = "continuation-token", type = "string")), MaxDirectoryBuckets = structure(logical(0), tags = list(location = "querystring", locationName = "max-directory-buckets", type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_directory_buckets_input"]]))
 }
 
 .s3$list_directory_buckets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Buckets = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), BucketRegion = structure(logical(0), tags = list(type = "string")), BucketArn = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Bucket", type = "structure"))), tags = list(locationNameList = "Bucket", type = "list")), ContinuationToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_directory_buckets_output"]]))
 }
 
 .s3$list_multipart_uploads_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Delimiter = structure(logical(0), tags = list(location = "querystring", locationName = "delimiter", type = "string")), EncodingType = structure(logical(0), tags = list(location = "querystring", locationName = "encoding-type", type = "string")), KeyMarker = structure(logical(0), tags = list(location = "querystring", locationName = "key-marker", type = "string")), MaxUploads = structure(logical(0), tags = list(location = "querystring", locationName = "max-uploads", type = "integer")), Prefix = structure(logical(0), tags = list(location = "querystring", locationName = "prefix", type = "string")), UploadIdMarker = structure(logical(0), tags = list(location = "querystring", locationName = "upload-id-marker", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_multipart_uploads_input"]]))
 }
 
 .s3$list_multipart_uploads_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(type = "string")), KeyMarker = structure(logical(0), tags = list(type = "string")), UploadIdMarker = structure(logical(0), tags = list(type = "string")), NextKeyMarker = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string")), Delimiter = structure(logical(0), tags = list(type = "string")), NextUploadIdMarker = structure(logical(0), tags = list(type = "string")), MaxUploads = structure(logical(0), tags = list(type = "integer")), IsTruncated = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Uploads = structure(list(structure(list(UploadId = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), Initiated = structure(logical(0), tags = list(type = "timestamp")), StorageClass = structure(logical(0), tags = list(type = "string")), Owner = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Initiator = structure(list(ID = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ChecksumAlgorithm = structure(logical(0), tags = list(type = "string")), ChecksumType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Upload", type = "list", flattened = TRUE)), CommonPrefixes = structure(list(structure(list(Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE)), EncodingType = structure(logical(0), tags = list(type = "string")), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_multipart_uploads_output"]]))
+}
+
+.s3$list_object_annotations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .s3_shapes[["list_object_annotations_input"]]))
+}
+
+.s3$list_object_annotations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .s3_shapes[["list_object_annotations_output"]]))
 }
 
 .s3$list_object_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Delimiter = structure(logical(0), tags = list(location = "querystring", locationName = "delimiter", type = "string")), EncodingType = structure(logical(0), tags = list(location = "querystring", locationName = "encoding-type", type = "string")), KeyMarker = structure(logical(0), tags = list(location = "querystring", locationName = "key-marker", type = "string")), MaxKeys = structure(logical(0), tags = list(location = "querystring", locationName = "max-keys", type = "integer")), Prefix = structure(logical(0), tags = list(location = "querystring", locationName = "prefix", type = "string")), VersionIdMarker = structure(logical(0), tags = list(location = "querystring", locationName = "version-id-marker", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), OptionalObjectAttributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "header", locationName = "x-amz-optional-object-attributes", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_object_versions_input"]]))
 }
 
 .s3$list_object_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IsTruncated = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KeyMarker = structure(logical(0), tags = list(type = "string")), VersionIdMarker = structure(logical(0), tags = list(type = "string")), NextKeyMarker = structure(logical(0), tags = list(type = "string")), NextVersionIdMarker = structure(logical(0), tags = list(type = "string")), Versions = structure(list(structure(list(ETag = structure(logical(0), tags = list(type = "string")), ChecksumAlgorithm = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", flattened = TRUE)), ChecksumType = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "long", box = TRUE)), StorageClass = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), IsLatest = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LastModified = structure(logical(0), tags = list(type = "timestamp")), Owner = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RestoreStatus = structure(list(IsRestoreInProgress = structure(logical(0), tags = list(type = "boolean", box = TRUE)), RestoreExpiryDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "Version", type = "list", flattened = TRUE)), DeleteMarkers = structure(list(structure(list(Owner = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Key = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), IsLatest = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LastModified = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(locationName = "DeleteMarker", type = "list", flattened = TRUE)), Name = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string")), Delimiter = structure(logical(0), tags = list(type = "string")), MaxKeys = structure(logical(0), tags = list(type = "integer")), CommonPrefixes = structure(list(structure(list(Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE)), EncodingType = structure(logical(0), tags = list(type = "string")), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_object_versions_output"]]))
 }
 
 .s3$list_objects_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Delimiter = structure(logical(0), tags = list(location = "querystring", locationName = "delimiter", type = "string")), EncodingType = structure(logical(0), tags = list(location = "querystring", locationName = "encoding-type", type = "string")), Marker = structure(logical(0), tags = list(location = "querystring", locationName = "marker", type = "string")), MaxKeys = structure(logical(0), tags = list(location = "querystring", locationName = "max-keys", type = "integer")), Prefix = structure(logical(0), tags = list(location = "querystring", locationName = "prefix", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), OptionalObjectAttributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "header", locationName = "x-amz-optional-object-attributes", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_objects_input"]]))
 }
 
 .s3$list_objects_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IsTruncated = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Marker = structure(logical(0), tags = list(type = "string")), NextMarker = structure(logical(0), tags = list(type = "string")), Contents = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), LastModified = structure(logical(0), tags = list(type = "timestamp")), ETag = structure(logical(0), tags = list(type = "string")), ChecksumAlgorithm = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", flattened = TRUE)), ChecksumType = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "long", box = TRUE)), StorageClass = structure(logical(0), tags = list(type = "string")), Owner = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RestoreStatus = structure(list(IsRestoreInProgress = structure(logical(0), tags = list(type = "boolean", box = TRUE)), RestoreExpiryDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE)), Name = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string")), Delimiter = structure(logical(0), tags = list(type = "string")), MaxKeys = structure(logical(0), tags = list(type = "integer")), CommonPrefixes = structure(list(structure(list(Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE)), EncodingType = structure(logical(0), tags = list(type = "string")), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_objects_output"]]))
 }
 
 .s3$list_objects_v2_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Delimiter = structure(logical(0), tags = list(location = "querystring", locationName = "delimiter", type = "string")), EncodingType = structure(logical(0), tags = list(location = "querystring", locationName = "encoding-type", type = "string")), MaxKeys = structure(logical(0), tags = list(location = "querystring", locationName = "max-keys", type = "integer")), Prefix = structure(logical(0), tags = list(location = "querystring", locationName = "prefix", type = "string")), ContinuationToken = structure(logical(0), tags = list(location = "querystring", locationName = "continuation-token", type = "string")), FetchOwner = structure(logical(0), tags = list(location = "querystring", locationName = "fetch-owner", type = "boolean", box = TRUE)), StartAfter = structure(logical(0), tags = list(location = "querystring", locationName = "start-after", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), OptionalObjectAttributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "header", locationName = "x-amz-optional-object-attributes", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_objects_v2_input"]]))
 }
 
 .s3$list_objects_v2_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IsTruncated = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Contents = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), LastModified = structure(logical(0), tags = list(type = "timestamp")), ETag = structure(logical(0), tags = list(type = "string")), ChecksumAlgorithm = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", flattened = TRUE)), ChecksumType = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "long", box = TRUE)), StorageClass = structure(logical(0), tags = list(type = "string")), Owner = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RestoreStatus = structure(list(IsRestoreInProgress = structure(logical(0), tags = list(type = "boolean", box = TRUE)), RestoreExpiryDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE)), Name = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string")), Delimiter = structure(logical(0), tags = list(type = "string")), MaxKeys = structure(logical(0), tags = list(type = "integer")), CommonPrefixes = structure(list(structure(list(Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", flattened = TRUE)), EncodingType = structure(logical(0), tags = list(type = "string")), KeyCount = structure(logical(0), tags = list(type = "integer")), ContinuationToken = structure(logical(0), tags = list(type = "string")), NextContinuationToken = structure(logical(0), tags = list(type = "string")), StartAfter = structure(logical(0), tags = list(type = "string")), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_objects_v2_output"]]))
 }
 
 .s3$list_parts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), MaxParts = structure(logical(0), tags = list(location = "querystring", locationName = "max-parts", type = "integer")), PartNumberMarker = structure(logical(0), tags = list(location = "querystring", locationName = "part-number-marker", type = "integer")), UploadId = structure(logical(0), tags = list(location = "querystring", locationName = "uploadId", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKey = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key", type = "string", sensitive = TRUE)), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_parts_input"]]))
 }
 
 .s3$list_parts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AbortDate = structure(logical(0), tags = list(location = "header", locationName = "x-amz-abort-date", type = "timestamp")), AbortRuleId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-abort-rule-id", type = "string")), Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), UploadId = structure(logical(0), tags = list(type = "string")), PartNumberMarker = structure(logical(0), tags = list(type = "integer")), NextPartNumberMarker = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxParts = structure(logical(0), tags = list(type = "integer")), IsTruncated = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Parts = structure(list(structure(list(PartNumber = structure(logical(0), tags = list(type = "integer")), LastModified = structure(logical(0), tags = list(type = "timestamp")), ETag = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "long", box = TRUE)), ChecksumCRC32 = structure(logical(0), tags = list(type = "string")), ChecksumCRC32C = structure(logical(0), tags = list(type = "string")), ChecksumCRC64NVME = structure(logical(0), tags = list(type = "string")), ChecksumSHA1 = structure(logical(0), tags = list(type = "string")), ChecksumSHA256 = structure(logical(0), tags = list(type = "string")), ChecksumSHA512 = structure(logical(0), tags = list(type = "string")), ChecksumMD5 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH64 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH3 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH128 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Part", type = "list", flattened = TRUE)), Initiator = structure(list(ID = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Owner = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StorageClass = structure(logical(0), tags = list(type = "string")), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(type = "string")), ChecksumType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["list_parts_output"]]))
 }
 
 .s3$put_bucket_abac_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), AbacStatus = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "AbacStatus", type = "structure"))), tags = list(type = "structure", payload = "AbacStatus"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_abac_input"]]))
 }
 
 .s3$put_bucket_abac_output <- function(...) {
@@ -867,8 +766,7 @@ NULL
 
 .s3$put_bucket_accelerate_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), AccelerateConfiguration = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "AccelerateConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string"))), tags = list(type = "structure", payload = "AccelerateConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_accelerate_configuration_input"]]))
 }
 
 .s3$put_bucket_accelerate_configuration_output <- function(...) {
@@ -877,8 +775,7 @@ NULL
 
 .s3$put_bucket_acl_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ACL = structure(logical(0), tags = list(location = "header", locationName = "x-amz-acl", type = "string")), AccessControlPolicy = structure(list(Grants = structure(list(structure(list(Grantee = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(locationName = "xsi:type", xmlAttribute = TRUE, type = "string")), URI = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Permission = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Grant", type = "structure"))), tags = list(locationNameList = "Grant", locationName = "AccessControlList", type = "list")), Owner = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "AccessControlPolicy", type = "structure")), Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), GrantFullControl = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-full-control", type = "string")), GrantRead = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-read", type = "string")), GrantReadACP = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-read-acp", type = "string")), GrantWrite = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-write", type = "string")), GrantWriteACP = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-write-acp", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "AccessControlPolicy"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_acl_input"]]))
 }
 
 .s3$put_bucket_acl_output <- function(...) {
@@ -887,8 +784,7 @@ NULL
 
 .s3$put_bucket_analytics_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Id = structure(logical(0), tags = list(location = "querystring", locationName = "id", type = "string")), AnalyticsConfiguration = structure(list(Id = structure(logical(0), tags = list(type = "string")), Filter = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tag = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), And = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", flattened = TRUE, locationName = "Tag", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), StorageClassAnalysis = structure(list(DataExport = structure(list(OutputSchemaVersion = structure(logical(0), tags = list(type = "string")), Destination = structure(list(S3BucketDestination = structure(list(Format = structure(logical(0), tags = list(type = "string")), BucketAccountId = structure(logical(0), tags = list(type = "string")), Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "AnalyticsConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "AnalyticsConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_analytics_configuration_input"]]))
 }
 
 .s3$put_bucket_analytics_configuration_output <- function(...) {
@@ -897,8 +793,7 @@ NULL
 
 .s3$put_bucket_cors_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), CORSConfiguration = structure(list(CORSRules = structure(list(structure(list(ID = structure(logical(0), tags = list(type = "string")), AllowedHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "AllowedHeader", type = "list", flattened = TRUE)), AllowedMethods = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "AllowedMethod", type = "list", flattened = TRUE)), AllowedOrigins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "AllowedOrigin", type = "list", flattened = TRUE)), ExposeHeaders = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "ExposeHeader", type = "list", flattened = TRUE)), MaxAgeSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(locationName = "CORSRule", type = "list", flattened = TRUE))), tags = list(locationName = "CORSConfiguration", type = "structure")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "CORSConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_cors_input"]]))
 }
 
 .s3$put_bucket_cors_output <- function(...) {
@@ -907,8 +802,7 @@ NULL
 
 .s3$put_bucket_encryption_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), ServerSideEncryptionConfiguration = structure(list(Rules = structure(list(structure(list(ApplyServerSideEncryptionByDefault = structure(list(SSEAlgorithm = structure(logical(0), tags = list(type = "string")), KMSMasterKeyID = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), BucketKeyEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), BlockedEncryptionTypes = structure(list(EncryptionType = structure(list(structure(logical(0), tags = list(locationName = "EncryptionType", type = "string"))), tags = list(locationNameList = "EncryptionType", type = "list", flattened = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "Rule", type = "list", flattened = TRUE))), tags = list(locationName = "ServerSideEncryptionConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "ServerSideEncryptionConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_encryption_input"]]))
 }
 
 .s3$put_bucket_encryption_output <- function(...) {
@@ -917,8 +811,7 @@ NULL
 
 .s3$put_bucket_intelligent_tiering_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Id = structure(logical(0), tags = list(location = "querystring", locationName = "id", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), IntelligentTieringConfiguration = structure(list(Id = structure(logical(0), tags = list(type = "string")), Filter = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tag = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), And = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", flattened = TRUE, locationName = "Tag", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Tierings = structure(list(structure(list(Days = structure(logical(0), tags = list(type = "integer", box = TRUE)), AccessTier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Tiering", type = "list", flattened = TRUE))), tags = list(locationName = "IntelligentTieringConfiguration", type = "structure"))), tags = list(type = "structure", payload = "IntelligentTieringConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_intelligent_tiering_configuration_input"]]))
 }
 
 .s3$put_bucket_intelligent_tiering_configuration_output <- function(...) {
@@ -927,8 +820,7 @@ NULL
 
 .s3$put_bucket_inventory_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Id = structure(logical(0), tags = list(location = "querystring", locationName = "id", type = "string")), InventoryConfiguration = structure(list(Destination = structure(list(S3BucketDestination = structure(list(AccountId = structure(logical(0), tags = list(type = "string")), Bucket = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string")), Encryption = structure(list(SSES3 = structure(list(), tags = list(type = "structure", locationName = "SSE-S3")), SSEKMS = structure(list(KeyId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", locationName = "SSE-KMS"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), IsEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Filter = structure(list(Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Id = structure(logical(0), tags = list(type = "string")), IncludedObjectVersions = structure(logical(0), tags = list(type = "string")), OptionalFields = structure(list(structure(logical(0), tags = list(locationName = "Field", type = "string"))), tags = list(locationNameList = "Field", type = "list")), Schedule = structure(list(Frequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "InventoryConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "InventoryConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_inventory_configuration_input"]]))
 }
 
 .s3$put_bucket_inventory_configuration_output <- function(...) {
@@ -937,8 +829,7 @@ NULL
 
 .s3$put_bucket_lifecycle_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), LifecycleConfiguration = structure(list(Rules = structure(list(structure(list(Expiration = structure(list(Date = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Days = structure(logical(0), tags = list(type = "integer", box = TRUE)), ExpiredObjectDeleteMarker = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), ID = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Transition = structure(list(Date = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Days = structure(logical(0), tags = list(type = "integer", box = TRUE)), StorageClass = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NoncurrentVersionTransition = structure(list(NoncurrentDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), StorageClass = structure(logical(0), tags = list(type = "string")), NewerNoncurrentVersions = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), NoncurrentVersionExpiration = structure(list(NoncurrentDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), NewerNoncurrentVersions = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), AbortIncompleteMultipartUpload = structure(list(DaysAfterInitiation = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "Rule", type = "list", flattened = TRUE))), tags = list(locationName = "LifecycleConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "LifecycleConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_lifecycle_input"]]))
 }
 
 .s3$put_bucket_lifecycle_output <- function(...) {
@@ -947,20 +838,17 @@ NULL
 
 .s3$put_bucket_lifecycle_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), LifecycleConfiguration = structure(list(Rules = structure(list(structure(list(Expiration = structure(list(Date = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Days = structure(logical(0), tags = list(type = "integer", box = TRUE)), ExpiredObjectDeleteMarker = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), ID = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(deprecated = TRUE, type = "string")), Filter = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tag = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ObjectSizeGreaterThan = structure(logical(0), tags = list(type = "long", box = TRUE)), ObjectSizeLessThan = structure(logical(0), tags = list(type = "long", box = TRUE)), And = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", flattened = TRUE, locationName = "Tag", type = "list")), ObjectSizeGreaterThan = structure(logical(0), tags = list(type = "long", box = TRUE)), ObjectSizeLessThan = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Transitions = structure(list(structure(list(Date = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Days = structure(logical(0), tags = list(type = "integer", box = TRUE)), StorageClass = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Transition", type = "list", flattened = TRUE)), NoncurrentVersionTransitions = structure(list(structure(list(NoncurrentDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), StorageClass = structure(logical(0), tags = list(type = "string")), NewerNoncurrentVersions = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(locationName = "NoncurrentVersionTransition", type = "list", flattened = TRUE)), NoncurrentVersionExpiration = structure(list(NoncurrentDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), NewerNoncurrentVersions = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), AbortIncompleteMultipartUpload = structure(list(DaysAfterInitiation = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "Rule", type = "list", flattened = TRUE))), tags = list(locationName = "LifecycleConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), TransitionDefaultMinimumObjectSize = structure(logical(0), tags = list(location = "header", locationName = "x-amz-transition-default-minimum-object-size", type = "string"))), tags = list(type = "structure", payload = "LifecycleConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_lifecycle_configuration_input"]]))
 }
 
 .s3$put_bucket_lifecycle_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitionDefaultMinimumObjectSize = structure(logical(0), tags = list(location = "header", locationName = "x-amz-transition-default-minimum-object-size", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_lifecycle_configuration_output"]]))
 }
 
 .s3$put_bucket_logging_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), BucketLoggingStatus = structure(list(LoggingEnabled = structure(list(TargetBucket = structure(logical(0), tags = list(type = "string")), TargetGrants = structure(list(structure(list(Grantee = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(locationName = "xsi:type", xmlAttribute = TRUE, type = "string")), URI = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Permission = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Grant", type = "structure"))), tags = list(locationNameList = "Grant", type = "list")), TargetPrefix = structure(logical(0), tags = list(type = "string")), TargetObjectKeyFormat = structure(list(SimplePrefix = structure(list(), tags = list(type = "structure", locationName = "SimplePrefix")), PartitionedPrefix = structure(list(PartitionDateSource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", locationName = "PartitionedPrefix"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "BucketLoggingStatus", type = "structure")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "BucketLoggingStatus"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_logging_input"]]))
 }
 
 .s3$put_bucket_logging_output <- function(...) {
@@ -969,8 +857,7 @@ NULL
 
 .s3$put_bucket_metrics_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Id = structure(logical(0), tags = list(location = "querystring", locationName = "id", type = "string")), MetricsConfiguration = structure(list(Id = structure(logical(0), tags = list(type = "string")), Filter = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tag = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessPointArn = structure(logical(0), tags = list(type = "string")), And = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", flattened = TRUE, locationName = "Tag", type = "list")), AccessPointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "MetricsConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "MetricsConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_metrics_configuration_input"]]))
 }
 
 .s3$put_bucket_metrics_configuration_output <- function(...) {
@@ -979,8 +866,7 @@ NULL
 
 .s3$put_bucket_notification_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), NotificationConfiguration = structure(list(TopicConfiguration = structure(list(Id = structure(logical(0), tags = list(type = "string")), Events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Event", type = "list", flattened = TRUE)), Event = structure(logical(0), tags = list(deprecated = TRUE, type = "string")), Topic = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), QueueConfiguration = structure(list(Id = structure(logical(0), tags = list(type = "string")), Event = structure(logical(0), tags = list(deprecated = TRUE, type = "string")), Events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Event", type = "list", flattened = TRUE)), Queue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CloudFunctionConfiguration = structure(list(Id = structure(logical(0), tags = list(type = "string")), Event = structure(logical(0), tags = list(deprecated = TRUE, type = "string")), Events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Event", type = "list", flattened = TRUE)), CloudFunction = structure(logical(0), tags = list(type = "string")), InvocationRole = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "NotificationConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "NotificationConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_notification_input"]]))
 }
 
 .s3$put_bucket_notification_output <- function(...) {
@@ -989,8 +875,7 @@ NULL
 
 .s3$put_bucket_notification_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), NotificationConfiguration = structure(list(TopicConfigurations = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), TopicArn = structure(logical(0), tags = list(locationName = "Topic", type = "string")), Events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Event", type = "list", flattened = TRUE)), Filter = structure(list(Key = structure(list(FilterRules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "FilterRule", type = "list", flattened = TRUE))), tags = list(locationName = "S3Key", type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "TopicConfiguration", type = "list", flattened = TRUE)), QueueConfigurations = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), QueueArn = structure(logical(0), tags = list(locationName = "Queue", type = "string")), Events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Event", type = "list", flattened = TRUE)), Filter = structure(list(Key = structure(list(FilterRules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "FilterRule", type = "list", flattened = TRUE))), tags = list(locationName = "S3Key", type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "QueueConfiguration", type = "list", flattened = TRUE)), LambdaFunctionConfigurations = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), LambdaFunctionArn = structure(logical(0), tags = list(locationName = "CloudFunction", type = "string")), Events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Event", type = "list", flattened = TRUE)), Filter = structure(list(Key = structure(list(FilterRules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "FilterRule", type = "list", flattened = TRUE))), tags = list(locationName = "S3Key", type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "CloudFunctionConfiguration", type = "list", flattened = TRUE)), EventBridgeConfiguration = structure(list(), tags = list(type = "structure"))), tags = list(locationName = "NotificationConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), SkipDestinationValidation = structure(logical(0), tags = list(location = "header", locationName = "x-amz-skip-destination-validation", type = "boolean", box = TRUE))), tags = list(type = "structure", payload = "NotificationConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_notification_configuration_input"]]))
 }
 
 .s3$put_bucket_notification_configuration_output <- function(...) {
@@ -999,8 +884,7 @@ NULL
 
 .s3$put_bucket_ownership_controls_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), OwnershipControls = structure(list(Rules = structure(list(structure(list(ObjectOwnership = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "Rule", type = "list", flattened = TRUE))), tags = list(locationName = "OwnershipControls", type = "structure")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string"))), tags = list(type = "structure", payload = "OwnershipControls"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_ownership_controls_input"]]))
 }
 
 .s3$put_bucket_ownership_controls_output <- function(...) {
@@ -1009,8 +893,7 @@ NULL
 
 .s3$put_bucket_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), ConfirmRemoveSelfBucketAccess = structure(logical(0), tags = list(location = "header", locationName = "x-amz-confirm-remove-self-bucket-access", type = "boolean", box = TRUE)), Policy = structure(logical(0), tags = list(type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "Policy"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_policy_input"]]))
 }
 
 .s3$put_bucket_policy_output <- function(...) {
@@ -1019,8 +902,7 @@ NULL
 
 .s3$put_bucket_replication_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), ReplicationConfiguration = structure(list(Role = structure(logical(0), tags = list(type = "string")), Rules = structure(list(structure(list(ID = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer", box = TRUE)), Prefix = structure(logical(0), tags = list(deprecated = TRUE, type = "string")), Filter = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tag = structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), And = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", flattened = TRUE, locationName = "Tag", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), SourceSelectionCriteria = structure(list(SseKmsEncryptedObjects = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReplicaModifications = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ExistingObjectReplication = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Destination = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Account = structure(logical(0), tags = list(type = "string")), StorageClass = structure(logical(0), tags = list(type = "string")), AccessControlTranslation = structure(list(Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionConfiguration = structure(list(ReplicaKmsKeyID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReplicationTime = structure(list(Status = structure(logical(0), tags = list(type = "string")), Time = structure(list(Minutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), Metrics = structure(list(Status = structure(logical(0), tags = list(type = "string")), EventThreshold = structure(list(Minutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), DeleteMarkerReplication = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "Rule", type = "list", flattened = TRUE))), tags = list(locationName = "ReplicationConfiguration", type = "structure")), Token = structure(logical(0), tags = list(location = "header", locationName = "x-amz-bucket-object-lock-token", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "ReplicationConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_replication_input"]]))
 }
 
 .s3$put_bucket_replication_output <- function(...) {
@@ -1029,8 +911,7 @@ NULL
 
 .s3$put_bucket_request_payment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), RequestPaymentConfiguration = structure(list(Payer = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "RequestPaymentConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "RequestPaymentConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_request_payment_input"]]))
 }
 
 .s3$put_bucket_request_payment_output <- function(...) {
@@ -1039,8 +920,7 @@ NULL
 
 .s3$put_bucket_tagging_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), Tagging = structure(list(TagSet = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", type = "list"))), tags = list(locationName = "Tagging", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "Tagging"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_tagging_input"]]))
 }
 
 .s3$put_bucket_tagging_output <- function(...) {
@@ -1049,8 +929,7 @@ NULL
 
 .s3$put_bucket_versioning_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), MFA = structure(logical(0), tags = list(location = "header", locationName = "x-amz-mfa", type = "string")), VersioningConfiguration = structure(list(MFADelete = structure(logical(0), tags = list(locationName = "MfaDelete", type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "VersioningConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "VersioningConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_versioning_input"]]))
 }
 
 .s3$put_bucket_versioning_output <- function(...) {
@@ -1059,8 +938,7 @@ NULL
 
 .s3$put_bucket_website_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), WebsiteConfiguration = structure(list(ErrorDocument = structure(list(Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IndexDocument = structure(list(Suffix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RedirectAllRequestsTo = structure(list(HostName = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RoutingRules = structure(list(structure(list(Condition = structure(list(HttpErrorCodeReturnedEquals = structure(logical(0), tags = list(type = "string")), KeyPrefixEquals = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Redirect = structure(list(HostName = structure(logical(0), tags = list(type = "string")), HttpRedirectCode = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), ReplaceKeyPrefixWith = structure(logical(0), tags = list(type = "string")), ReplaceKeyWith = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "RoutingRule", type = "structure"))), tags = list(locationNameList = "RoutingRule", type = "list"))), tags = list(locationName = "WebsiteConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "WebsiteConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_bucket_website_input"]]))
 }
 
 .s3$put_bucket_website_output <- function(...) {
@@ -1069,80 +947,77 @@ NULL
 
 .s3$put_object_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ACL = structure(logical(0), tags = list(location = "header", locationName = "x-amz-acl", type = "string")), Body = structure(logical(0), tags = list(streaming = TRUE, type = "blob")), Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), CacheControl = structure(logical(0), tags = list(location = "header", locationName = "Cache-Control", type = "string")), ContentDisposition = structure(logical(0), tags = list(location = "header", locationName = "Content-Disposition", type = "string")), ContentEncoding = structure(logical(0), tags = list(location = "header", locationName = "Content-Encoding", type = "string")), ContentLanguage = structure(logical(0), tags = list(location = "header", locationName = "Content-Language", type = "string")), ContentLength = structure(logical(0), tags = list(location = "header", locationName = "Content-Length", type = "long")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), ChecksumCRC32 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc32", type = "string")), ChecksumCRC32C = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc32c", type = "string")), ChecksumCRC64NVME = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc64nvme", type = "string")), ChecksumSHA1 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha1", type = "string")), ChecksumSHA256 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha256", type = "string")), ChecksumSHA512 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha512", type = "string")), ChecksumMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-md5", type = "string")), ChecksumXXHASH64 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash64", type = "string")), ChecksumXXHASH3 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash3", type = "string")), ChecksumXXHASH128 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash128", type = "string")), Expires = structure(logical(0), tags = list(location = "header", locationName = "Expires", type = "string")), IfMatch = structure(logical(0), tags = list(location = "header", locationName = "If-Match", type = "string")), IfNoneMatch = structure(logical(0), tags = list(location = "header", locationName = "If-None-Match", type = "string")), GrantFullControl = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-full-control", type = "string")), GrantRead = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-read", type = "string")), GrantReadACP = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-read-acp", type = "string")), GrantWriteACP = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-write-acp", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), WriteOffsetBytes = structure(logical(0), tags = list(location = "header", locationName = "x-amz-write-offset-bytes", type = "long", box = TRUE)), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "headers", locationName = "x-amz-meta-", type = "map")), ServerSideEncryption = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption", type = "string")), StorageClass = structure(logical(0), tags = list(location = "header", locationName = "x-amz-storage-class", type = "string")), WebsiteRedirectLocation = structure(logical(0), tags = list(location = "header", locationName = "x-amz-website-redirect-location", type = "string")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKey = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key", type = "string", sensitive = TRUE)), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string")), SSEKMSKeyId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-aws-kms-key-id", type = "string", sensitive = TRUE)), SSEKMSEncryptionContext = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-context", type = "string", sensitive = TRUE)), BucketKeyEnabled = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-bucket-key-enabled", type = "boolean", box = TRUE)), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), Tagging = structure(logical(0), tags = list(location = "header", locationName = "x-amz-tagging", type = "string")), ObjectLockMode = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-lock-mode", type = "string")), ObjectLockRetainUntilDate = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-lock-retain-until-date", type = "timestamp", timestampFormat = "iso8601")), ObjectLockLegalHoldStatus = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-lock-legal-hold", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "Body"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_object_input"]]))
 }
 
 .s3$put_object_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Expiration = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expiration", type = "string")), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string")), ChecksumCRC32 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc32", type = "string")), ChecksumCRC32C = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc32c", type = "string")), ChecksumCRC64NVME = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc64nvme", type = "string")), ChecksumSHA1 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha1", type = "string")), ChecksumSHA256 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha256", type = "string")), ChecksumSHA512 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha512", type = "string")), ChecksumMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-md5", type = "string")), ChecksumXXHASH64 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash64", type = "string")), ChecksumXXHASH3 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash3", type = "string")), ChecksumXXHASH128 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash128", type = "string")), ChecksumType = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-type", type = "string")), ServerSideEncryption = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption", type = "string")), VersionId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-version-id", type = "string")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string")), SSEKMSKeyId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-aws-kms-key-id", type = "string", sensitive = TRUE)), SSEKMSEncryptionContext = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-context", type = "string", sensitive = TRUE)), BucketKeyEnabled = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-bucket-key-enabled", type = "boolean", box = TRUE)), Size = structure(logical(0), tags = list(location = "header", locationName = "x-amz-object-size", type = "long", box = TRUE)), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_object_output"]]))
 }
 
 .s3$put_object_acl_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ACL = structure(logical(0), tags = list(location = "header", locationName = "x-amz-acl", type = "string")), AccessControlPolicy = structure(list(Grants = structure(list(structure(list(Grantee = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(locationName = "xsi:type", xmlAttribute = TRUE, type = "string")), URI = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Permission = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Grant", type = "structure"))), tags = list(locationNameList = "Grant", locationName = "AccessControlList", type = "list")), Owner = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "AccessControlPolicy", type = "structure")), Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), GrantFullControl = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-full-control", type = "string")), GrantRead = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-read", type = "string")), GrantReadACP = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-read-acp", type = "string")), GrantWrite = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-write", type = "string")), GrantWriteACP = structure(logical(0), tags = list(location = "header", locationName = "x-amz-grant-write-acp", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "AccessControlPolicy"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_object_acl_input"]]))
 }
 
 .s3$put_object_acl_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_object_acl_output"]]))
+}
+
+.s3$put_object_annotation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .s3_shapes[["put_object_annotation_input"]]))
+}
+
+.s3$put_object_annotation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .s3_shapes[["put_object_annotation_output"]]))
 }
 
 .s3$put_object_legal_hold_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), LegalHold = structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "LegalHold", type = "structure")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "LegalHold"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_object_legal_hold_input"]]))
 }
 
 .s3$put_object_legal_hold_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_object_legal_hold_output"]]))
 }
 
 .s3$put_object_lock_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ObjectLockConfiguration = structure(list(ObjectLockEnabled = structure(logical(0), tags = list(type = "string")), Rule = structure(list(DefaultRetention = structure(list(Mode = structure(logical(0), tags = list(type = "string")), Days = structure(logical(0), tags = list(type = "integer", box = TRUE)), Years = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "ObjectLockConfiguration", type = "structure")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), Token = structure(logical(0), tags = list(location = "header", locationName = "x-amz-bucket-object-lock-token", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "ObjectLockConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_object_lock_configuration_input"]]))
 }
 
 .s3$put_object_lock_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_object_lock_configuration_output"]]))
 }
 
 .s3$put_object_retention_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), Retention = structure(list(Mode = structure(logical(0), tags = list(type = "string")), RetainUntilDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(locationName = "Retention", type = "structure")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), BypassGovernanceRetention = structure(logical(0), tags = list(location = "header", locationName = "x-amz-bypass-governance-retention", type = "boolean", box = TRUE)), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "Retention"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_object_retention_input"]]))
 }
 
 .s3$put_object_retention_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_object_retention_output"]]))
 }
 
 .s3$put_object_tagging_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), Tagging = structure(list(TagSet = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", type = "list"))), tags = list(locationName = "Tagging", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string"))), tags = list(type = "structure", payload = "Tagging"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_object_tagging_input"]]))
 }
 
 .s3$put_object_tagging_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VersionId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-version-id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_object_tagging_output"]]))
 }
 
 .s3$put_public_access_block_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), PublicAccessBlockConfiguration = structure(list(BlockPublicAcls = structure(logical(0), tags = list(locationName = "BlockPublicAcls", type = "boolean", box = TRUE)), IgnorePublicAcls = structure(logical(0), tags = list(locationName = "IgnorePublicAcls", type = "boolean", box = TRUE)), BlockPublicPolicy = structure(logical(0), tags = list(locationName = "BlockPublicPolicy", type = "boolean", box = TRUE)), RestrictPublicBuckets = structure(logical(0), tags = list(locationName = "RestrictPublicBuckets", type = "boolean", box = TRUE))), tags = list(locationName = "PublicAccessBlockConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "PublicAccessBlockConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["put_public_access_block_input"]]))
 }
 
 .s3$put_public_access_block_output <- function(...) {
@@ -1151,44 +1026,46 @@ NULL
 
 .s3$rename_object_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), RenameSource = structure(logical(0), tags = list(location = "header", locationName = "x-amz-rename-source", type = "string")), DestinationIfMatch = structure(logical(0), tags = list(location = "header", locationName = "If-Match", type = "string")), DestinationIfNoneMatch = structure(logical(0), tags = list(location = "header", locationName = "If-None-Match", type = "string")), DestinationIfModifiedSince = structure(logical(0), tags = list(location = "header", locationName = "If-Modified-Since", type = "timestamp")), DestinationIfUnmodifiedSince = structure(logical(0), tags = list(location = "header", locationName = "If-Unmodified-Since", type = "timestamp")), SourceIfMatch = structure(logical(0), tags = list(location = "header", locationName = "x-amz-rename-source-if-match", type = "string")), SourceIfNoneMatch = structure(logical(0), tags = list(location = "header", locationName = "x-amz-rename-source-if-none-match", type = "string")), SourceIfModifiedSince = structure(logical(0), tags = list(location = "header", locationName = "x-amz-rename-source-if-modified-since", type = "timestamp", timestampFormat = "rfc822")), SourceIfUnmodifiedSince = structure(logical(0), tags = list(location = "header", locationName = "x-amz-rename-source-if-unmodified-since", type = "timestamp", timestampFormat = "rfc822")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "header", locationName = "x-amz-client-token", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["rename_object_input"]]))
 }
 
 .s3$rename_object_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["rename_object_output"]]))
 }
 
 .s3$restore_object_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), RestoreRequest = structure(list(Days = structure(logical(0), tags = list(type = "integer", box = TRUE)), GlacierJobParameters = structure(list(Tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Type = structure(logical(0), tags = list(type = "string")), Tier = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), SelectParameters = structure(list(InputSerialization = structure(list(CSV = structure(list(FileHeaderInfo = structure(logical(0), tags = list(type = "string")), Comments = structure(logical(0), tags = list(type = "string")), QuoteEscapeCharacter = structure(logical(0), tags = list(type = "string")), RecordDelimiter = structure(logical(0), tags = list(type = "string")), FieldDelimiter = structure(logical(0), tags = list(type = "string")), QuoteCharacter = structure(logical(0), tags = list(type = "string")), AllowQuotedRecordDelimiter = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), CompressionType = structure(logical(0), tags = list(type = "string")), JSON = structure(list(Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Parquet = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure")), ExpressionType = structure(logical(0), tags = list(type = "string")), Expression = structure(logical(0), tags = list(type = "string")), OutputSerialization = structure(list(CSV = structure(list(QuoteFields = structure(logical(0), tags = list(type = "string")), QuoteEscapeCharacter = structure(logical(0), tags = list(type = "string")), RecordDelimiter = structure(logical(0), tags = list(type = "string")), FieldDelimiter = structure(logical(0), tags = list(type = "string")), QuoteCharacter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JSON = structure(list(RecordDelimiter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), OutputLocation = structure(list(S3 = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string")), Encryption = structure(list(EncryptionType = structure(logical(0), tags = list(type = "string")), KMSKeyId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), KMSContext = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CannedACL = structure(logical(0), tags = list(type = "string")), AccessControlList = structure(list(structure(list(Grantee = structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), ID = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(locationName = "xsi:type", xmlAttribute = TRUE, type = "string")), URI = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Permission = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Grant", type = "structure"))), tags = list(locationNameList = "Grant", type = "list")), Tagging = structure(list(TagSet = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Tag", type = "structure"))), tags = list(locationNameList = "Tag", type = "list"))), tags = list(type = "structure")), UserMetadata = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "MetadataEntry", type = "structure"))), tags = list(locationNameList = "MetadataEntry", type = "list")), StorageClass = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "RestoreRequest", type = "structure")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "RestoreRequest"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["restore_object_input"]]))
 }
 
 .s3$restore_object_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string")), RestoreOutputPath = structure(logical(0), tags = list(location = "header", locationName = "x-amz-restore-output-path", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["restore_object_output"]]))
 }
 
 .s3$select_object_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKey = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key", type = "string", sensitive = TRUE)), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string")), Expression = structure(logical(0), tags = list(type = "string")), ExpressionType = structure(logical(0), tags = list(type = "string")), RequestProgress = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), InputSerialization = structure(list(CSV = structure(list(FileHeaderInfo = structure(logical(0), tags = list(type = "string")), Comments = structure(logical(0), tags = list(type = "string")), QuoteEscapeCharacter = structure(logical(0), tags = list(type = "string")), RecordDelimiter = structure(logical(0), tags = list(type = "string")), FieldDelimiter = structure(logical(0), tags = list(type = "string")), QuoteCharacter = structure(logical(0), tags = list(type = "string")), AllowQuotedRecordDelimiter = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), CompressionType = structure(logical(0), tags = list(type = "string")), JSON = structure(list(Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Parquet = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure")), OutputSerialization = structure(list(CSV = structure(list(QuoteFields = structure(logical(0), tags = list(type = "string")), QuoteEscapeCharacter = structure(logical(0), tags = list(type = "string")), RecordDelimiter = structure(logical(0), tags = list(type = "string")), FieldDelimiter = structure(logical(0), tags = list(type = "string")), QuoteCharacter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JSON = structure(list(RecordDelimiter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ScanRange = structure(list(Start = structure(logical(0), tags = list(type = "long", box = TRUE)), End = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", locationName = "SelectObjectContentRequest", xmlNamespace = "http://s3.amazonaws.com/doc/2006-03-01/"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["select_object_content_input"]]))
 }
 
 .s3$select_object_content_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Payload = structure(list(Records = structure(list(Payload = structure(logical(0), tags = list(eventpayload = TRUE, type = "blob"))), tags = list(type = "structure", event = TRUE)), Stats = structure(list(Details = structure(list(BytesScanned = structure(logical(0), tags = list(type = "long", box = TRUE)), BytesProcessed = structure(logical(0), tags = list(type = "long", box = TRUE)), BytesReturned = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(eventpayload = TRUE, type = "structure"))), tags = list(type = "structure", event = TRUE)), Progress = structure(list(Details = structure(list(BytesScanned = structure(logical(0), tags = list(type = "long", box = TRUE)), BytesProcessed = structure(logical(0), tags = list(type = "long", box = TRUE)), BytesReturned = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(eventpayload = TRUE, type = "structure"))), tags = list(type = "structure", event = TRUE)), Cont = structure(list(), tags = list(type = "structure", event = TRUE)), End = structure(list(), tags = list(type = "structure", event = TRUE))), tags = list(type = "structure", eventstream = TRUE))), tags = list(type = "structure", payload = "Payload"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["select_object_content_output"]]))
+}
+
+.s3$update_bucket_metadata_annotation_table_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .s3_shapes[["update_bucket_metadata_annotation_table_configuration_input"]]))
+}
+
+.s3$update_bucket_metadata_annotation_table_configuration_output <- function(...) {
+  list()
 }
 
 .s3$update_bucket_metadata_inventory_table_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), InventoryTableConfiguration = structure(list(ConfigurationState = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(SseAlgorithm = structure(logical(0), tags = list(type = "string")), KmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "InventoryTableConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "InventoryTableConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["update_bucket_metadata_inventory_table_configuration_input"]]))
 }
 
 .s3$update_bucket_metadata_inventory_table_configuration_output <- function(...) {
@@ -1197,8 +1074,7 @@ NULL
 
 .s3$update_bucket_metadata_journal_table_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), JournalTableConfiguration = structure(list(RecordExpiration = structure(list(Expiration = structure(logical(0), tags = list(type = "string")), Days = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(locationName = "JournalTableConfiguration", type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "JournalTableConfiguration"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["update_bucket_metadata_journal_table_configuration_input"]]))
 }
 
 .s3$update_bucket_metadata_journal_table_configuration_output <- function(...) {
@@ -1207,44 +1083,37 @@ NULL
 
 .s3$update_object_encryption_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), VersionId = structure(logical(0), tags = list(location = "querystring", locationName = "versionId", type = "string")), ObjectEncryption = structure(list(SSEKMS = structure(list(KMSKeyArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BucketKeyEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure", locationName = "SSE-KMS"))), tags = list(locationName = "ObjectEncryption", type = "structure", union = TRUE)), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string"))), tags = list(type = "structure", payload = "ObjectEncryption"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["update_object_encryption_input"]]))
 }
 
 .s3$update_object_encryption_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["update_object_encryption_output"]]))
 }
 
 .s3$upload_part_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Body = structure(logical(0), tags = list(streaming = TRUE, type = "blob")), Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), ContentLength = structure(logical(0), tags = list(location = "header", locationName = "Content-Length", type = "long")), ContentMD5 = structure(logical(0), tags = list(location = "header", locationName = "Content-MD5", type = "string")), ChecksumAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm", type = "string")), ChecksumCRC32 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc32", type = "string")), ChecksumCRC32C = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc32c", type = "string")), ChecksumCRC64NVME = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc64nvme", type = "string")), ChecksumSHA1 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha1", type = "string")), ChecksumSHA256 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha256", type = "string")), ChecksumSHA512 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha512", type = "string")), ChecksumMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-md5", type = "string")), ChecksumXXHASH64 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash64", type = "string")), ChecksumXXHASH3 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash3", type = "string")), ChecksumXXHASH128 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash128", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), PartNumber = structure(logical(0), tags = list(location = "querystring", locationName = "partNumber", type = "integer")), UploadId = structure(logical(0), tags = list(location = "querystring", locationName = "uploadId", type = "string")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKey = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key", type = "string", sensitive = TRUE)), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string"))), tags = list(type = "structure", payload = "Body"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["upload_part_input"]]))
 }
 
 .s3$upload_part_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServerSideEncryption = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption", type = "string")), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string")), ChecksumCRC32 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc32", type = "string")), ChecksumCRC32C = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc32c", type = "string")), ChecksumCRC64NVME = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-crc64nvme", type = "string")), ChecksumSHA1 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha1", type = "string")), ChecksumSHA256 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha256", type = "string")), ChecksumSHA512 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-sha512", type = "string")), ChecksumMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-md5", type = "string")), ChecksumXXHASH64 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash64", type = "string")), ChecksumXXHASH3 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash3", type = "string")), ChecksumXXHASH128 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-checksum-xxhash128", type = "string")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string")), SSEKMSKeyId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-aws-kms-key-id", type = "string", sensitive = TRUE)), BucketKeyEnabled = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-bucket-key-enabled", type = "boolean", box = TRUE)), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["upload_part_output"]]))
 }
 
 .s3$upload_part_copy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")), CopySource = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source", type = "string")), CopySourceIfMatch = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-if-match", type = "string")), CopySourceIfModifiedSince = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-if-modified-since", type = "timestamp")), CopySourceIfNoneMatch = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-if-none-match", type = "string")), CopySourceIfUnmodifiedSince = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-if-unmodified-since", type = "timestamp")), CopySourceRange = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-range", type = "string")), Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string")), PartNumber = structure(logical(0), tags = list(location = "querystring", locationName = "partNumber", type = "integer")), UploadId = structure(logical(0), tags = list(location = "querystring", locationName = "uploadId", type = "string")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKey = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key", type = "string", sensitive = TRUE)), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string")), CopySourceSSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-server-side-encryption-customer-algorithm", type = "string")), CopySourceSSECustomerKey = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-server-side-encryption-customer-key", type = "string", sensitive = TRUE)), CopySourceSSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-server-side-encryption-customer-key-MD5", type = "string")), RequestPayer = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-payer", type = "string")), ExpectedBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-expected-bucket-owner", type = "string")), ExpectedSourceBucketOwner = structure(logical(0), tags = list(location = "header", locationName = "x-amz-source-expected-bucket-owner", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["upload_part_copy_input"]]))
 }
 
 .s3$upload_part_copy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CopySourceVersionId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-copy-source-version-id", type = "string")), CopyPartResult = structure(list(ETag = structure(logical(0), tags = list(type = "string")), LastModified = structure(logical(0), tags = list(type = "timestamp")), ChecksumCRC32 = structure(logical(0), tags = list(type = "string")), ChecksumCRC32C = structure(logical(0), tags = list(type = "string")), ChecksumCRC64NVME = structure(logical(0), tags = list(type = "string")), ChecksumSHA1 = structure(logical(0), tags = list(type = "string")), ChecksumSHA256 = structure(logical(0), tags = list(type = "string")), ChecksumSHA512 = structure(logical(0), tags = list(type = "string")), ChecksumMD5 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH64 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH3 = structure(logical(0), tags = list(type = "string")), ChecksumXXHASH128 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ServerSideEncryption = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption", type = "string")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-algorithm", type = "string")), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-customer-key-MD5", type = "string")), SSEKMSKeyId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-aws-kms-key-id", type = "string", sensitive = TRUE)), BucketKeyEnabled = structure(logical(0), tags = list(location = "header", locationName = "x-amz-server-side-encryption-bucket-key-enabled", type = "boolean", box = TRUE)), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-charged", type = "string"))), tags = list(type = "structure", payload = "CopyPartResult"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["upload_part_copy_output"]]))
 }
 
 .s3$write_get_object_response_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RequestRoute = structure(logical(0), tags = list(hostLabel = TRUE, location = "header", locationName = "x-amz-request-route", type = "string")), RequestToken = structure(logical(0), tags = list(location = "header", locationName = "x-amz-request-token", type = "string")), Body = structure(logical(0), tags = list(streaming = TRUE, type = "blob")), StatusCode = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-status", type = "integer", box = TRUE)), ErrorCode = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-error-code", type = "string")), ErrorMessage = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-error-message", type = "string")), AcceptRanges = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-accept-ranges", type = "string")), CacheControl = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-Cache-Control", type = "string")), ContentDisposition = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-Content-Disposition", type = "string")), ContentEncoding = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-Content-Encoding", type = "string")), ContentLanguage = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-Content-Language", type = "string")), ContentLength = structure(logical(0), tags = list(location = "header", locationName = "Content-Length", type = "long")), ContentRange = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-Content-Range", type = "string")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-Content-Type", type = "string")), ChecksumCRC32 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-checksum-crc32", type = "string")), ChecksumCRC32C = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-checksum-crc32c", type = "string")), ChecksumCRC64NVME = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-checksum-crc64nvme", type = "string")), ChecksumSHA1 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-checksum-sha1", type = "string")), ChecksumSHA256 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-checksum-sha256", type = "string")), ChecksumSHA512 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-checksum-sha512", type = "string")), ChecksumMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-checksum-md5", type = "string")), ChecksumXXHASH64 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-checksum-xxhash64", type = "string")), ChecksumXXHASH3 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-checksum-xxhash3", type = "string")), ChecksumXXHASH128 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-checksum-xxhash128", type = "string")), DeleteMarker = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-delete-marker", type = "boolean")), ETag = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-ETag", type = "string")), Expires = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-Expires", type = "string")), Expiration = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-expiration", type = "string")), LastModified = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-Last-Modified", type = "timestamp")), MissingMeta = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-missing-meta", type = "integer")), Metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "headers", locationName = "x-amz-meta-", type = "map")), ObjectLockMode = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-object-lock-mode", type = "string")), ObjectLockLegalHoldStatus = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-object-lock-legal-hold", type = "string")), ObjectLockRetainUntilDate = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-object-lock-retain-until-date", type = "timestamp", timestampFormat = "iso8601")), PartsCount = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-mp-parts-count", type = "integer", box = TRUE)), ReplicationStatus = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-replication-status", type = "string")), RequestCharged = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-request-charged", type = "string")), Restore = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-restore", type = "string")), ServerSideEncryption = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-server-side-encryption", type = "string")), SSECustomerAlgorithm = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-server-side-encryption-customer-algorithm", type = "string")), SSEKMSKeyId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-server-side-encryption-aws-kms-key-id", type = "string", sensitive = TRUE)), SSECustomerKeyMD5 = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-server-side-encryption-customer-key-MD5", type = "string")), StorageClass = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-storage-class", type = "string")), TagCount = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-tagging-count", type = "integer", box = TRUE)), VersionId = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-version-id", type = "string")), BucketKeyEnabled = structure(logical(0), tags = list(location = "header", locationName = "x-amz-fwd-header-x-amz-server-side-encryption-bucket-key-enabled", type = "boolean", box = TRUE))), tags = list(type = "structure", payload = "Body"))
-  return(populate(args, shape))
+  return(populate(args, .s3_shapes[["write_get_object_response_input"]]))
 }
 
 .s3$write_get_object_response_output <- function(...) {

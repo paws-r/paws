@@ -4,9 +4,12 @@
 NULL
 
 #' Provides a list of analysis segments for a real-time analysis session
+#' for voice
 #'
 #' @description
-#' Provides a list of analysis segments for a real-time analysis session.
+#' Provides a list of analysis segments for a real-time analysis session for voice.
+#' 
+#' Voice data is retained for 24 hours. You must invoke this API during that time.
 #'
 #' @usage
 #' connectcontactlens_list_realtime_contact_analysis_segments(InstanceId,
@@ -59,6 +62,23 @@ NULL
 #'         Content = "string",
 #'         Status = "FAILED"|"COMPLETED",
 #'         FailureCode = "QUOTA_EXCEEDED"|"INSUFFICIENT_CONVERSATION_CONTENT"|"FAILED_SAFETY_GUIDELINES"|"INVALID_ANALYSIS_CONFIGURATION"|"INTERNAL_ERROR"
+#'       ),
+#'       ExtractedInformation = list(
+#'         ExtractionDefinitionId = "string",
+#'         ExtractionDefinitionName = "string",
+#'         ExtractionDefinitionDisplayLabel = "string",
+#'         ExtractedValues = list(
+#'           list(
+#'             Content = "string",
+#'             PointsOfInterest = list(
+#'               list(
+#'                 BeginOffsetMillis = 123,
+#'                 EndOffsetMillis = 123
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         FailureCode = "QUOTA_EXCEEDED"|"INSUFFICIENT_CONVERSATION_CONTENT"|"FAILED_SAFETY_GUIDELINES"|"INTERNAL_ERROR"|"MAX_PACKAGE_FEATURE_ONLY"
 #'       )
 #'     )
 #'   ),

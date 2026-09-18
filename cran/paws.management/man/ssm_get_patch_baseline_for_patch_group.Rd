@@ -10,7 +10,7 @@ ssm_get_patch_baseline_for_patch_group(PatchGroup, OperatingSystem = NULL)
 \arguments{
 \item{PatchGroup}{[required] The name of the patch group whose patch baseline should be retrieved.}
 
-\item{OperatingSystem}{Returns the operating system rule specified for patch groups using the patch baseline.}
+\item{OperatingSystem}{Returns the operating system rule specified for patch groups using the patch baseline. The default value is \code{WINDOWS}.}
 }
 \description{
 Retrieves the patch baseline that should be used for the specified patch group.

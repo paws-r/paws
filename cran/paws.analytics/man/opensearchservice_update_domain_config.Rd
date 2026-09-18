@@ -28,7 +28,9 @@ opensearchservice_update_domain_config(
   SoftwareUpdateOptions = NULL,
   AIMLOptions = NULL,
   DeploymentStrategyOptions = NULL,
-  AutomatedSnapshotPauseOptions = NULL
+  AutomatedSnapshotPauseOptions = NULL,
+  UseCase = NULL,
+  EngineMode = NULL
 )
 }
 \arguments{
@@ -92,6 +94,10 @@ For more information, see \href{https://docs.aws.amazon.com/opensearch-service/l
 Suspending snapshots reduces data protection. You cannot restore your domain to points in time when snapshots are suspended. Use this feature only for short-term operational needs such as migrations or maintenance windows.
 
 Maximum suspension duration: 3 days.}
+
+\item{UseCase}{The primary use case for the domain. For valid values, see \code{DomainUseCase}.}
+
+\item{EngineMode}{The engine mode for the domain. The engine mode can't be changed after the domain is created. For valid values, see \code{EngineMode}.}
 }
 \description{
 Modifies the cluster configuration of the specified Amazon OpenSearch Service domain.

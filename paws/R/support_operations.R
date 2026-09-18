@@ -10,17 +10,18 @@ NULL
 #' 
 #' An attachment set is a temporary container for attachments that you add to a case or case communication. The set is available for 1 hour after it's created. The `expiryTime` returned in the response is when the set expires.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
-#' support_add_attachments_to_set(attachmentSetId, attachments)
+#' support_add_attachments_to_set(attachmentSetId, attachments, dryRun)
 #'
 #' @param attachmentSetId The ID of the attachment set. If an `attachmentSetId` is not specified, a new attachment set is created, and the ID of the set is returned in the response. If an `attachmentSetId` is specified, the attachments are added to the specified set, if it exists.
 #' @param attachments &#91;required&#93; One or more attachments to add to the set. You can add up to three attachments per set. The size limit is 5 MB per attachment.
 #' 
 #' In the `Attachment` object, use the `data` parameter to specify the contents of the attachment file. In the previous request syntax, the value for `data` appear as `blob`, which is represented as a base64-encoded string. The value for `fileName` is the name of the attachment, such as `troubleshoot-screenshot.png`.
+#' @param dryRun Specifies whether to validate the request without actually adding the attachments. When set to `true`, the request is validated but no attachments are stored, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @return
 #' A list with the following syntax:
@@ -40,7 +41,8 @@ NULL
 #'       fileName = "string",
 #'       data = raw
 #'     )
-#'   )
+#'   ),
+#'   dryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -49,7 +51,7 @@ NULL
 #' @rdname support_add_attachments_to_set
 #'
 #' @aliases support_add_attachments_to_set
-support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) {
+support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments, dryRun = NULL) {
   op <- new_operation(
     name = "AddAttachmentsToSet",
     http_method = "POST",
@@ -58,7 +60,7 @@ support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$add_attachments_to_set_input(attachmentSetId = attachmentSetId, attachments = attachments)
+  input <- .support$add_attachments_to_set_input(attachmentSetId = attachmentSetId, attachments = attachments, dryRun = dryRun)
   output <- .support$add_attachments_to_set_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -68,24 +70,38 @@ support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) 
 }
 .support$operations$add_attachments_to_set <- support_add_attachments_to_set
 
-#' Adds additional customer communication to an Amazon Web Services Support
+#' Adds additional customer communication to a Amazon Web Services Support
 #' case
 #'
 #' @description
-#' Adds additional customer communication to an Amazon Web Services Support case. Use the `caseId` parameter to identify the case to which to add communication. You can list a set of email addresses to copy on the communication by using the `ccEmailAddresses` parameter. The `communicationBody` value contains the text of the communication.
+#' Adds additional customer communication to a Amazon Web Services Support case. Use the `caseId` parameter to identify the case to which to add communication. To list a set of email addresses to copy on the communication, use the `ccEmailAddresses` parameter. The `communicationBody` value contains the text of the communication.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' To attach files larger than 5 MB to the communication, use the `uploadIds` parameter.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' Amazon Web Services Support automatically redacts sensitive information from support cases to protect your data. The following information is replaced with `[REDACTED_BY_Amazon Web Services]` and is not stored:
+#' 
+#' -   Amazon Web Services secret keys - The complete key is replaced. Example: `[REDACTED_BY_Amazon Web Services]`
+#' 
+#' -   Private keys - The complete key is replaced. Example: `[REDACTED_BY_Amazon Web Services]`
+#' 
+#' -   Credit card numbers - The number is redacted, but the last 4 digits remain. Example: `[REDACTED_BY_Amazon Web Services]-7016`
+#' 
+#' This sensitive information is never required by Amazon Web Services Support.
+#' 
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
+#' 
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_add_communication_to_case(caseId, communicationBody,
-#'   ccEmailAddresses, attachmentSetId)
+#'   ccEmailAddresses, attachmentSetId, uploadIds, dryRun)
 #'
-#' @param caseId The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-*12345678910-2013-c4c1d2bf33c5cf47*
+#' @param caseId The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-*12345678910-exen-2025-c4c1d2bf33c5cf47*
 #' @param communicationBody &#91;required&#93; The body of an email communication to add to the support case.
 #' @param ccEmailAddresses The email addresses in the CC line of an email to be added to the support case.
-#' @param attachmentSetId The ID of a set of one or more attachments for the communication to add to the case. Create the set by calling [`add_attachments_to_set`][support_add_attachments_to_set]
+#' @param attachmentSetId The ID of a set of one or more attachments for the communication to add to the case. Create the set by calling [`add_attachments_to_set`][support_add_attachments_to_set]. Each attachment in the set must be 5 MB or smaller. To attach files larger than 5 MB, use `uploadIds`.
+#' @param uploadIds A list of upload IDs that identify attachments to add to the case. Each `uploadId` is returned by the [`get_attachment_upload_links`][support_get_attachment_upload_links] operation. The upload must reach the `attachment-ready` state by calling [`complete_attachment_upload`][support_complete_attachment_upload] before it can be passed here. Use `uploadIds` to attach files of any supported size, including files larger than 5 MB.
+#' @param dryRun Specifies whether to validate the request without actually adding the communication to the case. When set to `true`, the request is validated but the communication isn't added, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @return
 #' A list with the following syntax:
@@ -103,7 +119,11 @@ support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) 
 #'   ccEmailAddresses = list(
 #'     "string"
 #'   ),
-#'   attachmentSetId = "string"
+#'   attachmentSetId = "string",
+#'   uploadIds = list(
+#'     "string"
+#'   ),
+#'   dryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -112,7 +132,7 @@ support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) 
 #' @rdname support_add_communication_to_case
 #'
 #' @aliases support_add_communication_to_case
-support_add_communication_to_case <- function(caseId = NULL, communicationBody, ccEmailAddresses = NULL, attachmentSetId = NULL) {
+support_add_communication_to_case <- function(caseId = NULL, communicationBody, ccEmailAddresses = NULL, attachmentSetId = NULL, uploadIds = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "AddCommunicationToCase",
     http_method = "POST",
@@ -121,7 +141,7 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$add_communication_to_case_input(caseId = caseId, communicationBody = communicationBody, ccEmailAddresses = ccEmailAddresses, attachmentSetId = attachmentSetId)
+  input <- .support$add_communication_to_case_input(caseId = caseId, communicationBody = communicationBody, ccEmailAddresses = ccEmailAddresses, attachmentSetId = attachmentSetId, uploadIds = uploadIds, dryRun = dryRun)
   output <- .support$add_communication_to_case_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -130,6 +150,65 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
   return(response)
 }
 .support$operations$add_communication_to_case <- support_add_communication_to_case
+
+#' Completes an attachment upload that was started with
+#' GetAttachmentUploadLinks
+#'
+#' @description
+#' Completes an attachment upload that was started with [`get_attachment_upload_links`][support_get_attachment_upload_links]. After you upload a part of the file to its presigned Amazon S3 URL, call [`complete_attachment_upload`][support_complete_attachment_upload] with the `partIndex` and `eTag` of that part. You can include one part per call, or multiple parts in a single call. After [`complete_attachment_upload`][support_complete_attachment_upload] has been called for every part of the file, the service processes the upload asynchronously. The `attachment-ready` status might not be reflected immediately. Use [`describe_attachment_upload_status`][support_describe_attachment_upload_status] to poll for the `uploadStatus` to become `attachment-ready` before passing the `uploadId` to [`create_case`][support_create_case] or [`add_communication_to_case`][support_add_communication_to_case].
+#'
+#' @usage
+#' support_complete_attachment_upload(uploadId, completedUploads, dryRun)
+#'
+#' @param uploadId &#91;required&#93; The identifier associated with the upload to complete.
+#' @param completedUploads &#91;required&#93; The list of parts being reported as completed in this call. Each entry must contain the `partIndex` of an uploaded part and the `ETag` returned by Amazon S3 when that part was uploaded.
+#' @param dryRun Specifies whether to validate the request without actually completing the upload. When set to `true`, the request is validated but the upload isn't finalized, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   uploadStatus = "attachment-ready"|"attachment-not-ready"|"failed"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$complete_attachment_upload(
+#'   uploadId = "string",
+#'   completedUploads = list(
+#'     list(
+#'       partIndex = 123,
+#'       eTag = "string"
+#'     )
+#'   ),
+#'   dryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname support_complete_attachment_upload
+#'
+#' @aliases support_complete_attachment_upload
+support_complete_attachment_upload <- function(uploadId, completedUploads, dryRun = NULL) {
+  op <- new_operation(
+    name = "CompleteAttachmentUpload",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .support$complete_attachment_upload_input(uploadId = uploadId, completedUploads = completedUploads, dryRun = dryRun)
+  output <- .support$complete_attachment_upload_output()
+  config <- get_config()
+  svc <- .support$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.support$operations$complete_attachment_upload <- support_complete_attachment_upload
 
 #' Creates a case in the Amazon Web Services Support Center
 #'
@@ -142,18 +221,28 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' 
 #' -   Use the Service Quotas [RequestServiceQuotaIncrease](https://docs.aws.amazon.com/servicequotas/2019-06-24/apireference/API_RequestServiceQuotaIncrease.html) operation.
 #' 
-#' A successful [`create_case`][support_create_case] request returns an Amazon Web Services Support case number. You can use the [`describe_cases`][support_describe_cases] operation and specify the case number to get existing Amazon Web Services Support cases. After you create a case, use the [`add_communication_to_case`][support_add_communication_to_case] operation to add additional communication or attachments to an existing case.
+#' Amazon Web Services Support automatically redacts sensitive information from support cases to protect your data. The following information is replaced with `[REDACTED_BY_Amazon Web Services]` and is not stored:
+#' 
+#' -   Amazon Web Services secret keys - The complete key is replaced. Example: `[REDACTED_BY_Amazon Web Services]`
+#' 
+#' -   Private keys - The complete key is replaced. Example: `[REDACTED_BY_Amazon Web Services]`
+#' 
+#' -   Credit card numbers - The number is redacted, but the last 4 digits remain. Example: `[REDACTED_BY_Amazon Web Services]-7016`
+#' 
+#' This sensitive information is never required by Amazon Web Services Support.
+#' 
+#' A successful [`create_case`][support_create_case] request returns a Amazon Web Services Support case number. You can use the [`describe_cases`][support_describe_cases] operation and specify the case number to get existing Amazon Web Services Support cases. After you create a case, use the [`add_communication_to_case`][support_add_communication_to_case] operation to add additional communication or attachments to an existing case.
 #' 
 #' The `caseId` is separate from the `displayId` that appears in the Amazon Web Services Support Center. Use the [`describe_cases`][support_describe_cases] operation to get the `displayId`.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_create_case(subject, serviceCode, severityCode, categoryCode,
 #'   communicationBody, ccEmailAddresses, language, issueType,
-#'   attachmentSetId)
+#'   attachmentSetId, uploadIds, dryRun)
 #'
 #' @param subject &#91;required&#93; The title of the support case. The title appears in the **Subject** field on the Amazon Web Services Support Center Create Case page.
 #' @param serviceCode The code for the Amazon Web Services service. You can use the [`describe_services`][support_describe_services] operation to get the possible `serviceCode` values.
@@ -165,9 +254,11 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' @param categoryCode The category of problem for the support case. You also use the [`describe_services`][support_describe_services] operation to get the category code for a service. Each Amazon Web Services service defines its own set of category codes.
 #' @param communicationBody &#91;required&#93; The communication body text that describes the issue. This text appears in the **Description** field on the Amazon Web Services Support Center Create Case page.
 #' @param ccEmailAddresses A list of email addresses that Amazon Web Services Support copies on case correspondence. Amazon Web Services Support identifies the account that creates the case when you specify your Amazon Web Services credentials in an HTTP POST method or use the [Amazon Web Services SDKs](https://builder.aws.com/build/tools).
-#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") , Chinese ("zh"), Spanish ("es"), Portuguese ("pt"), French ("fr"), Korean (“ko”), and Turkish ("tr"). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
 #' @param issueType The type of issue for the case. You can specify `customer-service` or `technical`. If you don't specify a value, the default is `technical`.
-#' @param attachmentSetId The ID of a set of one or more attachments for the case. Create the set by using the [`add_attachments_to_set`][support_add_attachments_to_set] operation.
+#' @param attachmentSetId The ID of a set of one or more attachments for the case. Create the set by using the [`add_attachments_to_set`][support_add_attachments_to_set] operation. Each attachment in the set must be 5 MB or smaller. To attach files larger than 5 MB, use `uploadIds`.
+#' @param uploadIds A list of upload IDs that identify attachments to add to the case. Each `uploadId` is returned by the [`get_attachment_upload_links`][support_get_attachment_upload_links] operation. The upload must reach the `attachment-ready` state by calling [`complete_attachment_upload`][support_complete_attachment_upload] before it can be passed here. Use `uploadIds` to attach files of any supported size, including files larger than 5 MB.
+#' @param dryRun Specifies whether to validate the request without actually creating the case. When set to `true`, the request is validated but no case is created, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @return
 #' A list with the following syntax:
@@ -190,7 +281,11 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #'   ),
 #'   language = "string",
 #'   issueType = "string",
-#'   attachmentSetId = "string"
+#'   attachmentSetId = "string",
+#'   uploadIds = list(
+#'     "string"
+#'   ),
+#'   dryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -199,7 +294,7 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' @rdname support_create_case
 #'
 #' @aliases support_create_case
-support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL, categoryCode = NULL, communicationBody, ccEmailAddresses = NULL, language = NULL, issueType = NULL, attachmentSetId = NULL) {
+support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL, categoryCode = NULL, communicationBody, ccEmailAddresses = NULL, language = NULL, issueType = NULL, attachmentSetId = NULL, uploadIds = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "CreateCase",
     http_method = "POST",
@@ -208,7 +303,7 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$create_case_input(subject = subject, serviceCode = serviceCode, severityCode = severityCode, categoryCode = categoryCode, communicationBody = communicationBody, ccEmailAddresses = ccEmailAddresses, language = language, issueType = issueType, attachmentSetId = attachmentSetId)
+  input <- .support$create_case_input(subject = subject, serviceCode = serviceCode, severityCode = severityCode, categoryCode = categoryCode, communicationBody = communicationBody, ccEmailAddresses = ccEmailAddresses, language = language, issueType = issueType, attachmentSetId = attachmentSetId, uploadIds = uploadIds, dryRun = dryRun)
   output <- .support$create_case_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -223,14 +318,21 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
 #' @description
 #' Returns the attachment that has the specified ID. Attachments can include screenshots, error logs, or other files that describe your issue. Attachment IDs are generated by the case management system when you add an attachment to a case or case communication. Attachment IDs are returned in the AttachmentDetails objects that are returned by the [`describe_communications`][support_describe_communications] operation.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' 
+#' [`describe_attachment`][support_describe_attachment] can't return attachments larger than 5 MB. If the specified `attachmentId` refers to an attachment larger than 5 MB, the request fails with `InvalidParameterValueException`.
+#' 
+#' To download an attachment of any size, including attachments larger than 5 MB, use [`get_attachment_download_link`][support_get_attachment_download_link]. [`get_attachment_download_link`][support_get_attachment_download_link] returns an Amazon S3 presigned URL that you can use to download the attachment directly.
 #'
 #' @usage
-#' support_describe_attachment(attachmentId)
+#' support_describe_attachment(attachmentId, dryRun)
 #'
 #' @param attachmentId &#91;required&#93; The ID of the attachment to return. Attachment IDs are returned by the [`describe_communications`][support_describe_communications] operation.
+#' 
+#' If the specified attachment is larger than 5 MB, this operation returns `InvalidParameterValueException`. To download attachments larger than 5 MB, use [`get_attachment_download_link`][support_get_attachment_download_link].
+#' @param dryRun Specifies whether to validate the request without actually retrieving the attachment. When set to `true`, the request is validated but no attachment content is returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @return
 #' A list with the following syntax:
@@ -246,7 +348,8 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
 #' @section Request syntax:
 #' ```
 #' svc$describe_attachment(
-#'   attachmentId = "string"
+#'   attachmentId = "string",
+#'   dryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -255,7 +358,7 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
 #' @rdname support_describe_attachment
 #'
 #' @aliases support_describe_attachment
-support_describe_attachment <- function(attachmentId) {
+support_describe_attachment <- function(attachmentId, dryRun = NULL) {
   op <- new_operation(
     name = "DescribeAttachment",
     http_method = "POST",
@@ -264,7 +367,7 @@ support_describe_attachment <- function(attachmentId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$describe_attachment_input(attachmentId = attachmentId)
+  input <- .support$describe_attachment_input(attachmentId = attachmentId, dryRun = dryRun)
   output <- .support$describe_attachment_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -273,6 +376,67 @@ support_describe_attachment <- function(attachmentId) {
   return(response)
 }
 .support$operations$describe_attachment <- support_describe_attachment
+
+#' Returns the current status, file name, and progress of a multipart
+#' attachment upload that was started with GetAttachmentUploadLinks
+#'
+#' @description
+#' Returns the current status, file name, and progress of a multipart attachment upload that was started with [`get_attachment_upload_links`][support_get_attachment_upload_links]. Use this operation to track where an upload is in the workflow. While parts are still being uploaded and reported through [`complete_attachment_upload`][support_complete_attachment_upload], the `uploadStatus` is `attachment-not-ready` and `uploadProgress` reports the total number of parts and how many have been completed so far. After every part has been reported and the service finishes processing the upload asynchronously, the `uploadStatus` becomes `attachment-ready` and the `uploadId` can be attached to a case through [`create_case`][support_create_case] or [`add_communication_to_case`][support_add_communication_to_case].
+#' 
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
+#' 
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#'
+#' @usage
+#' support_describe_attachment_upload_status(uploadId, dryRun)
+#'
+#' @param uploadId &#91;required&#93; The unique identifier for the upload. The `uploadId` is returned by [`get_attachment_upload_links`][support_get_attachment_upload_links] when you initiate the upload.
+#' @param dryRun Specifies whether to validate the request without actually returning upload status. When set to `true`, the request is validated but no status is returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   uploadStatus = "attachment-ready"|"attachment-not-ready"|"failed",
+#'   fileName = "string",
+#'   uploadProgress = list(
+#'     totalParts = 123,
+#'     completedPartsCount = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_attachment_upload_status(
+#'   uploadId = "string",
+#'   dryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname support_describe_attachment_upload_status
+#'
+#' @aliases support_describe_attachment_upload_status
+support_describe_attachment_upload_status <- function(uploadId, dryRun = NULL) {
+  op <- new_operation(
+    name = "DescribeAttachmentUploadStatus",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .support$describe_attachment_upload_status_input(uploadId = uploadId, dryRun = dryRun)
+  output <- .support$describe_attachment_upload_status_output()
+  config <- get_config()
+  svc <- .support$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.support$operations$describe_attachment_upload_status <- support_describe_attachment_upload_status
 
 #' Returns a list of cases that you specify by passing one or more case IDs
 #'
@@ -285,26 +449,35 @@ support_describe_attachment <- function(attachmentId) {
 #' 
 #' -   One or more `nextToken` values, which specify where to paginate the returned records represented by the `CaseDetails` objects.
 #' 
-#' Case data is available for 12 months after creation. If a case was created more than 12 months ago, a request might return an error.
+#' Case data is available for 24 months after creation. If a case was created more than 24 months ago, a request might return an error.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' 
+#' Each Communication returned by this operation includes attachment information in two fields:
+#' 
+#' -   `attachmentSet`: returns only attachments that are 5 MB or smaller. Attachments larger than 5 MB are not included in this field.
+#' 
+#' -   `attachments`: returns all attachments regardless of size.
+#' 
+#' Amazon Web Services recommends that you use the `attachments` field and download each attachment with [`get_attachment_download_link`][support_get_attachment_download_link], which supports attachments of any size. The `attachmentSet` field and [`describe_attachment`][support_describe_attachment] return only attachments that are 5 MB or smaller.
 #'
 #' @usage
 #' support_describe_cases(caseIdList, displayId, afterTime, beforeTime,
 #'   includeResolvedCases, nextToken, maxResults, language,
-#'   includeCommunications)
+#'   includeCommunications, dryRun)
 #'
 #' @param caseIdList A list of ID numbers of the support cases you want returned. The maximum number of cases is 100.
 #' @param displayId The ID displayed for a case in the Amazon Web Services Support Center user interface.
-#' @param afterTime The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.
-#' @param beforeTime The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.
+#' @param afterTime The start date for a filtered date search on support case communications. Case communications are available for 24 months after creation.
+#' @param beforeTime The end date for a filtered date search on support case communications. Case communications are available for 24 months after creation.
 #' @param includeResolvedCases Specifies whether to include resolved support cases in the [`describe_cases`][support_describe_cases] response. By default, resolved cases aren't included.
 #' @param nextToken A resumption point for pagination.
 #' @param maxResults The maximum number of results to return before paginating.
-#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") , Chinese ("zh"), Spanish ("es"), Portuguese ("pt"), French ("fr"), Korean (“ko”), and Turkish ("tr"). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
 #' @param includeCommunications Specifies whether to include communications in the [`describe_cases`][support_describe_cases] response. By default, communications are included.
+#' @param dryRun Specifies whether to validate the request without actually returning case data. When set to `true`, the request is validated but no cases are returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @return
 #' A list with the following syntax:
@@ -328,6 +501,12 @@ support_describe_attachment <- function(attachmentId) {
 #'             body = "string",
 #'             submittedBy = "string",
 #'             timeCreated = "string",
+#'             attachments = list(
+#'               list(
+#'                 attachmentId = "string",
+#'                 fileName = "string"
+#'               )
+#'             ),
 #'             attachmentSet = list(
 #'               list(
 #'                 attachmentId = "string",
@@ -361,7 +540,8 @@ support_describe_attachment <- function(attachmentId) {
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   language = "string",
-#'   includeCommunications = TRUE|FALSE
+#'   includeCommunications = TRUE|FALSE,
+#'   dryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -370,7 +550,7 @@ support_describe_attachment <- function(attachmentId) {
 #' @rdname support_describe_cases
 #'
 #' @aliases support_describe_cases
-support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTime = NULL, beforeTime = NULL, includeResolvedCases = NULL, nextToken = NULL, maxResults = NULL, language = NULL, includeCommunications = NULL) {
+support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTime = NULL, beforeTime = NULL, includeResolvedCases = NULL, nextToken = NULL, maxResults = NULL, language = NULL, includeCommunications = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "DescribeCases",
     http_method = "POST",
@@ -379,7 +559,7 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "cases"),
     stream_api = FALSE
   )
-  input <- .support$describe_cases_input(caseIdList = caseIdList, displayId = displayId, afterTime = afterTime, beforeTime = beforeTime, includeResolvedCases = includeResolvedCases, nextToken = nextToken, maxResults = maxResults, language = language, includeCommunications = includeCommunications)
+  input <- .support$describe_cases_input(caseIdList = caseIdList, displayId = displayId, afterTime = afterTime, beforeTime = beforeTime, includeResolvedCases = includeResolvedCases, nextToken = nextToken, maxResults = maxResults, language = language, includeCommunications = includeCommunications, dryRun = dryRun)
   output <- .support$describe_cases_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -394,23 +574,32 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
 #' @description
 #' Returns communications and attachments for one or more support cases. Use the `afterTime` and `beforeTime` parameters to filter by date. You can use the `caseId` parameter to restrict the results to a specific case.
 #' 
-#' Case data is available for 12 months after creation. If a case was created more than 12 months ago, a request for data might cause an error.
+#' Case data is available for 24 months after creation. If a case was created more than 24 months ago, a request for data might cause an error.
 #' 
 #' You can use the `maxResults` and `nextToken` parameters to control the pagination of the results. Set `maxResults` to the number of cases that you want to display on each page, and use `nextToken` to specify the resumption of pagination.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' 
+#' Each Communication returned by this operation includes attachment information in two fields:
+#' 
+#' -   `attachmentSet`: returns only attachments that are 5 MB or smaller. Attachments larger than 5 MB are not included in this field.
+#' 
+#' -   `attachments`: returns all attachments regardless of size.
+#' 
+#' Amazon Web Services recommends that you use the `attachments` field and download each attachment with [`get_attachment_download_link`][support_get_attachment_download_link], which supports attachments of any size. The `attachmentSet` field and [`describe_attachment`][support_describe_attachment] return only attachments that are 5 MB or smaller.
 #'
 #' @usage
 #' support_describe_communications(caseId, beforeTime, afterTime,
-#'   nextToken, maxResults)
+#'   nextToken, maxResults, dryRun)
 #'
-#' @param caseId &#91;required&#93; The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-*12345678910-2013-c4c1d2bf33c5cf47*
-#' @param beforeTime The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.
-#' @param afterTime The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.
+#' @param caseId &#91;required&#93; The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-*12345678910-exen-2025-c4c1d2bf33c5cf47*
+#' @param beforeTime The end date for a filtered date search on support case communications. Case communications are available for 24 months after creation.
+#' @param afterTime The start date for a filtered date search on support case communications. Case communications are available for 24 months after creation.
 #' @param nextToken A resumption point for pagination.
 #' @param maxResults The maximum number of results to return before paginating.
+#' @param dryRun Specifies whether to validate the request without actually returning communications. When set to `true`, the request is validated but no communications are returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @return
 #' A list with the following syntax:
@@ -422,6 +611,12 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
 #'       body = "string",
 #'       submittedBy = "string",
 #'       timeCreated = "string",
+#'       attachments = list(
+#'         list(
+#'           attachmentId = "string",
+#'           fileName = "string"
+#'         )
+#'       ),
 #'       attachmentSet = list(
 #'         list(
 #'           attachmentId = "string",
@@ -441,7 +636,8 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
 #'   beforeTime = "string",
 #'   afterTime = "string",
 #'   nextToken = "string",
-#'   maxResults = 123
+#'   maxResults = 123,
+#'   dryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -450,7 +646,7 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
 #' @rdname support_describe_communications
 #'
 #' @aliases support_describe_communications
-support_describe_communications <- function(caseId, beforeTime = NULL, afterTime = NULL, nextToken = NULL, maxResults = NULL) {
+support_describe_communications <- function(caseId, beforeTime = NULL, afterTime = NULL, nextToken = NULL, maxResults = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "DescribeCommunications",
     http_method = "POST",
@@ -459,7 +655,7 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "communications"),
     stream_api = FALSE
   )
-  input <- .support$describe_communications_input(caseId = caseId, beforeTime = beforeTime, afterTime = afterTime, nextToken = nextToken, maxResults = maxResults)
+  input <- .support$describe_communications_input(caseId = caseId, beforeTime = beforeTime, afterTime = afterTime, nextToken = nextToken, maxResults = maxResults, dryRun = dryRun)
   output <- .support$describe_communications_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -475,18 +671,19 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
 #' @description
 #' Returns a list of CreateCaseOption types along with the corresponding supported hours and language availability. You can specify the `language` `categoryCode`, `issueType` and `serviceCode` used to retrieve the CreateCaseOptions.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_create_case_options(issueType, serviceCode, language,
-#'   categoryCode)
+#'   categoryCode, dryRun)
 #'
 #' @param issueType &#91;required&#93; The type of issue for the case. You can specify `customer-service` or `technical`. If you don't specify a value, the default is `technical`.
 #' @param serviceCode &#91;required&#93; The code for the Amazon Web Services service. You can use the [`describe_services`][support_describe_services] operation to get the possible `serviceCode` values.
-#' @param language &#91;required&#93; The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param language &#91;required&#93; The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") , Chinese ("zh"), Spanish ("es"), Portuguese ("pt"), French ("fr"), Korean (“ko”), and Turkish ("tr"). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
 #' @param categoryCode &#91;required&#93; The category of problem for the support case. You also use the [`describe_services`][support_describe_services] operation to get the category code for a service. Each Amazon Web Services service defines its own set of category codes.
+#' @param dryRun Specifies whether to validate the request without actually returning case option data. When set to `true`, the request is validated but no options are returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @return
 #' A list with the following syntax:
@@ -519,7 +716,8 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
 #'   issueType = "string",
 #'   serviceCode = "string",
 #'   language = "string",
-#'   categoryCode = "string"
+#'   categoryCode = "string",
+#'   dryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -528,7 +726,7 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
 #' @rdname support_describe_create_case_options
 #'
 #' @aliases support_describe_create_case_options
-support_describe_create_case_options <- function(issueType, serviceCode, language, categoryCode) {
+support_describe_create_case_options <- function(issueType, serviceCode, language, categoryCode, dryRun = NULL) {
   op <- new_operation(
     name = "DescribeCreateCaseOptions",
     http_method = "POST",
@@ -537,7 +735,7 @@ support_describe_create_case_options <- function(issueType, serviceCode, languag
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$describe_create_case_options_input(issueType = issueType, serviceCode = serviceCode, language = language, categoryCode = categoryCode)
+  input <- .support$describe_create_case_options_input(issueType = issueType, serviceCode = serviceCode, language = language, categoryCode = categoryCode, dryRun = dryRun)
   output <- .support$describe_create_case_options_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -555,15 +753,16 @@ support_describe_create_case_options <- function(issueType, serviceCode, languag
 #' 
 #' The service codes and category codes correspond to the values that appear in the **Service** and **Category** lists on the Amazon Web Services Support Center Create Case page. The values in those fields don't necessarily match the service codes and categories returned by the [`describe_services`][support_describe_services] operation. Always use the service codes and categories that the [`describe_services`][support_describe_services] operation returns, so that you have the most recent set of service and category codes.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
-#' support_describe_services(serviceCodeList, language)
+#' support_describe_services(serviceCodeList, language, dryRun)
 #'
 #' @param serviceCodeList A JSON-formatted list of service codes available for Amazon Web Services services.
-#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") , Chinese ("zh"), Spanish ("es"), Portuguese ("pt"), French ("fr"), Korean (“ko”), and Turkish ("tr"). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param dryRun Specifies whether to validate the request without actually returning the list of services. When set to `true`, the request is validated but no services are returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @return
 #' A list with the following syntax:
@@ -590,7 +789,8 @@ support_describe_create_case_options <- function(issueType, serviceCode, languag
 #'   serviceCodeList = list(
 #'     "string"
 #'   ),
-#'   language = "string"
+#'   language = "string",
+#'   dryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -599,7 +799,7 @@ support_describe_create_case_options <- function(issueType, serviceCode, languag
 #' @rdname support_describe_services
 #'
 #' @aliases support_describe_services
-support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
+support_describe_services <- function(serviceCodeList = NULL, language = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "DescribeServices",
     http_method = "POST",
@@ -608,7 +808,7 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$describe_services_input(serviceCodeList = serviceCodeList, language = language)
+  input <- .support$describe_services_input(serviceCodeList = serviceCodeList, language = language, dryRun = dryRun)
   output <- .support$describe_services_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -624,14 +824,15 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
 #' @description
 #' Returns the list of severity levels that you can assign to a support case. The severity level for a case is also a field in the CaseDetails data type that you include for a [`create_case`][support_create_case] request.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
-#' support_describe_severity_levels(language)
+#' support_describe_severity_levels(language, dryRun)
 #'
-#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") , Chinese ("zh"), Spanish ("es"), Portuguese ("pt"), French ("fr"), Korean (“ko”), and Turkish ("tr"). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param dryRun Specifies whether to validate the request without actually returning severity levels. When set to `true`, the request is validated but no severity levels are returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @return
 #' A list with the following syntax:
@@ -649,7 +850,8 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$describe_severity_levels(
-#'   language = "string"
+#'   language = "string",
+#'   dryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -658,7 +860,7 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
 #' @rdname support_describe_severity_levels
 #'
 #' @aliases support_describe_severity_levels
-support_describe_severity_levels <- function(language = NULL) {
+support_describe_severity_levels <- function(language = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "DescribeSeverityLevels",
     http_method = "POST",
@@ -667,7 +869,7 @@ support_describe_severity_levels <- function(language = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$describe_severity_levels_input(language = language)
+  input <- .support$describe_severity_levels_input(language = language, dryRun = dryRun)
   output <- .support$describe_severity_levels_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -683,17 +885,18 @@ support_describe_severity_levels <- function(language = NULL) {
 #' @description
 #' Returns a list of supported languages for a specified `categoryCode`, `issueType` and `serviceCode`. The returned supported languages will include a ISO 639-1 code for the `language`, and the language display name.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_supported_languages(issueType, serviceCode,
-#'   categoryCode)
+#'   categoryCode, dryRun)
 #'
 #' @param issueType &#91;required&#93; The type of issue for the case. You can specify `customer-service` or `technical`.
 #' @param serviceCode &#91;required&#93; The code for the Amazon Web Services service. You can use the [`describe_services`][support_describe_services] operation to get the possible `serviceCode` values.
 #' @param categoryCode &#91;required&#93; The category of problem for the support case. You also use the [`describe_services`][support_describe_services] operation to get the category code for a service. Each Amazon Web Services service defines its own set of category codes.
+#' @param dryRun Specifies whether to validate the request without actually returning supported languages. When set to `true`, the request is validated but no languages are returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @return
 #' A list with the following syntax:
@@ -714,7 +917,8 @@ support_describe_severity_levels <- function(language = NULL) {
 #' svc$describe_supported_languages(
 #'   issueType = "string",
 #'   serviceCode = "string",
-#'   categoryCode = "string"
+#'   categoryCode = "string",
+#'   dryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -723,7 +927,7 @@ support_describe_severity_levels <- function(language = NULL) {
 #' @rdname support_describe_supported_languages
 #'
 #' @aliases support_describe_supported_languages
-support_describe_supported_languages <- function(issueType, serviceCode, categoryCode) {
+support_describe_supported_languages <- function(issueType, serviceCode, categoryCode, dryRun = NULL) {
   op <- new_operation(
     name = "DescribeSupportedLanguages",
     http_method = "POST",
@@ -732,7 +936,7 @@ support_describe_supported_languages <- function(issueType, serviceCode, categor
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$describe_supported_languages_input(issueType = issueType, serviceCode = serviceCode, categoryCode = categoryCode)
+  input <- .support$describe_supported_languages_input(issueType = issueType, serviceCode = serviceCode, categoryCode = categoryCode, dryRun = dryRun)
   output <- .support$describe_supported_languages_output()
   config <- get_config()
   svc <- .support$service(config, op)
@@ -750,9 +954,9 @@ support_describe_supported_languages <- function(issueType, serviceCode, categor
 #' 
 #' Some checks are refreshed automatically, and you can't return their refresh statuses by using the [`describe_trusted_advisor_check_refresh_statuses`][support_describe_trusted_advisor_check_refresh_statuses] operation. If you call this operation for these checks, you might see an `InvalidParameterValue` error.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
 #' 
 #' To call the Trusted Advisor operations in the Amazon Web Services Support API, you must use the US East (N. Virginia) endpoint. Currently, the US West (Oregon) and Europe (Ireland) endpoints don't support the Trusted Advisor operations. For more information, see [About the Amazon Web Services Support API](https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html#endpoint) in the *Amazon Web Services Support User Guide*.
 #'
@@ -833,9 +1037,9 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
 #' -   **checkId** - The unique identifier for the check.
 #' 
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
 #' 
 #' To call the Trusted Advisor operations in the Amazon Web Services Support API, you must use the US East (N. Virginia) endpoint. Currently, the US West (Oregon) and Europe (Ireland) endpoints don't support the Trusted Advisor operations. For more information, see [About the Amazon Web Services Support API](https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html#endpoint) in the *Amazon Web Services Support User Guide*.
 #'
@@ -944,11 +1148,15 @@ support_describe_trusted_advisor_check_result <- function(checkId, language = NU
 #' 
 #' The response contains an array of TrustedAdvisorCheckSummary objects.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
 #' 
 #' To call the Trusted Advisor operations in the Amazon Web Services Support API, you must use the US East (N. Virginia) endpoint. Currently, the US West (Oregon) and Europe (Ireland) endpoints don't support the Trusted Advisor operations. For more information, see [About the Amazon Web Services Support API](https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html#endpoint) in the *Amazon Web Services Support User Guide*.
+#' 
+#' **Understanding the Trusted Advisor Resources processed value**
+#' 
+#' The **Resources processed** value, `resourcesProcessed`, usually shows both flagged resources (those with warnings or errors) and resources in good standing (ok status resources). However, some checks report flagged resources only. To understand what a specific check reports, review the detailed check information in the [Trusted Advisor check reference](https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-check-reference.html). If you see a **Green** criterion listed in the **Alert criteria**, then the check reports all resources. If there's no **Green** criterion listed in the **Alert criteria**, then the check reports only flagged resources. For example, the [Amazon EC2 Reserved Instance optimization check (cX3c2R1chu)](https://docs.aws.amazon.com/awssupport/latest/user/cost-optimization-checks.html#amazon-ec2-reserved-instances-optimization) doesn't list a **Green** criterion in the **Alert criteria**. So, this check only reports flagged resources.
 #'
 #' @usage
 #' support_describe_trusted_advisor_check_summaries(checkIds)
@@ -1023,9 +1231,9 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
 #' 
 #' The response contains a TrustedAdvisorCheckDescription object for each check. You must set the Amazon Web Services Region to us-east-1.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' -   You must have a Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
 #' 
 #' -   The names and descriptions for Trusted Advisor checks are subject to change. We recommend that you specify the check ID in your code to uniquely identify a check.
 #' 
@@ -1109,6 +1317,144 @@ support_describe_trusted_advisor_checks <- function(language) {
 }
 .support$operations$describe_trusted_advisor_checks <- support_describe_trusted_advisor_checks
 
+#' Returns a presigned download URL for an attachment that is associated
+#' with a case communication
+#'
+#' @description
+#' Returns a presigned download URL for an attachment that is associated with a case communication. The download link works for an attachment of any size, including attachments added through [`add_attachments_to_set`][support_add_attachments_to_set] and attachments uploaded through [`get_attachment_upload_links`][support_get_attachment_upload_links]. The download URL is time-limited and expires at the date and time indicated in the `downloadUrl` response field. Download the attachment from the URL before it expires.
+#' 
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
+#' 
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#'
+#' @usage
+#' support_get_attachment_download_link(attachmentId, dryRun)
+#'
+#' @param attachmentId &#91;required&#93; The unique identifier of the attachment for which to retrieve a download link. Attachment IDs are returned in the `AttachmentDetails` objects in the `attachments` field of a Communication returned by [`describe_communications`][support_describe_communications] or [`describe_cases`][support_describe_cases].
+#' @param dryRun Specifies whether to validate the request without actually returning a download link. When set to `true`, the request is validated but no URL is returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   fileName = "string",
+#'   downloadUrl = list(
+#'     url = "string",
+#'     expiryDate = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_attachment_download_link(
+#'   attachmentId = "string",
+#'   dryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname support_get_attachment_download_link
+#'
+#' @aliases support_get_attachment_download_link
+support_get_attachment_download_link <- function(attachmentId, dryRun = NULL) {
+  op <- new_operation(
+    name = "GetAttachmentDownloadLink",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .support$get_attachment_download_link_input(attachmentId = attachmentId, dryRun = dryRun)
+  output <- .support$get_attachment_download_link_output()
+  config <- get_config()
+  svc <- .support$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.support$operations$get_attachment_download_link <- support_get_attachment_download_link
+
+#' Returns one or more presigned upload URLs for uploading a large file
+#' attachment to a support case by using a multipart upload workflow
+#'
+#' @description
+#' Returns one or more presigned upload URLs for uploading a large file attachment to a support case by using a multipart upload workflow. The maximum file size that you can upload with this workflow is 150 MB, and parts can be up to 100 MB each. Initiate a new upload by providing `fileName` and `fileSizeBytes`; the response returns a unique `uploadId`, the part size, the total number of parts, and a list of presigned upload URLs for the requested range of parts. A maximum of 10 upload URLs are returned per call. To retrieve more upload URLs for an upload that's already in progress, call [`get_attachment_upload_links`][support_get_attachment_upload_links] again with the existing `uploadId` and a new `uploadRange`.
+#' 
+#' Upload each part to its presigned URL by using HTTP `PUT` and capture the ETag from the response. After you upload all parts, call [`complete_attachment_upload`][support_complete_attachment_upload] with the `uploadId` and the list of part indexes and ETags to finalize the upload. You can then attach the upload to a case by passing the `uploadId` in the `uploadIds` parameter of [`create_case`][support_create_case] or [`add_communication_to_case`][support_add_communication_to_case]. To monitor progress before completion, call [`describe_attachment_upload_status`][support_describe_attachment_upload_status].
+#' 
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
+#' 
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#'
+#' @usage
+#' support_get_attachment_upload_links(fileName, fileSizeBytes, uploadId,
+#'   uploadRange, dryRun)
+#'
+#' @param fileName &#91;required&#93; The name of the file to upload, including the file extension. This value is required when you initiate a new upload.
+#' @param fileSizeBytes The total size of the file in bytes. The service uses this value to calculate the total number of parts and the size of each part. Required when you initiate a new upload (when `uploadId` isn't provided). Valid range: 1 to 157,286,400 bytes (approximately 150 MB).
+#' @param uploadId The unique identifier of an in-progress multipart upload, returned by a previous call to [`get_attachment_upload_links`][support_get_attachment_upload_links]. Specify `uploadId` to retrieve additional presigned upload URLs for an upload that has already been initiated. Required when `fileSizeBytes` isn't provided. Length: 1 to 2,048 characters.
+#' @param uploadRange The range of part indexes for which to return presigned upload URLs. Use this parameter to page through the upload URLs for a large file across multiple calls. If you omit this parameter, the service determines the range to return.
+#' @param dryRun Specifies whether to validate the request without actually generating upload URLs. When set to `true`, the request is validated but no URLs are returned, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   uploadId = "string",
+#'   partSizeBytes = 123,
+#'   totalParts = 123,
+#'   nextIndex = 123,
+#'   uploadUrls = list(
+#'     list(
+#'       url = "string",
+#'       partIndex = 123,
+#'       expiryDate = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_attachment_upload_links(
+#'   fileName = "string",
+#'   fileSizeBytes = 123,
+#'   uploadId = "string",
+#'   uploadRange = list(
+#'     startIndex = 123,
+#'     endIndex = 123
+#'   ),
+#'   dryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname support_get_attachment_upload_links
+#'
+#' @aliases support_get_attachment_upload_links
+support_get_attachment_upload_links <- function(fileName, fileSizeBytes = NULL, uploadId = NULL, uploadRange = NULL, dryRun = NULL) {
+  op <- new_operation(
+    name = "GetAttachmentUploadLinks",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .support$get_attachment_upload_links_input(fileName = fileName, fileSizeBytes = fileSizeBytes, uploadId = uploadId, uploadRange = uploadRange, dryRun = dryRun)
+  output <- .support$get_attachment_upload_links_output()
+  config <- get_config()
+  svc <- .support$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.support$operations$get_attachment_upload_links <- support_get_attachment_upload_links
+
 #' Refreshes the Trusted Advisor check that you specify using the check ID
 #'
 #' @description
@@ -1118,9 +1464,9 @@ support_describe_trusted_advisor_checks <- function(language) {
 #' 
 #' The response contains a TrustedAdvisorCheckRefreshStatus object.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
 #' 
 #' To call the Trusted Advisor operations in the Amazon Web Services Support API, you must use the US East (N. Virginia) endpoint. Currently, the US West (Oregon) and Europe (Ireland) endpoints don't support the Trusted Advisor operations. For more information, see [About the Amazon Web Services Support API](https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html#endpoint) in the *Amazon Web Services Support User Guide*.
 #'
@@ -1179,14 +1525,15 @@ support_refresh_trusted_advisor_check <- function(checkId) {
 #' @description
 #' Resolves a support case. This operation takes a `caseId` and returns the initial and final state of the case.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
-#' support_resolve_case(caseId)
+#' support_resolve_case(caseId, dryRun)
 #'
-#' @param caseId The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-*12345678910-2013-c4c1d2bf33c5cf47*
+#' @param caseId The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-*12345678910-exen-2025-c4c1d2bf33c5cf47*
+#' @param dryRun Specifies whether to validate the request without actually resolving the case. When set to `true`, the request is validated but the case isn't resolved, and the operation returns a `DryRunOperationException`. When omitted or set to `false`, the request runs normally.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1200,7 +1547,8 @@ support_refresh_trusted_advisor_check <- function(checkId) {
 #' @section Request syntax:
 #' ```
 #' svc$resolve_case(
-#'   caseId = "string"
+#'   caseId = "string",
+#'   dryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1209,7 +1557,7 @@ support_refresh_trusted_advisor_check <- function(checkId) {
 #' @rdname support_resolve_case
 #'
 #' @aliases support_resolve_case
-support_resolve_case <- function(caseId = NULL) {
+support_resolve_case <- function(caseId = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "ResolveCase",
     http_method = "POST",
@@ -1218,7 +1566,7 @@ support_resolve_case <- function(caseId = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .support$resolve_case_input(caseId = caseId)
+  input <- .support$resolve_case_input(caseId = caseId, dryRun = dryRun)
   output <- .support$resolve_case_output()
   config <- get_config()
   svc <- .support$service(config, op)

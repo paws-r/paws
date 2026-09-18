@@ -3,158 +3,262 @@
 #' @include healthlake_service.R
 NULL
 
+.healthlake$create_data_transformation_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["create_data_transformation_profile_input"]]))
+}
+
+.healthlake$create_data_transformation_profile_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["create_data_transformation_profile_output"]]))
+}
+
 .healthlake$create_fhir_datastore_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatastoreName = structure(logical(0), tags = list(type = "string")), DatastoreTypeVersion = structure(logical(0), tags = list(type = "string")), SseConfiguration = structure(list(KmsEncryptionConfig = structure(list(CmkType = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), PreloadDataConfig = structure(list(PreloadDataType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IdentityProviderConfiguration = structure(list(AuthorizationStrategy = structure(logical(0), tags = list(type = "string")), FineGrainedAuthorizationEnabled = structure(logical(0), tags = list(type = "boolean")), Metadata = structure(logical(0), tags = list(type = "string")), IdpLambdaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["create_fhir_datastore_input"]]))
 }
 
 .healthlake$create_fhir_datastore_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatastoreId = structure(logical(0), tags = list(type = "string")), DatastoreArn = structure(logical(0), tags = list(type = "string")), DatastoreStatus = structure(logical(0), tags = list(type = "string")), DatastoreEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["create_fhir_datastore_output"]]))
+}
+
+.healthlake$delete_data_transformation_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["delete_data_transformation_profile_input"]]))
+}
+
+.healthlake$delete_data_transformation_profile_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["delete_data_transformation_profile_output"]]))
 }
 
 .healthlake$delete_fhir_datastore_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatastoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["delete_fhir_datastore_input"]]))
 }
 
 .healthlake$delete_fhir_datastore_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatastoreId = structure(logical(0), tags = list(type = "string")), DatastoreArn = structure(logical(0), tags = list(type = "string")), DatastoreStatus = structure(logical(0), tags = list(type = "string")), DatastoreEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["delete_fhir_datastore_output"]]))
+}
+
+.healthlake$describe_data_transformation_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["describe_data_transformation_job_input"]]))
+}
+
+.healthlake$describe_data_transformation_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["describe_data_transformation_job_output"]]))
 }
 
 .healthlake$describe_fhir_datastore_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatastoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["describe_fhir_datastore_input"]]))
 }
 
 .healthlake$describe_fhir_datastore_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatastoreProperties = structure(list(DatastoreId = structure(logical(0), tags = list(type = "string")), DatastoreArn = structure(logical(0), tags = list(type = "string")), DatastoreName = structure(logical(0), tags = list(type = "string")), DatastoreStatus = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DatastoreTypeVersion = structure(logical(0), tags = list(type = "string")), DatastoreEndpoint = structure(logical(0), tags = list(type = "string")), SseConfiguration = structure(list(KmsEncryptionConfig = structure(list(CmkType = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), PreloadDataConfig = structure(list(PreloadDataType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IdentityProviderConfiguration = structure(list(AuthorizationStrategy = structure(logical(0), tags = list(type = "string")), FineGrainedAuthorizationEnabled = structure(logical(0), tags = list(type = "boolean")), Metadata = structure(logical(0), tags = list(type = "string")), IdpLambdaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ErrorCause = structure(list(ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorCategory = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["describe_fhir_datastore_output"]]))
 }
 
 .healthlake$describe_fhir_export_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatastoreId = structure(logical(0), tags = list(type = "string")), JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["describe_fhir_export_job_input"]]))
 }
 
 .healthlake$describe_fhir_export_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ExportJobProperties = structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), SubmitTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), DatastoreId = structure(logical(0), tags = list(type = "string")), OutputDataConfig = structure(list(S3Configuration = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["describe_fhir_export_job_output"]]))
 }
 
 .healthlake$describe_fhir_import_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatastoreId = structure(logical(0), tags = list(type = "string")), JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["describe_fhir_import_job_input"]]))
 }
 
 .healthlake$describe_fhir_import_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ImportJobProperties = structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), SubmitTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), DatastoreId = structure(logical(0), tags = list(type = "string")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), JobOutputDataConfig = structure(list(S3Configuration = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), JobProgressReport = structure(list(TotalNumberOfScannedFiles = structure(logical(0), tags = list(type = "long")), TotalSizeOfScannedFilesInMB = structure(logical(0), tags = list(type = "double")), TotalNumberOfImportedFiles = structure(logical(0), tags = list(type = "long")), TotalNumberOfResourcesScanned = structure(logical(0), tags = list(type = "long")), TotalNumberOfResourcesImported = structure(logical(0), tags = list(type = "long")), TotalNumberOfResourcesWithCustomerError = structure(logical(0), tags = list(type = "long")), TotalNumberOfFilesReadWithCustomerError = structure(logical(0), tags = list(type = "long")), Throughput = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ValidationLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["describe_fhir_import_job_output"]]))
+}
+
+.healthlake$get_data_transformation_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["get_data_transformation_profile_input"]]))
+}
+
+.healthlake$get_data_transformation_profile_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["get_data_transformation_profile_output"]]))
+}
+
+.healthlake$list_data_transformation_jobs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["list_data_transformation_jobs_input"]]))
+}
+
+.healthlake$list_data_transformation_jobs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["list_data_transformation_jobs_output"]]))
+}
+
+.healthlake$list_data_transformation_profile_versions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["list_data_transformation_profile_versions_input"]]))
+}
+
+.healthlake$list_data_transformation_profile_versions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["list_data_transformation_profile_versions_output"]]))
+}
+
+.healthlake$list_data_transformation_profiles_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["list_data_transformation_profiles_input"]]))
+}
+
+.healthlake$list_data_transformation_profiles_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["list_data_transformation_profiles_output"]]))
 }
 
 .healthlake$list_fhir_datastores_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filter = structure(list(DatastoreName = structure(logical(0), tags = list(type = "string")), DatastoreStatus = structure(logical(0), tags = list(type = "string")), CreatedBefore = structure(logical(0), tags = list(type = "timestamp")), CreatedAfter = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["list_fhir_datastores_input"]]))
 }
 
 .healthlake$list_fhir_datastores_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatastorePropertiesList = structure(list(structure(list(DatastoreId = structure(logical(0), tags = list(type = "string")), DatastoreArn = structure(logical(0), tags = list(type = "string")), DatastoreName = structure(logical(0), tags = list(type = "string")), DatastoreStatus = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), DatastoreTypeVersion = structure(logical(0), tags = list(type = "string")), DatastoreEndpoint = structure(logical(0), tags = list(type = "string")), SseConfiguration = structure(list(KmsEncryptionConfig = structure(list(CmkType = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), PreloadDataConfig = structure(list(PreloadDataType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IdentityProviderConfiguration = structure(list(AuthorizationStrategy = structure(logical(0), tags = list(type = "string")), FineGrainedAuthorizationEnabled = structure(logical(0), tags = list(type = "boolean")), Metadata = structure(logical(0), tags = list(type = "string")), IdpLambdaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ErrorCause = structure(list(ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorCategory = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["list_fhir_datastores_output"]]))
 }
 
 .healthlake$list_fhir_export_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatastoreId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), SubmittedBefore = structure(logical(0), tags = list(type = "timestamp")), SubmittedAfter = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["list_fhir_export_jobs_input"]]))
 }
 
 .healthlake$list_fhir_export_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ExportJobPropertiesList = structure(list(structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), SubmitTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), DatastoreId = structure(logical(0), tags = list(type = "string")), OutputDataConfig = structure(list(S3Configuration = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["list_fhir_export_jobs_output"]]))
 }
 
 .healthlake$list_fhir_import_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatastoreId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), SubmittedBefore = structure(logical(0), tags = list(type = "timestamp")), SubmittedAfter = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["list_fhir_import_jobs_input"]]))
 }
 
 .healthlake$list_fhir_import_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ImportJobPropertiesList = structure(list(structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), SubmitTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), DatastoreId = structure(logical(0), tags = list(type = "string")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), JobOutputDataConfig = structure(list(S3Configuration = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), JobProgressReport = structure(list(TotalNumberOfScannedFiles = structure(logical(0), tags = list(type = "long")), TotalSizeOfScannedFilesInMB = structure(logical(0), tags = list(type = "double")), TotalNumberOfImportedFiles = structure(logical(0), tags = list(type = "long")), TotalNumberOfResourcesScanned = structure(logical(0), tags = list(type = "long")), TotalNumberOfResourcesImported = structure(logical(0), tags = list(type = "long")), TotalNumberOfResourcesWithCustomerError = structure(logical(0), tags = list(type = "long")), TotalNumberOfFilesReadWithCustomerError = structure(logical(0), tags = list(type = "long")), Throughput = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), ValidationLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["list_fhir_import_jobs_output"]]))
 }
 
 .healthlake$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["list_tags_for_resource_input"]]))
 }
 
 .healthlake$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["list_tags_for_resource_output"]]))
+}
+
+.healthlake$publish_data_transformation_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["publish_data_transformation_profile_input"]]))
+}
+
+.healthlake$publish_data_transformation_profile_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["publish_data_transformation_profile_output"]]))
+}
+
+.healthlake$restore_fhir_datastore_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["restore_fhir_datastore_input"]]))
+}
+
+.healthlake$restore_fhir_datastore_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["restore_fhir_datastore_output"]]))
+}
+
+.healthlake$start_data_transformation_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["start_data_transformation_job_input"]]))
+}
+
+.healthlake$start_data_transformation_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["start_data_transformation_job_output"]]))
 }
 
 .healthlake$start_fhir_export_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobName = structure(logical(0), tags = list(type = "string")), OutputDataConfig = structure(list(S3Configuration = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), DatastoreId = structure(logical(0), tags = list(type = "string")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["start_fhir_export_job_input"]]))
 }
 
 .healthlake$start_fhir_export_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), DatastoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["start_fhir_export_job_output"]]))
 }
 
 .healthlake$start_fhir_import_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobName = structure(logical(0), tags = list(type = "string")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), JobOutputDataConfig = structure(list(S3Configuration = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), DatastoreId = structure(logical(0), tags = list(type = "string")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ValidationLevel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["start_fhir_import_job_input"]]))
 }
 
 .healthlake$start_fhir_import_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), DatastoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["start_fhir_import_job_output"]]))
 }
 
 .healthlake$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["tag_resource_input"]]))
 }
 
 .healthlake$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["tag_resource_output"]]))
 }
 
 .healthlake$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["untag_resource_input"]]))
 }
 
 .healthlake$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .healthlake_shapes[["untag_resource_output"]]))
+}
+
+.healthlake$update_data_transformation_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["update_data_transformation_profile_input"]]))
+}
+
+.healthlake$update_data_transformation_profile_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["update_data_transformation_profile_output"]]))
+}
+
+.healthlake$update_fhir_datastore_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["update_fhir_datastore_input"]]))
+}
+
+.healthlake$update_fhir_datastore_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["update_fhir_datastore_output"]]))
+}
+
+.healthlake$update_profile_with_agent_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["update_profile_with_agent_input"]]))
+}
+
+.healthlake$update_profile_with_agent_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .healthlake_shapes[["update_profile_with_agent_output"]]))
 }

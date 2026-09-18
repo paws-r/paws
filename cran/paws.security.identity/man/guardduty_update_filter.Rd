@@ -39,7 +39,6 @@ Default: NOOP}
 \item createdAt
 
 Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
-\item description
 \item id
 \item partition
 \item region
@@ -212,8 +211,6 @@ Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
 \item resource.rdsDbInstanceDetails.engineVersion
 \item resource.rdsDbInstanceDetails.iamDatabaseAuthenticationEnabled
 \item resource.rdsDbInstanceDetails.publiclyAccessible
-\item resource.rdsDbInstanceDetails.tags.key
-\item resource.rdsDbInstanceDetails.tags.value
 \item resource.rdsDbInstanceDetails.vpcId
 \item resource.rdsDbInstanceDetails.vpcSecurityGroups.status
 \item resource.rdsDbInstanceDetails.vpcSecurityGroups.vpcSecurityGroupId
@@ -264,7 +261,6 @@ Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
 \item resource.s3BucketDetails.type
 \item schemaVersion
 \item service.action.actionType
-\item service.action.awsApiCallAction.affectedResources
 \item service.action.awsApiCallAction.api
 \item service.action.awsApiCallAction.callerType
 \item service.action.awsApiCallAction.domainDetails.domain
@@ -409,8 +405,6 @@ Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
 \item service.additionalInfo.vpcOwnerAccountId
 \item service.archived
 \item service.count
-\item service.detection.anomaly.profiles
-\item service.detection.anomaly.unusual.behavior
 \item service.detection.sequence.actors.id
 \item service.detection.sequence.actors.process.name
 \item service.detection.sequence.actors.process.path
@@ -720,7 +714,6 @@ To configure severity based filters, use the following for the \href{https://doc
 }
 
 For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings-severity.html}{Findings severity levels} in the \emph{Amazon GuardDuty User Guide}.
-\item title
 \item type
 \item updatedAt
 

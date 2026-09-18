@@ -45,8 +45,8 @@ NULL
 #'   BrokerName, Configuration, CreatorRequestId, DeploymentMode,
 #'   EncryptionOptions, EngineType, EngineVersion, HostInstanceType,
 #'   LdapServerMetadata, Logs, MaintenanceWindowStartTime,
-#'   PubliclyAccessible, SecurityGroups, StorageType, SubnetIds, Tags, Users,
-#'   DataReplicationMode, DataReplicationPrimaryBrokerArn)
+#'   PubliclyAccessible, SecurityGroups, StorageSize, StorageType, SubnetIds,
+#'   Tags, Users, DataReplicationMode, DataReplicationPrimaryBrokerArn)
 #'
 #' @param AuthenticationStrategy Optional. The authentication strategy used to secure the broker. The default is SIMPLE.
 #' @param AutoMinorVersionUpgrade Enables automatic upgrades to new patch versions for brokers as new versions are released and supported by Amazon MQ. Automatic upgrades occur during the scheduled maintenance window or after a manual broker reboot. Set to true by default, if no value is specified.
@@ -69,6 +69,7 @@ NULL
 #' @param MaintenanceWindowStartTime The parameters that determine the WeeklyStartTime.
 #' @param PubliclyAccessible &#91;required&#93; Enables connections from applications outside of the VPC that hosts the broker's subnets. Set to false by default, if no value is provided.
 #' @param SecurityGroups The list of rules (1 minimum, 125 maximum) that authorize connections to brokers.
+#' @param StorageSize The broker's storage size in GB.
 #' @param StorageType The broker's storage type.
 #' @param SubnetIds The list of groups that define which subnets and IP ranges the broker can use from different Availability Zones. If you specify more than one subnet, the subnets must be in different Availability Zones. Amazon MQ will not be able to create VPC endpoints for your broker with multiple subnets in the same Availability Zone. A SINGLE_INSTANCE deployment requires one subnet (for example, the default subnet). An ACTIVE_STANDBY_MULTI_AZ Amazon MQ for ActiveMQ deployment requires two subnets. A CLUSTER_MULTI_AZ Amazon MQ for RabbitMQ deployment has no subnet requirements when deployed with public accessibility. Deployment without public accessibility requires at least one subnet.
 #' 
@@ -134,6 +135,7 @@ NULL
 #'   SecurityGroups = list(
 #'     "string"
 #'   ),
+#'   StorageSize = 123,
 #'   StorageType = "EBS"|"EFS",
 #'   SubnetIds = list(
 #'     "string"
@@ -162,7 +164,7 @@ NULL
 #' @rdname mq_create_broker
 #'
 #' @aliases mq_create_broker
-mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerName, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode, EncryptionOptions = NULL, EngineType, EngineVersion = NULL, HostInstanceType, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users = NULL, DataReplicationMode = NULL, DataReplicationPrimaryBrokerArn = NULL) {
+mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerName, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode, EncryptionOptions = NULL, EngineType, EngineVersion = NULL, HostInstanceType, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible, SecurityGroups = NULL, StorageSize = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users = NULL, DataReplicationMode = NULL, DataReplicationPrimaryBrokerArn = NULL) {
   op <- new_operation(
     name = "CreateBroker",
     http_method = "POST",
@@ -171,7 +173,7 @@ mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .mq$create_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerName = BrokerName, Configuration = Configuration, CreatorRequestId = CreatorRequestId, DeploymentMode = DeploymentMode, EncryptionOptions = EncryptionOptions, EngineType = EngineType, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, PubliclyAccessible = PubliclyAccessible, SecurityGroups = SecurityGroups, StorageType = StorageType, SubnetIds = SubnetIds, Tags = Tags, Users = Users, DataReplicationMode = DataReplicationMode, DataReplicationPrimaryBrokerArn = DataReplicationPrimaryBrokerArn)
+  input <- .mq$create_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerName = BrokerName, Configuration = Configuration, CreatorRequestId = CreatorRequestId, DeploymentMode = DeploymentMode, EncryptionOptions = EncryptionOptions, EngineType = EngineType, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, PubliclyAccessible = PubliclyAccessible, SecurityGroups = SecurityGroups, StorageSize = StorageSize, StorageType = StorageType, SubnetIds = SubnetIds, Tags = Tags, Users = Users, DataReplicationMode = DataReplicationMode, DataReplicationPrimaryBrokerArn = DataReplicationPrimaryBrokerArn)
   output <- .mq$create_broker_output()
   config <- get_config()
   svc <- .mq$service(config, op)
@@ -664,10 +666,12 @@ mq_delete_user <- function(BrokerId, Username) {
 #'   PendingSecurityGroups = list(
 #'     "string"
 #'   ),
+#'   PendingStorageSize = 123,
 #'   PubliclyAccessible = TRUE|FALSE,
 #'   SecurityGroups = list(
 #'     "string"
 #'   ),
+#'   StorageSize = 123,
 #'   StorageType = "EBS"|"EFS",
 #'   SubnetIds = list(
 #'     "string"
@@ -997,6 +1001,76 @@ mq_describe_configuration_revision <- function(ConfigurationId, ConfigurationRev
   return(response)
 }
 .mq$operations$describe_configuration_revision <- mq_describe_configuration_revision
+
+#' Returns the resources shared to a broker
+#'
+#' @description
+#' Returns the resources shared to a broker.
+#'
+#' @usage
+#' mq_describe_shared_resources(BrokerId, MaxResults, NextToken)
+#'
+#' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
+#' @param MaxResults The maximum number of resources that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
+#' @param NextToken The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   SharedResources = list(
+#'     list(
+#'       DnsNames = list(
+#'         "string"
+#'       ),
+#'       Error = list(
+#'         Code = "QUOTA_EXCEEDED"|"SHARE_NOT_FOUND"|"INVITE_FAILED"|"SETUP_INCOMPLETE"|"INTERNAL_ERROR"|"AZ_MISMATCH"|"RESOURCE_CONFIGURATION_NOT_FOUND",
+#'         Message = "string"
+#'       ),
+#'       ResourceArn = "string",
+#'       ResourceShareArns = list(
+#'         "string"
+#'       ),
+#'       Status = "AVAILABLE"|"SETUP_IN_PROGRESS"|"DELETION_IN_PROGRESS"|"PENDING_CREATE"|"PENDING_DELETE"|"ERROR",
+#'       Type = "RESOURCE_SHARE"|"RESOURCE"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_shared_resources(
+#'   BrokerId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mq_describe_shared_resources
+#'
+#' @aliases mq_describe_shared_resources
+mq_describe_shared_resources <- function(BrokerId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeSharedResources",
+    http_method = "GET",
+    http_path = "/v1/brokers/{broker-id}/shared-resources",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SharedResources"),
+    stream_api = FALSE
+  )
+  input <- .mq$describe_shared_resources_input(BrokerId = BrokerId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .mq$describe_shared_resources_output()
+  config <- get_config()
+  svc <- .mq$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mq$operations$describe_shared_resources <- mq_describe_shared_resources
 
 #' Returns information about an ActiveMQ user
 #'
@@ -1482,8 +1556,8 @@ mq_reboot_broker <- function(BrokerId) {
 #' @usage
 #' mq_update_broker(AuthenticationStrategy, AutoMinorVersionUpgrade,
 #'   BrokerId, Configuration, EngineVersion, HostInstanceType,
-#'   LdapServerMetadata, Logs, MaintenanceWindowStartTime, SecurityGroups,
-#'   DataReplicationMode)
+#'   LdapServerMetadata, Logs, MaintenanceWindowStartTime, ResourceShareArns,
+#'   SecurityGroups, StorageSize, DataReplicationMode)
 #'
 #' @param AuthenticationStrategy Optional. The authentication strategy used to secure the broker. The default is SIMPLE.
 #' @param AutoMinorVersionUpgrade Enables automatic upgrades to new patch versions for brokers as new versions are released and supported by Amazon MQ. Automatic upgrades occur during the scheduled maintenance window or after a manual broker reboot.
@@ -1498,7 +1572,9 @@ mq_reboot_broker <- function(BrokerId) {
 #' @param LdapServerMetadata Optional. The metadata of the LDAP server used to authenticate and authorize connections to the broker. Does not apply to RabbitMQ brokers.
 #' @param Logs Enables Amazon CloudWatch logging for brokers.
 #' @param MaintenanceWindowStartTime The parameters that determine the WeeklyStartTime.
+#' @param ResourceShareArns The list of resource shares to update on the broker
 #' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
+#' @param StorageSize The broker's storage size in GB.
 #' @param DataReplicationMode Defines whether this broker is a part of a data replication pair.
 #'
 #' @return
@@ -1537,6 +1613,9 @@ mq_reboot_broker <- function(BrokerId) {
 #'     TimeOfDay = "string",
 #'     TimeZone = "string"
 #'   ),
+#'   ResourceShareArns = list(
+#'     "string"
+#'   ),
 #'   SecurityGroups = list(
 #'     "string"
 #'   ),
@@ -1555,7 +1634,8 @@ mq_reboot_broker <- function(BrokerId) {
 #'     ),
 #'     DataReplicationRole = "string"
 #'   ),
-#'   PendingDataReplicationMode = "NONE"|"CRDR"
+#'   PendingDataReplicationMode = "NONE"|"CRDR",
+#'   StorageSize = 123
 #' )
 #' ```
 #'
@@ -1595,9 +1675,13 @@ mq_reboot_broker <- function(BrokerId) {
 #'     TimeOfDay = "string",
 #'     TimeZone = "string"
 #'   ),
+#'   ResourceShareArns = list(
+#'     "string"
+#'   ),
 #'   SecurityGroups = list(
 #'     "string"
 #'   ),
+#'   StorageSize = 123,
 #'   DataReplicationMode = "NONE"|"CRDR"
 #' )
 #' ```
@@ -1607,7 +1691,7 @@ mq_reboot_broker <- function(BrokerId) {
 #' @rdname mq_update_broker
 #'
 #' @aliases mq_update_broker
-mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerId, Configuration = NULL, EngineVersion = NULL, HostInstanceType = NULL, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, SecurityGroups = NULL, DataReplicationMode = NULL) {
+mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerId, Configuration = NULL, EngineVersion = NULL, HostInstanceType = NULL, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, ResourceShareArns = NULL, SecurityGroups = NULL, StorageSize = NULL, DataReplicationMode = NULL) {
   op <- new_operation(
     name = "UpdateBroker",
     http_method = "PUT",
@@ -1616,7 +1700,7 @@ mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .mq$update_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerId = BrokerId, Configuration = Configuration, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, SecurityGroups = SecurityGroups, DataReplicationMode = DataReplicationMode)
+  input <- .mq$update_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerId = BrokerId, Configuration = Configuration, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, ResourceShareArns = ResourceShareArns, SecurityGroups = SecurityGroups, StorageSize = StorageSize, DataReplicationMode = DataReplicationMode)
   output <- .mq$update_broker_output()
   config <- get_config()
   svc <- .mq$service(config, op)

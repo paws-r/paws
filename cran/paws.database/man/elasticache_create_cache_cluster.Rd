@@ -218,7 +218,7 @@ Password constraints:
 \item The only permitted printable special characters are !, &, #, $, ^, \<, \>, and -. Other printable special characters cannot be used in the AUTH token.
 }
 
-For more information, see AUTH password at http://redis.io/commands/AUTH.}
+For more information, see \href{https://redis.io/docs/latest/commands/AUTH/}{AUTH password} at http://redis.io/commands/AUTH.}
 
 \item{OutpostMode}{Specifies whether the nodes in the cluster are created in a single outpost or across multiple outposts.}
 

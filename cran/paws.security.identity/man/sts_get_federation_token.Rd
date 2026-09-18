@@ -10,7 +10,8 @@ sts_get_federation_token(
   Policy = NULL,
   PolicyArns = NULL,
   DurationSeconds = NULL,
-  Tags = NULL
+  Tags = NULL,
+  MinimumSessionTokenSize = NULL
 )
 }
 \arguments{
@@ -55,6 +56,8 @@ An Amazon Web Services conversion compresses the passed inline session policy, m
 You can pass a session tag with the same key as a tag that is already attached to the user you are federating. When you do, session tags override a user tag with the same key.
 
 Tag key–value pairs are not case sensitive, but case is preserved. This means that you cannot have separate \code{Department} and \code{department} tag keys. Assume that the role has the \code{Department}=\code{Marketing} tag and you pass the \code{department}=\code{engineering} session tag. \code{Department} and \code{department} are not saved as separate tags, and the session tag passed in the request takes precedence over the role tag.}
+
+\item{MinimumSessionTokenSize}{The minimum size, in bytes, of the session token that STS issues for the request. STS increases the session token to at least this size, regardless of its actual content. The value must not exceed 4,096 bytes. When set to 0 or not specified, the session token size is unchanged.}
 }
 \description{
 Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a user. A typical use is in a proxy application that gets temporary security credentials on behalf of distributed applications inside a corporate network.

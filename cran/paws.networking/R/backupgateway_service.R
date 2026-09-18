@@ -163,6 +163,6 @@ backupgateway <- function(config = list(), credentials = list(), endpoint = NULL
 )
 
 .backupgateway$service <- function(config = list(), op = NULL) {
-  handlers <- new_handlers("jsonrpc", "v4")
+  handlers <- new_handlers("smithyrpcv2cbor", "v4")
   new_service(.backupgateway$metadata, handlers, config, op)
 }

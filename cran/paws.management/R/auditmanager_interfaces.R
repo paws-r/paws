@@ -5,744 +5,620 @@ NULL
 
 .auditmanager$associate_assessment_report_evidence_folder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), evidenceFolderId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["associate_assessment_report_evidence_folder_input"]]))
 }
 
 .auditmanager$associate_assessment_report_evidence_folder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["associate_assessment_report_evidence_folder_output"]]))
 }
 
 .auditmanager$batch_associate_assessment_report_evidence_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), evidenceFolderId = structure(logical(0), tags = list(type = "string")), evidenceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["batch_associate_assessment_report_evidence_input"]]))
 }
 
 .auditmanager$batch_associate_assessment_report_evidence_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(evidenceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), errors = structure(list(structure(list(evidenceId = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["batch_associate_assessment_report_evidence_output"]]))
 }
 
 .auditmanager$batch_create_delegation_by_assessment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createDelegationRequests = structure(list(structure(list(comment = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), controlSetId = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), roleType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["batch_create_delegation_by_assessment_input"]]))
 }
 
 .auditmanager$batch_create_delegation_by_assessment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(delegations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assessmentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), roleType = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp")), controlSetId = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), errors = structure(list(structure(list(createDelegationRequest = structure(list(comment = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), controlSetId = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), roleType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["batch_create_delegation_by_assessment_output"]]))
 }
 
 .auditmanager$batch_delete_delegation_by_assessment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(delegationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["batch_delete_delegation_by_assessment_input"]]))
 }
 
 .auditmanager$batch_delete_delegation_by_assessment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(errors = structure(list(structure(list(delegationId = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["batch_delete_delegation_by_assessment_output"]]))
 }
 
 .auditmanager$batch_disassociate_assessment_report_evidence_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), evidenceFolderId = structure(logical(0), tags = list(type = "string")), evidenceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["batch_disassociate_assessment_report_evidence_input"]]))
 }
 
 .auditmanager$batch_disassociate_assessment_report_evidence_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(evidenceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), errors = structure(list(structure(list(evidenceId = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["batch_disassociate_assessment_report_evidence_output"]]))
 }
 
 .auditmanager$batch_import_evidence_to_assessment_control_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), controlSetId = structure(logical(0), tags = list(location = "uri", locationName = "controlSetId", type = "string")), controlId = structure(logical(0), tags = list(location = "uri", locationName = "controlId", type = "string")), manualEvidence = structure(list(structure(list(s3ResourcePath = structure(logical(0), tags = list(type = "string")), textResponse = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), evidenceFileName = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["batch_import_evidence_to_assessment_control_input"]]))
 }
 
 .auditmanager$batch_import_evidence_to_assessment_control_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(errors = structure(list(structure(list(manualEvidence = structure(list(s3ResourcePath = structure(logical(0), tags = list(type = "string")), textResponse = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), evidenceFileName = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["batch_import_evidence_to_assessment_control_output"]]))
 }
 
 .auditmanager$create_assessment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assessmentReportsDestination = structure(list(destinationType = structure(logical(0), tags = list(type = "string")), destination = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), scope = structure(list(awsAccounts = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), emailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), awsServices = structure(list(structure(list(serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "You can't specify services in scope when creating/updating an assessment. If you use the parameter to specify one or more AWS services, Audit Manager ignores the input. Instead the value of the parameter will show as empty indicating that the services are defined and managed by Audit Manager.", type = "list"))), tags = list(type = "structure", sensitive = TRUE)), roles = structure(list(structure(list(roleType = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), frameworkId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["create_assessment_input"]]))
 }
 
 .auditmanager$create_assessment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessment = structure(list(arn = structure(logical(0), tags = list(type = "string")), awsAccount = structure(list(id = structure(logical(0), tags = list(type = "string")), emailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), metadata = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), assessmentReportsDestination = structure(list(destinationType = structure(logical(0), tags = list(type = "string")), destination = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), scope = structure(list(awsAccounts = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), emailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), awsServices = structure(list(structure(list(serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "You can't specify services in scope when creating/updating an assessment. If you use the parameter to specify one or more AWS services, Audit Manager ignores the input. Instead the value of the parameter will show as empty indicating that the services are defined and managed by Audit Manager.", type = "list"))), tags = list(type = "structure", sensitive = TRUE)), roles = structure(list(structure(list(roleType = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), delegations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assessmentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), roleType = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp")), controlSetId = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), framework = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), metadata = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string")), logo = structure(logical(0), tags = list(type = "string")), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), controlSets = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roles = structure(list(structure(list(roleType = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), controls = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This data type will be deprecated on May 19, 2025. To view the assessment control description, use GetControl.", deprecatedSince = "2025-05-19", type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), response = structure(logical(0), tags = list(type = "string")), comments = structure(list(structure(list(authorName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), commentBody = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), postedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), evidenceSources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), evidenceCount = structure(logical(0), tags = list(type = "integer")), assessmentReportEvidenceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), delegations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assessmentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), roleType = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp")), controlSetId = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), systemEvidenceCount = structure(logical(0), tags = list(type = "integer")), manualEvidenceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["create_assessment_output"]]))
 }
 
 .auditmanager$create_assessment_framework_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), controlSets = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), controls = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["create_assessment_framework_input"]]))
 }
 
 .auditmanager$create_assessment_framework_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(framework = structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string")), logo = structure(logical(0), tags = list(type = "string")), controlSources = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Use controlSources from the Control", deprecatedSince = "2025-07-24", type = "string")), controlSets = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), controls = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), testingInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionPlanTitle = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionPlanInstructions = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), controlSources = structure(logical(0), tags = list(type = "string")), controlMappingSources = structure(list(structure(list(sourceId = structure(logical(0), tags = list(type = "string")), sourceName = structure(logical(0), tags = list(type = "string")), sourceDescription = structure(logical(0), tags = list(type = "string")), sourceSetUpOption = structure(logical(0), tags = list(type = "string")), sourceType = structure(logical(0), tags = list(type = "string")), sourceKeyword = structure(list(keywordInputType = structure(logical(0), tags = list(type = "string")), keywordValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceFrequency = structure(logical(0), tags = list(type = "string")), troubleshootingText = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastUpdatedBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastUpdatedBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["create_assessment_framework_output"]]))
 }
 
 .auditmanager$create_assessment_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), queryStatement = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["create_assessment_report_input"]]))
 }
 
 .auditmanager$create_assessment_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentReport = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), awsAccountId = structure(logical(0), tags = list(type = "string")), assessmentId = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), author = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["create_assessment_report_output"]]))
 }
 
 .auditmanager$create_control_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), testingInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionPlanTitle = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionPlanInstructions = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), controlMappingSources = structure(list(structure(list(sourceName = structure(logical(0), tags = list(type = "string")), sourceDescription = structure(logical(0), tags = list(type = "string")), sourceSetUpOption = structure(logical(0), tags = list(type = "string")), sourceType = structure(logical(0), tags = list(type = "string")), sourceKeyword = structure(list(keywordInputType = structure(logical(0), tags = list(type = "string")), keywordValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceFrequency = structure(logical(0), tags = list(type = "string")), troubleshootingText = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["create_control_input"]]))
 }
 
 .auditmanager$create_control_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(control = structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), testingInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionPlanTitle = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionPlanInstructions = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), controlSources = structure(logical(0), tags = list(type = "string")), controlMappingSources = structure(list(structure(list(sourceId = structure(logical(0), tags = list(type = "string")), sourceName = structure(logical(0), tags = list(type = "string")), sourceDescription = structure(logical(0), tags = list(type = "string")), sourceSetUpOption = structure(logical(0), tags = list(type = "string")), sourceType = structure(logical(0), tags = list(type = "string")), sourceKeyword = structure(list(keywordInputType = structure(logical(0), tags = list(type = "string")), keywordValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceFrequency = structure(logical(0), tags = list(type = "string")), troubleshootingText = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastUpdatedBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["create_control_output"]]))
 }
 
 .auditmanager$delete_assessment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["delete_assessment_input"]]))
 }
 
 .auditmanager$delete_assessment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["delete_assessment_output"]]))
 }
 
 .auditmanager$delete_assessment_framework_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(frameworkId = structure(logical(0), tags = list(location = "uri", locationName = "frameworkId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["delete_assessment_framework_input"]]))
 }
 
 .auditmanager$delete_assessment_framework_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["delete_assessment_framework_output"]]))
 }
 
 .auditmanager$delete_assessment_framework_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(location = "uri", locationName = "requestId", type = "string")), requestType = structure(logical(0), tags = list(location = "querystring", locationName = "requestType", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["delete_assessment_framework_share_input"]]))
 }
 
 .auditmanager$delete_assessment_framework_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["delete_assessment_framework_share_output"]]))
 }
 
 .auditmanager$delete_assessment_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), assessmentReportId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentReportId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["delete_assessment_report_input"]]))
 }
 
 .auditmanager$delete_assessment_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["delete_assessment_report_output"]]))
 }
 
 .auditmanager$delete_control_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlId = structure(logical(0), tags = list(location = "uri", locationName = "controlId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["delete_control_input"]]))
 }
 
 .auditmanager$delete_control_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["delete_control_output"]]))
 }
 
 .auditmanager$deregister_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["deregister_account_input"]]))
 }
 
 .auditmanager$deregister_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["deregister_account_output"]]))
 }
 
 .auditmanager$deregister_organization_admin_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(adminAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["deregister_organization_admin_account_input"]]))
 }
 
 .auditmanager$deregister_organization_admin_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["deregister_organization_admin_account_output"]]))
 }
 
 .auditmanager$disassociate_assessment_report_evidence_folder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), evidenceFolderId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["disassociate_assessment_report_evidence_folder_input"]]))
 }
 
 .auditmanager$disassociate_assessment_report_evidence_folder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["disassociate_assessment_report_evidence_folder_output"]]))
 }
 
 .auditmanager$get_account_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_account_status_input"]]))
 }
 
 .auditmanager$get_account_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_account_status_output"]]))
 }
 
 .auditmanager$get_assessment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_assessment_input"]]))
 }
 
 .auditmanager$get_assessment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessment = structure(list(arn = structure(logical(0), tags = list(type = "string")), awsAccount = structure(list(id = structure(logical(0), tags = list(type = "string")), emailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), metadata = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), assessmentReportsDestination = structure(list(destinationType = structure(logical(0), tags = list(type = "string")), destination = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), scope = structure(list(awsAccounts = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), emailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), awsServices = structure(list(structure(list(serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "You can't specify services in scope when creating/updating an assessment. If you use the parameter to specify one or more AWS services, Audit Manager ignores the input. Instead the value of the parameter will show as empty indicating that the services are defined and managed by Audit Manager.", type = "list"))), tags = list(type = "structure", sensitive = TRUE)), roles = structure(list(structure(list(roleType = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), delegations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assessmentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), roleType = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp")), controlSetId = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), framework = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), metadata = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string")), logo = structure(logical(0), tags = list(type = "string")), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), controlSets = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roles = structure(list(structure(list(roleType = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), controls = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This data type will be deprecated on May 19, 2025. To view the assessment control description, use GetControl.", deprecatedSince = "2025-05-19", type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), response = structure(logical(0), tags = list(type = "string")), comments = structure(list(structure(list(authorName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), commentBody = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), postedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), evidenceSources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), evidenceCount = structure(logical(0), tags = list(type = "integer")), assessmentReportEvidenceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), delegations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assessmentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), roleType = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp")), controlSetId = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), systemEvidenceCount = structure(logical(0), tags = list(type = "integer")), manualEvidenceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), userRole = structure(list(roleType = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_assessment_output"]]))
 }
 
 .auditmanager$get_assessment_framework_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(frameworkId = structure(logical(0), tags = list(location = "uri", locationName = "frameworkId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_assessment_framework_input"]]))
 }
 
 .auditmanager$get_assessment_framework_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(framework = structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string")), logo = structure(logical(0), tags = list(type = "string")), controlSources = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Use controlSources from the Control", deprecatedSince = "2025-07-24", type = "string")), controlSets = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), controls = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), testingInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionPlanTitle = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionPlanInstructions = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), controlSources = structure(logical(0), tags = list(type = "string")), controlMappingSources = structure(list(structure(list(sourceId = structure(logical(0), tags = list(type = "string")), sourceName = structure(logical(0), tags = list(type = "string")), sourceDescription = structure(logical(0), tags = list(type = "string")), sourceSetUpOption = structure(logical(0), tags = list(type = "string")), sourceType = structure(logical(0), tags = list(type = "string")), sourceKeyword = structure(list(keywordInputType = structure(logical(0), tags = list(type = "string")), keywordValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceFrequency = structure(logical(0), tags = list(type = "string")), troubleshootingText = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastUpdatedBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastUpdatedBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_assessment_framework_output"]]))
 }
 
 .auditmanager$get_assessment_report_url_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentReportId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentReportId", type = "string")), assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_assessment_report_url_input"]]))
 }
 
 .auditmanager$get_assessment_report_url_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(preSignedUrl = structure(list(hyperlinkName = structure(logical(0), tags = list(type = "string")), link = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_assessment_report_url_output"]]))
 }
 
 .auditmanager$get_change_logs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), controlSetId = structure(logical(0), tags = list(location = "querystring", locationName = "controlSetId", type = "string")), controlId = structure(logical(0), tags = list(location = "querystring", locationName = "controlId", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_change_logs_input"]]))
 }
 
 .auditmanager$get_change_logs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(changeLogs = structure(list(structure(list(objectType = structure(logical(0), tags = list(type = "string")), objectName = structure(logical(0), tags = list(type = "string")), action = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), createdBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_change_logs_output"]]))
 }
 
 .auditmanager$get_control_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlId = structure(logical(0), tags = list(location = "uri", locationName = "controlId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_control_input"]]))
 }
 
 .auditmanager$get_control_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(control = structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), testingInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionPlanTitle = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionPlanInstructions = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), controlSources = structure(logical(0), tags = list(type = "string")), controlMappingSources = structure(list(structure(list(sourceId = structure(logical(0), tags = list(type = "string")), sourceName = structure(logical(0), tags = list(type = "string")), sourceDescription = structure(logical(0), tags = list(type = "string")), sourceSetUpOption = structure(logical(0), tags = list(type = "string")), sourceType = structure(logical(0), tags = list(type = "string")), sourceKeyword = structure(list(keywordInputType = structure(logical(0), tags = list(type = "string")), keywordValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceFrequency = structure(logical(0), tags = list(type = "string")), troubleshootingText = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastUpdatedBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_control_output"]]))
 }
 
 .auditmanager$get_delegations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_delegations_input"]]))
 }
 
 .auditmanager$get_delegations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(delegations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assessmentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), controlSetName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_delegations_output"]]))
 }
 
 .auditmanager$get_evidence_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), controlSetId = structure(logical(0), tags = list(location = "uri", locationName = "controlSetId", type = "string")), evidenceFolderId = structure(logical(0), tags = list(location = "uri", locationName = "evidenceFolderId", type = "string")), evidenceId = structure(logical(0), tags = list(location = "uri", locationName = "evidenceId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_evidence_input"]]))
 }
 
 .auditmanager$get_evidence_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(evidence = structure(list(dataSource = structure(logical(0), tags = list(type = "string")), evidenceAwsAccountId = structure(logical(0), tags = list(type = "string")), time = structure(logical(0), tags = list(type = "timestamp")), eventSource = structure(logical(0), tags = list(type = "string")), eventName = structure(logical(0), tags = list(type = "string")), evidenceByType = structure(logical(0), tags = list(type = "string")), resourcesIncluded = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), complianceCheck = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), iamId = structure(logical(0), tags = list(type = "string")), complianceCheck = structure(logical(0), tags = list(type = "string")), awsOrganization = structure(logical(0), tags = list(type = "string")), awsAccountId = structure(logical(0), tags = list(type = "string")), evidenceFolderId = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), assessmentReportSelection = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_evidence_output"]]))
 }
 
 .auditmanager$get_evidence_by_evidence_folder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), controlSetId = structure(logical(0), tags = list(location = "uri", locationName = "controlSetId", type = "string")), evidenceFolderId = structure(logical(0), tags = list(location = "uri", locationName = "evidenceFolderId", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_evidence_by_evidence_folder_input"]]))
 }
 
 .auditmanager$get_evidence_by_evidence_folder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(evidence = structure(list(structure(list(dataSource = structure(logical(0), tags = list(type = "string")), evidenceAwsAccountId = structure(logical(0), tags = list(type = "string")), time = structure(logical(0), tags = list(type = "timestamp")), eventSource = structure(logical(0), tags = list(type = "string")), eventName = structure(logical(0), tags = list(type = "string")), evidenceByType = structure(logical(0), tags = list(type = "string")), resourcesIncluded = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), complianceCheck = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), iamId = structure(logical(0), tags = list(type = "string")), complianceCheck = structure(logical(0), tags = list(type = "string")), awsOrganization = structure(logical(0), tags = list(type = "string")), awsAccountId = structure(logical(0), tags = list(type = "string")), evidenceFolderId = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), assessmentReportSelection = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_evidence_by_evidence_folder_output"]]))
 }
 
 .auditmanager$get_evidence_file_upload_url_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(fileName = structure(logical(0), tags = list(location = "querystring", locationName = "fileName", type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_evidence_file_upload_url_input"]]))
 }
 
 .auditmanager$get_evidence_file_upload_url_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(evidenceFileName = structure(logical(0), tags = list(type = "string")), uploadUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_evidence_file_upload_url_output"]]))
 }
 
 .auditmanager$get_evidence_folder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), controlSetId = structure(logical(0), tags = list(location = "uri", locationName = "controlSetId", type = "string")), evidenceFolderId = structure(logical(0), tags = list(location = "uri", locationName = "evidenceFolderId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_evidence_folder_input"]]))
 }
 
 .auditmanager$get_evidence_folder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(evidenceFolder = structure(list(name = structure(logical(0), tags = list(type = "string")), date = structure(logical(0), tags = list(type = "timestamp")), assessmentId = structure(logical(0), tags = list(type = "string")), controlSetId = structure(logical(0), tags = list(type = "string")), controlId = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), dataSource = structure(logical(0), tags = list(type = "string")), author = structure(logical(0), tags = list(type = "string")), totalEvidence = structure(logical(0), tags = list(type = "integer")), assessmentReportSelectionCount = structure(logical(0), tags = list(type = "integer")), controlName = structure(logical(0), tags = list(type = "string")), evidenceResourcesIncludedCount = structure(logical(0), tags = list(type = "integer")), evidenceByTypeConfigurationDataCount = structure(logical(0), tags = list(type = "integer")), evidenceByTypeManualCount = structure(logical(0), tags = list(type = "integer")), evidenceByTypeComplianceCheckCount = structure(logical(0), tags = list(type = "integer")), evidenceByTypeComplianceCheckIssuesCount = structure(logical(0), tags = list(type = "integer")), evidenceByTypeUserActivityCount = structure(logical(0), tags = list(type = "integer")), evidenceAwsServiceSourceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_evidence_folder_output"]]))
 }
 
 .auditmanager$get_evidence_folders_by_assessment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_evidence_folders_by_assessment_input"]]))
 }
 
 .auditmanager$get_evidence_folders_by_assessment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(evidenceFolders = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), date = structure(logical(0), tags = list(type = "timestamp")), assessmentId = structure(logical(0), tags = list(type = "string")), controlSetId = structure(logical(0), tags = list(type = "string")), controlId = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), dataSource = structure(logical(0), tags = list(type = "string")), author = structure(logical(0), tags = list(type = "string")), totalEvidence = structure(logical(0), tags = list(type = "integer")), assessmentReportSelectionCount = structure(logical(0), tags = list(type = "integer")), controlName = structure(logical(0), tags = list(type = "string")), evidenceResourcesIncludedCount = structure(logical(0), tags = list(type = "integer")), evidenceByTypeConfigurationDataCount = structure(logical(0), tags = list(type = "integer")), evidenceByTypeManualCount = structure(logical(0), tags = list(type = "integer")), evidenceByTypeComplianceCheckCount = structure(logical(0), tags = list(type = "integer")), evidenceByTypeComplianceCheckIssuesCount = structure(logical(0), tags = list(type = "integer")), evidenceByTypeUserActivityCount = structure(logical(0), tags = list(type = "integer")), evidenceAwsServiceSourceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_evidence_folders_by_assessment_output"]]))
 }
 
 .auditmanager$get_evidence_folders_by_assessment_control_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), controlSetId = structure(logical(0), tags = list(location = "uri", locationName = "controlSetId", type = "string")), controlId = structure(logical(0), tags = list(location = "uri", locationName = "controlId", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_evidence_folders_by_assessment_control_input"]]))
 }
 
 .auditmanager$get_evidence_folders_by_assessment_control_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(evidenceFolders = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), date = structure(logical(0), tags = list(type = "timestamp")), assessmentId = structure(logical(0), tags = list(type = "string")), controlSetId = structure(logical(0), tags = list(type = "string")), controlId = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), dataSource = structure(logical(0), tags = list(type = "string")), author = structure(logical(0), tags = list(type = "string")), totalEvidence = structure(logical(0), tags = list(type = "integer")), assessmentReportSelectionCount = structure(logical(0), tags = list(type = "integer")), controlName = structure(logical(0), tags = list(type = "string")), evidenceResourcesIncludedCount = structure(logical(0), tags = list(type = "integer")), evidenceByTypeConfigurationDataCount = structure(logical(0), tags = list(type = "integer")), evidenceByTypeManualCount = structure(logical(0), tags = list(type = "integer")), evidenceByTypeComplianceCheckCount = structure(logical(0), tags = list(type = "integer")), evidenceByTypeComplianceCheckIssuesCount = structure(logical(0), tags = list(type = "integer")), evidenceByTypeUserActivityCount = structure(logical(0), tags = list(type = "integer")), evidenceAwsServiceSourceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_evidence_folders_by_assessment_control_output"]]))
 }
 
 .auditmanager$get_insights_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_insights_input"]]))
 }
 
 .auditmanager$get_insights_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(insights = structure(list(activeAssessmentsCount = structure(logical(0), tags = list(type = "integer")), noncompliantEvidenceCount = structure(logical(0), tags = list(type = "integer")), compliantEvidenceCount = structure(logical(0), tags = list(type = "integer")), inconclusiveEvidenceCount = structure(logical(0), tags = list(type = "integer")), assessmentControlsCountByNoncompliantEvidence = structure(logical(0), tags = list(type = "integer")), totalAssessmentControlsCount = structure(logical(0), tags = list(type = "integer")), lastUpdated = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_insights_output"]]))
 }
 
 .auditmanager$get_insights_by_assessment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_insights_by_assessment_input"]]))
 }
 
 .auditmanager$get_insights_by_assessment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(insights = structure(list(noncompliantEvidenceCount = structure(logical(0), tags = list(type = "integer")), compliantEvidenceCount = structure(logical(0), tags = list(type = "integer")), inconclusiveEvidenceCount = structure(logical(0), tags = list(type = "integer")), assessmentControlsCountByNoncompliantEvidence = structure(logical(0), tags = list(type = "integer")), totalAssessmentControlsCount = structure(logical(0), tags = list(type = "integer")), lastUpdated = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_insights_by_assessment_output"]]))
 }
 
 .auditmanager$get_organization_admin_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_organization_admin_account_input"]]))
 }
 
 .auditmanager$get_organization_admin_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(adminAccountId = structure(logical(0), tags = list(type = "string")), organizationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_organization_admin_account_output"]]))
 }
 
 .auditmanager$get_services_in_scope_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_services_in_scope_input"]]))
 }
 
 .auditmanager$get_services_in_scope_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(serviceMetadata = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), category = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_services_in_scope_output"]]))
 }
 
 .auditmanager$get_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(attribute = structure(logical(0), tags = list(location = "uri", locationName = "attribute", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_settings_input"]]))
 }
 
 .auditmanager$get_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(settings = structure(list(isAwsOrgEnabled = structure(logical(0), tags = list(type = "boolean")), snsTopic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), defaultAssessmentReportsDestination = structure(list(destinationType = structure(logical(0), tags = list(type = "string")), destination = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), defaultProcessOwners = structure(list(structure(list(roleType = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), kmsKey = structure(logical(0), tags = list(type = "string")), evidenceFinderEnablement = structure(list(eventDataStoreArn = structure(logical(0), tags = list(type = "string")), enablementStatus = structure(logical(0), tags = list(type = "string")), backfillStatus = structure(logical(0), tags = list(type = "string")), error = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), deregistrationPolicy = structure(list(deleteResources = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), defaultExportDestination = structure(list(destinationType = structure(logical(0), tags = list(type = "string")), destination = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["get_settings_output"]]))
 }
 
 .auditmanager$list_assessment_control_insights_by_control_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlDomainId = structure(logical(0), tags = list(location = "querystring", locationName = "controlDomainId", type = "string")), assessmentId = structure(logical(0), tags = list(location = "querystring", locationName = "assessmentId", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_assessment_control_insights_by_control_domain_input"]]))
 }
 
 .auditmanager$list_assessment_control_insights_by_control_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlInsightsByAssessment = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), evidenceInsights = structure(list(noncompliantEvidenceCount = structure(logical(0), tags = list(type = "integer")), compliantEvidenceCount = structure(logical(0), tags = list(type = "integer")), inconclusiveEvidenceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), controlSetName = structure(logical(0), tags = list(type = "string")), lastUpdated = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_assessment_control_insights_by_control_domain_output"]]))
 }
 
 .auditmanager$list_assessment_framework_share_requests_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestType = structure(logical(0), tags = list(location = "querystring", locationName = "requestType", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_assessment_framework_share_requests_input"]]))
 }
 
 .auditmanager$list_assessment_framework_share_requests_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentFrameworkShareRequests = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), frameworkId = structure(logical(0), tags = list(type = "string")), frameworkName = structure(logical(0), tags = list(type = "string")), frameworkDescription = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), sourceAccount = structure(logical(0), tags = list(type = "string")), destinationAccount = structure(logical(0), tags = list(type = "string")), destinationRegion = structure(logical(0), tags = list(type = "string")), expirationTime = structure(logical(0), tags = list(type = "timestamp")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp")), comment = structure(logical(0), tags = list(type = "string")), standardControlsCount = structure(logical(0), tags = list(type = "integer")), customControlsCount = structure(logical(0), tags = list(type = "integer")), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_assessment_framework_share_requests_output"]]))
 }
 
 .auditmanager$list_assessment_frameworks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(frameworkType = structure(logical(0), tags = list(location = "querystring", locationName = "frameworkType", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_assessment_frameworks_input"]]))
 }
 
 .auditmanager$list_assessment_frameworks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(frameworkMetadataList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), logo = structure(logical(0), tags = list(type = "string")), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), controlsCount = structure(logical(0), tags = list(type = "integer")), controlSetsCount = structure(logical(0), tags = list(type = "integer")), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_assessment_frameworks_output"]]))
 }
 
 .auditmanager$list_assessment_reports_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_assessment_reports_input"]]))
 }
 
 .auditmanager$list_assessment_reports_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentReports = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assessmentId = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), author = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_assessment_reports_output"]]))
 }
 
 .auditmanager$list_assessments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(status = structure(logical(0), tags = list(location = "querystring", locationName = "status", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_assessments_input"]]))
 }
 
 .auditmanager$list_assessments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentMetadata = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), id = structure(logical(0), tags = list(type = "string")), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), roles = structure(list(structure(list(roleType = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), delegations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assessmentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), roleType = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp")), controlSetId = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_assessments_output"]]))
 }
 
 .auditmanager$list_control_domain_insights_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_control_domain_insights_input"]]))
 }
 
 .auditmanager$list_control_domain_insights_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlDomainInsights = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), controlsCountByNoncompliantEvidence = structure(logical(0), tags = list(type = "integer")), totalControlsCount = structure(logical(0), tags = list(type = "integer")), evidenceInsights = structure(list(noncompliantEvidenceCount = structure(logical(0), tags = list(type = "integer")), compliantEvidenceCount = structure(logical(0), tags = list(type = "integer")), inconclusiveEvidenceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), lastUpdated = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_control_domain_insights_output"]]))
 }
 
 .auditmanager$list_control_domain_insights_by_assessment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "querystring", locationName = "assessmentId", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_control_domain_insights_by_assessment_input"]]))
 }
 
 .auditmanager$list_control_domain_insights_by_assessment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlDomainInsights = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), controlsCountByNoncompliantEvidence = structure(logical(0), tags = list(type = "integer")), totalControlsCount = structure(logical(0), tags = list(type = "integer")), evidenceInsights = structure(list(noncompliantEvidenceCount = structure(logical(0), tags = list(type = "integer")), compliantEvidenceCount = structure(logical(0), tags = list(type = "integer")), inconclusiveEvidenceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), lastUpdated = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_control_domain_insights_by_assessment_output"]]))
 }
 
 .auditmanager$list_control_insights_by_control_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlDomainId = structure(logical(0), tags = list(location = "querystring", locationName = "controlDomainId", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_control_insights_by_control_domain_input"]]))
 }
 
 .auditmanager$list_control_insights_by_control_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlInsightsMetadata = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), evidenceInsights = structure(list(noncompliantEvidenceCount = structure(logical(0), tags = list(type = "integer")), compliantEvidenceCount = structure(logical(0), tags = list(type = "integer")), inconclusiveEvidenceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), lastUpdated = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_control_insights_by_control_domain_output"]]))
 }
 
 .auditmanager$list_controls_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlType = structure(logical(0), tags = list(location = "querystring", locationName = "controlType", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), controlCatalogId = structure(logical(0), tags = list(location = "querystring", locationName = "controlCatalogId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_controls_input"]]))
 }
 
 .auditmanager$list_controls_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlMetadataList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), controlSources = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_controls_output"]]))
 }
 
 .auditmanager$list_keywords_for_data_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(source = structure(logical(0), tags = list(location = "querystring", locationName = "source", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_keywords_for_data_source_input"]]))
 }
 
 .auditmanager$list_keywords_for_data_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(keywords = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_keywords_for_data_source_output"]]))
 }
 
 .auditmanager$list_notifications_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_notifications_input"]]))
 }
 
 .auditmanager$list_notifications_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(notifications = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), assessmentId = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), controlSetId = structure(logical(0), tags = list(type = "string")), controlSetName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), eventTime = structure(logical(0), tags = list(type = "timestamp")), source = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_notifications_output"]]))
 }
 
 .auditmanager$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_tags_for_resource_input"]]))
 }
 
 .auditmanager$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["list_tags_for_resource_output"]]))
 }
 
 .auditmanager$register_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(kmsKey = structure(logical(0), tags = list(type = "string")), delegatedAdminAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["register_account_input"]]))
 }
 
 .auditmanager$register_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["register_account_output"]]))
 }
 
 .auditmanager$register_organization_admin_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(adminAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["register_organization_admin_account_input"]]))
 }
 
 .auditmanager$register_organization_admin_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(adminAccountId = structure(logical(0), tags = list(type = "string")), organizationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["register_organization_admin_account_output"]]))
 }
 
 .auditmanager$start_assessment_framework_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(frameworkId = structure(logical(0), tags = list(location = "uri", locationName = "frameworkId", type = "string")), destinationAccount = structure(logical(0), tags = list(type = "string")), destinationRegion = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["start_assessment_framework_share_input"]]))
 }
 
 .auditmanager$start_assessment_framework_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentFrameworkShareRequest = structure(list(id = structure(logical(0), tags = list(type = "string")), frameworkId = structure(logical(0), tags = list(type = "string")), frameworkName = structure(logical(0), tags = list(type = "string")), frameworkDescription = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), sourceAccount = structure(logical(0), tags = list(type = "string")), destinationAccount = structure(logical(0), tags = list(type = "string")), destinationRegion = structure(logical(0), tags = list(type = "string")), expirationTime = structure(logical(0), tags = list(type = "timestamp")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp")), comment = structure(logical(0), tags = list(type = "string")), standardControlsCount = structure(logical(0), tags = list(type = "integer")), customControlsCount = structure(logical(0), tags = list(type = "integer")), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["start_assessment_framework_share_output"]]))
 }
 
 .auditmanager$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["tag_resource_input"]]))
 }
 
 .auditmanager$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["tag_resource_output"]]))
 }
 
 .auditmanager$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["untag_resource_input"]]))
 }
 
 .auditmanager$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["untag_resource_output"]]))
 }
 
 .auditmanager$update_assessment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), assessmentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assessmentDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), scope = structure(list(awsAccounts = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), emailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), awsServices = structure(list(structure(list(serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "You can't specify services in scope when creating/updating an assessment. If you use the parameter to specify one or more AWS services, Audit Manager ignores the input. Instead the value of the parameter will show as empty indicating that the services are defined and managed by Audit Manager.", type = "list"))), tags = list(type = "structure", sensitive = TRUE)), assessmentReportsDestination = structure(list(destinationType = structure(logical(0), tags = list(type = "string")), destination = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), roles = structure(list(structure(list(roleType = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["update_assessment_input"]]))
 }
 
 .auditmanager$update_assessment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessment = structure(list(arn = structure(logical(0), tags = list(type = "string")), awsAccount = structure(list(id = structure(logical(0), tags = list(type = "string")), emailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), metadata = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), assessmentReportsDestination = structure(list(destinationType = structure(logical(0), tags = list(type = "string")), destination = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), scope = structure(list(awsAccounts = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), emailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), awsServices = structure(list(structure(list(serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "You can't specify services in scope when creating/updating an assessment. If you use the parameter to specify one or more AWS services, Audit Manager ignores the input. Instead the value of the parameter will show as empty indicating that the services are defined and managed by Audit Manager.", type = "list"))), tags = list(type = "structure", sensitive = TRUE)), roles = structure(list(structure(list(roleType = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), delegations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assessmentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), roleType = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp")), controlSetId = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), framework = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), metadata = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string")), logo = structure(logical(0), tags = list(type = "string")), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), controlSets = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roles = structure(list(structure(list(roleType = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), controls = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This data type will be deprecated on May 19, 2025. To view the assessment control description, use GetControl.", deprecatedSince = "2025-05-19", type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), response = structure(logical(0), tags = list(type = "string")), comments = structure(list(structure(list(authorName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), commentBody = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), postedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), evidenceSources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), evidenceCount = structure(logical(0), tags = list(type = "integer")), assessmentReportEvidenceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), delegations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assessmentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), roleType = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp")), controlSetId = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), systemEvidenceCount = structure(logical(0), tags = list(type = "integer")), manualEvidenceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["update_assessment_output"]]))
 }
 
 .auditmanager$update_assessment_control_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), controlSetId = structure(logical(0), tags = list(location = "uri", locationName = "controlSetId", type = "string")), controlId = structure(logical(0), tags = list(location = "uri", locationName = "controlId", type = "string")), controlStatus = structure(logical(0), tags = list(type = "string")), commentBody = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["update_assessment_control_input"]]))
 }
 
 .auditmanager$update_assessment_control_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(control = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This data type will be deprecated on May 19, 2025. To view the assessment control description, use GetControl.", deprecatedSince = "2025-05-19", type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), response = structure(logical(0), tags = list(type = "string")), comments = structure(list(structure(list(authorName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), commentBody = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), postedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), evidenceSources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), evidenceCount = structure(logical(0), tags = list(type = "integer")), assessmentReportEvidenceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["update_assessment_control_output"]]))
 }
 
 .auditmanager$update_assessment_control_set_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), controlSetId = structure(logical(0), tags = list(location = "uri", locationName = "controlSetId", type = "string")), status = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["update_assessment_control_set_status_input"]]))
 }
 
 .auditmanager$update_assessment_control_set_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlSet = structure(list(id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roles = structure(list(structure(list(roleType = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), controls = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This data type will be deprecated on May 19, 2025. To view the assessment control description, use GetControl.", deprecatedSince = "2025-05-19", type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), response = structure(logical(0), tags = list(type = "string")), comments = structure(list(structure(list(authorName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), commentBody = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), postedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), evidenceSources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), evidenceCount = structure(logical(0), tags = list(type = "integer")), assessmentReportEvidenceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), delegations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assessmentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), roleType = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp")), controlSetId = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), systemEvidenceCount = structure(logical(0), tags = list(type = "integer")), manualEvidenceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["update_assessment_control_set_status_output"]]))
 }
 
 .auditmanager$update_assessment_framework_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(frameworkId = structure(logical(0), tags = list(location = "uri", locationName = "frameworkId", type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), controlSets = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), controls = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["update_assessment_framework_input"]]))
 }
 
 .auditmanager$update_assessment_framework_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(framework = structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string")), logo = structure(logical(0), tags = list(type = "string")), controlSources = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Use controlSources from the Control", deprecatedSince = "2025-07-24", type = "string")), controlSets = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), controls = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), testingInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionPlanTitle = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionPlanInstructions = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), controlSources = structure(logical(0), tags = list(type = "string")), controlMappingSources = structure(list(structure(list(sourceId = structure(logical(0), tags = list(type = "string")), sourceName = structure(logical(0), tags = list(type = "string")), sourceDescription = structure(logical(0), tags = list(type = "string")), sourceSetUpOption = structure(logical(0), tags = list(type = "string")), sourceType = structure(logical(0), tags = list(type = "string")), sourceKeyword = structure(list(keywordInputType = structure(logical(0), tags = list(type = "string")), keywordValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceFrequency = structure(logical(0), tags = list(type = "string")), troubleshootingText = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastUpdatedBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastUpdatedBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["update_assessment_framework_output"]]))
 }
 
 .auditmanager$update_assessment_framework_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(requestId = structure(logical(0), tags = list(location = "uri", locationName = "requestId", type = "string")), requestType = structure(logical(0), tags = list(type = "string")), action = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["update_assessment_framework_share_input"]]))
 }
 
 .auditmanager$update_assessment_framework_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentFrameworkShareRequest = structure(list(id = structure(logical(0), tags = list(type = "string")), frameworkId = structure(logical(0), tags = list(type = "string")), frameworkName = structure(logical(0), tags = list(type = "string")), frameworkDescription = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), sourceAccount = structure(logical(0), tags = list(type = "string")), destinationAccount = structure(logical(0), tags = list(type = "string")), destinationRegion = structure(logical(0), tags = list(type = "string")), expirationTime = structure(logical(0), tags = list(type = "timestamp")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp")), comment = structure(logical(0), tags = list(type = "string")), standardControlsCount = structure(logical(0), tags = list(type = "integer")), customControlsCount = structure(logical(0), tags = list(type = "integer")), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["update_assessment_framework_share_output"]]))
 }
 
 .auditmanager$update_assessment_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentId = structure(logical(0), tags = list(location = "uri", locationName = "assessmentId", type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["update_assessment_status_input"]]))
 }
 
 .auditmanager$update_assessment_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessment = structure(list(arn = structure(logical(0), tags = list(type = "string")), awsAccount = structure(list(id = structure(logical(0), tags = list(type = "string")), emailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), metadata = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), assessmentReportsDestination = structure(list(destinationType = structure(logical(0), tags = list(type = "string")), destination = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), scope = structure(list(awsAccounts = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), emailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), awsServices = structure(list(structure(list(serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "You can't specify services in scope when creating/updating an assessment. If you use the parameter to specify one or more AWS services, Audit Manager ignores the input. Instead the value of the parameter will show as empty indicating that the services are defined and managed by Audit Manager.", type = "list"))), tags = list(type = "structure", sensitive = TRUE)), roles = structure(list(structure(list(roleType = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), delegations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assessmentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), roleType = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp")), controlSetId = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), framework = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), metadata = structure(list(name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), description = structure(logical(0), tags = list(type = "string")), logo = structure(logical(0), tags = list(type = "string")), complianceType = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), controlSets = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roles = structure(list(structure(list(roleType = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), controls = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This data type will be deprecated on May 19, 2025. To view the assessment control description, use GetControl.", deprecatedSince = "2025-05-19", type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string")), response = structure(logical(0), tags = list(type = "string")), comments = structure(list(structure(list(authorName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), commentBody = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), postedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), evidenceSources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), evidenceCount = structure(logical(0), tags = list(type = "integer")), assessmentReportEvidenceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), delegations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assessmentId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), roleType = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdated = structure(logical(0), tags = list(type = "timestamp")), controlSetId = structure(logical(0), tags = list(type = "string")), comment = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list")), systemEvidenceCount = structure(logical(0), tags = list(type = "integer")), manualEvidenceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["update_assessment_status_output"]]))
 }
 
 .auditmanager$update_control_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlId = structure(logical(0), tags = list(location = "uri", locationName = "controlId", type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), testingInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionPlanTitle = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionPlanInstructions = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), controlMappingSources = structure(list(structure(list(sourceId = structure(logical(0), tags = list(type = "string")), sourceName = structure(logical(0), tags = list(type = "string")), sourceDescription = structure(logical(0), tags = list(type = "string")), sourceSetUpOption = structure(logical(0), tags = list(type = "string")), sourceType = structure(logical(0), tags = list(type = "string")), sourceKeyword = structure(list(keywordInputType = structure(logical(0), tags = list(type = "string")), keywordValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceFrequency = structure(logical(0), tags = list(type = "string")), troubleshootingText = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["update_control_input"]]))
 }
 
 .auditmanager$update_control_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(control = structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), testingInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionPlanTitle = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), actionPlanInstructions = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), controlSources = structure(logical(0), tags = list(type = "string")), controlMappingSources = structure(list(structure(list(sourceId = structure(logical(0), tags = list(type = "string")), sourceName = structure(logical(0), tags = list(type = "string")), sourceDescription = structure(logical(0), tags = list(type = "string")), sourceSetUpOption = structure(logical(0), tags = list(type = "string")), sourceType = structure(logical(0), tags = list(type = "string")), sourceKeyword = structure(list(keywordInputType = structure(logical(0), tags = list(type = "string")), keywordValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceFrequency = structure(logical(0), tags = list(type = "string")), troubleshootingText = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), createdBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastUpdatedBy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["update_control_output"]]))
 }
 
 .auditmanager$update_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(snsTopic = structure(logical(0), tags = list(type = "string")), defaultAssessmentReportsDestination = structure(list(destinationType = structure(logical(0), tags = list(type = "string")), destination = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), defaultProcessOwners = structure(list(structure(list(roleType = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), kmsKey = structure(logical(0), tags = list(type = "string")), evidenceFinderEnabled = structure(logical(0), tags = list(type = "boolean")), deregistrationPolicy = structure(list(deleteResources = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), defaultExportDestination = structure(list(destinationType = structure(logical(0), tags = list(type = "string")), destination = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["update_settings_input"]]))
 }
 
 .auditmanager$update_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(settings = structure(list(isAwsOrgEnabled = structure(logical(0), tags = list(type = "boolean")), snsTopic = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), defaultAssessmentReportsDestination = structure(list(destinationType = structure(logical(0), tags = list(type = "string")), destination = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), defaultProcessOwners = structure(list(structure(list(roleType = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), kmsKey = structure(logical(0), tags = list(type = "string")), evidenceFinderEnablement = structure(list(eventDataStoreArn = structure(logical(0), tags = list(type = "string")), enablementStatus = structure(logical(0), tags = list(type = "string")), backfillStatus = structure(logical(0), tags = list(type = "string")), error = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), deregistrationPolicy = structure(list(deleteResources = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), defaultExportDestination = structure(list(destinationType = structure(logical(0), tags = list(type = "string")), destination = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["update_settings_output"]]))
 }
 
 .auditmanager$validate_assessment_report_integrity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(s3RelativePath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["validate_assessment_report_integrity_input"]]))
 }
 
 .auditmanager$validate_assessment_report_integrity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(signatureValid = structure(logical(0), tags = list(type = "boolean")), signatureAlgorithm = structure(logical(0), tags = list(type = "string")), signatureDateTime = structure(logical(0), tags = list(type = "string")), signatureKeyId = structure(logical(0), tags = list(type = "string")), validationErrors = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .auditmanager_shapes[["validate_assessment_report_integrity_output"]]))
 }

@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_create_channel}
 \alias{cloudtrail_create_channel}
-\title{Creates a channel for CloudTrail to ingest events from a partner or
-external source}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_create_channel(Name, Source, Destinations, Tags = NULL)
 }
@@ -19,7 +19,7 @@ A source can be either \code{Custom} for all valid non-Amazon Web Services event
 \item{Tags}{A list of tags.}
 }
 \description{
-Creates a channel for CloudTrail to ingest events from a partner or external source. After you create a channel, a CloudTrail Lake event data store can log events from the partner or source that you specify.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_create_channel/} for full documentation.
 }

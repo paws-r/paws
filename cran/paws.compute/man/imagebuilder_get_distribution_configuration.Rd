@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_get_distribution_configuration}
 \alias{imagebuilder_get_distribution_configuration}
-\title{Gets a distribution configuration}
+\title{Retrieves a distribution configuration}
 \usage{
 imagebuilder_get_distribution_configuration(distributionConfigurationArn)
 }
@@ -10,7 +10,7 @@ imagebuilder_get_distribution_configuration(distributionConfigurationArn)
 \item{distributionConfigurationArn}{[required] The Amazon Resource Name (ARN) of the distribution configuration that you want to retrieve.}
 }
 \description{
-Gets a distribution configuration.
+Retrieves a distribution configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_distribution_configuration/} for full documentation.
 }

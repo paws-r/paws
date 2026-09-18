@@ -3,6 +3,43 @@
 #' @include cloudwatch_service.R
 NULL
 
+#' Associates an Amazon Web Services Key Management Service (Amazon Web
+#' Services KMS) customer managed key with the specified dataset
+#'
+#' @description
+#' Associates an Amazon Web Services Key Management Service (Amazon Web Services KMS) customer managed key with the specified dataset. After this operation completes, all data published to the dataset is encrypted at rest using the specified KMS key. Callers must have `kms:Decrypt` permission on the key to read the encrypted data.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_associate_dataset_kms_key/](https://www.paws-r-sdk.com/docs/cloudwatch_associate_dataset_kms_key/) for full documentation.
+#'
+#' @param DatasetIdentifier &#91;required&#93; Specifies the identifier of the dataset that you want to associate the KMS key with. For the `default` dataset, you can specify either `default` or the full dataset Amazon Resource Name (ARN) in the format `arn:aws:cloudwatch:Region:account-id:dataset/default`.
+#' @param KmsKeyArn &#91;required&#93; Specifies the Amazon Resource Name (ARN) of the customer managed KMS key to associate with the dataset. The key must be a symmetric encryption KMS key (`SYMMETRIC_DEFAULT`) in the same Amazon Web Services Region as the dataset.
+#' 
+#' The ARN must be in the format `arn:aws:kms:Region:account-id:key/key-id `. Key IDs, aliases, and alias ARNs are not accepted.
+#' 
+#' For more information about KMS key ARNs, see [Key ARN](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN) in the *Amazon Web Services Key Management Service Developer Guide*.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_associate_dataset_kms_key
+cloudwatch_associate_dataset_kms_key <- function(DatasetIdentifier, KmsKeyArn) {
+  op <- new_operation(
+    name = "AssociateDatasetKmsKey",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatch$associate_dataset_kms_key_input(DatasetIdentifier = DatasetIdentifier, KmsKeyArn = KmsKeyArn)
+  output <- .cloudwatch$associate_dataset_kms_key_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$associate_dataset_kms_key <- cloudwatch_associate_dataset_kms_key
+
 #' Deletes a specific alarm mute rule
 #'
 #' @description
@@ -37,7 +74,7 @@ cloudwatch_delete_alarm_mute_rule <- function(AlarmMuteRuleName) {
 #' Deletes the specified alarms
 #'
 #' @description
-#' Deletes the specified alarms. You can delete up to 100 alarms in one operation. However, this total can include no more than one composite alarm. For example, you could delete 99 metric alarms and one composite alarms with one operation, but you can't delete two composite alarms with one operation.
+#' Deletes the specified alarms. You can delete up to 100 alarms in one operation. However, this total can include no more than one composite alarm. For example, you could delete 99 metric alarms and one composite alarms with one operation, but you can't delete two composite alarms with one operation. Log alarms cannot be batch deleted.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatch_delete_alarms/](https://www.paws-r-sdk.com/docs/cloudwatch_delete_alarms/) for full documentation.
 #'
@@ -72,6 +109,7 @@ cloudwatch_delete_alarms <- function(AlarmNames) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatch_delete_anomaly_detector/](https://www.paws-r-sdk.com/docs/cloudwatch_delete_anomaly_detector/) for full documentation.
 #'
+#' @param AnomalyDetectorId Specifies the unique identifier of the anomaly detector to delete. If you specify this parameter, you do not need to specify a metric to identify the detector.
 #' @param Namespace The namespace associated with the anomaly detection model to delete.
 #' @param MetricName The metric name associated with the anomaly detection model to delete.
 #' @param Dimensions The metric dimensions associated with the anomaly detection model to delete.
@@ -110,7 +148,7 @@ cloudwatch_delete_alarms <- function(AlarmNames) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_delete_anomaly_detector
-cloudwatch_delete_anomaly_detector <- function(Namespace = NULL, MetricName = NULL, Dimensions = NULL, Stat = NULL, SingleMetricAnomalyDetector = NULL, MetricMathAnomalyDetector = NULL) {
+cloudwatch_delete_anomaly_detector <- function(AnomalyDetectorId = NULL, Namespace = NULL, MetricName = NULL, Dimensions = NULL, Stat = NULL, SingleMetricAnomalyDetector = NULL, MetricMathAnomalyDetector = NULL) {
   op <- new_operation(
     name = "DeleteAnomalyDetector",
     http_method = "POST",
@@ -119,7 +157,7 @@ cloudwatch_delete_anomaly_detector <- function(Namespace = NULL, MetricName = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatch$delete_anomaly_detector_input(Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, Stat = Stat, SingleMetricAnomalyDetector = SingleMetricAnomalyDetector, MetricMathAnomalyDetector = MetricMathAnomalyDetector)
+  input <- .cloudwatch$delete_anomaly_detector_input(AnomalyDetectorId = AnomalyDetectorId, Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, Stat = Stat, SingleMetricAnomalyDetector = SingleMetricAnomalyDetector, MetricMathAnomalyDetector = MetricMathAnomalyDetector)
   output <- .cloudwatch$delete_anomaly_detector_output()
   config <- get_config()
   svc <- .cloudwatch$service(config, op)
@@ -264,7 +302,7 @@ cloudwatch_describe_alarm_contributors <- function(AlarmName, NextToken = NULL) 
 #'
 #' @param AlarmName The name of the alarm.
 #' @param AlarmContributorId The unique identifier of a specific alarm contributor to filter the alarm history results.
-#' @param AlarmTypes Use this parameter to specify whether you want the operation to return metric alarms or composite alarms. If you omit this parameter, only metric alarms are returned.
+#' @param AlarmTypes Use this parameter to specify whether you want the operation to return metric alarms, composite alarms, or log alarms. If you omit this parameter, only metric alarms are returned.
 #' @param HistoryItemType The type of alarm histories to retrieve.
 #' @param StartDate The starting date to retrieve alarm history.
 #' @param EndDate The ending date to retrieve alarm history.
@@ -305,11 +343,13 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmContributor
 #' @param AlarmNamePrefix An alarm name prefix. If you specify this parameter, you receive information about all alarms that have names that start with this prefix.
 #' 
 #' If this parameter is specified, you cannot specify `AlarmNames`.
-#' @param AlarmTypes Use this parameter to specify whether you want the operation to return metric alarms or composite alarms. If you omit this parameter, only metric alarms are returned, even if composite alarms exist in the account.
+#' @param AlarmTypes Use this parameter to specify whether you want the operation to return metric alarms, composite alarms, or log alarms. If you omit this parameter, only metric alarms are returned, even if composite alarms or log alarms exist in the account.
 #' 
-#' For example, if you omit this parameter or specify `MetricAlarms`, the operation returns only a list of metric alarms. It does not return any composite alarms, even if composite alarms exist in the account.
+#' For example, if you omit this parameter or specify `MetricAlarms`, the operation returns only a list of metric alarms. It does not return any composite alarms or log alarms, even if they exist in the account.
 #' 
-#' If you specify `CompositeAlarms`, the operation returns only a list of composite alarms, and does not return any metric alarms.
+#' If you specify `CompositeAlarms`, the operation returns only a list of composite alarms, and does not return any metric alarms or log alarms.
+#' 
+#' If you specify `LogAlarms`, the operation returns only a list of log alarms, and does not return any metric alarms or composite alarms.
 #' @param ChildrenOfAlarmName If you use this parameter and specify the name of a composite alarm, the operation returns information about the "children" alarms of the alarm you specify. These are the metric alarms and composite alarms referenced in the `AlarmRule` field of the composite alarm that you specify in `ChildrenOfAlarmName`. Information about the composite alarm that you name in `ChildrenOfAlarmName` is not returned.
 #' 
 #' If you specify `ChildrenOfAlarmName`, you cannot specify any other parameters in the request except for `MaxRecords` and `NextToken`. If you do so, you receive a validation error.
@@ -334,7 +374,7 @@ cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxRecords", result_key = list("MetricAlarms", "CompositeAlarms")),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxRecords", result_key = list("MetricAlarms", "CompositeAlarms", "LogAlarms")),
     stream_api = FALSE
   )
   input <- .cloudwatch$describe_alarms_input(AlarmNames = AlarmNames, AlarmNamePrefix = AlarmNamePrefix, AlarmTypes = AlarmTypes, ChildrenOfAlarmName = ChildrenOfAlarmName, ParentsOfAlarmName = ParentsOfAlarmName, StateValue = StateValue, ActionPrefix = ActionPrefix, MaxRecords = MaxRecords, NextToken = NextToken)
@@ -391,6 +431,7 @@ cloudwatch_describe_alarms_for_metric <- function(MetricName, Namespace, Statist
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatch_describe_anomaly_detectors/](https://www.paws-r-sdk.com/docs/cloudwatch_describe_anomaly_detectors/) for full documentation.
 #'
+#' @param AnomalyDetectorIds Specifies the unique identifiers of the anomaly detectors to describe. You can specify up to 50 identifiers. If you specify this parameter, you cannot also specify the `Namespace`, `MetricName`, `Dimensions`, or `AnomalyDetectorTypes` metric filters.
 #' @param NextToken Use the token returned by the previous operation to request the next page of results.
 #' @param MaxResults The maximum number of results to return in one operation. The maximum value that you can specify is 100.
 #' 
@@ -403,7 +444,7 @@ cloudwatch_describe_alarms_for_metric <- function(MetricName, Namespace, Statist
 #' @keywords internal
 #'
 #' @rdname cloudwatch_describe_anomaly_detectors
-cloudwatch_describe_anomaly_detectors <- function(NextToken = NULL, MaxResults = NULL, Namespace = NULL, MetricName = NULL, Dimensions = NULL, AnomalyDetectorTypes = NULL) {
+cloudwatch_describe_anomaly_detectors <- function(AnomalyDetectorIds = NULL, NextToken = NULL, MaxResults = NULL, Namespace = NULL, MetricName = NULL, Dimensions = NULL, AnomalyDetectorTypes = NULL) {
   op <- new_operation(
     name = "DescribeAnomalyDetectors",
     http_method = "POST",
@@ -412,7 +453,7 @@ cloudwatch_describe_anomaly_detectors <- function(NextToken = NULL, MaxResults =
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AnomalyDetectors"),
     stream_api = FALSE
   )
-  input <- .cloudwatch$describe_anomaly_detectors_input(NextToken = NextToken, MaxResults = MaxResults, Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, AnomalyDetectorTypes = AnomalyDetectorTypes)
+  input <- .cloudwatch$describe_anomaly_detectors_input(AnomalyDetectorIds = AnomalyDetectorIds, NextToken = NextToken, MaxResults = MaxResults, Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, AnomalyDetectorTypes = AnomalyDetectorTypes)
   output <- .cloudwatch$describe_anomaly_detectors_output()
   config <- get_config()
   svc <- .cloudwatch$service(config, op)
@@ -515,6 +556,38 @@ cloudwatch_disable_insight_rules <- function(RuleNames) {
   return(response)
 }
 .cloudwatch$operations$disable_insight_rules <- cloudwatch_disable_insight_rules
+
+#' Removes the customer managed Amazon Web Services Key Management Service
+#' (Amazon Web Services KMS) key association from the specified dataset
+#'
+#' @description
+#' Removes the customer managed Amazon Web Services Key Management Service (Amazon Web Services KMS) key association from the specified dataset. After this operation completes, data that you publish to the dataset is encrypted at rest using an Amazon Web Services owned key managed by Amazon CloudWatch.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_disassociate_dataset_kms_key/](https://www.paws-r-sdk.com/docs/cloudwatch_disassociate_dataset_kms_key/) for full documentation.
+#'
+#' @param DatasetIdentifier &#91;required&#93; Specifies the identifier of the dataset from which to remove the KMS key association. For the `default` dataset, you can specify either `default` or the full dataset Amazon Resource Name (ARN) in the format `arn:aws:cloudwatch:Region:account-id:dataset/default`.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_disassociate_dataset_kms_key
+cloudwatch_disassociate_dataset_kms_key <- function(DatasetIdentifier) {
+  op <- new_operation(
+    name = "DisassociateDatasetKmsKey",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatch$disassociate_dataset_kms_key_input(DatasetIdentifier = DatasetIdentifier)
+  output <- .cloudwatch$disassociate_dataset_kms_key_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$disassociate_dataset_kms_key <- cloudwatch_disassociate_dataset_kms_key
 
 #' Enables the actions for the specified alarms
 #'
@@ -639,6 +712,37 @@ cloudwatch_get_dashboard <- function(DashboardName) {
   return(response)
 }
 .cloudwatch$operations$get_dashboard <- cloudwatch_get_dashboard
+
+#' Returns information about the specified dataset
+#'
+#' @description
+#' Returns information about the specified dataset. This includes its identifier, Amazon Resource Name (ARN), and any customer managed Amazon Web Services Key Management Service (Amazon Web Services KMS) key that is currently associated with it.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_get_dataset/](https://www.paws-r-sdk.com/docs/cloudwatch_get_dataset/) for full documentation.
+#'
+#' @param DatasetIdentifier &#91;required&#93; Specifies the identifier of the dataset to retrieve. For the `default` dataset, you can specify either `default` or the full dataset Amazon Resource Name (ARN) in the format `arn:aws:cloudwatch:Region:account-id:dataset/default`.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_get_dataset
+cloudwatch_get_dataset <- function(DatasetIdentifier) {
+  op <- new_operation(
+    name = "GetDataset",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatch$get_dataset_input(DatasetIdentifier = DatasetIdentifier)
+  output <- .cloudwatch$get_dataset_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$get_dataset <- cloudwatch_get_dataset
 
 #' This operation returns the time series data collected by a Contributor
 #' Insights rule
@@ -1127,7 +1231,7 @@ cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensi
 #' 
 #' The ARN format of a metric stream is `arn:aws:cloudwatch:Region:account-id:metric-stream/metric-stream-name `
 #' 
-#' For more information about ARN format, see [Resource Types Defined by Amazon CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies) in the *Amazon Web Services General Reference*.
+#' For more information about ARN format, see [Resource Types Defined by Amazon CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/#amazoncloudwatch-resources-for-iam-policies) in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
 #'
@@ -1468,6 +1572,100 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 }
 .cloudwatch$operations$put_insight_rule <- cloudwatch_put_insight_rule
 
+#' Creates or updates a log alarm
+#'
+#' @description
+#' Creates or updates a log alarm. A log alarm evaluates the results of a CloudWatch Logs scheduled query against the configured threshold and comparison operator to determine its state.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_put_log_alarm/](https://www.paws-r-sdk.com/docs/cloudwatch_put_log_alarm/) for full documentation.
+#'
+#' @param AlarmName &#91;required&#93; The name for the alarm. This name must be unique within the Amazon Web Services account and Region.
+#' @param AlarmDescription The description for the alarm.
+#' @param ScheduledQueryConfiguration &#91;required&#93; The configuration of the underlying CloudWatch Logs scheduled query that this alarm evaluates, including the query string, log groups, schedule, and aggregation expression.
+#' @param ActionLogLineCount The number of log lines from the most recent scheduled query execution to include in alarm action notifications. Valid range is 0 through 50. The default is 0, which means no log lines are included.
+#' @param ActionLogLineRoleArn The Amazon Resource Name (ARN) of an IAM role that CloudWatch assumes to retrieve log events for inclusion in alarm action notifications. Required when `ActionLogLineCount` is greater than 0.
+#' @param ActionsEnabled Indicates whether actions should be executed during any changes to the alarm state. The default is `true`.
+#' @param OKActions The actions to execute when this alarm transitions to the `OK` state from any other state. Each action is specified as an Amazon Resource Name (ARN).
+#' 
+#' Valid Values:
+#' 
+#' **Amazon SNS actions:**
+#' 
+#' `arn:aws:sns:region:account-id:sns-topic-name `
+#' 
+#' **Lambda actions:**
+#' 
+#' -   Invoke the latest version of a Lambda function: `arn:aws:lambda:region:account-id:function:function-name `
+#' 
+#' -   Invoke a specific version of a Lambda function: `arn:aws:lambda:region:account-id:function:function-name:version-number `
+#' 
+#' -   Invoke a function by using an alias Lambda function: `arn:aws:lambda:region:account-id:function:function-name:alias-name `
+#' @param AlarmActions The actions to execute when this alarm transitions to the `ALARM` state from any other state. Each action is specified as an Amazon Resource Name (ARN).
+#' 
+#' Valid Values:
+#' 
+#' **Amazon SNS actions:**
+#' 
+#' `arn:aws:sns:region:account-id:sns-topic-name `
+#' 
+#' **Lambda actions:**
+#' 
+#' -   Invoke the latest version of a Lambda function: `arn:aws:lambda:region:account-id:function:function-name `
+#' 
+#' -   Invoke a specific version of a Lambda function: `arn:aws:lambda:region:account-id:function:function-name:version-number `
+#' 
+#' -   Invoke a function by using an alias Lambda function: `arn:aws:lambda:region:account-id:function:function-name:alias-name `
+#' 
+#' **Systems Manager actions:**
+#' 
+#' `arn:aws:ssm:region:account-id:opsitem:severity `
+#' @param InsufficientDataActions The actions to execute when this alarm transitions to the `INSUFFICIENT_DATA` state from any other state. Each action is specified as an Amazon Resource Name (ARN).
+#' 
+#' Valid Values:
+#' 
+#' **Amazon SNS actions:**
+#' 
+#' `arn:aws:sns:region:account-id:sns-topic-name `
+#' 
+#' **Lambda actions:**
+#' 
+#' -   Invoke the latest version of a Lambda function: `arn:aws:lambda:region:account-id:function:function-name `
+#' 
+#' -   Invoke a specific version of a Lambda function: `arn:aws:lambda:region:account-id:function:function-name:version-number `
+#' 
+#' -   Invoke a function by using an alias Lambda function: `arn:aws:lambda:region:account-id:function:function-name:alias-name `
+#' @param QueryResultsToEvaluate &#91;required&#93; The number of most recent scheduled query results to evaluate against the threshold (the N in M-of-N evaluation). Valid range is 1 through 100.
+#' @param QueryResultsToAlarm &#91;required&#93; The number of query results, out of the most recent `QueryResultsToEvaluate` results, that must breach the threshold to trigger the alarm to transition to `ALARM` (the M in M-of-N evaluation). Must be less than or equal to `QueryResultsToEvaluate`.
+#' @param Threshold &#91;required&#93; The value to compare with the aggregated query result.
+#' @param ComparisonOperator &#91;required&#93; The arithmetic operation to use when comparing the aggregated query result and the threshold. The aggregated query result is used as the first operand. Valid values are `GreaterThanThreshold`, `GreaterThanOrEqualToThreshold`, `LessThanThreshold`, and `LessThanOrEqualToThreshold`.
+#' @param TreatMissingData Sets how this alarm is to handle missing data points. Valid values are `breaching`, `notBreaching`, `ignore`, and `missing`. If this parameter is omitted, the default behavior of `missing` is used.
+#' @param Tags A list of key-value pairs to associate with the alarm. You can use tags to categorize and manage your alarms.
+#' @param WarmUpConfiguration The warm-up configuration for the alarm. A warm-up period delays alarm evaluation after you create or update the alarm. The warm-up period reduces alarm noise from missing data while a new resource or service starts publishing data.
+#' 
+#' For more information, see [Alarm warm-up periods](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/alarm-warm-up.html) in the *Amazon CloudWatch User Guide*.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_put_log_alarm
+cloudwatch_put_log_alarm <- function(AlarmName, AlarmDescription = NULL, ScheduledQueryConfiguration, ActionLogLineCount = NULL, ActionLogLineRoleArn = NULL, ActionsEnabled = NULL, OKActions = NULL, AlarmActions = NULL, InsufficientDataActions = NULL, QueryResultsToEvaluate, QueryResultsToAlarm, Threshold, ComparisonOperator, TreatMissingData = NULL, Tags = NULL, WarmUpConfiguration = NULL) {
+  op <- new_operation(
+    name = "PutLogAlarm",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatch$put_log_alarm_input(AlarmName = AlarmName, AlarmDescription = AlarmDescription, ScheduledQueryConfiguration = ScheduledQueryConfiguration, ActionLogLineCount = ActionLogLineCount, ActionLogLineRoleArn = ActionLogLineRoleArn, ActionsEnabled = ActionsEnabled, OKActions = OKActions, AlarmActions = AlarmActions, InsufficientDataActions = InsufficientDataActions, QueryResultsToEvaluate = QueryResultsToEvaluate, QueryResultsToAlarm = QueryResultsToAlarm, Threshold = Threshold, ComparisonOperator = ComparisonOperator, TreatMissingData = TreatMissingData, Tags = Tags, WarmUpConfiguration = WarmUpConfiguration)
+  output <- .cloudwatch$put_log_alarm_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$put_log_alarm <- cloudwatch_put_log_alarm
+
 #' Creates a managed Contributor Insights rule for a specified Amazon Web
 #' Services resource
 #'
@@ -1725,6 +1923,16 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' For an example of how to use this parameter, see the **Anomaly Detection Model Alarm** example on this page.
 #' 
 #' If your alarm uses this parameter, it cannot have Auto Scaling actions.
+#' @param EvaluationWindow The evaluation window that the alarm uses to select the range of metric data that it evaluates. Specify either a sliding window or a wall clock window. If you omit this parameter, the alarm uses a sliding window.
+#' 
+#' A sliding window advances each time the alarm is evaluated, forming a rolling time window. A wall clock window aligns the evaluated range to fixed clock boundaries, such as the top of the hour or the start of the day.
+#' 
+#' You can use `EvaluationWindow` with any type of metric alarm except alarms that are based on a PromQL query.
+#' 
+#' For more information, see [Alarm evaluation windows](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/alarm-evaluation-window.html) in the *CloudWatch User Guide*.
+#' @param WarmUpConfiguration The warm-up configuration for the alarm. A warm-up period delays alarm evaluation after you create or update the alarm. The warm-up period reduces alarm noise from missing data while a new resource or service starts publishing metrics.
+#' 
+#' For more information, see [Alarm warm-up periods](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/alarm-warm-up.html) in the *Amazon CloudWatch User Guide*.
 #' @param EvaluationCriteria The evaluation criteria for the alarm. For each [`put_metric_alarm`][cloudwatch_put_metric_alarm] operation, you must specify either `MetricName`, a `Metrics` array, or an `EvaluationCriteria`.
 #' 
 #' If you use the `EvaluationCriteria` parameter, you cannot include the `Namespace`, `MetricName`, `Dimensions`, `Period`, `Unit`, `Statistic`, `ExtendedStatistic`, `Metrics`, `Threshold`, `ComparisonOperator`, `ThresholdMetricId`, `EvaluationPeriods`, or `DatapointsToAlarm` parameters of [`put_metric_alarm`][cloudwatch_put_metric_alarm] in the same operation. Instead, all evaluation parameters are defined within this structure.
@@ -1737,7 +1945,7 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_put_metric_alarm
-cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, ActionsEnabled = NULL, OKActions = NULL, AlarmActions = NULL, InsufficientDataActions = NULL, MetricName = NULL, Namespace = NULL, Statistic = NULL, ExtendedStatistic = NULL, Dimensions = NULL, Period = NULL, Unit = NULL, EvaluationPeriods = NULL, DatapointsToAlarm = NULL, Threshold = NULL, ComparisonOperator = NULL, TreatMissingData = NULL, EvaluateLowSampleCountPercentile = NULL, Metrics = NULL, Tags = NULL, ThresholdMetricId = NULL, EvaluationCriteria = NULL, EvaluationInterval = NULL) {
+cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, ActionsEnabled = NULL, OKActions = NULL, AlarmActions = NULL, InsufficientDataActions = NULL, MetricName = NULL, Namespace = NULL, Statistic = NULL, ExtendedStatistic = NULL, Dimensions = NULL, Period = NULL, Unit = NULL, EvaluationPeriods = NULL, DatapointsToAlarm = NULL, Threshold = NULL, ComparisonOperator = NULL, TreatMissingData = NULL, EvaluateLowSampleCountPercentile = NULL, Metrics = NULL, Tags = NULL, ThresholdMetricId = NULL, EvaluationWindow = NULL, WarmUpConfiguration = NULL, EvaluationCriteria = NULL, EvaluationInterval = NULL) {
   op <- new_operation(
     name = "PutMetricAlarm",
     http_method = "POST",
@@ -1746,7 +1954,7 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatch$put_metric_alarm_input(AlarmName = AlarmName, AlarmDescription = AlarmDescription, ActionsEnabled = ActionsEnabled, OKActions = OKActions, AlarmActions = AlarmActions, InsufficientDataActions = InsufficientDataActions, MetricName = MetricName, Namespace = Namespace, Statistic = Statistic, ExtendedStatistic = ExtendedStatistic, Dimensions = Dimensions, Period = Period, Unit = Unit, EvaluationPeriods = EvaluationPeriods, DatapointsToAlarm = DatapointsToAlarm, Threshold = Threshold, ComparisonOperator = ComparisonOperator, TreatMissingData = TreatMissingData, EvaluateLowSampleCountPercentile = EvaluateLowSampleCountPercentile, Metrics = Metrics, Tags = Tags, ThresholdMetricId = ThresholdMetricId, EvaluationCriteria = EvaluationCriteria, EvaluationInterval = EvaluationInterval)
+  input <- .cloudwatch$put_metric_alarm_input(AlarmName = AlarmName, AlarmDescription = AlarmDescription, ActionsEnabled = ActionsEnabled, OKActions = OKActions, AlarmActions = AlarmActions, InsufficientDataActions = InsufficientDataActions, MetricName = MetricName, Namespace = Namespace, Statistic = Statistic, ExtendedStatistic = ExtendedStatistic, Dimensions = Dimensions, Period = Period, Unit = Unit, EvaluationPeriods = EvaluationPeriods, DatapointsToAlarm = DatapointsToAlarm, Threshold = Threshold, ComparisonOperator = ComparisonOperator, TreatMissingData = TreatMissingData, EvaluateLowSampleCountPercentile = EvaluateLowSampleCountPercentile, Metrics = Metrics, Tags = Tags, ThresholdMetricId = ThresholdMetricId, EvaluationWindow = EvaluationWindow, WarmUpConfiguration = WarmUpConfiguration, EvaluationCriteria = EvaluationCriteria, EvaluationInterval = EvaluationInterval)
   output <- .cloudwatch$put_metric_alarm_output()
   config <- get_config()
   svc <- .cloudwatch$service(config, op)
@@ -1850,7 +2058,7 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData = NULL, EntityMetri
 #' You can use this parameter only when you are creating a new metric stream. If you are using this operation to update an existing metric stream, any tags you specify in this parameter are ignored. To change the tags of an existing metric stream, use [`tag_resource`][cloudwatch_tag_resource] or [`untag_resource`][cloudwatch_untag_resource].
 #' @param StatisticsConfigurations By default, a metric stream always sends the `MAX`, `MIN`, `SUM`, and `SAMPLECOUNT` statistics for each metric that is streamed. You can use this parameter to have the metric stream also send additional statistics in the stream. This array can have up to 100 members.
 #' 
-#' For each entry in this array, you specify one or more metrics and the list of additional statistics to stream for those metrics. The additional statistics that you can stream depend on the stream's `OutputFormat`. If the `OutputFormat` is `json`, you can stream any additional statistic that is supported by CloudWatch, listed in [CloudWatch statistics definitions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/). If the `OutputFormat` is `opentelemetry1.0` or `opentelemetry0.7`, you can stream percentile statistics such as p95, p99.9, and so on.
+#' For each entry in this array, you specify one or more metrics and the list of additional statistics to stream for those metrics. The additional statistics that you can stream depend on the stream's `OutputFormat`. If the `OutputFormat` is `json`, you can stream any additional statistic that is supported by CloudWatch, listed in [CloudWatch statistics definitions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Statistics-definitions.html). If the `OutputFormat` is `opentelemetry1.0` or `opentelemetry0.7`, you can stream percentile statistics such as p95, p99.9, and so on.
 #' @param IncludeLinkedAccountsMetrics If you are creating a metric stream in a monitoring account, specify `true` to include metrics from source accounts in the metric stream.
 #'
 #' @keywords internal
@@ -2059,7 +2267,7 @@ cloudwatch_stop_o_tel_enrichment <- function() {
 #' 
 #' The ARN format of a metric stream is `arn:aws:cloudwatch:Region:account-id:metric-stream/metric-stream-name `
 #' 
-#' For more information about ARN format, see [Resource Types Defined by Amazon CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies) in the *Amazon Web Services General Reference*.
+#' For more information about ARN format, see [Resource Types Defined by Amazon CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/#amazoncloudwatch-resources-for-iam-policies) in the *Amazon Web Services General Reference*.
 #' @param Tags &#91;required&#93; The list of key-value pairs to associate with the alarm.
 #'
 #' @keywords internal
@@ -2101,7 +2309,7 @@ cloudwatch_tag_resource <- function(ResourceARN, Tags) {
 #' 
 #' The ARN format of a metric stream is `arn:aws:cloudwatch:Region:account-id:metric-stream/metric-stream-name `
 #' 
-#' For more information about ARN format, see [Resource Types Defined by Amazon CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies) in the *Amazon Web Services General Reference*.
+#' For more information about ARN format, see [Resource Types Defined by Amazon CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/#amazoncloudwatch-resources-for-iam-policies) in the *Amazon Web Services General Reference*.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
 #'
 #' @keywords internal

@@ -10,7 +10,8 @@ vpclattice_create_service(
   tags = NULL,
   customDomainName = NULL,
   certificateArn = NULL,
-  authType = NULL
+  authType = NULL,
+  idleTimeoutSeconds = NULL
 )
 }
 \arguments{
@@ -29,6 +30,8 @@ vpclattice_create_service(
 \item \code{NONE}: The resource does not use an IAM policy. This is the default.
 \item \code{AWS_IAM}: The resource uses an IAM policy. When this type is used, auth is enabled and an auth policy is required.
 }}
+
+\item{idleTimeoutSeconds}{The amount of time, in seconds, that a connection can remain idle (no data sent) before VPC Lattice closes it. The valid range is 60 to 600 seconds. If you don't specify a value, the default is 60 seconds. This setting does not change the maximum connection duration of 10 minutes; connections are still closed when they reach that limit.}
 }
 \description{
 Creates a service. A service is any software application that can run on instances containers, or serverless functions within an account or virtual private cloud (VPC).

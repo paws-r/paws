@@ -5,8 +5,7 @@ NULL
 
 .wellarchitected$associate_lenses_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), LensAliases = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["associate_lenses_input"]]))
 }
 
 .wellarchitected$associate_lenses_output <- function(...) {
@@ -15,126 +14,166 @@ NULL
 
 .wellarchitected$associate_profiles_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), ProfileArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["associate_profiles_input"]]))
 }
 
 .wellarchitected$associate_profiles_output <- function(...) {
   list()
 }
 
+.wellarchitected$create_agent_context_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["create_agent_context_input"]]))
+}
+
+.wellarchitected$create_agent_context_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["create_agent_context_output"]]))
+}
+
+.wellarchitected$create_agent_goal_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["create_agent_goal_input"]]))
+}
+
+.wellarchitected$create_agent_goal_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["create_agent_goal_output"]]))
+}
+
+.wellarchitected$create_agent_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["create_agent_profile_input"]]))
+}
+
+.wellarchitected$create_agent_profile_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["create_agent_profile_output"]]))
+}
+
 .wellarchitected$create_lens_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), SharedWith = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_lens_share_input"]]))
 }
 
 .wellarchitected$create_lens_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShareId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_lens_share_output"]]))
 }
 
 .wellarchitected$create_lens_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), LensVersion = structure(logical(0), tags = list(type = "string")), IsMajorVersion = structure(logical(0), tags = list(type = "boolean")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_lens_version_input"]]))
 }
 
 .wellarchitected$create_lens_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LensArn = structure(logical(0), tags = list(type = "string")), LensVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_lens_version_output"]]))
 }
 
 .wellarchitected$create_milestone_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), MilestoneName = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_milestone_input"]]))
 }
 
 .wellarchitected$create_milestone_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), MilestoneNumber = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_milestone_output"]]))
 }
 
 .wellarchitected$create_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileName = structure(logical(0), tags = list(type = "string")), ProfileDescription = structure(logical(0), tags = list(type = "string")), ProfileQuestions = structure(list(structure(list(QuestionId = structure(logical(0), tags = list(type = "string")), SelectedChoiceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_profile_input"]]))
 }
 
 .wellarchitected$create_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_profile_output"]]))
 }
 
 .wellarchitected$create_profile_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileArn = structure(logical(0), tags = list(location = "uri", locationName = "ProfileArn", type = "string")), SharedWith = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_profile_share_input"]]))
 }
 
 .wellarchitected$create_profile_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShareId = structure(logical(0), tags = list(type = "string")), ProfileArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_profile_share_output"]]))
 }
 
 .wellarchitected$create_review_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Lenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Notes = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_review_template_input"]]))
 }
 
 .wellarchitected$create_review_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_review_template_output"]]))
 }
 
 .wellarchitected$create_template_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(location = "uri", locationName = "TemplateArn", type = "string")), SharedWith = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_template_share_input"]]))
 }
 
 .wellarchitected$create_template_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(type = "string")), ShareId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_template_share_output"]]))
 }
 
 .wellarchitected$create_workload_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NonAwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PillarPriorities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ArchitecturalDesign = structure(logical(0), tags = list(type = "string")), ReviewOwner = structure(logical(0), tags = list(type = "string")), IndustryType = structure(logical(0), tags = list(type = "string")), Industry = structure(logical(0), tags = list(type = "string")), Lenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Notes = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DiscoveryConfig = structure(list(TrustedAdvisorIntegrationStatus = structure(logical(0), tags = list(type = "string")), WorkloadResourceDefinition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Applications = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ProfileArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReviewTemplateArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), JiraConfiguration = structure(list(IssueManagementStatus = structure(logical(0), tags = list(type = "string")), IssueManagementType = structure(logical(0), tags = list(type = "string")), JiraProjectKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_workload_input"]]))
 }
 
 .wellarchitected$create_workload_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), WorkloadArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_workload_output"]]))
 }
 
 .wellarchitected$create_workload_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), SharedWith = structure(logical(0), tags = list(type = "string")), PermissionType = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_workload_share_input"]]))
 }
 
 .wellarchitected$create_workload_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), ShareId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["create_workload_share_output"]]))
+}
+
+.wellarchitected$delete_agent_context_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["delete_agent_context_input"]]))
+}
+
+.wellarchitected$delete_agent_context_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["delete_agent_context_output"]]))
+}
+
+.wellarchitected$delete_agent_goal_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["delete_agent_goal_input"]]))
+}
+
+.wellarchitected$delete_agent_goal_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["delete_agent_goal_output"]]))
+}
+
+.wellarchitected$delete_agent_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["delete_agent_profile_input"]]))
+}
+
+.wellarchitected$delete_agent_profile_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["delete_agent_profile_output"]]))
 }
 
 .wellarchitected$delete_lens_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "ClientRequestToken", type = "string")), LensStatus = structure(logical(0), tags = list(location = "querystring", locationName = "LensStatus", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["delete_lens_input"]]))
 }
 
 .wellarchitected$delete_lens_output <- function(...) {
@@ -143,8 +182,7 @@ NULL
 
 .wellarchitected$delete_lens_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShareId = structure(logical(0), tags = list(location = "uri", locationName = "ShareId", type = "string")), LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "ClientRequestToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["delete_lens_share_input"]]))
 }
 
 .wellarchitected$delete_lens_share_output <- function(...) {
@@ -153,8 +191,7 @@ NULL
 
 .wellarchitected$delete_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileArn = structure(logical(0), tags = list(location = "uri", locationName = "ProfileArn", type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "ClientRequestToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["delete_profile_input"]]))
 }
 
 .wellarchitected$delete_profile_output <- function(...) {
@@ -163,8 +200,7 @@ NULL
 
 .wellarchitected$delete_profile_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShareId = structure(logical(0), tags = list(location = "uri", locationName = "ShareId", type = "string")), ProfileArn = structure(logical(0), tags = list(location = "uri", locationName = "ProfileArn", type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "ClientRequestToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["delete_profile_share_input"]]))
 }
 
 .wellarchitected$delete_profile_share_output <- function(...) {
@@ -173,8 +209,7 @@ NULL
 
 .wellarchitected$delete_review_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(location = "uri", locationName = "TemplateArn", type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "ClientRequestToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["delete_review_template_input"]]))
 }
 
 .wellarchitected$delete_review_template_output <- function(...) {
@@ -183,8 +218,7 @@ NULL
 
 .wellarchitected$delete_template_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShareId = structure(logical(0), tags = list(location = "uri", locationName = "ShareId", type = "string")), TemplateArn = structure(logical(0), tags = list(location = "uri", locationName = "TemplateArn", type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "ClientRequestToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["delete_template_share_input"]]))
 }
 
 .wellarchitected$delete_template_share_output <- function(...) {
@@ -193,8 +227,7 @@ NULL
 
 .wellarchitected$delete_workload_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "ClientRequestToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["delete_workload_input"]]))
 }
 
 .wellarchitected$delete_workload_output <- function(...) {
@@ -203,8 +236,7 @@ NULL
 
 .wellarchitected$delete_workload_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShareId = structure(logical(0), tags = list(location = "uri", locationName = "ShareId", type = "string")), WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "ClientRequestToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["delete_workload_share_input"]]))
 }
 
 .wellarchitected$delete_workload_share_output <- function(...) {
@@ -213,8 +245,7 @@ NULL
 
 .wellarchitected$disassociate_lenses_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), LensAliases = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["disassociate_lenses_input"]]))
 }
 
 .wellarchitected$disassociate_lenses_output <- function(...) {
@@ -223,8 +254,7 @@ NULL
 
 .wellarchitected$disassociate_profiles_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), ProfileArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["disassociate_profiles_input"]]))
 }
 
 .wellarchitected$disassociate_profiles_output <- function(...) {
@@ -233,38 +263,82 @@ NULL
 
 .wellarchitected$export_lens_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), LensVersion = structure(logical(0), tags = list(location = "querystring", locationName = "LensVersion", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["export_lens_input"]]))
 }
 
 .wellarchitected$export_lens_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LensJSON = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["export_lens_output"]]))
+}
+
+.wellarchitected$get_agent_context_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["get_agent_context_input"]]))
+}
+
+.wellarchitected$get_agent_context_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["get_agent_context_output"]]))
+}
+
+.wellarchitected$get_agent_goal_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["get_agent_goal_input"]]))
+}
+
+.wellarchitected$get_agent_goal_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["get_agent_goal_output"]]))
+}
+
+.wellarchitected$get_agent_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["get_agent_profile_input"]]))
+}
+
+.wellarchitected$get_agent_profile_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["get_agent_profile_output"]]))
+}
+
+.wellarchitected$get_agent_recommendation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["get_agent_recommendation_input"]]))
+}
+
+.wellarchitected$get_agent_recommendation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["get_agent_recommendation_output"]]))
+}
+
+.wellarchitected$get_agent_recommendation_generation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["get_agent_recommendation_generation_input"]]))
+}
+
+.wellarchitected$get_agent_recommendation_generation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["get_agent_recommendation_generation_output"]]))
 }
 
 .wellarchitected$get_answer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), QuestionId = structure(logical(0), tags = list(location = "uri", locationName = "QuestionId", type = "string")), MilestoneNumber = structure(logical(0), tags = list(location = "querystring", locationName = "MilestoneNumber", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_answer_input"]]))
 }
 
 .wellarchitected$get_answer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), MilestoneNumber = structure(logical(0), tags = list(type = "integer")), LensAlias = structure(logical(0), tags = list(type = "string")), LensArn = structure(logical(0), tags = list(type = "string")), Answer = structure(list(QuestionId = structure(logical(0), tags = list(type = "string")), PillarId = structure(logical(0), tags = list(type = "string")), QuestionTitle = structure(logical(0), tags = list(type = "string")), QuestionDescription = structure(logical(0), tags = list(type = "string")), ImprovementPlanUrl = structure(logical(0), tags = list(type = "string")), HelpfulResourceUrl = structure(logical(0), tags = list(type = "string")), HelpfulResourceDisplayText = structure(logical(0), tags = list(type = "string")), Choices = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), HelpfulResource = structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImprovementPlan = structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AdditionalResources = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Content = structure(list(structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SelectedChoices = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ChoiceAnswers = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsApplicable = structure(logical(0), tags = list(type = "boolean")), Risk = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string")), JiraConfiguration = structure(list(JiraIssueUrl = structure(logical(0), tags = list(type = "string")), LastSyncedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_answer_output"]]))
 }
 
 .wellarchitected$get_consolidated_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Format = structure(logical(0), tags = list(location = "querystring", locationName = "Format", type = "string")), IncludeSharedResources = structure(logical(0), tags = list(location = "querystring", locationName = "IncludeSharedResources", type = "boolean")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_consolidated_report_input"]]))
 }
 
 .wellarchitected$get_consolidated_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Metrics = structure(list(structure(list(MetricType = structure(logical(0), tags = list(type = "string")), RiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), WorkloadId = structure(logical(0), tags = list(type = "string")), WorkloadName = structure(logical(0), tags = list(type = "string")), WorkloadArn = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Lenses = structure(list(structure(list(LensArn = structure(logical(0), tags = list(type = "string")), Pillars = structure(list(structure(list(PillarId = structure(logical(0), tags = list(type = "string")), RiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), Questions = structure(list(structure(list(QuestionId = structure(logical(0), tags = list(type = "string")), Risk = structure(logical(0), tags = list(type = "string")), BestPractices = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), ChoiceTitle = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), LensesAppliedCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), Base64String = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_consolidated_report_output"]]))
 }
 
 .wellarchitected$get_global_settings_input <- function(...) {
@@ -273,422 +347,472 @@ NULL
 
 .wellarchitected$get_global_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationSharingStatus = structure(logical(0), tags = list(type = "string")), DiscoveryIntegrationStatus = structure(logical(0), tags = list(type = "string")), JiraConfiguration = structure(list(IntegrationStatus = structure(logical(0), tags = list(type = "string")), IssueManagementStatus = structure(logical(0), tags = list(type = "string")), IssueManagementType = structure(logical(0), tags = list(type = "string")), Subdomain = structure(logical(0), tags = list(type = "string")), JiraProjectKey = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_global_settings_output"]]))
 }
 
 .wellarchitected$get_lens_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), LensVersion = structure(logical(0), tags = list(location = "querystring", locationName = "LensVersion", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_lens_input"]]))
 }
 
 .wellarchitected$get_lens_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Lens = structure(list(LensArn = structure(logical(0), tags = list(type = "string")), LensVersion = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ShareInvitationId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_lens_output"]]))
 }
 
 .wellarchitected$get_lens_review_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), MilestoneNumber = structure(logical(0), tags = list(location = "querystring", locationName = "MilestoneNumber", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_lens_review_input"]]))
 }
 
 .wellarchitected$get_lens_review_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), MilestoneNumber = structure(logical(0), tags = list(type = "integer")), LensReview = structure(list(LensAlias = structure(logical(0), tags = list(type = "string")), LensArn = structure(logical(0), tags = list(type = "string")), LensVersion = structure(logical(0), tags = list(type = "string")), LensName = structure(logical(0), tags = list(type = "string")), LensStatus = structure(logical(0), tags = list(type = "string")), PillarReviewSummaries = structure(list(structure(list(PillarId = structure(logical(0), tags = list(type = "string")), PillarName = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string")), RiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), PrioritizedRiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), JiraConfiguration = structure(list(SelectedPillars = structure(list(structure(list(PillarId = structure(logical(0), tags = list(type = "string")), SelectedQuestionIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Notes = structure(logical(0), tags = list(type = "string")), RiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), NextToken = structure(logical(0), tags = list(type = "string")), Profiles = structure(list(structure(list(ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PrioritizedRiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_lens_review_output"]]))
 }
 
 .wellarchitected$get_lens_review_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), MilestoneNumber = structure(logical(0), tags = list(location = "querystring", locationName = "MilestoneNumber", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_lens_review_report_input"]]))
 }
 
 .wellarchitected$get_lens_review_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), MilestoneNumber = structure(logical(0), tags = list(type = "integer")), LensReviewReport = structure(list(LensAlias = structure(logical(0), tags = list(type = "string")), LensArn = structure(logical(0), tags = list(type = "string")), Base64String = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_lens_review_report_output"]]))
 }
 
 .wellarchitected$get_lens_version_difference_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), BaseLensVersion = structure(logical(0), tags = list(location = "querystring", locationName = "BaseLensVersion", type = "string")), TargetLensVersion = structure(logical(0), tags = list(location = "querystring", locationName = "TargetLensVersion", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_lens_version_difference_input"]]))
 }
 
 .wellarchitected$get_lens_version_difference_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LensAlias = structure(logical(0), tags = list(type = "string")), LensArn = structure(logical(0), tags = list(type = "string")), BaseLensVersion = structure(logical(0), tags = list(type = "string")), TargetLensVersion = structure(logical(0), tags = list(type = "string")), LatestLensVersion = structure(logical(0), tags = list(type = "string")), VersionDifferences = structure(list(PillarDifferences = structure(list(structure(list(PillarId = structure(logical(0), tags = list(type = "string")), PillarName = structure(logical(0), tags = list(type = "string")), DifferenceStatus = structure(logical(0), tags = list(type = "string")), QuestionDifferences = structure(list(structure(list(QuestionId = structure(logical(0), tags = list(type = "string")), QuestionTitle = structure(logical(0), tags = list(type = "string")), DifferenceStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_lens_version_difference_output"]]))
 }
 
 .wellarchitected$get_milestone_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), MilestoneNumber = structure(logical(0), tags = list(location = "uri", locationName = "MilestoneNumber", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_milestone_input"]]))
 }
 
 .wellarchitected$get_milestone_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), Milestone = structure(list(MilestoneNumber = structure(logical(0), tags = list(type = "integer")), MilestoneName = structure(logical(0), tags = list(type = "string")), RecordedAt = structure(logical(0), tags = list(type = "timestamp")), Workload = structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), WorkloadArn = structure(logical(0), tags = list(type = "string")), WorkloadName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NonAwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ArchitecturalDesign = structure(logical(0), tags = list(type = "string")), ReviewOwner = structure(logical(0), tags = list(type = "string")), ReviewRestrictionDate = structure(logical(0), tags = list(type = "timestamp")), IsReviewOwnerUpdateAcknowledged = structure(logical(0), tags = list(type = "boolean")), IndustryType = structure(logical(0), tags = list(type = "string")), Industry = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string")), ImprovementStatus = structure(logical(0), tags = list(type = "string")), RiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), PillarPriorities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Lenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Owner = structure(logical(0), tags = list(type = "string")), ShareInvitationId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DiscoveryConfig = structure(list(TrustedAdvisorIntegrationStatus = structure(logical(0), tags = list(type = "string")), WorkloadResourceDefinition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Applications = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Profiles = structure(list(structure(list(ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PrioritizedRiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), JiraConfiguration = structure(list(IssueManagementStatus = structure(logical(0), tags = list(type = "string")), IssueManagementType = structure(logical(0), tags = list(type = "string")), JiraProjectKey = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_milestone_output"]]))
 }
 
 .wellarchitected$get_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileArn = structure(logical(0), tags = list(location = "uri", locationName = "ProfileArn", type = "string")), ProfileVersion = structure(logical(0), tags = list(location = "querystring", locationName = "ProfileVersion", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_profile_input"]]))
 }
 
 .wellarchitected$get_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Profile = structure(list(ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileVersion = structure(logical(0), tags = list(type = "string")), ProfileName = structure(logical(0), tags = list(type = "string")), ProfileDescription = structure(logical(0), tags = list(type = "string")), ProfileQuestions = structure(list(structure(list(QuestionId = structure(logical(0), tags = list(type = "string")), QuestionTitle = structure(logical(0), tags = list(type = "string")), QuestionDescription = structure(logical(0), tags = list(type = "string")), QuestionChoices = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), ChoiceTitle = structure(logical(0), tags = list(type = "string")), ChoiceDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SelectedChoiceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MinSelectedChoices = structure(logical(0), tags = list(type = "integer")), MaxSelectedChoices = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Owner = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), ShareInvitationId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_profile_output"]]))
 }
 
 .wellarchitected$get_profile_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_profile_template_input"]]))
 }
 
 .wellarchitected$get_profile_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileTemplate = structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), TemplateQuestions = structure(list(structure(list(QuestionId = structure(logical(0), tags = list(type = "string")), QuestionTitle = structure(logical(0), tags = list(type = "string")), QuestionDescription = structure(logical(0), tags = list(type = "string")), QuestionChoices = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), ChoiceTitle = structure(logical(0), tags = list(type = "string")), ChoiceDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MinSelectedChoices = structure(logical(0), tags = list(type = "integer")), MaxSelectedChoices = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_profile_template_output"]]))
 }
 
 .wellarchitected$get_review_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(location = "uri", locationName = "TemplateArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_review_template_input"]]))
 }
 
 .wellarchitected$get_review_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReviewTemplate = structure(list(Description = structure(logical(0), tags = list(type = "string")), Lenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Notes = structure(logical(0), tags = list(type = "string")), QuestionCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), Owner = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), TemplateArn = structure(logical(0), tags = list(type = "string")), TemplateName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), UpdateStatus = structure(logical(0), tags = list(type = "string")), ShareInvitationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_review_template_output"]]))
 }
 
 .wellarchitected$get_review_template_answer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(location = "uri", locationName = "TemplateArn", type = "string")), LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), QuestionId = structure(logical(0), tags = list(location = "uri", locationName = "QuestionId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_review_template_answer_input"]]))
 }
 
 .wellarchitected$get_review_template_answer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(type = "string")), LensAlias = structure(logical(0), tags = list(type = "string")), Answer = structure(list(QuestionId = structure(logical(0), tags = list(type = "string")), PillarId = structure(logical(0), tags = list(type = "string")), QuestionTitle = structure(logical(0), tags = list(type = "string")), QuestionDescription = structure(logical(0), tags = list(type = "string")), ImprovementPlanUrl = structure(logical(0), tags = list(type = "string")), HelpfulResourceUrl = structure(logical(0), tags = list(type = "string")), HelpfulResourceDisplayText = structure(logical(0), tags = list(type = "string")), Choices = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), HelpfulResource = structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImprovementPlan = structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AdditionalResources = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Content = structure(list(structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SelectedChoices = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ChoiceAnswers = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsApplicable = structure(logical(0), tags = list(type = "boolean")), AnswerStatus = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_review_template_answer_output"]]))
 }
 
 .wellarchitected$get_review_template_lens_review_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(location = "uri", locationName = "TemplateArn", type = "string")), LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_review_template_lens_review_input"]]))
 }
 
 .wellarchitected$get_review_template_lens_review_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(type = "string")), LensReview = structure(list(LensAlias = structure(logical(0), tags = list(type = "string")), LensArn = structure(logical(0), tags = list(type = "string")), LensVersion = structure(logical(0), tags = list(type = "string")), LensName = structure(logical(0), tags = list(type = "string")), LensStatus = structure(logical(0), tags = list(type = "string")), PillarReviewSummaries = structure(list(structure(list(PillarId = structure(logical(0), tags = list(type = "string")), PillarName = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string")), QuestionCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Notes = structure(logical(0), tags = list(type = "string")), QuestionCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_review_template_lens_review_output"]]))
 }
 
 .wellarchitected$get_workload_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_workload_input"]]))
 }
 
 .wellarchitected$get_workload_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Workload = structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), WorkloadArn = structure(logical(0), tags = list(type = "string")), WorkloadName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NonAwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ArchitecturalDesign = structure(logical(0), tags = list(type = "string")), ReviewOwner = structure(logical(0), tags = list(type = "string")), ReviewRestrictionDate = structure(logical(0), tags = list(type = "timestamp")), IsReviewOwnerUpdateAcknowledged = structure(logical(0), tags = list(type = "boolean")), IndustryType = structure(logical(0), tags = list(type = "string")), Industry = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string")), ImprovementStatus = structure(logical(0), tags = list(type = "string")), RiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), PillarPriorities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Lenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Owner = structure(logical(0), tags = list(type = "string")), ShareInvitationId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DiscoveryConfig = structure(list(TrustedAdvisorIntegrationStatus = structure(logical(0), tags = list(type = "string")), WorkloadResourceDefinition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Applications = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Profiles = structure(list(structure(list(ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PrioritizedRiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), JiraConfiguration = structure(list(IssueManagementStatus = structure(logical(0), tags = list(type = "string")), IssueManagementType = structure(logical(0), tags = list(type = "string")), JiraProjectKey = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["get_workload_output"]]))
 }
 
 .wellarchitected$import_lens_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LensAlias = structure(logical(0), tags = list(type = "string")), JSONString = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["import_lens_input"]]))
 }
 
 .wellarchitected$import_lens_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LensArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["import_lens_output"]]))
+}
+
+.wellarchitected$list_agent_contexts_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["list_agent_contexts_input"]]))
+}
+
+.wellarchitected$list_agent_contexts_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["list_agent_contexts_output"]]))
+}
+
+.wellarchitected$list_agent_goals_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["list_agent_goals_input"]]))
+}
+
+.wellarchitected$list_agent_goals_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["list_agent_goals_output"]]))
+}
+
+.wellarchitected$list_agent_profiles_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["list_agent_profiles_input"]]))
+}
+
+.wellarchitected$list_agent_profiles_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["list_agent_profiles_output"]]))
+}
+
+.wellarchitected$list_agent_recommendation_generations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["list_agent_recommendation_generations_input"]]))
+}
+
+.wellarchitected$list_agent_recommendation_generations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["list_agent_recommendation_generations_output"]]))
+}
+
+.wellarchitected$list_agent_recommendation_items_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["list_agent_recommendation_items_input"]]))
+}
+
+.wellarchitected$list_agent_recommendation_items_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["list_agent_recommendation_items_output"]]))
+}
+
+.wellarchitected$list_agent_recommendations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["list_agent_recommendations_input"]]))
+}
+
+.wellarchitected$list_agent_recommendations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["list_agent_recommendations_output"]]))
 }
 
 .wellarchitected$list_answers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), PillarId = structure(logical(0), tags = list(location = "querystring", locationName = "PillarId", type = "string")), MilestoneNumber = structure(logical(0), tags = list(location = "querystring", locationName = "MilestoneNumber", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer")), QuestionPriority = structure(logical(0), tags = list(location = "querystring", locationName = "QuestionPriority", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_answers_input"]]))
 }
 
 .wellarchitected$list_answers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), MilestoneNumber = structure(logical(0), tags = list(type = "integer")), LensAlias = structure(logical(0), tags = list(type = "string")), LensArn = structure(logical(0), tags = list(type = "string")), AnswerSummaries = structure(list(structure(list(QuestionId = structure(logical(0), tags = list(type = "string")), PillarId = structure(logical(0), tags = list(type = "string")), QuestionTitle = structure(logical(0), tags = list(type = "string")), Choices = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), HelpfulResource = structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImprovementPlan = structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AdditionalResources = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Content = structure(list(structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SelectedChoices = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ChoiceAnswerSummaries = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsApplicable = structure(logical(0), tags = list(type = "boolean")), Risk = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string")), QuestionType = structure(logical(0), tags = list(type = "string")), JiraConfiguration = structure(list(JiraIssueUrl = structure(logical(0), tags = list(type = "string")), LastSyncedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_answers_output"]]))
 }
 
 .wellarchitected$list_check_details_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), LensArn = structure(logical(0), tags = list(type = "string")), PillarId = structure(logical(0), tags = list(type = "string")), QuestionId = structure(logical(0), tags = list(type = "string")), ChoiceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_check_details_input"]]))
 }
 
 .wellarchitected$list_check_details_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CheckDetails = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Provider = structure(logical(0), tags = list(type = "string")), LensArn = structure(logical(0), tags = list(type = "string")), PillarId = structure(logical(0), tags = list(type = "string")), QuestionId = structure(logical(0), tags = list(type = "string")), ChoiceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), FlaggedResources = structure(logical(0), tags = list(type = "integer")), Reason = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_check_details_output"]]))
 }
 
 .wellarchitected$list_check_summaries_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), LensArn = structure(logical(0), tags = list(type = "string")), PillarId = structure(logical(0), tags = list(type = "string")), QuestionId = structure(logical(0), tags = list(type = "string")), ChoiceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_check_summaries_input"]]))
 }
 
 .wellarchitected$list_check_summaries_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CheckSummaries = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Provider = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LensArn = structure(logical(0), tags = list(type = "string")), PillarId = structure(logical(0), tags = list(type = "string")), QuestionId = structure(logical(0), tags = list(type = "string")), ChoiceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AccountSummary = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_check_summaries_output"]]))
 }
 
 .wellarchitected$list_lens_review_improvements_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), PillarId = structure(logical(0), tags = list(location = "querystring", locationName = "PillarId", type = "string")), MilestoneNumber = structure(logical(0), tags = list(location = "querystring", locationName = "MilestoneNumber", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer")), QuestionPriority = structure(logical(0), tags = list(location = "querystring", locationName = "QuestionPriority", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_lens_review_improvements_input"]]))
 }
 
 .wellarchitected$list_lens_review_improvements_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), MilestoneNumber = structure(logical(0), tags = list(type = "integer")), LensAlias = structure(logical(0), tags = list(type = "string")), LensArn = structure(logical(0), tags = list(type = "string")), ImprovementSummaries = structure(list(structure(list(QuestionId = structure(logical(0), tags = list(type = "string")), PillarId = structure(logical(0), tags = list(type = "string")), QuestionTitle = structure(logical(0), tags = list(type = "string")), Risk = structure(logical(0), tags = list(type = "string")), ImprovementPlanUrl = structure(logical(0), tags = list(type = "string")), ImprovementPlans = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), DisplayText = structure(logical(0), tags = list(type = "string")), ImprovementPlanUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), JiraConfiguration = structure(list(JiraIssueUrl = structure(logical(0), tags = list(type = "string")), LastSyncedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_lens_review_improvements_output"]]))
 }
 
 .wellarchitected$list_lens_reviews_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), MilestoneNumber = structure(logical(0), tags = list(location = "querystring", locationName = "MilestoneNumber", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_lens_reviews_input"]]))
 }
 
 .wellarchitected$list_lens_reviews_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), MilestoneNumber = structure(logical(0), tags = list(type = "integer")), LensReviewSummaries = structure(list(structure(list(LensAlias = structure(logical(0), tags = list(type = "string")), LensArn = structure(logical(0), tags = list(type = "string")), LensVersion = structure(logical(0), tags = list(type = "string")), LensName = structure(logical(0), tags = list(type = "string")), LensStatus = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), RiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), Profiles = structure(list(structure(list(ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PrioritizedRiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_lens_reviews_output"]]))
 }
 
 .wellarchitected$list_lens_shares_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), SharedWithPrefix = structure(logical(0), tags = list(location = "querystring", locationName = "SharedWithPrefix", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer")), Status = structure(logical(0), tags = list(location = "querystring", locationName = "Status", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_lens_shares_input"]]))
 }
 
 .wellarchitected$list_lens_shares_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LensShareSummaries = structure(list(structure(list(ShareId = structure(logical(0), tags = list(type = "string")), SharedWith = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_lens_shares_output"]]))
 }
 
 .wellarchitected$list_lenses_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer")), LensType = structure(logical(0), tags = list(location = "querystring", locationName = "LensType", type = "string")), LensStatus = structure(logical(0), tags = list(location = "querystring", locationName = "LensStatus", type = "string")), LensName = structure(logical(0), tags = list(location = "querystring", locationName = "LensName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_lenses_input"]]))
 }
 
 .wellarchitected$list_lenses_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LensSummaries = structure(list(structure(list(LensArn = structure(logical(0), tags = list(type = "string")), LensAlias = structure(logical(0), tags = list(type = "string")), LensName = structure(logical(0), tags = list(type = "string")), LensType = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LensVersion = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), LensStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_lenses_output"]]))
 }
 
 .wellarchitected$list_milestones_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_milestones_input"]]))
 }
 
 .wellarchitected$list_milestones_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), MilestoneSummaries = structure(list(structure(list(MilestoneNumber = structure(logical(0), tags = list(type = "integer")), MilestoneName = structure(logical(0), tags = list(type = "string")), RecordedAt = structure(logical(0), tags = list(type = "timestamp")), WorkloadSummary = structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), WorkloadArn = structure(logical(0), tags = list(type = "string")), WorkloadName = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Lenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), ImprovementStatus = structure(logical(0), tags = list(type = "string")), Profiles = structure(list(structure(list(ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PrioritizedRiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_milestones_output"]]))
 }
 
 .wellarchitected$list_notifications_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_notifications_input"]]))
 }
 
 .wellarchitected$list_notifications_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NotificationSummaries = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), LensUpgradeSummary = structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), WorkloadName = structure(logical(0), tags = list(type = "string")), LensAlias = structure(logical(0), tags = list(type = "string")), LensArn = structure(logical(0), tags = list(type = "string")), CurrentLensVersion = structure(logical(0), tags = list(type = "string")), LatestLensVersion = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_notifications_output"]]))
 }
 
 .wellarchitected$list_profile_notifications_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "querystring", locationName = "WorkloadId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_profile_notifications_input"]]))
 }
 
 .wellarchitected$list_profile_notifications_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NotificationSummaries = structure(list(structure(list(CurrentProfileVersion = structure(logical(0), tags = list(type = "string")), LatestProfileVersion = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileName = structure(logical(0), tags = list(type = "string")), WorkloadId = structure(logical(0), tags = list(type = "string")), WorkloadName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_profile_notifications_output"]]))
 }
 
 .wellarchitected$list_profile_shares_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileArn = structure(logical(0), tags = list(location = "uri", locationName = "ProfileArn", type = "string")), SharedWithPrefix = structure(logical(0), tags = list(location = "querystring", locationName = "SharedWithPrefix", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer")), Status = structure(logical(0), tags = list(location = "querystring", locationName = "Status", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_profile_shares_input"]]))
 }
 
 .wellarchitected$list_profile_shares_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileShareSummaries = structure(list(structure(list(ShareId = structure(logical(0), tags = list(type = "string")), SharedWith = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_profile_shares_output"]]))
 }
 
 .wellarchitected$list_profiles_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileNamePrefix = structure(logical(0), tags = list(location = "querystring", locationName = "ProfileNamePrefix", type = "string")), ProfileOwnerType = structure(logical(0), tags = list(location = "querystring", locationName = "ProfileOwnerType", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_profiles_input"]]))
 }
 
 .wellarchitected$list_profiles_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileSummaries = structure(list(structure(list(ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileVersion = structure(logical(0), tags = list(type = "string")), ProfileName = structure(logical(0), tags = list(type = "string")), ProfileDescription = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_profiles_output"]]))
 }
 
 .wellarchitected$list_review_template_answers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(location = "uri", locationName = "TemplateArn", type = "string")), LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), PillarId = structure(logical(0), tags = list(location = "querystring", locationName = "PillarId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_review_template_answers_input"]]))
 }
 
 .wellarchitected$list_review_template_answers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(type = "string")), LensAlias = structure(logical(0), tags = list(type = "string")), AnswerSummaries = structure(list(structure(list(QuestionId = structure(logical(0), tags = list(type = "string")), PillarId = structure(logical(0), tags = list(type = "string")), QuestionTitle = structure(logical(0), tags = list(type = "string")), Choices = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), HelpfulResource = structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImprovementPlan = structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AdditionalResources = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Content = structure(list(structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SelectedChoices = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ChoiceAnswerSummaries = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsApplicable = structure(logical(0), tags = list(type = "boolean")), AnswerStatus = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string")), QuestionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_review_template_answers_output"]]))
 }
 
 .wellarchitected$list_review_templates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_review_templates_input"]]))
 }
 
 .wellarchitected$list_review_templates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReviewTemplates = structure(list(structure(list(Description = structure(logical(0), tags = list(type = "string")), Lenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Owner = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), TemplateArn = structure(logical(0), tags = list(type = "string")), TemplateName = structure(logical(0), tags = list(type = "string")), UpdateStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_review_templates_output"]]))
 }
 
 .wellarchitected$list_share_invitations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadNamePrefix = structure(logical(0), tags = list(location = "querystring", locationName = "WorkloadNamePrefix", type = "string")), LensNamePrefix = structure(logical(0), tags = list(location = "querystring", locationName = "LensNamePrefix", type = "string")), ShareResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "ShareResourceType", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer")), ProfileNamePrefix = structure(logical(0), tags = list(location = "querystring", locationName = "ProfileNamePrefix", type = "string")), TemplateNamePrefix = structure(logical(0), tags = list(location = "querystring", locationName = "TemplateNamePrefix", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_share_invitations_input"]]))
 }
 
 .wellarchitected$list_share_invitations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShareInvitationSummaries = structure(list(structure(list(ShareInvitationId = structure(logical(0), tags = list(type = "string")), SharedBy = structure(logical(0), tags = list(type = "string")), SharedWith = structure(logical(0), tags = list(type = "string")), PermissionType = structure(logical(0), tags = list(type = "string")), ShareResourceType = structure(logical(0), tags = list(type = "string")), WorkloadName = structure(logical(0), tags = list(type = "string")), WorkloadId = structure(logical(0), tags = list(type = "string")), LensName = structure(logical(0), tags = list(type = "string")), LensArn = structure(logical(0), tags = list(type = "string")), ProfileName = structure(logical(0), tags = list(type = "string")), ProfileArn = structure(logical(0), tags = list(type = "string")), TemplateName = structure(logical(0), tags = list(type = "string")), TemplateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_share_invitations_output"]]))
 }
 
 .wellarchitected$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadArn = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_tags_for_resource_input"]]))
 }
 
 .wellarchitected$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_tags_for_resource_output"]]))
 }
 
 .wellarchitected$list_template_shares_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(location = "uri", locationName = "TemplateArn", type = "string")), SharedWithPrefix = structure(logical(0), tags = list(location = "querystring", locationName = "SharedWithPrefix", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer")), Status = structure(logical(0), tags = list(location = "querystring", locationName = "Status", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_template_shares_input"]]))
 }
 
 .wellarchitected$list_template_shares_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(type = "string")), TemplateShareSummaries = structure(list(structure(list(ShareId = structure(logical(0), tags = list(type = "string")), SharedWith = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_template_shares_output"]]))
 }
 
 .wellarchitected$list_workload_shares_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), SharedWithPrefix = structure(logical(0), tags = list(location = "querystring", locationName = "SharedWithPrefix", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer")), Status = structure(logical(0), tags = list(location = "querystring", locationName = "Status", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_workload_shares_input"]]))
 }
 
 .wellarchitected$list_workload_shares_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), WorkloadShareSummaries = structure(list(structure(list(ShareId = structure(logical(0), tags = list(type = "string")), SharedWith = structure(logical(0), tags = list(type = "string")), PermissionType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_workload_shares_output"]]))
 }
 
 .wellarchitected$list_workloads_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadNamePrefix = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_workloads_input"]]))
 }
 
 .wellarchitected$list_workloads_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadSummaries = structure(list(structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), WorkloadArn = structure(logical(0), tags = list(type = "string")), WorkloadName = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Lenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), ImprovementStatus = structure(logical(0), tags = list(type = "string")), Profiles = structure(list(structure(list(ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PrioritizedRiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["list_workloads_output"]]))
+}
+
+.wellarchitected$put_agent_recommendation_feedback_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["put_agent_recommendation_feedback_input"]]))
+}
+
+.wellarchitected$put_agent_recommendation_feedback_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["put_agent_recommendation_feedback_output"]]))
+}
+
+.wellarchitected$start_agent_recommendation_generation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["start_agent_recommendation_generation_input"]]))
+}
+
+.wellarchitected$start_agent_recommendation_generation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["start_agent_recommendation_generation_output"]]))
 }
 
 .wellarchitected$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadArn = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadArn", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["tag_resource_input"]]))
 }
 
 .wellarchitected$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["tag_resource_output"]]))
 }
 
 .wellarchitected$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadArn = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadArn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["untag_resource_input"]]))
 }
 
 .wellarchitected$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["untag_resource_output"]]))
+}
+
+.wellarchitected$update_agent_context_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["update_agent_context_input"]]))
+}
+
+.wellarchitected$update_agent_context_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["update_agent_context_output"]]))
+}
+
+.wellarchitected$update_agent_goal_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["update_agent_goal_input"]]))
+}
+
+.wellarchitected$update_agent_goal_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["update_agent_goal_output"]]))
+}
+
+.wellarchitected$update_agent_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["update_agent_profile_input"]]))
+}
+
+.wellarchitected$update_agent_profile_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["update_agent_profile_output"]]))
+}
+
+.wellarchitected$update_agent_recommendation_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["update_agent_recommendation_status_input"]]))
+}
+
+.wellarchitected$update_agent_recommendation_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .wellarchitected_shapes[["update_agent_recommendation_status_output"]]))
 }
 
 .wellarchitected$update_answer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), QuestionId = structure(logical(0), tags = list(location = "uri", locationName = "QuestionId", type = "string")), SelectedChoices = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ChoiceUpdates = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), Notes = structure(logical(0), tags = list(type = "string")), IsApplicable = structure(logical(0), tags = list(type = "boolean")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_answer_input"]]))
 }
 
 .wellarchitected$update_answer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), LensAlias = structure(logical(0), tags = list(type = "string")), LensArn = structure(logical(0), tags = list(type = "string")), Answer = structure(list(QuestionId = structure(logical(0), tags = list(type = "string")), PillarId = structure(logical(0), tags = list(type = "string")), QuestionTitle = structure(logical(0), tags = list(type = "string")), QuestionDescription = structure(logical(0), tags = list(type = "string")), ImprovementPlanUrl = structure(logical(0), tags = list(type = "string")), HelpfulResourceUrl = structure(logical(0), tags = list(type = "string")), HelpfulResourceDisplayText = structure(logical(0), tags = list(type = "string")), Choices = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), HelpfulResource = structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImprovementPlan = structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AdditionalResources = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Content = structure(list(structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SelectedChoices = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ChoiceAnswers = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsApplicable = structure(logical(0), tags = list(type = "boolean")), Risk = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string")), JiraConfiguration = structure(list(JiraIssueUrl = structure(logical(0), tags = list(type = "string")), LastSyncedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_answer_output"]]))
 }
 
 .wellarchitected$update_global_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationSharingStatus = structure(logical(0), tags = list(type = "string")), DiscoveryIntegrationStatus = structure(logical(0), tags = list(type = "string")), JiraConfiguration = structure(list(IssueManagementStatus = structure(logical(0), tags = list(type = "string")), IssueManagementType = structure(logical(0), tags = list(type = "string")), JiraProjectKey = structure(logical(0), tags = list(type = "string")), IntegrationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_global_settings_input"]]))
 }
 
 .wellarchitected$update_global_settings_output <- function(...) {
@@ -697,8 +821,7 @@ NULL
 
 .wellarchitected$update_integration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), IntegratingService = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_integration_input"]]))
 }
 
 .wellarchitected$update_integration_output <- function(...) {
@@ -707,104 +830,87 @@ NULL
 
 .wellarchitected$update_lens_review_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), LensNotes = structure(logical(0), tags = list(type = "string")), PillarNotes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), JiraConfiguration = structure(list(SelectedPillars = structure(list(structure(list(PillarId = structure(logical(0), tags = list(type = "string")), SelectedQuestionIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_lens_review_input"]]))
 }
 
 .wellarchitected$update_lens_review_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), LensReview = structure(list(LensAlias = structure(logical(0), tags = list(type = "string")), LensArn = structure(logical(0), tags = list(type = "string")), LensVersion = structure(logical(0), tags = list(type = "string")), LensName = structure(logical(0), tags = list(type = "string")), LensStatus = structure(logical(0), tags = list(type = "string")), PillarReviewSummaries = structure(list(structure(list(PillarId = structure(logical(0), tags = list(type = "string")), PillarName = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string")), RiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), PrioritizedRiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), JiraConfiguration = structure(list(SelectedPillars = structure(list(structure(list(PillarId = structure(logical(0), tags = list(type = "string")), SelectedQuestionIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Notes = structure(logical(0), tags = list(type = "string")), RiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), NextToken = structure(logical(0), tags = list(type = "string")), Profiles = structure(list(structure(list(ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PrioritizedRiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_lens_review_output"]]))
 }
 
 .wellarchitected$update_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProfileArn = structure(logical(0), tags = list(location = "uri", locationName = "ProfileArn", type = "string")), ProfileDescription = structure(logical(0), tags = list(type = "string")), ProfileQuestions = structure(list(structure(list(QuestionId = structure(logical(0), tags = list(type = "string")), SelectedChoiceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_profile_input"]]))
 }
 
 .wellarchitected$update_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Profile = structure(list(ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileVersion = structure(logical(0), tags = list(type = "string")), ProfileName = structure(logical(0), tags = list(type = "string")), ProfileDescription = structure(logical(0), tags = list(type = "string")), ProfileQuestions = structure(list(structure(list(QuestionId = structure(logical(0), tags = list(type = "string")), QuestionTitle = structure(logical(0), tags = list(type = "string")), QuestionDescription = structure(logical(0), tags = list(type = "string")), QuestionChoices = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), ChoiceTitle = structure(logical(0), tags = list(type = "string")), ChoiceDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SelectedChoiceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MinSelectedChoices = structure(logical(0), tags = list(type = "integer")), MaxSelectedChoices = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Owner = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), ShareInvitationId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_profile_output"]]))
 }
 
 .wellarchitected$update_review_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(location = "uri", locationName = "TemplateArn", type = "string")), TemplateName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string")), LensesToAssociate = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LensesToDisassociate = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_review_template_input"]]))
 }
 
 .wellarchitected$update_review_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReviewTemplate = structure(list(Description = structure(logical(0), tags = list(type = "string")), Lenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Notes = structure(logical(0), tags = list(type = "string")), QuestionCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), Owner = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), TemplateArn = structure(logical(0), tags = list(type = "string")), TemplateName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), UpdateStatus = structure(logical(0), tags = list(type = "string")), ShareInvitationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_review_template_output"]]))
 }
 
 .wellarchitected$update_review_template_answer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(location = "uri", locationName = "TemplateArn", type = "string")), LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), QuestionId = structure(logical(0), tags = list(location = "uri", locationName = "QuestionId", type = "string")), SelectedChoices = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ChoiceUpdates = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), Notes = structure(logical(0), tags = list(type = "string")), IsApplicable = structure(logical(0), tags = list(type = "boolean")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_review_template_answer_input"]]))
 }
 
 .wellarchitected$update_review_template_answer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(type = "string")), LensAlias = structure(logical(0), tags = list(type = "string")), Answer = structure(list(QuestionId = structure(logical(0), tags = list(type = "string")), PillarId = structure(logical(0), tags = list(type = "string")), QuestionTitle = structure(logical(0), tags = list(type = "string")), QuestionDescription = structure(logical(0), tags = list(type = "string")), ImprovementPlanUrl = structure(logical(0), tags = list(type = "string")), HelpfulResourceUrl = structure(logical(0), tags = list(type = "string")), HelpfulResourceDisplayText = structure(logical(0), tags = list(type = "string")), Choices = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), HelpfulResource = structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImprovementPlan = structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AdditionalResources = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Content = structure(list(structure(list(DisplayText = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SelectedChoices = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ChoiceAnswers = structure(list(structure(list(ChoiceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsApplicable = structure(logical(0), tags = list(type = "boolean")), AnswerStatus = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_review_template_answer_output"]]))
 }
 
 .wellarchitected$update_review_template_lens_review_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(location = "uri", locationName = "TemplateArn", type = "string")), LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), LensNotes = structure(logical(0), tags = list(type = "string")), PillarNotes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_review_template_lens_review_input"]]))
 }
 
 .wellarchitected$update_review_template_lens_review_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(type = "string")), LensReview = structure(list(LensAlias = structure(logical(0), tags = list(type = "string")), LensArn = structure(logical(0), tags = list(type = "string")), LensVersion = structure(logical(0), tags = list(type = "string")), LensName = structure(logical(0), tags = list(type = "string")), LensStatus = structure(logical(0), tags = list(type = "string")), PillarReviewSummaries = structure(list(structure(list(PillarId = structure(logical(0), tags = list(type = "string")), PillarName = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string")), QuestionCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Notes = structure(logical(0), tags = list(type = "string")), QuestionCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_review_template_lens_review_output"]]))
 }
 
 .wellarchitected$update_share_invitation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShareInvitationId = structure(logical(0), tags = list(location = "uri", locationName = "ShareInvitationId", type = "string")), ShareInvitationAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_share_invitation_input"]]))
 }
 
 .wellarchitected$update_share_invitation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShareInvitation = structure(list(ShareInvitationId = structure(logical(0), tags = list(type = "string")), ShareResourceType = structure(logical(0), tags = list(type = "string")), WorkloadId = structure(logical(0), tags = list(type = "string")), LensAlias = structure(logical(0), tags = list(type = "string")), LensArn = structure(logical(0), tags = list(type = "string")), ProfileArn = structure(logical(0), tags = list(type = "string")), TemplateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_share_invitation_output"]]))
 }
 
 .wellarchitected$update_workload_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), WorkloadName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NonAwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PillarPriorities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ArchitecturalDesign = structure(logical(0), tags = list(type = "string")), ReviewOwner = structure(logical(0), tags = list(type = "string")), IsReviewOwnerUpdateAcknowledged = structure(logical(0), tags = list(type = "boolean")), IndustryType = structure(logical(0), tags = list(type = "string")), Industry = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string")), ImprovementStatus = structure(logical(0), tags = list(type = "string")), DiscoveryConfig = structure(list(TrustedAdvisorIntegrationStatus = structure(logical(0), tags = list(type = "string")), WorkloadResourceDefinition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Applications = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), JiraConfiguration = structure(list(IssueManagementStatus = structure(logical(0), tags = list(type = "string")), IssueManagementType = structure(logical(0), tags = list(type = "string")), JiraProjectKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_workload_input"]]))
 }
 
 .wellarchitected$update_workload_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Workload = structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), WorkloadArn = structure(logical(0), tags = list(type = "string")), WorkloadName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Environment = structure(logical(0), tags = list(type = "string")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp")), AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NonAwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ArchitecturalDesign = structure(logical(0), tags = list(type = "string")), ReviewOwner = structure(logical(0), tags = list(type = "string")), ReviewRestrictionDate = structure(logical(0), tags = list(type = "timestamp")), IsReviewOwnerUpdateAcknowledged = structure(logical(0), tags = list(type = "boolean")), IndustryType = structure(logical(0), tags = list(type = "string")), Industry = structure(logical(0), tags = list(type = "string")), Notes = structure(logical(0), tags = list(type = "string")), ImprovementStatus = structure(logical(0), tags = list(type = "string")), RiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), PillarPriorities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Lenses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Owner = structure(logical(0), tags = list(type = "string")), ShareInvitationId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DiscoveryConfig = structure(list(TrustedAdvisorIntegrationStatus = structure(logical(0), tags = list(type = "string")), WorkloadResourceDefinition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Applications = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Profiles = structure(list(structure(list(ProfileArn = structure(logical(0), tags = list(type = "string")), ProfileVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PrioritizedRiskCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), JiraConfiguration = structure(list(IssueManagementStatus = structure(logical(0), tags = list(type = "string")), IssueManagementType = structure(logical(0), tags = list(type = "string")), JiraProjectKey = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_workload_output"]]))
 }
 
 .wellarchitected$update_workload_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShareId = structure(logical(0), tags = list(location = "uri", locationName = "ShareId", type = "string")), WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), PermissionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_workload_share_input"]]))
 }
 
 .wellarchitected$update_workload_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(type = "string")), WorkloadShare = structure(list(ShareId = structure(logical(0), tags = list(type = "string")), SharedBy = structure(logical(0), tags = list(type = "string")), SharedWith = structure(logical(0), tags = list(type = "string")), PermissionType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), WorkloadName = structure(logical(0), tags = list(type = "string")), WorkloadId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["update_workload_share_output"]]))
 }
 
 .wellarchitected$upgrade_lens_review_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), MilestoneName = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["upgrade_lens_review_input"]]))
 }
 
 .wellarchitected$upgrade_lens_review_output <- function(...) {
@@ -813,8 +919,7 @@ NULL
 
 .wellarchitected$upgrade_profile_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkloadId = structure(logical(0), tags = list(location = "uri", locationName = "WorkloadId", type = "string")), ProfileArn = structure(logical(0), tags = list(location = "uri", locationName = "ProfileArn", type = "string")), MilestoneName = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["upgrade_profile_version_input"]]))
 }
 
 .wellarchitected$upgrade_profile_version_output <- function(...) {
@@ -823,8 +928,7 @@ NULL
 
 .wellarchitected$upgrade_review_template_lens_review_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TemplateArn = structure(logical(0), tags = list(location = "uri", locationName = "TemplateArn", type = "string")), LensAlias = structure(logical(0), tags = list(location = "uri", locationName = "LensAlias", type = "string")), ClientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .wellarchitected_shapes[["upgrade_review_template_lens_review_input"]]))
 }
 
 .wellarchitected$upgrade_review_template_lens_review_output <- function(...) {

@@ -2,8 +2,8 @@
 % Please edit documentation in R/elasticbeanstalk_operations.R
 \name{elasticbeanstalk_create_environment}
 \alias{elasticbeanstalk_create_environment}
-\title{Launches an AWS Elastic Beanstalk environment for the specified
-application using the specified configuration}
+\title{Launches an Elastic Beanstalk environment for the specified application
+using the specified configuration}
 \usage{
 elasticbeanstalk_create_environment(
   ApplicationName,
@@ -37,7 +37,7 @@ If you don't specify the \code{CNAMEPrefix} parameter, the environment name beco
 
 \item{CNAMEPrefix}{If specified, the environment attempts to use this value as the prefix for the CNAME in your Elastic Beanstalk environment URL. If not specified, the CNAME is generated automatically by appending a random alphanumeric string to the environment name.}
 
-\item{Tier}{Specifies the tier to use in creating this environment. The environment tier that you choose determines whether Elastic Beanstalk provisions resources to support a web application that handles HTTP(S) requests or a web application that handles background-processing tasks.}
+\item{Tier}{Specifies the tier to use in creating this environment. The environment tier that you choose determines whether Elastic Beanstalk provisions resources on Amazon EC2 instances or on an Amazon EKS cluster, and, for Amazon EC2, whether the environment serves HTTP(S) requests or processes background tasks from a queue.}
 
 \item{Tags}{Specifies the tags applied to resources in the environment.}
 
@@ -49,22 +49,24 @@ Default: If not specified, Elastic Beanstalk attempts to deploy the sample appli
 
 If you specify \code{TemplateName}, then don't specify \code{SolutionStackName}.}
 
-\item{SolutionStackName}{The name of an Elastic Beanstalk solution stack (platform version) to use with the environment. If specified, Elastic Beanstalk sets the configuration values to the default values associated with the specified solution stack. For a list of current solution stacks, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platforms-supported.html}{Elastic Beanstalk Supported Platforms} in the \emph{AWS Elastic Beanstalk Platforms} guide.
+\item{SolutionStackName}{The name of an Elastic Beanstalk solution stack (platform version) to use with the environment. If specified, Elastic Beanstalk sets the configuration values to the default values associated with the specified solution stack. For a list of current solution stacks, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platforms-supported.html}{Elastic Beanstalk Supported Platforms} in the \emph{Elastic Beanstalk Platforms} guide.
 
 If you specify \code{SolutionStackName}, don't specify \code{PlatformArn} or \code{TemplateName}.}
 
-\item{PlatformArn}{The Amazon Resource Name (ARN) of the custom platform to use with the environment. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/custom-platforms.html}{Custom Platforms} in the \emph{AWS Elastic Beanstalk Developer Guide}.
+\item{PlatformArn}{The Amazon Resource Name (ARN) of the custom platform to use with the environment. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/custom-platforms.html}{Custom Platforms} in the \emph{Elastic Beanstalk Developer Guide}.
 
 If you specify \code{PlatformArn}, don't specify \code{SolutionStackName}.}
 
-\item{OptionSettings}{If specified, AWS Elastic Beanstalk sets the specified configuration options to the requested value in the configuration set for the new environment. These override the values obtained from the solution stack or the configuration template.}
+\item{OptionSettings}{If specified, Elastic Beanstalk sets the specified configuration options to the requested value in the configuration set for the new environment. These override the values obtained from the solution stack or the configuration template.}
 
 \item{OptionsToRemove}{A list of custom user-defined configuration options to remove from the configuration set for this new environment.}
 
-\item{OperationsRole}{The Amazon Resource Name (ARN) of an existing IAM role to be used as the environment's operations role. If specified, Elastic Beanstalk uses the operations role for permissions to downstream services during this call and during subsequent calls acting on this environment. To specify an operations role, you must have the \code{iam:PassRole} permission for the role. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/}{Operations roles} in the \emph{AWS Elastic Beanstalk Developer Guide}.}
+\item{OperationsRole}{The operations role feature of Elastic Beanstalk is in beta release and is subject to change.
+
+The Amazon Resource Name (ARN) of an existing IAM role to be used as the environment's operations role. If specified, Elastic Beanstalk uses the operations role for permissions to downstream services during this call and during subsequent calls acting on this environment. To specify an operations role, you must have the \code{iam:PassRole} permission for the role.}
 }
 \description{
-Launches an AWS Elastic Beanstalk environment for the specified application using the specified configuration.
+Launches an Elastic Beanstalk environment for the specified application using the specified configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_environment/} for full documentation.
 }

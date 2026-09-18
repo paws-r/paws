@@ -12,7 +12,8 @@ dynamodb_restore_table_from_backup(
   LocalSecondaryIndexOverride = NULL,
   ProvisionedThroughputOverride = NULL,
   OnDemandThroughputOverride = NULL,
-  SSESpecificationOverride = NULL
+  SSESpecificationOverride = NULL,
+  VectorIndexOverride = NULL
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ dynamodb_restore_table_from_backup(
 \item{OnDemandThroughputOverride}{Overrides the on-demand throughput settings for this replica table. If you don't specify a value for this parameter, it uses the source table's on-demand throughput settings.}
 
 \item{SSESpecificationOverride}{The new server-side encryption settings for the restored table.}
+
+\item{VectorIndexOverride}{The vector indexes for the restored table. If not specified, all vector indexes from the backup are restored. The indexes provided must match existing vector indexes from the backup. You can choose to exclude some or all of the vector indexes at the time of restore.}
 }
 \description{
 Creates a new table from an existing backup. Any number of users can execute up to 50 concurrent restores (any type of restore) in a given account.

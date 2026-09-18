@@ -56,9 +56,9 @@ When Performance Insights is enabled, the Amazon RDS Performance Insights API pr
 
 DB load is measured as average active sessions. Performance Insights provides the data to API consumers as a two-dimensional time-series dataset. The time dimension provides DB load data for each time point in the queried time range. Each time point decomposes overall load in relation to the requested dimensions, measured at that time point. Examples include SQL, Wait event, User, and Host.
 \itemize{
-\item To learn more about Performance Insights and Amazon Aurora DB instances, go to the \emph{\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html}{ Amazon Aurora User Guide}} .
-\item To learn more about Performance Insights and Amazon RDS DB instances, go to the \emph{\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{ Amazon RDS User Guide}} .
-\item To learn more about Performance Insights and Amazon DocumentDB clusters, go to the \emph{\href{https://docs.aws.amazon.com/documentdb/latest/devguide/performance-insights.html}{ Amazon DocumentDB Developer Guide}} .
+\item To learn more about Performance Insights and Amazon Aurora DB instances, go to the \emph{\if{html}{\out{\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html}{ Amazon Aurora User Guide\if{html}{\out{}} .
+\item To learn more about Performance Insights and Amazon RDS DB instances, go to the \emph{\if{html}{\out{\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{ Amazon RDS User Guide\if{html}{\out{}} .
+\item To learn more about Performance Insights and Amazon DocumentDB clusters, go to the \emph{\if{html}{\out{\href{https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html}{ Amazon DocumentDB Developer Guide\if{html}{\out{}} .
 }
 }
 \section{Service syntax}{

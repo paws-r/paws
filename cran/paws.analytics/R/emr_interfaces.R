@@ -5,104 +5,87 @@ NULL
 
 .emr$add_instance_fleet_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), InstanceFleet = structure(list(Name = structure(logical(0), tags = list(type = "string")), InstanceFleetType = structure(logical(0), tags = list(type = "string")), TargetOnDemandCapacity = structure(logical(0), tags = list(type = "integer")), TargetSpotCapacity = structure(logical(0), tags = list(type = "integer")), InstanceTypeConfigs = structure(list(structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), WeightedCapacity = structure(logical(0), tags = list(type = "integer")), BidPrice = structure(logical(0), tags = list(type = "string")), BidPriceAsPercentageOfOnDemandPrice = structure(logical(0), tags = list(type = "double")), EbsConfiguration = structure(list(EbsBlockDeviceConfigs = structure(list(structure(list(VolumeSpecification = structure(list(VolumeType = structure(logical(0), tags = list(type = "string")), Iops = structure(logical(0), tags = list(type = "integer")), SizeInGB = structure(logical(0), tags = list(type = "integer")), Throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), VolumesPerInstance = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), EbsOptimized = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Configurations = structure(list(structure(list(Classification = structure(logical(0), tags = list(type = "string")), Configurations = structure(logical(0), tags = list(type = "list")), Properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), CustomAmiId = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), LaunchSpecifications = structure(list(SpotSpecification = structure(list(TimeoutDurationMinutes = structure(logical(0), tags = list(type = "integer")), TimeoutAction = structure(logical(0), tags = list(type = "string")), BlockDurationMinutes = structure(logical(0), tags = list(type = "integer")), AllocationStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OnDemandSpecification = structure(list(AllocationStrategy = structure(logical(0), tags = list(type = "string")), CapacityReservationOptions = structure(list(UsageStrategy = structure(logical(0), tags = list(type = "string")), CapacityReservationPreference = structure(logical(0), tags = list(type = "string")), CapacityReservationResourceGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResizeSpecifications = structure(list(SpotResizeSpecification = structure(list(TimeoutDurationMinutes = structure(logical(0), tags = list(type = "integer")), AllocationStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OnDemandResizeSpecification = structure(list(TimeoutDurationMinutes = structure(logical(0), tags = list(type = "integer")), AllocationStrategy = structure(logical(0), tags = list(type = "string")), CapacityReservationOptions = structure(list(UsageStrategy = structure(logical(0), tags = list(type = "string")), CapacityReservationPreference = structure(logical(0), tags = list(type = "string")), CapacityReservationResourceGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Context = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["add_instance_fleet_input"]]))
 }
 
 .emr$add_instance_fleet_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), InstanceFleetId = structure(logical(0), tags = list(type = "string")), ClusterArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["add_instance_fleet_output"]]))
 }
 
 .emr$add_instance_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Market = structure(logical(0), tags = list(type = "string")), InstanceRole = structure(logical(0), tags = list(type = "string")), BidPrice = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), Configurations = structure(list(structure(list(Classification = structure(logical(0), tags = list(type = "string")), Configurations = structure(logical(0), tags = list(type = "list")), Properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), EbsConfiguration = structure(list(EbsBlockDeviceConfigs = structure(list(structure(list(VolumeSpecification = structure(list(VolumeType = structure(logical(0), tags = list(type = "string")), Iops = structure(logical(0), tags = list(type = "integer")), SizeInGB = structure(logical(0), tags = list(type = "integer")), Throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), VolumesPerInstance = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), EbsOptimized = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AutoScalingPolicy = structure(list(Constraints = structure(list(MinCapacity = structure(logical(0), tags = list(type = "integer")), MaxCapacity = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Rules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(list(Market = structure(logical(0), tags = list(type = "string")), SimpleScalingPolicyConfiguration = structure(list(AdjustmentType = structure(logical(0), tags = list(type = "string")), ScalingAdjustment = structure(logical(0), tags = list(type = "integer")), CoolDown = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), Trigger = structure(list(CloudWatchAlarmDefinition = structure(list(ComparisonOperator = structure(logical(0), tags = list(type = "string")), EvaluationPeriods = structure(logical(0), tags = list(type = "integer")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), Period = structure(logical(0), tags = list(type = "integer")), Statistic = structure(logical(0), tags = list(type = "string")), Threshold = structure(logical(0), tags = list(type = "double")), Unit = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CustomAmiId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), JobFlowId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["add_instance_groups_input"]]))
 }
 
 .emr$add_instance_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobFlowId = structure(logical(0), tags = list(type = "string")), InstanceGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ClusterArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["add_instance_groups_output"]]))
 }
 
 .emr$add_job_flow_steps_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobFlowId = structure(logical(0), tags = list(type = "string")), Steps = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ActionOnFailure = structure(logical(0), tags = list(type = "string")), HadoopJarStep = structure(list(Properties = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Jar = structure(logical(0), tags = list(type = "string")), MainClass = structure(logical(0), tags = list(type = "string")), Args = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), StepMonitoringConfiguration = structure(list(S3MonitoringConfiguration = structure(list(LogUri = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), ExecutionRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["add_job_flow_steps_input"]]))
 }
 
 .emr$add_job_flow_steps_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StepIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["add_job_flow_steps_output"]]))
 }
 
 .emr$add_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["add_tags_input"]]))
 }
 
 .emr$add_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["add_tags_output"]]))
 }
 
 .emr$cancel_steps_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), StepIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StepCancellationOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["cancel_steps_input"]]))
 }
 
 .emr$cancel_steps_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CancelStepsInfoList = structure(list(structure(list(StepId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["cancel_steps_output"]]))
 }
 
 .emr$create_persistent_app_ui_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TargetResourceArn = structure(logical(0), tags = list(type = "string")), EMRContainersConfig = structure(list(JobRunId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), XReferer = structure(logical(0), tags = list(type = "string")), ProfilerType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["create_persistent_app_ui_input"]]))
 }
 
 .emr$create_persistent_app_ui_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PersistentAppUIId = structure(logical(0), tags = list(type = "string")), RuntimeRoleEnabledCluster = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["create_persistent_app_ui_output"]]))
 }
 
 .emr$create_security_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), SecurityConfiguration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["create_security_configuration_input"]]))
 }
 
 .emr$create_security_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), CreationDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["create_security_configuration_output"]]))
 }
 
 .emr$create_studio_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AuthMode = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceRole = structure(logical(0), tags = list(type = "string")), UserRole = structure(logical(0), tags = list(type = "string")), WorkspaceSecurityGroupId = structure(logical(0), tags = list(type = "string")), EngineSecurityGroupId = structure(logical(0), tags = list(type = "string")), DefaultS3Location = structure(logical(0), tags = list(type = "string")), IdpAuthUrl = structure(logical(0), tags = list(type = "string")), IdpRelayStateParameterName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TrustedIdentityPropagationEnabled = structure(logical(0), tags = list(type = "boolean")), IdcUserAssignment = structure(logical(0), tags = list(type = "string")), IdcInstanceArn = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["create_studio_input"]]))
 }
 
 .emr$create_studio_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StudioId = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["create_studio_output"]]))
 }
 
 .emr$create_studio_session_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StudioId = structure(logical(0), tags = list(type = "string")), IdentityId = structure(logical(0), tags = list(type = "string")), IdentityName = structure(logical(0), tags = list(type = "string")), IdentityType = structure(logical(0), tags = list(type = "string")), SessionPolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["create_studio_session_mapping_input"]]))
 }
 
 .emr$create_studio_session_mapping_output <- function(...) {
@@ -111,20 +94,17 @@ NULL
 
 .emr$delete_security_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["delete_security_configuration_input"]]))
 }
 
 .emr$delete_security_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["delete_security_configuration_output"]]))
 }
 
 .emr$delete_studio_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StudioId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["delete_studio_input"]]))
 }
 
 .emr$delete_studio_output <- function(...) {
@@ -133,8 +113,7 @@ NULL
 
 .emr$delete_studio_session_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StudioId = structure(logical(0), tags = list(type = "string")), IdentityId = structure(logical(0), tags = list(type = "string")), IdentityName = structure(logical(0), tags = list(type = "string")), IdentityType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["delete_studio_session_mapping_input"]]))
 }
 
 .emr$delete_studio_session_mapping_output <- function(...) {
@@ -143,344 +122,317 @@ NULL
 
 .emr$describe_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["describe_cluster_input"]]))
 }
 
 .emr$describe_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Cluster = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Timeline = structure(list(CreationDateTime = structure(logical(0), tags = list(type = "timestamp")), ReadyDateTime = structure(logical(0), tags = list(type = "timestamp")), EndDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ErrorDetails = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorData = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "list")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Ec2InstanceAttributes = structure(list(Ec2KeyName = structure(logical(0), tags = list(type = "string")), Ec2SubnetId = structure(logical(0), tags = list(type = "string")), RequestedEc2SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Ec2AvailabilityZone = structure(logical(0), tags = list(type = "string")), RequestedEc2AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IamInstanceProfile = structure(logical(0), tags = list(type = "string")), EmrManagedMasterSecurityGroup = structure(logical(0), tags = list(type = "string")), EmrManagedSlaveSecurityGroup = structure(logical(0), tags = list(type = "string")), ServiceAccessSecurityGroup = structure(logical(0), tags = list(type = "string")), AdditionalMasterSecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AdditionalSlaveSecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), InstanceCollectionType = structure(logical(0), tags = list(type = "string")), LogUri = structure(logical(0), tags = list(type = "string")), LogEncryptionKmsKeyId = structure(logical(0), tags = list(type = "string")), RequestedAmiVersion = structure(logical(0), tags = list(type = "string")), RunningAmiVersion = structure(logical(0), tags = list(type = "string")), ReleaseLabel = structure(logical(0), tags = list(type = "string")), AutoTerminate = structure(logical(0), tags = list(type = "boolean")), TerminationProtected = structure(logical(0), tags = list(type = "boolean")), UnhealthyNodeReplacement = structure(logical(0), tags = list(type = "boolean")), VisibleToAllUsers = structure(logical(0), tags = list(type = "boolean")), Applications = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), Args = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AdditionalInfo = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ServiceRole = structure(logical(0), tags = list(type = "string")), NormalizedInstanceHours = structure(logical(0), tags = list(type = "integer")), MasterPublicDnsName = structure(logical(0), tags = list(type = "string")), Configurations = structure(list(structure(list(Classification = structure(logical(0), tags = list(type = "string")), Configurations = structure(logical(0), tags = list(type = "list")), Properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), SecurityConfiguration = structure(logical(0), tags = list(type = "string")), AutoScalingRole = structure(logical(0), tags = list(type = "string")), ScaleDownBehavior = structure(logical(0), tags = list(type = "string")), CustomAmiId = structure(logical(0), tags = list(type = "string")), EbsRootVolumeSize = structure(logical(0), tags = list(type = "integer")), RepoUpgradeOnBoot = structure(logical(0), tags = list(type = "string")), KerberosAttributes = structure(list(Realm = structure(logical(0), tags = list(type = "string")), KdcAdminPassword = structure(logical(0), tags = list(type = "string")), CrossRealmTrustPrincipalPassword = structure(logical(0), tags = list(type = "string")), ADDomainJoinUser = structure(logical(0), tags = list(type = "string")), ADDomainJoinPassword = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClusterArn = structure(logical(0), tags = list(type = "string")), OutpostArn = structure(logical(0), tags = list(type = "string")), StepConcurrencyLevel = structure(logical(0), tags = list(type = "integer")), PlacementGroups = structure(list(structure(list(InstanceRole = structure(logical(0), tags = list(type = "string")), PlacementStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), OSReleaseLabel = structure(logical(0), tags = list(type = "string")), EbsRootVolumeIops = structure(logical(0), tags = list(type = "integer")), EbsRootVolumeThroughput = structure(logical(0), tags = list(type = "integer")), ExtendedSupport = structure(logical(0), tags = list(type = "boolean")), MonitoringConfiguration = structure(list(CloudWatchLogConfiguration = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), LogGroupName = structure(logical(0), tags = list(type = "string")), LogStreamNamePrefix = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string")), LogTypes = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), S3LoggingConfiguration = structure(list(LogTypeUploadPolicy = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["describe_cluster_output"]]))
 }
 
 .emr$describe_job_flows_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreatedAfter = structure(logical(0), tags = list(type = "timestamp")), CreatedBefore = structure(logical(0), tags = list(type = "timestamp")), JobFlowIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), JobFlowStates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["describe_job_flows_input"]]))
 }
 
 .emr$describe_job_flows_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobFlows = structure(list(structure(list(JobFlowId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), LogUri = structure(logical(0), tags = list(type = "string")), LogEncryptionKmsKeyId = structure(logical(0), tags = list(type = "string")), AmiVersion = structure(logical(0), tags = list(type = "string")), ExecutionStatusDetail = structure(list(State = structure(logical(0), tags = list(type = "string")), CreationDateTime = structure(logical(0), tags = list(type = "timestamp")), StartDateTime = structure(logical(0), tags = list(type = "timestamp")), ReadyDateTime = structure(logical(0), tags = list(type = "timestamp")), EndDateTime = structure(logical(0), tags = list(type = "timestamp")), LastStateChangeReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Instances = structure(list(MasterInstanceType = structure(logical(0), tags = list(type = "string")), MasterPublicDnsName = structure(logical(0), tags = list(type = "string")), MasterInstanceId = structure(logical(0), tags = list(type = "string")), SlaveInstanceType = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), InstanceGroups = structure(list(structure(list(InstanceGroupId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Market = structure(logical(0), tags = list(type = "string")), InstanceRole = structure(logical(0), tags = list(type = "string")), BidPrice = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), InstanceRequestCount = structure(logical(0), tags = list(type = "integer")), InstanceRunningCount = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), LastStateChangeReason = structure(logical(0), tags = list(type = "string")), CreationDateTime = structure(logical(0), tags = list(type = "timestamp")), StartDateTime = structure(logical(0), tags = list(type = "timestamp")), ReadyDateTime = structure(logical(0), tags = list(type = "timestamp")), EndDateTime = structure(logical(0), tags = list(type = "timestamp")), CustomAmiId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NormalizedInstanceHours = structure(logical(0), tags = list(type = "integer")), Ec2KeyName = structure(logical(0), tags = list(type = "string")), Ec2SubnetId = structure(logical(0), tags = list(type = "string")), Placement = structure(list(AvailabilityZone = structure(logical(0), tags = list(type = "string")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), KeepJobFlowAliveWhenNoSteps = structure(logical(0), tags = list(type = "boolean")), TerminationProtected = structure(logical(0), tags = list(type = "boolean")), UnhealthyNodeReplacement = structure(logical(0), tags = list(type = "boolean")), HadoopVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Steps = structure(list(structure(list(StepConfig = structure(list(Name = structure(logical(0), tags = list(type = "string")), ActionOnFailure = structure(logical(0), tags = list(type = "string")), HadoopJarStep = structure(list(Properties = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Jar = structure(logical(0), tags = list(type = "string")), MainClass = structure(logical(0), tags = list(type = "string")), Args = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), StepMonitoringConfiguration = structure(list(S3MonitoringConfiguration = structure(list(LogUri = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), ExecutionStatusDetail = structure(list(State = structure(logical(0), tags = list(type = "string")), CreationDateTime = structure(logical(0), tags = list(type = "timestamp")), StartDateTime = structure(logical(0), tags = list(type = "timestamp")), EndDateTime = structure(logical(0), tags = list(type = "timestamp")), LastStateChangeReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), BootstrapActions = structure(list(structure(list(BootstrapActionConfig = structure(list(Name = structure(logical(0), tags = list(type = "string")), ScriptBootstrapAction = structure(list(Path = structure(logical(0), tags = list(type = "string")), Args = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), SupportedProducts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), VisibleToAllUsers = structure(logical(0), tags = list(type = "boolean")), JobFlowRole = structure(logical(0), tags = list(type = "string")), ServiceRole = structure(logical(0), tags = list(type = "string")), AutoScalingRole = structure(logical(0), tags = list(type = "string")), ScaleDownBehavior = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["describe_job_flows_output"]]))
 }
 
 .emr$describe_notebook_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NotebookExecutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["describe_notebook_execution_input"]]))
 }
 
 .emr$describe_notebook_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NotebookExecution = structure(list(NotebookExecutionId = structure(logical(0), tags = list(type = "string")), EditorId = structure(logical(0), tags = list(type = "string")), ExecutionEngine = structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), MasterInstanceSecurityGroupId = structure(logical(0), tags = list(type = "string")), ExecutionRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NotebookExecutionName = structure(logical(0), tags = list(type = "string")), NotebookParams = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Arn = structure(logical(0), tags = list(type = "string")), OutputNotebookURI = structure(logical(0), tags = list(type = "string")), LastStateChangeReason = structure(logical(0), tags = list(type = "string")), NotebookInstanceSecurityGroupId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NotebookS3Location = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputNotebookS3Location = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputNotebookFormat = structure(logical(0), tags = list(type = "string")), EnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["describe_notebook_execution_output"]]))
 }
 
 .emr$describe_persistent_app_ui_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PersistentAppUIId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["describe_persistent_app_ui_input"]]))
 }
 
 .emr$describe_persistent_app_ui_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PersistentAppUI = structure(list(PersistentAppUIId = structure(logical(0), tags = list(type = "string")), PersistentAppUITypeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PersistentAppUIStatus = structure(logical(0), tags = list(type = "string")), AuthorId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), LastStateChangeReason = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["describe_persistent_app_ui_output"]]))
 }
 
 .emr$describe_release_label_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReleaseLabel = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["describe_release_label_input"]]))
 }
 
 .emr$describe_release_label_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReleaseLabel = structure(logical(0), tags = list(type = "string")), Applications = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), AvailableOSReleases = structure(list(structure(list(Label = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["describe_release_label_output"]]))
 }
 
 .emr$describe_security_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["describe_security_configuration_input"]]))
 }
 
 .emr$describe_security_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), SecurityConfiguration = structure(logical(0), tags = list(type = "string")), CreationDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["describe_security_configuration_output"]]))
 }
 
 .emr$describe_step_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), StepId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["describe_step_input"]]))
 }
 
 .emr$describe_step_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Step = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Config = structure(list(Jar = structure(logical(0), tags = list(type = "string")), Properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), MainClass = structure(logical(0), tags = list(type = "string")), Args = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ActionOnFailure = structure(logical(0), tags = list(type = "string")), Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FailureDetails = structure(list(Reason = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), LogFile = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Timeline = structure(list(CreationDateTime = structure(logical(0), tags = list(type = "timestamp")), StartDateTime = structure(logical(0), tags = list(type = "timestamp")), EndDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), ExecutionRoleArn = structure(logical(0), tags = list(type = "string")), LogUri = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["describe_step_output"]]))
 }
 
 .emr$describe_studio_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StudioId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["describe_studio_input"]]))
 }
 
 .emr$describe_studio_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Studio = structure(list(StudioId = structure(logical(0), tags = list(type = "string")), StudioArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AuthMode = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceRole = structure(logical(0), tags = list(type = "string")), UserRole = structure(logical(0), tags = list(type = "string")), WorkspaceSecurityGroupId = structure(logical(0), tags = list(type = "string")), EngineSecurityGroupId = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), DefaultS3Location = structure(logical(0), tags = list(type = "string")), IdpAuthUrl = structure(logical(0), tags = list(type = "string")), IdpRelayStateParameterName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IdcInstanceArn = structure(logical(0), tags = list(type = "string")), TrustedIdentityPropagationEnabled = structure(logical(0), tags = list(type = "boolean")), IdcUserAssignment = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["describe_studio_output"]]))
 }
 
 .emr$get_auto_termination_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["get_auto_termination_policy_input"]]))
 }
 
 .emr$get_auto_termination_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AutoTerminationPolicy = structure(list(IdleTimeout = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["get_auto_termination_policy_output"]]))
 }
 
 .emr$get_block_public_access_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["get_block_public_access_configuration_input"]]))
 }
 
 .emr$get_block_public_access_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BlockPublicAccessConfiguration = structure(list(BlockPublicSecurityGroupRules = structure(logical(0), tags = list(type = "boolean")), PermittedPublicSecurityGroupRuleRanges = structure(list(structure(list(MinRange = structure(logical(0), tags = list(type = "integer")), MaxRange = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), BlockPublicAccessConfigurationMetadata = structure(list(CreationDateTime = structure(logical(0), tags = list(type = "timestamp")), CreatedByArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["get_block_public_access_configuration_output"]]))
 }
 
 .emr$get_cluster_session_credentials_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), ExecutionRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["get_cluster_session_credentials_input"]]))
 }
 
 .emr$get_cluster_session_credentials_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Credentials = structure(list(UsernamePassword = structure(list(Username = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "structure", union = TRUE)), ExpiresAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["get_cluster_session_credentials_output"]]))
 }
 
 .emr$get_managed_scaling_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["get_managed_scaling_policy_input"]]))
 }
 
 .emr$get_managed_scaling_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ManagedScalingPolicy = structure(list(ComputeLimits = structure(list(UnitType = structure(logical(0), tags = list(type = "string")), MinimumCapacityUnits = structure(logical(0), tags = list(type = "integer")), MaximumCapacityUnits = structure(logical(0), tags = list(type = "integer")), MaximumOnDemandCapacityUnits = structure(logical(0), tags = list(type = "integer")), MaximumCoreCapacityUnits = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), UtilizationPerformanceIndex = structure(logical(0), tags = list(type = "integer")), ScalingStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["get_managed_scaling_policy_output"]]))
 }
 
 .emr$get_on_cluster_app_ui_presigned_url_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), OnClusterAppUIType = structure(logical(0), tags = list(type = "string")), ApplicationId = structure(logical(0), tags = list(type = "string")), DryRun = structure(logical(0), tags = list(type = "boolean")), ExecutionRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["get_on_cluster_app_ui_presigned_url_input"]]))
 }
 
 .emr$get_on_cluster_app_ui_presigned_url_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PresignedURLReady = structure(logical(0), tags = list(type = "boolean")), PresignedURL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["get_on_cluster_app_ui_presigned_url_output"]]))
 }
 
 .emr$get_persistent_app_ui_presigned_url_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PersistentAppUIId = structure(logical(0), tags = list(type = "string")), PersistentAppUIType = structure(logical(0), tags = list(type = "string")), ApplicationId = structure(logical(0), tags = list(type = "string")), AuthProxyCall = structure(logical(0), tags = list(type = "boolean")), ExecutionRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["get_persistent_app_ui_presigned_url_input"]]))
 }
 
 .emr$get_persistent_app_ui_presigned_url_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PresignedURLReady = structure(logical(0), tags = list(type = "boolean")), PresignedURL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["get_persistent_app_ui_presigned_url_output"]]))
+}
+
+.emr$get_session_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .emr_shapes[["get_session_input"]]))
+}
+
+.emr$get_session_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .emr_shapes[["get_session_output"]]))
+}
+
+.emr$get_session_endpoint_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .emr_shapes[["get_session_endpoint_input"]]))
+}
+
+.emr$get_session_endpoint_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .emr_shapes[["get_session_endpoint_output"]]))
 }
 
 .emr$get_studio_session_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StudioId = structure(logical(0), tags = list(type = "string")), IdentityId = structure(logical(0), tags = list(type = "string")), IdentityName = structure(logical(0), tags = list(type = "string")), IdentityType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["get_studio_session_mapping_input"]]))
 }
 
 .emr$get_studio_session_mapping_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SessionMapping = structure(list(StudioId = structure(logical(0), tags = list(type = "string")), IdentityId = structure(logical(0), tags = list(type = "string")), IdentityName = structure(logical(0), tags = list(type = "string")), IdentityType = structure(logical(0), tags = list(type = "string")), SessionPolicyArn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["get_studio_session_mapping_output"]]))
 }
 
 .emr$list_bootstrap_actions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_bootstrap_actions_input"]]))
 }
 
 .emr$list_bootstrap_actions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BootstrapActions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ScriptPath = structure(logical(0), tags = list(type = "string")), Args = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_bootstrap_actions_output"]]))
 }
 
 .emr$list_clusters_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreatedAfter = structure(logical(0), tags = list(type = "timestamp")), CreatedBefore = structure(logical(0), tags = list(type = "timestamp")), ClusterStates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_clusters_input"]]))
 }
 
 .emr$list_clusters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Clusters = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Timeline = structure(list(CreationDateTime = structure(logical(0), tags = list(type = "timestamp")), ReadyDateTime = structure(logical(0), tags = list(type = "timestamp")), EndDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ErrorDetails = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorData = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "list")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), NormalizedInstanceHours = structure(logical(0), tags = list(type = "integer")), ClusterArn = structure(logical(0), tags = list(type = "string")), OutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_clusters_output"]]))
 }
 
 .emr$list_instance_fleets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_instance_fleets_input"]]))
 }
 
 .emr$list_instance_fleets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceFleets = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Timeline = structure(list(CreationDateTime = structure(logical(0), tags = list(type = "timestamp")), ReadyDateTime = structure(logical(0), tags = list(type = "timestamp")), EndDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), InstanceFleetType = structure(logical(0), tags = list(type = "string")), TargetOnDemandCapacity = structure(logical(0), tags = list(type = "integer")), TargetSpotCapacity = structure(logical(0), tags = list(type = "integer")), ProvisionedOnDemandCapacity = structure(logical(0), tags = list(type = "integer")), ProvisionedSpotCapacity = structure(logical(0), tags = list(type = "integer")), InstanceTypeSpecifications = structure(list(structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), WeightedCapacity = structure(logical(0), tags = list(type = "integer")), BidPrice = structure(logical(0), tags = list(type = "string")), BidPriceAsPercentageOfOnDemandPrice = structure(logical(0), tags = list(type = "double")), Configurations = structure(list(structure(list(Classification = structure(logical(0), tags = list(type = "string")), Configurations = structure(logical(0), tags = list(type = "list")), Properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), EbsBlockDevices = structure(list(structure(list(VolumeSpecification = structure(list(VolumeType = structure(logical(0), tags = list(type = "string")), Iops = structure(logical(0), tags = list(type = "integer")), SizeInGB = structure(logical(0), tags = list(type = "integer")), Throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Device = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EbsOptimized = structure(logical(0), tags = list(type = "boolean")), CustomAmiId = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), LaunchSpecifications = structure(list(SpotSpecification = structure(list(TimeoutDurationMinutes = structure(logical(0), tags = list(type = "integer")), TimeoutAction = structure(logical(0), tags = list(type = "string")), BlockDurationMinutes = structure(logical(0), tags = list(type = "integer")), AllocationStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OnDemandSpecification = structure(list(AllocationStrategy = structure(logical(0), tags = list(type = "string")), CapacityReservationOptions = structure(list(UsageStrategy = structure(logical(0), tags = list(type = "string")), CapacityReservationPreference = structure(logical(0), tags = list(type = "string")), CapacityReservationResourceGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResizeSpecifications = structure(list(SpotResizeSpecification = structure(list(TimeoutDurationMinutes = structure(logical(0), tags = list(type = "integer")), AllocationStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OnDemandResizeSpecification = structure(list(TimeoutDurationMinutes = structure(logical(0), tags = list(type = "integer")), AllocationStrategy = structure(logical(0), tags = list(type = "string")), CapacityReservationOptions = structure(list(UsageStrategy = structure(logical(0), tags = list(type = "string")), CapacityReservationPreference = structure(logical(0), tags = list(type = "string")), CapacityReservationResourceGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Context = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_instance_fleets_output"]]))
 }
 
 .emr$list_instance_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_instance_groups_input"]]))
 }
 
 .emr$list_instance_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceGroups = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Market = structure(logical(0), tags = list(type = "string")), InstanceGroupType = structure(logical(0), tags = list(type = "string")), BidPrice = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), RequestedInstanceCount = structure(logical(0), tags = list(type = "integer")), RunningInstanceCount = structure(logical(0), tags = list(type = "integer")), Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Timeline = structure(list(CreationDateTime = structure(logical(0), tags = list(type = "timestamp")), ReadyDateTime = structure(logical(0), tags = list(type = "timestamp")), EndDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), Configurations = structure(list(structure(list(Classification = structure(logical(0), tags = list(type = "string")), Configurations = structure(logical(0), tags = list(type = "list")), Properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), ConfigurationsVersion = structure(logical(0), tags = list(type = "long")), LastSuccessfullyAppliedConfigurations = structure(list(structure(list(Classification = structure(logical(0), tags = list(type = "string")), Configurations = structure(logical(0), tags = list(type = "list")), Properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), LastSuccessfullyAppliedConfigurationsVersion = structure(logical(0), tags = list(type = "long")), EbsBlockDevices = structure(list(structure(list(VolumeSpecification = structure(list(VolumeType = structure(logical(0), tags = list(type = "string")), Iops = structure(logical(0), tags = list(type = "integer")), SizeInGB = structure(logical(0), tags = list(type = "integer")), Throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Device = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EbsOptimized = structure(logical(0), tags = list(type = "boolean")), ShrinkPolicy = structure(list(DecommissionTimeout = structure(logical(0), tags = list(type = "integer")), InstanceResizePolicy = structure(list(InstancesToTerminate = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstancesToProtect = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceTerminationTimeout = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), AutoScalingPolicy = structure(list(Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Constraints = structure(list(MinCapacity = structure(logical(0), tags = list(type = "integer")), MaxCapacity = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Rules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(list(Market = structure(logical(0), tags = list(type = "string")), SimpleScalingPolicyConfiguration = structure(list(AdjustmentType = structure(logical(0), tags = list(type = "string")), ScalingAdjustment = structure(logical(0), tags = list(type = "integer")), CoolDown = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), Trigger = structure(list(CloudWatchAlarmDefinition = structure(list(ComparisonOperator = structure(logical(0), tags = list(type = "string")), EvaluationPeriods = structure(logical(0), tags = list(type = "integer")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), Period = structure(logical(0), tags = list(type = "integer")), Statistic = structure(logical(0), tags = list(type = "string")), Threshold = structure(logical(0), tags = list(type = "double")), Unit = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CustomAmiId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_instance_groups_output"]]))
 }
 
 .emr$list_instances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), InstanceGroupId = structure(logical(0), tags = list(type = "string")), InstanceGroupTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceFleetId = structure(logical(0), tags = list(type = "string")), InstanceFleetType = structure(logical(0), tags = list(type = "string")), InstanceStates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_instances_input"]]))
 }
 
 .emr$list_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Instances = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Ec2InstanceId = structure(logical(0), tags = list(type = "string")), PublicDnsName = structure(logical(0), tags = list(type = "string")), PublicIpAddress = structure(logical(0), tags = list(type = "string")), PrivateDnsName = structure(logical(0), tags = list(type = "string")), PrivateIpAddress = structure(logical(0), tags = list(type = "string")), Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Timeline = structure(list(CreationDateTime = structure(logical(0), tags = list(type = "timestamp")), ReadyDateTime = structure(logical(0), tags = list(type = "timestamp")), EndDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), InstanceGroupId = structure(logical(0), tags = list(type = "string")), InstanceFleetId = structure(logical(0), tags = list(type = "string")), Market = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), EbsVolumes = structure(list(structure(list(Device = structure(logical(0), tags = list(type = "string")), VolumeId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_instances_output"]]))
 }
 
 .emr$list_notebook_executions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EditorId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), From = structure(logical(0), tags = list(type = "timestamp")), To = structure(logical(0), tags = list(type = "timestamp")), Marker = structure(logical(0), tags = list(type = "string")), ExecutionEngineId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_notebook_executions_input"]]))
 }
 
 .emr$list_notebook_executions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NotebookExecutions = structure(list(structure(list(NotebookExecutionId = structure(logical(0), tags = list(type = "string")), EditorId = structure(logical(0), tags = list(type = "string")), NotebookExecutionName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), NotebookS3Location = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutionEngineId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_notebook_executions_output"]]))
 }
 
 .emr$list_release_labels_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Filters = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), Application = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_release_labels_input"]]))
 }
 
 .emr$list_release_labels_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReleaseLabels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_release_labels_output"]]))
 }
 
 .emr$list_security_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_security_configurations_input"]]))
 }
 
 .emr$list_security_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecurityConfigurations = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), CreationDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_security_configurations_output"]]))
+}
+
+.emr$list_sessions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .emr_shapes[["list_sessions_input"]]))
+}
+
+.emr$list_sessions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .emr_shapes[["list_sessions_output"]]))
 }
 
 .emr$list_steps_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), StepStates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StepIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_steps_input"]]))
 }
 
 .emr$list_steps_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Steps = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Config = structure(list(Jar = structure(logical(0), tags = list(type = "string")), Properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), MainClass = structure(logical(0), tags = list(type = "string")), Args = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ActionOnFailure = structure(logical(0), tags = list(type = "string")), Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FailureDetails = structure(list(Reason = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), LogFile = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Timeline = structure(list(CreationDateTime = structure(logical(0), tags = list(type = "timestamp")), StartDateTime = structure(logical(0), tags = list(type = "timestamp")), EndDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), LogUri = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_steps_output"]]))
 }
 
 .emr$list_studio_session_mappings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StudioId = structure(logical(0), tags = list(type = "string")), IdentityType = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_studio_session_mappings_input"]]))
 }
 
 .emr$list_studio_session_mappings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SessionMappings = structure(list(structure(list(StudioId = structure(logical(0), tags = list(type = "string")), IdentityId = structure(logical(0), tags = list(type = "string")), IdentityName = structure(logical(0), tags = list(type = "string")), IdentityType = structure(logical(0), tags = list(type = "string")), SessionPolicyArn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_studio_session_mappings_output"]]))
 }
 
 .emr$list_studios_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_studios_input"]]))
 }
 
 .emr$list_studios_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Studios = structure(list(structure(list(StudioId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string")), AuthMode = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_studios_output"]]))
 }
 
 .emr$list_supported_instance_types_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReleaseLabel = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_supported_instance_types_input"]]))
 }
 
 .emr$list_supported_instance_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SupportedInstanceTypes = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), MemoryGB = structure(logical(0), tags = list(type = "float")), StorageGB = structure(logical(0), tags = list(type = "integer")), VCPU = structure(logical(0), tags = list(type = "integer")), Is64BitsOnly = structure(logical(0), tags = list(type = "boolean")), InstanceFamilyId = structure(logical(0), tags = list(type = "string")), EbsOptimizedAvailable = structure(logical(0), tags = list(type = "boolean")), EbsOptimizedByDefault = structure(logical(0), tags = list(type = "boolean")), NumberOfDisks = structure(logical(0), tags = list(type = "integer")), EbsStorageOnly = structure(logical(0), tags = list(type = "boolean")), Architecture = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["list_supported_instance_types_output"]]))
 }
 
 .emr$modify_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), StepConcurrencyLevel = structure(logical(0), tags = list(type = "integer")), ExtendedSupport = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["modify_cluster_input"]]))
 }
 
 .emr$modify_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StepConcurrencyLevel = structure(logical(0), tags = list(type = "integer")), ExtendedSupport = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["modify_cluster_output"]]))
 }
 
 .emr$modify_instance_fleet_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), InstanceFleet = structure(list(InstanceFleetId = structure(logical(0), tags = list(type = "string")), TargetOnDemandCapacity = structure(logical(0), tags = list(type = "integer")), TargetSpotCapacity = structure(logical(0), tags = list(type = "integer")), ResizeSpecifications = structure(list(SpotResizeSpecification = structure(list(TimeoutDurationMinutes = structure(logical(0), tags = list(type = "integer")), AllocationStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OnDemandResizeSpecification = structure(list(TimeoutDurationMinutes = structure(logical(0), tags = list(type = "integer")), AllocationStrategy = structure(logical(0), tags = list(type = "string")), CapacityReservationOptions = structure(list(UsageStrategy = structure(logical(0), tags = list(type = "string")), CapacityReservationPreference = structure(logical(0), tags = list(type = "string")), CapacityReservationResourceGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), InstanceTypeConfigs = structure(list(structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), WeightedCapacity = structure(logical(0), tags = list(type = "integer")), BidPrice = structure(logical(0), tags = list(type = "string")), BidPriceAsPercentageOfOnDemandPrice = structure(logical(0), tags = list(type = "double")), EbsConfiguration = structure(list(EbsBlockDeviceConfigs = structure(list(structure(list(VolumeSpecification = structure(list(VolumeType = structure(logical(0), tags = list(type = "string")), Iops = structure(logical(0), tags = list(type = "integer")), SizeInGB = structure(logical(0), tags = list(type = "integer")), Throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), VolumesPerInstance = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), EbsOptimized = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Configurations = structure(list(structure(list(Classification = structure(logical(0), tags = list(type = "string")), Configurations = structure(logical(0), tags = list(type = "list")), Properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), CustomAmiId = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), Context = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["modify_instance_fleet_input"]]))
 }
 
 .emr$modify_instance_fleet_output <- function(...) {
@@ -489,8 +441,7 @@ NULL
 
 .emr$modify_instance_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), InstanceGroups = structure(list(structure(list(InstanceGroupId = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), EC2InstanceIdsToTerminate = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ShrinkPolicy = structure(list(DecommissionTimeout = structure(logical(0), tags = list(type = "integer")), InstanceResizePolicy = structure(list(InstancesToTerminate = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstancesToProtect = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceTerminationTimeout = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), ReconfigurationType = structure(logical(0), tags = list(type = "string")), Configurations = structure(list(structure(list(Classification = structure(logical(0), tags = list(type = "string")), Configurations = structure(logical(0), tags = list(type = "list")), Properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["modify_instance_groups_input"]]))
 }
 
 .emr$modify_instance_groups_output <- function(...) {
@@ -499,116 +450,97 @@ NULL
 
 .emr$put_auto_scaling_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), InstanceGroupId = structure(logical(0), tags = list(type = "string")), AutoScalingPolicy = structure(list(Constraints = structure(list(MinCapacity = structure(logical(0), tags = list(type = "integer")), MaxCapacity = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Rules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(list(Market = structure(logical(0), tags = list(type = "string")), SimpleScalingPolicyConfiguration = structure(list(AdjustmentType = structure(logical(0), tags = list(type = "string")), ScalingAdjustment = structure(logical(0), tags = list(type = "integer")), CoolDown = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), Trigger = structure(list(CloudWatchAlarmDefinition = structure(list(ComparisonOperator = structure(logical(0), tags = list(type = "string")), EvaluationPeriods = structure(logical(0), tags = list(type = "integer")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), Period = structure(logical(0), tags = list(type = "integer")), Statistic = structure(logical(0), tags = list(type = "string")), Threshold = structure(logical(0), tags = list(type = "double")), Unit = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["put_auto_scaling_policy_input"]]))
 }
 
 .emr$put_auto_scaling_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), InstanceGroupId = structure(logical(0), tags = list(type = "string")), AutoScalingPolicy = structure(list(Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Constraints = structure(list(MinCapacity = structure(logical(0), tags = list(type = "integer")), MaxCapacity = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Rules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(list(Market = structure(logical(0), tags = list(type = "string")), SimpleScalingPolicyConfiguration = structure(list(AdjustmentType = structure(logical(0), tags = list(type = "string")), ScalingAdjustment = structure(logical(0), tags = list(type = "integer")), CoolDown = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), Trigger = structure(list(CloudWatchAlarmDefinition = structure(list(ComparisonOperator = structure(logical(0), tags = list(type = "string")), EvaluationPeriods = structure(logical(0), tags = list(type = "integer")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), Period = structure(logical(0), tags = list(type = "integer")), Statistic = structure(logical(0), tags = list(type = "string")), Threshold = structure(logical(0), tags = list(type = "double")), Unit = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ClusterArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["put_auto_scaling_policy_output"]]))
 }
 
 .emr$put_auto_termination_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), AutoTerminationPolicy = structure(list(IdleTimeout = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["put_auto_termination_policy_input"]]))
 }
 
 .emr$put_auto_termination_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["put_auto_termination_policy_output"]]))
 }
 
 .emr$put_block_public_access_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BlockPublicAccessConfiguration = structure(list(BlockPublicSecurityGroupRules = structure(logical(0), tags = list(type = "boolean")), PermittedPublicSecurityGroupRuleRanges = structure(list(structure(list(MinRange = structure(logical(0), tags = list(type = "integer")), MaxRange = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["put_block_public_access_configuration_input"]]))
 }
 
 .emr$put_block_public_access_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["put_block_public_access_configuration_output"]]))
 }
 
 .emr$put_managed_scaling_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), ManagedScalingPolicy = structure(list(ComputeLimits = structure(list(UnitType = structure(logical(0), tags = list(type = "string")), MinimumCapacityUnits = structure(logical(0), tags = list(type = "integer")), MaximumCapacityUnits = structure(logical(0), tags = list(type = "integer")), MaximumOnDemandCapacityUnits = structure(logical(0), tags = list(type = "integer")), MaximumCoreCapacityUnits = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), UtilizationPerformanceIndex = structure(logical(0), tags = list(type = "integer")), ScalingStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["put_managed_scaling_policy_input"]]))
 }
 
 .emr$put_managed_scaling_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["put_managed_scaling_policy_output"]]))
 }
 
 .emr$remove_auto_scaling_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), InstanceGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["remove_auto_scaling_policy_input"]]))
 }
 
 .emr$remove_auto_scaling_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["remove_auto_scaling_policy_output"]]))
 }
 
 .emr$remove_auto_termination_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["remove_auto_termination_policy_input"]]))
 }
 
 .emr$remove_auto_termination_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["remove_auto_termination_policy_output"]]))
 }
 
 .emr$remove_managed_scaling_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["remove_managed_scaling_policy_input"]]))
 }
 
 .emr$remove_managed_scaling_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["remove_managed_scaling_policy_output"]]))
 }
 
 .emr$remove_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["remove_tags_input"]]))
 }
 
 .emr$remove_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["remove_tags_output"]]))
 }
 
 .emr$run_job_flow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), LogUri = structure(logical(0), tags = list(type = "string")), LogEncryptionKmsKeyId = structure(logical(0), tags = list(type = "string")), AdditionalInfo = structure(logical(0), tags = list(type = "string")), AmiVersion = structure(logical(0), tags = list(type = "string")), ReleaseLabel = structure(logical(0), tags = list(type = "string")), Instances = structure(list(MasterInstanceType = structure(logical(0), tags = list(type = "string")), SlaveInstanceType = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), InstanceGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Market = structure(logical(0), tags = list(type = "string")), InstanceRole = structure(logical(0), tags = list(type = "string")), BidPrice = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), Configurations = structure(list(structure(list(Classification = structure(logical(0), tags = list(type = "string")), Configurations = structure(logical(0), tags = list(type = "list")), Properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), EbsConfiguration = structure(list(EbsBlockDeviceConfigs = structure(list(structure(list(VolumeSpecification = structure(list(VolumeType = structure(logical(0), tags = list(type = "string")), Iops = structure(logical(0), tags = list(type = "integer")), SizeInGB = structure(logical(0), tags = list(type = "integer")), Throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), VolumesPerInstance = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), EbsOptimized = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AutoScalingPolicy = structure(list(Constraints = structure(list(MinCapacity = structure(logical(0), tags = list(type = "integer")), MaxCapacity = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Rules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(list(Market = structure(logical(0), tags = list(type = "string")), SimpleScalingPolicyConfiguration = structure(list(AdjustmentType = structure(logical(0), tags = list(type = "string")), ScalingAdjustment = structure(logical(0), tags = list(type = "integer")), CoolDown = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), Trigger = structure(list(CloudWatchAlarmDefinition = structure(list(ComparisonOperator = structure(logical(0), tags = list(type = "string")), EvaluationPeriods = structure(logical(0), tags = list(type = "integer")), MetricName = structure(logical(0), tags = list(type = "string")), Namespace = structure(logical(0), tags = list(type = "string")), Period = structure(logical(0), tags = list(type = "integer")), Statistic = structure(logical(0), tags = list(type = "string")), Threshold = structure(logical(0), tags = list(type = "double")), Unit = structure(logical(0), tags = list(type = "string")), Dimensions = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CustomAmiId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), InstanceFleets = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), InstanceFleetType = structure(logical(0), tags = list(type = "string")), TargetOnDemandCapacity = structure(logical(0), tags = list(type = "integer")), TargetSpotCapacity = structure(logical(0), tags = list(type = "integer")), InstanceTypeConfigs = structure(list(structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), WeightedCapacity = structure(logical(0), tags = list(type = "integer")), BidPrice = structure(logical(0), tags = list(type = "string")), BidPriceAsPercentageOfOnDemandPrice = structure(logical(0), tags = list(type = "double")), EbsConfiguration = structure(list(EbsBlockDeviceConfigs = structure(list(structure(list(VolumeSpecification = structure(list(VolumeType = structure(logical(0), tags = list(type = "string")), Iops = structure(logical(0), tags = list(type = "integer")), SizeInGB = structure(logical(0), tags = list(type = "integer")), Throughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), VolumesPerInstance = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), EbsOptimized = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Configurations = structure(list(structure(list(Classification = structure(logical(0), tags = list(type = "string")), Configurations = structure(logical(0), tags = list(type = "list")), Properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), CustomAmiId = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), LaunchSpecifications = structure(list(SpotSpecification = structure(list(TimeoutDurationMinutes = structure(logical(0), tags = list(type = "integer")), TimeoutAction = structure(logical(0), tags = list(type = "string")), BlockDurationMinutes = structure(logical(0), tags = list(type = "integer")), AllocationStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OnDemandSpecification = structure(list(AllocationStrategy = structure(logical(0), tags = list(type = "string")), CapacityReservationOptions = structure(list(UsageStrategy = structure(logical(0), tags = list(type = "string")), CapacityReservationPreference = structure(logical(0), tags = list(type = "string")), CapacityReservationResourceGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResizeSpecifications = structure(list(SpotResizeSpecification = structure(list(TimeoutDurationMinutes = structure(logical(0), tags = list(type = "integer")), AllocationStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OnDemandResizeSpecification = structure(list(TimeoutDurationMinutes = structure(logical(0), tags = list(type = "integer")), AllocationStrategy = structure(logical(0), tags = list(type = "string")), CapacityReservationOptions = structure(list(UsageStrategy = structure(logical(0), tags = list(type = "string")), CapacityReservationPreference = structure(logical(0), tags = list(type = "string")), CapacityReservationResourceGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Context = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Ec2KeyName = structure(logical(0), tags = list(type = "string")), Placement = structure(list(AvailabilityZone = structure(logical(0), tags = list(type = "string")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), KeepJobFlowAliveWhenNoSteps = structure(logical(0), tags = list(type = "boolean")), TerminationProtected = structure(logical(0), tags = list(type = "boolean")), UnhealthyNodeReplacement = structure(logical(0), tags = list(type = "boolean")), HadoopVersion = structure(logical(0), tags = list(type = "string")), Ec2SubnetId = structure(logical(0), tags = list(type = "string")), Ec2SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EmrManagedMasterSecurityGroup = structure(logical(0), tags = list(type = "string")), EmrManagedSlaveSecurityGroup = structure(logical(0), tags = list(type = "string")), ServiceAccessSecurityGroup = structure(logical(0), tags = list(type = "string")), AdditionalMasterSecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AdditionalSlaveSecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Steps = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ActionOnFailure = structure(logical(0), tags = list(type = "string")), HadoopJarStep = structure(list(Properties = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Jar = structure(logical(0), tags = list(type = "string")), MainClass = structure(logical(0), tags = list(type = "string")), Args = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), StepMonitoringConfiguration = structure(list(S3MonitoringConfiguration = structure(list(LogUri = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), StepExecutionRoleArn = structure(logical(0), tags = list(type = "string")), BootstrapActions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ScriptBootstrapAction = structure(list(Path = structure(logical(0), tags = list(type = "string")), Args = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), SupportedProducts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NewSupportedProducts = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Args = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Applications = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), Args = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AdditionalInfo = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), Configurations = structure(list(structure(list(Classification = structure(logical(0), tags = list(type = "string")), Configurations = structure(logical(0), tags = list(type = "list")), Properties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), VisibleToAllUsers = structure(logical(0), tags = list(type = "boolean")), JobFlowRole = structure(logical(0), tags = list(type = "string")), ServiceRole = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SecurityConfiguration = structure(logical(0), tags = list(type = "string")), AutoScalingRole = structure(logical(0), tags = list(type = "string")), ScaleDownBehavior = structure(logical(0), tags = list(type = "string")), CustomAmiId = structure(logical(0), tags = list(type = "string")), EbsRootVolumeSize = structure(logical(0), tags = list(type = "integer")), RepoUpgradeOnBoot = structure(logical(0), tags = list(type = "string")), KerberosAttributes = structure(list(Realm = structure(logical(0), tags = list(type = "string")), KdcAdminPassword = structure(logical(0), tags = list(type = "string")), CrossRealmTrustPrincipalPassword = structure(logical(0), tags = list(type = "string")), ADDomainJoinUser = structure(logical(0), tags = list(type = "string")), ADDomainJoinPassword = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StepConcurrencyLevel = structure(logical(0), tags = list(type = "integer")), ManagedScalingPolicy = structure(list(ComputeLimits = structure(list(UnitType = structure(logical(0), tags = list(type = "string")), MinimumCapacityUnits = structure(logical(0), tags = list(type = "integer")), MaximumCapacityUnits = structure(logical(0), tags = list(type = "integer")), MaximumOnDemandCapacityUnits = structure(logical(0), tags = list(type = "integer")), MaximumCoreCapacityUnits = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), UtilizationPerformanceIndex = structure(logical(0), tags = list(type = "integer")), ScalingStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PlacementGroupConfigs = structure(list(structure(list(InstanceRole = structure(logical(0), tags = list(type = "string")), PlacementStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AutoTerminationPolicy = structure(list(IdleTimeout = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), OSReleaseLabel = structure(logical(0), tags = list(type = "string")), EbsRootVolumeIops = structure(logical(0), tags = list(type = "integer")), EbsRootVolumeThroughput = structure(logical(0), tags = list(type = "integer")), ExtendedSupport = structure(logical(0), tags = list(type = "boolean")), MonitoringConfiguration = structure(list(CloudWatchLogConfiguration = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), LogGroupName = structure(logical(0), tags = list(type = "string")), LogStreamNamePrefix = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string")), LogTypes = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), S3LoggingConfiguration = structure(list(LogTypeUploadPolicy = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["run_job_flow_input"]]))
 }
 
 .emr$run_job_flow_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobFlowId = structure(logical(0), tags = list(type = "string")), ClusterArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["run_job_flow_output"]]))
 }
 
 .emr$set_keep_job_flow_alive_when_no_steps_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobFlowIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KeepJobFlowAliveWhenNoSteps = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["set_keep_job_flow_alive_when_no_steps_input"]]))
 }
 
 .emr$set_keep_job_flow_alive_when_no_steps_output <- function(...) {
@@ -617,8 +549,7 @@ NULL
 
 .emr$set_termination_protection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobFlowIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TerminationProtected = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["set_termination_protection_input"]]))
 }
 
 .emr$set_termination_protection_output <- function(...) {
@@ -627,8 +558,7 @@ NULL
 
 .emr$set_unhealthy_node_replacement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobFlowIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), UnhealthyNodeReplacement = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["set_unhealthy_node_replacement_input"]]))
 }
 
 .emr$set_unhealthy_node_replacement_output <- function(...) {
@@ -637,8 +567,7 @@ NULL
 
 .emr$set_visible_to_all_users_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobFlowIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), VisibleToAllUsers = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["set_visible_to_all_users_input"]]))
 }
 
 .emr$set_visible_to_all_users_output <- function(...) {
@@ -647,20 +576,27 @@ NULL
 
 .emr$start_notebook_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EditorId = structure(logical(0), tags = list(type = "string")), RelativePath = structure(logical(0), tags = list(type = "string")), NotebookExecutionName = structure(logical(0), tags = list(type = "string")), NotebookParams = structure(logical(0), tags = list(type = "string")), ExecutionEngine = structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), MasterInstanceSecurityGroupId = structure(logical(0), tags = list(type = "string")), ExecutionRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ServiceRole = structure(logical(0), tags = list(type = "string")), NotebookInstanceSecurityGroupId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NotebookS3Location = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputNotebookS3Location = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputNotebookFormat = structure(logical(0), tags = list(type = "string")), EnvironmentVariables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["start_notebook_execution_input"]]))
 }
 
 .emr$start_notebook_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NotebookExecutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["start_notebook_execution_output"]]))
+}
+
+.emr$start_session_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .emr_shapes[["start_session_input"]]))
+}
+
+.emr$start_session_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .emr_shapes[["start_session_output"]]))
 }
 
 .emr$stop_notebook_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NotebookExecutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["stop_notebook_execution_input"]]))
 }
 
 .emr$stop_notebook_execution_output <- function(...) {
@@ -669,18 +605,26 @@ NULL
 
 .emr$terminate_job_flows_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobFlowIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["terminate_job_flows_input"]]))
 }
 
 .emr$terminate_job_flows_output <- function(...) {
   list()
 }
 
+.emr$terminate_session_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .emr_shapes[["terminate_session_input"]]))
+}
+
+.emr$terminate_session_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .emr_shapes[["terminate_session_output"]]))
+}
+
 .emr$update_studio_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StudioId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DefaultS3Location = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["update_studio_input"]]))
 }
 
 .emr$update_studio_output <- function(...) {
@@ -689,8 +633,7 @@ NULL
 
 .emr$update_studio_session_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StudioId = structure(logical(0), tags = list(type = "string")), IdentityId = structure(logical(0), tags = list(type = "string")), IdentityName = structure(logical(0), tags = list(type = "string")), IdentityType = structure(logical(0), tags = list(type = "string")), SessionPolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .emr_shapes[["update_studio_session_mapping_input"]]))
 }
 
 .emr$update_studio_session_mapping_output <- function(...) {

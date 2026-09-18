@@ -5,32 +5,27 @@ NULL
 
 .acmpca$create_certificate_authority_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityConfiguration = structure(list(KeyAlgorithm = structure(logical(0), tags = list(type = "string")), SigningAlgorithm = structure(logical(0), tags = list(type = "string")), Subject = structure(list(Country = structure(logical(0), tags = list(type = "string")), Organization = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), DistinguishedNameQualifier = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), CommonName = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), Locality = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Surname = structure(logical(0), tags = list(type = "string")), GivenName = structure(logical(0), tags = list(type = "string")), Initials = structure(logical(0), tags = list(type = "string")), Pseudonym = structure(logical(0), tags = list(type = "string")), GenerationQualifier = structure(logical(0), tags = list(type = "string")), CustomAttributes = structure(list(structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CsrExtensions = structure(list(KeyUsage = structure(list(DigitalSignature = structure(logical(0), tags = list(type = "boolean")), NonRepudiation = structure(logical(0), tags = list(type = "boolean")), KeyEncipherment = structure(logical(0), tags = list(type = "boolean")), DataEncipherment = structure(logical(0), tags = list(type = "boolean")), KeyAgreement = structure(logical(0), tags = list(type = "boolean")), KeyCertSign = structure(logical(0), tags = list(type = "boolean")), CRLSign = structure(logical(0), tags = list(type = "boolean")), EncipherOnly = structure(logical(0), tags = list(type = "boolean")), DecipherOnly = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), SubjectInformationAccess = structure(list(structure(list(AccessMethod = structure(list(CustomObjectIdentifier = structure(logical(0), tags = list(type = "string")), AccessMethodType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessLocation = structure(list(OtherName = structure(list(TypeId = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Rfc822Name = structure(logical(0), tags = list(type = "string")), DnsName = structure(logical(0), tags = list(type = "string")), DirectoryName = structure(list(Country = structure(logical(0), tags = list(type = "string")), Organization = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), DistinguishedNameQualifier = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), CommonName = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), Locality = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Surname = structure(logical(0), tags = list(type = "string")), GivenName = structure(logical(0), tags = list(type = "string")), Initials = structure(logical(0), tags = list(type = "string")), Pseudonym = structure(logical(0), tags = list(type = "string")), GenerationQualifier = structure(logical(0), tags = list(type = "string")), CustomAttributes = structure(list(structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EdiPartyName = structure(list(PartyName = structure(logical(0), tags = list(type = "string")), NameAssigner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UniformResourceIdentifier = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), RegisteredId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), RevocationConfiguration = structure(list(CrlConfiguration = structure(list(Enabled = structure(logical(0), tags = list(box = TRUE, type = "boolean")), ExpirationInDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), CustomCname = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), S3ObjectAcl = structure(logical(0), tags = list(type = "string")), CrlDistributionPointExtensionConfiguration = structure(list(OmitExtension = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure")), CrlType = structure(logical(0), tags = list(type = "string")), CustomPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OcspConfiguration = structure(list(Enabled = structure(logical(0), tags = list(box = TRUE, type = "boolean")), OcspCustomCname = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), CertificateAuthorityType = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(type = "string")), KeyStorageSecurityStandard = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UsageMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["create_certificate_authority_input"]]))
 }
 
 .acmpca$create_certificate_authority_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["create_certificate_authority_output"]]))
 }
 
 .acmpca$create_certificate_authority_audit_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), AuditReportResponseFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["create_certificate_authority_audit_report_input"]]))
 }
 
 .acmpca$create_certificate_authority_audit_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuditReportId = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["create_certificate_authority_audit_report_output"]]))
 }
 
 .acmpca$create_permission_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), Principal = structure(logical(0), tags = list(type = "string")), SourceAccount = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["create_permission_input"]]))
 }
 
 .acmpca$create_permission_output <- function(...) {
@@ -39,8 +34,7 @@ NULL
 
 .acmpca$delete_certificate_authority_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), PermanentDeletionTimeInDays = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["delete_certificate_authority_input"]]))
 }
 
 .acmpca$delete_certificate_authority_output <- function(...) {
@@ -49,8 +43,7 @@ NULL
 
 .acmpca$delete_permission_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), Principal = structure(logical(0), tags = list(type = "string")), SourceAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["delete_permission_input"]]))
 }
 
 .acmpca$delete_permission_output <- function(...) {
@@ -59,8 +52,7 @@ NULL
 
 .acmpca$delete_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["delete_policy_input"]]))
 }
 
 .acmpca$delete_policy_output <- function(...) {
@@ -69,80 +61,67 @@ NULL
 
 .acmpca$describe_certificate_authority_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["describe_certificate_authority_input"]]))
 }
 
 .acmpca$describe_certificate_authority_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthority = structure(list(Arn = structure(logical(0), tags = list(type = "string")), OwnerAccount = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastStateChangeAt = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string")), Serial = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), NotBefore = structure(logical(0), tags = list(type = "timestamp")), NotAfter = structure(logical(0), tags = list(type = "timestamp")), FailureReason = structure(logical(0), tags = list(type = "string")), CertificateAuthorityConfiguration = structure(list(KeyAlgorithm = structure(logical(0), tags = list(type = "string")), SigningAlgorithm = structure(logical(0), tags = list(type = "string")), Subject = structure(list(Country = structure(logical(0), tags = list(type = "string")), Organization = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), DistinguishedNameQualifier = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), CommonName = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), Locality = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Surname = structure(logical(0), tags = list(type = "string")), GivenName = structure(logical(0), tags = list(type = "string")), Initials = structure(logical(0), tags = list(type = "string")), Pseudonym = structure(logical(0), tags = list(type = "string")), GenerationQualifier = structure(logical(0), tags = list(type = "string")), CustomAttributes = structure(list(structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CsrExtensions = structure(list(KeyUsage = structure(list(DigitalSignature = structure(logical(0), tags = list(type = "boolean")), NonRepudiation = structure(logical(0), tags = list(type = "boolean")), KeyEncipherment = structure(logical(0), tags = list(type = "boolean")), DataEncipherment = structure(logical(0), tags = list(type = "boolean")), KeyAgreement = structure(logical(0), tags = list(type = "boolean")), KeyCertSign = structure(logical(0), tags = list(type = "boolean")), CRLSign = structure(logical(0), tags = list(type = "boolean")), EncipherOnly = structure(logical(0), tags = list(type = "boolean")), DecipherOnly = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), SubjectInformationAccess = structure(list(structure(list(AccessMethod = structure(list(CustomObjectIdentifier = structure(logical(0), tags = list(type = "string")), AccessMethodType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessLocation = structure(list(OtherName = structure(list(TypeId = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Rfc822Name = structure(logical(0), tags = list(type = "string")), DnsName = structure(logical(0), tags = list(type = "string")), DirectoryName = structure(list(Country = structure(logical(0), tags = list(type = "string")), Organization = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), DistinguishedNameQualifier = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), CommonName = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), Locality = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Surname = structure(logical(0), tags = list(type = "string")), GivenName = structure(logical(0), tags = list(type = "string")), Initials = structure(logical(0), tags = list(type = "string")), Pseudonym = structure(logical(0), tags = list(type = "string")), GenerationQualifier = structure(logical(0), tags = list(type = "string")), CustomAttributes = structure(list(structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EdiPartyName = structure(list(PartyName = structure(logical(0), tags = list(type = "string")), NameAssigner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UniformResourceIdentifier = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), RegisteredId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), RevocationConfiguration = structure(list(CrlConfiguration = structure(list(Enabled = structure(logical(0), tags = list(box = TRUE, type = "boolean")), ExpirationInDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), CustomCname = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), S3ObjectAcl = structure(logical(0), tags = list(type = "string")), CrlDistributionPointExtensionConfiguration = structure(list(OmitExtension = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure")), CrlType = structure(logical(0), tags = list(type = "string")), CustomPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OcspConfiguration = structure(list(Enabled = structure(logical(0), tags = list(box = TRUE, type = "boolean")), OcspCustomCname = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), RestorableUntil = structure(logical(0), tags = list(type = "timestamp")), KeyStorageSecurityStandard = structure(logical(0), tags = list(type = "string")), UsageMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["describe_certificate_authority_output"]]))
 }
 
 .acmpca$describe_certificate_authority_audit_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), AuditReportId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["describe_certificate_authority_audit_report_input"]]))
 }
 
 .acmpca$describe_certificate_authority_audit_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AuditReportStatus = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["describe_certificate_authority_audit_report_output"]]))
 }
 
 .acmpca$get_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), CertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["get_certificate_input"]]))
 }
 
 .acmpca$get_certificate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Certificate = structure(logical(0), tags = list(type = "string")), CertificateChain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["get_certificate_output"]]))
 }
 
 .acmpca$get_certificate_authority_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["get_certificate_authority_certificate_input"]]))
 }
 
 .acmpca$get_certificate_authority_certificate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Certificate = structure(logical(0), tags = list(type = "string")), CertificateChain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["get_certificate_authority_certificate_output"]]))
 }
 
 .acmpca$get_certificate_authority_csr_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["get_certificate_authority_csr_input"]]))
 }
 
 .acmpca$get_certificate_authority_csr_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Csr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["get_certificate_authority_csr_output"]]))
 }
 
 .acmpca$get_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["get_policy_input"]]))
 }
 
 .acmpca$get_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["get_policy_output"]]))
 }
 
 .acmpca$import_certificate_authority_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), Certificate = structure(logical(0), tags = list(type = "blob")), CertificateChain = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["import_certificate_authority_certificate_input"]]))
 }
 
 .acmpca$import_certificate_authority_certificate_output <- function(...) {
@@ -151,56 +130,47 @@ NULL
 
 .acmpca$issue_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApiPassthrough = structure(list(Extensions = structure(list(CertificatePolicies = structure(list(structure(list(CertPolicyId = structure(logical(0), tags = list(type = "string")), PolicyQualifiers = structure(list(structure(list(PolicyQualifierId = structure(logical(0), tags = list(type = "string")), Qualifier = structure(list(CpsUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ExtendedKeyUsage = structure(list(structure(list(ExtendedKeyUsageType = structure(logical(0), tags = list(type = "string")), ExtendedKeyUsageObjectIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), KeyUsage = structure(list(DigitalSignature = structure(logical(0), tags = list(type = "boolean")), NonRepudiation = structure(logical(0), tags = list(type = "boolean")), KeyEncipherment = structure(logical(0), tags = list(type = "boolean")), DataEncipherment = structure(logical(0), tags = list(type = "boolean")), KeyAgreement = structure(logical(0), tags = list(type = "boolean")), KeyCertSign = structure(logical(0), tags = list(type = "boolean")), CRLSign = structure(logical(0), tags = list(type = "boolean")), EncipherOnly = structure(logical(0), tags = list(type = "boolean")), DecipherOnly = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), SubjectAlternativeNames = structure(list(structure(list(OtherName = structure(list(TypeId = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Rfc822Name = structure(logical(0), tags = list(type = "string")), DnsName = structure(logical(0), tags = list(type = "string")), DirectoryName = structure(list(Country = structure(logical(0), tags = list(type = "string")), Organization = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), DistinguishedNameQualifier = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), CommonName = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), Locality = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Surname = structure(logical(0), tags = list(type = "string")), GivenName = structure(logical(0), tags = list(type = "string")), Initials = structure(logical(0), tags = list(type = "string")), Pseudonym = structure(logical(0), tags = list(type = "string")), GenerationQualifier = structure(logical(0), tags = list(type = "string")), CustomAttributes = structure(list(structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EdiPartyName = structure(list(PartyName = structure(logical(0), tags = list(type = "string")), NameAssigner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UniformResourceIdentifier = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), RegisteredId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CustomExtensions = structure(list(structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Critical = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Subject = structure(list(Country = structure(logical(0), tags = list(type = "string")), Organization = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), DistinguishedNameQualifier = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), CommonName = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), Locality = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Surname = structure(logical(0), tags = list(type = "string")), GivenName = structure(logical(0), tags = list(type = "string")), Initials = structure(logical(0), tags = list(type = "string")), Pseudonym = structure(logical(0), tags = list(type = "string")), GenerationQualifier = structure(logical(0), tags = list(type = "string")), CustomAttributes = structure(list(structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), Csr = structure(logical(0), tags = list(type = "blob")), SigningAlgorithm = structure(logical(0), tags = list(type = "string")), TemplateArn = structure(logical(0), tags = list(type = "string")), Validity = structure(list(Value = structure(logical(0), tags = list(type = "long", box = TRUE)), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ValidityNotBefore = structure(list(Value = structure(logical(0), tags = list(type = "long", box = TRUE)), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IdempotencyToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["issue_certificate_input"]]))
 }
 
 .acmpca$issue_certificate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["issue_certificate_output"]]))
 }
 
 .acmpca$list_certificate_authorities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), ResourceOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["list_certificate_authorities_input"]]))
 }
 
 .acmpca$list_certificate_authorities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), CertificateAuthorities = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), OwnerAccount = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastStateChangeAt = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string")), Serial = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), NotBefore = structure(logical(0), tags = list(type = "timestamp")), NotAfter = structure(logical(0), tags = list(type = "timestamp")), FailureReason = structure(logical(0), tags = list(type = "string")), CertificateAuthorityConfiguration = structure(list(KeyAlgorithm = structure(logical(0), tags = list(type = "string")), SigningAlgorithm = structure(logical(0), tags = list(type = "string")), Subject = structure(list(Country = structure(logical(0), tags = list(type = "string")), Organization = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), DistinguishedNameQualifier = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), CommonName = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), Locality = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Surname = structure(logical(0), tags = list(type = "string")), GivenName = structure(logical(0), tags = list(type = "string")), Initials = structure(logical(0), tags = list(type = "string")), Pseudonym = structure(logical(0), tags = list(type = "string")), GenerationQualifier = structure(logical(0), tags = list(type = "string")), CustomAttributes = structure(list(structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), CsrExtensions = structure(list(KeyUsage = structure(list(DigitalSignature = structure(logical(0), tags = list(type = "boolean")), NonRepudiation = structure(logical(0), tags = list(type = "boolean")), KeyEncipherment = structure(logical(0), tags = list(type = "boolean")), DataEncipherment = structure(logical(0), tags = list(type = "boolean")), KeyAgreement = structure(logical(0), tags = list(type = "boolean")), KeyCertSign = structure(logical(0), tags = list(type = "boolean")), CRLSign = structure(logical(0), tags = list(type = "boolean")), EncipherOnly = structure(logical(0), tags = list(type = "boolean")), DecipherOnly = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), SubjectInformationAccess = structure(list(structure(list(AccessMethod = structure(list(CustomObjectIdentifier = structure(logical(0), tags = list(type = "string")), AccessMethodType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessLocation = structure(list(OtherName = structure(list(TypeId = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Rfc822Name = structure(logical(0), tags = list(type = "string")), DnsName = structure(logical(0), tags = list(type = "string")), DirectoryName = structure(list(Country = structure(logical(0), tags = list(type = "string")), Organization = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), DistinguishedNameQualifier = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), CommonName = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), Locality = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Surname = structure(logical(0), tags = list(type = "string")), GivenName = structure(logical(0), tags = list(type = "string")), Initials = structure(logical(0), tags = list(type = "string")), Pseudonym = structure(logical(0), tags = list(type = "string")), GenerationQualifier = structure(logical(0), tags = list(type = "string")), CustomAttributes = structure(list(structure(list(ObjectIdentifier = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EdiPartyName = structure(list(PartyName = structure(logical(0), tags = list(type = "string")), NameAssigner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UniformResourceIdentifier = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), RegisteredId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), RevocationConfiguration = structure(list(CrlConfiguration = structure(list(Enabled = structure(logical(0), tags = list(box = TRUE, type = "boolean")), ExpirationInDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), CustomCname = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), S3ObjectAcl = structure(logical(0), tags = list(type = "string")), CrlDistributionPointExtensionConfiguration = structure(list(OmitExtension = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure")), CrlType = structure(logical(0), tags = list(type = "string")), CustomPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OcspConfiguration = structure(list(Enabled = structure(logical(0), tags = list(box = TRUE, type = "boolean")), OcspCustomCname = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), RestorableUntil = structure(logical(0), tags = list(type = "timestamp")), KeyStorageSecurityStandard = structure(logical(0), tags = list(type = "string")), UsageMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["list_certificate_authorities_output"]]))
 }
 
 .acmpca$list_permissions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["list_permissions_input"]]))
 }
 
 .acmpca$list_permissions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Principal = structure(logical(0), tags = list(type = "string")), SourceAccount = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["list_permissions_output"]]))
 }
 
 .acmpca$list_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["list_tags_input"]]))
 }
 
 .acmpca$list_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["list_tags_output"]]))
 }
 
 .acmpca$put_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["put_policy_input"]]))
 }
 
 .acmpca$put_policy_output <- function(...) {
@@ -209,8 +179,7 @@ NULL
 
 .acmpca$restore_certificate_authority_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["restore_certificate_authority_input"]]))
 }
 
 .acmpca$restore_certificate_authority_output <- function(...) {
@@ -219,8 +188,7 @@ NULL
 
 .acmpca$revoke_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), CertificateSerial = structure(logical(0), tags = list(type = "string")), RevocationReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["revoke_certificate_input"]]))
 }
 
 .acmpca$revoke_certificate_output <- function(...) {
@@ -229,8 +197,7 @@ NULL
 
 .acmpca$tag_certificate_authority_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["tag_certificate_authority_input"]]))
 }
 
 .acmpca$tag_certificate_authority_output <- function(...) {
@@ -239,8 +206,7 @@ NULL
 
 .acmpca$untag_certificate_authority_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["untag_certificate_authority_input"]]))
 }
 
 .acmpca$untag_certificate_authority_output <- function(...) {
@@ -249,8 +215,7 @@ NULL
 
 .acmpca$update_certificate_authority_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), RevocationConfiguration = structure(list(CrlConfiguration = structure(list(Enabled = structure(logical(0), tags = list(box = TRUE, type = "boolean")), ExpirationInDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), CustomCname = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), S3ObjectAcl = structure(logical(0), tags = list(type = "string")), CrlDistributionPointExtensionConfiguration = structure(list(OmitExtension = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure")), CrlType = structure(logical(0), tags = list(type = "string")), CustomPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OcspConfiguration = structure(list(Enabled = structure(logical(0), tags = list(box = TRUE, type = "boolean")), OcspCustomCname = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .acmpca_shapes[["update_certificate_authority_input"]]))
 }
 
 .acmpca$update_certificate_authority_output <- function(...) {

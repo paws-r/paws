@@ -5,420 +5,350 @@ NULL
 
 .ram$accept_resource_share_invitation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareInvitationArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["accept_resource_share_invitation_input"]]))
 }
 
 .ram$accept_resource_share_invitation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareInvitation = structure(list(resourceShareInvitationArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), resourceShareArn = structure(logical(0), tags = list(type = "string")), senderAccountId = structure(logical(0), tags = list(type = "string")), receiverAccountId = structure(logical(0), tags = list(type = "string")), invitationTimestamp = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "This member has been deprecated. Use ListPendingInvitationResources.", type = "list")), receiverArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["accept_resource_share_invitation_output"]]))
 }
 
 .ram$associate_resource_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["associate_resource_share_input"]]))
 }
 
 .ram$associate_resource_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["associate_resource_share_output"]]))
 }
 
 .ram$associate_resource_share_permission_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), permissionArn = structure(logical(0), tags = list(type = "string")), replace = structure(logical(0), tags = list(type = "boolean")), clientToken = structure(logical(0), tags = list(type = "string")), permissionVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["associate_resource_share_permission_input"]]))
 }
 
 .ram$associate_resource_share_permission_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(returnValue = structure(logical(0), tags = list(type = "boolean")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["associate_resource_share_permission_output"]]))
 }
 
 .ram$create_permission_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), policyTemplate = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["create_permission_input"]]))
 }
 
 .ram$create_permission_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(permission = structure(list(arn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), defaultVersion = structure(logical(0), tags = list(type = "boolean")), name = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), isResourceTypeDefault = structure(logical(0), tags = list(type = "boolean")), permissionType = structure(logical(0), tags = list(type = "string")), featureSet = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["create_permission_output"]]))
 }
 
 .ram$create_permission_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(permissionArn = structure(logical(0), tags = list(type = "string")), policyTemplate = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["create_permission_version_input"]]))
 }
 
 .ram$create_permission_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(permission = structure(list(arn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), defaultVersion = structure(logical(0), tags = list(type = "boolean")), name = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), permission = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), isResourceTypeDefault = structure(logical(0), tags = list(type = "boolean")), permissionType = structure(logical(0), tags = list(type = "string")), featureSet = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["create_permission_version_output"]]))
 }
 
 .ram$create_resource_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), allowExternalPrincipals = structure(logical(0), tags = list(type = "boolean")), clientToken = structure(logical(0), tags = list(type = "string")), permissionArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceShareConfiguration = structure(list(retainSharingOnAccountLeaveOrganization = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["create_resource_share_input"]]))
 }
 
 .ram$create_resource_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShare = structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), owningAccountId = structure(logical(0), tags = list(type = "string")), allowExternalPrincipals = structure(logical(0), tags = list(type = "boolean")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), featureSet = structure(logical(0), tags = list(type = "string")), resourceShareConfiguration = structure(list(retainSharingOnAccountLeaveOrganization = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["create_resource_share_output"]]))
 }
 
 .ram$delete_permission_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(permissionArn = structure(logical(0), tags = list(location = "querystring", locationName = "permissionArn", type = "string")), clientToken = structure(logical(0), tags = list(location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["delete_permission_input"]]))
 }
 
 .ram$delete_permission_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(returnValue = structure(logical(0), tags = list(type = "boolean")), clientToken = structure(logical(0), tags = list(type = "string")), permissionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["delete_permission_output"]]))
 }
 
 .ram$delete_permission_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(permissionArn = structure(logical(0), tags = list(location = "querystring", locationName = "permissionArn", type = "string")), permissionVersion = structure(logical(0), tags = list(location = "querystring", locationName = "permissionVersion", type = "integer")), clientToken = structure(logical(0), tags = list(location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["delete_permission_version_input"]]))
 }
 
 .ram$delete_permission_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(returnValue = structure(logical(0), tags = list(type = "boolean")), clientToken = structure(logical(0), tags = list(type = "string")), permissionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["delete_permission_version_output"]]))
 }
 
 .ram$delete_resource_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceShareArn", type = "string")), clientToken = structure(logical(0), tags = list(location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["delete_resource_share_input"]]))
 }
 
 .ram$delete_resource_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(returnValue = structure(logical(0), tags = list(type = "boolean")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["delete_resource_share_output"]]))
 }
 
 .ram$disassociate_resource_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["disassociate_resource_share_input"]]))
 }
 
 .ram$disassociate_resource_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["disassociate_resource_share_output"]]))
 }
 
 .ram$disassociate_resource_share_permission_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), permissionArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["disassociate_resource_share_permission_input"]]))
 }
 
 .ram$disassociate_resource_share_permission_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(returnValue = structure(logical(0), tags = list(type = "boolean")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["disassociate_resource_share_permission_output"]]))
 }
 
 .ram$enable_sharing_with_aws_organization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["enable_sharing_with_aws_organization_input"]]))
 }
 
 .ram$enable_sharing_with_aws_organization_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(returnValue = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["enable_sharing_with_aws_organization_output"]]))
 }
 
 .ram$get_permission_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(permissionArn = structure(logical(0), tags = list(type = "string")), permissionVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["get_permission_input"]]))
 }
 
 .ram$get_permission_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(permission = structure(list(arn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), defaultVersion = structure(logical(0), tags = list(type = "boolean")), name = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), permission = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), isResourceTypeDefault = structure(logical(0), tags = list(type = "boolean")), permissionType = structure(logical(0), tags = list(type = "string")), featureSet = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["get_permission_output"]]))
 }
 
 .ram$get_resource_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), principal = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["get_resource_policies_input"]]))
 }
 
 .ram$get_resource_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["get_resource_policies_output"]]))
 }
 
 .ram$get_resource_share_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(associationType = structure(logical(0), tags = list(type = "string")), resourceShareArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceArn = structure(logical(0), tags = list(type = "string")), principal = structure(logical(0), tags = list(type = "string")), associationStatus = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["get_resource_share_associations_input"]]))
 }
 
 .ram$get_resource_share_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["get_resource_share_associations_output"]]))
 }
 
 .ram$get_resource_share_invitations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareInvitationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceShareArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["get_resource_share_invitations_input"]]))
 }
 
 .ram$get_resource_share_invitations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareInvitations = structure(list(structure(list(resourceShareInvitationArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), resourceShareArn = structure(logical(0), tags = list(type = "string")), senderAccountId = structure(logical(0), tags = list(type = "string")), receiverAccountId = structure(logical(0), tags = list(type = "string")), invitationTimestamp = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "This member has been deprecated. Use ListPendingInvitationResources.", type = "list")), receiverArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["get_resource_share_invitations_output"]]))
 }
 
 .ram$get_resource_shares_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceShareStatus = structure(logical(0), tags = list(type = "string")), resourceOwner = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), tagFilters = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), permissionArn = structure(logical(0), tags = list(type = "string")), permissionVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["get_resource_shares_input"]]))
 }
 
 .ram$get_resource_shares_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShares = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), owningAccountId = structure(logical(0), tags = list(type = "string")), allowExternalPrincipals = structure(logical(0), tags = list(type = "boolean")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), featureSet = structure(logical(0), tags = list(type = "string")), resourceShareConfiguration = structure(list(retainSharingOnAccountLeaveOrganization = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["get_resource_shares_output"]]))
 }
 
 .ram$list_pending_invitation_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareInvitationArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), resourceRegionScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_pending_invitation_resources_input"]]))
 }
 
 .ram$list_pending_invitation_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resources = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceGroupArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), resourceRegionScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_pending_invitation_resources_output"]]))
 }
 
 .ram$list_permission_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(permissionArn = structure(logical(0), tags = list(type = "string")), permissionVersion = structure(logical(0), tags = list(type = "integer")), associationStatus = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), featureSet = structure(logical(0), tags = list(type = "string")), defaultVersion = structure(logical(0), tags = list(type = "boolean")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_permission_associations_input"]]))
 }
 
 .ram$list_permission_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(permissions = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), permissionVersion = structure(logical(0), tags = list(type = "string")), defaultVersion = structure(logical(0), tags = list(type = "boolean")), resourceType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), featureSet = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), resourceShareArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_permission_associations_output"]]))
 }
 
 .ram$list_permission_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(permissionArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_permission_versions_input"]]))
 }
 
 .ram$list_permission_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(permissions = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), defaultVersion = structure(logical(0), tags = list(type = "boolean")), name = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), isResourceTypeDefault = structure(logical(0), tags = list(type = "boolean")), permissionType = structure(logical(0), tags = list(type = "string")), featureSet = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_permission_versions_output"]]))
 }
 
 .ram$list_permissions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceType = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), permissionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_permissions_input"]]))
 }
 
 .ram$list_permissions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(permissions = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), defaultVersion = structure(logical(0), tags = list(type = "boolean")), name = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), isResourceTypeDefault = structure(logical(0), tags = list(type = "boolean")), permissionType = structure(logical(0), tags = list(type = "string")), featureSet = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_permissions_output"]]))
 }
 
 .ram$list_principals_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceOwner = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceType = structure(logical(0), tags = list(type = "string")), resourceShareArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_principals_input"]]))
 }
 
 .ram$list_principals_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(principals = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), resourceShareArn = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_principals_output"]]))
 }
 
 .ram$list_replace_permission_associations_work_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_replace_permission_associations_work_input"]]))
 }
 
 .ram$list_replace_permission_associations_work_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(replacePermissionAssociationsWorks = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), fromPermissionArn = structure(logical(0), tags = list(type = "string")), fromPermissionVersion = structure(logical(0), tags = list(type = "string")), toPermissionArn = structure(logical(0), tags = list(type = "string")), toPermissionVersion = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_replace_permission_associations_work_output"]]))
 }
 
 .ram$list_resource_share_permissions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_resource_share_permissions_input"]]))
 }
 
 .ram$list_resource_share_permissions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(permissions = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), defaultVersion = structure(logical(0), tags = list(type = "boolean")), name = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), isResourceTypeDefault = structure(logical(0), tags = list(type = "boolean")), permissionType = structure(logical(0), tags = list(type = "string")), featureSet = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_resource_share_permissions_output"]]))
 }
 
 .ram$list_resource_types_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), resourceRegionScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_resource_types_input"]]))
 }
 
 .ram$list_resource_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceTypes = structure(list(structure(list(resourceType = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string")), resourceRegionScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_resource_types_output"]]))
 }
 
 .ram$list_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceOwner = structure(logical(0), tags = list(type = "string")), principal = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceShareArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), resourceRegionScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_resources_input"]]))
 }
 
 .ram$list_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resources = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceGroupArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), resourceRegionScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_resources_output"]]))
 }
 
 .ram$list_source_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sourceId = structure(logical(0), tags = list(type = "string")), sourceType = structure(logical(0), tags = list(type = "string")), associationStatus = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_source_associations_input"]]))
 }
 
 .ram$list_source_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(sourceAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), sourceId = structure(logical(0), tags = list(type = "string")), sourceType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), creationTime = structure(logical(0), tags = list(type = "timestamp")), statusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["list_source_associations_output"]]))
 }
 
 .ram$promote_permission_created_from_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(permissionArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["promote_permission_created_from_policy_input"]]))
 }
 
 .ram$promote_permission_created_from_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(permission = structure(list(arn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), defaultVersion = structure(logical(0), tags = list(type = "boolean")), name = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), isResourceTypeDefault = structure(logical(0), tags = list(type = "boolean")), permissionType = structure(logical(0), tags = list(type = "string")), featureSet = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["promote_permission_created_from_policy_output"]]))
 }
 
 .ram$promote_resource_share_created_from_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceShareArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["promote_resource_share_created_from_policy_input"]]))
 }
 
 .ram$promote_resource_share_created_from_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(returnValue = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["promote_resource_share_created_from_policy_output"]]))
 }
 
 .ram$reject_resource_share_invitation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareInvitationArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["reject_resource_share_invitation_input"]]))
 }
 
 .ram$reject_resource_share_invitation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareInvitation = structure(list(resourceShareInvitationArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), resourceShareArn = structure(logical(0), tags = list(type = "string")), senderAccountId = structure(logical(0), tags = list(type = "string")), receiverAccountId = structure(logical(0), tags = list(type = "string")), invitationTimestamp = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), resourceShareAssociations = structure(list(structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceShareName = structure(logical(0), tags = list(type = "string")), associatedEntity = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), external = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "This member has been deprecated. Use ListPendingInvitationResources.", type = "list")), receiverArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["reject_resource_share_invitation_output"]]))
 }
 
 .ram$replace_permission_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(fromPermissionArn = structure(logical(0), tags = list(type = "string")), fromPermissionVersion = structure(logical(0), tags = list(type = "integer")), toPermissionArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["replace_permission_associations_input"]]))
 }
 
 .ram$replace_permission_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(replacePermissionAssociationsWork = structure(list(id = structure(logical(0), tags = list(type = "string")), fromPermissionArn = structure(logical(0), tags = list(type = "string")), fromPermissionVersion = structure(logical(0), tags = list(type = "string")), toPermissionArn = structure(logical(0), tags = list(type = "string")), toPermissionVersion = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["replace_permission_associations_output"]]))
 }
 
 .ram$set_default_permission_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(permissionArn = structure(logical(0), tags = list(type = "string")), permissionVersion = structure(logical(0), tags = list(type = "integer")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["set_default_permission_version_input"]]))
 }
 
 .ram$set_default_permission_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(returnValue = structure(logical(0), tags = list(type = "boolean")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["set_default_permission_version_output"]]))
 }
 
 .ram$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["tag_resource_input"]]))
 }
 
 .ram$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["tag_resource_output"]]))
 }
 
 .ram$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["untag_resource_input"]]))
 }
 
 .ram$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["untag_resource_output"]]))
 }
 
 .ram$update_resource_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), allowExternalPrincipals = structure(logical(0), tags = list(type = "boolean")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["update_resource_share_input"]]))
 }
 
 .ram$update_resource_share_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShare = structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), owningAccountId = structure(logical(0), tags = list(type = "string")), allowExternalPrincipals = structure(logical(0), tags = list(type = "boolean")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), featureSet = structure(logical(0), tags = list(type = "string")), resourceShareConfiguration = structure(list(retainSharingOnAccountLeaveOrganization = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ram_shapes[["update_resource_share_output"]]))
 }

@@ -540,7 +540,7 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #' list(
 #'   output = list(
 #'     message = list(
-#'       role = "user"|"assistant",
+#'       role = "user"|"assistant"|"system",
 #'       content = list(
 #'         list(
 #'           text = "string",
@@ -753,6 +753,20 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'             ),
 #'             citations = list(
 #'               enabled = TRUE|FALSE
+#'             )
+#'           ),
+#'           toolAddition = list(
+#'             tool = list(
+#'               type = "string",
+#'               name = "string",
+#'               serverName = "string"
+#'             )
+#'           ),
+#'           toolRemoval = list(
+#'             tool = list(
+#'               type = "string",
+#'               name = "string",
+#'               serverName = "string"
 #'             )
 #'           )
 #'         )
@@ -1537,7 +1551,7 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'   modelId = "string",
 #'   messages = list(
 #'     list(
-#'       role = "user"|"assistant",
+#'       role = "user"|"assistant"|"system",
 #'       content = list(
 #'         list(
 #'           text = "string",
@@ -1751,6 +1765,20 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'             citations = list(
 #'               enabled = TRUE|FALSE
 #'             )
+#'           ),
+#'           toolAddition = list(
+#'             tool = list(
+#'               type = "string",
+#'               name = "string",
+#'               serverName = "string"
+#'             )
+#'           ),
+#'           toolRemoval = list(
+#'             tool = list(
+#'               type = "string",
+#'               name = "string",
+#'               serverName = "string"
+#'             )
 #'           )
 #'         )
 #'       )
@@ -1848,7 +1876,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'           description = "string"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     effort = "string"
 #'   )
 #' )
 #' ```
@@ -1950,7 +1979,7 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #' list(
 #'   stream = list(
 #'     messageStart = list(
-#'       role = "user"|"assistant"
+#'       role = "user"|"assistant"|"system"
 #'     ),
 #'     contentBlockStart = list(
 #'       start = list(
@@ -2840,7 +2869,7 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'   modelId = "string",
 #'   messages = list(
 #'     list(
-#'       role = "user"|"assistant",
+#'       role = "user"|"assistant"|"system",
 #'       content = list(
 #'         list(
 #'           text = "string",
@@ -3054,6 +3083,20 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'             citations = list(
 #'               enabled = TRUE|FALSE
 #'             )
+#'           ),
+#'           toolAddition = list(
+#'             tool = list(
+#'               type = "string",
+#'               name = "string",
+#'               serverName = "string"
+#'             )
+#'           ),
+#'           toolRemoval = list(
+#'             tool = list(
+#'               type = "string",
+#'               name = "string",
+#'               serverName = "string"
+#'             )
 #'           )
 #'         )
 #'       )
@@ -3152,7 +3195,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'           description = "string"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     effort = "string"
 #'   )
 #' )
 #' ```
@@ -3235,7 +3279,7 @@ bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NU
 #'     converse = list(
 #'       messages = list(
 #'         list(
-#'           role = "user"|"assistant",
+#'           role = "user"|"assistant"|"system",
 #'           content = list(
 #'             list(
 #'               text = "string",
@@ -3449,6 +3493,20 @@ bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NU
 #'                 citations = list(
 #'                   enabled = TRUE|FALSE
 #'                 )
+#'               ),
+#'               toolAddition = list(
+#'                 tool = list(
+#'                   type = "string",
+#'                   name = "string",
+#'                   serverName = "string"
+#'                 )
+#'               ),
+#'               toolRemoval = list(
+#'                 tool = list(
+#'                   type = "string",
+#'                   name = "string",
+#'                   serverName = "string"
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -3603,6 +3661,129 @@ bedrockruntime_get_async_invoke <- function(invocationArn) {
   return(response)
 }
 .bedrockruntime$operations$get_async_invoke <- bedrockruntime_get_async_invoke
+
+#' Evaluates messages against inline guardrail checks
+#'
+#' @description
+#' Evaluates messages against inline guardrail checks. You specify the check configurations directly in the request, and Amazon Bedrock returns per-check results with severity or confidence scores.
+#'
+#' @usage
+#' bedrockruntime_invoke_guardrail_checks(messages, checks)
+#'
+#' @param messages &#91;required&#93; The messages to evaluate against the specified guardrail checks. Each message includes a role and one or more content blocks.
+#' @param checks &#91;required&#93; The inline check configurations that specify which guardrail checks to run against the messages.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   results = list(
+#'     contentFilter = list(
+#'       results = list(
+#'         list(
+#'           category = "VIOLENCE"|"HATE"|"SEXUAL"|"MISCONDUCT"|"INSULTS",
+#'           severityScore = 123.0
+#'         )
+#'       )
+#'     ),
+#'     promptAttack = list(
+#'       results = list(
+#'         list(
+#'           category = "JAILBREAK"|"PROMPT_INJECTION"|"PROMPT_LEAKAGE",
+#'           severityScore = 123.0
+#'         )
+#'       )
+#'     ),
+#'     sensitiveInformation = list(
+#'       results = list(
+#'         list(
+#'           type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER",
+#'           confidenceScore = 123.0,
+#'           beginOffset = 123,
+#'           endOffset = 123,
+#'           messageIndex = 123,
+#'           contentIndex = 123
+#'         )
+#'       ),
+#'       truncated = TRUE|FALSE
+#'     )
+#'   ),
+#'   usage = list(
+#'     contentFilter = list(
+#'       textUnits = 123
+#'     ),
+#'     promptAttack = list(
+#'       textUnits = 123
+#'     ),
+#'     sensitiveInformation = list(
+#'       textUnits = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$invoke_guardrail_checks(
+#'   messages = list(
+#'     list(
+#'       role = "user"|"assistant"|"system",
+#'       content = list(
+#'         list(
+#'           text = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   checks = list(
+#'     contentFilter = list(
+#'       categories = list(
+#'         list(
+#'           category = "VIOLENCE"|"HATE"|"SEXUAL"|"MISCONDUCT"|"INSULTS"
+#'         )
+#'       )
+#'     ),
+#'     promptAttack = list(
+#'       categories = list(
+#'         list(
+#'           category = "JAILBREAK"|"PROMPT_INJECTION"|"PROMPT_LEAKAGE"
+#'         )
+#'       )
+#'     ),
+#'     sensitiveInformation = list(
+#'       entities = list(
+#'         list(
+#'           type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockruntime_invoke_guardrail_checks
+#'
+#' @aliases bedrockruntime_invoke_guardrail_checks
+bedrockruntime_invoke_guardrail_checks <- function(messages, checks) {
+  op <- new_operation(
+    name = "InvokeGuardrailChecks",
+    http_method = "POST",
+    http_path = "/guardrail-checks/invoke",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockruntime$invoke_guardrail_checks_input(messages = messages, checks = checks)
+  output <- .bedrockruntime$invoke_guardrail_checks_output()
+  config <- get_config()
+  svc <- .bedrockruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockruntime$operations$invoke_guardrail_checks <- bedrockruntime_invoke_guardrail_checks
 
 #' Invokes the specified Amazon Bedrock model to run inference using the
 #' prompt and inference parameters provided in the request body

@@ -9,7 +9,8 @@ cloudformation_delete_stack(
   RetainResources = NULL,
   RoleARN = NULL,
   ClientRequestToken = NULL,
-  DeletionMode = NULL
+  DeletionMode = NULL,
+  DeploymentConfig = NULL
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ In the console, stack operations display the client request token on the Events 
 \item \code{STANDARD} - Use the standard behavior. Specifying this value is the same as not specifying this parameter.
 \item \code{FORCE_DELETE_STACK} - Delete the stack if it's stuck in a \code{DELETE_FAILED} state due to resource deletion failure.
 }}
+
+\item{DeploymentConfig}{The deployment configuration for this stack operation, including the deployment mode.}
 }
 \description{
 Deletes a specified stack. Once the call completes successfully, stack deletion starts. Deleted stacks don't show up in the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} operation if the deletion has been completed successfully.

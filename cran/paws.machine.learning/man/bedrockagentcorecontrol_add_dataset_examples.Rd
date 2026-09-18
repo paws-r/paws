@@ -18,7 +18,7 @@ bedrockagentcorecontrol_add_dataset_examples(
 \item{source}{[required] Source of examples to add. Provide either inline examples or an S3 URI pointing to a JSONL file.}
 }
 \description{
-Adds examples to the dataset's DRAFT.
+Adds examples to the dataset's DRAFT. All examples are validated against the dataset's schema type before any writes occur. If any example fails validation, the entire batch is rejected (all-or-nothing semantics).
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_add_dataset_examples/} for full documentation.
 }

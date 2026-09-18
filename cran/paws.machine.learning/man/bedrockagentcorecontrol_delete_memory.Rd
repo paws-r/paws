@@ -12,7 +12,7 @@ bedrockagentcorecontrol_delete_memory(clientToken = NULL, memoryId)
 \item{memoryId}{[required] The unique identifier of the memory to delete.}
 }
 \description{
-Deletes an Amazon Bedrock AgentCore Memory resource.
+Deletes an Amazon Bedrock AgentCore Memory resource. When you delete a memory resource, it is permanently removed.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_delete_memory/} for full documentation.
 }

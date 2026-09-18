@@ -53,9 +53,13 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Well-Architected Tool
+Amazon Web Services Well-Architected
 
-This is the \emph{Well-Architected Tool API Reference}. The WA Tool API provides programmatic access to the \href{https://aws.amazon.com/well-architected-tool/}{Well-Architected Tool} in the Amazon Web Services Management Console. For information about the Well-Architected Tool, see the \href{https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html}{Well-Architected Tool User Guide}.
+Amazon Web Services Well-Architected helps you evaluate your architectures against Amazon Web Services best practices across operational excellence, security, reliability, performance efficiency, cost optimization, and sustainability. The service includes the Amazon Web Services Well-Architected Agent for AI-powered recommendations tailored to your specific environment, and the \href{https://aws.amazon.com/well-architected-tool/}{Well-Architected Tool} for conducting reviews and tracking improvements.
+
+This is the \emph{Amazon Web Services Well-Architected API Reference}. Through this API, you can programmatically access personalized recommendations and automation scripts from the Amazon Web Services Well-Architected Agent, and create and manage workloads, conduct lens reviews, track milestones, manage custom lenses, share workloads across accounts, and manage profiles with the Well-Architected Tool.
+
+For more information about the service, see the \href{https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html}{Amazon Web Services Well-Architected User Guide}.
 }
 \section{Service syntax}{
 
@@ -98,6 +102,9 @@ This is the \emph{Well-Architected Tool API Reference}. The WA Tool API provides
 \tabular{ll}{
 \link[paws.developer.tools:wellarchitected_associate_lenses]{associate_lenses} \tab Associate a lens to a workload\cr
 \link[paws.developer.tools:wellarchitected_associate_profiles]{associate_profiles} \tab Associate a profile with a workload\cr
+\link[paws.developer.tools:wellarchitected_create_agent_context]{create_agent_context} \tab Creates a context associated with an optimization profile\cr
+\link[paws.developer.tools:wellarchitected_create_agent_goal]{create_agent_goal} \tab Creates an optimization goal associated with a profile\cr
+\link[paws.developer.tools:wellarchitected_create_agent_profile]{create_agent_profile} \tab Creates an optimization profile that defines the scope and configuration for generating recommendations\cr
 \link[paws.developer.tools:wellarchitected_create_lens_share]{create_lens_share} \tab Create a lens share\cr
 \link[paws.developer.tools:wellarchitected_create_lens_version]{create_lens_version} \tab Create a new lens version\cr
 \link[paws.developer.tools:wellarchitected_create_milestone]{create_milestone} \tab Create a milestone for an existing workload\cr
@@ -107,6 +114,9 @@ This is the \emph{Well-Architected Tool API Reference}. The WA Tool API provides
 \link[paws.developer.tools:wellarchitected_create_template_share]{create_template_share} \tab Create a review template share\cr
 \link[paws.developer.tools:wellarchitected_create_workload]{create_workload} \tab Create a new workload\cr
 \link[paws.developer.tools:wellarchitected_create_workload_share]{create_workload_share} \tab Create a workload share\cr
+\link[paws.developer.tools:wellarchitected_delete_agent_context]{delete_agent_context} \tab Deletes a context associated with a profile\cr
+\link[paws.developer.tools:wellarchitected_delete_agent_goal]{delete_agent_goal} \tab Deletes an optimization goal from a profile\cr
+\link[paws.developer.tools:wellarchitected_delete_agent_profile]{delete_agent_profile} \tab Deletes an optimization profile and its associated configuration\cr
 \link[paws.developer.tools:wellarchitected_delete_lens]{delete_lens} \tab Delete an existing lens\cr
 \link[paws.developer.tools:wellarchitected_delete_lens_share]{delete_lens_share} \tab Delete a lens share\cr
 \link[paws.developer.tools:wellarchitected_delete_profile]{delete_profile} \tab Delete a profile\cr
@@ -118,6 +128,11 @@ This is the \emph{Well-Architected Tool API Reference}. The WA Tool API provides
 \link[paws.developer.tools:wellarchitected_disassociate_lenses]{disassociate_lenses} \tab Disassociate a lens from a workload\cr
 \link[paws.developer.tools:wellarchitected_disassociate_profiles]{disassociate_profiles} \tab Disassociate a profile from a workload\cr
 \link[paws.developer.tools:wellarchitected_export_lens]{export_lens} \tab Export an existing lens\cr
+\link[paws.developer.tools:wellarchitected_get_agent_context]{get_agent_context} \tab Retrieves detailed information about a specific context associated with a profile\cr
+\link[paws.developer.tools:wellarchitected_get_agent_goal]{get_agent_goal} \tab Retrieves detailed information about a specific optimization goal\cr
+\link[paws.developer.tools:wellarchitected_get_agent_profile]{get_agent_profile} \tab Retrieves detailed information about an optimization profile, including its configuration and metadata\cr
+\link[paws.developer.tools:wellarchitected_get_agent_recommendation]{get_agent_recommendation} \tab Retrieves detailed information about a specific optimization recommendation, including its impact analysis, content, and implementation guidance\cr
+\link[paws.developer.tools:wellarchitected_get_agent_recommendation_generation]{get_agent_recommendation_generation} \tab Retrieves information about a recommendation generation process, including its status, progress, and results\cr
 \link[paws.developer.tools:wellarchitected_get_answer]{get_answer} \tab Get the answer to a specific question in a workload review\cr
 \link[paws.developer.tools:wellarchitected_get_consolidated_report]{get_consolidated_report} \tab Get a consolidated report of your workloads\cr
 \link[paws.developer.tools:wellarchitected_get_global_settings]{get_global_settings} \tab Global settings for all workloads\cr
@@ -133,6 +148,12 @@ This is the \emph{Well-Architected Tool API Reference}. The WA Tool API provides
 \link[paws.developer.tools:wellarchitected_get_review_template_lens_review]{get_review_template_lens_review} \tab Get a lens review associated with a review template\cr
 \link[paws.developer.tools:wellarchitected_get_workload]{get_workload} \tab Get an existing workload\cr
 \link[paws.developer.tools:wellarchitected_import_lens]{import_lens} \tab Import a new custom lens or update an existing custom lens\cr
+\link[paws.developer.tools:wellarchitected_list_agent_contexts]{list_agent_contexts} \tab Lists contexts associated with a profile\cr
+\link[paws.developer.tools:wellarchitected_list_agent_goals]{list_agent_goals} \tab Lists optimization goals associated with a specified profile\cr
+\link[paws.developer.tools:wellarchitected_list_agent_profiles]{list_agent_profiles} \tab Lists optimization profiles in your account\cr
+\link[paws.developer.tools:wellarchitected_list_agent_recommendation_generations]{list_agent_recommendation_generations} \tab Lists recommendation generation processes for a specified profile\cr
+\link[paws.developer.tools:wellarchitected_list_agent_recommendation_items]{list_agent_recommendation_items} \tab Lists recommendation items for a specific recommendation\cr
+\link[paws.developer.tools:wellarchitected_list_agent_recommendations]{list_agent_recommendations} \tab Lists active optimization recommendations for a specified profile with optional filtering by state\cr
 \link[paws.developer.tools:wellarchitected_list_answers]{list_answers} \tab List of answers for a particular workload and lens\cr
 \link[paws.developer.tools:wellarchitected_list_check_details]{list_check_details} \tab List of Trusted Advisor check details by account related to the workload\cr
 \link[paws.developer.tools:wellarchitected_list_check_summaries]{list_check_summaries} \tab List of Trusted Advisor checks summarized for all accounts related to the workload\cr
@@ -152,8 +173,14 @@ This is the \emph{Well-Architected Tool API Reference}. The WA Tool API provides
 \link[paws.developer.tools:wellarchitected_list_template_shares]{list_template_shares} \tab List review template shares\cr
 \link[paws.developer.tools:wellarchitected_list_workloads]{list_workloads} \tab Paginated list of workloads\cr
 \link[paws.developer.tools:wellarchitected_list_workload_shares]{list_workload_shares} \tab List the workload shares associated with the workload\cr
+\link[paws.developer.tools:wellarchitected_put_agent_recommendation_feedback]{put_agent_recommendation_feedback} \tab Submits user feedback on a recommendation to help improve future optimization suggestions and track implementation outcomes\cr
+\link[paws.developer.tools:wellarchitected_start_agent_recommendation_generation]{start_agent_recommendation_generation} \tab Initiates a new recommendation generation process for the specified optimization profile\cr
 \link[paws.developer.tools:wellarchitected_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource\cr
 \link[paws.developer.tools:wellarchitected_untag_resource]{untag_resource} \tab Deletes specified tags from a resource\cr
+\link[paws.developer.tools:wellarchitected_update_agent_context]{update_agent_context} \tab Updates an existing context associated with a profile\cr
+\link[paws.developer.tools:wellarchitected_update_agent_goal]{update_agent_goal} \tab Updates the pillars and title of an existing goal associated with a profile\cr
+\link[paws.developer.tools:wellarchitected_update_agent_profile]{update_agent_profile} \tab Updates an existing optimization profile's configuration, including its pillars, execution role, and aggregation settings\cr
+\link[paws.developer.tools:wellarchitected_update_agent_recommendation_status]{update_agent_recommendation_status} \tab Updates the status of a recommendation to track its progress through the implementation lifecycle\cr
 \link[paws.developer.tools:wellarchitected_update_answer]{update_answer} \tab Update the answer to a specific question in a workload review\cr
 \link[paws.developer.tools:wellarchitected_update_global_settings]{update_global_settings} \tab Update whether the Amazon Web Services account is opted into organization sharing and discovery integration features\cr
 \link[paws.developer.tools:wellarchitected_update_integration]{update_integration} \tab Update integration features\cr

@@ -14,7 +14,8 @@ customerprofiles_get_profile_recommendations(
   RecommenderPromotionalFilters = NULL,
   CandidateIds = NULL,
   MaxResults = NULL,
-  MetadataConfig = NULL
+  MetadataConfig = NULL,
+  DiversityConfig = NULL
 )
 }
 \arguments{
@@ -35,6 +36,8 @@ customerprofiles_get_profile_recommendations(
 \item{MaxResults}{The maximum number of recommendations to return. The default value is 10.}
 
 \item{MetadataConfig}{Configuration for including item metadata in the recommendation response. Use this to specify which metadata columns to return alongside recommended items.}
+
+\item{DiversityConfig}{Runtime diversity configuration for this request. Enables diversity-aware recommendations and optionally supplies values for placeholder-based diversity caps configured on the recommender.}
 }
 \description{
 Fetches the recommendations for a profile in the input Customer Profiles domain. Fetches all the profile recommendations

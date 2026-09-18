@@ -137,6 +137,7 @@ NULL
 #'  \link[=securityhub_create_automation_rule]{create_automation_rule} \tab Creates an automation rule based on input parameters\cr
 #'  \link[=securityhub_create_automation_rule_v2]{create_automation_rule_v2} \tab Creates a V2 automation rule\cr
 #'  \link[=securityhub_create_configuration_policy]{create_configuration_policy} \tab Creates a configuration policy with the defined configuration\cr
+#'  \link[=securityhub_create_connector]{create_connector} \tab Creates a connector to a third-party cloud provider in Security Hub CSPM\cr
 #'  \link[=securityhub_create_connector_v2]{create_connector_v2} \tab Grants permission to create a connectorV2 based on input parameters\cr
 #'  \link[=securityhub_create_finding_aggregator]{create_finding_aggregator} \tab The aggregation Region is now called the home Region\cr
 #'  \link[=securityhub_create_insight]{create_insight} \tab Creates a custom insight in Security Hub CSPM\cr
@@ -147,6 +148,7 @@ NULL
 #'  \link[=securityhub_delete_aggregator_v2]{delete_aggregator_v2} \tab Deletes the Aggregator V2\cr
 #'  \link[=securityhub_delete_automation_rule_v2]{delete_automation_rule_v2} \tab Deletes a V2 automation rule\cr
 #'  \link[=securityhub_delete_configuration_policy]{delete_configuration_policy} \tab Deletes a configuration policy\cr
+#'  \link[=securityhub_delete_connector]{delete_connector} \tab Deletes a CSPM connector\cr
 #'  \link[=securityhub_delete_connector_v2]{delete_connector_v2} \tab Grants permission to delete a connectorV2\cr
 #'  \link[=securityhub_delete_finding_aggregator]{delete_finding_aggregator} \tab The aggregation Region is now called the home Region\cr
 #'  \link[=securityhub_delete_insight]{delete_insight} \tab Deletes the insight specified by the InsightArn\cr
@@ -163,6 +165,7 @@ NULL
 #'  \link[=securityhub_disable_import_findings_for_product]{disable_import_findings_for_product} \tab Disables the integration of the specified product with Security Hub CSPM\cr
 #'  \link[=securityhub_disable_organization_admin_account]{disable_organization_admin_account} \tab Disables a Security Hub CSPM administrator account\cr
 #'  \link[=securityhub_disable_security_hub]{disable_security_hub} \tab Disables Security Hub CSPM in your account only in the current Amazon Web Services Region\cr
+#'  \link[=securityhub_disable_security_hub_feature_v2]{disable_security_hub_feature_v2} \tab Disables an opt-in feature for the calling account in the current Amazon Web Services Region\cr
 #'  \link[=securityhub_disable_security_hub_v2]{disable_security_hub_v2} \tab Disable the service for the current Amazon Web Services Region or specified Amazon Web Services Region\cr
 #'  \link[=securityhub_disassociate_from_administrator_account]{disassociate_from_administrator_account} \tab Disassociates the current Security Hub CSPM member account from the associated administrator account\cr
 #'  \link[=securityhub_disassociate_from_master_account]{disassociate_from_master_account} \tab This method is deprecated\cr
@@ -170,6 +173,7 @@ NULL
 #'  \link[=securityhub_enable_import_findings_for_product]{enable_import_findings_for_product} \tab Enables the integration of a partner product with Security Hub CSPM\cr
 #'  \link[=securityhub_enable_organization_admin_account]{enable_organization_admin_account} \tab Designates the Security Hub CSPM administrator account for an organization\cr
 #'  \link[=securityhub_enable_security_hub]{enable_security_hub} \tab Enables Security Hub CSPM for your account in the current Region or the Region you specify in the request\cr
+#'  \link[=securityhub_enable_security_hub_feature_v2]{enable_security_hub_feature_v2} \tab Enables an opt-in feature for the calling account in the current Amazon Web Services Region\cr
 #'  \link[=securityhub_enable_security_hub_v2]{enable_security_hub_v2} \tab Enables the service in account for the current Amazon Web Services Region or specified Amazon Web Services Region\cr
 #'  \link[=securityhub_generate_recommended_policy_v2]{generate_recommended_policy_v2} \tab Begins the recommended policy generation to remediate a Security Hub finding\cr
 #'  \link[=securityhub_get_administrator_account]{get_administrator_account} \tab Provides the details for the Security Hub CSPM administrator account for the current member account\cr
@@ -177,6 +181,7 @@ NULL
 #'  \link[=securityhub_get_automation_rule_v2]{get_automation_rule_v2} \tab Returns an automation rule for the V2 service\cr
 #'  \link[=securityhub_get_configuration_policy]{get_configuration_policy} \tab Provides information about a configuration policy\cr
 #'  \link[=securityhub_get_configuration_policy_association]{get_configuration_policy_association} \tab Returns the association between a configuration and a target account, organizational unit, or the root\cr
+#'  \link[=securityhub_get_connector]{get_connector} \tab Retrieves details for a CSPM connector based on the connector ID\cr
 #'  \link[=securityhub_get_connector_v2]{get_connector_v2} \tab Grants permission to retrieve details for a connectorV2 based on connector id\cr
 #'  \link[=securityhub_get_enabled_standards]{get_enabled_standards} \tab Returns a list of the standards that are currently enabled\cr
 #'  \link[=securityhub_get_finding_aggregator]{get_finding_aggregator} \tab The aggregation Region is now called the home Region\cr
@@ -201,9 +206,11 @@ NULL
 #'  \link[=securityhub_list_automation_rules_v2]{list_automation_rules_v2} \tab Returns a list of automation rules and metadata for the calling account\cr
 #'  \link[=securityhub_list_configuration_policies]{list_configuration_policies} \tab Lists the configuration policies that the Security Hub CSPM delegated administrator has created for your organization\cr
 #'  \link[=securityhub_list_configuration_policy_associations]{list_configuration_policy_associations} \tab Provides information about the associations for your configuration policies and self-managed behavior\cr
+#'  \link[=securityhub_list_connectors]{list_connectors} \tab Lists the CSPM connectors and their metadata for the calling account\cr
 #'  \link[=securityhub_list_connectors_v2]{list_connectors_v2} \tab Grants permission to retrieve a list of connectorsV2 and their metadata for the calling account\cr
 #'  \link[=securityhub_list_enabled_products_for_import]{list_enabled_products_for_import} \tab Lists all findings-generating solutions (products) that you are subscribed to receive findings from in Security Hub CSPM\cr
 #'  \link[=securityhub_list_finding_aggregators]{list_finding_aggregators} \tab If cross-Region aggregation is enabled, then ListFindingAggregators returns the Amazon Resource Name (ARN) of the finding aggregator\cr
+#'  \link[=securityhub_list_free_trial_statuses_v2]{list_free_trial_statuses_v2} \tab Lists the free trial status of Security Hub features\cr
 #'  \link[=securityhub_list_invitations]{list_invitations} \tab We recommend using Organizations instead of Security Hub CSPM invitations to manage your member accounts\cr
 #'  \link[=securityhub_list_members]{list_members} \tab Lists details about all member accounts for the current Security Hub CSPM administrator account\cr
 #'  \link[=securityhub_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Lists the Security Hub CSPM administrator accounts\cr
@@ -219,6 +226,7 @@ NULL
 #'  \link[=securityhub_update_aggregator_v2]{update_aggregator_v2} \tab Udpates the configuration for the Aggregator V2\cr
 #'  \link[=securityhub_update_automation_rule_v2]{update_automation_rule_v2} \tab Updates a V2 automation rule\cr
 #'  \link[=securityhub_update_configuration_policy]{update_configuration_policy} \tab Updates a configuration policy\cr
+#'  \link[=securityhub_update_connector]{update_connector} \tab Updates a CSPM connector's configuration, such as the scope or regions for the connected cloud provider\cr
 #'  \link[=securityhub_update_connector_v2]{update_connector_v2} \tab Grants permission to update a connectorV2 based on its id and input parameters\cr
 #'  \link[=securityhub_update_finding_aggregator]{update_finding_aggregator} \tab The aggregation Region is now called the home Region\cr
 #'  \link[=securityhub_update_findings]{update_findings} \tab UpdateFindings is a deprecated operation\cr

@@ -13,9 +13,9 @@ imagebuilder_list_distribution_configurations(
 \arguments{
 \item{filters}{You can filter on \code{name} to streamline results.}
 
-\item{maxResults}{Specify the maximum number of items to return in a request.}
+\item{maxResults}{The maximum number of items to return in a single request.}
 
-\item{nextToken}{A token to specify where to start paginating. This is the nextToken from a previously truncated response.}
+\item{nextToken}{A token to specify where to start paginating. Use the \code{nextToken} value from a previously truncated response.}
 }
 \description{
 Returns a list of distribution configurations.

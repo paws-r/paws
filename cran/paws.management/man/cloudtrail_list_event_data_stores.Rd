@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_list_event_data_stores}
 \alias{cloudtrail_list_event_data_stores}
-\title{Returns information about all event data stores in the account, in the
-current Region}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_list_event_data_stores(NextToken = NULL, MaxResults = NULL)
 }
@@ -13,7 +13,7 @@ cloudtrail_list_event_data_stores(NextToken = NULL, MaxResults = NULL)
 \item{MaxResults}{The maximum number of event data stores to display on a single page.}
 }
 \description{
-Returns information about all event data stores in the account, in the current Region.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_list_event_data_stores/} for full documentation.
 }

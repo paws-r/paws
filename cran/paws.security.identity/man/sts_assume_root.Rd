@@ -5,7 +5,12 @@
 \title{Returns a set of short term credentials you can use to perform
 privileged tasks on a member account in your organization}
 \usage{
-sts_assume_root(TargetPrincipal, TaskPolicyArn, DurationSeconds = NULL)
+sts_assume_root(
+  TargetPrincipal,
+  TaskPolicyArn,
+  DurationSeconds = NULL,
+  MinimumSessionTokenSize = NULL
+)
 }
 \arguments{
 \item{TargetPrincipal}{[required] The member account principal ARN or account ID.}
@@ -22,6 +27,8 @@ sts_assume_root(TargetPrincipal, TaskPolicyArn, DurationSeconds = NULL)
 \item{DurationSeconds}{The duration, in seconds, of the privileged session. The value can range from 0 seconds up to the maximum session duration of 900 seconds (15 minutes). If you specify a value higher than this setting, the operation fails.
 
 By default, the value is set to \code{900} seconds.}
+
+\item{MinimumSessionTokenSize}{The minimum size, in bytes, of the session token that STS issues for the request. STS increases the session token to at least this size, regardless of its actual content. The value must not exceed 4,096 bytes. When set to 0 or not specified, the session token size is unchanged.}
 }
 \description{
 Returns a set of short term credentials you can use to perform privileged tasks on a member account in your organization. You must use credentials from an Organizations management account or a delegated administrator account for IAM to call \code{\link[=sts_assume_root]{assume_root}}. You cannot use root user credentials to make this call.

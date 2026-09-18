@@ -15,7 +15,8 @@ directconnect_create_lag(
   tags = NULL,
   childConnectionTags = NULL,
   providerName = NULL,
-  requestMACSec = NULL
+  requestMACSec = NULL,
+  billingMode = NULL
 )
 }
 \arguments{
@@ -38,6 +39,8 @@ directconnect_create_lag(
 \item{requestMACSec}{Indicates whether the connection will support MAC Security (MACsec).
 
 All connections in the LAG must be capable of supporting MAC Security (MACsec). For information about MAC Security (MACsec) prerequisties, see \href{https://docs.aws.amazon.com/directconnect/latest/UserGuide/#mac-sec-prerequisites}{MACsec prerequisties} in the \emph{Direct Connect User Guide}.}
+
+\item{billingMode}{The billing mode for the LAG.}
 }
 \description{
 Creates a link aggregation group (LAG) with the specified number of bundled physical dedicated connections between the customer network and a specific Direct Connect location. A LAG is a logical interface that uses the Link Aggregation Control Protocol (LACP) to aggregate multiple interfaces, enabling you to treat them as a single interface.

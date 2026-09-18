@@ -2,20 +2,26 @@
 % Please edit documentation in R/inspector2_operations.R
 \name{inspector2_update_configuration}
 \alias{inspector2_update_configuration}
-\title{Updates setting configurations for your Amazon Inspector account}
+\title{Updates the scan configuration for your Amazon Inspector account}
 \usage{
 inspector2_update_configuration(
+  accountId = NULL,
   ecrConfiguration = NULL,
-  ec2Configuration = NULL
+  ec2Configuration = NULL,
+  updateConfigurationInheritance = NULL
 )
 }
 \arguments{
+\item{accountId}{The 12-digit Amazon Web Services account ID of the member account whose scan configuration you want to update. When specified, you must be the delegated administrator for this member account. If not specified, the operation updates your own configuration and propagates changes to any member accounts that have not been individually configured.}
+
 \item{ecrConfiguration}{Specifies how the ECR automated re-scan will be updated for your environment.}
 
 \item{ec2Configuration}{Specifies how the Amazon EC2 automated scan will be updated for your environment.}
+
+\item{updateConfigurationInheritance}{Specifies which scan-type configurations to reset to the delegated administrator's inherited values for the targeted member account. Each member of this structure is independently optional. When specified, \code{ec2Configuration} and \code{ecrConfiguration} must be absent, and \code{accountId} must also be present. Only \code{INHERIT_FROM_ADMIN} is valid for each member. If not specified, the operation uses the \code{ec2Configuration} and \code{ecrConfiguration} parameters instead.}
 }
 \description{
-Updates setting configurations for your Amazon Inspector account. When you use this API as an Amazon Inspector delegated administrator this updates the setting for all accounts you manage. Member accounts in an organization cannot update this setting.
+Updates the scan configuration for your Amazon Inspector account. If you don't specify an \code{accountId}, this operation updates the delegated administrator's configuration and propagates it to member accounts that have not been individually configured. If you specify an \code{accountId}, this operation updates that member account's configuration. Only the delegated administrator can specify an \code{accountId}; member accounts cannot call this operation.
 
 See \url{https://www.paws-r-sdk.com/docs/inspector2_update_configuration/} for full documentation.
 }

@@ -11,7 +11,9 @@ connect_create_rule(
   Function,
   Actions,
   PublishStatus,
-  ClientToken = NULL
+  PreEvaluationFilters = NULL,
+  ClientToken = NULL,
+  Tags = NULL
 )
 }
 \arguments{
@@ -27,7 +29,11 @@ connect_create_rule(
 
 \item{PublishStatus}{[required] The publish status of the rule.}
 
+\item{PreEvaluationFilters}{The pre-evaluation filters for the rule, that restrict the rule to be applied to only certain resources based on the resource's attributes, such as tags assigned to a contact. The pre-evaluation filters are applied even before rule conditions are evaluated and are used to enforce tag-based-access-control while applying rules.}
+
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the idempotency of the request. If not provided, the Amazon Web Services SDK populates this field. For more information about idempotency, see \href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
+
+\item{Tags}{The tags used to organize, track, or control access for this resource. For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
 }
 \description{
 Creates a rule for the specified Connect Customer instance.

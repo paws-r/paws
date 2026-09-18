@@ -67,7 +67,7 @@ For more information about conditional requests, see \href{https://datatracker.i
 
 \item{Key}{[required] Key of the object to get.}
 
-\item{Range}{Downloads the specified byte range of an object. For more information about the HTTP Range header, see https://www.rfc-editor.org/rfc/rfc9110.html#name-range.
+\item{Range}{Downloads the specified byte range of an object. For more information about the HTTP Range header, see \url{https://www.rfc-editor.org/rfc/rfc9110.html#name-range}.
 
 Amazon S3 doesn't support retrieving multiple ranges of data per \code{GET} request.}
 

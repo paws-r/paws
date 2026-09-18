@@ -63,7 +63,8 @@ rds_create_db_cluster(
   EngineLifecycleSupport = NULL,
   TagSpecifications = NULL,
   MasterUserAuthenticationType = NULL,
-  WithExpressConfiguration = NULL
+  WithExpressConfiguration = NULL,
+  AssociatedRoles = NULL
 )
 }
 \arguments{
@@ -286,7 +287,7 @@ The presigned URL request must contain the following parameter values:
 \item \code{ReplicationSourceIdentifier} - The DB cluster identifier for the encrypted DB cluster to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source Amazon Web Services Region. For example, if you are copying an encrypted DB cluster from the us-west-2 Amazon Web Services Region, then your \code{ReplicationSourceIdentifier} would look like Example: \code{arn:aws:rds:us-west-2:123456789012:cluster:aurora-cluster1}.
 }
 
-To learn how to generate a Signature Version 4 signed request, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
+To learn how to generate a Signature Version 4 signed request, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/}{Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
 
 If you are using an Amazon Web Services SDK tool or the CLI, you can specify \code{SourceRegion} (or \code{--source-region} for the CLI) instead of specifying \code{PreSignedUrl} manually. Specifying \code{SourceRegion} autogenerates a presigned URL that is a valid request for the operation that can run in the source Amazon Web Services Region.
 
@@ -566,7 +567,7 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Use
 
 Valid for Cluster Type: Multi-AZ DB clusters}
 
-\item{EngineLifecycleSupport}{The life cycle type for this DB cluster.
+\item{EngineLifecycleSupport}{The lifecycle type for this DB cluster.
 
 By default, this value is set to \code{open-source-rds-extended-support}, which enrolls your DB cluster into Amazon RDS Extended Support. At the end of standard support, you can avoid charges for Extended Support by setting the value to \code{open-source-rds-extended-support-disabled}. In this case, creating the DB cluster will fail if the DB major version is past its end of standard support date.
 
@@ -604,6 +605,10 @@ This option is only valid for RDS for PostgreSQL and Aurora PostgreSQL engines.}
 \item{WithExpressConfiguration}{Specifies to create an Aurora DB Cluster with express configuration in seconds. Express configuration provides a cluster with a writer instance and feature specific values set to all other input parameters of this API.
 
 Valid for Cluster Type: Aurora DB clusters}
+
+\item{AssociatedRoles}{A list of Amazon Web Services Identity and Access Management (IAM) roles to associate with the DB cluster. Each role grants the DB cluster permission to access other Amazon Web Services on your behalf. For each role, specify a role ARN and, optionally, the feature name (such as \code{s3Import}, \code{s3Export}, or \code{Lambda}).
+
+Valid for Cluster Type: Aurora DB clusters only}
 }
 \description{
 Creates a new Amazon Aurora DB cluster or Multi-AZ DB cluster.

@@ -4,12 +4,18 @@
 \alias{bedrockagentcorecontrol_delete_harness}
 \title{Operation to delete a Harness}
 \usage{
-bedrockagentcorecontrol_delete_harness(harnessId, clientToken = NULL)
+bedrockagentcorecontrol_delete_harness(
+  harnessId,
+  clientToken = NULL,
+  deleteManagedMemory = NULL
+)
 }
 \arguments{
 \item{harnessId}{[required] The ID of the harness to delete.}
 
 \item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the request.}
+
+\item{deleteManagedMemory}{Whether to delete the managed memory on harness deletion. Default: true. If false, the memory is disassociated and becomes a regular customer-owned resource.}
 }
 \description{
 Operation to delete a Harness.

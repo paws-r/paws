@@ -12,7 +12,7 @@ inspector_get_assessment_report(assessmentRunArn, reportFileFormat, reportType)
 
 \item{reportFileFormat}{[required] Specifies the file format (html or pdf) of the assessment report that you want to generate.}
 
-\item{reportType}{[required] Specifies the type of the assessment report that you want to generate. There are two types of assessment reports: a finding report and a full report. For more information, see \href{https://docs.aws.amazon.com/inspector/v1/userguide/inspector_reports.html}{Assessment Reports}.}
+\item{reportType}{[required] Specifies the type of the assessment report that you want to generate. There are two types of assessment reports: a finding report and a full report. For more information, see Assessment Reports.}
 }
 \description{
 Produces an assessment report that includes detailed and comprehensive results of a specified assessment run.

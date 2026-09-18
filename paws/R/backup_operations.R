@@ -101,6 +101,71 @@ backup_cancel_legal_hold <- function(LegalHoldId, CancelDescription, RetainRecor
 }
 .backup$operations$cancel_legal_hold <- backup_cancel_legal_hold
 
+#' Creates a backup access point for an Amazon S3 recovery point
+#'
+#' @description
+#' Creates a backup access point for an Amazon S3 recovery point. A backup access point provides on-demand, read-only access to the backup data in a recovery point through an Amazon S3 access point, without initiating a restore.
+#' 
+#' While a backup access point is active for a recovery point, Backup pauses lifecycle transitions and blocks deletion of that recovery point.
+#'
+#' @usage
+#' backup_create_backup_access_point(AccessPointMetadata,
+#'   AccessPointPolicy, Name, RecoveryPointArn, Tags)
+#'
+#' @param AccessPointMetadata Metadata for the backup access point. For continuous (point-in-time) recovery points, you must include an `AccessPointInTime` timestamp (in format `2021-11-27T03:30:27Z`). The access point provides access to the content present in the backup at that specific time. You can specify any time within the continuous backup's retention period, up to the latest restorable time. For snapshot recovery points, do not include `AccessPointInTime`.
+#' @param AccessPointPolicy An optional resource-based policy, in JSON format, to apply to the underlying Amazon S3 access point. The policy controls how backup data can be accessed through the access point. If you do not specify a policy, access is governed by the caller's IAM permissions. For more information, see [Configuring IAM policies for using access points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-policies.html) in the *Amazon S3 User Guide*.
+#' @param Name &#91;required&#93; The name of the backup access point. This name is shared with the Amazon S3 access point namespace. It must be unique within your account and Region and cannot conflict with an existing Amazon S3 access point. For more information about access point naming, see [Access points naming rules, restrictions, and limitations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-restrictions-limitations-naming-rules.html) in the *Amazon S3 User Guide*.
+#' @param RecoveryPointArn &#91;required&#93; The Amazon Resource Name (ARN) of the recovery point for which to create the backup access point. The recovery point must be an Amazon S3 recovery point in the `AVAILABLE`, `STOPPED`, or `COMPLETED` state.
+#' @param Tags The tags to assign to the backup access point.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessPointArn = "string",
+#'   Status = "AVAILABLE"|"CREATING"|"DELETING"|"DISASSOCIATED"|"DISASSOCIATING"|"EXPIRED"|"FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_backup_access_point(
+#'   AccessPointMetadata = list(
+#'     "string"
+#'   ),
+#'   AccessPointPolicy = "string",
+#'   Name = "string",
+#'   RecoveryPointArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_create_backup_access_point
+#'
+#' @aliases backup_create_backup_access_point
+backup_create_backup_access_point <- function(AccessPointMetadata = NULL, AccessPointPolicy = NULL, Name, RecoveryPointArn, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateBackupAccessPoint",
+    http_method = "PUT",
+    http_path = "/backup-access-point/create",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .backup$create_backup_access_point_input(AccessPointMetadata = AccessPointMetadata, AccessPointPolicy = AccessPointPolicy, Name = Name, RecoveryPointArn = RecoveryPointArn, Tags = Tags)
+  output <- .backup$create_backup_access_point_output()
+  config <- get_config()
+  svc <- .backup$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$create_backup_access_point <- backup_create_backup_access_point
+
 #' Creates a backup plan using a backup plan name and backup rules
 #'
 #' @description
@@ -1087,6 +1152,52 @@ backup_create_tiering_configuration <- function(TieringConfiguration, TieringCon
 }
 .backup$operations$create_tiering_configuration <- backup_create_tiering_configuration
 
+#' Deletes a backup access point
+#'
+#' @description
+#' Deletes a backup access point. This deletes the underlying Amazon S3 access point and, if no other backup access points remain for the recovery point, resumes lifecycle transitions for that recovery point.
+#' 
+#' Always delete backup access points using this operation rather than deleting the underlying Amazon S3 access point directly.
+#'
+#' @usage
+#' backup_delete_backup_access_point(AccessPointArn)
+#'
+#' @param AccessPointArn &#91;required&#93; The Amazon Resource Name (ARN) of the backup access point to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_backup_access_point(
+#'   AccessPointArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_delete_backup_access_point
+#'
+#' @aliases backup_delete_backup_access_point
+backup_delete_backup_access_point <- function(AccessPointArn) {
+  op <- new_operation(
+    name = "DeleteBackupAccessPoint",
+    http_method = "DELETE",
+    http_path = "/backup-access-point/delete/{AccessPointArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .backup$delete_backup_access_point_input(AccessPointArn = AccessPointArn)
+  output <- .backup$delete_backup_access_point_output()
+  config <- get_config()
+  svc <- .backup$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$delete_backup_access_point <- backup_delete_backup_access_point
+
 #' Deletes a backup plan
 #'
 #' @description
@@ -1648,6 +1759,72 @@ backup_delete_tiering_configuration <- function(TieringConfigurationName) {
   return(response)
 }
 .backup$operations$delete_tiering_configuration <- backup_delete_tiering_configuration
+
+#' Returns metadata about a backup access point, including its status and
+#' the details of the underlying Amazon S3 access point
+#'
+#' @description
+#' Returns metadata about a backup access point, including its status and the details of the underlying Amazon S3 access point.
+#' 
+#' After a backup access point reaches the `AVAILABLE` status, use this operation to retrieve the Amazon S3 access point ARN and alias that you need to read the backup data.
+#'
+#' @usage
+#' backup_describe_backup_access_point(AccessPointArn)
+#'
+#' @param AccessPointArn &#91;required&#93; The Amazon Resource Name (ARN) of the backup access point to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessPointArn = "string",
+#'   AccessPointMetadata = list(
+#'     "string"
+#'   ),
+#'   BackupVaultArn = "string",
+#'   BackupVaultName = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Name = "string",
+#'   RecoveryPointArn = "string",
+#'   ResourceArn = "string",
+#'   ResourceType = "string",
+#'   Status = "AVAILABLE"|"CREATING"|"DELETING"|"DISASSOCIATED"|"DISASSOCIATING"|"EXPIRED"|"FAILED",
+#'   StatusMessage = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_backup_access_point(
+#'   AccessPointArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_describe_backup_access_point
+#'
+#' @aliases backup_describe_backup_access_point
+backup_describe_backup_access_point <- function(AccessPointArn) {
+  op <- new_operation(
+    name = "DescribeBackupAccessPoint",
+    http_method = "GET",
+    http_path = "/backup-access-point/{AccessPointArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .backup$describe_backup_access_point_input(AccessPointArn = AccessPointArn)
+  output <- .backup$describe_backup_access_point_output()
+  config <- get_config()
+  svc <- .backup$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$describe_backup_access_point <- backup_describe_backup_access_point
 
 #' Returns backup job details for the specified BackupJobId
 #'
@@ -3371,7 +3548,7 @@ backup_get_backup_vault_access_policy <- function(BackupVaultName) {
 #'   BackupVaultArn = "string",
 #'   SNSTopicArn = "string",
 #'   BackupVaultEvents = list(
-#'     "BACKUP_JOB_STARTED"|"BACKUP_JOB_COMPLETED"|"BACKUP_JOB_SUCCESSFUL"|"BACKUP_JOB_FAILED"|"BACKUP_JOB_EXPIRED"|"RESTORE_JOB_STARTED"|"RESTORE_JOB_COMPLETED"|"RESTORE_JOB_SUCCESSFUL"|"RESTORE_JOB_FAILED"|"COPY_JOB_STARTED"|"COPY_JOB_SUCCESSFUL"|"COPY_JOB_FAILED"|"RECOVERY_POINT_MODIFIED"|"BACKUP_PLAN_CREATED"|"BACKUP_PLAN_MODIFIED"|"S3_BACKUP_OBJECT_FAILED"|"S3_RESTORE_OBJECT_FAILED"|"CONTINUOUS_BACKUP_INTERRUPTED"|"RECOVERY_POINT_INDEX_COMPLETED"|"RECOVERY_POINT_INDEX_DELETED"|"RECOVERY_POINT_INDEXING_FAILED"|"EKS_RESTORE_OBJECT_FAILED"|"EKS_RESTORE_OBJECT_SKIPPED"|"EKS_BACKUP_OBJECT_FAILED"
+#'     "BACKUP_JOB_STARTED"|"BACKUP_JOB_COMPLETED"|"BACKUP_JOB_SUCCESSFUL"|"BACKUP_JOB_FAILED"|"BACKUP_JOB_EXPIRED"|"RESTORE_JOB_STARTED"|"RESTORE_JOB_COMPLETED"|"RESTORE_JOB_SUCCESSFUL"|"RESTORE_JOB_FAILED"|"COPY_JOB_STARTED"|"COPY_JOB_SUCCESSFUL"|"COPY_JOB_FAILED"|"RECOVERY_POINT_MODIFIED"|"BACKUP_PLAN_CREATED"|"BACKUP_PLAN_MODIFIED"|"S3_BACKUP_OBJECT_FAILED"|"S3_RESTORE_OBJECT_FAILED"|"CONTINUOUS_BACKUP_INTERRUPTED"|"RECOVERY_POINT_INDEX_COMPLETED"|"RECOVERY_POINT_INDEX_DELETED"|"RECOVERY_POINT_INDEXING_FAILED"|"EKS_RESTORE_OBJECT_FAILED"|"EKS_RESTORE_OBJECT_SKIPPED"|"EKS_BACKUP_OBJECT_FAILED"|"ACCESS_POINT_AVAILABLE"|"ACCESS_POINT_CREATION_FAILED"|"ACCESS_POINT_DELETED"|"ACCESS_POINT_DELETION_FAILED"|"ACCESS_POINT_EXPIRED"|"ACCESS_POINT_DISASSOCIATED"
 #'   )
 #' )
 #' ```
@@ -4071,11 +4248,231 @@ backup_get_tiering_configuration <- function(TieringConfigurationName) {
 }
 .backup$operations$get_tiering_configuration <- backup_get_tiering_configuration
 
-#' This is a request for a summary of backup jobs created or running within
-#' the most recent 30 days
+#' Returns a list of the backup access points in your account and Region
 #'
 #' @description
-#' This is a request for a summary of backup jobs created or running within the most recent 30 days. You can include parameters AccountID, State, ResourceType, MessageCategory, AggregationPeriod, MaxResults, or NextToken to filter results.
+#' Returns a list of the backup access points in your account and Region.
+#'
+#' @usage
+#' backup_list_backup_access_points(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of items to be returned.
+#' @param NextToken The next item following a partial list of returned items. For example, if a request is made to return `MaxResults` number of items, `NextToken` allows you to return more items in your list starting at the location pointed to by the next token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BackupAccessPoints = list(
+#'     list(
+#'       AccessPointArn = "string",
+#'       AccessPointMetadata = list(
+#'         "string"
+#'       ),
+#'       BackupVaultArn = "string",
+#'       BackupVaultName = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "string",
+#'       RecoveryPointArn = "string",
+#'       ResourceArn = "string",
+#'       ResourceType = "string",
+#'       Status = "AVAILABLE"|"CREATING"|"DELETING"|"DISASSOCIATED"|"DISASSOCIATING"|"EXPIRED"|"FAILED",
+#'       StatusMessage = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_backup_access_points(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_backup_access_points
+#'
+#' @aliases backup_list_backup_access_points
+backup_list_backup_access_points <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListBackupAccessPoints",
+    http_method = "GET",
+    http_path = "/backup-access-point",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupAccessPoints"),
+    stream_api = FALSE
+  )
+  input <- .backup$list_backup_access_points_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .backup$list_backup_access_points_output()
+  config <- get_config()
+  svc <- .backup$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_backup_access_points <- backup_list_backup_access_points
+
+#' Returns the backup access points associated with the specified recovery
+#' point
+#'
+#' @description
+#' Returns the backup access points associated with the specified recovery point.
+#' 
+#' If you own the recovery point and have shared it with other accounts, the response includes backup access points created by those accounts.
+#'
+#' @usage
+#' backup_list_backup_access_points_by_recovery_point(MaxResults,
+#'   NextToken, RecoveryPointArn)
+#'
+#' @param MaxResults The maximum number of items to be returned.
+#' @param NextToken The next item following a partial list of returned items. For example, if a request is made to return `MaxResults` number of items, `NextToken` allows you to return more items in your list starting at the location pointed to by the next token.
+#' @param RecoveryPointArn &#91;required&#93; The Amazon Resource Name (ARN) of the recovery point whose backup access points you want to list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BackupAccessPoints = list(
+#'     list(
+#'       AccessPointArn = "string",
+#'       AccessPointMetadata = list(
+#'         "string"
+#'       ),
+#'       BackupVaultArn = "string",
+#'       BackupVaultName = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "string",
+#'       RecoveryPointArn = "string",
+#'       ResourceArn = "string",
+#'       ResourceType = "string",
+#'       Status = "AVAILABLE"|"CREATING"|"DELETING"|"DISASSOCIATED"|"DISASSOCIATING"|"EXPIRED"|"FAILED",
+#'       StatusMessage = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_backup_access_points_by_recovery_point(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   RecoveryPointArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_backup_access_points_by_recovery_point
+#'
+#' @aliases backup_list_backup_access_points_by_recovery_point
+backup_list_backup_access_points_by_recovery_point <- function(MaxResults = NULL, NextToken = NULL, RecoveryPointArn) {
+  op <- new_operation(
+    name = "ListBackupAccessPointsByRecoveryPoint",
+    http_method = "POST",
+    http_path = "/backup-access-point/recovery-point/{RecoveryPointArn}",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupAccessPoints"),
+    stream_api = FALSE
+  )
+  input <- .backup$list_backup_access_points_by_recovery_point_input(MaxResults = MaxResults, NextToken = NextToken, RecoveryPointArn = RecoveryPointArn)
+  output <- .backup$list_backup_access_points_by_recovery_point_output()
+  config <- get_config()
+  svc <- .backup$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_backup_access_points_by_recovery_point <- backup_list_backup_access_points_by_recovery_point
+
+#' Returns the backup access points associated with the specified resource,
+#' such as an Amazon S3 bucket
+#'
+#' @description
+#' Returns the backup access points associated with the specified resource, such as an Amazon S3 bucket.
+#'
+#' @usage
+#' backup_list_backup_access_points_by_resource(MaxResults, NextToken,
+#'   ResourceArn)
+#'
+#' @param MaxResults The maximum number of items to be returned.
+#' @param NextToken The next item following a partial list of returned items. For example, if a request is made to return `MaxResults` number of items, `NextToken` allows you to return more items in your list starting at the location pointed to by the next token.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose backup access points you want to list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BackupAccessPoints = list(
+#'     list(
+#'       AccessPointArn = "string",
+#'       AccessPointMetadata = list(
+#'         "string"
+#'       ),
+#'       BackupVaultArn = "string",
+#'       BackupVaultName = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "string",
+#'       RecoveryPointArn = "string",
+#'       ResourceArn = "string",
+#'       ResourceType = "string",
+#'       Status = "AVAILABLE"|"CREATING"|"DELETING"|"DISASSOCIATED"|"DISASSOCIATING"|"EXPIRED"|"FAILED",
+#'       StatusMessage = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_backup_access_points_by_resource(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_backup_access_points_by_resource
+#'
+#' @aliases backup_list_backup_access_points_by_resource
+backup_list_backup_access_points_by_resource <- function(MaxResults = NULL, NextToken = NULL, ResourceArn) {
+  op <- new_operation(
+    name = "ListBackupAccessPointsByResource",
+    http_method = "POST",
+    http_path = "/backup-access-point/resource/{ResourceArn}",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupAccessPoints"),
+    stream_api = FALSE
+  )
+  input <- .backup$list_backup_access_points_by_resource_input(MaxResults = MaxResults, NextToken = NextToken, ResourceArn = ResourceArn)
+  output <- .backup$list_backup_access_points_by_resource_output()
+  config <- get_config()
+  svc <- .backup$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_backup_access_points_by_resource <- backup_list_backup_access_points_by_resource
+
+#' This is a request for a summary of backup jobs created or running within
+#' the most recent 14 days
+#'
+#' @description
+#' This is a request for a summary of backup jobs created or running within the most recent 14 days. You can include parameters AccountID, State, ResourceType, MessageCategory, AggregationPeriod, MaxResults, or NextToken to filter results.
 #' 
 #' This request returns a summary that contains Region, Account, State, ResourceType, MessageCategory, StartTime, EndTime, and Count of included jobs.
 #'
@@ -4747,10 +5144,10 @@ backup_list_backup_vaults <- function(ByVaultType = NULL, ByShared = NULL, NextT
 .backup$operations$list_backup_vaults <- backup_list_backup_vaults
 
 #' This request obtains a list of copy jobs created or running within the
-#' the most recent 30 days
+#' the most recent 14 days
 #'
 #' @description
-#' This request obtains a list of copy jobs created or running within the the most recent 30 days. You can include parameters AccountID, State, ResourceType, MessageCategory, AggregationPeriod, MaxResults, or NextToken to filter results.
+#' This request obtains a list of copy jobs created or running within the the most recent 14 days. You can include parameters AccountID, State, ResourceType, MessageCategory, AggregationPeriod, MaxResults, or NextToken to filter results.
 #' 
 #' This request returns a summary that contains Region, Account, State, RestourceType, MessageCategory, StartTime, EndTime, and Count of included jobs.
 #'
@@ -5266,12 +5663,13 @@ backup_list_legal_holds <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .backup$operations$list_legal_holds <- backup_list_legal_holds
 
-#' Returns an array of resources successfully backed up by Backup,
-#' including the time the resource was saved, an Amazon Resource Name (ARN)
-#' of the resource, and a resource type
+#' Returns an array of resources with recovery points created by Backup
+#' (regardless of the recovery point's status), including the time the
+#' resource was saved, an Amazon Resource Name (ARN) of the resource, and a
+#' resource type
 #'
 #' @description
-#' Returns an array of resources successfully backed up by Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type.
+#' Returns an array of resources with recovery points created by Backup (regardless of the recovery point's [status](https://docs.aws.amazon.com/aws-backup/latest/APIReference/API_DescribeRecoveryPoint.html#Backup-DescribeRecoveryPoint-response-Status)), including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type.
 #'
 #' @usage
 #' backup_list_protected_resources(NextToken, MaxResults)
@@ -5664,7 +6062,7 @@ backup_list_recovery_points_by_legal_hold <- function(LegalHoldId, NextToken = N
 #' 
 #' If this is set to `TRUE`, the response will contain recovery points associated with the selected resources that are managed by Backup.
 #' 
-#' If this is set to `FALSE`, the response will contain all recovery points associated with the selected resource.
+#' If this is set to `FALSE`, the response will contain all recovery points associated with the selected resource, except for EBS snapshots copied within the same Region and account.
 #' 
 #' Type: Boolean
 #'
@@ -5998,10 +6396,10 @@ backup_list_restore_access_backup_vaults <- function(BackupVaultName, NextToken 
 .backup$operations$list_restore_access_backup_vaults <- backup_list_restore_access_backup_vaults
 
 #' This request obtains a summary of restore jobs created or running within
-#' the the most recent 30 days
+#' the the most recent 14 days
 #'
 #' @description
-#' This request obtains a summary of restore jobs created or running within the the most recent 30 days. You can include parameters AccountID, State, ResourceType, AggregationPeriod, MaxResults, or NextToken to filter results.
+#' This request obtains a summary of restore jobs created or running within the the most recent 14 days. You can include parameters AccountID, State, ResourceType, AggregationPeriod, MaxResults, or NextToken to filter results.
 #' 
 #' This request returns a summary that contains Region, Account, State, RestourceType, MessageCategory, StartTime, EndTime, and Count of included jobs.
 #'
@@ -6488,10 +6886,10 @@ backup_list_restore_testing_selections <- function(MaxResults = NULL, NextToken 
 .backup$operations$list_restore_testing_selections <- backup_list_restore_testing_selections
 
 #' This is a request for a summary of scan jobs created or running within
-#' the most recent 30 days
+#' the most recent 14 days
 #'
 #' @description
-#' This is a request for a summary of scan jobs created or running within the most recent 30 days.
+#' This is a request for a summary of scan jobs created or running within the most recent 14 days.
 #'
 #' @usage
 #' backup_list_scan_job_summaries(AccountId, ResourceType, MalwareScanner,
@@ -6994,7 +7392,7 @@ backup_put_backup_vault_lock_configuration <- function(BackupVaultName, MinReten
 #'   BackupVaultName = "string",
 #'   SNSTopicArn = "string",
 #'   BackupVaultEvents = list(
-#'     "BACKUP_JOB_STARTED"|"BACKUP_JOB_COMPLETED"|"BACKUP_JOB_SUCCESSFUL"|"BACKUP_JOB_FAILED"|"BACKUP_JOB_EXPIRED"|"RESTORE_JOB_STARTED"|"RESTORE_JOB_COMPLETED"|"RESTORE_JOB_SUCCESSFUL"|"RESTORE_JOB_FAILED"|"COPY_JOB_STARTED"|"COPY_JOB_SUCCESSFUL"|"COPY_JOB_FAILED"|"RECOVERY_POINT_MODIFIED"|"BACKUP_PLAN_CREATED"|"BACKUP_PLAN_MODIFIED"|"S3_BACKUP_OBJECT_FAILED"|"S3_RESTORE_OBJECT_FAILED"|"CONTINUOUS_BACKUP_INTERRUPTED"|"RECOVERY_POINT_INDEX_COMPLETED"|"RECOVERY_POINT_INDEX_DELETED"|"RECOVERY_POINT_INDEXING_FAILED"|"EKS_RESTORE_OBJECT_FAILED"|"EKS_RESTORE_OBJECT_SKIPPED"|"EKS_BACKUP_OBJECT_FAILED"
+#'     "BACKUP_JOB_STARTED"|"BACKUP_JOB_COMPLETED"|"BACKUP_JOB_SUCCESSFUL"|"BACKUP_JOB_FAILED"|"BACKUP_JOB_EXPIRED"|"RESTORE_JOB_STARTED"|"RESTORE_JOB_COMPLETED"|"RESTORE_JOB_SUCCESSFUL"|"RESTORE_JOB_FAILED"|"COPY_JOB_STARTED"|"COPY_JOB_SUCCESSFUL"|"COPY_JOB_FAILED"|"RECOVERY_POINT_MODIFIED"|"BACKUP_PLAN_CREATED"|"BACKUP_PLAN_MODIFIED"|"S3_BACKUP_OBJECT_FAILED"|"S3_RESTORE_OBJECT_FAILED"|"CONTINUOUS_BACKUP_INTERRUPTED"|"RECOVERY_POINT_INDEX_COMPLETED"|"RECOVERY_POINT_INDEX_DELETED"|"RECOVERY_POINT_INDEXING_FAILED"|"EKS_RESTORE_OBJECT_FAILED"|"EKS_RESTORE_OBJECT_SKIPPED"|"EKS_BACKUP_OBJECT_FAILED"|"ACCESS_POINT_AVAILABLE"|"ACCESS_POINT_CREATION_FAILED"|"ACCESS_POINT_DELETED"|"ACCESS_POINT_DELETION_FAILED"|"ACCESS_POINT_EXPIRED"|"ACCESS_POINT_DISASSOCIATED"
 #'   )
 #' )
 #' ```

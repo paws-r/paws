@@ -19,7 +19,7 @@ omics_start_read_set_activation_job(
 \item{sources}{[required] The job's source files.}
 }
 \description{
-Activates an archived read set and returns its metadata in a JSON formatted output. AWS HealthOmics automatically archives unused read sets after 30 days. To monitor the status of your read set activation job, use the \code{\link[=omics_get_read_set_activation_job]{get_read_set_activation_job}} operation.
+Activates an archived read set and returns its metadata in a JSON formatted output. Amazon Web Services HealthOmics automatically archives unused read sets after 30 days. To monitor the status of your read set activation job, use the \code{\link[=omics_get_read_set_activation_job]{get_read_set_activation_job}} operation.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_start_read_set_activation_job/} for full documentation.
 }

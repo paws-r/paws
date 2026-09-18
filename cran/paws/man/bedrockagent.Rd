@@ -53,6 +53,8 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
+Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no longer open to new customers. For capabilities similar to Bedrock Agents Classic, explore Amazon Bedrock AgentCore. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/agents-classic-maintenance-mode.html}{Amazon Bedrock Agents Classic availability change}.
+
 Describes the API operations for creating and managing Amazon Bedrock agents.
 }
 \section{Service syntax}{
@@ -96,7 +98,7 @@ Describes the API operations for creating and managing Amazon Bedrock agents.
 \tabular{ll}{
 \link[paws.machine.learning:bedrockagent_associate_agent_collaborator]{associate_agent_collaborator} \tab Makes an agent a collaborator for another agent\cr
 \link[paws.machine.learning:bedrockagent_associate_agent_knowledge_base]{associate_agent_knowledge_base} \tab Associates a knowledge base with an agent\cr
-\link[paws.machine.learning:bedrockagent_create_agent]{create_agent} \tab Creates an agent that orchestrates interactions between foundation models, data sources, software applications, user conversations, and APIs to carry out tasks to help customers\cr
+\link[paws.machine.learning:bedrockagent_create_agent]{create_agent} \tab Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no longer open to new customers\cr
 \link[paws.machine.learning:bedrockagent_create_agent_action_group]{create_agent_action_group} \tab Creates an action group for an agent\cr
 \link[paws.machine.learning:bedrockagent_create_agent_alias]{create_agent_alias} \tab Creates an alias of an agent that can be used to deploy the agent\cr
 \link[paws.machine.learning:bedrockagent_create_data_source]{create_data_source} \tab Connects a knowledge base to a data source\cr
@@ -117,6 +119,7 @@ Describes the API operations for creating and managing Amazon Bedrock agents.
 \link[paws.machine.learning:bedrockagent_delete_knowledge_base]{delete_knowledge_base} \tab Deletes a knowledge base\cr
 \link[paws.machine.learning:bedrockagent_delete_knowledge_base_documents]{delete_knowledge_base_documents} \tab Deletes documents from a data source and syncs the changes to the knowledge base that is connected to it\cr
 \link[paws.machine.learning:bedrockagent_delete_prompt]{delete_prompt} \tab Deletes a prompt or a version of it, depending on whether you include the promptVersion field or not\cr
+\link[paws.machine.learning:bedrockagent_delete_resource_policy]{delete_resource_policy} \tab Removes the resource policy associated with a knowledge base\cr
 \link[paws.machine.learning:bedrockagent_disassociate_agent_collaborator]{disassociate_agent_collaborator} \tab Disassociates an agent collaborator\cr
 \link[paws.machine.learning:bedrockagent_disassociate_agent_knowledge_base]{disassociate_agent_knowledge_base} \tab Disassociates a knowledge base from an agent\cr
 \link[paws.machine.learning:bedrockagent_get_agent]{get_agent} \tab Gets information about an agent\cr
@@ -133,6 +136,7 @@ Describes the API operations for creating and managing Amazon Bedrock agents.
 \link[paws.machine.learning:bedrockagent_get_knowledge_base]{get_knowledge_base} \tab Gets information about a knowledge base\cr
 \link[paws.machine.learning:bedrockagent_get_knowledge_base_documents]{get_knowledge_base_documents} \tab Retrieves specific documents from a data source that is connected to a knowledge base\cr
 \link[paws.machine.learning:bedrockagent_get_prompt]{get_prompt} \tab Retrieves information about the working draft (DRAFT version) of a prompt or a version of it, depending on whether you include the promptVersion field or not\cr
+\link[paws.machine.learning:bedrockagent_get_resource_policy]{get_resource_policy} \tab Retrieves the resource policy associated with a knowledge base\cr
 \link[paws.machine.learning:bedrockagent_ingest_knowledge_base_documents]{ingest_knowledge_base_documents} \tab Ingests documents directly into the knowledge base that is connected to the data source\cr
 \link[paws.machine.learning:bedrockagent_list_agent_action_groups]{list_agent_action_groups} \tab Lists the action groups for an agent and information about each one\cr
 \link[paws.machine.learning:bedrockagent_list_agent_aliases]{list_agent_aliases} \tab Lists the aliases of an agent and information about each one\cr
@@ -151,6 +155,7 @@ Describes the API operations for creating and managing Amazon Bedrock agents.
 \link[paws.machine.learning:bedrockagent_list_tags_for_resource]{list_tags_for_resource} \tab List all the tags for the resource you specify\cr
 \link[paws.machine.learning:bedrockagent_prepare_agent]{prepare_agent} \tab Creates a DRAFT version of the agent that can be used for internal testing\cr
 \link[paws.machine.learning:bedrockagent_prepare_flow]{prepare_flow} \tab Prepares the DRAFT version of a flow so that it can be invoked\cr
+\link[paws.machine.learning:bedrockagent_put_resource_policy]{put_resource_policy} \tab Associates a resource policy with a knowledge base\cr
 \link[paws.machine.learning:bedrockagent_start_ingestion_job]{start_ingestion_job} \tab Begins a data ingestion job\cr
 \link[paws.machine.learning:bedrockagent_stop_ingestion_job]{stop_ingestion_job} \tab Stops a currently running data ingestion job\cr
 \link[paws.machine.learning:bedrockagent_tag_resource]{tag_resource} \tab Associate tags with a resource\cr

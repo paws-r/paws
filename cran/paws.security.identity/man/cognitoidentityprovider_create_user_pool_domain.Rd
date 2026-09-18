@@ -9,7 +9,8 @@ cognitoidentityprovider_create_user_pool_domain(
   Domain,
   UserPoolId,
   ManagedLoginVersion = NULL,
-  CustomDomainConfig = NULL
+  CustomDomainConfig = NULL,
+  Routing = NULL
 )
 }
 \arguments{
@@ -19,13 +20,17 @@ cognitoidentityprovider_create_user_pool_domain(
 
 \item{ManagedLoginVersion}{The version of managed login branding that you want to apply to your domain. A value of \code{1} indicates hosted UI (classic) and a version of \code{2} indicates managed login.
 
-Managed login requires that your user pool be configured for any \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-sign-in-feature-plans.html}{feature plan} other than \code{Lite}.}
+Managed login requires that your user pool be configured for any \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-sign-in-feature-plans.html}{feature plan} other than \code{Lite}.
+
+A \code{ManagedLoginVersion} value of \code{2} does not activate managed login pages for your app client. When you create an app client programmatically, your app client has no branding style. To use managed login, create a branding style using the \code{\link[=cognitoidentityprovider_create_managed_login_branding]{create_managed_login_branding}} operation. When you use the console, Amazon Cognito assigns a default branding style automatically. When you use the API or an SDK, you must create a branding style yourself.}
 
 \item{CustomDomainConfig}{The configuration for a custom domain. Configures your domain with an Certificate Manager certificate in the \code{us-east-1} Region.
 
 Provide this parameter only if you want to use a \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html}{custom domain} for your user pool. Otherwise, you can omit this parameter and use a \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain-prefix.html}{prefix domain} instead.
 
 When you create a custom domain, the passkey RP ID defaults to the custom domain. If you had a prefix domain active, this will cause passkey integration for your prefix domain to stop working due to a mismatch in RP ID. To keep the prefix domain passkey integration working, you can explicitly set RP ID to the prefix domain.}
+
+\item{Routing}{The configuration of routing for requests to the domain for replicas of a replicated user pool. The routing configuration is currently only supported for custom domains.}
 }
 \description{
 A user pool domain hosts managed login, an authorization server and web server for authentication in your application. This operation creates a new user pool prefix domain or custom domain and sets the managed login branding version. Set the branding version to \code{1} for hosted UI (classic) or \code{2} for managed login. When you choose a custom domain, you must provide an SSL certificate in the US East (N. Virginia) Amazon Web Services Region in your request.

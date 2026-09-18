@@ -2,8 +2,8 @@
 % Please edit documentation in R/workspaces_operations.R
 \name{workspaces_describe_workspaces_pool_sessions}
 \alias{workspaces_describe_workspaces_pool_sessions}
-\title{Retrieves a list that describes the streaming sessions for a specified
-pool}
+\title{End of support notice: On December 31, 2027, Amazon Web Services will
+end support for Amazon WorkSpaces Pools}
 \usage{
 workspaces_describe_workspaces_pool_sessions(
   PoolId,
@@ -22,7 +22,7 @@ workspaces_describe_workspaces_pool_sessions(
 \item{NextToken}{If you received a \code{NextToken} from a previous call that was paginated, provide this token to receive the next set of results.}
 }
 \description{
-Retrieves a list that describes the streaming sessions for a specified pool.
+End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027, you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html}{Amazon WorkSpaces Pools end of support}.
 
 See \url{https://www.paws-r-sdk.com/docs/workspaces_describe_workspaces_pool_sessions/} for full documentation.
 }

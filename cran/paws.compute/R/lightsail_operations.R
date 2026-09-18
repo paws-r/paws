@@ -825,11 +825,18 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
 #' 
 #' Use the [`get_certificates`][lightsail_get_certificates] action to get a list of certificate names that you can specify.
 #' @param viewerMinimumTlsProtocolVersion The minimum TLS protocol version for the SSL/TLS certificate.
+#' @param enablePrivateOriginAccess Specifies whether to enable private origin access for the distribution. With private origin access, the distribution can serve objects that aren't publicly accessible from a Lightsail bucket.
+#' 
+#' Lightsail grants the distribution permission to read the bucket's objects. Enabling private origin access doesn't change the bucket's access settings, and you can still retrieve publicly accessible objects directly from the bucket's endpoint.
+#' 
+#' You can enable private origin access only when the distribution's origin is a Lightsail bucket. If the origin is another resource type, the request fails.
+#' @param defaultRootObject The object (for example, `index.html`) that the distribution returns when a viewer requests the root URL of the distribution (`/`) instead of a specific object. The object that you specify must be available from the origin.
+#' @param customErrorResponses An array of objects that describe the custom error responses for the distribution. With a custom error response, you can specify the page to return when the origin responds with a given HTTP error code. You can also specify the HTTP status code to send to the viewer.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_create_distribution
-lightsail_create_distribution <- function(distributionName, origin, defaultCacheBehavior, cacheBehaviorSettings = NULL, cacheBehaviors = NULL, bundleId, ipAddressType = NULL, tags = NULL, certificateName = NULL, viewerMinimumTlsProtocolVersion = NULL) {
+lightsail_create_distribution <- function(distributionName, origin, defaultCacheBehavior, cacheBehaviorSettings = NULL, cacheBehaviors = NULL, bundleId, ipAddressType = NULL, tags = NULL, certificateName = NULL, viewerMinimumTlsProtocolVersion = NULL, enablePrivateOriginAccess = NULL, defaultRootObject = NULL, customErrorResponses = NULL) {
   op <- new_operation(
     name = "CreateDistribution",
     http_method = "POST",
@@ -838,7 +845,7 @@ lightsail_create_distribution <- function(distributionName, origin, defaultCache
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lightsail$create_distribution_input(distributionName = distributionName, origin = origin, defaultCacheBehavior = defaultCacheBehavior, cacheBehaviorSettings = cacheBehaviorSettings, cacheBehaviors = cacheBehaviors, bundleId = bundleId, ipAddressType = ipAddressType, tags = tags, certificateName = certificateName, viewerMinimumTlsProtocolVersion = viewerMinimumTlsProtocolVersion)
+  input <- .lightsail$create_distribution_input(distributionName = distributionName, origin = origin, defaultCacheBehavior = defaultCacheBehavior, cacheBehaviorSettings = cacheBehaviorSettings, cacheBehaviors = cacheBehaviors, bundleId = bundleId, ipAddressType = ipAddressType, tags = tags, certificateName = certificateName, viewerMinimumTlsProtocolVersion = viewerMinimumTlsProtocolVersion, enablePrivateOriginAccess = enablePrivateOriginAccess, defaultRootObject = defaultRootObject, customErrorResponses = customErrorResponses)
   output <- .lightsail$create_distribution_output()
   config <- get_config()
   svc <- .lightsail$service(config, op)
@@ -1278,7 +1285,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' 
 #' -   Can't be a word reserved by the specified database engine.
 #' 
-#'     For more information about reserved words in MySQL, see the Keywords and Reserved Words articles for [MySQL 5.6](https://dev.mysql.com/doc/refman/9.7/en/keywords.html), [MySQL 5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html), and [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/keywords.html).
+#'     For more information about reserved words in MySQL, see the Keywords and Reserved Words articles for MySQL 5.6, MySQL 5.7, and MySQL 8.0.
 #' 
 #' **PostgreSQL**
 #' 
@@ -1307,7 +1314,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' 
 #' -   Can't be a reserved word for the chosen database engine.
 #' 
-#'     For more information about reserved words in MySQL 5.6 or 5.7, see the Keywords and Reserved Words articles for [MySQL 5.6](https://dev.mysql.com/doc/refman/9.7/en/keywords.html), [MySQL 5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html), or [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/keywords.html).
+#'     For more information about reserved words in MySQL 5.6 or 5.7, see the Keywords and Reserved Words articles for MySQL 5.6, MySQL 5.7, or MySQL 8.0.
 #' 
 #' **PostgreSQL**
 #' 
@@ -4478,6 +4485,38 @@ lightsail_get_operations_for_resource <- function(resourceName, pageToken = NULL
 }
 .lightsail$operations$get_operations_for_resource <- lightsail_get_operations_for_resource
 
+#' Returns information about the profile of the Amazon Lightsail account
+#' that makes the request
+#'
+#' @description
+#' Returns information about the profile of the Amazon Lightsail account that makes the request. The response includes the profile type and, for accounts enrolled in the Lightsail partner program, the partner membership details.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_profile/](https://www.paws-r-sdk.com/docs/lightsail_get_profile/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_profile
+lightsail_get_profile <- function() {
+  op <- new_operation(
+    name = "GetProfile",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lightsail$get_profile_input()
+  output <- .lightsail$get_profile_output()
+  config <- get_config()
+  svc <- .lightsail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_profile <- lightsail_get_profile
+
 #' Returns a list of all valid regions for Amazon Lightsail
 #'
 #' @description
@@ -6188,11 +6227,20 @@ lightsail_update_container_service <- function(serviceName, power = NULL, scale 
 #' @param useDefaultCertificate Indicates whether the default SSL/TLS certificate is attached to the distribution. The default value is `true`. When `true`, the distribution uses the default domain name such as `d111111abcdef8.cloudfront.net`.
 #' 
 #' Set this value to `false` to attach a new certificate to the distribution.
+#' @param enablePrivateOriginAccess Specifies whether to enable private origin access for the distribution. With private origin access, the distribution can serve objects that aren't publicly accessible from a Lightsail bucket.
+#' 
+#' Lightsail grants the distribution permission to read the bucket's objects. Enabling private origin access doesn't change the bucket's access settings, and you can still retrieve publicly accessible objects directly from the bucket's endpoint.
+#' 
+#' When you include this parameter, you must also include the `origin` parameter with the resource name, even if the origin is not changing.
+#' 
+#' You can enable private origin access only when the distribution's origin is a Lightsail bucket. If the origin is another resource type, the request fails.
+#' @param defaultRootObject The object (for example, `index.html`) that the distribution returns when a viewer requests the root URL of the distribution (`/`) instead of a specific object. The object that you specify must be available from the origin.
+#' @param customErrorResponses An array of objects that describe the custom error responses for the distribution. With a custom error response, you can specify the page to return when the origin responds with a given HTTP error code. You can also specify the HTTP status code to send to the viewer.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_update_distribution
-lightsail_update_distribution <- function(distributionName, origin = NULL, defaultCacheBehavior = NULL, cacheBehaviorSettings = NULL, cacheBehaviors = NULL, isEnabled = NULL, viewerMinimumTlsProtocolVersion = NULL, certificateName = NULL, useDefaultCertificate = NULL) {
+lightsail_update_distribution <- function(distributionName, origin = NULL, defaultCacheBehavior = NULL, cacheBehaviorSettings = NULL, cacheBehaviors = NULL, isEnabled = NULL, viewerMinimumTlsProtocolVersion = NULL, certificateName = NULL, useDefaultCertificate = NULL, enablePrivateOriginAccess = NULL, defaultRootObject = NULL, customErrorResponses = NULL) {
   op <- new_operation(
     name = "UpdateDistribution",
     http_method = "POST",
@@ -6201,7 +6249,7 @@ lightsail_update_distribution <- function(distributionName, origin = NULL, defau
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lightsail$update_distribution_input(distributionName = distributionName, origin = origin, defaultCacheBehavior = defaultCacheBehavior, cacheBehaviorSettings = cacheBehaviorSettings, cacheBehaviors = cacheBehaviors, isEnabled = isEnabled, viewerMinimumTlsProtocolVersion = viewerMinimumTlsProtocolVersion, certificateName = certificateName, useDefaultCertificate = useDefaultCertificate)
+  input <- .lightsail$update_distribution_input(distributionName = distributionName, origin = origin, defaultCacheBehavior = defaultCacheBehavior, cacheBehaviorSettings = cacheBehaviorSettings, cacheBehaviors = cacheBehaviors, isEnabled = isEnabled, viewerMinimumTlsProtocolVersion = viewerMinimumTlsProtocolVersion, certificateName = certificateName, useDefaultCertificate = useDefaultCertificate, enablePrivateOriginAccess = enablePrivateOriginAccess, defaultRootObject = defaultRootObject, customErrorResponses = customErrorResponses)
   output <- .lightsail$update_distribution_output()
   config <- get_config()
   svc <- .lightsail$service(config, op)

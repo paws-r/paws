@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_get_channel}
 \alias{cloudtrail_get_channel}
-\title{Returns information about a specific channel}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_get_channel(Channel)
 }
@@ -10,7 +11,7 @@ cloudtrail_get_channel(Channel)
 \item{Channel}{[required] The ARN or \code{UUID} of a channel.}
 }
 \description{
-Returns information about a specific channel.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_get_channel/} for full documentation.
 }

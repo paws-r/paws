@@ -3,9 +3,10 @@
 \name{sesv2_list_suppressed_destinations}
 \alias{sesv2_list_suppressed_destinations}
 \title{Retrieves a list of email addresses that are on the suppression list for
-your account}
+your account or for a specific tenant}
 \usage{
 sesv2_list_suppressed_destinations(
+  TenantName = NULL,
   Reasons = NULL,
   StartDate = NULL,
   EndDate = NULL,
@@ -14,7 +15,9 @@ sesv2_list_suppressed_destinations(
 )
 }
 \arguments{
-\item{Reasons}{The factors that caused the email address to be added to .}
+\item{TenantName}{The name of the tenant whose suppression list you want to retrieve. If you omit this parameter, the operation targets the account-level suppression list.}
+
+\item{Reasons}{The factors that caused the email address to be added to the suppression list for your account or for a specific tenant.}
 
 \item{StartDate}{Used to filter the list of suppressed email destinations so that it only includes addresses that were added to the list after a specific date.}
 
@@ -25,7 +28,7 @@ sesv2_list_suppressed_destinations(
 \item{PageSize}{The number of results to show in a single call to \code{\link[=sesv2_list_suppressed_destinations]{list_suppressed_destinations}}. If the number of results is larger than the number you specified in this parameter, then the response includes a \code{NextToken} element, which you can use to obtain additional results.}
 }
 \description{
-Retrieves a list of email addresses that are on the suppression list for your account.
+Retrieves a list of email addresses that are on the suppression list for your account or for a specific tenant. To target a tenant's suppression list, specify the \code{TenantName} parameter. If you omit \code{TenantName}, the operation targets the account-level suppression list.
 
 See \url{https://www.paws-r-sdk.com/docs/sesv2_list_suppressed_destinations/} for full documentation.
 }

@@ -4,10 +4,12 @@
 \alias{bedrockagent_get_flow}
 \title{Retrieves information about a flow}
 \usage{
-bedrockagent_get_flow(flowIdentifier)
+bedrockagent_get_flow(flowIdentifier, includedData = NULL)
 }
 \arguments{
 \item{flowIdentifier}{[required] The unique identifier of the flow.}
+
+\item{includedData}{Controls the scope of data returned. Set to \code{METADATA_ONLY} to return only resource metadata. Set to \code{ALL_DATA} or omit this field to return the full response.}
 }
 \description{
 Retrieves information about a flow. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/}{Manage a flow in Amazon Bedrock} in the Amazon Bedrock User Guide.

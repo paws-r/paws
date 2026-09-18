@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockagentcorecontrol_operations.R
 \name{bedrockagentcorecontrol_update_harness}
 \alias{bedrockagentcorecontrol_update_harness}
-\title{Operation to update a Harness}
+\title{Operation to update a harness}
 \usage{
 bedrockagentcorecontrol_update_harness(
   harnessId,
@@ -60,7 +60,7 @@ bedrockagentcorecontrol_update_harness(
 \item{timeoutSeconds}{The maximum duration in seconds for the agent loop execution per invocation. If not specified, the existing value is retained.}
 }
 \description{
-Operation to update a Harness.
+Operation to update a harness.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_update_harness/} for full documentation.
 }

@@ -7,7 +7,8 @@
 securityhub_get_enabled_standards(
   StandardsSubscriptionArns = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  Providers = NULL
 )
 }
 \arguments{
@@ -18,6 +19,8 @@ securityhub_get_enabled_standards(
 For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value returned from the previous response.}
 
 \item{MaxResults}{The maximum number of results to return in the response.}
+
+\item{Providers}{A list of cloud providers to filter the enabled standards by. For example, specify \code{Azure} to return only enabled standards that evaluate Azure resources.}
 }
 \description{
 Returns a list of the standards that are currently enabled.

@@ -146,12 +146,14 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId, shutdownGraceP
 #'   ),
 #'   architecture = "ARM64"|"X86_64",
 #'   imageConfiguration = list(
-#'     imageUri = "string"
+#'     imageUri = "string",
+#'     applicationLevelDigestResolution = TRUE|FALSE
 #'   ),
 #'   workerTypeSpecifications = list(
 #'     list(
 #'       imageConfiguration = list(
-#'         imageUri = "string"
+#'         imageUri = "string",
+#'         applicationLevelDigestResolution = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -346,13 +348,15 @@ emrserverless_delete_application <- function(applicationId) {
 #'     architecture = "ARM64"|"X86_64",
 #'     imageConfiguration = list(
 #'       imageUri = "string",
-#'       resolvedImageDigest = "string"
+#'       resolvedImageDigest = "string",
+#'       applicationLevelDigestResolution = TRUE|FALSE
 #'     ),
 #'     workerTypeSpecifications = list(
 #'       list(
 #'         imageConfiguration = list(
 #'           imageUri = "string",
-#'           resolvedImageDigest = "string"
+#'           resolvedImageDigest = "string",
+#'           applicationLevelDigestResolution = TRUE|FALSE
 #'         )
 #'       )
 #'     ),
@@ -642,7 +646,21 @@ emrserverless_get_dashboard_for_job_run <- function(applicationId, jobRunId, att
 #'     endedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     queuedDurationMilliseconds = 123
+#'     queuedDurationMilliseconds = 123,
+#'     imageConfiguration = list(
+#'       imageUri = "string",
+#'       resolvedImageDigest = "string",
+#'       applicationLevelDigestResolution = TRUE|FALSE
+#'     ),
+#'     workerTypeSpecifications = list(
+#'       list(
+#'         imageConfiguration = list(
+#'           imageUri = "string",
+#'           resolvedImageDigest = "string",
+#'           applicationLevelDigestResolution = TRUE|FALSE
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1832,13 +1850,15 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'     architecture = "ARM64"|"X86_64",
 #'     imageConfiguration = list(
 #'       imageUri = "string",
-#'       resolvedImageDigest = "string"
+#'       resolvedImageDigest = "string",
+#'       applicationLevelDigestResolution = TRUE|FALSE
 #'     ),
 #'     workerTypeSpecifications = list(
 #'       list(
 #'         imageConfiguration = list(
 #'           imageUri = "string",
-#'           resolvedImageDigest = "string"
+#'           resolvedImageDigest = "string",
+#'           applicationLevelDigestResolution = TRUE|FALSE
 #'         )
 #'       )
 #'     ),
@@ -1940,12 +1960,14 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'   ),
 #'   architecture = "ARM64"|"X86_64",
 #'   imageConfiguration = list(
-#'     imageUri = "string"
+#'     imageUri = "string",
+#'     applicationLevelDigestResolution = TRUE|FALSE
 #'   ),
 #'   workerTypeSpecifications = list(
 #'     list(
 #'       imageConfiguration = list(
-#'         imageUri = "string"
+#'         imageUri = "string",
+#'         applicationLevelDigestResolution = TRUE|FALSE
 #'       )
 #'     )
 #'   ),

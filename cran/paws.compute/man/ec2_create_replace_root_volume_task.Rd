@@ -5,8 +5,8 @@
 \title{Replaces the EBS-backed root volume for a running instance with a new
 volume that is restored to the original root volume's launch state, that
 is restored to a specific snapshot taken from the original root volume,
-or that is restored from an AMI that has the same key characteristics as
-that of the instance}
+that is restored from an AMI that has the same key characteristics as
+that of the instance, or that is replaced by a specified volume}
 \usage{
 ec2_create_replace_root_volume_task(
   InstanceId,
@@ -16,7 +16,8 @@ ec2_create_replace_root_volume_task(
   TagSpecifications = NULL,
   ImageId = NULL,
   DeleteReplacedRootVolume = NULL,
-  VolumeInitializationRate = NULL
+  VolumeInitializationRate = NULL,
+  VolumeId = NULL
 )
 }
 \arguments{
@@ -24,7 +25,7 @@ ec2_create_replace_root_volume_task(
 
 \item{SnapshotId}{The ID of the snapshot from which to restore the replacement root volume. The specified snapshot must be a snapshot that you previously created from the original root volume.
 
-If you want to restore the replacement root volume to the initial launch state, or if you want to restore the replacement root volume from an AMI, omit this parameter.}
+If you want to restore the replacement root volume to the initial launch state, if you want to restore the replacement root volume from an AMI, or if you want to replace the root volume with a specified volume, omit this parameter.}
 
 \item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency of the request. If you do not specify a client token, a randomly generated token is used for the request to ensure idempotency. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
@@ -34,7 +35,7 @@ If you want to restore the replacement root volume to the initial launch state, 
 
 \item{ImageId}{The ID of the AMI to use to restore the root volume. The specified AMI must have the same product code, billing information, architecture type, and virtualization type as that of the instance.
 
-If you want to restore the replacement volume from a specific snapshot, or if you want to restore it to its launch state, omit this parameter.}
+If you want to restore the replacement volume from a specific snapshot, if you want to restore it to its launch state, or if you want to replace the root volume with a specified volume, omit this parameter.}
 
 \item{DeleteReplacedRootVolume}{Indicates whether to automatically delete the original root volume after the root volume replacement task completes. To delete the original root volume, specify \code{true}. If you choose to keep the original root volume after the replacement task completes, you must manually delete it when you no longer need it.}
 
@@ -51,9 +52,13 @@ If you specify a snapshot that is enabled for fast snapshot restore and a volume
 For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/initalize-volume.html}{Initialize Amazon EBS volumes} in the \emph{Amazon EC2 User Guide}.
 
 Valid range: 100 - 300 MiB/s}
+
+\item{VolumeId}{The ID of the volume to use as the replacement root volume. The specified volume must be in the same Availability Zone as the instance, must be in the \code{available} state, and must not be attached to an instance. If the original root volume is encrypted, the specified volume must also be encrypted.
+
+If you want to restore the replacement root volume from a specific snapshot, an AMI, or to its launch state, omit this parameter.}
 }
 \description{
-Replaces the EBS-backed root volume for a \code{running} instance with a new volume that is restored to the original root volume's launch state, that is restored to a specific snapshot taken from the original root volume, or that is restored from an AMI that has the same key characteristics as that of the instance.
+Replaces the EBS-backed root volume for a \code{running} instance with a new volume that is restored to the original root volume's launch state, that is restored to a specific snapshot taken from the original root volume, that is restored from an AMI that has the same key characteristics as that of the instance, or that is replaced by a specified volume.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_create_replace_root_volume_task/} for full documentation.
 }

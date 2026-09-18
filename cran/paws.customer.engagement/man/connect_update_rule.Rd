@@ -4,7 +4,15 @@
 \alias{connect_update_rule}
 \title{Updates a rule for the specified Connect Customer instance}
 \usage{
-connect_update_rule(RuleId, InstanceId, Name, Function, Actions, PublishStatus)
+connect_update_rule(
+  RuleId,
+  InstanceId,
+  Name,
+  Function,
+  Actions,
+  PublishStatus,
+  PreEvaluationFilters = NULL
+)
 }
 \arguments{
 \item{RuleId}{[required] A unique identifier for the rule.}
@@ -18,6 +26,8 @@ connect_update_rule(RuleId, InstanceId, Name, Function, Actions, PublishStatus)
 \item{Actions}{[required] A list of actions to be run when the rule is triggered.}
 
 \item{PublishStatus}{[required] The publish status of the rule.}
+
+\item{PreEvaluationFilters}{The pre-evaluation filters for the rule, that restrict the rule to be applied to only certain resources based on the resource's attributes, such as tags assigned to a contact. The pre-evaluation filters are applied even before rule conditions are evaluated and are used to enforce tag-based-access-control while applying rules.}
 }
 \description{
 Updates a rule for the specified Connect Customer instance.

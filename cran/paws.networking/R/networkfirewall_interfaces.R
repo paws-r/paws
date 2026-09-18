@@ -5,948 +5,850 @@ NULL
 
 .networkfirewall$accept_network_firewall_transit_gateway_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitGatewayAttachmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["accept_network_firewall_transit_gateway_attachment_input"]]))
 }
 
 .networkfirewall$accept_network_firewall_transit_gateway_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitGatewayAttachmentId = structure(logical(0), tags = list(type = "string")), TransitGatewayAttachmentStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["accept_network_firewall_transit_gateway_attachment_output"]]))
 }
 
 .networkfirewall$associate_availability_zones_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), AvailabilityZoneMappings = structure(list(structure(list(AvailabilityZone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["associate_availability_zones_input"]]))
 }
 
 .networkfirewall$associate_availability_zones_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), AvailabilityZoneMappings = structure(list(structure(list(AvailabilityZone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["associate_availability_zones_output"]]))
 }
 
 .networkfirewall$associate_firewall_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), FirewallPolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["associate_firewall_policy_input"]]))
 }
 
 .networkfirewall$associate_firewall_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), FirewallPolicyArn = structure(logical(0), tags = list(type = "string")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["associate_firewall_policy_output"]]))
 }
 
 .networkfirewall$associate_subnets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), SubnetMappings = structure(list(structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["associate_subnets_input"]]))
 }
 
 .networkfirewall$associate_subnets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), SubnetMappings = structure(list(structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["associate_subnets_output"]]))
 }
 
 .networkfirewall$attach_rule_groups_to_proxy_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), ProxyConfigurationArn = structure(logical(0), tags = list(type = "string")), RuleGroups = structure(list(structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), InsertPosition = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["attach_rule_groups_to_proxy_configuration_input"]]))
 }
 
 .networkfirewall$attach_rule_groups_to_proxy_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyConfiguration = structure(list(ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), ProxyConfigurationArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), DeleteTime = structure(logical(0), tags = list(type = "timestamp")), RuleGroups = structure(list(structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultRulePhaseActions = structure(list(PreDNS = structure(logical(0), tags = list(type = "string")), PreREQUEST = structure(logical(0), tags = list(type = "string")), PostRESPONSE = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["attach_rule_groups_to_proxy_configuration_output"]]))
+}
+
+.networkfirewall$create_container_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .networkfirewall_shapes[["create_container_association_input"]]))
+}
+
+.networkfirewall$create_container_association_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .networkfirewall_shapes[["create_container_association_output"]]))
 }
 
 .networkfirewall$create_firewall_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallName = structure(logical(0), tags = list(type = "string")), FirewallPolicyArn = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetMappings = structure(list(structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DeleteProtection = structure(logical(0), tags = list(type = "boolean")), SubnetChangeProtection = structure(logical(0), tags = list(type = "boolean")), FirewallPolicyChangeProtection = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EnabledAnalysisTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TransitGatewayId = structure(logical(0), tags = list(type = "string")), AvailabilityZoneMappings = structure(list(structure(list(AvailabilityZone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AvailabilityZoneChangeProtection = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_firewall_input"]]))
 }
 
 .networkfirewall$create_firewall_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Firewall = structure(list(FirewallName = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallPolicyArn = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetMappings = structure(list(structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DeleteProtection = structure(logical(0), tags = list(type = "boolean")), SubnetChangeProtection = structure(logical(0), tags = list(type = "boolean")), FirewallPolicyChangeProtection = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), FirewallId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NumberOfAssociations = structure(logical(0), tags = list(type = "integer")), EnabledAnalysisTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TransitGatewayId = structure(logical(0), tags = list(type = "string")), TransitGatewayOwnerAccountId = structure(logical(0), tags = list(type = "string")), AvailabilityZoneMappings = structure(list(structure(list(AvailabilityZone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AvailabilityZoneChangeProtection = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), FirewallStatus = structure(list(Status = structure(logical(0), tags = list(type = "string")), ConfigurationSyncStateSummary = structure(logical(0), tags = list(type = "string")), SyncStates = structure(list(structure(list(Attachment = structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Config = structure(list(structure(list(SyncStatus = structure(logical(0), tags = list(type = "string")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), CapacityUsageSummary = structure(list(CIDRs = structure(list(AvailableCIDRCount = structure(logical(0), tags = list(type = "integer")), UtilizedCIDRCount = structure(logical(0), tags = list(type = "integer")), IPSetReferences = structure(list(structure(list(ResolvedCIDRCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), TransitGatewayAttachmentSyncState = structure(list(AttachmentId = structure(logical(0), tags = list(type = "string")), TransitGatewayAttachmentStatus = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_firewall_output"]]))
 }
 
 .networkfirewall$create_firewall_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallPolicyName = structure(logical(0), tags = list(type = "string")), FirewallPolicy = structure(list(StatelessRuleGroupReferences = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), StatelessDefaultActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatelessFragmentDefaultActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatelessCustomActions = structure(list(structure(list(ActionName = structure(logical(0), tags = list(type = "string")), ActionDefinition = structure(list(PublishMetricAction = structure(list(Dimensions = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), StatefulRuleGroupReferences = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(box = TRUE, type = "integer")), Override = structure(list(Action = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeepThreatInspection = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), StatefulDefaultActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatefulEngineOptions = structure(list(RuleOrder = structure(logical(0), tags = list(type = "string")), StreamExceptionPolicy = structure(logical(0), tags = list(type = "string")), FlowTimeouts = structure(list(TcpIdleTimeoutSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), TLSInspectionConfigurationArn = structure(logical(0), tags = list(type = "string")), PolicyVariables = structure(list(RuleVariables = structure(list(structure(list(Definition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), EnableTLSSessionHolding = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_firewall_policy_input"]]))
 }
 
 .networkfirewall$create_firewall_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallPolicyResponse = structure(list(FirewallPolicyName = structure(logical(0), tags = list(type = "string")), FirewallPolicyArn = structure(logical(0), tags = list(type = "string")), FirewallPolicyId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), FirewallPolicyStatus = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConsumedStatelessRuleCapacity = structure(logical(0), tags = list(type = "integer")), ConsumedStatefulRuleCapacity = structure(logical(0), tags = list(type = "integer")), ConsumedStatefulDomainCapacity = structure(logical(0), tags = list(type = "integer")), NumberOfAssociations = structure(logical(0), tags = list(type = "integer")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_firewall_policy_output"]]))
 }
 
 .networkfirewall$create_proxy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyName = structure(logical(0), tags = list(type = "string")), NatGatewayId = structure(logical(0), tags = list(type = "string")), ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), ProxyConfigurationArn = structure(logical(0), tags = list(type = "string")), ListenerProperties = structure(list(structure(list(Port = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TlsInterceptProperties = structure(list(PcaArn = structure(logical(0), tags = list(type = "string")), TlsInterceptMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_proxy_input"]]))
 }
 
 .networkfirewall$create_proxy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Proxy = structure(list(CreateTime = structure(logical(0), tags = list(type = "timestamp")), DeleteTime = structure(logical(0), tags = list(type = "timestamp")), UpdateTime = structure(logical(0), tags = list(type = "timestamp")), FailureCode = structure(logical(0), tags = list(type = "string")), FailureMessage = structure(logical(0), tags = list(type = "string")), ProxyState = structure(logical(0), tags = list(type = "string")), ProxyModifyState = structure(logical(0), tags = list(type = "string")), NatGatewayId = structure(logical(0), tags = list(type = "string")), ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), ProxyConfigurationArn = structure(logical(0), tags = list(type = "string")), ProxyName = structure(logical(0), tags = list(type = "string")), ProxyArn = structure(logical(0), tags = list(type = "string")), ListenerProperties = structure(list(structure(list(Port = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TlsInterceptProperties = structure(list(PcaArn = structure(logical(0), tags = list(type = "string")), TlsInterceptMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_proxy_output"]]))
 }
 
 .networkfirewall$create_proxy_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), RuleGroupNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RuleGroupArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DefaultRulePhaseActions = structure(list(PreDNS = structure(logical(0), tags = list(type = "string")), PreREQUEST = structure(logical(0), tags = list(type = "string")), PostRESPONSE = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_proxy_configuration_input"]]))
 }
 
 .networkfirewall$create_proxy_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyConfiguration = structure(list(ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), ProxyConfigurationArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), DeleteTime = structure(logical(0), tags = list(type = "timestamp")), RuleGroups = structure(list(structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultRulePhaseActions = structure(list(PreDNS = structure(logical(0), tags = list(type = "string")), PreREQUEST = structure(logical(0), tags = list(type = "string")), PostRESPONSE = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_proxy_configuration_output"]]))
 }
 
 .networkfirewall$create_proxy_rule_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Rules = structure(list(PreDNS = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PreREQUEST = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PostRESPONSE = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_proxy_rule_group_input"]]))
 }
 
 .networkfirewall$create_proxy_rule_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRuleGroup = structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), DeleteTime = structure(logical(0), tags = list(type = "timestamp")), Rules = structure(list(PreDNS = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PreREQUEST = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PostRESPONSE = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_proxy_rule_group_output"]]))
 }
 
 .networkfirewall$create_proxy_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), Rules = structure(list(PreDNS = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), InsertPosition = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), PreREQUEST = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), InsertPosition = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), PostRESPONSE = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), InsertPosition = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_proxy_rules_input"]]))
 }
 
 .networkfirewall$create_proxy_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRuleGroup = structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), DeleteTime = structure(logical(0), tags = list(type = "timestamp")), Rules = structure(list(PreDNS = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PreREQUEST = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PostRESPONSE = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_proxy_rules_output"]]))
 }
 
 .networkfirewall$create_rule_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleGroupName = structure(logical(0), tags = list(type = "string")), RuleGroup = structure(list(RuleVariables = structure(list(IPSets = structure(list(structure(list(Definition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map")), PortSets = structure(list(structure(list(Definition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), ReferenceSets = structure(list(IPSetReferences = structure(list(structure(list(ReferenceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), RulesSource = structure(list(RulesString = structure(logical(0), tags = list(type = "string")), RulesSourceList = structure(list(Targets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TargetTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), GeneratedRulesType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StatefulRules = structure(list(structure(list(Action = structure(logical(0), tags = list(type = "string")), Header = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Source = structure(logical(0), tags = list(type = "string")), SourcePort = structure(logical(0), tags = list(type = "string")), Direction = structure(logical(0), tags = list(type = "string")), Destination = structure(logical(0), tags = list(type = "string")), DestinationPort = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RuleOptions = structure(list(structure(list(Keyword = structure(logical(0), tags = list(type = "string")), Settings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), StatelessRulesAndCustomActions = structure(list(StatelessRules = structure(list(structure(list(RuleDefinition = structure(list(MatchAttributes = structure(list(Sources = structure(list(structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Destinations = structure(list(structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SourcePorts = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), DestinationPorts = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Protocols = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "list")), TCPFlags = structure(list(structure(list(Flags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Masks = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Priority = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), CustomActions = structure(list(structure(list(ActionName = structure(logical(0), tags = list(type = "string")), ActionDefinition = structure(list(PublishMetricAction = structure(list(Dimensions = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), StatefulRuleOptions = structure(list(RuleOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Rules = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Capacity = structure(logical(0), tags = list(type = "integer")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourceMetadata = structure(list(SourceArn = structure(logical(0), tags = list(type = "string")), SourceUpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AnalyzeRuleGroup = structure(logical(0), tags = list(type = "boolean")), SummaryConfiguration = structure(list(RuleOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_rule_group_input"]]))
 }
 
 .networkfirewall$create_rule_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), RuleGroupResponse = structure(list(RuleGroupArn = structure(logical(0), tags = list(type = "string")), RuleGroupName = structure(logical(0), tags = list(type = "string")), RuleGroupId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Capacity = structure(logical(0), tags = list(type = "integer")), RuleGroupStatus = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConsumedCapacity = structure(logical(0), tags = list(type = "integer")), NumberOfAssociations = structure(logical(0), tags = list(type = "integer")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourceMetadata = structure(list(SourceArn = structure(logical(0), tags = list(type = "string")), SourceUpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SnsTopic = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), AnalysisResults = structure(list(structure(list(IdentifiedRuleIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IdentifiedType = structure(logical(0), tags = list(type = "string")), AnalysisDetail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SummaryConfiguration = structure(list(RuleOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_rule_group_output"]]))
 }
 
 .networkfirewall$create_tls_inspection_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TLSInspectionConfigurationName = structure(logical(0), tags = list(type = "string")), TLSInspectionConfiguration = structure(list(ServerCertificateConfigurations = structure(list(structure(list(ServerCertificates = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Scopes = structure(list(structure(list(Sources = structure(list(structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Destinations = structure(list(structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SourcePorts = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), DestinationPorts = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Protocols = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), CheckCertificateRevocationStatus = structure(list(RevokedStatusAction = structure(logical(0), tags = list(type = "string")), UnknownStatusAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_tls_inspection_configuration_input"]]))
 }
 
 .networkfirewall$create_tls_inspection_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationResponse = structure(list(TLSInspectionConfigurationArn = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationName = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationId = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationStatus = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), NumberOfAssociations = structure(logical(0), tags = list(type = "integer")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Certificates = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), CertificateSerial = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CertificateAuthority = structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), CertificateSerial = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_tls_inspection_configuration_output"]]))
 }
 
 .networkfirewall$create_vpc_endpoint_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetMapping = structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_vpc_endpoint_association_input"]]))
 }
 
 .networkfirewall$create_vpc_endpoint_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcEndpointAssociation = structure(list(VpcEndpointAssociationId = structure(logical(0), tags = list(type = "string")), VpcEndpointAssociationArn = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetMapping = structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), VpcEndpointAssociationStatus = structure(list(Status = structure(logical(0), tags = list(type = "string")), AssociationSyncState = structure(list(structure(list(Attachment = structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["create_vpc_endpoint_association_output"]]))
+}
+
+.networkfirewall$delete_container_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .networkfirewall_shapes[["delete_container_association_input"]]))
+}
+
+.networkfirewall$delete_container_association_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .networkfirewall_shapes[["delete_container_association_output"]]))
 }
 
 .networkfirewall$delete_firewall_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallName = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_firewall_input"]]))
 }
 
 .networkfirewall$delete_firewall_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Firewall = structure(list(FirewallName = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallPolicyArn = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetMappings = structure(list(structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DeleteProtection = structure(logical(0), tags = list(type = "boolean")), SubnetChangeProtection = structure(logical(0), tags = list(type = "boolean")), FirewallPolicyChangeProtection = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), FirewallId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NumberOfAssociations = structure(logical(0), tags = list(type = "integer")), EnabledAnalysisTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TransitGatewayId = structure(logical(0), tags = list(type = "string")), TransitGatewayOwnerAccountId = structure(logical(0), tags = list(type = "string")), AvailabilityZoneMappings = structure(list(structure(list(AvailabilityZone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AvailabilityZoneChangeProtection = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), FirewallStatus = structure(list(Status = structure(logical(0), tags = list(type = "string")), ConfigurationSyncStateSummary = structure(logical(0), tags = list(type = "string")), SyncStates = structure(list(structure(list(Attachment = structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Config = structure(list(structure(list(SyncStatus = structure(logical(0), tags = list(type = "string")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), CapacityUsageSummary = structure(list(CIDRs = structure(list(AvailableCIDRCount = structure(logical(0), tags = list(type = "integer")), UtilizedCIDRCount = structure(logical(0), tags = list(type = "integer")), IPSetReferences = structure(list(structure(list(ResolvedCIDRCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), TransitGatewayAttachmentSyncState = structure(list(AttachmentId = structure(logical(0), tags = list(type = "string")), TransitGatewayAttachmentStatus = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_firewall_output"]]))
 }
 
 .networkfirewall$delete_firewall_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallPolicyName = structure(logical(0), tags = list(type = "string")), FirewallPolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_firewall_policy_input"]]))
 }
 
 .networkfirewall$delete_firewall_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallPolicyResponse = structure(list(FirewallPolicyName = structure(logical(0), tags = list(type = "string")), FirewallPolicyArn = structure(logical(0), tags = list(type = "string")), FirewallPolicyId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), FirewallPolicyStatus = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConsumedStatelessRuleCapacity = structure(logical(0), tags = list(type = "integer")), ConsumedStatefulRuleCapacity = structure(logical(0), tags = list(type = "integer")), ConsumedStatefulDomainCapacity = structure(logical(0), tags = list(type = "integer")), NumberOfAssociations = structure(logical(0), tags = list(type = "integer")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_firewall_policy_output"]]))
 }
 
 .networkfirewall$delete_network_firewall_transit_gateway_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitGatewayAttachmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_network_firewall_transit_gateway_attachment_input"]]))
 }
 
 .networkfirewall$delete_network_firewall_transit_gateway_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitGatewayAttachmentId = structure(logical(0), tags = list(type = "string")), TransitGatewayAttachmentStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_network_firewall_transit_gateway_attachment_output"]]))
 }
 
 .networkfirewall$delete_proxy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NatGatewayId = structure(logical(0), tags = list(type = "string")), ProxyName = structure(logical(0), tags = list(type = "string")), ProxyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_proxy_input"]]))
 }
 
 .networkfirewall$delete_proxy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NatGatewayId = structure(logical(0), tags = list(type = "string")), ProxyName = structure(logical(0), tags = list(type = "string")), ProxyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_proxy_output"]]))
 }
 
 .networkfirewall$delete_proxy_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), ProxyConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_proxy_configuration_input"]]))
 }
 
 .networkfirewall$delete_proxy_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), ProxyConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_proxy_configuration_output"]]))
 }
 
 .networkfirewall$delete_proxy_rule_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_proxy_rule_group_input"]]))
 }
 
 .networkfirewall$delete_proxy_rule_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_proxy_rule_group_output"]]))
 }
 
 .networkfirewall$delete_proxy_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), Rules = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_proxy_rules_input"]]))
 }
 
 .networkfirewall$delete_proxy_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRuleGroup = structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), DeleteTime = structure(logical(0), tags = list(type = "timestamp")), Rules = structure(list(PreDNS = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PreREQUEST = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PostRESPONSE = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_proxy_rules_output"]]))
 }
 
 .networkfirewall$delete_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_resource_policy_input"]]))
 }
 
 .networkfirewall$delete_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_resource_policy_output"]]))
 }
 
 .networkfirewall$delete_rule_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleGroupName = structure(logical(0), tags = list(type = "string")), RuleGroupArn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_rule_group_input"]]))
 }
 
 .networkfirewall$delete_rule_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleGroupResponse = structure(list(RuleGroupArn = structure(logical(0), tags = list(type = "string")), RuleGroupName = structure(logical(0), tags = list(type = "string")), RuleGroupId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Capacity = structure(logical(0), tags = list(type = "integer")), RuleGroupStatus = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConsumedCapacity = structure(logical(0), tags = list(type = "integer")), NumberOfAssociations = structure(logical(0), tags = list(type = "integer")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourceMetadata = structure(list(SourceArn = structure(logical(0), tags = list(type = "string")), SourceUpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SnsTopic = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), AnalysisResults = structure(list(structure(list(IdentifiedRuleIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IdentifiedType = structure(logical(0), tags = list(type = "string")), AnalysisDetail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SummaryConfiguration = structure(list(RuleOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_rule_group_output"]]))
 }
 
 .networkfirewall$delete_tls_inspection_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TLSInspectionConfigurationArn = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_tls_inspection_configuration_input"]]))
 }
 
 .networkfirewall$delete_tls_inspection_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TLSInspectionConfigurationResponse = structure(list(TLSInspectionConfigurationArn = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationName = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationId = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationStatus = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), NumberOfAssociations = structure(logical(0), tags = list(type = "integer")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Certificates = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), CertificateSerial = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CertificateAuthority = structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), CertificateSerial = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_tls_inspection_configuration_output"]]))
 }
 
 .networkfirewall$delete_vpc_endpoint_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcEndpointAssociationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_vpc_endpoint_association_input"]]))
 }
 
 .networkfirewall$delete_vpc_endpoint_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcEndpointAssociation = structure(list(VpcEndpointAssociationId = structure(logical(0), tags = list(type = "string")), VpcEndpointAssociationArn = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetMapping = structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), VpcEndpointAssociationStatus = structure(list(Status = structure(logical(0), tags = list(type = "string")), AssociationSyncState = structure(list(structure(list(Attachment = structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["delete_vpc_endpoint_association_output"]]))
+}
+
+.networkfirewall$describe_container_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .networkfirewall_shapes[["describe_container_association_input"]]))
+}
+
+.networkfirewall$describe_container_association_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .networkfirewall_shapes[["describe_container_association_output"]]))
 }
 
 .networkfirewall$describe_firewall_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallName = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_firewall_input"]]))
 }
 
 .networkfirewall$describe_firewall_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), Firewall = structure(list(FirewallName = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallPolicyArn = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetMappings = structure(list(structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DeleteProtection = structure(logical(0), tags = list(type = "boolean")), SubnetChangeProtection = structure(logical(0), tags = list(type = "boolean")), FirewallPolicyChangeProtection = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), FirewallId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NumberOfAssociations = structure(logical(0), tags = list(type = "integer")), EnabledAnalysisTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TransitGatewayId = structure(logical(0), tags = list(type = "string")), TransitGatewayOwnerAccountId = structure(logical(0), tags = list(type = "string")), AvailabilityZoneMappings = structure(list(structure(list(AvailabilityZone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AvailabilityZoneChangeProtection = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), FirewallStatus = structure(list(Status = structure(logical(0), tags = list(type = "string")), ConfigurationSyncStateSummary = structure(logical(0), tags = list(type = "string")), SyncStates = structure(list(structure(list(Attachment = structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Config = structure(list(structure(list(SyncStatus = structure(logical(0), tags = list(type = "string")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), CapacityUsageSummary = structure(list(CIDRs = structure(list(AvailableCIDRCount = structure(logical(0), tags = list(type = "integer")), UtilizedCIDRCount = structure(logical(0), tags = list(type = "integer")), IPSetReferences = structure(list(structure(list(ResolvedCIDRCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), TransitGatewayAttachmentSyncState = structure(list(AttachmentId = structure(logical(0), tags = list(type = "string")), TransitGatewayAttachmentStatus = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_firewall_output"]]))
 }
 
 .networkfirewall$describe_firewall_metadata_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_firewall_metadata_input"]]))
 }
 
 .networkfirewall$describe_firewall_metadata_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallPolicyArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SupportedAvailabilityZones = structure(list(structure(list(IPAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), TransitGatewayAttachmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_firewall_metadata_output"]]))
 }
 
 .networkfirewall$describe_firewall_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallPolicyName = structure(logical(0), tags = list(type = "string")), FirewallPolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_firewall_policy_input"]]))
 }
 
 .networkfirewall$describe_firewall_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallPolicyResponse = structure(list(FirewallPolicyName = structure(logical(0), tags = list(type = "string")), FirewallPolicyArn = structure(logical(0), tags = list(type = "string")), FirewallPolicyId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), FirewallPolicyStatus = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConsumedStatelessRuleCapacity = structure(logical(0), tags = list(type = "integer")), ConsumedStatefulRuleCapacity = structure(logical(0), tags = list(type = "integer")), ConsumedStatefulDomainCapacity = structure(logical(0), tags = list(type = "integer")), NumberOfAssociations = structure(logical(0), tags = list(type = "integer")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), FirewallPolicy = structure(list(StatelessRuleGroupReferences = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), StatelessDefaultActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatelessFragmentDefaultActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatelessCustomActions = structure(list(structure(list(ActionName = structure(logical(0), tags = list(type = "string")), ActionDefinition = structure(list(PublishMetricAction = structure(list(Dimensions = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), StatefulRuleGroupReferences = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(box = TRUE, type = "integer")), Override = structure(list(Action = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeepThreatInspection = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), StatefulDefaultActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatefulEngineOptions = structure(list(RuleOrder = structure(logical(0), tags = list(type = "string")), StreamExceptionPolicy = structure(logical(0), tags = list(type = "string")), FlowTimeouts = structure(list(TcpIdleTimeoutSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), TLSInspectionConfigurationArn = structure(logical(0), tags = list(type = "string")), PolicyVariables = structure(list(RuleVariables = structure(list(structure(list(Definition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), EnableTLSSessionHolding = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_firewall_policy_output"]]))
 }
 
 .networkfirewall$describe_flow_operation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), VpcEndpointAssociationArn = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string")), FlowOperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_flow_operation_input"]]))
 }
 
 .networkfirewall$describe_flow_operation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), VpcEndpointAssociationArn = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string")), FlowOperationId = structure(logical(0), tags = list(type = "string")), FlowOperationType = structure(logical(0), tags = list(type = "string")), FlowOperationStatus = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), FlowRequestTimestamp = structure(logical(0), tags = list(type = "timestamp")), FlowOperation = structure(list(MinimumFlowAgeInSeconds = structure(logical(0), tags = list(type = "integer")), FlowFilters = structure(list(structure(list(SourceAddress = structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationAddress = structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePort = structure(logical(0), tags = list(type = "string")), DestinationPort = structure(logical(0), tags = list(type = "string")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_flow_operation_output"]]))
 }
 
 .networkfirewall$describe_logging_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_logging_configuration_input"]]))
 }
 
 .networkfirewall$describe_logging_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), LoggingConfiguration = structure(list(LogDestinationConfigs = structure(list(structure(list(LogType = structure(logical(0), tags = list(type = "string")), LogDestinationType = structure(logical(0), tags = list(type = "string")), LogDestination = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EnableMonitoringDashboard = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_logging_configuration_output"]]))
 }
 
 .networkfirewall$describe_proxy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyName = structure(logical(0), tags = list(type = "string")), ProxyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_proxy_input"]]))
 }
 
 .networkfirewall$describe_proxy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Proxy = structure(list(ProxyName = structure(logical(0), tags = list(type = "string")), ProxyArn = structure(logical(0), tags = list(type = "string")), ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), ProxyConfigurationArn = structure(logical(0), tags = list(type = "string")), NatGatewayId = structure(logical(0), tags = list(type = "string")), ProxyState = structure(logical(0), tags = list(type = "string")), ProxyModifyState = structure(logical(0), tags = list(type = "string")), ListenerProperties = structure(list(structure(list(Port = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TlsInterceptProperties = structure(list(PcaArn = structure(logical(0), tags = list(type = "string")), TlsInterceptMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), VpcEndpointServiceName = structure(logical(0), tags = list(type = "string")), PrivateDNSName = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), DeleteTime = structure(logical(0), tags = list(type = "timestamp")), UpdateTime = structure(logical(0), tags = list(type = "timestamp")), FailureCode = structure(logical(0), tags = list(type = "string")), FailureMessage = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_proxy_output"]]))
 }
 
 .networkfirewall$describe_proxy_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), ProxyConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_proxy_configuration_input"]]))
 }
 
 .networkfirewall$describe_proxy_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyConfiguration = structure(list(ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), ProxyConfigurationArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), DeleteTime = structure(logical(0), tags = list(type = "timestamp")), RuleGroups = structure(list(structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultRulePhaseActions = structure(list(PreDNS = structure(logical(0), tags = list(type = "string")), PreREQUEST = structure(logical(0), tags = list(type = "string")), PostRESPONSE = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_proxy_configuration_output"]]))
 }
 
 .networkfirewall$describe_proxy_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_proxy_rule_input"]]))
 }
 
 .networkfirewall$describe_proxy_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRule = structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_proxy_rule_output"]]))
 }
 
 .networkfirewall$describe_proxy_rule_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_proxy_rule_group_input"]]))
 }
 
 .networkfirewall$describe_proxy_rule_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRuleGroup = structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), DeleteTime = structure(logical(0), tags = list(type = "timestamp")), Rules = structure(list(PreDNS = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PreREQUEST = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), PostRESPONSE = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_proxy_rule_group_output"]]))
 }
 
 .networkfirewall$describe_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_resource_policy_input"]]))
 }
 
 .networkfirewall$describe_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_resource_policy_output"]]))
 }
 
 .networkfirewall$describe_rule_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleGroupName = structure(logical(0), tags = list(type = "string")), RuleGroupArn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), AnalyzeRuleGroup = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_rule_group_input"]]))
 }
 
 .networkfirewall$describe_rule_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), RuleGroup = structure(list(RuleVariables = structure(list(IPSets = structure(list(structure(list(Definition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map")), PortSets = structure(list(structure(list(Definition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), ReferenceSets = structure(list(IPSetReferences = structure(list(structure(list(ReferenceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), RulesSource = structure(list(RulesString = structure(logical(0), tags = list(type = "string")), RulesSourceList = structure(list(Targets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TargetTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), GeneratedRulesType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StatefulRules = structure(list(structure(list(Action = structure(logical(0), tags = list(type = "string")), Header = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Source = structure(logical(0), tags = list(type = "string")), SourcePort = structure(logical(0), tags = list(type = "string")), Direction = structure(logical(0), tags = list(type = "string")), Destination = structure(logical(0), tags = list(type = "string")), DestinationPort = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RuleOptions = structure(list(structure(list(Keyword = structure(logical(0), tags = list(type = "string")), Settings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), StatelessRulesAndCustomActions = structure(list(StatelessRules = structure(list(structure(list(RuleDefinition = structure(list(MatchAttributes = structure(list(Sources = structure(list(structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Destinations = structure(list(structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SourcePorts = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), DestinationPorts = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Protocols = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "list")), TCPFlags = structure(list(structure(list(Flags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Masks = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Priority = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), CustomActions = structure(list(structure(list(ActionName = structure(logical(0), tags = list(type = "string")), ActionDefinition = structure(list(PublishMetricAction = structure(list(Dimensions = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), StatefulRuleOptions = structure(list(RuleOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), RuleGroupResponse = structure(list(RuleGroupArn = structure(logical(0), tags = list(type = "string")), RuleGroupName = structure(logical(0), tags = list(type = "string")), RuleGroupId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Capacity = structure(logical(0), tags = list(type = "integer")), RuleGroupStatus = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConsumedCapacity = structure(logical(0), tags = list(type = "integer")), NumberOfAssociations = structure(logical(0), tags = list(type = "integer")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourceMetadata = structure(list(SourceArn = structure(logical(0), tags = list(type = "string")), SourceUpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SnsTopic = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), AnalysisResults = structure(list(structure(list(IdentifiedRuleIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IdentifiedType = structure(logical(0), tags = list(type = "string")), AnalysisDetail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SummaryConfiguration = structure(list(RuleOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_rule_group_output"]]))
 }
 
 .networkfirewall$describe_rule_group_metadata_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleGroupName = structure(logical(0), tags = list(type = "string")), RuleGroupArn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_rule_group_metadata_input"]]))
 }
 
 .networkfirewall$describe_rule_group_metadata_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleGroupArn = structure(logical(0), tags = list(type = "string")), RuleGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Capacity = structure(logical(0), tags = list(type = "integer")), StatefulRuleOptions = structure(list(RuleOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), VendorName = structure(logical(0), tags = list(type = "string")), ProductId = structure(logical(0), tags = list(type = "string")), ListingName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_rule_group_metadata_output"]]))
 }
 
 .networkfirewall$describe_rule_group_summary_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleGroupName = structure(logical(0), tags = list(type = "string")), RuleGroupArn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_rule_group_summary_input"]]))
 }
 
 .networkfirewall$describe_rule_group_summary_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RuleGroupName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Summary = structure(list(RuleSummaries = structure(list(structure(list(SID = structure(logical(0), tags = list(type = "string")), Msg = structure(logical(0), tags = list(type = "string")), Metadata = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_rule_group_summary_output"]]))
 }
 
 .networkfirewall$describe_tls_inspection_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TLSInspectionConfigurationArn = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_tls_inspection_configuration_input"]]))
 }
 
 .networkfirewall$describe_tls_inspection_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), TLSInspectionConfiguration = structure(list(ServerCertificateConfigurations = structure(list(structure(list(ServerCertificates = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Scopes = structure(list(structure(list(Sources = structure(list(structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Destinations = structure(list(structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SourcePorts = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), DestinationPorts = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Protocols = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), CheckCertificateRevocationStatus = structure(list(RevokedStatusAction = structure(logical(0), tags = list(type = "string")), UnknownStatusAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), TLSInspectionConfigurationResponse = structure(list(TLSInspectionConfigurationArn = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationName = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationId = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationStatus = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), NumberOfAssociations = structure(logical(0), tags = list(type = "integer")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Certificates = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), CertificateSerial = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CertificateAuthority = structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), CertificateSerial = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_tls_inspection_configuration_output"]]))
 }
 
 .networkfirewall$describe_vpc_endpoint_association_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcEndpointAssociationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_vpc_endpoint_association_input"]]))
 }
 
 .networkfirewall$describe_vpc_endpoint_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VpcEndpointAssociation = structure(list(VpcEndpointAssociationId = structure(logical(0), tags = list(type = "string")), VpcEndpointAssociationArn = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetMapping = structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), VpcEndpointAssociationStatus = structure(list(Status = structure(logical(0), tags = list(type = "string")), AssociationSyncState = structure(list(structure(list(Attachment = structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["describe_vpc_endpoint_association_output"]]))
 }
 
 .networkfirewall$detach_rule_groups_from_proxy_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), ProxyConfigurationArn = structure(logical(0), tags = list(type = "string")), RuleGroupNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RuleGroupArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["detach_rule_groups_from_proxy_configuration_input"]]))
 }
 
 .networkfirewall$detach_rule_groups_from_proxy_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyConfiguration = structure(list(ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), ProxyConfigurationArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), DeleteTime = structure(logical(0), tags = list(type = "timestamp")), RuleGroups = structure(list(structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultRulePhaseActions = structure(list(PreDNS = structure(logical(0), tags = list(type = "string")), PreREQUEST = structure(logical(0), tags = list(type = "string")), PostRESPONSE = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["detach_rule_groups_from_proxy_configuration_output"]]))
 }
 
 .networkfirewall$disassociate_availability_zones_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), AvailabilityZoneMappings = structure(list(structure(list(AvailabilityZone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["disassociate_availability_zones_input"]]))
 }
 
 .networkfirewall$disassociate_availability_zones_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), AvailabilityZoneMappings = structure(list(structure(list(AvailabilityZone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["disassociate_availability_zones_output"]]))
 }
 
 .networkfirewall$disassociate_subnets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["disassociate_subnets_input"]]))
 }
 
 .networkfirewall$disassociate_subnets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), SubnetMappings = structure(list(structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), IPAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["disassociate_subnets_output"]]))
 }
 
 .networkfirewall$get_analysis_report_results_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallName = structure(logical(0), tags = list(type = "string")), AnalysisReportId = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["get_analysis_report_results_input"]]))
 }
 
 .networkfirewall$get_analysis_report_results_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), ReportTime = structure(logical(0), tags = list(type = "timestamp")), AnalysisType = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), AnalysisReportResults = structure(list(structure(list(Protocol = structure(logical(0), tags = list(type = "string")), FirstAccessed = structure(logical(0), tags = list(type = "timestamp")), LastAccessed = structure(logical(0), tags = list(type = "timestamp")), Domain = structure(logical(0), tags = list(type = "string")), Hits = structure(list(Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), UniqueSources = structure(list(Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["get_analysis_report_results_output"]]))
 }
 
 .networkfirewall$list_analysis_reports_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallName = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_analysis_reports_input"]]))
 }
 
 .networkfirewall$list_analysis_reports_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AnalysisReports = structure(list(structure(list(AnalysisReportId = structure(logical(0), tags = list(type = "string")), AnalysisType = structure(logical(0), tags = list(type = "string")), ReportTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_analysis_reports_output"]]))
+}
+
+.networkfirewall$list_container_associations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .networkfirewall_shapes[["list_container_associations_input"]]))
+}
+
+.networkfirewall$list_container_associations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .networkfirewall_shapes[["list_container_associations_output"]]))
 }
 
 .networkfirewall$list_firewall_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_firewall_policies_input"]]))
 }
 
 .networkfirewall$list_firewall_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), FirewallPolicies = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_firewall_policies_output"]]))
 }
 
 .networkfirewall$list_firewalls_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), VpcIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_firewalls_input"]]))
 }
 
 .networkfirewall$list_firewalls_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Firewalls = structure(list(structure(list(FirewallName = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), TransitGatewayAttachmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_firewalls_output"]]))
 }
 
 .networkfirewall$list_flow_operation_results_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FlowOperationId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcEndpointAssociationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_flow_operation_results_input"]]))
 }
 
 .networkfirewall$list_flow_operation_results_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), VpcEndpointAssociationArn = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string")), FlowOperationId = structure(logical(0), tags = list(type = "string")), FlowOperationStatus = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), FlowRequestTimestamp = structure(logical(0), tags = list(type = "timestamp")), Flows = structure(list(structure(list(SourceAddress = structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationAddress = structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePort = structure(logical(0), tags = list(type = "string")), DestinationPort = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), Age = structure(logical(0), tags = list(type = "integer")), PacketCount = structure(logical(0), tags = list(type = "integer")), ByteCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_flow_operation_results_output"]]))
 }
 
 .networkfirewall$list_flow_operations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), VpcEndpointAssociationArn = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string")), FlowOperationType = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_flow_operations_input"]]))
 }
 
 .networkfirewall$list_flow_operations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FlowOperations = structure(list(structure(list(FlowOperationId = structure(logical(0), tags = list(type = "string")), FlowOperationType = structure(logical(0), tags = list(type = "string")), FlowRequestTimestamp = structure(logical(0), tags = list(type = "timestamp")), FlowOperationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_flow_operations_output"]]))
 }
 
 .networkfirewall$list_proxies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_proxies_input"]]))
 }
 
 .networkfirewall$list_proxies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Proxies = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_proxies_output"]]))
 }
 
 .networkfirewall$list_proxy_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_proxy_configurations_input"]]))
 }
 
 .networkfirewall$list_proxy_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyConfigurations = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_proxy_configurations_output"]]))
 }
 
 .networkfirewall$list_proxy_rule_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_proxy_rule_groups_input"]]))
 }
 
 .networkfirewall$list_proxy_rule_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRuleGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_proxy_rule_groups_output"]]))
 }
 
 .networkfirewall$list_rule_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Scope = structure(logical(0), tags = list(type = "string")), ManagedType = structure(logical(0), tags = list(type = "string")), SubscriptionStatus = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_rule_groups_input"]]))
 }
 
 .networkfirewall$list_rule_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), RuleGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), VendorName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_rule_groups_output"]]))
 }
 
 .networkfirewall$list_tls_inspection_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_tls_inspection_configurations_input"]]))
 }
 
 .networkfirewall$list_tls_inspection_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurations = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_tls_inspection_configurations_output"]]))
 }
 
 .networkfirewall$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_tags_for_resource_input"]]))
 }
 
 .networkfirewall$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_tags_for_resource_output"]]))
 }
 
 .networkfirewall$list_vpc_endpoint_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), FirewallArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_vpc_endpoint_associations_input"]]))
 }
 
 .networkfirewall$list_vpc_endpoint_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), VpcEndpointAssociations = structure(list(structure(list(VpcEndpointAssociationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["list_vpc_endpoint_associations_output"]]))
 }
 
 .networkfirewall$put_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["put_resource_policy_input"]]))
 }
 
 .networkfirewall$put_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["put_resource_policy_output"]]))
 }
 
 .networkfirewall$reject_network_firewall_transit_gateway_attachment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitGatewayAttachmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["reject_network_firewall_transit_gateway_attachment_input"]]))
 }
 
 .networkfirewall$reject_network_firewall_transit_gateway_attachment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TransitGatewayAttachmentId = structure(logical(0), tags = list(type = "string")), TransitGatewayAttachmentStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["reject_network_firewall_transit_gateway_attachment_output"]]))
 }
 
 .networkfirewall$start_analysis_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallName = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), AnalysisType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["start_analysis_report_input"]]))
 }
 
 .networkfirewall$start_analysis_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AnalysisReportId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["start_analysis_report_output"]]))
 }
 
 .networkfirewall$start_flow_capture_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), VpcEndpointAssociationArn = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string")), MinimumFlowAgeInSeconds = structure(logical(0), tags = list(type = "integer")), FlowFilters = structure(list(structure(list(SourceAddress = structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationAddress = structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePort = structure(logical(0), tags = list(type = "string")), DestinationPort = structure(logical(0), tags = list(type = "string")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["start_flow_capture_input"]]))
 }
 
 .networkfirewall$start_flow_capture_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FlowOperationId = structure(logical(0), tags = list(type = "string")), FlowOperationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["start_flow_capture_output"]]))
 }
 
 .networkfirewall$start_flow_flush_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), VpcEndpointAssociationArn = structure(logical(0), tags = list(type = "string")), VpcEndpointId = structure(logical(0), tags = list(type = "string")), MinimumFlowAgeInSeconds = structure(logical(0), tags = list(type = "integer")), FlowFilters = structure(list(structure(list(SourceAddress = structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationAddress = structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePort = structure(logical(0), tags = list(type = "string")), DestinationPort = structure(logical(0), tags = list(type = "string")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["start_flow_flush_input"]]))
 }
 
 .networkfirewall$start_flow_flush_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FlowOperationId = structure(logical(0), tags = list(type = "string")), FlowOperationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["start_flow_flush_output"]]))
 }
 
 .networkfirewall$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["tag_resource_input"]]))
 }
 
 .networkfirewall$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["tag_resource_output"]]))
 }
 
 .networkfirewall$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["untag_resource_input"]]))
 }
 
 .networkfirewall$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["untag_resource_output"]]))
 }
 
 .networkfirewall$update_availability_zone_change_protection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), AvailabilityZoneChangeProtection = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_availability_zone_change_protection_input"]]))
 }
 
 .networkfirewall$update_availability_zone_change_protection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), AvailabilityZoneChangeProtection = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_availability_zone_change_protection_output"]]))
+}
+
+.networkfirewall$update_container_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .networkfirewall_shapes[["update_container_association_input"]]))
+}
+
+.networkfirewall$update_container_association_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .networkfirewall_shapes[["update_container_association_output"]]))
 }
 
 .networkfirewall$update_firewall_analysis_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EnabledAnalysisTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_firewall_analysis_settings_input"]]))
 }
 
 .networkfirewall$update_firewall_analysis_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EnabledAnalysisTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_firewall_analysis_settings_output"]]))
 }
 
 .networkfirewall$update_firewall_delete_protection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), DeleteProtection = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_firewall_delete_protection_input"]]))
 }
 
 .networkfirewall$update_firewall_delete_protection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), DeleteProtection = structure(logical(0), tags = list(type = "boolean")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_firewall_delete_protection_output"]]))
 }
 
 .networkfirewall$update_firewall_description_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_firewall_description_input"]]))
 }
 
 .networkfirewall$update_firewall_description_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_firewall_description_output"]]))
 }
 
 .networkfirewall$update_firewall_encryption_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_firewall_encryption_configuration_input"]]))
 }
 
 .networkfirewall$update_firewall_encryption_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), UpdateToken = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_firewall_encryption_configuration_output"]]))
 }
 
 .networkfirewall$update_firewall_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallPolicyArn = structure(logical(0), tags = list(type = "string")), FirewallPolicyName = structure(logical(0), tags = list(type = "string")), FirewallPolicy = structure(list(StatelessRuleGroupReferences = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), StatelessDefaultActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatelessFragmentDefaultActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatelessCustomActions = structure(list(structure(list(ActionName = structure(logical(0), tags = list(type = "string")), ActionDefinition = structure(list(PublishMetricAction = structure(list(Dimensions = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), StatefulRuleGroupReferences = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(box = TRUE, type = "integer")), Override = structure(list(Action = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeepThreatInspection = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), StatefulDefaultActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatefulEngineOptions = structure(list(RuleOrder = structure(logical(0), tags = list(type = "string")), StreamExceptionPolicy = structure(logical(0), tags = list(type = "string")), FlowTimeouts = structure(list(TcpIdleTimeoutSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), TLSInspectionConfigurationArn = structure(logical(0), tags = list(type = "string")), PolicyVariables = structure(list(RuleVariables = structure(list(structure(list(Definition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), EnableTLSSessionHolding = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), DryRun = structure(logical(0), tags = list(type = "boolean")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_firewall_policy_input"]]))
 }
 
 .networkfirewall$update_firewall_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallPolicyResponse = structure(list(FirewallPolicyName = structure(logical(0), tags = list(type = "string")), FirewallPolicyArn = structure(logical(0), tags = list(type = "string")), FirewallPolicyId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), FirewallPolicyStatus = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConsumedStatelessRuleCapacity = structure(logical(0), tags = list(type = "integer")), ConsumedStatefulRuleCapacity = structure(logical(0), tags = list(type = "integer")), ConsumedStatefulDomainCapacity = structure(logical(0), tags = list(type = "integer")), NumberOfAssociations = structure(logical(0), tags = list(type = "integer")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_firewall_policy_output"]]))
 }
 
 .networkfirewall$update_firewall_policy_change_protection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), FirewallPolicyChangeProtection = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_firewall_policy_change_protection_input"]]))
 }
 
 .networkfirewall$update_firewall_policy_change_protection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), FirewallPolicyChangeProtection = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_firewall_policy_change_protection_output"]]))
 }
 
 .networkfirewall$update_logging_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), LoggingConfiguration = structure(list(LogDestinationConfigs = structure(list(structure(list(LogType = structure(logical(0), tags = list(type = "string")), LogDestinationType = structure(logical(0), tags = list(type = "string")), LogDestination = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EnableMonitoringDashboard = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_logging_configuration_input"]]))
 }
 
 .networkfirewall$update_logging_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), LoggingConfiguration = structure(list(LogDestinationConfigs = structure(list(structure(list(LogType = structure(logical(0), tags = list(type = "string")), LogDestinationType = structure(logical(0), tags = list(type = "string")), LogDestination = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EnableMonitoringDashboard = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_logging_configuration_output"]]))
 }
 
 .networkfirewall$update_proxy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NatGatewayId = structure(logical(0), tags = list(type = "string")), ProxyName = structure(logical(0), tags = list(type = "string")), ProxyArn = structure(logical(0), tags = list(type = "string")), ListenerPropertiesToAdd = structure(list(structure(list(Port = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ListenerPropertiesToRemove = structure(list(structure(list(Port = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TlsInterceptProperties = structure(list(PcaArn = structure(logical(0), tags = list(type = "string")), TlsInterceptMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_proxy_input"]]))
 }
 
 .networkfirewall$update_proxy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Proxy = structure(list(CreateTime = structure(logical(0), tags = list(type = "timestamp")), DeleteTime = structure(logical(0), tags = list(type = "timestamp")), UpdateTime = structure(logical(0), tags = list(type = "timestamp")), FailureCode = structure(logical(0), tags = list(type = "string")), FailureMessage = structure(logical(0), tags = list(type = "string")), ProxyState = structure(logical(0), tags = list(type = "string")), ProxyModifyState = structure(logical(0), tags = list(type = "string")), NatGatewayId = structure(logical(0), tags = list(type = "string")), ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), ProxyConfigurationArn = structure(logical(0), tags = list(type = "string")), ProxyName = structure(logical(0), tags = list(type = "string")), ProxyArn = structure(logical(0), tags = list(type = "string")), ListenerProperties = structure(list(structure(list(Port = structure(logical(0), tags = list(type = "integer")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TlsInterceptProperties = structure(list(PcaArn = structure(logical(0), tags = list(type = "string")), TlsInterceptMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_proxy_output"]]))
 }
 
 .networkfirewall$update_proxy_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), ProxyConfigurationArn = structure(logical(0), tags = list(type = "string")), DefaultRulePhaseActions = structure(list(PreDNS = structure(logical(0), tags = list(type = "string")), PreREQUEST = structure(logical(0), tags = list(type = "string")), PostRESPONSE = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_proxy_configuration_input"]]))
 }
 
 .networkfirewall$update_proxy_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyConfiguration = structure(list(ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), ProxyConfigurationArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp")), DeleteTime = structure(logical(0), tags = list(type = "timestamp")), RuleGroups = structure(list(structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultRulePhaseActions = structure(list(PreDNS = structure(logical(0), tags = list(type = "string")), PreREQUEST = structure(logical(0), tags = list(type = "string")), PostRESPONSE = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_proxy_configuration_output"]]))
 }
 
 .networkfirewall$update_proxy_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string")), ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), AddConditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RemoveConditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_proxy_rule_input"]]))
 }
 
 .networkfirewall$update_proxy_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRule = structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Conditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), RemovedConditions = structure(list(structure(list(ConditionOperator = structure(logical(0), tags = list(type = "string")), ConditionKey = structure(logical(0), tags = list(type = "string")), ConditionValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_proxy_rule_output"]]))
 }
 
 .networkfirewall$update_proxy_rule_group_priorities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyConfigurationName = structure(logical(0), tags = list(type = "string")), ProxyConfigurationArn = structure(logical(0), tags = list(type = "string")), RuleGroups = structure(list(structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), NewPosition = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_proxy_rule_group_priorities_input"]]))
 }
 
 .networkfirewall$update_proxy_rule_group_priorities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRuleGroups = structure(list(structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_proxy_rule_group_priorities_output"]]))
 }
 
 .networkfirewall$update_proxy_rule_priorities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string")), RuleGroupRequestPhase = structure(logical(0), tags = list(type = "string")), Rules = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), NewPosition = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_proxy_rule_priorities_input"]]))
 }
 
 .networkfirewall$update_proxy_rule_priorities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProxyRuleGroupName = structure(logical(0), tags = list(type = "string")), ProxyRuleGroupArn = structure(logical(0), tags = list(type = "string")), RuleGroupRequestPhase = structure(logical(0), tags = list(type = "string")), Rules = structure(list(structure(list(ProxyRuleName = structure(logical(0), tags = list(type = "string")), NewPosition = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_proxy_rule_priorities_output"]]))
+}
+
+.networkfirewall$update_proxy_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .networkfirewall_shapes[["update_proxy_settings_input"]]))
+}
+
+.networkfirewall$update_proxy_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .networkfirewall_shapes[["update_proxy_settings_output"]]))
 }
 
 .networkfirewall$update_rule_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), RuleGroupArn = structure(logical(0), tags = list(type = "string")), RuleGroupName = structure(logical(0), tags = list(type = "string")), RuleGroup = structure(list(RuleVariables = structure(list(IPSets = structure(list(structure(list(Definition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map")), PortSets = structure(list(structure(list(Definition = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), ReferenceSets = structure(list(IPSetReferences = structure(list(structure(list(ReferenceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), RulesSource = structure(list(RulesString = structure(logical(0), tags = list(type = "string")), RulesSourceList = structure(list(Targets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TargetTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), GeneratedRulesType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StatefulRules = structure(list(structure(list(Action = structure(logical(0), tags = list(type = "string")), Header = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Source = structure(logical(0), tags = list(type = "string")), SourcePort = structure(logical(0), tags = list(type = "string")), Direction = structure(logical(0), tags = list(type = "string")), Destination = structure(logical(0), tags = list(type = "string")), DestinationPort = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RuleOptions = structure(list(structure(list(Keyword = structure(logical(0), tags = list(type = "string")), Settings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), StatelessRulesAndCustomActions = structure(list(StatelessRules = structure(list(structure(list(RuleDefinition = structure(list(MatchAttributes = structure(list(Sources = structure(list(structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Destinations = structure(list(structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SourcePorts = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), DestinationPorts = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Protocols = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "list")), TCPFlags = structure(list(structure(list(Flags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Masks = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Priority = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), CustomActions = structure(list(structure(list(ActionName = structure(logical(0), tags = list(type = "string")), ActionDefinition = structure(list(PublishMetricAction = structure(list(Dimensions = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), StatefulRuleOptions = structure(list(RuleOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Rules = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DryRun = structure(logical(0), tags = list(type = "boolean")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourceMetadata = structure(list(SourceArn = structure(logical(0), tags = list(type = "string")), SourceUpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AnalyzeRuleGroup = structure(logical(0), tags = list(type = "boolean")), SummaryConfiguration = structure(list(RuleOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_rule_group_input"]]))
 }
 
 .networkfirewall$update_rule_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), RuleGroupResponse = structure(list(RuleGroupArn = structure(logical(0), tags = list(type = "string")), RuleGroupName = structure(logical(0), tags = list(type = "string")), RuleGroupId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Capacity = structure(logical(0), tags = list(type = "integer")), RuleGroupStatus = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConsumedCapacity = structure(logical(0), tags = list(type = "integer")), NumberOfAssociations = structure(logical(0), tags = list(type = "integer")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourceMetadata = structure(list(SourceArn = structure(logical(0), tags = list(type = "string")), SourceUpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SnsTopic = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), AnalysisResults = structure(list(structure(list(IdentifiedRuleIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), IdentifiedType = structure(logical(0), tags = list(type = "string")), AnalysisDetail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SummaryConfiguration = structure(list(RuleOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_rule_group_output"]]))
 }
 
 .networkfirewall$update_subnet_change_protection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), SubnetChangeProtection = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_subnet_change_protection_input"]]))
 }
 
 .networkfirewall$update_subnet_change_protection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string")), SubnetChangeProtection = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_subnet_change_protection_output"]]))
 }
 
 .networkfirewall$update_tls_inspection_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TLSInspectionConfigurationArn = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationName = structure(logical(0), tags = list(type = "string")), TLSInspectionConfiguration = structure(list(ServerCertificateConfigurations = structure(list(structure(list(ServerCertificates = structure(list(structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Scopes = structure(list(structure(list(Sources = structure(list(structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Destinations = structure(list(structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SourcePorts = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), DestinationPorts = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Protocols = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), CheckCertificateRevocationStatus = structure(list(RevokedStatusAction = structure(logical(0), tags = list(type = "string")), UnknownStatusAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UpdateToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_tls_inspection_configuration_input"]]))
 }
 
 .networkfirewall$update_tls_inspection_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateToken = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationResponse = structure(list(TLSInspectionConfigurationArn = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationName = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationId = structure(logical(0), tags = list(type = "string")), TLSInspectionConfigurationStatus = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), NumberOfAssociations = structure(logical(0), tags = list(type = "integer")), EncryptionConfiguration = structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Certificates = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), CertificateSerial = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CertificateAuthority = structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), CertificateSerial = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .networkfirewall_shapes[["update_tls_inspection_configuration_output"]]))
 }

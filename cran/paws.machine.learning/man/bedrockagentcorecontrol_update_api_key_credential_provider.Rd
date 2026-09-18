@@ -4,12 +4,21 @@
 \alias{bedrockagentcorecontrol_update_api_key_credential_provider}
 \title{Updates an existing API key credential provider}
 \usage{
-bedrockagentcorecontrol_update_api_key_credential_provider(name, apiKey)
+bedrockagentcorecontrol_update_api_key_credential_provider(
+  name,
+  apiKey = NULL,
+  apiKeySecretConfig = NULL,
+  apiKeySecretSource = NULL
+)
 }
 \arguments{
 \item{name}{[required] The name of the API key credential provider to update.}
 
-\item{apiKey}{[required] The new API key to use for authentication. This value replaces the existing API key and is encrypted and stored securely.}
+\item{apiKey}{The new API key to use for authentication. This value replaces the existing API key and is encrypted and stored securely.}
+
+\item{apiKeySecretConfig}{A reference to the Amazon Web Services Secrets Manager secret that stores the API key. This includes the secret ID and the JSON key used to extract the API key value from the secret. Required when \code{apiKeySecretSource} is set to \code{EXTERNAL}.}
+
+\item{apiKeySecretSource}{The source type of the API key secret. Use \code{MANAGED} if the secret is managed by the service, or \code{EXTERNAL} if you manage the secret yourself in Amazon Web Services Secrets Manager.}
 }
 \description{
 Updates an existing API key credential provider.

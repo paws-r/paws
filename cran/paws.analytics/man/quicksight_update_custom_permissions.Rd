@@ -7,7 +7,8 @@
 quicksight_update_custom_permissions(
   AwsAccountId,
   CustomPermissionsName,
-  Capabilities = NULL
+  Capabilities = NULL,
+  Governance = NULL
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ quicksight_update_custom_permissions(
 \item{CustomPermissionsName}{[required] The name of the custom permissions profile that you want to update.}
 
 \item{Capabilities}{A set of actions to include in the custom permissions profile.}
+
+\item{Governance}{The governance configuration for the custom permissions profile. The \code{\link[=quicksight_update_custom_permissions]{update_custom_permissions}} operation replaces all existing \code{Capabilities} and \code{Governance} values. If you omit this parameter, Amazon Quick removes governance from the profile and the existing custom permission behavior applies.}
 }
 \description{
 Updates a custom permissions profile.

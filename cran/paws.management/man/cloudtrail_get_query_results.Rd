@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_get_query_results}
 \alias{cloudtrail_get_query_results}
-\title{Gets event data results of a query}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_get_query_results(
   EventDataStore = NULL,
@@ -24,7 +25,7 @@ cloudtrail_get_query_results(
 \item{EventDataStoreOwnerAccountId}{The account ID of the event data store owner.}
 }
 \description{
-Gets event data results of a query. You must specify the \code{QueryID} value returned by the \code{\link[=cloudtrail_start_query]{start_query}} operation.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_get_query_results/} for full documentation.
 }

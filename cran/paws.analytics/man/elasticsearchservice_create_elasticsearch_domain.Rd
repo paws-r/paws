@@ -22,7 +22,9 @@ elasticsearchservice_create_elasticsearch_domain(
   AutoTuneOptions = NULL,
   TagList = NULL,
   DeploymentStrategyOptions = NULL,
-  AutomatedSnapshotPauseOptions = NULL
+  AutomatedSnapshotPauseOptions = NULL,
+  UseCase = NULL,
+  EngineMode = NULL
 )
 }
 \arguments{
@@ -65,6 +67,10 @@ elasticsearchservice_create_elasticsearch_domain(
 Suspending snapshots reduces data protection. You cannot restore your domain to points in time when snapshots are suspended. Use this feature only for short-term operational needs such as migrations or maintenance windows.
 
 Maximum suspension duration: 3 days.}
+
+\item{UseCase}{The primary use case for the domain. For valid values, see \code{DomainUseCase}.}
+
+\item{EngineMode}{The engine mode for the domain. For valid values and requirements, see \code{DomainEngineMode}.}
 }
 \description{
 Creates a new Elasticsearch domain. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains" target="_blank">}}Creating Elasticsearch Domains\if{html}{\out{</a>}} in the \emph{Amazon Elasticsearch Service Developer Guide}.

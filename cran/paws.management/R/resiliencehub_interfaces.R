@@ -5,756 +5,630 @@ NULL
 
 .resiliencehub$accept_resource_grouping_recommendations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), entries = structure(list(structure(list(groupingRecommendationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["accept_resource_grouping_recommendations_input"]]))
 }
 
 .resiliencehub$accept_resource_grouping_recommendations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), failedEntries = structure(list(structure(list(errorMessage = structure(logical(0), tags = list(type = "string")), groupingRecommendationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["accept_resource_grouping_recommendations_output"]]))
 }
 
 .resiliencehub$add_draft_app_version_resource_mappings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), resourceMappings = structure(list(structure(list(appRegistryAppName = structure(logical(0), tags = list(type = "string")), eksSourceName = structure(logical(0), tags = list(type = "string")), logicalStackName = structure(logical(0), tags = list(type = "string")), mappingType = structure(logical(0), tags = list(type = "string")), physicalResourceId = structure(list(awsAccountId = structure(logical(0), tags = list(type = "string")), awsRegion = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceGroupName = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), terraformSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["add_draft_app_version_resource_mappings_input"]]))
 }
 
 .resiliencehub$add_draft_app_version_resource_mappings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), resourceMappings = structure(list(structure(list(appRegistryAppName = structure(logical(0), tags = list(type = "string")), eksSourceName = structure(logical(0), tags = list(type = "string")), logicalStackName = structure(logical(0), tags = list(type = "string")), mappingType = structure(logical(0), tags = list(type = "string")), physicalResourceId = structure(list(awsAccountId = structure(logical(0), tags = list(type = "string")), awsRegion = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceGroupName = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), terraformSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["add_draft_app_version_resource_mappings_output"]]))
 }
 
 .resiliencehub$batch_update_recommendation_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), requestEntries = structure(list(structure(list(appComponentId = structure(logical(0), tags = list(type = "string")), entryId = structure(logical(0), tags = list(type = "string")), excludeReason = structure(logical(0), tags = list(type = "string")), excluded = structure(logical(0), tags = list(type = "boolean", box = TRUE)), item = structure(list(resourceId = structure(logical(0), tags = list(type = "string")), targetAccountId = structure(logical(0), tags = list(type = "string")), targetRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), referenceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["batch_update_recommendation_status_input"]]))
 }
 
 .resiliencehub$batch_update_recommendation_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), failedEntries = structure(list(structure(list(entryId = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), successfulEntries = structure(list(structure(list(appComponentId = structure(logical(0), tags = list(type = "string")), entryId = structure(logical(0), tags = list(type = "string")), excludeReason = structure(logical(0), tags = list(type = "string")), excluded = structure(logical(0), tags = list(type = "boolean", box = TRUE)), item = structure(list(resourceId = structure(logical(0), tags = list(type = "string")), targetAccountId = structure(logical(0), tags = list(type = "string")), targetRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), referenceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["batch_update_recommendation_status_output"]]))
 }
 
 .resiliencehub$create_app_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentSchedule = structure(logical(0), tags = list(type = "string")), awsApplicationArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), description = structure(logical(0), tags = list(type = "string")), eventSubscriptions = structure(list(structure(list(eventType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), snsTopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), name = structure(logical(0), tags = list(type = "string")), permissionModel = structure(list(crossAccountRoleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), invokerRoleName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), policyArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["create_app_input"]]))
 }
 
 .resiliencehub$create_app_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(app = structure(list(appArn = structure(logical(0), tags = list(type = "string")), assessmentSchedule = structure(logical(0), tags = list(type = "string")), awsApplicationArn = structure(logical(0), tags = list(type = "string")), complianceStatus = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string")), driftStatus = structure(logical(0), tags = list(type = "string")), eventSubscriptions = structure(list(structure(list(eventType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), snsTopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), lastAppComplianceEvaluationTime = structure(logical(0), tags = list(type = "timestamp")), lastDriftEvaluationTime = structure(logical(0), tags = list(type = "timestamp")), lastResiliencyScoreEvaluationTime = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), permissionModel = structure(list(crossAccountRoleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), invokerRoleName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), policyArn = structure(logical(0), tags = list(type = "string")), resiliencyScore = structure(logical(0), tags = list(type = "double")), rpoInSecs = structure(logical(0), tags = list(type = "integer", box = TRUE)), rtoInSecs = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["create_app_output"]]))
 }
 
 .resiliencehub$create_app_version_app_component_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), appArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["create_app_version_app_component_input"]]))
 }
 
 .resiliencehub$create_app_version_app_component_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appComponent = structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), appVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["create_app_version_app_component_output"]]))
 }
 
 .resiliencehub$create_app_version_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), appArn = structure(logical(0), tags = list(type = "string")), appComponents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), awsAccountId = structure(logical(0), tags = list(type = "string")), awsRegion = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), logicalResourceId = structure(list(eksSourceName = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), logicalStackName = structure(logical(0), tags = list(type = "string")), resourceGroupName = structure(logical(0), tags = list(type = "string")), terraformSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), physicalResourceId = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["create_app_version_resource_input"]]))
 }
 
 .resiliencehub$create_app_version_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), physicalResource = structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), appComponents = structure(list(structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), excluded = structure(logical(0), tags = list(type = "boolean", box = TRUE)), logicalResourceId = structure(list(eksSourceName = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), logicalStackName = structure(logical(0), tags = list(type = "string")), resourceGroupName = structure(logical(0), tags = list(type = "string")), terraformSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), parentResourceName = structure(logical(0), tags = list(type = "string")), physicalResourceId = structure(list(awsAccountId = structure(logical(0), tags = list(type = "string")), awsRegion = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), sourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["create_app_version_resource_output"]]))
 }
 
 .resiliencehub$create_recommendation_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentArn = structure(logical(0), tags = list(type = "string")), bucketName = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), format = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), recommendationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recommendationTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["create_recommendation_template_input"]]))
 }
 
 .resiliencehub$create_recommendation_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recommendationTemplate = structure(list(appArn = structure(logical(0), tags = list(type = "string")), assessmentArn = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "timestamp")), format = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), needsReplacements = structure(logical(0), tags = list(type = "boolean", box = TRUE)), recommendationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recommendationTemplateArn = structure(logical(0), tags = list(type = "string")), recommendationTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), startTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), templatesLocation = structure(list(bucket = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["create_recommendation_template_output"]]))
 }
 
 .resiliencehub$create_resiliency_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), dataLocationConstraint = structure(logical(0), tags = list(type = "string")), policy = structure(list(structure(list(rpoInSecs = structure(logical(0), tags = list(type = "integer")), rtoInSecs = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "map")), policyDescription = structure(logical(0), tags = list(type = "string")), policyName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["create_resiliency_policy_input"]]))
 }
 
 .resiliencehub$create_resiliency_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policy = structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp")), dataLocationConstraint = structure(logical(0), tags = list(type = "string")), estimatedCostTier = structure(logical(0), tags = list(type = "string")), policy = structure(list(structure(list(rpoInSecs = structure(logical(0), tags = list(type = "integer")), rtoInSecs = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "map")), policyArn = structure(logical(0), tags = list(type = "string")), policyDescription = structure(logical(0), tags = list(type = "string")), policyName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["create_resiliency_policy_output"]]))
 }
 
 .resiliencehub$delete_app_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), forceDelete = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["delete_app_input"]]))
 }
 
 .resiliencehub$delete_app_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["delete_app_output"]]))
 }
 
 .resiliencehub$delete_app_assessment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["delete_app_assessment_input"]]))
 }
 
 .resiliencehub$delete_app_assessment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentArn = structure(logical(0), tags = list(type = "string")), assessmentStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["delete_app_assessment_output"]]))
 }
 
 .resiliencehub$delete_app_input_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), eksSourceClusterNamespace = structure(list(eksClusterArn = structure(logical(0), tags = list(type = "string")), namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), sourceArn = structure(logical(0), tags = list(type = "string")), terraformSource = structure(list(s3StateFileUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["delete_app_input_source_input"]]))
 }
 
 .resiliencehub$delete_app_input_source_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appInputSource = structure(list(eksSourceClusterNamespace = structure(list(eksClusterArn = structure(logical(0), tags = list(type = "string")), namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), importType = structure(logical(0), tags = list(type = "string")), resourceCount = structure(logical(0), tags = list(type = "integer")), sourceArn = structure(logical(0), tags = list(type = "string")), sourceName = structure(logical(0), tags = list(type = "string")), terraformSource = structure(list(s3StateFileUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["delete_app_input_source_output"]]))
 }
 
 .resiliencehub$delete_app_version_app_component_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["delete_app_version_app_component_input"]]))
 }
 
 .resiliencehub$delete_app_version_app_component_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appComponent = structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), appVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["delete_app_version_app_component_output"]]))
 }
 
 .resiliencehub$delete_app_version_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), awsAccountId = structure(logical(0), tags = list(type = "string")), awsRegion = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), logicalResourceId = structure(list(eksSourceName = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), logicalStackName = structure(logical(0), tags = list(type = "string")), resourceGroupName = structure(logical(0), tags = list(type = "string")), terraformSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), physicalResourceId = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["delete_app_version_resource_input"]]))
 }
 
 .resiliencehub$delete_app_version_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), physicalResource = structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), appComponents = structure(list(structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), excluded = structure(logical(0), tags = list(type = "boolean", box = TRUE)), logicalResourceId = structure(list(eksSourceName = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), logicalStackName = structure(logical(0), tags = list(type = "string")), resourceGroupName = structure(logical(0), tags = list(type = "string")), terraformSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), parentResourceName = structure(logical(0), tags = list(type = "string")), physicalResourceId = structure(list(awsAccountId = structure(logical(0), tags = list(type = "string")), awsRegion = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), sourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["delete_app_version_resource_output"]]))
 }
 
 .resiliencehub$delete_recommendation_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), recommendationTemplateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["delete_recommendation_template_input"]]))
 }
 
 .resiliencehub$delete_recommendation_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recommendationTemplateArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["delete_recommendation_template_output"]]))
 }
 
 .resiliencehub$delete_resiliency_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), policyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["delete_resiliency_policy_input"]]))
 }
 
 .resiliencehub$delete_resiliency_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["delete_resiliency_policy_output"]]))
 }
 
 .resiliencehub$describe_app_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_app_input"]]))
 }
 
 .resiliencehub$describe_app_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(app = structure(list(appArn = structure(logical(0), tags = list(type = "string")), assessmentSchedule = structure(logical(0), tags = list(type = "string")), awsApplicationArn = structure(logical(0), tags = list(type = "string")), complianceStatus = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string")), driftStatus = structure(logical(0), tags = list(type = "string")), eventSubscriptions = structure(list(structure(list(eventType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), snsTopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), lastAppComplianceEvaluationTime = structure(logical(0), tags = list(type = "timestamp")), lastDriftEvaluationTime = structure(logical(0), tags = list(type = "timestamp")), lastResiliencyScoreEvaluationTime = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), permissionModel = structure(list(crossAccountRoleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), invokerRoleName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), policyArn = structure(logical(0), tags = list(type = "string")), resiliencyScore = structure(logical(0), tags = list(type = "double")), rpoInSecs = structure(logical(0), tags = list(type = "integer", box = TRUE)), rtoInSecs = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_app_output"]]))
 }
 
 .resiliencehub$describe_app_assessment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_app_assessment_input"]]))
 }
 
 .resiliencehub$describe_app_assessment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessment = structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), assessmentArn = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string")), assessmentStatus = structure(logical(0), tags = list(type = "string")), compliance = structure(list(structure(list(achievableRpoInSecs = structure(logical(0), tags = list(type = "integer")), achievableRtoInSecs = structure(logical(0), tags = list(type = "integer")), complianceStatus = structure(logical(0), tags = list(type = "string")), currentRpoInSecs = structure(logical(0), tags = list(type = "integer")), currentRtoInSecs = structure(logical(0), tags = list(type = "integer")), message = structure(logical(0), tags = list(type = "string")), rpoDescription = structure(logical(0), tags = list(type = "string")), rpoReferenceId = structure(logical(0), tags = list(type = "string")), rtoDescription = structure(logical(0), tags = list(type = "string")), rtoReferenceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), complianceStatus = structure(logical(0), tags = list(type = "string")), cost = structure(list(amount = structure(logical(0), tags = list(type = "double")), currency = structure(logical(0), tags = list(type = "string")), frequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), driftStatus = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "timestamp")), invoker = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), policy = structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp")), dataLocationConstraint = structure(logical(0), tags = list(type = "string")), estimatedCostTier = structure(logical(0), tags = list(type = "string")), policy = structure(list(structure(list(rpoInSecs = structure(logical(0), tags = list(type = "integer")), rtoInSecs = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "map")), policyArn = structure(logical(0), tags = list(type = "string")), policyDescription = structure(logical(0), tags = list(type = "string")), policyName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resiliencyScore = structure(list(componentScore = structure(list(structure(list(excludedCount = structure(logical(0), tags = list(type = "long")), outstandingCount = structure(logical(0), tags = list(type = "long")), possibleScore = structure(logical(0), tags = list(type = "double")), score = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "map")), disruptionScore = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "map")), score = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), resourceErrorsDetails = structure(list(hasMoreErrors = structure(logical(0), tags = list(type = "boolean", box = TRUE)), resourceErrors = structure(list(structure(list(logicalResourceId = structure(logical(0), tags = list(type = "string")), physicalResourceId = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), summary = structure(list(riskRecommendations = structure(list(structure(list(appComponents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recommendation = structure(logical(0), tags = list(type = "string")), risk = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), summary = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), versionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_app_assessment_output"]]))
 }
 
 .resiliencehub$describe_app_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_app_version_input"]]))
 }
 
 .resiliencehub$describe_app_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_app_version_output"]]))
 }
 
 .resiliencehub$describe_app_version_app_component_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_app_version_app_component_input"]]))
 }
 
 .resiliencehub$describe_app_version_app_component_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appComponent = structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), appVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_app_version_app_component_output"]]))
 }
 
 .resiliencehub$describe_app_version_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), awsAccountId = structure(logical(0), tags = list(type = "string")), awsRegion = structure(logical(0), tags = list(type = "string")), logicalResourceId = structure(list(eksSourceName = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), logicalStackName = structure(logical(0), tags = list(type = "string")), resourceGroupName = structure(logical(0), tags = list(type = "string")), terraformSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), physicalResourceId = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_app_version_resource_input"]]))
 }
 
 .resiliencehub$describe_app_version_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), physicalResource = structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), appComponents = structure(list(structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), excluded = structure(logical(0), tags = list(type = "boolean", box = TRUE)), logicalResourceId = structure(list(eksSourceName = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), logicalStackName = structure(logical(0), tags = list(type = "string")), resourceGroupName = structure(logical(0), tags = list(type = "string")), terraformSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), parentResourceName = structure(logical(0), tags = list(type = "string")), physicalResourceId = structure(list(awsAccountId = structure(logical(0), tags = list(type = "string")), awsRegion = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), sourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_app_version_resource_output"]]))
 }
 
 .resiliencehub$describe_app_version_resources_resolution_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), resolutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_app_version_resources_resolution_status_input"]]))
 }
 
 .resiliencehub$describe_app_version_resources_resolution_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), resolutionId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_app_version_resources_resolution_status_output"]]))
 }
 
 .resiliencehub$describe_app_version_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_app_version_template_input"]]))
 }
 
 .resiliencehub$describe_app_version_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appTemplateBody = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_app_version_template_output"]]))
 }
 
 .resiliencehub$describe_draft_app_version_resources_import_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_draft_app_version_resources_import_status_input"]]))
 }
 
 .resiliencehub$describe_draft_app_version_resources_import_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), errorDetails = structure(list(structure(list(errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), errorMessage = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangeTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_draft_app_version_resources_import_status_output"]]))
 }
 
 .resiliencehub$describe_metrics_export_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(metricsExportId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_metrics_export_input"]]))
 }
 
 .resiliencehub$describe_metrics_export_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(errorMessage = structure(logical(0), tags = list(type = "string")), exportLocation = structure(list(bucket = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), metricsExportId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_metrics_export_output"]]))
 }
 
 .resiliencehub$describe_resiliency_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_resiliency_policy_input"]]))
 }
 
 .resiliencehub$describe_resiliency_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policy = structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp")), dataLocationConstraint = structure(logical(0), tags = list(type = "string")), estimatedCostTier = structure(logical(0), tags = list(type = "string")), policy = structure(list(structure(list(rpoInSecs = structure(logical(0), tags = list(type = "integer")), rtoInSecs = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "map")), policyArn = structure(logical(0), tags = list(type = "string")), policyDescription = structure(logical(0), tags = list(type = "string")), policyName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_resiliency_policy_output"]]))
 }
 
 .resiliencehub$describe_resource_grouping_recommendation_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), groupingId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_resource_grouping_recommendation_task_input"]]))
 }
 
 .resiliencehub$describe_resource_grouping_recommendation_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(errorMessage = structure(logical(0), tags = list(type = "string")), groupingId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["describe_resource_grouping_recommendation_task_output"]]))
 }
 
 .resiliencehub$import_resources_to_draft_app_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), eksSources = structure(list(structure(list(eksClusterArn = structure(logical(0), tags = list(type = "string")), namespaces = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), importStrategy = structure(logical(0), tags = list(type = "string")), sourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), terraformSources = structure(list(structure(list(s3StateFileUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["import_resources_to_draft_app_version_input"]]))
 }
 
 .resiliencehub$import_resources_to_draft_app_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), eksSources = structure(list(structure(list(eksClusterArn = structure(logical(0), tags = list(type = "string")), namespaces = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), sourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), terraformSources = structure(list(structure(list(s3StateFileUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["import_resources_to_draft_app_version_output"]]))
 }
 
 .resiliencehub$list_alarm_recommendations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_alarm_recommendations_input"]]))
 }
 
 .resiliencehub$list_alarm_recommendations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(alarmRecommendations = structure(list(structure(list(appComponentName = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "An alarm recommendation can be attached to multiple Application Components, hence this property will be replaced by the new property 'appComponentNames'.", type = "string")), appComponentNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(alreadyImplemented = structure(logical(0), tags = list(type = "boolean", box = TRUE)), discoveredAlarm = structure(list(alarmArn = structure(logical(0), tags = list(type = "string")), source = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), excludeReason = structure(logical(0), tags = list(type = "string")), excluded = structure(logical(0), tags = list(type = "boolean", box = TRUE)), latestDiscoveredExperiment = structure(list(experimentArn = structure(logical(0), tags = list(type = "string")), experimentTemplateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceId = structure(logical(0), tags = list(type = "string")), targetAccountId = structure(logical(0), tags = list(type = "string")), targetRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), name = structure(logical(0), tags = list(type = "string")), prerequisite = structure(logical(0), tags = list(type = "string")), recommendationId = structure(logical(0), tags = list(type = "string")), recommendationStatus = structure(logical(0), tags = list(type = "string")), referenceId = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_alarm_recommendations_output"]]))
 }
 
 .resiliencehub$list_app_assessment_compliance_drifts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_assessment_compliance_drifts_input"]]))
 }
 
 .resiliencehub$list_app_assessment_compliance_drifts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(complianceDrifts = structure(list(structure(list(actualReferenceId = structure(logical(0), tags = list(type = "string")), actualValue = structure(list(structure(list(achievableRpoInSecs = structure(logical(0), tags = list(type = "integer")), achievableRtoInSecs = structure(logical(0), tags = list(type = "integer")), complianceStatus = structure(logical(0), tags = list(type = "string")), currentRpoInSecs = structure(logical(0), tags = list(type = "integer")), currentRtoInSecs = structure(logical(0), tags = list(type = "integer")), message = structure(logical(0), tags = list(type = "string")), rpoDescription = structure(logical(0), tags = list(type = "string")), rpoReferenceId = structure(logical(0), tags = list(type = "string")), rtoDescription = structure(logical(0), tags = list(type = "string")), rtoReferenceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), appId = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), diffType = structure(logical(0), tags = list(type = "string")), driftType = structure(logical(0), tags = list(type = "string")), entityId = structure(logical(0), tags = list(type = "string")), entityType = structure(logical(0), tags = list(type = "string")), expectedReferenceId = structure(logical(0), tags = list(type = "string")), expectedValue = structure(list(structure(list(achievableRpoInSecs = structure(logical(0), tags = list(type = "integer")), achievableRtoInSecs = structure(logical(0), tags = list(type = "integer")), complianceStatus = structure(logical(0), tags = list(type = "string")), currentRpoInSecs = structure(logical(0), tags = list(type = "integer")), currentRtoInSecs = structure(logical(0), tags = list(type = "integer")), message = structure(logical(0), tags = list(type = "string")), rpoDescription = structure(logical(0), tags = list(type = "string")), rpoReferenceId = structure(logical(0), tags = list(type = "string")), rtoDescription = structure(logical(0), tags = list(type = "string")), rtoReferenceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_assessment_compliance_drifts_output"]]))
 }
 
 .resiliencehub$list_app_assessment_resource_drifts_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_assessment_resource_drifts_input"]]))
 }
 
 .resiliencehub$list_app_assessment_resource_drifts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), resourceDrifts = structure(list(structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), diffType = structure(logical(0), tags = list(type = "string")), referenceId = structure(logical(0), tags = list(type = "string")), resourceIdentifier = structure(list(logicalResourceId = structure(list(eksSourceName = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), logicalStackName = structure(logical(0), tags = list(type = "string")), resourceGroupName = structure(logical(0), tags = list(type = "string")), terraformSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_assessment_resource_drifts_output"]]))
 }
 
 .resiliencehub$list_app_assessments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(location = "querystring", locationName = "appArn", type = "string")), assessmentName = structure(logical(0), tags = list(location = "querystring", locationName = "assessmentName", type = "string")), assessmentStatus = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "assessmentStatus", type = "list")), complianceStatus = structure(logical(0), tags = list(location = "querystring", locationName = "complianceStatus", type = "string")), invoker = structure(logical(0), tags = list(location = "querystring", locationName = "invoker", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), reverseOrder = structure(logical(0), tags = list(location = "querystring", locationName = "reverseOrder", type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_assessments_input"]]))
 }
 
 .resiliencehub$list_app_assessments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentSummaries = structure(list(structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), assessmentArn = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string")), assessmentStatus = structure(logical(0), tags = list(type = "string")), complianceStatus = structure(logical(0), tags = list(type = "string")), cost = structure(list(amount = structure(logical(0), tags = list(type = "double")), currency = structure(logical(0), tags = list(type = "string")), frequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), driftStatus = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "timestamp")), invoker = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resiliencyScore = structure(logical(0), tags = list(type = "double")), startTime = structure(logical(0), tags = list(type = "timestamp")), versionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_assessments_output"]]))
 }
 
 .resiliencehub$list_app_component_compliances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_component_compliances_input"]]))
 }
 
 .resiliencehub$list_app_component_compliances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(componentCompliances = structure(list(structure(list(appComponentName = structure(logical(0), tags = list(type = "string")), compliance = structure(list(structure(list(achievableRpoInSecs = structure(logical(0), tags = list(type = "integer")), achievableRtoInSecs = structure(logical(0), tags = list(type = "integer")), complianceStatus = structure(logical(0), tags = list(type = "string")), currentRpoInSecs = structure(logical(0), tags = list(type = "integer")), currentRtoInSecs = structure(logical(0), tags = list(type = "integer")), message = structure(logical(0), tags = list(type = "string")), rpoDescription = structure(logical(0), tags = list(type = "string")), rpoReferenceId = structure(logical(0), tags = list(type = "string")), rtoDescription = structure(logical(0), tags = list(type = "string")), rtoReferenceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), cost = structure(list(amount = structure(logical(0), tags = list(type = "double")), currency = structure(logical(0), tags = list(type = "string")), frequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), message = structure(logical(0), tags = list(type = "string")), resiliencyScore = structure(list(componentScore = structure(list(structure(list(excludedCount = structure(logical(0), tags = list(type = "long")), outstandingCount = structure(logical(0), tags = list(type = "long")), possibleScore = structure(logical(0), tags = list(type = "double")), score = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "map")), disruptionScore = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "map")), score = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_component_compliances_output"]]))
 }
 
 .resiliencehub$list_app_component_recommendations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_component_recommendations_input"]]))
 }
 
 .resiliencehub$list_app_component_recommendations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(componentRecommendations = structure(list(structure(list(appComponentName = structure(logical(0), tags = list(type = "string")), configRecommendations = structure(list(structure(list(appComponentName = structure(logical(0), tags = list(type = "string")), compliance = structure(list(structure(list(achievableRpoInSecs = structure(logical(0), tags = list(type = "integer")), achievableRtoInSecs = structure(logical(0), tags = list(type = "integer")), complianceStatus = structure(logical(0), tags = list(type = "string")), currentRpoInSecs = structure(logical(0), tags = list(type = "integer")), currentRtoInSecs = structure(logical(0), tags = list(type = "integer")), message = structure(logical(0), tags = list(type = "string")), rpoDescription = structure(logical(0), tags = list(type = "string")), rpoReferenceId = structure(logical(0), tags = list(type = "string")), rtoDescription = structure(logical(0), tags = list(type = "string")), rtoReferenceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), cost = structure(list(amount = structure(logical(0), tags = list(type = "double")), currency = structure(logical(0), tags = list(type = "string")), frequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string")), haArchitecture = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), optimizationType = structure(logical(0), tags = list(type = "string")), recommendationCompliance = structure(list(structure(list(expectedComplianceStatus = structure(logical(0), tags = list(type = "string")), expectedRpoDescription = structure(logical(0), tags = list(type = "string")), expectedRpoInSecs = structure(logical(0), tags = list(type = "integer")), expectedRtoDescription = structure(logical(0), tags = list(type = "string")), expectedRtoInSecs = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "map")), referenceId = structure(logical(0), tags = list(type = "string")), suggestedChanges = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), recommendationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_component_recommendations_output"]]))
 }
 
 .resiliencehub$list_app_input_sources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_input_sources_input"]]))
 }
 
 .resiliencehub$list_app_input_sources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appInputSources = structure(list(structure(list(eksSourceClusterNamespace = structure(list(eksClusterArn = structure(logical(0), tags = list(type = "string")), namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), importType = structure(logical(0), tags = list(type = "string")), resourceCount = structure(logical(0), tags = list(type = "integer")), sourceArn = structure(logical(0), tags = list(type = "string")), sourceName = structure(logical(0), tags = list(type = "string")), terraformSource = structure(list(s3StateFileUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_input_sources_output"]]))
 }
 
 .resiliencehub$list_app_version_app_components_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_version_app_components_input"]]))
 }
 
 .resiliencehub$list_app_version_app_components_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appComponents = structure(list(structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), appVersion = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_version_app_components_output"]]))
 }
 
 .resiliencehub$list_app_version_resource_mappings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_version_resource_mappings_input"]]))
 }
 
 .resiliencehub$list_app_version_resource_mappings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), resourceMappings = structure(list(structure(list(appRegistryAppName = structure(logical(0), tags = list(type = "string")), eksSourceName = structure(logical(0), tags = list(type = "string")), logicalStackName = structure(logical(0), tags = list(type = "string")), mappingType = structure(logical(0), tags = list(type = "string")), physicalResourceId = structure(list(awsAccountId = structure(logical(0), tags = list(type = "string")), awsRegion = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceGroupName = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), terraformSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_version_resource_mappings_output"]]))
 }
 
 .resiliencehub$list_app_version_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), resolutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_version_resources_input"]]))
 }
 
 .resiliencehub$list_app_version_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), physicalResources = structure(list(structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), appComponents = structure(list(structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), excluded = structure(logical(0), tags = list(type = "boolean", box = TRUE)), logicalResourceId = structure(list(eksSourceName = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), logicalStackName = structure(logical(0), tags = list(type = "string")), resourceGroupName = structure(logical(0), tags = list(type = "string")), terraformSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), parentResourceName = structure(logical(0), tags = list(type = "string")), physicalResourceId = structure(list(awsAccountId = structure(logical(0), tags = list(type = "string")), awsRegion = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), sourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), resolutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_version_resources_output"]]))
 }
 
 .resiliencehub$list_app_versions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "timestamp")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_versions_input"]]))
 }
 
 .resiliencehub$list_app_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appVersions = structure(list(structure(list(appVersion = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), identifier = structure(logical(0), tags = list(type = "long", box = TRUE)), versionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_app_versions_output"]]))
 }
 
 .resiliencehub$list_apps_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(location = "querystring", locationName = "appArn", type = "string")), awsApplicationArn = structure(logical(0), tags = list(location = "querystring", locationName = "awsApplicationArn", type = "string")), fromLastAssessmentTime = structure(logical(0), tags = list(location = "querystring", locationName = "fromLastAssessmentTime", type = "timestamp")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), name = structure(logical(0), tags = list(location = "querystring", locationName = "name", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), reverseOrder = structure(logical(0), tags = list(location = "querystring", locationName = "reverseOrder", type = "boolean", box = TRUE)), toLastAssessmentTime = structure(logical(0), tags = list(location = "querystring", locationName = "toLastAssessmentTime", type = "timestamp"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_apps_input"]]))
 }
 
 .resiliencehub$list_apps_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appSummaries = structure(list(structure(list(appArn = structure(logical(0), tags = list(type = "string")), assessmentSchedule = structure(logical(0), tags = list(type = "string")), awsApplicationArn = structure(logical(0), tags = list(type = "string")), complianceStatus = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string")), driftStatus = structure(logical(0), tags = list(type = "string")), lastAppComplianceEvaluationTime = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), resiliencyScore = structure(logical(0), tags = list(type = "double")), rpoInSecs = structure(logical(0), tags = list(type = "integer", box = TRUE)), rtoInSecs = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_apps_output"]]))
 }
 
 .resiliencehub$list_metrics_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(conditions = structure(list(structure(list(field = structure(logical(0), tags = list(type = "string")), operator = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), dataSource = structure(logical(0), tags = list(type = "string")), fields = structure(list(structure(list(aggregation = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), sorts = structure(list(structure(list(ascending = structure(logical(0), tags = list(type = "boolean", box = TRUE)), field = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_metrics_input"]]))
 }
 
 .resiliencehub$list_metrics_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), rows = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_metrics_output"]]))
 }
 
 .resiliencehub$list_recommendation_templates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentArn = structure(logical(0), tags = list(location = "querystring", locationName = "assessmentArn", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), name = structure(logical(0), tags = list(location = "querystring", locationName = "name", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), recommendationTemplateArn = structure(logical(0), tags = list(location = "querystring", locationName = "recommendationTemplateArn", type = "string")), reverseOrder = structure(logical(0), tags = list(location = "querystring", locationName = "reverseOrder", type = "boolean", box = TRUE)), status = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "status", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_recommendation_templates_input"]]))
 }
 
 .resiliencehub$list_recommendation_templates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), recommendationTemplates = structure(list(structure(list(appArn = structure(logical(0), tags = list(type = "string")), assessmentArn = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "timestamp")), format = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), needsReplacements = structure(logical(0), tags = list(type = "boolean", box = TRUE)), recommendationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recommendationTemplateArn = structure(logical(0), tags = list(type = "string")), recommendationTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), startTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), templatesLocation = structure(list(bucket = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_recommendation_templates_output"]]))
 }
 
 .resiliencehub$list_resiliency_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), policyName = structure(logical(0), tags = list(location = "querystring", locationName = "policyName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_resiliency_policies_input"]]))
 }
 
 .resiliencehub$list_resiliency_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), resiliencyPolicies = structure(list(structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp")), dataLocationConstraint = structure(logical(0), tags = list(type = "string")), estimatedCostTier = structure(logical(0), tags = list(type = "string")), policy = structure(list(structure(list(rpoInSecs = structure(logical(0), tags = list(type = "integer")), rtoInSecs = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "map")), policyArn = structure(logical(0), tags = list(type = "string")), policyDescription = structure(logical(0), tags = list(type = "string")), policyName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_resiliency_policies_output"]]))
 }
 
 .resiliencehub$list_resource_grouping_recommendations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(location = "querystring", locationName = "appArn", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_resource_grouping_recommendations_input"]]))
 }
 
 .resiliencehub$list_resource_grouping_recommendations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(groupingRecommendations = structure(list(structure(list(confidenceLevel = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), groupingAppComponent = structure(list(appComponentId = structure(logical(0), tags = list(type = "string")), appComponentName = structure(logical(0), tags = list(type = "string")), appComponentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), groupingRecommendationId = structure(logical(0), tags = list(type = "string")), recommendationReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), rejectionReason = structure(logical(0), tags = list(type = "string")), resources = structure(list(structure(list(logicalResourceId = structure(list(eksSourceName = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), logicalStackName = structure(logical(0), tags = list(type = "string")), resourceGroupName = structure(logical(0), tags = list(type = "string")), terraformSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), physicalResourceId = structure(list(awsAccountId = structure(logical(0), tags = list(type = "string")), awsRegion = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), sourceAppComponentIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), score = structure(logical(0), tags = list(type = "double")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_resource_grouping_recommendations_output"]]))
 }
 
 .resiliencehub$list_sop_recommendations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_sop_recommendations_input"]]))
 }
 
 .resiliencehub$list_sop_recommendations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), sopRecommendations = structure(list(structure(list(appComponentName = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(alreadyImplemented = structure(logical(0), tags = list(type = "boolean", box = TRUE)), discoveredAlarm = structure(list(alarmArn = structure(logical(0), tags = list(type = "string")), source = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), excludeReason = structure(logical(0), tags = list(type = "string")), excluded = structure(logical(0), tags = list(type = "boolean", box = TRUE)), latestDiscoveredExperiment = structure(list(experimentArn = structure(logical(0), tags = list(type = "string")), experimentTemplateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceId = structure(logical(0), tags = list(type = "string")), targetAccountId = structure(logical(0), tags = list(type = "string")), targetRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), name = structure(logical(0), tags = list(type = "string")), prerequisite = structure(logical(0), tags = list(type = "string")), recommendationId = structure(logical(0), tags = list(type = "string")), recommendationStatus = structure(logical(0), tags = list(type = "string")), referenceId = structure(logical(0), tags = list(type = "string")), serviceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_sop_recommendations_output"]]))
 }
 
 .resiliencehub$list_suggested_resiliency_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_suggested_resiliency_policies_input"]]))
 }
 
 .resiliencehub$list_suggested_resiliency_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), resiliencyPolicies = structure(list(structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp")), dataLocationConstraint = structure(logical(0), tags = list(type = "string")), estimatedCostTier = structure(logical(0), tags = list(type = "string")), policy = structure(list(structure(list(rpoInSecs = structure(logical(0), tags = list(type = "integer")), rtoInSecs = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "map")), policyArn = structure(logical(0), tags = list(type = "string")), policyDescription = structure(logical(0), tags = list(type = "string")), policyName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_suggested_resiliency_policies_output"]]))
 }
 
 .resiliencehub$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_tags_for_resource_input"]]))
 }
 
 .resiliencehub$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_tags_for_resource_output"]]))
 }
 
 .resiliencehub$list_test_recommendations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessmentArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_test_recommendations_input"]]))
 }
 
 .resiliencehub$list_test_recommendations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), testRecommendations = structure(list(structure(list(appComponentId = structure(logical(0), tags = list(type = "string")), appComponentName = structure(logical(0), tags = list(type = "string")), dependsOnAlarms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string")), intent = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(alreadyImplemented = structure(logical(0), tags = list(type = "boolean", box = TRUE)), discoveredAlarm = structure(list(alarmArn = structure(logical(0), tags = list(type = "string")), source = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), excludeReason = structure(logical(0), tags = list(type = "string")), excluded = structure(logical(0), tags = list(type = "boolean", box = TRUE)), latestDiscoveredExperiment = structure(list(experimentArn = structure(logical(0), tags = list(type = "string")), experimentTemplateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceId = structure(logical(0), tags = list(type = "string")), targetAccountId = structure(logical(0), tags = list(type = "string")), targetRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), name = structure(logical(0), tags = list(type = "string")), prerequisite = structure(logical(0), tags = list(type = "string")), recommendationId = structure(logical(0), tags = list(type = "string")), recommendationStatus = structure(logical(0), tags = list(type = "string")), referenceId = structure(logical(0), tags = list(type = "string")), risk = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_test_recommendations_output"]]))
 }
 
 .resiliencehub$list_unsupported_app_version_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), resolutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_unsupported_app_version_resources_input"]]))
 }
 
 .resiliencehub$list_unsupported_app_version_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), resolutionId = structure(logical(0), tags = list(type = "string")), unsupportedResources = structure(list(structure(list(logicalResourceId = structure(list(eksSourceName = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), logicalStackName = structure(logical(0), tags = list(type = "string")), resourceGroupName = structure(logical(0), tags = list(type = "string")), terraformSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), physicalResourceId = structure(list(awsAccountId = structure(logical(0), tags = list(type = "string")), awsRegion = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceType = structure(logical(0), tags = list(type = "string")), unsupportedResourceStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["list_unsupported_app_version_resources_output"]]))
 }
 
 .resiliencehub$publish_app_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), versionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["publish_app_version_input"]]))
 }
 
 .resiliencehub$publish_app_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "long", box = TRUE)), versionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["publish_app_version_output"]]))
 }
 
 .resiliencehub$put_draft_app_version_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appTemplateBody = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["put_draft_app_version_template_input"]]))
 }
 
 .resiliencehub$put_draft_app_version_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["put_draft_app_version_template_output"]]))
 }
 
 .resiliencehub$reject_resource_grouping_recommendations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), entries = structure(list(structure(list(groupingRecommendationId = structure(logical(0), tags = list(type = "string")), rejectionReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["reject_resource_grouping_recommendations_input"]]))
 }
 
 .resiliencehub$reject_resource_grouping_recommendations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), failedEntries = structure(list(structure(list(errorMessage = structure(logical(0), tags = list(type = "string")), groupingRecommendationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["reject_resource_grouping_recommendations_output"]]))
 }
 
 .resiliencehub$remove_draft_app_version_resource_mappings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appRegistryAppNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), eksSourceNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), logicalStackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceGroupNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), terraformSourceNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["remove_draft_app_version_resource_mappings_input"]]))
 }
 
 .resiliencehub$remove_draft_app_version_resource_mappings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["remove_draft_app_version_resource_mappings_output"]]))
 }
 
 .resiliencehub$resolve_app_version_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["resolve_app_version_resources_input"]]))
 }
 
 .resiliencehub$resolve_app_version_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), resolutionId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["resolve_app_version_resources_output"]]))
 }
 
 .resiliencehub$start_app_assessment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["start_app_assessment_input"]]))
 }
 
 .resiliencehub$start_app_assessment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assessment = structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), assessmentArn = structure(logical(0), tags = list(type = "string")), assessmentName = structure(logical(0), tags = list(type = "string")), assessmentStatus = structure(logical(0), tags = list(type = "string")), compliance = structure(list(structure(list(achievableRpoInSecs = structure(logical(0), tags = list(type = "integer")), achievableRtoInSecs = structure(logical(0), tags = list(type = "integer")), complianceStatus = structure(logical(0), tags = list(type = "string")), currentRpoInSecs = structure(logical(0), tags = list(type = "integer")), currentRtoInSecs = structure(logical(0), tags = list(type = "integer")), message = structure(logical(0), tags = list(type = "string")), rpoDescription = structure(logical(0), tags = list(type = "string")), rpoReferenceId = structure(logical(0), tags = list(type = "string")), rtoDescription = structure(logical(0), tags = list(type = "string")), rtoReferenceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), complianceStatus = structure(logical(0), tags = list(type = "string")), cost = structure(list(amount = structure(logical(0), tags = list(type = "double")), currency = structure(logical(0), tags = list(type = "string")), frequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), driftStatus = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "timestamp")), invoker = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), policy = structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp")), dataLocationConstraint = structure(logical(0), tags = list(type = "string")), estimatedCostTier = structure(logical(0), tags = list(type = "string")), policy = structure(list(structure(list(rpoInSecs = structure(logical(0), tags = list(type = "integer")), rtoInSecs = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "map")), policyArn = structure(logical(0), tags = list(type = "string")), policyDescription = structure(logical(0), tags = list(type = "string")), policyName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resiliencyScore = structure(list(componentScore = structure(list(structure(list(excludedCount = structure(logical(0), tags = list(type = "long")), outstandingCount = structure(logical(0), tags = list(type = "long")), possibleScore = structure(logical(0), tags = list(type = "double")), score = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "map")), disruptionScore = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "map")), score = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), resourceErrorsDetails = structure(list(hasMoreErrors = structure(logical(0), tags = list(type = "boolean", box = TRUE)), resourceErrors = structure(list(structure(list(logicalResourceId = structure(logical(0), tags = list(type = "string")), physicalResourceId = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), summary = structure(list(riskRecommendations = structure(list(structure(list(appComponents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recommendation = structure(logical(0), tags = list(type = "string")), risk = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), summary = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), versionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["start_app_assessment_output"]]))
 }
 
 .resiliencehub$start_metrics_export_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(bucketName = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["start_metrics_export_input"]]))
 }
 
 .resiliencehub$start_metrics_export_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(metricsExportId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["start_metrics_export_output"]]))
 }
 
 .resiliencehub$start_resource_grouping_recommendation_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["start_resource_grouping_recommendation_task_input"]]))
 }
 
 .resiliencehub$start_resource_grouping_recommendation_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), groupingId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["start_resource_grouping_recommendation_task_output"]]))
 }
 
 .resiliencehub$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["tag_resource_input"]]))
 }
 
 .resiliencehub$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["tag_resource_output"]]))
 }
 
 .resiliencehub$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["untag_resource_input"]]))
 }
 
 .resiliencehub$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["untag_resource_output"]]))
 }
 
 .resiliencehub$update_app_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), assessmentSchedule = structure(logical(0), tags = list(type = "string")), clearResiliencyPolicyArn = structure(logical(0), tags = list(type = "boolean", box = TRUE)), description = structure(logical(0), tags = list(type = "string")), eventSubscriptions = structure(list(structure(list(eventType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), snsTopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), permissionModel = structure(list(crossAccountRoleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), invokerRoleName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), policyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["update_app_input"]]))
 }
 
 .resiliencehub$update_app_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(app = structure(list(appArn = structure(logical(0), tags = list(type = "string")), assessmentSchedule = structure(logical(0), tags = list(type = "string")), awsApplicationArn = structure(logical(0), tags = list(type = "string")), complianceStatus = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), description = structure(logical(0), tags = list(type = "string")), driftStatus = structure(logical(0), tags = list(type = "string")), eventSubscriptions = structure(list(structure(list(eventType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), snsTopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), lastAppComplianceEvaluationTime = structure(logical(0), tags = list(type = "timestamp")), lastDriftEvaluationTime = structure(logical(0), tags = list(type = "timestamp")), lastResiliencyScoreEvaluationTime = structure(logical(0), tags = list(type = "timestamp")), name = structure(logical(0), tags = list(type = "string")), permissionModel = structure(list(crossAccountRoleArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), invokerRoleName = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), policyArn = structure(logical(0), tags = list(type = "string")), resiliencyScore = structure(logical(0), tags = list(type = "double")), rpoInSecs = structure(logical(0), tags = list(type = "integer", box = TRUE)), rtoInSecs = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["update_app_output"]]))
 }
 
 .resiliencehub$update_app_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), appArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["update_app_version_input"]]))
 }
 
 .resiliencehub$update_app_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["update_app_version_output"]]))
 }
 
 .resiliencehub$update_app_version_app_component_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), appArn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["update_app_version_app_component_input"]]))
 }
 
 .resiliencehub$update_app_version_app_component_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appComponent = structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), appVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["update_app_version_app_component_output"]]))
 }
 
 .resiliencehub$update_app_version_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), appArn = structure(logical(0), tags = list(type = "string")), appComponents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), awsAccountId = structure(logical(0), tags = list(type = "string")), awsRegion = structure(logical(0), tags = list(type = "string")), excluded = structure(logical(0), tags = list(type = "boolean", box = TRUE)), logicalResourceId = structure(list(eksSourceName = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), logicalStackName = structure(logical(0), tags = list(type = "string")), resourceGroupName = structure(logical(0), tags = list(type = "string")), terraformSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), physicalResourceId = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["update_app_version_resource_input"]]))
 }
 
 .resiliencehub$update_app_version_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(appArn = structure(logical(0), tags = list(type = "string")), appVersion = structure(logical(0), tags = list(type = "string")), physicalResource = structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), appComponents = structure(list(structure(list(additionalInfo = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), excluded = structure(logical(0), tags = list(type = "boolean", box = TRUE)), logicalResourceId = structure(list(eksSourceName = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), logicalStackName = structure(logical(0), tags = list(type = "string")), resourceGroupName = structure(logical(0), tags = list(type = "string")), terraformSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), parentResourceName = structure(logical(0), tags = list(type = "string")), physicalResourceId = structure(list(awsAccountId = structure(logical(0), tags = list(type = "string")), awsRegion = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), sourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["update_app_version_resource_output"]]))
 }
 
 .resiliencehub$update_resiliency_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(dataLocationConstraint = structure(logical(0), tags = list(type = "string")), policy = structure(list(structure(list(rpoInSecs = structure(logical(0), tags = list(type = "integer")), rtoInSecs = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "map")), policyArn = structure(logical(0), tags = list(type = "string")), policyDescription = structure(logical(0), tags = list(type = "string")), policyName = structure(logical(0), tags = list(type = "string")), tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["update_resiliency_policy_input"]]))
 }
 
 .resiliencehub$update_resiliency_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policy = structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp")), dataLocationConstraint = structure(logical(0), tags = list(type = "string")), estimatedCostTier = structure(logical(0), tags = list(type = "string")), policy = structure(list(structure(list(rpoInSecs = structure(logical(0), tags = list(type = "integer")), rtoInSecs = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "map")), policyArn = structure(logical(0), tags = list(type = "string")), policyDescription = structure(logical(0), tags = list(type = "string")), policyName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), tier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .resiliencehub_shapes[["update_resiliency_policy_output"]]))
 }

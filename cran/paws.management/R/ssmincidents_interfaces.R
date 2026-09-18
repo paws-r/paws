@@ -5,372 +5,310 @@ NULL
 
 .ssmincidents$batch_get_incident_findings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(findingIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), incidentRecordArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["batch_get_incident_findings_input"]]))
 }
 
 .ssmincidents$batch_get_incident_findings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(errors = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), findingId = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), findings = structure(list(structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp")), details = structure(list(cloudFormationStackUpdate = structure(list(endTime = structure(logical(0), tags = list(type = "timestamp")), stackArn = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), codeDeployDeployment = structure(list(deploymentGroupArn = structure(logical(0), tags = list(type = "string")), deploymentId = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "timestamp")), startTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), id = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["batch_get_incident_findings_output"]]))
 }
 
 .ssmincidents$create_replication_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), regions = structure(list(structure(list(sseKmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["create_replication_set_input"]]))
 }
 
 .ssmincidents$create_replication_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["create_replication_set_output"]]))
 }
 
 .ssmincidents$create_response_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(actions = structure(list(structure(list(ssmAutomation = structure(list(documentName = structure(logical(0), tags = list(type = "string")), documentVersion = structure(logical(0), tags = list(type = "string")), dynamicParameters = structure(list(structure(list(variable = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), parameters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), roleArn = structure(logical(0), tags = list(type = "string")), targetAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), chatChannel = structure(list(chatbotSns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), empty = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), displayName = structure(logical(0), tags = list(type = "string")), engagements = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), incidentTemplate = structure(list(dedupeString = structure(logical(0), tags = list(type = "string")), impact = structure(logical(0), tags = list(type = "integer", box = TRUE)), incidentTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), notificationTargets = structure(list(structure(list(snsTopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), summary = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), integrations = structure(list(structure(list(pagerDutyConfiguration = structure(list(name = structure(logical(0), tags = list(type = "string")), pagerDutyIncidentConfiguration = structure(list(serviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), secretId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["create_response_plan_input"]]))
 }
 
 .ssmincidents$create_response_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["create_response_plan_output"]]))
 }
 
 .ssmincidents$create_timeline_event_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), eventData = structure(logical(0), tags = list(type = "string")), eventReferences = structure(list(structure(list(relatedItemId = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), eventTime = structure(logical(0), tags = list(type = "timestamp")), eventType = structure(logical(0), tags = list(type = "string")), incidentRecordArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["create_timeline_event_input"]]))
 }
 
 .ssmincidents$create_timeline_event_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(eventId = structure(logical(0), tags = list(type = "string")), incidentRecordArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["create_timeline_event_output"]]))
 }
 
 .ssmincidents$delete_incident_record_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["delete_incident_record_input"]]))
 }
 
 .ssmincidents$delete_incident_record_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["delete_incident_record_output"]]))
 }
 
 .ssmincidents$delete_replication_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(location = "querystring", locationName = "arn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["delete_replication_set_input"]]))
 }
 
 .ssmincidents$delete_replication_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["delete_replication_set_output"]]))
 }
 
 .ssmincidents$delete_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyId = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["delete_resource_policy_input"]]))
 }
 
 .ssmincidents$delete_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["delete_resource_policy_output"]]))
 }
 
 .ssmincidents$delete_response_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["delete_response_plan_input"]]))
 }
 
 .ssmincidents$delete_response_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["delete_response_plan_output"]]))
 }
 
 .ssmincidents$delete_timeline_event_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(eventId = structure(logical(0), tags = list(type = "string")), incidentRecordArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["delete_timeline_event_input"]]))
 }
 
 .ssmincidents$delete_timeline_event_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["delete_timeline_event_output"]]))
 }
 
 .ssmincidents$get_incident_record_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(location = "querystring", locationName = "arn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["get_incident_record_input"]]))
 }
 
 .ssmincidents$get_incident_record_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(incidentRecord = structure(list(arn = structure(logical(0), tags = list(type = "string")), automationExecutions = structure(list(structure(list(ssmExecutionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), chatChannel = structure(list(chatbotSns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), empty = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), creationTime = structure(logical(0), tags = list(type = "timestamp")), dedupeString = structure(logical(0), tags = list(type = "string")), impact = structure(logical(0), tags = list(type = "integer", box = TRUE)), incidentRecordSource = structure(list(createdBy = structure(logical(0), tags = list(type = "string")), invokedBy = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), source = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lastModifiedBy = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), notificationTargets = structure(list(structure(list(snsTopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), resolvedTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), summary = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["get_incident_record_output"]]))
 }
 
 .ssmincidents$get_replication_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(location = "querystring", locationName = "arn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["get_replication_set_input"]]))
 }
 
 .ssmincidents$get_replication_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(replicationSet = structure(list(arn = structure(logical(0), tags = list(type = "string")), createdBy = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp")), deletionProtected = structure(logical(0), tags = list(type = "boolean", box = TRUE)), lastModifiedBy = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), regionMap = structure(list(structure(list(sseKmsKeyId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), statusUpdateDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "map")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["get_replication_set_output"]]))
 }
 
 .ssmincidents$get_resource_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["get_resource_policies_input"]]))
 }
 
 .ssmincidents$get_resource_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), resourcePolicies = structure(list(structure(list(policyDocument = structure(logical(0), tags = list(type = "string")), policyId = structure(logical(0), tags = list(type = "string")), ramResourceShareRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["get_resource_policies_output"]]))
 }
 
 .ssmincidents$get_response_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(location = "querystring", locationName = "arn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["get_response_plan_input"]]))
 }
 
 .ssmincidents$get_response_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(actions = structure(list(structure(list(ssmAutomation = structure(list(documentName = structure(logical(0), tags = list(type = "string")), documentVersion = structure(logical(0), tags = list(type = "string")), dynamicParameters = structure(list(structure(list(variable = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), parameters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), roleArn = structure(logical(0), tags = list(type = "string")), targetAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), arn = structure(logical(0), tags = list(type = "string")), chatChannel = structure(list(chatbotSns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), empty = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), displayName = structure(logical(0), tags = list(type = "string")), engagements = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), incidentTemplate = structure(list(dedupeString = structure(logical(0), tags = list(type = "string")), impact = structure(logical(0), tags = list(type = "integer", box = TRUE)), incidentTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), notificationTargets = structure(list(structure(list(snsTopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), summary = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), integrations = structure(list(structure(list(pagerDutyConfiguration = structure(list(name = structure(logical(0), tags = list(type = "string")), pagerDutyIncidentConfiguration = structure(list(serviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), secretId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["get_response_plan_output"]]))
 }
 
 .ssmincidents$get_timeline_event_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(eventId = structure(logical(0), tags = list(location = "querystring", locationName = "eventId", type = "string")), incidentRecordArn = structure(logical(0), tags = list(location = "querystring", locationName = "incidentRecordArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["get_timeline_event_input"]]))
 }
 
 .ssmincidents$get_timeline_event_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(event = structure(list(eventData = structure(logical(0), tags = list(type = "string")), eventId = structure(logical(0), tags = list(type = "string")), eventReferences = structure(list(structure(list(relatedItemId = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), eventTime = structure(logical(0), tags = list(type = "timestamp")), eventType = structure(logical(0), tags = list(type = "string")), eventUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), incidentRecordArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["get_timeline_event_output"]]))
 }
 
 .ssmincidents$list_incident_findings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(incidentRecordArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["list_incident_findings_input"]]))
 }
 
 .ssmincidents$list_incident_findings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(findings = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["list_incident_findings_output"]]))
 }
 
 .ssmincidents$list_incident_records_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filters = structure(list(structure(list(condition = structure(list(after = structure(logical(0), tags = list(type = "timestamp")), before = structure(logical(0), tags = list(type = "timestamp")), equals = structure(list(integerValues = structure(list(structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "list")), stringValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure", union = TRUE)), key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["list_incident_records_input"]]))
 }
 
 .ssmincidents$list_incident_records_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(incidentRecordSummaries = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), impact = structure(logical(0), tags = list(type = "integer", box = TRUE)), incidentRecordSource = structure(list(createdBy = structure(logical(0), tags = list(type = "string")), invokedBy = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), source = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resolvedTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["list_incident_records_output"]]))
 }
 
 .ssmincidents$list_related_items_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(incidentRecordArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["list_related_items_input"]]))
 }
 
 .ssmincidents$list_related_items_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), relatedItems = structure(list(structure(list(generatedId = structure(logical(0), tags = list(type = "string")), identifier = structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(list(arn = structure(logical(0), tags = list(type = "string")), metricDefinition = structure(logical(0), tags = list(type = "string")), pagerDutyIncidentDetail = structure(list(autoResolve = structure(logical(0), tags = list(type = "boolean", box = TRUE)), id = structure(logical(0), tags = list(type = "string")), secretId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["list_related_items_output"]]))
 }
 
 .ssmincidents$list_replication_sets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["list_replication_sets_input"]]))
 }
 
 .ssmincidents$list_replication_sets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), replicationSetArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["list_replication_sets_output"]]))
 }
 
 .ssmincidents$list_response_plans_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["list_response_plans_input"]]))
 }
 
 .ssmincidents$list_response_plans_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), responsePlanSummaries = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["list_response_plans_output"]]))
 }
 
 .ssmincidents$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["list_tags_for_resource_input"]]))
 }
 
 .ssmincidents$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["list_tags_for_resource_output"]]))
 }
 
 .ssmincidents$list_timeline_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filters = structure(list(structure(list(condition = structure(list(after = structure(logical(0), tags = list(type = "timestamp")), before = structure(logical(0), tags = list(type = "timestamp")), equals = structure(list(integerValues = structure(list(structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "list")), stringValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure", union = TRUE)), key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), incidentRecordArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), sortBy = structure(logical(0), tags = list(type = "string")), sortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["list_timeline_events_input"]]))
 }
 
 .ssmincidents$list_timeline_events_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(eventSummaries = structure(list(structure(list(eventId = structure(logical(0), tags = list(type = "string")), eventReferences = structure(list(structure(list(relatedItemId = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), eventTime = structure(logical(0), tags = list(type = "timestamp")), eventType = structure(logical(0), tags = list(type = "string")), eventUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), incidentRecordArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["list_timeline_events_output"]]))
 }
 
 .ssmincidents$put_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policy = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["put_resource_policy_input"]]))
 }
 
 .ssmincidents$put_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["put_resource_policy_output"]]))
 }
 
 .ssmincidents$start_incident_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), impact = structure(logical(0), tags = list(type = "integer", box = TRUE)), relatedItems = structure(list(structure(list(generatedId = structure(logical(0), tags = list(type = "string")), identifier = structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(list(arn = structure(logical(0), tags = list(type = "string")), metricDefinition = structure(logical(0), tags = list(type = "string")), pagerDutyIncidentDetail = structure(list(autoResolve = structure(logical(0), tags = list(type = "boolean", box = TRUE)), id = structure(logical(0), tags = list(type = "string")), secretId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), responsePlanArn = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), triggerDetails = structure(list(rawData = structure(logical(0), tags = list(type = "string")), source = structure(logical(0), tags = list(type = "string")), timestamp = structure(logical(0), tags = list(type = "timestamp")), triggerArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["start_incident_input"]]))
 }
 
 .ssmincidents$start_incident_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(incidentRecordArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["start_incident_output"]]))
 }
 
 .ssmincidents$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["tag_resource_input"]]))
 }
 
 .ssmincidents$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["tag_resource_output"]]))
 }
 
 .ssmincidents$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["untag_resource_input"]]))
 }
 
 .ssmincidents$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["untag_resource_output"]]))
 }
 
 .ssmincidents$update_deletion_protection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), deletionProtected = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["update_deletion_protection_input"]]))
 }
 
 .ssmincidents$update_deletion_protection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["update_deletion_protection_output"]]))
 }
 
 .ssmincidents$update_incident_record_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), chatChannel = structure(list(chatbotSns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), empty = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), impact = structure(logical(0), tags = list(type = "integer", box = TRUE)), notificationTargets = structure(list(structure(list(snsTopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), summary = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["update_incident_record_input"]]))
 }
 
 .ssmincidents$update_incident_record_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["update_incident_record_output"]]))
 }
 
 .ssmincidents$update_related_items_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), incidentRecordArn = structure(logical(0), tags = list(type = "string")), relatedItemsUpdate = structure(list(itemToAdd = structure(list(generatedId = structure(logical(0), tags = list(type = "string")), identifier = structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(list(arn = structure(logical(0), tags = list(type = "string")), metricDefinition = structure(logical(0), tags = list(type = "string")), pagerDutyIncidentDetail = structure(list(autoResolve = structure(logical(0), tags = list(type = "boolean", box = TRUE)), id = structure(logical(0), tags = list(type = "string")), secretId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), itemToRemove = structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(list(arn = structure(logical(0), tags = list(type = "string")), metricDefinition = structure(logical(0), tags = list(type = "string")), pagerDutyIncidentDetail = structure(list(autoResolve = structure(logical(0), tags = list(type = "boolean", box = TRUE)), id = structure(logical(0), tags = list(type = "string")), secretId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["update_related_items_input"]]))
 }
 
 .ssmincidents$update_related_items_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["update_related_items_output"]]))
 }
 
 .ssmincidents$update_replication_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(actions = structure(list(structure(list(addRegionAction = structure(list(regionName = structure(logical(0), tags = list(type = "string")), sseKmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), deleteRegionAction = structure(list(regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), arn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["update_replication_set_input"]]))
 }
 
 .ssmincidents$update_replication_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["update_replication_set_output"]]))
 }
 
 .ssmincidents$update_response_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(actions = structure(list(structure(list(ssmAutomation = structure(list(documentName = structure(logical(0), tags = list(type = "string")), documentVersion = structure(logical(0), tags = list(type = "string")), dynamicParameters = structure(list(structure(list(variable = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "map")), parameters = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), roleArn = structure(logical(0), tags = list(type = "string")), targetAccount = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), arn = structure(logical(0), tags = list(type = "string")), chatChannel = structure(list(chatbotSns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), empty = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), displayName = structure(logical(0), tags = list(type = "string")), engagements = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), incidentTemplateDedupeString = structure(logical(0), tags = list(type = "string")), incidentTemplateImpact = structure(logical(0), tags = list(type = "integer", box = TRUE)), incidentTemplateNotificationTargets = structure(list(structure(list(snsTopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), incidentTemplateSummary = structure(logical(0), tags = list(type = "string")), incidentTemplateTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), incidentTemplateTitle = structure(logical(0), tags = list(type = "string")), integrations = structure(list(structure(list(pagerDutyConfiguration = structure(list(name = structure(logical(0), tags = list(type = "string")), pagerDutyIncidentConfiguration = structure(list(serviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), secretId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["update_response_plan_input"]]))
 }
 
 .ssmincidents$update_response_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["update_response_plan_output"]]))
 }
 
 .ssmincidents$update_timeline_event_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), eventData = structure(logical(0), tags = list(type = "string")), eventId = structure(logical(0), tags = list(type = "string")), eventReferences = structure(list(structure(list(relatedItemId = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), eventTime = structure(logical(0), tags = list(type = "timestamp")), eventType = structure(logical(0), tags = list(type = "string")), incidentRecordArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["update_timeline_event_input"]]))
 }
 
 .ssmincidents$update_timeline_event_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .ssmincidents_shapes[["update_timeline_event_output"]]))
 }

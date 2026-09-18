@@ -27,7 +27,7 @@ imagebuilder_create_component(
 
 The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the first three, and can filter on all of them.
 
-\strong{Assignment:} For the first three nodes you can assign any positive integer value, including zero, with an upper limit of 2^30-1, or 1073741823 for each node. Image Builder automatically assigns the build number to the fourth node.
+\strong{Assignment:} For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node.
 
 \strong{Patterns:} You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01.}
 
@@ -41,7 +41,7 @@ The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. Yo
 
 \item{data}{Component \code{data} contains inline YAML document content for the component. Alternatively, you can specify the \code{uri} of a YAML document file stored in Amazon S3. However, you cannot specify both properties.}
 
-\item{uri}{The \code{uri} of a YAML component document file. This must be an S3 URL (\verb{s3://bucket/key}), and the requester must have permission to access the S3 bucket it points to. If you use Amazon S3, you can specify component content up to your service quota.
+\item{uri}{The \code{uri} of a YAML component document file. This must be an S3 URL (\verb{s3://bucket/key}), and you must have permission to access the S3 bucket it points to. If you use Amazon S3, you can specify component content up to your service quota.
 
 Alternatively, you can specify the YAML document inline, using the component \code{data} property. You cannot specify both properties.}
 
@@ -49,9 +49,9 @@ Alternatively, you can specify the YAML document inline, using the component \co
 
 \item{tags}{The tags that apply to the component.}
 
-\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 
-\item{dryRun}{Validates the required permissions for the operation and the request parameters, without actually making the request, and provides an error response. Upon a successful request, the error response is \code{DryRunOperationException}.}
+\item{dryRun}{Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a \code{DryRunOperationException} error response.}
 }
 \description{
 Creates a new component that can be used to build, validate, test, and assess your image. The component is based on a YAML document that you specify using exactly one of the following methods:

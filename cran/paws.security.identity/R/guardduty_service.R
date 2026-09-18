@@ -9,7 +9,7 @@ NULL
 #' 
 #' GuardDuty also monitors Amazon Web Services account access behavior for signs of compromise, such as unauthorized infrastructure deployments like EC2 instances deployed in a Region that has never been used, or unusual API calls like a password policy change to reduce password strength.
 #' 
-#' GuardDuty informs you about the status of your Amazon Web Services environment by producing security findings that you can view in the GuardDuty console or through Amazon EventBridge. For more information, see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html}{Amazon GuardDuty User Guide}} .
+#' GuardDuty informs you about the status of your Amazon Web Services environment by producing security findings that you can view in the GuardDuty console or through Amazon EventBridge. For more information, see the *\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html}{Amazon GuardDuty User Guide}* .
 #'
 #' @param
 #' config
@@ -97,8 +97,11 @@ NULL
 #'  \link[=guardduty_accept_administrator_invitation]{accept_administrator_invitation} \tab Accepts the invitation to be a member account and get monitored by a GuardDuty administrator account that sent the invitation\cr
 #'  \link[=guardduty_accept_invitation]{accept_invitation} \tab Accepts the invitation to be monitored by a GuardDuty administrator account\cr
 #'  \link[=guardduty_archive_findings]{archive_findings} \tab Archives GuardDuty findings that are specified by the list of finding IDs\cr
+#'  \link[=guardduty_create_custom_detection_rule_association]{create_custom_detection_rule_association} \tab Enables a custom detection rule for your account by creating an association\cr
+#'  \link[=guardduty_create_custom_detection_rule_org_configuration]{create_custom_detection_rule_org_configuration} \tab Creates an organization-level configuration that enables a custom detection rule across your organization\cr
 #'  \link[=guardduty_create_detector]{create_detector} \tab Creates a single GuardDuty detector\cr
 #'  \link[=guardduty_create_filter]{create_filter} \tab Creates a filter using the specified finding criteria\cr
+#'  \link[=guardduty_create_investigation]{create_investigation} \tab This API is currently available as a preview\cr
 #'  \link[=guardduty_create_ip_set]{create_ip_set} \tab Creates a new IPSet, which is called a trusted IP list in the console user interface\cr
 #'  \link[=guardduty_create_malware_protection_plan]{create_malware_protection_plan} \tab Creates a new Malware Protection plan for the protected resource\cr
 #'  \link[=guardduty_create_members]{create_members} \tab Creates member accounts of the current Amazon Web Services account by specifying a list of Amazon Web Services account IDs\cr
@@ -108,6 +111,8 @@ NULL
 #'  \link[=guardduty_create_threat_intel_set]{create_threat_intel_set} \tab Creates a new ThreatIntelSet\cr
 #'  \link[=guardduty_create_trusted_entity_set]{create_trusted_entity_set} \tab Creates a new trusted entity set\cr
 #'  \link[=guardduty_decline_invitations]{decline_invitations} \tab Declines invitations sent to the current member account by Amazon Web Services accounts specified by their account IDs\cr
+#'  \link[=guardduty_delete_custom_detection_rule_association]{delete_custom_detection_rule_association} \tab Disables a custom detection rule by deleting its association\cr
+#'  \link[=guardduty_delete_custom_detection_rule_org_configuration]{delete_custom_detection_rule_org_configuration} \tab Deletes the organization-level configuration for a custom detection rule\cr
 #'  \link[=guardduty_delete_detector]{delete_detector} \tab Deletes an Amazon GuardDuty detector that is specified by the detector ID\cr
 #'  \link[=guardduty_delete_filter]{delete_filter} \tab Deletes the filter specified by the filter name\cr
 #'  \link[=guardduty_delete_invitations]{delete_invitations} \tab Deletes invitations sent to the current member account by Amazon Web Services accounts specified by their account IDs\cr
@@ -128,10 +133,14 @@ NULL
 #'  \link[=guardduty_enable_organization_admin_account]{enable_organization_admin_account} \tab Designates an Amazon Web Services account within the organization as your GuardDuty delegated administrator\cr
 #'  \link[=guardduty_get_administrator_account]{get_administrator_account} \tab Provides the details of the GuardDuty administrator account associated with the current GuardDuty member account\cr
 #'  \link[=guardduty_get_coverage_statistics]{get_coverage_statistics} \tab Retrieves aggregated statistics for your account\cr
+#'  \link[=guardduty_get_custom_detection_rule]{get_custom_detection_rule} \tab Returns details for a custom detection rule in GuardDuty, including its detection logic\cr
+#'  \link[=guardduty_get_custom_detection_rule_association]{get_custom_detection_rule_association} \tab Returns details for a custom detection rule association\cr
+#'  \link[=guardduty_get_custom_detection_rule_org_configuration]{get_custom_detection_rule_org_configuration} \tab Returns the organization-level configuration for a custom detection rule\cr
 #'  \link[=guardduty_get_detector]{get_detector} \tab Retrieves a GuardDuty detector specified by the detectorId\cr
 #'  \link[=guardduty_get_filter]{get_filter} \tab Returns the details of the filter specified by the filter name\cr
 #'  \link[=guardduty_get_findings]{get_findings} \tab Describes Amazon GuardDuty findings specified by finding IDs\cr
 #'  \link[=guardduty_get_findings_statistics]{get_findings_statistics} \tab Lists GuardDuty findings statistics for the specified detector ID\cr
+#'  \link[=guardduty_get_investigation]{get_investigation} \tab This API is currently available as a preview\cr
 #'  \link[=guardduty_get_invitations_count]{get_invitations_count} \tab Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation\cr
 #'  \link[=guardduty_get_ip_set]{get_ip_set} \tab Retrieves the IPSet specified by the ipSetId\cr
 #'  \link[=guardduty_get_malware_protection_plan]{get_malware_protection_plan} \tab Retrieves the Malware Protection plan details associated with a Malware Protection plan ID\cr
@@ -148,9 +157,13 @@ NULL
 #'  \link[=guardduty_get_usage_statistics]{get_usage_statistics} \tab Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID\cr
 #'  \link[=guardduty_invite_members]{invite_members} \tab Invites Amazon Web Services accounts to become members of an organization administered by the Amazon Web Services account that invokes this API\cr
 #'  \link[=guardduty_list_coverage]{list_coverage} \tab Lists coverage details for your GuardDuty account\cr
+#'  \link[=guardduty_list_custom_detection_rule_associations]{list_custom_detection_rule_associations} \tab Returns all custom detection rule associations for your account\cr
+#'  \link[=guardduty_list_custom_detection_rule_org_configurations]{list_custom_detection_rule_org_configurations} \tab Returns all organization-level configurations for custom detection rules\cr
+#'  \link[=guardduty_list_custom_detection_rules]{list_custom_detection_rules} \tab Returns all available custom detection rules in GuardDuty\cr
 #'  \link[=guardduty_list_detectors]{list_detectors} \tab Lists detectorIds of all the existing Amazon GuardDuty detector resources\cr
 #'  \link[=guardduty_list_filters]{list_filters} \tab Returns a paginated list of the current filters\cr
 #'  \link[=guardduty_list_findings]{list_findings} \tab Lists GuardDuty findings for the specified detector ID\cr
+#'  \link[=guardduty_list_investigations]{list_investigations} \tab This API is currently available as a preview\cr
 #'  \link[=guardduty_list_invitations]{list_invitations} \tab Lists all GuardDuty membership invitations that were sent to the current Amazon Web Services account\cr
 #'  \link[=guardduty_list_ip_sets]{list_ip_sets} \tab Lists the IPSets of the GuardDuty service specified by the detector ID\cr
 #'  \link[=guardduty_list_malware_protection_plans]{list_malware_protection_plans} \tab Lists the Malware Protection plan IDs associated with the protected resources in your Amazon Web Services account\cr
@@ -169,6 +182,8 @@ NULL
 #'  \link[=guardduty_tag_resource]{tag_resource} \tab Adds tags to a resource\cr
 #'  \link[=guardduty_unarchive_findings]{unarchive_findings} \tab Unarchives GuardDuty findings specified by the findingIds\cr
 #'  \link[=guardduty_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
+#'  \link[=guardduty_update_custom_detection_rule_association]{update_custom_detection_rule_association} \tab Updates the mode of an existing custom detection rule association\cr
+#'  \link[=guardduty_update_custom_detection_rule_org_configuration]{update_custom_detection_rule_org_configuration} \tab Updates the organization-level configuration for a custom detection rule, including the mode and include/exclude account lists\cr
 #'  \link[=guardduty_update_detector]{update_detector} \tab Updates the GuardDuty detector specified by the detector ID\cr
 #'  \link[=guardduty_update_filter]{update_filter} \tab Updates the filter specified by the filter name\cr
 #'  \link[=guardduty_update_findings_feedback]{update_findings_feedback} \tab Marks the specified GuardDuty findings as useful or not useful\cr

@@ -38,7 +38,8 @@ emr_run_job_flow(
   EbsRootVolumeIops = NULL,
   EbsRootVolumeThroughput = NULL,
   ExtendedSupport = NULL,
-  MonitoringConfiguration = NULL
+  MonitoringConfiguration = NULL,
+  SessionEnabled = NULL
 )
 }
 \arguments{
@@ -137,6 +138,8 @@ For information about creating a custom AMI, see \href{https://docs.aws.amazon.c
 \item{ExtendedSupport}{Reserved.}
 
 \item{MonitoringConfiguration}{Contains CloudWatch log configuration metadata and settings.}
+
+\item{SessionEnabled}{Indicates whether Spark Connect sessions are enabled on the cluster. When set to \code{true}, you can start Spark Connect sessions using the \code{\link[=emr_start_session]{start_session}} operation.}
 }
 \description{
 RunJobFlow creates and starts running a new cluster (job flow). The cluster runs the steps specified. After the steps complete, the cluster stops and the HDFS partition is lost. To prevent loss of data, configure the last step of the job flow to store results in Amazon S3. If the JobFlowInstancesConfig \code{KeepJobFlowAliveWhenNoSteps} parameter is set to \code{TRUE}, the cluster transitions to the WAITING state rather than shutting down after the steps have completed.

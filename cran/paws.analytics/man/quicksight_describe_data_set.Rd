@@ -12,7 +12,7 @@ quicksight_describe_data_set(AwsAccountId, DataSetId)
 \item{DataSetId}{[required] The ID for the dataset that you want to describe. This ID is unique per Amazon Web Services Region for each Amazon Web Services account.}
 }
 \description{
-Describes a dataset. This operation doesn't support datasets that include uploaded files as a source.
+Describes a dataset.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_data_set/} for full documentation.
 }

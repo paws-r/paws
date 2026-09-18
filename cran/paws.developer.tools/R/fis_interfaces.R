@@ -5,312 +5,260 @@ NULL
 
 .fis$create_experiment_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), description = structure(logical(0), tags = list(type = "string")), stopConditions = structure(list(structure(list(source = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), targets = structure(list(structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), filters = structure(list(structure(list(path = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), selectionMode = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), actions = structure(list(structure(list(actionId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), targets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), startAfter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), logConfiguration = structure(list(cloudWatchLogsConfiguration = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), logSchemaVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), experimentOptions = structure(list(accountTargeting = structure(logical(0), tags = list(type = "string")), emptyTargetResolutionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), experimentReportConfiguration = structure(list(outputs = structure(list(s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), dataSources = structure(list(cloudWatchDashboards = structure(list(structure(list(dashboardIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), preExperimentDuration = structure(logical(0), tags = list(type = "string")), postExperimentDuration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["create_experiment_template_input"]]))
 }
 
 .fis$create_experiment_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(experimentTemplate = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), targets = structure(list(structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), filters = structure(list(structure(list(path = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), selectionMode = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), actions = structure(list(structure(list(actionId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), targets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), startAfter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map")), stopConditions = structure(list(structure(list(source = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), logConfiguration = structure(list(cloudWatchLogsConfiguration = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), logSchemaVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), experimentOptions = structure(list(accountTargeting = structure(logical(0), tags = list(type = "string")), emptyTargetResolutionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), targetAccountConfigurationsCount = structure(logical(0), tags = list(type = "long")), experimentReportConfiguration = structure(list(outputs = structure(list(s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), dataSources = structure(list(cloudWatchDashboards = structure(list(structure(list(dashboardIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), preExperimentDuration = structure(logical(0), tags = list(type = "string")), postExperimentDuration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["create_experiment_template_output"]]))
 }
 
 .fis$create_target_account_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), experimentTemplateId = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), accountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["create_target_account_configuration_input"]]))
 }
 
 .fis$create_target_account_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(targetAccountConfiguration = structure(list(roleArn = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["create_target_account_configuration_output"]]))
 }
 
 .fis$delete_experiment_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["delete_experiment_template_input"]]))
 }
 
 .fis$delete_experiment_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(experimentTemplate = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), targets = structure(list(structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), filters = structure(list(structure(list(path = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), selectionMode = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), actions = structure(list(structure(list(actionId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), targets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), startAfter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map")), stopConditions = structure(list(structure(list(source = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), logConfiguration = structure(list(cloudWatchLogsConfiguration = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), logSchemaVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), experimentOptions = structure(list(accountTargeting = structure(logical(0), tags = list(type = "string")), emptyTargetResolutionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), targetAccountConfigurationsCount = structure(logical(0), tags = list(type = "long")), experimentReportConfiguration = structure(list(outputs = structure(list(s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), dataSources = structure(list(cloudWatchDashboards = structure(list(structure(list(dashboardIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), preExperimentDuration = structure(logical(0), tags = list(type = "string")), postExperimentDuration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["delete_experiment_template_output"]]))
 }
 
 .fis$delete_target_account_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(experimentTemplateId = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), accountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["delete_target_account_configuration_input"]]))
 }
 
 .fis$delete_target_account_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(targetAccountConfiguration = structure(list(roleArn = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["delete_target_account_configuration_output"]]))
 }
 
 .fis$get_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["get_action_input"]]))
 }
 
 .fis$get_action_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(action = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(description = structure(logical(0), tags = list(type = "string")), required = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "map")), targets = structure(list(structure(list(resourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["get_action_output"]]))
 }
 
 .fis$get_experiment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["get_experiment_input"]]))
 }
 
 .fis$get_experiment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(experiment = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), experimentTemplateId = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string")), error = structure(list(accountId = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), targets = structure(list(structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), filters = structure(list(structure(list(path = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), selectionMode = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), actions = structure(list(structure(list(actionId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), targets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), startAfter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "map")), stopConditions = structure(list(structure(list(source = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), logConfiguration = structure(list(cloudWatchLogsConfiguration = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), logSchemaVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), experimentOptions = structure(list(accountTargeting = structure(logical(0), tags = list(type = "string")), emptyTargetResolutionMode = structure(logical(0), tags = list(type = "string")), actionsMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), targetAccountConfigurationsCount = structure(logical(0), tags = list(type = "long")), experimentReportConfiguration = structure(list(outputs = structure(list(s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), dataSources = structure(list(cloudWatchDashboards = structure(list(structure(list(dashboardIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), preExperimentDuration = structure(logical(0), tags = list(type = "string")), postExperimentDuration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), experimentReport = structure(list(state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string")), error = structure(list(code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), s3Reports = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), reportType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["get_experiment_output"]]))
 }
 
 .fis$get_experiment_target_account_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(experimentId = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), accountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["get_experiment_target_account_configuration_input"]]))
 }
 
 .fis$get_experiment_target_account_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(targetAccountConfiguration = structure(list(roleArn = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["get_experiment_target_account_configuration_output"]]))
 }
 
 .fis$get_experiment_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["get_experiment_template_input"]]))
 }
 
 .fis$get_experiment_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(experimentTemplate = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), targets = structure(list(structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), filters = structure(list(structure(list(path = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), selectionMode = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), actions = structure(list(structure(list(actionId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), targets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), startAfter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map")), stopConditions = structure(list(structure(list(source = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), logConfiguration = structure(list(cloudWatchLogsConfiguration = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), logSchemaVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), experimentOptions = structure(list(accountTargeting = structure(logical(0), tags = list(type = "string")), emptyTargetResolutionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), targetAccountConfigurationsCount = structure(logical(0), tags = list(type = "long")), experimentReportConfiguration = structure(list(outputs = structure(list(s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), dataSources = structure(list(cloudWatchDashboards = structure(list(structure(list(dashboardIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), preExperimentDuration = structure(logical(0), tags = list(type = "string")), postExperimentDuration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["get_experiment_template_output"]]))
 }
 
 .fis$get_safety_lever_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["get_safety_lever_input"]]))
 }
 
 .fis$get_safety_lever_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(safetyLever = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["get_safety_lever_output"]]))
 }
 
 .fis$get_target_account_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(experimentTemplateId = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), accountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["get_target_account_configuration_input"]]))
 }
 
 .fis$get_target_account_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(targetAccountConfiguration = structure(list(roleArn = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["get_target_account_configuration_output"]]))
 }
 
 .fis$get_target_resource_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceType = structure(logical(0), tags = list(location = "uri", locationName = "resourceType", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["get_target_resource_type_input"]]))
 }
 
 .fis$get_target_resource_type_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(targetResourceType = structure(list(resourceType = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(description = structure(logical(0), tags = list(type = "string")), required = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["get_target_resource_type_output"]]))
 }
 
 .fis$list_actions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["list_actions_input"]]))
 }
 
 .fis$list_actions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(actions = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), targets = structure(list(structure(list(resourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["list_actions_output"]]))
 }
 
 .fis$list_experiment_resolved_targets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(experimentId = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), targetName = structure(logical(0), tags = list(location = "querystring", locationName = "targetName", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["list_experiment_resolved_targets_input"]]))
 }
 
 .fis$list_experiment_resolved_targets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resolvedTargets = structure(list(structure(list(resourceType = structure(logical(0), tags = list(type = "string")), targetName = structure(logical(0), tags = list(type = "string")), targetInformation = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["list_experiment_resolved_targets_output"]]))
 }
 
 .fis$list_experiment_target_account_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(experimentId = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["list_experiment_target_account_configurations_input"]]))
 }
 
 .fis$list_experiment_target_account_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(targetAccountConfigurations = structure(list(structure(list(roleArn = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["list_experiment_target_account_configurations_output"]]))
 }
 
 .fis$list_experiment_templates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["list_experiment_templates_input"]]))
 }
 
 .fis$list_experiment_templates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(experimentTemplates = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["list_experiment_templates_output"]]))
 }
 
 .fis$list_experiments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), experimentTemplateId = structure(logical(0), tags = list(location = "querystring", locationName = "experimentTemplateId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["list_experiments_input"]]))
 }
 
 .fis$list_experiments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(experiments = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), experimentTemplateId = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string")), error = structure(list(accountId = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), creationTime = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), experimentOptions = structure(list(accountTargeting = structure(logical(0), tags = list(type = "string")), emptyTargetResolutionMode = structure(logical(0), tags = list(type = "string")), actionsMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["list_experiments_output"]]))
 }
 
 .fis$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["list_tags_for_resource_input"]]))
 }
 
 .fis$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["list_tags_for_resource_output"]]))
 }
 
 .fis$list_target_account_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(experimentTemplateId = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["list_target_account_configurations_input"]]))
 }
 
 .fis$list_target_account_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(targetAccountConfigurations = structure(list(structure(list(roleArn = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["list_target_account_configurations_output"]]))
 }
 
 .fis$list_target_resource_types_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["list_target_resource_types_input"]]))
 }
 
 .fis$list_target_resource_types_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(targetResourceTypes = structure(list(structure(list(resourceType = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["list_target_resource_types_output"]]))
 }
 
 .fis$start_experiment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), experimentTemplateId = structure(logical(0), tags = list(type = "string")), experimentOptions = structure(list(actionsMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["start_experiment_input"]]))
 }
 
 .fis$start_experiment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(experiment = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), experimentTemplateId = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string")), error = structure(list(accountId = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), targets = structure(list(structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), filters = structure(list(structure(list(path = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), selectionMode = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), actions = structure(list(structure(list(actionId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), targets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), startAfter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "map")), stopConditions = structure(list(structure(list(source = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), logConfiguration = structure(list(cloudWatchLogsConfiguration = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), logSchemaVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), experimentOptions = structure(list(accountTargeting = structure(logical(0), tags = list(type = "string")), emptyTargetResolutionMode = structure(logical(0), tags = list(type = "string")), actionsMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), targetAccountConfigurationsCount = structure(logical(0), tags = list(type = "long")), experimentReportConfiguration = structure(list(outputs = structure(list(s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), dataSources = structure(list(cloudWatchDashboards = structure(list(structure(list(dashboardIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), preExperimentDuration = structure(logical(0), tags = list(type = "string")), postExperimentDuration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), experimentReport = structure(list(state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string")), error = structure(list(code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), s3Reports = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), reportType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["start_experiment_output"]]))
 }
 
 .fis$stop_experiment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["stop_experiment_input"]]))
 }
 
 .fis$stop_experiment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(experiment = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), experimentTemplateId = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string")), error = structure(list(accountId = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), targets = structure(list(structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), filters = structure(list(structure(list(path = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), selectionMode = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), actions = structure(list(structure(list(actionId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), targets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), startAfter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "map")), stopConditions = structure(list(structure(list(source = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), logConfiguration = structure(list(cloudWatchLogsConfiguration = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), logSchemaVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), experimentOptions = structure(list(accountTargeting = structure(logical(0), tags = list(type = "string")), emptyTargetResolutionMode = structure(logical(0), tags = list(type = "string")), actionsMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), targetAccountConfigurationsCount = structure(logical(0), tags = list(type = "long")), experimentReportConfiguration = structure(list(outputs = structure(list(s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), dataSources = structure(list(cloudWatchDashboards = structure(list(structure(list(dashboardIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), preExperimentDuration = structure(logical(0), tags = list(type = "string")), postExperimentDuration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), experimentReport = structure(list(state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string")), error = structure(list(code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), s3Reports = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), reportType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["stop_experiment_output"]]))
 }
 
 .fis$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["tag_resource_input"]]))
 }
 
 .fis$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["tag_resource_output"]]))
 }
 
 .fis$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["untag_resource_input"]]))
 }
 
 .fis$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["untag_resource_output"]]))
 }
 
 .fis$update_experiment_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), description = structure(logical(0), tags = list(type = "string")), stopConditions = structure(list(structure(list(source = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), targets = structure(list(structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), filters = structure(list(structure(list(path = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), selectionMode = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), actions = structure(list(structure(list(actionId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), targets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), startAfter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map")), roleArn = structure(logical(0), tags = list(type = "string")), logConfiguration = structure(list(cloudWatchLogsConfiguration = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), logSchemaVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), experimentOptions = structure(list(emptyTargetResolutionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), experimentReportConfiguration = structure(list(outputs = structure(list(s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), dataSources = structure(list(cloudWatchDashboards = structure(list(structure(list(dashboardIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), preExperimentDuration = structure(logical(0), tags = list(type = "string")), postExperimentDuration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["update_experiment_template_input"]]))
 }
 
 .fis$update_experiment_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(experimentTemplate = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), targets = structure(list(structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), filters = structure(list(structure(list(path = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), selectionMode = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), actions = structure(list(structure(list(actionId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), targets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), startAfter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map")), stopConditions = structure(list(structure(list(source = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), logConfiguration = structure(list(cloudWatchLogsConfiguration = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), logSchemaVersion = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), experimentOptions = structure(list(accountTargeting = structure(logical(0), tags = list(type = "string")), emptyTargetResolutionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), targetAccountConfigurationsCount = structure(logical(0), tags = list(type = "long")), experimentReportConfiguration = structure(list(outputs = structure(list(s3Configuration = structure(list(bucketName = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), dataSources = structure(list(cloudWatchDashboards = structure(list(structure(list(dashboardIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), preExperimentDuration = structure(logical(0), tags = list(type = "string")), postExperimentDuration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["update_experiment_template_output"]]))
 }
 
 .fis$update_safety_lever_state_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["update_safety_lever_state_input"]]))
 }
 
 .fis$update_safety_lever_state_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(safetyLever = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), state = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["update_safety_lever_state_output"]]))
 }
 
 .fis$update_target_account_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(experimentTemplateId = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), accountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["update_target_account_configuration_input"]]))
 }
 
 .fis$update_target_account_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(targetAccountConfiguration = structure(list(roleArn = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .fis_shapes[["update_target_account_configuration_output"]]))
 }

@@ -264,7 +264,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' @param CalendarNames The names of Amazon Resource Names (ARNs) of the Change Calendar type documents you want to gate your associations under. The associations only run when that change calendar is open. For more information, see [Amazon Web Services Systems Manager Change Calendar](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html) in the *Amazon Web Services Systems Manager User Guide*.
 #' @param TargetLocations A location is a combination of Amazon Web Services Regions and Amazon Web Services accounts where you want to run the association. Use this action to create an association in multiple Regions and multiple accounts.
 #' 
-#' The `IncludeChildOrganizationUnits` parameter is not supported by State Manager.
+#' The `TargetLocationAlarmConfiguration` parameter is not supported by State Manager.
 #' @param ScheduleOffset Number of days to wait after the scheduled day to run an association. For example, if you specified a cron schedule of `cron(0 0 ? * THU#2 *)`, you could specify an offset of 3 to run the association each Sunday after the second Thursday of the month. For more information about cron schedules for associations, see [Reference: Cron and rate expressions for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/reference-cron-and-rate-expressions.html) in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' To use offsets, you must specify the `ApplyOnlyAtCronInterval` parameter. This option tells the system not to run an association immediately after you create it.
@@ -342,6 +342,43 @@ ssm_create_association_batch <- function(Entries, AssociationDispatchAssumeRole 
   return(response)
 }
 .ssm$operations$create_association_batch <- ssm_create_association_batch
+
+#' Creates a cloud connector that establishes a connection between Systems
+#' Manager and a third-party cloud environment
+#'
+#' @description
+#' Creates a cloud connector that establishes a connection between Systems Manager and a third-party cloud environment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssm_create_cloud_connector/](https://www.paws-r-sdk.com/docs/ssm_create_cloud_connector/) for full documentation.
+#'
+#' @param DisplayName &#91;required&#93; A friendly name for the cloud connector.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that the cloud connector uses to communicate with the third-party cloud environment.
+#' @param Description A description for the cloud connector.
+#' @param Configuration &#91;required&#93; The configuration details for connecting to the third-party cloud environment.
+#' @param ConfigConnectorArn &#91;required&#93; The ARN of the Amazon Web Services Config connector associated with this cloud connector.
+#' @param Tags Optional metadata that you assign to a resource. Tags enable you to categorize a resource in different ways, such as by purpose, owner, or environment.
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_create_cloud_connector
+ssm_create_cloud_connector <- function(DisplayName, RoleArn, Description = NULL, Configuration, ConfigConnectorArn, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateCloudConnector",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssm$create_cloud_connector_input(DisplayName = DisplayName, RoleArn = RoleArn, Description = Description, Configuration = Configuration, ConfigConnectorArn = ConfigConnectorArn, Tags = Tags)
+  output <- .ssm$create_cloud_connector_output()
+  config <- get_config()
+  svc <- .ssm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$create_cloud_connector <- ssm_create_cloud_connector
 
 #' Creates a Amazon Web Services Systems Manager (SSM document)
 #'
@@ -765,6 +802,37 @@ ssm_delete_association <- function(Name = NULL, InstanceId = NULL, AssociationId
   return(response)
 }
 .ssm$operations$delete_association <- ssm_delete_association
+
+#' Deletes a cloud connector
+#'
+#' @description
+#' Deletes a cloud connector.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssm_delete_cloud_connector/](https://www.paws-r-sdk.com/docs/ssm_delete_cloud_connector/) for full documentation.
+#'
+#' @param CloudConnectorId &#91;required&#93; The ID of the cloud connector to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_delete_cloud_connector
+ssm_delete_cloud_connector <- function(CloudConnectorId) {
+  op <- new_operation(
+    name = "DeleteCloudConnector",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssm$delete_cloud_connector_input(CloudConnectorId = CloudConnectorId)
+  output <- .ssm$delete_cloud_connector_output()
+  config <- get_config()
+  svc <- .ssm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$delete_cloud_connector <- ssm_delete_cloud_connector
 
 #' Deletes the Amazon Web Services Systems Manager document (SSM document)
 #' and all managed node associations to the document
@@ -2701,6 +2769,37 @@ ssm_get_calendar_state <- function(CalendarNames, AtTime = NULL) {
 }
 .ssm$operations$get_calendar_state <- ssm_get_calendar_state
 
+#' Returns detailed information about a cloud connector
+#'
+#' @description
+#' Returns detailed information about a cloud connector.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_cloud_connector/](https://www.paws-r-sdk.com/docs/ssm_get_cloud_connector/) for full documentation.
+#'
+#' @param CloudConnectorId &#91;required&#93; The ID of the cloud connector to retrieve information about.
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_get_cloud_connector
+ssm_get_cloud_connector <- function(CloudConnectorId) {
+  op <- new_operation(
+    name = "GetCloudConnector",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssm$get_cloud_connector_input(CloudConnectorId = CloudConnectorId)
+  output <- .ssm$get_cloud_connector_output()
+  config <- get_config()
+  svc <- .ssm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$get_cloud_connector <- ssm_get_cloud_connector
+
 #' Returns detailed information about command execution for an invocation
 #' or plugin
 #'
@@ -3433,7 +3532,7 @@ ssm_get_patch_baseline <- function(BaselineId) {
 #' See [https://www.paws-r-sdk.com/docs/ssm_get_patch_baseline_for_patch_group/](https://www.paws-r-sdk.com/docs/ssm_get_patch_baseline_for_patch_group/) for full documentation.
 #'
 #' @param PatchGroup &#91;required&#93; The name of the patch group whose patch baseline should be retrieved.
-#' @param OperatingSystem Returns the operating system rule specified for patch groups using the patch baseline.
+#' @param OperatingSystem Returns the operating system rule specified for patch groups using the patch baseline. The default value is `WINDOWS`.
 #'
 #' @keywords internal
 #'
@@ -3646,6 +3745,40 @@ ssm_list_associations <- function(AssociationFilterList = NULL, MaxResults = NUL
   return(response)
 }
 .ssm$operations$list_associations <- ssm_list_associations
+
+#' Returns a list of cloud connectors in the current Amazon Web Services
+#' account and Amazon Web Services Region
+#'
+#' @description
+#' Returns a list of cloud connectors in the current Amazon Web Services account and Amazon Web Services Region.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_cloud_connectors/](https://www.paws-r-sdk.com/docs/ssm_list_cloud_connectors/) for full documentation.
+#'
+#' @param MaxResults The maximum number of items to return for this call.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#' @param Filters One or more filters to limit the cloud connectors returned in the response.
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_list_cloud_connectors
+ssm_list_cloud_connectors <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListCloudConnectors",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CloudConnectors"),
+    stream_api = FALSE
+  )
+  input <- .ssm$list_cloud_connectors_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
+  output <- .ssm$list_cloud_connectors_output()
+  config <- get_config()
+  svc <- .ssm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$list_cloud_connectors <- ssm_list_cloud_connectors
 
 #' An invocation is copy of a command sent to a specific managed node
 #'
@@ -4906,9 +5039,9 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' If you specify a document name or ARN that hasn't been shared with your account, you receive an `InvalidDocument` error.
 #' @param DocumentVersion The SSM document version to use in the request. You can specify $DEFAULT, $LATEST, or a specific version number. If you run commands by using the Command Line Interface (Amazon Web Services CLI), then you must escape the first two options by using a backslash. If you specify a version number, then you don't need to use the backslash. For example:
 #' 
-#' --document-version "$DEFAULT"
+#' --document-version "\$DEFAULT"
 #' 
-#' --document-version "$LATEST"
+#' --document-version "\$LATEST"
 #' 
 #' --document-version "3"
 #' @param DocumentHash The Sha256 or Sha1 hash created by the system when the document was created.
@@ -5356,7 +5489,7 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' @param CalendarNames The names or Amazon Resource Names (ARNs) of the Change Calendar type documents you want to gate your associations under. The associations only run when that change calendar is open. For more information, see [Amazon Web Services Systems Manager Change Calendar](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html) in the *Amazon Web Services Systems Manager User Guide*.
 #' @param TargetLocations A location is a combination of Amazon Web Services Regions and Amazon Web Services accounts where you want to run the association. Use this action to update an association in multiple Regions and multiple accounts.
 #' 
-#' The `IncludeChildOrganizationUnits` parameter is not supported by State Manager.
+#' The `TargetLocationAlarmConfiguration` parameter is not supported by State Manager.
 #' @param ScheduleOffset Number of days to wait after the scheduled day to run an association. For example, if you specified a cron schedule of `cron(0 0 ? * THU#2 *)`, you could specify an offset of 3 to run the association each Sunday after the second Thursday of the month. For more information about cron schedules for associations, see [Reference: Cron and rate expressions for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/reference-cron-and-rate-expressions.html) in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' To use offsets, you must specify the `ApplyOnlyAtCronInterval` parameter. This option tells the system not to run an association immediately after you create it.
@@ -5430,6 +5563,40 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
   return(response)
 }
 .ssm$operations$update_association_status <- ssm_update_association_status
+
+#' Updates an existing cloud connector with new configuration details
+#'
+#' @description
+#' Updates an existing cloud connector with new configuration details.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssm_update_cloud_connector/](https://www.paws-r-sdk.com/docs/ssm_update_cloud_connector/) for full documentation.
+#'
+#' @param CloudConnectorId &#91;required&#93; The ID of the cloud connector to update.
+#' @param DisplayName A new friendly name for the cloud connector.
+#' @param Configuration The updated configuration details for connecting to the third-party cloud environment.
+#' @param Description A new description for the cloud connector.
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_update_cloud_connector
+ssm_update_cloud_connector <- function(CloudConnectorId, DisplayName = NULL, Configuration = NULL, Description = NULL) {
+  op <- new_operation(
+    name = "UpdateCloudConnector",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssm$update_cloud_connector_input(CloudConnectorId = CloudConnectorId, DisplayName = DisplayName, Configuration = Configuration, Description = Description)
+  output <- .ssm$update_cloud_connector_output()
+  config <- get_config()
+  svc <- .ssm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$update_cloud_connector <- ssm_update_cloud_connector
 
 #' Updates one or more values for an SSM document
 #'
@@ -6002,3 +6169,36 @@ ssm_update_service_setting <- function(SettingId, SettingValue) {
   return(response)
 }
 .ssm$operations$update_service_setting <- ssm_update_service_setting
+
+#' Validates the configuration and connectivity of a cloud connector
+#'
+#' @description
+#' Validates the configuration and connectivity of a cloud connector.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssm_validate_cloud_connector/](https://www.paws-r-sdk.com/docs/ssm_validate_cloud_connector/) for full documentation.
+#'
+#' @param CloudConnectorId &#91;required&#93; The ID of the cloud connector to validate.
+#' @param MaxResults The maximum number of validation findings to return.
+#' @param NextToken The token for the next set of items to return. (You received this token from a previous call.)
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_validate_cloud_connector
+ssm_validate_cloud_connector <- function(CloudConnectorId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ValidateCloudConnector",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ValidationFindings"),
+    stream_api = FALSE
+  )
+  input <- .ssm$validate_cloud_connector_input(CloudConnectorId = CloudConnectorId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .ssm$validate_cloud_connector_output()
+  config <- get_config()
+  svc <- .ssm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$validate_cloud_connector <- ssm_validate_cloud_connector

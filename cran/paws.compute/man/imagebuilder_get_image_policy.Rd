@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_get_image_policy}
 \alias{imagebuilder_get_image_policy}
-\title{Gets an image policy}
+\title{Retrieves an image policy}
 \usage{
 imagebuilder_get_image_policy(imageArn)
 }
@@ -10,7 +10,7 @@ imagebuilder_get_image_policy(imageArn)
 \item{imageArn}{[required] The Amazon Resource Name (ARN) of the image whose policy you want to retrieve.}
 }
 \description{
-Gets an image policy.
+Retrieves an image policy.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_image_policy/} for full documentation.
 }

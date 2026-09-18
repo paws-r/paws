@@ -292,7 +292,7 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' Conditional: You must specify either a launch template (`LaunchTemplate` or `MixedInstancesPolicy`) or a launch configuration (`LaunchConfigurationName` or `InstanceId`).
 #' 
 #' The launch template that is specified must be configured for use with an Auto Scaling group. For more information, see [Create a launch template for an Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html) in the *Amazon EC2 Auto Scaling User Guide*.
-#' @param MixedInstancesPolicy The mixed instances policy. For more information, see [Auto Scaling groups with multiple instance types and purchase options](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param MixedInstancesPolicy The mixed instances policy. For more information, see [Auto Scaling groups with multiple instance types and purchase options](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups.html) in the *Amazon EC2 Auto Scaling User Guide*. To learn how to prioritize multiple capacity types, see [Use Distribution Segments to target multiple capacity types](https://docs.aws.amazon.com/autoscaling/ec2/userguide/use-distribution-segments.html) in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param InstanceId The ID of the instance used to base the launch configuration on. If specified, Amazon EC2 Auto Scaling uses the configuration values from the specified instance to create a new launch configuration. To get the instance ID, use the Amazon EC2 [DescribeInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html) API operation. For more information, see [Create an Auto Scaling group using parameters from an existing instance](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html) in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param MinSize &#91;required&#93; The minimum size of the group.
 #' @param MaxSize &#91;required&#93; The maximum size of the group.
@@ -360,11 +360,12 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' For more information, see [Control instance retention with instance lifecycle policies](https://docs.aws.amazon.com/autoscaling/ec2/userguide/instance-lifecycle-policy.html) in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
 #' Instances in a Retained state will continue to incur standard EC2 charges until terminated.
+#' @param Operator The entity that manages the Auto Scaling group. If you specify this parameter, Amazon EC2 Auto Scaling passes the operator identity to EC2 for instance launches and only allows the designated operator to make changes to the Auto Scaling group. All mutating API calls from non-operator callers are rejected with an `AccessDenied` exception.
 #'
 #' @keywords internal
 #'
 #' @rdname autoscaling_create_auto_scaling_group
-autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchConfigurationName = NULL, LaunchTemplate = NULL, MixedInstancesPolicy = NULL, InstanceId = NULL, MinSize, MaxSize, DesiredCapacity = NULL, DefaultCooldown = NULL, AvailabilityZones = NULL, AvailabilityZoneIds = NULL, LoadBalancerNames = NULL, TargetGroupARNs = NULL, HealthCheckType = NULL, HealthCheckGracePeriod = NULL, PlacementGroup = NULL, VPCZoneIdentifier = NULL, TerminationPolicies = NULL, NewInstancesProtectedFromScaleIn = NULL, CapacityRebalance = NULL, LifecycleHookSpecificationList = NULL, DeletionProtection = NULL, Tags = NULL, ServiceLinkedRoleARN = NULL, MaxInstanceLifetime = NULL, Context = NULL, DesiredCapacityType = NULL, DefaultInstanceWarmup = NULL, TrafficSources = NULL, InstanceMaintenancePolicy = NULL, AvailabilityZoneDistribution = NULL, AvailabilityZoneImpairmentPolicy = NULL, SkipZonalShiftValidation = NULL, CapacityReservationSpecification = NULL, InstanceLifecyclePolicy = NULL) {
+autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchConfigurationName = NULL, LaunchTemplate = NULL, MixedInstancesPolicy = NULL, InstanceId = NULL, MinSize, MaxSize, DesiredCapacity = NULL, DefaultCooldown = NULL, AvailabilityZones = NULL, AvailabilityZoneIds = NULL, LoadBalancerNames = NULL, TargetGroupARNs = NULL, HealthCheckType = NULL, HealthCheckGracePeriod = NULL, PlacementGroup = NULL, VPCZoneIdentifier = NULL, TerminationPolicies = NULL, NewInstancesProtectedFromScaleIn = NULL, CapacityRebalance = NULL, LifecycleHookSpecificationList = NULL, DeletionProtection = NULL, Tags = NULL, ServiceLinkedRoleARN = NULL, MaxInstanceLifetime = NULL, Context = NULL, DesiredCapacityType = NULL, DefaultInstanceWarmup = NULL, TrafficSources = NULL, InstanceMaintenancePolicy = NULL, AvailabilityZoneDistribution = NULL, AvailabilityZoneImpairmentPolicy = NULL, SkipZonalShiftValidation = NULL, CapacityReservationSpecification = NULL, InstanceLifecyclePolicy = NULL, Operator = NULL) {
   op <- new_operation(
     name = "CreateAutoScalingGroup",
     http_method = "POST",
@@ -373,7 +374,7 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .autoscaling$create_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, MixedInstancesPolicy = MixedInstancesPolicy, InstanceId = InstanceId, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, AvailabilityZoneIds = AvailabilityZoneIds, LoadBalancerNames = LoadBalancerNames, TargetGroupARNs = TargetGroupARNs, HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, CapacityRebalance = CapacityRebalance, LifecycleHookSpecificationList = LifecycleHookSpecificationList, DeletionProtection = DeletionProtection, Tags = Tags, ServiceLinkedRoleARN = ServiceLinkedRoleARN, MaxInstanceLifetime = MaxInstanceLifetime, Context = Context, DesiredCapacityType = DesiredCapacityType, DefaultInstanceWarmup = DefaultInstanceWarmup, TrafficSources = TrafficSources, InstanceMaintenancePolicy = InstanceMaintenancePolicy, AvailabilityZoneDistribution = AvailabilityZoneDistribution, AvailabilityZoneImpairmentPolicy = AvailabilityZoneImpairmentPolicy, SkipZonalShiftValidation = SkipZonalShiftValidation, CapacityReservationSpecification = CapacityReservationSpecification, InstanceLifecyclePolicy = InstanceLifecyclePolicy)
+  input <- .autoscaling$create_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, MixedInstancesPolicy = MixedInstancesPolicy, InstanceId = InstanceId, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, AvailabilityZoneIds = AvailabilityZoneIds, LoadBalancerNames = LoadBalancerNames, TargetGroupARNs = TargetGroupARNs, HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, CapacityRebalance = CapacityRebalance, LifecycleHookSpecificationList = LifecycleHookSpecificationList, DeletionProtection = DeletionProtection, Tags = Tags, ServiceLinkedRoleARN = ServiceLinkedRoleARN, MaxInstanceLifetime = MaxInstanceLifetime, Context = Context, DesiredCapacityType = DesiredCapacityType, DefaultInstanceWarmup = DefaultInstanceWarmup, TrafficSources = TrafficSources, InstanceMaintenancePolicy = InstanceMaintenancePolicy, AvailabilityZoneDistribution = AvailabilityZoneDistribution, AvailabilityZoneImpairmentPolicy = AvailabilityZoneImpairmentPolicy, SkipZonalShiftValidation = SkipZonalShiftValidation, CapacityReservationSpecification = CapacityReservationSpecification, InstanceLifecyclePolicy = InstanceLifecyclePolicy, Operator = Operator)
   output <- .autoscaling$create_auto_scaling_group_output()
   config <- get_config()
   svc <- .autoscaling$service(config, op)
@@ -398,7 +399,7 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' @param SecurityGroups A list that contains the security group IDs to assign to the instances in the Auto Scaling group. For more information, see [Control traffic to your Amazon Web Services resources using security groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) in the *Amazon Virtual Private Cloud User Guide*.
 #' @param ClassicLinkVPCId Available for backward compatibility.
 #' @param ClassicLinkVPCSecurityGroups Available for backward compatibility.
-#' @param UserData The user data to make available to the launched EC2 instances. For more information, see [Instance metadata and user data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) (Linux) and [Instance metadata and user data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html?auteur71=%3C/kj&potentialSponsor=%3C/kj&c99shcook=%3C/kj&force_template=%3C/kj&gug=%3C/kj&schlagworthilfe=%3C/kj&upload_file=%3C/kj&_RisPerson_delta=%3C/kj&sMsgId=%3C/kj&yvv=%3C/kj&information_propertys_items_xml_name=%3C/kj&vType=%3C/kj&regkey=%3C/kj&jsopen=%3C/kj&mainID=%3C/kj&dhop=%3C/kj&ZB32=%3C/kj&for_sale=%3C/kj&payments=%3C/kj&vtn=%3C/kj&ohj=%3C/kj&oyz=%3C/kj&Icmpid=%3C/kj&app_uri=%3C/kj&PaginaAtual=%3C/kj&marketplaceId=%3C/kj&ACTION_REQUIRED=%3C/kj&xpe=%3C/kj&maxperroom=%3C/kj&SysMessage=%3C/kj&gyv=%3C/kj&ux2=%3C/kj&materiaId=%3C/kj&pgp=%3C/kj&dtd=%3C/kj&calendar_year=%3C/kj&search_input=%3C/kj&cookieaccept=%3C/kj&idtipo2=%3C/kj&codeV=%3C/kj&xoc=%3C/kj&detalle=%3C/kj&addFacet=%3C/kj&showCalendars=%3C/kj&ell=%3C/kj&xcl=%3C/kj&sen_id=%3C/kj&extern=%3C/kj&Printerfriendly=%3C/kj&amm-trasparente=%3C/kj&top_cat=%3C/kj&std_used=%3C/kj&mrkIid=%3C/kj&lesson_id=%3C/kj&pageLimit=%3C/kj&title_seq=%3C/kj&mr%3AreferralID=%3C/kj) (Windows). If you are using a command line tool, base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide base64-encoded text. User data is limited to 16 KB.
+#' @param UserData The user data to make available to the launched EC2 instances. For more information, see [Instance metadata and user data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) (Linux) and [Instance metadata and user data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) (Windows). If you are using a command line tool, base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide base64-encoded text. User data is limited to 16 KB.
 #' @param InstanceId The ID of the instance to use to create the launch configuration. The new launch configuration derives attributes from the instance, except for the block device mapping.
 #' 
 #' To create a launch configuration with a block device mapping or override any other instance attributes, specify them as part of the same request.
@@ -2559,13 +2560,17 @@ autoscaling_suspend_processes <- function(AutoScalingGroupName, ScalingProcesses
 #'
 #' See [https://www.paws-r-sdk.com/docs/autoscaling_terminate_instance_in_auto_scaling_group/](https://www.paws-r-sdk.com/docs/autoscaling_terminate_instance_in_auto_scaling_group/) for full documentation.
 #'
-#' @param InstanceId &#91;required&#93; The ID of the instance.
+#' @param InstanceId The ID of the instance.
+#' @param InstanceIds The IDs of the instances. You can specify up to 100 instances.
+#' 
+#' This parameter requires that you also specify `AutoScalingGroupName`.
+#' @param AutoScalingGroupName The name of the Auto Scaling group. Required when using `InstanceIds`.
 #' @param ShouldDecrementDesiredCapacity &#91;required&#93; Indicates whether terminating the instance also decrements the size of the Auto Scaling group.
 #'
 #' @keywords internal
 #'
 #' @rdname autoscaling_terminate_instance_in_auto_scaling_group
-autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, ShouldDecrementDesiredCapacity) {
+autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId = NULL, InstanceIds = NULL, AutoScalingGroupName = NULL, ShouldDecrementDesiredCapacity) {
   op <- new_operation(
     name = "TerminateInstanceInAutoScalingGroup",
     http_method = "POST",
@@ -2574,7 +2579,7 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .autoscaling$terminate_instance_in_auto_scaling_group_input(InstanceId = InstanceId, ShouldDecrementDesiredCapacity = ShouldDecrementDesiredCapacity)
+  input <- .autoscaling$terminate_instance_in_auto_scaling_group_input(InstanceId = InstanceId, InstanceIds = InstanceIds, AutoScalingGroupName = AutoScalingGroupName, ShouldDecrementDesiredCapacity = ShouldDecrementDesiredCapacity)
   output <- .autoscaling$terminate_instance_in_auto_scaling_group_output()
   config <- get_config()
   svc <- .autoscaling$service(config, op)
@@ -2596,6 +2601,8 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' @param LaunchConfigurationName The name of the launch configuration. If you specify `LaunchConfigurationName` in your update request, you can't specify `LaunchTemplate` or `MixedInstancesPolicy`.
 #' @param LaunchTemplate The launch template and version to use to specify the updates. If you specify `LaunchTemplate` in your update request, you can't specify `LaunchConfigurationName` or `MixedInstancesPolicy`.
 #' @param MixedInstancesPolicy The mixed instances policy. For more information, see [Auto Scaling groups with multiple instance types and purchase options](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups.html) in the *Amazon EC2 Auto Scaling User Guide*.
+#' 
+#' You can remove the Distribution Segments configuration by specifying `OnDemandBaseCapacity` or `OnDemandPercentageAboveBaseCapacity`. You can also remove it explicitly by specifying an empty list for `DistributionSegments`.
 #' @param MinSize The minimum size of the Auto Scaling group.
 #' @param MaxSize The maximum size of the Auto Scaling group.
 #' 

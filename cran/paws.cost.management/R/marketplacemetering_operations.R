@@ -8,12 +8,16 @@ NULL
 #' account
 #'
 #' @description
-#' Amazon Web Services Marketplace is introducing Concurrent Agreements, enabling buyers to make multiple purchases per Amazon Web Services account. Starting June 1, 2026, new SaaS products must use `CustomerAWSAccountId` (instead of `CustomerIdentifier`), `LicenseArn` (instead of `ProductCode`) to support this feature. Existing integrations will continue to work. Review the new integration for Concurrent Agreements [here](https://catalog.workshops.aws/mpseller/en-US/saas/integration-for-concurrent-agreements).
+#' Amazon Web Services Marketplace is introducing Concurrent Agreements, enabling buyers to make multiple purchases per Amazon Web Services account. Starting June 1, 2026, new SaaS products must use `CustomerAWSAccountId` (instead of `CustomerIdentifier`), `LicenseArn` (instead of `ProductCode`) to support this feature. [`batch_meter_usage`][marketplacemetering_batch_meter_usage] does not support `CustomerIdentifier` for new integrations. Existing integrations continue to work. Review the new integration for Concurrent Agreements [here](https://catalog.workshops.aws/mpseller/en-US/saas/integration-for-concurrent-agreements). For additional implementation details, see [BatchMeterUsage code example with LicenseArn](https://docs.aws.amazon.com/marketplace/latest/userguide/saas-code-examples.html#saas-batchmeterusage-licensearn-example) in the *Amazon Web Services Marketplace Seller Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplacemetering_batch_meter_usage/](https://www.paws-r-sdk.com/docs/marketplacemetering_batch_meter_usage/) for full documentation.
 #'
 #' @param UsageRecords &#91;required&#93; The set of `UsageRecords` to submit. [`batch_meter_usage`][marketplacemetering_batch_meter_usage] accepts up to 25 `UsageRecords` at a time.
 #' @param ProductCode Product code is used to uniquely identify a product in Amazon Web Services Marketplace. The product code should be the same as the one used during the publishing of a new product.
+#' 
+#' `ProductCode` is required only for legacy integrations that use `CustomerIdentifier`. For new integrations using `LicenseArn` (Concurrent Agreements), do NOT include `ProductCode` at the request level. The `LicenseArn` in each `UsageRecord` identifies both the product and the specific agreement.
+#' 
+#' Sending metering records with both `ProductCode` and `LicenseArn` for the same customer within the same hour will result in duplicate billing. If you are migrating from product-based metering to license-based metering, stop sending `ProductCode` before you start sending `LicenseArn`.
 #'
 #' @keywords internal
 #'
@@ -127,6 +131,8 @@ marketplacemetering_register_usage <- function(ProductCode, PublicKeyVersion, No
 #' See [https://www.paws-r-sdk.com/docs/marketplacemetering_resolve_customer/](https://www.paws-r-sdk.com/docs/marketplacemetering_resolve_customer/) for full documentation.
 #'
 #' @param RegistrationToken &#91;required&#93; When a buyer visits your website during the registration process, the buyer submits a registration token through the browser. The registration token is resolved to obtain a `CustomerIdentifier` along with the `CustomerAWSAccountId`, `ProductCode`, and `LicenseArn`.
+#' 
+#' For new SaaS product integrations, the `CustomerIdentifier` field is not populated. Use `CustomerAWSAccountId` and `LicenseArn` for customer identification.
 #'
 #' @keywords internal
 #'

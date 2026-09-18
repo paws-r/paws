@@ -13,7 +13,9 @@ ecs_update_express_gateway_service(
   networkConfiguration = NULL,
   cpu = NULL,
   memory = NULL,
-  scalingTarget = NULL
+  cpuArchitecture = NULL,
+  scalingTarget = NULL,
+  taskDefinitionArn = NULL
 )
 }
 \arguments{
@@ -33,7 +35,25 @@ ecs_update_express_gateway_service(
 
 \item{memory}{The amount of memory (in MiB) used by the task.}
 
+\item{cpuArchitecture}{The CPU architecture that the tasks in the Express service run on. Amazon ECS applies this value to the task definition revision that it registers for the service. If you don't specify a value, the service keeps the architecture that it currently runs on.
+
+Valid values:
+\itemize{
+\item \code{X86_64} - The x86 64-bit architecture.
+\item \code{ARM64} - The 64-bit ARM architecture.
+}
+
+Changing the architecture starts a new deployment that replaces the running tasks. Make sure that the container image that the service uses supports the architecture that you choose. The operating system family for an Express service is always \code{LINUX}.
+
+You can't specify \code{cpuArchitecture} when you also specify \code{taskDefinitionArn}, because this value applies only to a task definition that Amazon ECS registers on your behalf.}
+
 \item{scalingTarget}{The auto-scaling configuration for the Express service.}
+
+\item{taskDefinitionArn}{The Amazon Resource Name (ARN) of a task definition to use to update the Express Gateway service. This allows you to manage your own task definition, giving you more control over the service configuration such as adding sidecar containers.
+
+The task definition must have a container named \code{Main} with a single TCP port mapping that includes a container port and port name. The task definition must also have \code{FARGATE} compatibility.
+
+If you provide a task definition ARN, you cannot also specify \code{primaryContainer}, \code{executionRoleArn}, \code{taskRoleArn}, \code{cpu}, \code{memory}, or \code{cpuArchitecture}.}
 }
 \description{
 Updates an existing Express service configuration. Modifies container settings, resource allocation, auto-scaling configuration, and other service parameters without recreating the service.

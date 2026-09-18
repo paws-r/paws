@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_start_query}
 \alias{cloudtrail_start_query}
-\title{Starts a CloudTrail Lake query}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_start_query(
   QueryStatement = NULL,
@@ -24,7 +25,7 @@ cloudtrail_start_query(
 \item{EventDataStoreOwnerAccountId}{The account ID of the event data store owner.}
 }
 \description{
-Starts a CloudTrail Lake query. Use the \code{QueryStatement} parameter to provide your SQL query, enclosed in single quotation marks. Use the optional \code{DeliveryS3Uri} parameter to deliver the query results to an S3 bucket.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_start_query/} for full documentation.
 }

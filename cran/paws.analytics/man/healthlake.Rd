@@ -53,7 +53,7 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-This is the \emph{AWS HealthLake API Reference}. For an introduction to the service, see \href{https://docs.aws.amazon.com/healthlake/latest/devguide/what-is.html}{What is AWS HealthLake?} in the \emph{AWS HealthLake Developer Guide}.
+This is the \emph{HealthLake API Reference}. For an introduction to the service, see \href{https://docs.aws.amazon.com/healthlake/latest/devguide/what-is.html}{What is HealthLake?} in the \emph{HealthLake Developer Guide}.
 }
 \section{Service syntax}{
 
@@ -94,26 +94,39 @@ This is the \emph{AWS HealthLake API Reference}. For an introduction to the serv
 \section{Operations}{
 
 \tabular{ll}{
+\link[=healthlake_create_data_transformation_profile]{create_data_transformation_profile} \tab Creates a data transformation profile in DRAFT state\cr
 \link[=healthlake_create_fhir_datastore]{create_fhir_datastore} \tab Create a FHIR-enabled data store\cr
+\link[=healthlake_delete_data_transformation_profile]{delete_data_transformation_profile} \tab Deletes a data transformation profile and all its versions, including the DRAFT and all published versions\cr
 \link[=healthlake_delete_fhir_datastore]{delete_fhir_datastore} \tab Delete a FHIR-enabled data store\cr
+\link[=healthlake_describe_data_transformation_job]{describe_data_transformation_job} \tab Describes a data transformation job, including its current status, configuration, and progress information\cr
 \link[=healthlake_describe_fhir_datastore]{describe_fhir_datastore} \tab Get properties for a FHIR-enabled data store\cr
 \link[=healthlake_describe_fhir_export_job]{describe_fhir_export_job} \tab Get FHIR export job properties\cr
 \link[=healthlake_describe_fhir_import_job]{describe_fhir_import_job} \tab Get the import job properties to learn more about the job or job progress\cr
+\link[=healthlake_get_data_transformation_profile]{get_data_transformation_profile} \tab Retrieves a data transformation profile's metadata and profile content at a specific version\cr
+\link[=healthlake_list_data_transformation_jobs]{list_data_transformation_jobs} \tab Lists data transformation jobs for your Amazon Web Services account\cr
+\link[=healthlake_list_data_transformation_profiles]{list_data_transformation_profiles} \tab Lists all data transformation profiles in your account, returning the latest version summary for each\cr
+\link[=healthlake_list_data_transformation_profile_versions]{list_data_transformation_profile_versions} \tab Lists all versions of a specific data transformation profile (DRAFT and published), in reverse chronological order (newest first)\cr
 \link[=healthlake_list_fhir_datastores]{list_fhir_datastores} \tab List all FHIR-enabled data stores in a user’s account, regardless of data store status\cr
 \link[=healthlake_list_fhir_export_jobs]{list_fhir_export_jobs} \tab Lists all FHIR export jobs associated with an account and their statuses\cr
 \link[=healthlake_list_fhir_import_jobs]{list_fhir_import_jobs} \tab List all FHIR import jobs associated with an account and their statuses\cr
 \link[=healthlake_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of all existing tags associated with a data store\cr
+\link[=healthlake_publish_data_transformation_profile]{publish_data_transformation_profile} \tab Promotes the current DRAFT version of a data transformation profile to a new immutable published version\cr
+\link[=healthlake_restore_fhir_datastore]{restore_fhir_datastore} \tab Restore a backup-enabled data store to a point in time\cr
+\link[=healthlake_start_data_transformation_job]{start_data_transformation_job} \tab Starts an asynchronous data transformation job that converts source files from Amazon Simple Storage Service (Amazon S3) and writes the output to Amazon S3 or HealthLake\cr
 \link[=healthlake_start_fhir_export_job]{start_fhir_export_job} \tab Start a FHIR export job\cr
 \link[=healthlake_start_fhir_import_job]{start_fhir_import_job} \tab Start importing bulk FHIR data into an ACTIVE data store\cr
 \link[=healthlake_tag_resource]{tag_resource} \tab Add a user-specifed key and value tag to a data store\cr
-\link[=healthlake_untag_resource]{untag_resource} \tab Remove a user-specifed key and value tag from a data store
+\link[=healthlake_untag_resource]{untag_resource} \tab Remove a user-specifed key and value tag from a data store\cr
+\link[=healthlake_update_data_transformation_profile]{update_data_transformation_profile} \tab Updates the DRAFT version (version 0) of a data transformation profile with new profile content\cr
+\link[=healthlake_update_fhir_datastore]{update_fhir_datastore} \tab Update the properties of a FHIR-enabled data store\cr
+\link[=healthlake_update_profile_with_agent]{update_profile_with_agent} \tab Updates a data transformation profile using chat-based interaction with an agent
 }
 }
 
 \examples{
 \dontrun{
 svc <- healthlake()
-svc$create_fhir_datastore(
+svc$create_data_transformation_profile(
   Foo = 123
 )
 }

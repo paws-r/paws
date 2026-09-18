@@ -13,7 +13,9 @@ ecs_register_daemon_task_definition(
   cpu = NULL,
   memory = NULL,
   volumes = NULL,
-  tags = NULL
+  tags = NULL,
+  pidMode = NULL,
+  ipcMode = NULL
 )
 }
 \arguments{
@@ -43,6 +45,14 @@ The following basic restrictions apply to tags:
 \item Tag keys and values are case-sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of such as a prefix for either keys or values as it is reserved for Amazon Web Services use. You cannot edit or delete tag keys or values with this prefix. Tags with this prefix do not count against your tags per resource limit.
 }}
+
+\item{pidMode}{The PID namespace mode for the daemon. The valid values are \code{none} and \code{shared}. The default is \code{none}.
+
+If \code{none} is specified or no value is provided, the daemon runs with its own PID namespace, isolated from other tasks. If \code{shared} is specified, the daemon joins the host PID namespace, making it accessible to non-daemon tasks that use \code{pidMode: "host"} or other daemons that use \code{pidMode: "shared"}.}
+
+\item{ipcMode}{The IPC namespace mode for the daemon. The valid values are \code{none} and \code{shared}. The default is \code{none}.
+
+If \code{none} is specified or no value is provided, the daemon runs with its own IPC namespace, isolated from other tasks. If \code{shared} is specified, the daemon joins the host IPC namespace, making it accessible to non-daemon tasks that use \code{ipcMode: "host"} or other daemons that use \code{ipcMode: "shared"}.}
 }
 \description{
 Registers a new daemon task definition from the supplied \code{family} and \code{containerDefinitions}. Optionally, you can add data volumes to your containers with the \code{volumes} parameter. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Daemon task definitions} in the \emph{Amazon Elastic Container Service Developer Guide}.

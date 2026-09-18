@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_generate_query}
 \alias{cloudtrail_generate_query}
-\title{Generates a query from a natural language prompt}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_generate_query(EventDataStores, Prompt)
 }
@@ -12,7 +13,7 @@ cloudtrail_generate_query(EventDataStores, Prompt)
 \item{Prompt}{[required] The prompt that you want to use to generate the query. The prompt must be in English. For example prompts, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/lake-query-generator.html#lake-query-generator-examples}{Example prompts} in the \emph{CloudTrail} user guide.}
 }
 \description{
-Generates a query from a natural language prompt. This operation uses generative artificial intelligence (generative AI) to produce a ready-to-use SQL query from the prompt.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_generate_query/} for full documentation.
 }

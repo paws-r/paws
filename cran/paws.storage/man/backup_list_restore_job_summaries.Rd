@@ -3,7 +3,7 @@
 \name{backup_list_restore_job_summaries}
 \alias{backup_list_restore_job_summaries}
 \title{This request obtains a summary of restore jobs created or running within
-the the most recent 30 days}
+the the most recent 14 days}
 \usage{
 backup_list_restore_job_summaries(
   AccountId = NULL,
@@ -51,7 +51,7 @@ The value is an integer. Range of accepted values is from 1 to 500.}
 \item{NextToken}{The next item following a partial list of returned resources. For example, if a request is made to return \code{MaxResults} number of resources, \code{NextToken} allows you to return more items in your list starting at the location pointed to by the next token.}
 }
 \description{
-This request obtains a summary of restore jobs created or running within the the most recent 30 days. You can include parameters AccountID, State, ResourceType, AggregationPeriod, MaxResults, or NextToken to filter results.
+This request obtains a summary of restore jobs created or running within the the most recent 14 days. You can include parameters AccountID, State, ResourceType, AggregationPeriod, MaxResults, or NextToken to filter results.
 
 See \url{https://www.paws-r-sdk.com/docs/backup_list_restore_job_summaries/} for full documentation.
 }

@@ -18,8 +18,10 @@ synthetics_create_canary(
   ResourcesToReplicateTags = NULL,
   ProvisionedResourceCleanup = NULL,
   BrowserConfigs = NULL,
+  AddReplicaLocations = NULL,
   Tags = NULL,
-  ArtifactConfig = NULL
+  ArtifactConfig = NULL,
+  KmsKeyArn = NULL
 )
 }
 \arguments{
@@ -72,6 +74,8 @@ If the value of this parameter is \code{OFF}, then the value of the \code{Delete
 
 If not specified, \code{browserConfigs} defaults to Chrome.}
 
+\item{AddReplicaLocations}{A list of locations (Amazon Web Services Regions) to add as replicas for the canary. Each location specifies a Region and optional VPC configuration for the replica. You can add up to 50 replica locations.}
+
 \item{Tags}{A list of key-value pairs to associate with the canary. You can associate as many as 50 tags with a canary.
 
 Tags can help you organize and categorize your resources. You can also use them to scope user permissions, by granting a user permission to access or change only the resources that have certain tag values.
@@ -79,6 +83,8 @@ Tags can help you organize and categorize your resources. You can also use them 
 To have the tags that you apply to this canary also be applied to the Lambda function that the canary uses, specify this parameter with the value \verb{lambda-function}.}
 
 \item{ArtifactConfig}{A structure that contains the configuration for canary artifacts, including the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.}
+
+\item{KmsKeyArn}{The Amazon Resource Name (ARN) of the customer-managed AWS Key Management Service (AWS KMS) key used to encrypt the canary's AWS Lambda function environment variables at rest. If you don't specify a value, the service uses an AWS-managed key.}
 }
 \description{
 Creates a canary. Canaries are scripts that monitor your endpoints and APIs from the outside-in. Canaries help you check the availability and latency of your web services and troubleshoot anomalies by investigating load time data, screenshots of the UI, logs, and metrics. You can set up a canary to run continuously or just once.

@@ -2,18 +2,17 @@
 % Please edit documentation in R/bedrockagentcorecontrol_operations.R
 \name{bedrockagentcorecontrol_delete_dataset}
 \alias{bedrockagentcorecontrol_delete_dataset}
-\title{Deletes a dataset version or an entire dataset (all versions + name
-claim)}
+\title{Deletes a dataset version or an entire dataset asynchronously}
 \usage{
 bedrockagentcorecontrol_delete_dataset(datasetId, datasetVersion = NULL)
 }
 \arguments{
 \item{datasetId}{[required] The unique identifier of the dataset to delete.}
 
-\item{datasetVersion}{Optional version to delete. Use "DRAFT" or omit to delete the draft. Returns ResourceNotFoundException if the specified version does not exist.}
+\item{datasetVersion}{Optional version to delete. If absent, deletes the entire dataset. If provided, deletes only that specific version.}
 }
 \description{
-Deletes a dataset version or an entire dataset (all versions + name claim). Asynchronous 202.
+Deletes a dataset version or an entire dataset asynchronously. If \code{datasetVersion} is absent, deletes all versions and the dataset record itself. If provided, deletes only that specific version.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_delete_dataset/} for full documentation.
 }

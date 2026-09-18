@@ -8,16 +8,19 @@ your source Capacity Reservation}
 \usage{
 ec2_update_interruptible_capacity_reservation_allocation(
   CapacityReservationId,
-  TargetInstanceCount,
-  DryRun = NULL
+  TargetInstanceCount = NULL,
+  DryRun = NULL,
+  ZeroSizePreference = NULL
 )
 }
 \arguments{
 \item{CapacityReservationId}{[required] The ID of the source Capacity Reservation containing the interruptible allocation to modify.}
 
-\item{TargetInstanceCount}{[required] The new number of instances to allocate. Enter a higher number to add more capacity to share, or a lower number to reclaim capacity to your source Capacity Reservation.}
+\item{TargetInstanceCount}{The new number of instances to allocate. Enter a higher number to add more capacity to share, or a lower number to reclaim capacity to your source Capacity Reservation.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request, and provides an error response.}
+
+\item{ZeroSizePreference}{Specifies the updated behavior for the interruptible Capacity Reservation when you reduce its allocation to zero instances. Specify \code{retain} to keep the interruptible Capacity Reservation active at zero capacity so that you can allocate instances to it again later. Specify \code{default} to cancel the interruptible Capacity Reservation and return the capacity to your source Capacity Reservation.}
 }
 \description{
 Modifies the number of instances allocated to an interruptible reservation, allowing you to add more capacity or reclaim capacity to your source Capacity Reservation.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_get_marketplace_resource}
 \alias{imagebuilder_get_marketplace_resource}
-\title{Verify the subscription and perform resource dependency checks on the
+\title{Verifies the subscription and performs resource dependency checks on the
 requested Amazon Web Services Marketplace resource}
 \usage{
 imagebuilder_get_marketplace_resource(
@@ -19,7 +19,7 @@ imagebuilder_get_marketplace_resource(
 \item{resourceLocation}{The bucket path that you can specify to download the resource from Amazon S3.}
 }
 \description{
-Verify the subscription and perform resource dependency checks on the requested Amazon Web Services Marketplace resource. For Amazon Web Services Marketplace components, the response contains fields to download the components and their artifacts.
+Verifies the subscription and performs resource dependency checks on the requested Amazon Web Services Marketplace resource. For Amazon Web Services Marketplace components, the response contains fields to download the components and their artifacts.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_marketplace_resource/} for full documentation.
 }

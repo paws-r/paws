@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticbeanstalk_operations.R
 \name{elasticbeanstalk_describe_environment_resources}
 \alias{elasticbeanstalk_describe_environment_resources}
-\title{Returns AWS resources for this environment}
+\title{Returns Amazon Web Services resources for this environment}
 \usage{
 elasticbeanstalk_describe_environment_resources(
   EnvironmentId = NULL,
@@ -10,16 +10,16 @@ elasticbeanstalk_describe_environment_resources(
 )
 }
 \arguments{
-\item{EnvironmentId}{The ID of the environment to retrieve AWS resource usage data.
+\item{EnvironmentId}{The ID of the environment to retrieve Amazon Web Services resource usage data.
 
-Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
+Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 
-\item{EnvironmentName}{The name of the environment to retrieve AWS resource usage data.
+\item{EnvironmentName}{The name of the environment to retrieve Amazon Web Services resource usage data.
 
-Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
+Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 }
 \description{
-Returns AWS resources for this environment.
+Returns Amazon Web Services resources for this environment.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_environment_resources/} for full documentation.
 }

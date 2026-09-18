@@ -37,6 +37,45 @@ kinesis_add_tags_to_stream <- function(StreamName = NULL, Tags, StreamARN = NULL
 }
 .kinesis$operations$add_tags_to_stream <- kinesis_add_tags_to_stream
 
+#' Creates a channel that delivers records from a Kinesis data stream to a
+#' destination
+#'
+#' @description
+#' Creates a channel that delivers records from a Kinesis data stream to a destination. A channel reads records from the specified stream and writes them to streaming tables on Apache Iceberg (Amazon S3 Tables) or to a general purpose Amazon S3 bucket.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_create_channel/](https://www.paws-r-sdk.com/docs/kinesis_create_channel/) for full documentation.
+#'
+#' @param ChannelName &#91;required&#93; The name of the channel. The name is unique within your Amazon Web Services account and Amazon Web Services Region.
+#' @param ServiceExecutionRoleARN &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that Amazon Kinesis Data Streams assumes to write records to the destination.
+#' @param StreamConfigurationList &#91;required&#93; The source stream configuration for the channel. Currently, one stream is supported per channel.
+#' @param S3DestinationConfiguration The configuration for delivery to a general purpose Amazon S3 bucket. You must specify either `S3DestinationConfiguration` or `S3TablesDestinationConfiguration`, but not both.
+#' @param S3TablesDestinationConfiguration The configuration for delivery to streaming tables on Apache Iceberg in Amazon S3 Tables. You must specify either `S3DestinationConfiguration` or `S3TablesDestinationConfiguration`, but not both.
+#' @param EncryptionConfiguration The server-side encryption configuration that uses an Amazon Web Services KMS key to encrypt data delivered to the destination.
+#' @param Tags A set of key-value pairs to assign to the channel. A tag consists of a required key and an optional value.
+#' @param LoggingConfiguration The Amazon CloudWatch Logs configuration for the channel.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_create_channel
+kinesis_create_channel <- function(ChannelName, ServiceExecutionRoleARN, StreamConfigurationList, S3DestinationConfiguration = NULL, S3TablesDestinationConfiguration = NULL, EncryptionConfiguration = NULL, Tags = NULL, LoggingConfiguration = NULL) {
+  op <- new_operation(
+    name = "CreateChannel",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$create_channel_input(ChannelName = ChannelName, ServiceExecutionRoleARN = ServiceExecutionRoleARN, StreamConfigurationList = StreamConfigurationList, S3DestinationConfiguration = S3DestinationConfiguration, S3TablesDestinationConfiguration = S3TablesDestinationConfiguration, EncryptionConfiguration = EncryptionConfiguration, Tags = Tags, LoggingConfiguration = LoggingConfiguration)
+  output <- .kinesis$create_channel_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$create_channel <- kinesis_create_channel
+
 #' Creates a Kinesis data stream
 #'
 #' @description
@@ -108,6 +147,37 @@ kinesis_decrease_stream_retention_period <- function(StreamName = NULL, Retentio
   return(response)
 }
 .kinesis$operations$decrease_stream_retention_period <- kinesis_decrease_stream_retention_period
+
+#' Deletes the specified channel
+#'
+#' @description
+#' Deletes the specified channel. Deleting a channel stops delivery from the source stream to the destination. Data already delivered to the destination is not deleted.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_delete_channel/](https://www.paws-r-sdk.com/docs/kinesis_delete_channel/) for full documentation.
+#'
+#' @param ChannelARN &#91;required&#93; The Amazon Resource Name (ARN) of the channel to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_delete_channel
+kinesis_delete_channel <- function(ChannelARN) {
+  op <- new_operation(
+    name = "DeleteChannel",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$delete_channel_input(ChannelARN = ChannelARN)
+  output <- .kinesis$delete_channel_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$delete_channel <- kinesis_delete_channel
 
 #' Delete a policy for the specified data stream or consumer
 #'
@@ -239,6 +309,38 @@ kinesis_describe_account_settings <- function() {
   return(response)
 }
 .kinesis$operations$describe_account_settings <- kinesis_describe_account_settings
+
+#' Describes the specified channel, including its configuration and current
+#' status
+#'
+#' @description
+#' Describes the specified channel, including its configuration and current status.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_describe_channel/](https://www.paws-r-sdk.com/docs/kinesis_describe_channel/) for full documentation.
+#'
+#' @param ChannelARN &#91;required&#93; The Amazon Resource Name (ARN) of the channel to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_describe_channel
+kinesis_describe_channel <- function(ChannelARN) {
+  op <- new_operation(
+    name = "DescribeChannel",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$describe_channel_input(ChannelARN = ChannelARN)
+  output <- .kinesis$describe_channel_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$describe_channel <- kinesis_describe_channel
 
 #' Describes the shard limits and usage for the account
 #'
@@ -498,11 +600,12 @@ kinesis_enable_enhanced_monitoring <- function(StreamName = NULL, ShardLevelMetr
 #' @param Limit The maximum number of records to return. Specify a value of up to 10,000. If you specify a value that is greater than 10,000, [`get_records`][kinesis_get_records] throws `InvalidArgumentException`. The default value is 10,000.
 #' @param StreamARN The ARN of the stream.
 #' @param StreamId Not Implemented. Reserved for future use.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname kinesis_get_records
-kinesis_get_records <- function(ShardIterator, Limit = NULL, StreamARN = NULL, StreamId = NULL) {
+kinesis_get_records <- function(ShardIterator, Limit = NULL, StreamARN = NULL, StreamId = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetRecords",
     http_method = "POST",
@@ -511,7 +614,7 @@ kinesis_get_records <- function(ShardIterator, Limit = NULL, StreamARN = NULL, S
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kinesis$get_records_input(ShardIterator = ShardIterator, Limit = Limit, StreamARN = StreamARN, StreamId = StreamId)
+  input <- .kinesis$get_records_input(ShardIterator = ShardIterator, Limit = Limit, StreamARN = StreamARN, StreamId = StreamId, DryRun = DryRun)
   output <- .kinesis$get_records_output()
   config <- get_config()
   svc <- .kinesis$service(config, op)
@@ -579,11 +682,12 @@ kinesis_get_resource_policy <- function(ResourceARN, StreamId = NULL) {
 #' @param Timestamp The time stamp of the data record from which to start reading. Used with shard iterator type AT_TIMESTAMP. A time stamp is the Unix epoch date with precision in milliseconds. For example, `2016-04-04T19:58:46.480-00:00` or `1459799926.480`. If a record with this exact time stamp does not exist, the iterator returned is for the next (later) record. If the time stamp is older than the current trim horizon, the iterator returned is for the oldest untrimmed data record (TRIM_HORIZON).
 #' @param StreamARN The ARN of the stream.
 #' @param StreamId Not Implemented. Reserved for future use.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname kinesis_get_shard_iterator
-kinesis_get_shard_iterator <- function(StreamName = NULL, ShardId, ShardIteratorType, StartingSequenceNumber = NULL, Timestamp = NULL, StreamARN = NULL, StreamId = NULL) {
+kinesis_get_shard_iterator <- function(StreamName = NULL, ShardId, ShardIteratorType, StartingSequenceNumber = NULL, Timestamp = NULL, StreamARN = NULL, StreamId = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetShardIterator",
     http_method = "POST",
@@ -592,7 +696,7 @@ kinesis_get_shard_iterator <- function(StreamName = NULL, ShardId, ShardIterator
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kinesis$get_shard_iterator_input(StreamName = StreamName, ShardId = ShardId, ShardIteratorType = ShardIteratorType, StartingSequenceNumber = StartingSequenceNumber, Timestamp = Timestamp, StreamARN = StreamARN, StreamId = StreamId)
+  input <- .kinesis$get_shard_iterator_input(StreamName = StreamName, ShardId = ShardId, ShardIteratorType = ShardIteratorType, StartingSequenceNumber = StartingSequenceNumber, Timestamp = Timestamp, StreamARN = StreamARN, StreamId = StreamId, DryRun = DryRun)
   output <- .kinesis$get_shard_iterator_output()
   config <- get_config()
   svc <- .kinesis$service(config, op)
@@ -637,6 +741,39 @@ kinesis_increase_stream_retention_period <- function(StreamName = NULL, Retentio
   return(response)
 }
 .kinesis$operations$increase_stream_retention_period <- kinesis_increase_stream_retention_period
+
+#' Lists the channels in your account
+#'
+#' @description
+#' Lists the channels in your account. You can filter the results by source stream. The results are paginated. Use the `NextToken` value returned in the response to retrieve additional results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_list_channels/](https://www.paws-r-sdk.com/docs/kinesis_list_channels/) for full documentation.
+#'
+#' @param StreamFilter Filters the results to channels associated with the specified streams.
+#' @param MaxResults The maximum number of channels to return in a single call. The default value is 100. If you specify a value greater than 100, at most 100 results are returned.
+#' @param NextToken The pagination token returned by a previous call. Specify this token to retrieve the next page of results. This value is `null` when there are no more results to return.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_list_channels
+kinesis_list_channels <- function(StreamFilter = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListChannels",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ChannelSummaries"),
+    stream_api = FALSE
+  )
+  input <- .kinesis$list_channels_input(StreamFilter = StreamFilter, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .kinesis$list_channels_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$list_channels <- kinesis_list_channels
 
 #' Lists the shards in a stream and provides information about each shard
 #'
@@ -893,11 +1030,12 @@ kinesis_merge_shards <- function(StreamName = NULL, ShardToMerge, AdjacentShardT
 #' @param SequenceNumberForOrdering Guarantees strictly increasing sequence numbers, for puts from the same client and to the same partition key. Usage: set the `SequenceNumberForOrdering` of record *n* to the sequence number of record *n-1* (as returned in the result when putting record *n-1*). If this parameter is not set, records are coarsely ordered based on arrival time.
 #' @param StreamARN The ARN of the stream.
 #' @param StreamId Not Implemented. Reserved for future use.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname kinesis_put_record
-kinesis_put_record <- function(StreamName = NULL, Data, PartitionKey, ExplicitHashKey = NULL, SequenceNumberForOrdering = NULL, StreamARN = NULL, StreamId = NULL) {
+kinesis_put_record <- function(StreamName = NULL, Data, PartitionKey, ExplicitHashKey = NULL, SequenceNumberForOrdering = NULL, StreamARN = NULL, StreamId = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "PutRecord",
     http_method = "POST",
@@ -906,7 +1044,7 @@ kinesis_put_record <- function(StreamName = NULL, Data, PartitionKey, ExplicitHa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kinesis$put_record_input(StreamName = StreamName, Data = Data, PartitionKey = PartitionKey, ExplicitHashKey = ExplicitHashKey, SequenceNumberForOrdering = SequenceNumberForOrdering, StreamARN = StreamARN, StreamId = StreamId)
+  input <- .kinesis$put_record_input(StreamName = StreamName, Data = Data, PartitionKey = PartitionKey, ExplicitHashKey = ExplicitHashKey, SequenceNumberForOrdering = SequenceNumberForOrdering, StreamARN = StreamARN, StreamId = StreamId, DryRun = DryRun)
   output <- .kinesis$put_record_output()
   config <- get_config()
   svc <- .kinesis$service(config, op)
@@ -928,11 +1066,12 @@ kinesis_put_record <- function(StreamName = NULL, Data, PartitionKey, ExplicitHa
 #' @param StreamName The stream name associated with the request.
 #' @param StreamARN The ARN of the stream.
 #' @param StreamId Not Implemented. Reserved for future use.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname kinesis_put_records
-kinesis_put_records <- function(Records, StreamName = NULL, StreamARN = NULL, StreamId = NULL) {
+kinesis_put_records <- function(Records, StreamName = NULL, StreamARN = NULL, StreamId = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "PutRecords",
     http_method = "POST",
@@ -941,7 +1080,7 @@ kinesis_put_records <- function(Records, StreamName = NULL, StreamARN = NULL, St
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kinesis$put_records_input(Records = Records, StreamName = StreamName, StreamARN = StreamARN, StreamId = StreamId)
+  input <- .kinesis$put_records_input(Records = Records, StreamName = StreamName, StreamARN = StreamARN, StreamId = StreamId, DryRun = DryRun)
   output <- .kinesis$put_records_output()
   config <- get_config()
   svc <- .kinesis$service(config, op)
@@ -1192,11 +1331,12 @@ kinesis_stop_stream_encryption <- function(StreamName = NULL, EncryptionType, Ke
 #' @param StreamId Not Implemented. Reserved for future use.
 #' @param ShardId &#91;required&#93; The ID of the shard you want to subscribe to. To see a list of all the shards for a given stream, use [`list_shards`][kinesis_list_shards].
 #' @param StartingPosition &#91;required&#93; The starting position in the data stream from which to start streaming.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname kinesis_subscribe_to_shard
-kinesis_subscribe_to_shard <- function(ConsumerARN, StreamId = NULL, ShardId, StartingPosition) {
+kinesis_subscribe_to_shard <- function(ConsumerARN, StreamId = NULL, ShardId, StartingPosition, DryRun = NULL) {
   op <- new_operation(
     name = "SubscribeToShard",
     http_method = "POST",
@@ -1205,7 +1345,7 @@ kinesis_subscribe_to_shard <- function(ConsumerARN, StreamId = NULL, ShardId, St
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .kinesis$subscribe_to_shard_input(ConsumerARN = ConsumerARN, StreamId = StreamId, ShardId = ShardId, StartingPosition = StartingPosition)
+  input <- .kinesis$subscribe_to_shard_input(ConsumerARN = ConsumerARN, StreamId = StreamId, ShardId = ShardId, StartingPosition = StartingPosition, DryRun = DryRun)
   output <- .kinesis$subscribe_to_shard_output()
   config <- get_config()
   svc <- .kinesis$service(config, op)
@@ -1313,6 +1453,41 @@ kinesis_update_account_settings <- function(MinimumThroughputBillingCommitment) 
   return(response)
 }
 .kinesis$operations$update_account_settings <- kinesis_update_account_settings
+
+#' Updates the data freshness interval or the Amazon CloudWatch Logs
+#' configuration of an existing channel
+#'
+#' @description
+#' Updates the data freshness interval or the Amazon CloudWatch Logs configuration of an existing channel. You cannot change the destination, source stream, record format, schema, encryption configuration, or service execution role of an existing channel. To change any other setting, delete the channel and create a new one.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_update_channel/](https://www.paws-r-sdk.com/docs/kinesis_update_channel/) for full documentation.
+#'
+#' @param ChannelARN &#91;required&#93; The Amazon Resource Name (ARN) of the channel to update.
+#' @param S3DestinationConfiguration The updated configuration for a general purpose Amazon S3 destination. Only `DataFreshnessInSeconds` can be updated.
+#' @param S3TablesDestinationConfiguration The updated configuration for a streaming table destination. Only `DataFreshnessInSeconds` can be updated.
+#' @param LoggingConfiguration The updated Amazon CloudWatch Logs configuration for the channel.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_update_channel
+kinesis_update_channel <- function(ChannelARN, S3DestinationConfiguration = NULL, S3TablesDestinationConfiguration = NULL, LoggingConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateChannel",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kinesis$update_channel_input(ChannelARN = ChannelARN, S3DestinationConfiguration = S3DestinationConfiguration, S3TablesDestinationConfiguration = S3TablesDestinationConfiguration, LoggingConfiguration = LoggingConfiguration)
+  output <- .kinesis$update_channel_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$update_channel <- kinesis_update_channel
 
 #' This allows you to update the MaxRecordSize of a single record that you
 #' can write to, and read from a stream
@@ -1430,7 +1605,7 @@ kinesis_update_stream_mode <- function(StreamARN, StreamId = NULL, StreamModeDet
 #' Kinesis Data Streams on-demand data stream
 #'
 #' @description
-#' Updates the warm throughput configuration for the specified Amazon Kinesis Data Streams on-demand data stream. This operation allows you to proactively scale your on-demand data stream to a specified throughput level, enabling better performance for sudden traffic spikes.
+#' Updates the warm throughput configuration for the specified Amazon Kinesis Data Streams on-demand data stream. Updates the warm throughput configuration for the specified on-demand data stream. Use this operation to scale your stream to a specified throughput level before anticipated traffic spikes, or to release excess capacity after traffic has decreased.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesis_update_stream_warm_throughput/](https://www.paws-r-sdk.com/docs/kinesis_update_stream_warm_throughput/) for full documentation.
 #'

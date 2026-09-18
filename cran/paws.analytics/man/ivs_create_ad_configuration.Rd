@@ -7,13 +7,16 @@
 ivs_create_ad_configuration(
   name = NULL,
   mediaTailorPlaybackConfigurations,
+  postRollConfiguration = NULL,
   tags = NULL
 )
 }
 \arguments{
 \item{name}{Ad configuration name. Defaults to “”.}
 
-\item{mediaTailorPlaybackConfigurations}{[required] List of integration configurations with media tailor resources.}
+\item{mediaTailorPlaybackConfigurations}{[required] List of integration configurations with MediaTailor resources. The first item in the list is the default playback configuration used for the ad configuration. To select a different configuration per viewing session, see \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels-generate-tokens.html}{Generate and Sign IVS Playback Tokens}.}
+
+\item{postRollConfiguration}{Configuration for the post-roll ad break to use for this ad configuration. Default: disabled (\code{enabled} set to false, \code{durationSeconds} set to 15).}
 
 \item{tags}{Array of 1-50 maps, each of the form \code{string:string (key:value)}. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html}{Best practices and strategies} in \emph{Tagging Amazon Web Services Resources and Tag Editor} for details, including restrictions that apply to tags and "Tag naming limits and requirements"; Amazon IVS has no service-specific constraints beyond what is documented there.}
 }

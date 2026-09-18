@@ -10,7 +10,7 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/sfn_create_activity/](https://www.paws-r-sdk.com/docs/sfn_create_activity/) for full documentation.
 #'
-#' @param name &#91;required&#93; The name of the activity to create. This name must be unique for your Amazon Web Services account and region for 90 days. For more information, see [Limits Related to State Machine Executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions) in the *Step Functions Developer Guide*.
+#' @param name &#91;required&#93; The name of the activity to create. This name must be unique for your Amazon Web Services account and region.
 #' 
 #' A name must *not* contain:
 #' 
@@ -1012,7 +1012,7 @@ sfn_send_task_success <- function(taskToken, output) {
 #'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine:PROD>`
 #' 
 #'     Step Functions associates executions that you start with an alias ARN with that alias and the state machine version used for that execution.
-#' @param name Optional name of the execution. This name must be unique for your Amazon Web Services account, Region, and state machine for 90 days. For more information, see [Limits Related to State Machine Executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions) in the *Step Functions Developer Guide*.
+#' @param name Optional name of the execution. For STANDARD workflows, this name must be unique for your Amazon Web Services account, region, and state machine. If a previous execution with the same name exists, you can reuse the name 90 days after it closes. For EXPRESS workflows, execution names can be reused immediately. For more information, see [Limits Related to State Machine Executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions) in the *Step Functions Developer Guide*.
 #' 
 #' If you don't provide a name for the execution, Step Functions automatically generates a universally unique identifier (UUID) as the execution name.
 #' 

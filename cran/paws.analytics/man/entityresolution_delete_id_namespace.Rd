@@ -10,7 +10,7 @@ entityresolution_delete_id_namespace(idNamespaceName)
 \item{idNamespaceName}{[required] The name of the ID namespace.}
 }
 \description{
-Deletes the \code{IdNamespace} with a given name.
+Deletes the \code{IdNamespace} with a given name. This operation returns a \code{ResourceNotFoundException} if an ID namespace with the given name does not exist.
 
 See \url{https://www.paws-r-sdk.com/docs/entityresolution_delete_id_namespace/} for full documentation.
 }

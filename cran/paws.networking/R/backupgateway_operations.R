@@ -169,7 +169,7 @@ backupgateway_disassociate_gateway_from_server <- function(GatewayArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/backupgateway_get_bandwidth_rate_limit_schedule/](https://www.paws-r-sdk.com/docs/backupgateway_get_bandwidth_rate_limit_schedule/) for full documentation.
 #'
-#' @param GatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the gateway. Use the [`list_gateways`](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BGW_ListGateways.html) operation to return a list of gateways for your account and Amazon Web Services Region.
+#' @param GatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the gateway. Use the [`list_gateways`](https://docs.aws.amazon.com/aws-backup/latest/APIReference/API_BGW_ListGateways.html) operation to return a list of gateways for your account and Amazon Web Services Region.
 #'
 #' @keywords internal
 #'
@@ -494,7 +494,7 @@ backupgateway_list_virtual_machines <- function(HypervisorArn = NULL, MaxResults
 #'
 #' See [https://www.paws-r-sdk.com/docs/backupgateway_put_bandwidth_rate_limit_schedule/](https://www.paws-r-sdk.com/docs/backupgateway_put_bandwidth_rate_limit_schedule/) for full documentation.
 #'
-#' @param GatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the gateway. Use the [`list_gateways`](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BGW_ListGateways.html) operation to return a list of gateways for your account and Amazon Web Services Region.
+#' @param GatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the gateway. Use the [`list_gateways`](https://docs.aws.amazon.com/aws-backup/latest/APIReference/API_BGW_ListGateways.html) operation to return a list of gateways for your account and Amazon Web Services Region.
 #' @param BandwidthRateLimitIntervals &#91;required&#93; An array containing bandwidth rate limit schedule intervals for a gateway. When no bandwidth rate limit intervals have been scheduled, the array is empty.
 #'
 #' @keywords internal

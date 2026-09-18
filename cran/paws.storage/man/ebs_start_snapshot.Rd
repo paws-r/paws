@@ -22,7 +22,7 @@ ebs_start_snapshot(
 
 You can't specify \strong{ParentSnapshotId} and \strong{Encrypted} in the same request. If you specify both parameters, the request fails with \code{ValidationException}.
 
-The encryption status of the snapshot depends on the values that you specify for \strong{Encrypted}, \strong{KmsKeyArn}, and \strong{ParentSnapshotId}, and whether your Amazon Web Services account is enabled for \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html?refid=faq_card#encryption-by-default}{encryption by default}. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebsapis-using-encryption.html}{Using encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+The encryption status of the snapshot depends on the values that you specify for \strong{Encrypted}, \strong{KmsKeyArn}, and \strong{ParentSnapshotId}, and whether your Amazon Web Services account is enabled for \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html#encryption-by-default}{encryption by default}. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebsapis-using-encryption.html}{Using encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 If you specify an encrypted parent snapshot, you must have permission to use the KMS key that was used to encrypt the parent snapshot. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebsapi-permissions.html#ebsapi-kms-permissions}{Permissions to use Key Management Service keys} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
@@ -40,13 +40,13 @@ For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide
 
 You can't specify \strong{Encrypted} and \strong{ParentSnapshotId} in the same request. If you specify both parameters, the request fails with \code{ValidationException}.
 
-The encryption status of the snapshot depends on the values that you specify for \strong{Encrypted}, \strong{KmsKeyArn}, and \strong{ParentSnapshotId}, and whether your Amazon Web Services account is enabled for \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html?refid=faq_card#encryption-by-default}{encryption by default}. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebsapis-using-encryption.html}{Using encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+The encryption status of the snapshot depends on the values that you specify for \strong{Encrypted}, \strong{KmsKeyArn}, and \strong{ParentSnapshotId}, and whether your Amazon Web Services account is enabled for \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html#encryption-by-default}{encryption by default}. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebsapis-using-encryption.html}{Using encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 To create an encrypted snapshot, you must have permission to use the KMS key. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebsapi-permissions.html#ebsapi-kms-permissions}{Permissions to use Key Management Service keys} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{KmsKeyArn}{The Amazon Resource Name (ARN) of the Key Management Service (KMS) key to be used to encrypt the snapshot.
 
-The encryption status of the snapshot depends on the values that you specify for \strong{Encrypted}, \strong{KmsKeyArn}, and \strong{ParentSnapshotId}, and whether your Amazon Web Services account is enabled for \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html?refid=faq_card#encryption-by-default}{encryption by default}. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebsapis-using-encryption.html}{Using encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+The encryption status of the snapshot depends on the values that you specify for \strong{Encrypted}, \strong{KmsKeyArn}, and \strong{ParentSnapshotId}, and whether your Amazon Web Services account is enabled for \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html#encryption-by-default}{encryption by default}. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebsapis-using-encryption.html}{Using encryption} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 To create an encrypted snapshot, you must have permission to use the KMS key. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebsapi-permissions.html#ebsapi-kms-permissions}{Permissions to use Key Management Service keys} in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 

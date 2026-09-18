@@ -5,8 +5,7 @@ NULL
 
 .telconetworkbuilder$cancel_sol_network_operation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nsLcmOpOccId = structure(logical(0), tags = list(location = "uri", locationName = "nsLcmOpOccId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["cancel_sol_network_operation_input"]]))
 }
 
 .telconetworkbuilder$cancel_sol_network_operation_output <- function(...) {
@@ -15,44 +14,37 @@ NULL
 
 .telconetworkbuilder$create_sol_function_package_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["create_sol_function_package_input"]]))
 }
 
 .telconetworkbuilder$create_sol_function_package_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), onboardingState = structure(logical(0), tags = list(type = "string")), operationalState = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), usageState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["create_sol_function_package_output"]]))
 }
 
 .telconetworkbuilder$create_sol_network_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nsDescription = structure(logical(0), tags = list(type = "string")), nsName = structure(logical(0), tags = list(type = "string")), nsdInfoId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["create_sol_network_instance_input"]]))
 }
 
 .telconetworkbuilder$create_sol_network_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), nsInstanceName = structure(logical(0), tags = list(type = "string")), nsdInfoId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["create_sol_network_instance_output"]]))
 }
 
 .telconetworkbuilder$create_sol_network_package_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["create_sol_network_package_input"]]))
 }
 
 .telconetworkbuilder$create_sol_network_package_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), nsdOnboardingState = structure(logical(0), tags = list(type = "string")), nsdOperationalState = structure(logical(0), tags = list(type = "string")), nsdUsageState = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["create_sol_network_package_output"]]))
 }
 
 .telconetworkbuilder$delete_sol_function_package_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(vnfPkgId = structure(logical(0), tags = list(location = "uri", locationName = "vnfPkgId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["delete_sol_function_package_input"]]))
 }
 
 .telconetworkbuilder$delete_sol_function_package_output <- function(...) {
@@ -61,8 +53,7 @@ NULL
 
 .telconetworkbuilder$delete_sol_network_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nsInstanceId = structure(logical(0), tags = list(location = "uri", locationName = "nsInstanceId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["delete_sol_network_instance_input"]]))
 }
 
 .telconetworkbuilder$delete_sol_network_instance_output <- function(...) {
@@ -71,8 +62,7 @@ NULL
 
 .telconetworkbuilder$delete_sol_network_package_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nsdInfoId = structure(logical(0), tags = list(location = "uri", locationName = "nsdInfoId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["delete_sol_network_package_input"]]))
 }
 
 .telconetworkbuilder$delete_sol_network_package_output <- function(...) {
@@ -81,312 +71,260 @@ NULL
 
 .telconetworkbuilder$get_sol_function_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(vnfInstanceId = structure(logical(0), tags = list(location = "uri", locationName = "vnfInstanceId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_function_instance_input"]]))
 }
 
 .telconetworkbuilder$get_sol_function_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), instantiatedVnfInfo = structure(list(vnfState = structure(logical(0), tags = list(type = "string")), vnfcResourceInfo = structure(list(structure(list(metadata = structure(list(cluster = structure(logical(0), tags = list(type = "string")), helmChart = structure(logical(0), tags = list(type = "string")), nodeGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), instantiationState = structure(logical(0), tags = list(type = "string")), metadata = structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModified = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure")), nsInstanceId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), vnfPkgId = structure(logical(0), tags = list(type = "string")), vnfProductName = structure(logical(0), tags = list(type = "string")), vnfProvider = structure(logical(0), tags = list(type = "string")), vnfdId = structure(logical(0), tags = list(type = "string")), vnfdVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_function_instance_output"]]))
 }
 
 .telconetworkbuilder$get_sol_function_package_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(vnfPkgId = structure(logical(0), tags = list(location = "uri", locationName = "vnfPkgId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_function_package_input"]]))
 }
 
 .telconetworkbuilder$get_sol_function_package_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), metadata = structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModified = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), vnfd = structure(list(overrides = structure(list(structure(list(defaultValue = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), onboardingState = structure(logical(0), tags = list(type = "string")), operationalState = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), usageState = structure(logical(0), tags = list(type = "string")), vnfProductName = structure(logical(0), tags = list(type = "string")), vnfProvider = structure(logical(0), tags = list(type = "string")), vnfdId = structure(logical(0), tags = list(type = "string")), vnfdVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_function_package_output"]]))
 }
 
 .telconetworkbuilder$get_sol_function_package_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accept = structure(logical(0), tags = list(location = "header", locationName = "Accept", type = "string")), vnfPkgId = structure(logical(0), tags = list(location = "uri", locationName = "vnfPkgId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_function_package_content_input"]]))
 }
 
 .telconetworkbuilder$get_sol_function_package_content_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), packageContent = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", payload = "packageContent"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_function_package_content_output"]]))
 }
 
 .telconetworkbuilder$get_sol_function_package_descriptor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accept = structure(logical(0), tags = list(location = "header", locationName = "Accept", type = "string")), vnfPkgId = structure(logical(0), tags = list(location = "uri", locationName = "vnfPkgId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_function_package_descriptor_input"]]))
 }
 
 .telconetworkbuilder$get_sol_function_package_descriptor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), vnfd = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", payload = "vnfd"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_function_package_descriptor_output"]]))
 }
 
 .telconetworkbuilder$get_sol_network_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nsInstanceId = structure(logical(0), tags = list(location = "uri", locationName = "nsInstanceId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_network_instance_input"]]))
 }
 
 .telconetworkbuilder$get_sol_network_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), lcmOpInfo = structure(list(nsLcmOpOccId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), metadata = structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModified = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure")), nsInstanceDescription = structure(logical(0), tags = list(type = "string")), nsInstanceName = structure(logical(0), tags = list(type = "string")), nsState = structure(logical(0), tags = list(type = "string")), nsdId = structure(logical(0), tags = list(type = "string")), nsdInfoId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_network_instance_output"]]))
 }
 
 .telconetworkbuilder$get_sol_network_operation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nsLcmOpOccId = structure(logical(0), tags = list(location = "uri", locationName = "nsLcmOpOccId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_network_operation_input"]]))
 }
 
 .telconetworkbuilder$get_sol_network_operation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), error = structure(list(detail = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), id = structure(logical(0), tags = list(type = "string")), lcmOperationType = structure(logical(0), tags = list(type = "string")), metadata = structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), instantiateMetadata = structure(list(additionalParamsForNs = structure(list(), tags = list(type = "structure", document = TRUE)), nsdInfoId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), lastModified = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), modifyVnfInfoMetadata = structure(list(vnfConfigurableProperties = structure(list(), tags = list(type = "structure", document = TRUE)), vnfInstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), updateNsMetadata = structure(list(additionalParamsForNs = structure(list(), tags = list(type = "structure", document = TRUE)), nsdInfoId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), nsInstanceId = structure(logical(0), tags = list(type = "string")), operationState = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), tasks = structure(list(structure(list(taskContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), taskEndTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), taskErrorDetails = structure(list(cause = structure(logical(0), tags = list(type = "string")), details = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), taskName = structure(logical(0), tags = list(type = "string")), taskStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), taskStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), updateType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_network_operation_output"]]))
 }
 
 .telconetworkbuilder$get_sol_network_package_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nsdInfoId = structure(logical(0), tags = list(location = "uri", locationName = "nsdInfoId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_network_package_input"]]))
 }
 
 .telconetworkbuilder$get_sol_network_package_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), metadata = structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModified = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), nsd = structure(list(overrides = structure(list(structure(list(defaultValue = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), nsdId = structure(logical(0), tags = list(type = "string")), nsdName = structure(logical(0), tags = list(type = "string")), nsdOnboardingState = structure(logical(0), tags = list(type = "string")), nsdOperationalState = structure(logical(0), tags = list(type = "string")), nsdUsageState = structure(logical(0), tags = list(type = "string")), nsdVersion = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), vnfPkgIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_network_package_output"]]))
 }
 
 .telconetworkbuilder$get_sol_network_package_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accept = structure(logical(0), tags = list(location = "header", locationName = "Accept", type = "string")), nsdInfoId = structure(logical(0), tags = list(location = "uri", locationName = "nsdInfoId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_network_package_content_input"]]))
 }
 
 .telconetworkbuilder$get_sol_network_package_content_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), nsdContent = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", payload = "nsdContent"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_network_package_content_output"]]))
 }
 
 .telconetworkbuilder$get_sol_network_package_descriptor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nsdInfoId = structure(logical(0), tags = list(location = "uri", locationName = "nsdInfoId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_network_package_descriptor_input"]]))
 }
 
 .telconetworkbuilder$get_sol_network_package_descriptor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), nsd = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", payload = "nsd"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["get_sol_network_package_descriptor_output"]]))
 }
 
 .telconetworkbuilder$instantiate_sol_network_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(additionalParamsForNs = structure(list(), tags = list(type = "structure", document = TRUE)), dryRun = structure(logical(0), tags = list(location = "querystring", locationName = "dry_run", type = "boolean", box = TRUE)), nsInstanceId = structure(logical(0), tags = list(location = "uri", locationName = "nsInstanceId", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["instantiate_sol_network_instance_input"]]))
 }
 
 .telconetworkbuilder$instantiate_sol_network_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nsLcmOpOccId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["instantiate_sol_network_instance_output"]]))
 }
 
 .telconetworkbuilder$list_sol_function_instances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max_results", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextpage_opaque_marker", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["list_sol_function_instances_input"]]))
 }
 
 .telconetworkbuilder$list_sol_function_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(functionInstances = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), instantiatedVnfInfo = structure(list(vnfState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), instantiationState = structure(logical(0), tags = list(type = "string")), metadata = structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModified = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure")), nsInstanceId = structure(logical(0), tags = list(type = "string")), vnfPkgId = structure(logical(0), tags = list(type = "string")), vnfPkgName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["list_sol_function_instances_output"]]))
 }
 
 .telconetworkbuilder$list_sol_function_packages_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max_results", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextpage_opaque_marker", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["list_sol_function_packages_input"]]))
 }
 
 .telconetworkbuilder$list_sol_function_packages_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(functionPackages = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), metadata = structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModified = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure")), onboardingState = structure(logical(0), tags = list(type = "string")), operationalState = structure(logical(0), tags = list(type = "string")), usageState = structure(logical(0), tags = list(type = "string")), vnfProductName = structure(logical(0), tags = list(type = "string")), vnfProvider = structure(logical(0), tags = list(type = "string")), vnfdId = structure(logical(0), tags = list(type = "string")), vnfdVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["list_sol_function_packages_output"]]))
 }
 
 .telconetworkbuilder$list_sol_network_instances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max_results", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextpage_opaque_marker", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["list_sol_network_instances_input"]]))
 }
 
 .telconetworkbuilder$list_sol_network_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(networkInstances = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), metadata = structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModified = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure")), nsInstanceDescription = structure(logical(0), tags = list(type = "string")), nsInstanceName = structure(logical(0), tags = list(type = "string")), nsState = structure(logical(0), tags = list(type = "string")), nsdId = structure(logical(0), tags = list(type = "string")), nsdInfoId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["list_sol_network_instances_output"]]))
 }
 
 .telconetworkbuilder$list_sol_network_operations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max_results", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextpage_opaque_marker", type = "string")), nsInstanceId = structure(logical(0), tags = list(location = "querystring", locationName = "nsInstanceId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["list_sol_network_operations_input"]]))
 }
 
 .telconetworkbuilder$list_sol_network_operations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(networkOperations = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), error = structure(list(detail = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), id = structure(logical(0), tags = list(type = "string")), lcmOperationType = structure(logical(0), tags = list(type = "string")), metadata = structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModified = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), nsdInfoId = structure(logical(0), tags = list(type = "string")), vnfInstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), nsInstanceId = structure(logical(0), tags = list(type = "string")), operationState = structure(logical(0), tags = list(type = "string")), updateType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["list_sol_network_operations_output"]]))
 }
 
 .telconetworkbuilder$list_sol_network_packages_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max_results", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextpage_opaque_marker", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["list_sol_network_packages_input"]]))
 }
 
 .telconetworkbuilder$list_sol_network_packages_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(networkPackages = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), metadata = structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastModified = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure")), nsdDesigner = structure(logical(0), tags = list(type = "string")), nsdId = structure(logical(0), tags = list(type = "string")), nsdInvariantId = structure(logical(0), tags = list(type = "string")), nsdName = structure(logical(0), tags = list(type = "string")), nsdOnboardingState = structure(logical(0), tags = list(type = "string")), nsdOperationalState = structure(logical(0), tags = list(type = "string")), nsdUsageState = structure(logical(0), tags = list(type = "string")), nsdVersion = structure(logical(0), tags = list(type = "string")), vnfPkgIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["list_sol_network_packages_output"]]))
 }
 
 .telconetworkbuilder$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["list_tags_for_resource_input"]]))
 }
 
 .telconetworkbuilder$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["list_tags_for_resource_output"]]))
 }
 
 .telconetworkbuilder$put_sol_function_package_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), file = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), vnfPkgId = structure(logical(0), tags = list(location = "uri", locationName = "vnfPkgId", type = "string"))), tags = list(type = "structure", payload = "file"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["put_sol_function_package_content_input"]]))
 }
 
 .telconetworkbuilder$put_sol_function_package_content_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), metadata = structure(list(vnfd = structure(list(overrides = structure(list(structure(list(defaultValue = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), vnfProductName = structure(logical(0), tags = list(type = "string")), vnfProvider = structure(logical(0), tags = list(type = "string")), vnfdId = structure(logical(0), tags = list(type = "string")), vnfdVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["put_sol_function_package_content_output"]]))
 }
 
 .telconetworkbuilder$put_sol_network_package_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), file = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), nsdInfoId = structure(logical(0), tags = list(location = "uri", locationName = "nsdInfoId", type = "string"))), tags = list(type = "structure", payload = "file"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["put_sol_network_package_content_input"]]))
 }
 
 .telconetworkbuilder$put_sol_network_package_content_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), metadata = structure(list(nsd = structure(list(overrides = structure(list(structure(list(defaultValue = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), nsdId = structure(logical(0), tags = list(type = "string")), nsdName = structure(logical(0), tags = list(type = "string")), nsdVersion = structure(logical(0), tags = list(type = "string")), vnfPkgIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["put_sol_network_package_content_output"]]))
 }
 
 .telconetworkbuilder$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["tag_resource_input"]]))
 }
 
 .telconetworkbuilder$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["tag_resource_output"]]))
 }
 
 .telconetworkbuilder$terminate_sol_network_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nsInstanceId = structure(logical(0), tags = list(location = "uri", locationName = "nsInstanceId", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["terminate_sol_network_instance_input"]]))
 }
 
 .telconetworkbuilder$terminate_sol_network_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nsLcmOpOccId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["terminate_sol_network_instance_output"]]))
 }
 
 .telconetworkbuilder$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["untag_resource_input"]]))
 }
 
 .telconetworkbuilder$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["untag_resource_output"]]))
 }
 
 .telconetworkbuilder$update_sol_function_package_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationalState = structure(logical(0), tags = list(type = "string")), vnfPkgId = structure(logical(0), tags = list(location = "uri", locationName = "vnfPkgId", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["update_sol_function_package_input"]]))
 }
 
 .telconetworkbuilder$update_sol_function_package_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(operationalState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["update_sol_function_package_output"]]))
 }
 
 .telconetworkbuilder$update_sol_network_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modifyVnfInfoData = structure(list(vnfConfigurableProperties = structure(list(), tags = list(type = "structure", document = TRUE)), vnfInstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), nsInstanceId = structure(logical(0), tags = list(location = "uri", locationName = "nsInstanceId", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), updateNs = structure(list(additionalParamsForNs = structure(list(), tags = list(type = "structure", document = TRUE)), nsdInfoId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), updateType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["update_sol_network_instance_input"]]))
 }
 
 .telconetworkbuilder$update_sol_network_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nsLcmOpOccId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["update_sol_network_instance_output"]]))
 }
 
 .telconetworkbuilder$update_sol_network_package_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nsdInfoId = structure(logical(0), tags = list(location = "uri", locationName = "nsdInfoId", type = "string")), nsdOperationalState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["update_sol_network_package_input"]]))
 }
 
 .telconetworkbuilder$update_sol_network_package_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nsdOperationalState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["update_sol_network_package_output"]]))
 }
 
 .telconetworkbuilder$validate_sol_function_package_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), file = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), vnfPkgId = structure(logical(0), tags = list(location = "uri", locationName = "vnfPkgId", type = "string"))), tags = list(type = "structure", payload = "file"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["validate_sol_function_package_content_input"]]))
 }
 
 .telconetworkbuilder$validate_sol_function_package_content_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), metadata = structure(list(vnfd = structure(list(overrides = structure(list(structure(list(defaultValue = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), vnfProductName = structure(logical(0), tags = list(type = "string")), vnfProvider = structure(logical(0), tags = list(type = "string")), vnfdId = structure(logical(0), tags = list(type = "string")), vnfdVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["validate_sol_function_package_content_output"]]))
 }
 
 .telconetworkbuilder$validate_sol_network_package_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), file = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), nsdInfoId = structure(logical(0), tags = list(location = "uri", locationName = "nsdInfoId", type = "string"))), tags = list(type = "structure", payload = "file"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["validate_sol_network_package_content_input"]]))
 }
 
 .telconetworkbuilder$validate_sol_network_package_content_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), metadata = structure(list(nsd = structure(list(overrides = structure(list(structure(list(defaultValue = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), nsdId = structure(logical(0), tags = list(type = "string")), nsdName = structure(logical(0), tags = list(type = "string")), nsdVersion = structure(logical(0), tags = list(type = "string")), vnfPkgIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .telconetworkbuilder_shapes[["validate_sol_network_package_content_output"]]))
 }

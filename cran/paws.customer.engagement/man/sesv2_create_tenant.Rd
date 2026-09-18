@@ -4,12 +4,14 @@
 \alias{sesv2_create_tenant}
 \title{Create a tenant}
 \usage{
-sesv2_create_tenant(TenantName, Tags = NULL)
+sesv2_create_tenant(TenantName, Tags = NULL, SuppressionAttributes = NULL)
 }
 \arguments{
 \item{TenantName}{[required] The name of the tenant to create. The name can contain up to 64 alphanumeric characters, including letters, numbers, hyphens (-) and underscores (_) only.}
 
 \item{Tags}{An array of objects that define the tags (keys and values) to associate with the tenant}
+
+\item{SuppressionAttributes}{An object that contains information about the suppression list preferences for the tenant. Use this to configure tenant-level suppression at creation time.}
 }
 \description{
 Create a tenant.

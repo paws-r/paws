@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_list_import_failures}
 \alias{cloudtrail_list_import_failures}
-\title{Returns a list of failures for the specified import}
+\title{CloudTrail Lake will no longer be open to new customers starting May 31,
+2026}
 \usage{
 cloudtrail_list_import_failures(ImportId, MaxResults = NULL, NextToken = NULL)
 }
@@ -14,7 +15,7 @@ cloudtrail_list_import_failures(ImportId, MaxResults = NULL, NextToken = NULL)
 \item{NextToken}{A token you can use to get the next page of import failures.}
 }
 \description{
-Returns a list of failures for the specified import.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html}{CloudTrail Lake availability change}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_list_import_failures/} for full documentation.
 }

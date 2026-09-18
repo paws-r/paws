@@ -174,7 +174,7 @@ emrcontainers_create_job_template <- function(name, clientToken, jobTemplateData
 #' @usage
 #' emrcontainers_create_managed_endpoint(name, virtualClusterId, type,
 #'   releaseLabel, executionRoleArn, certificateArn, configurationOverrides,
-#'   clientToken, tags)
+#'   clientToken, tags, sessionIdleTimeoutInMinutes)
 #'
 #' @param name &#91;required&#93; The name of the managed endpoint.
 #' @param virtualClusterId &#91;required&#93; The ID of the virtual cluster for which a managed endpoint is created.
@@ -185,6 +185,7 @@ emrcontainers_create_job_template <- function(name, clientToken, jobTemplateData
 #' @param configurationOverrides The configuration settings that will be used to override existing configurations.
 #' @param clientToken &#91;required&#93; The client idempotency token for this create call.
 #' @param tags The tags of the managed endpoint.
+#' @param sessionIdleTimeoutInMinutes The number of idle minutes before the managed endpoint session times out.
 #'
 #' @return
 #' A list with the following syntax:
@@ -227,7 +228,8 @@ emrcontainers_create_job_template <- function(name, clientToken, jobTemplateData
 #'         logStreamNamePrefix = "string"
 #'       ),
 #'       s3MonitoringConfiguration = list(
-#'         logUri = "string"
+#'         logUri = "string",
+#'         encryptionKeyArn = "string"
 #'       ),
 #'       containerLogRotationConfiguration = list(
 #'         rotationSize = "string",
@@ -238,7 +240,8 @@ emrcontainers_create_job_template <- function(name, clientToken, jobTemplateData
 #'   clientToken = "string",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   sessionIdleTimeoutInMinutes = 123
 #' )
 #' ```
 #'
@@ -247,7 +250,7 @@ emrcontainers_create_job_template <- function(name, clientToken, jobTemplateData
 #' @rdname emrcontainers_create_managed_endpoint
 #'
 #' @aliases emrcontainers_create_managed_endpoint
-emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, releaseLabel, executionRoleArn, certificateArn = NULL, configurationOverrides = NULL, clientToken, tags = NULL) {
+emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, releaseLabel, executionRoleArn, certificateArn = NULL, configurationOverrides = NULL, clientToken, tags = NULL, sessionIdleTimeoutInMinutes = NULL) {
   op <- new_operation(
     name = "CreateManagedEndpoint",
     http_method = "POST",
@@ -256,7 +259,7 @@ emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emrcontainers$create_managed_endpoint_input(name = name, virtualClusterId = virtualClusterId, type = type, releaseLabel = releaseLabel, executionRoleArn = executionRoleArn, certificateArn = certificateArn, configurationOverrides = configurationOverrides, clientToken = clientToken, tags = tags)
+  input <- .emrcontainers$create_managed_endpoint_input(name = name, virtualClusterId = virtualClusterId, type = type, releaseLabel = releaseLabel, executionRoleArn = executionRoleArn, certificateArn = certificateArn, configurationOverrides = configurationOverrides, clientToken = clientToken, tags = tags, sessionIdleTimeoutInMinutes = sessionIdleTimeoutInMinutes)
   output <- .emrcontainers$create_managed_endpoint_output()
   config <- get_config()
   svc <- .emrcontainers$service(config, op)
@@ -325,6 +328,17 @@ emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, 
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     authenticationConfiguration = list(
+#'       identityCenterConfiguration = list(
+#'         enableIdentityCenter = TRUE|FALSE,
+#'         identityCenterApplicationAssignmentRequired = TRUE|FALSE,
+#'         identityCenterInstanceARN = "string",
+#'         emrIdentityCenterApplicationARN = "string"
+#'       ),
+#'       iamConfiguration = list(
+#'         systemRole = "string"
+#'       )
 #'     )
 #'   ),
 #'   tags = list(
@@ -360,17 +374,20 @@ emrcontainers_create_security_configuration <- function(clientToken, name, conta
 #' Creates a virtual cluster
 #'
 #' @description
-#' Creates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
+#' Creates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 #'
 #' @usage
 #' emrcontainers_create_virtual_cluster(name, containerProvider,
-#'   clientToken, tags, securityConfigurationId)
+#'   clientToken, tags, securityConfigurationId, sessionEnabled,
+#'   schedulerConfiguration)
 #'
 #' @param name &#91;required&#93; The specified name of the virtual cluster.
 #' @param containerProvider &#91;required&#93; The container provider of the virtual cluster.
 #' @param clientToken &#91;required&#93; The client token of the virtual cluster.
 #' @param tags The tags assigned to the virtual cluster.
 #' @param securityConfigurationId The ID of the security configuration.
+#' @param sessionEnabled Indicates whether the virtual cluster has session support enabled.
+#' @param schedulerConfiguration The scheduler configuration (concurrency and queue limits) to apply to the virtual cluster at creation time. When omitted, no limits are applied.
 #'
 #' @return
 #' A list with the following syntax:
@@ -400,7 +417,12 @@ emrcontainers_create_security_configuration <- function(clientToken, name, conta
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   securityConfigurationId = "string"
+#'   securityConfigurationId = "string",
+#'   sessionEnabled = TRUE|FALSE,
+#'   schedulerConfiguration = list(
+#'     maxInQueueJobRuns = 123,
+#'     maxConcurrentJobRuns = 123
+#'   )
 #' )
 #' ```
 #'
@@ -409,7 +431,7 @@ emrcontainers_create_security_configuration <- function(clientToken, name, conta
 #' @rdname emrcontainers_create_virtual_cluster
 #'
 #' @aliases emrcontainers_create_virtual_cluster
-emrcontainers_create_virtual_cluster <- function(name, containerProvider, clientToken, tags = NULL, securityConfigurationId = NULL) {
+emrcontainers_create_virtual_cluster <- function(name, containerProvider, clientToken, tags = NULL, securityConfigurationId = NULL, sessionEnabled = NULL, schedulerConfiguration = NULL) {
   op <- new_operation(
     name = "CreateVirtualCluster",
     http_method = "POST",
@@ -418,7 +440,7 @@ emrcontainers_create_virtual_cluster <- function(name, containerProvider, client
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .emrcontainers$create_virtual_cluster_input(name = name, containerProvider = containerProvider, clientToken = clientToken, tags = tags, securityConfigurationId = securityConfigurationId)
+  input <- .emrcontainers$create_virtual_cluster_input(name = name, containerProvider = containerProvider, clientToken = clientToken, tags = tags, securityConfigurationId = securityConfigurationId, sessionEnabled = sessionEnabled, schedulerConfiguration = schedulerConfiguration)
   output <- .emrcontainers$create_virtual_cluster_output()
   config <- get_config()
   svc <- .emrcontainers$service(config, op)
@@ -529,10 +551,59 @@ emrcontainers_delete_managed_endpoint <- function(id, virtualClusterId) {
 }
 .emrcontainers$operations$delete_managed_endpoint <- emrcontainers_delete_managed_endpoint
 
+#' Deletes a security configuration
+#'
+#' @description
+#' Deletes a security configuration.
+#'
+#' @usage
+#' emrcontainers_delete_security_configuration(id)
+#'
+#' @param id &#91;required&#93; The ID of the security configuration to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_security_configuration(
+#'   id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emrcontainers_delete_security_configuration
+#'
+#' @aliases emrcontainers_delete_security_configuration
+emrcontainers_delete_security_configuration <- function(id) {
+  op <- new_operation(
+    name = "DeleteSecurityConfiguration",
+    http_method = "DELETE",
+    http_path = "/securityconfigurations/{securityConfigurationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emrcontainers$delete_security_configuration_input(id = id)
+  output <- .emrcontainers$delete_security_configuration_output()
+  config <- get_config()
+  svc <- .emrcontainers$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrcontainers$operations$delete_security_configuration <- emrcontainers_delete_security_configuration
+
 #' Deletes a virtual cluster
 #'
 #' @description
-#' Deletes a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
+#' Deletes a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 #'
 #' @usage
 #' emrcontainers_delete_virtual_cluster(id)
@@ -623,7 +694,8 @@ emrcontainers_delete_virtual_cluster <- function(id) {
 #'           logStreamNamePrefix = "string"
 #'         ),
 #'         s3MonitoringConfiguration = list(
-#'           logUri = "string"
+#'           logUri = "string",
+#'           encryptionKeyArn = "string"
 #'         ),
 #'         containerLogRotationConfiguration = list(
 #'           rotationSize = "string",
@@ -857,7 +929,8 @@ emrcontainers_describe_job_template <- function(id) {
 #'           logStreamNamePrefix = "string"
 #'         ),
 #'         s3MonitoringConfiguration = list(
-#'           logUri = "string"
+#'           logUri = "string",
+#'           encryptionKeyArn = "string"
 #'         ),
 #'         containerLogRotationConfiguration = list(
 #'           rotationSize = "string",
@@ -866,6 +939,7 @@ emrcontainers_describe_job_template <- function(id) {
 #'       )
 #'     ),
 #'     serverUrl = "string",
+#'     authProxyUrl = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -955,6 +1029,17 @@ emrcontainers_describe_managed_endpoint <- function(id, virtualClusterId) {
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       authenticationConfiguration = list(
+#'         identityCenterConfiguration = list(
+#'           enableIdentityCenter = TRUE|FALSE,
+#'           identityCenterApplicationAssignmentRequired = TRUE|FALSE,
+#'           identityCenterInstanceARN = "string",
+#'           emrIdentityCenterApplicationARN = "string"
+#'         ),
+#'         iamConfiguration = list(
+#'           systemRole = "string"
+#'         )
 #'       )
 #'     ),
 #'     tags = list(
@@ -998,7 +1083,7 @@ emrcontainers_describe_security_configuration <- function(id) {
 #' Displays detailed information about a specified virtual cluster
 #'
 #' @description
-#' Displays detailed information about a specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
+#' Displays detailed information about a specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 #'
 #' @usage
 #' emrcontainers_describe_virtual_cluster(id)
@@ -1030,7 +1115,16 @@ emrcontainers_describe_security_configuration <- function(id) {
 #'     tags = list(
 #'       "string"
 #'     ),
-#'     securityConfigurationId = "string"
+#'     securityConfigurationId = "string",
+#'     sessionEnabled = TRUE|FALSE,
+#'     schedulerConfiguration = list(
+#'       maxInQueueJobRuns = 123,
+#'       maxConcurrentJobRuns = 123
+#'     ),
+#'     schedulerStatus = list(
+#'       currentInQueueJobRuns = 123,
+#'       currentConcurrentJobRuns = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -1090,6 +1184,9 @@ emrcontainers_describe_virtual_cluster <- function(id) {
 #' list(
 #'   id = "string",
 #'   credentials = list(
+#'     token = "string"
+#'   ),
+#'   endpointCredentials = list(
 #'     token = "string"
 #'   ),
 #'   expiresAt = as.POSIXct(
@@ -1187,7 +1284,8 @@ emrcontainers_get_managed_endpoint_session_credentials <- function(endpointIdent
 #'             logStreamNamePrefix = "string"
 #'           ),
 #'           s3MonitoringConfiguration = list(
-#'             logUri = "string"
+#'             logUri = "string",
+#'             encryptionKeyArn = "string"
 #'           ),
 #'           containerLogRotationConfiguration = list(
 #'             rotationSize = "string",
@@ -1455,7 +1553,8 @@ emrcontainers_list_job_templates <- function(createdAfter = NULL, createdBefore 
 #'             logStreamNamePrefix = "string"
 #'           ),
 #'           s3MonitoringConfiguration = list(
-#'             logUri = "string"
+#'             logUri = "string",
+#'             encryptionKeyArn = "string"
 #'           ),
 #'           containerLogRotationConfiguration = list(
 #'             rotationSize = "string",
@@ -1464,6 +1563,7 @@ emrcontainers_list_job_templates <- function(createdAfter = NULL, createdBefore 
 #'         )
 #'       ),
 #'       serverUrl = "string",
+#'       authProxyUrl = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1573,6 +1673,17 @@ emrcontainers_list_managed_endpoints <- function(virtualClusterId, createdBefore
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         authenticationConfiguration = list(
+#'           identityCenterConfiguration = list(
+#'             enableIdentityCenter = TRUE|FALSE,
+#'             identityCenterApplicationAssignmentRequired = TRUE|FALSE,
+#'             identityCenterInstanceARN = "string",
+#'             emrIdentityCenterApplicationARN = "string"
+#'           ),
+#'           iamConfiguration = list(
+#'             systemRole = "string"
+#'           )
 #'         )
 #'       ),
 #'       tags = list(
@@ -1676,7 +1787,7 @@ emrcontainers_list_tags_for_resource <- function(resourceArn) {
 #' Lists information about the specified virtual cluster
 #'
 #' @description
-#' Lists information about the specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
+#' Lists information about the specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 #'
 #' @usage
 #' emrcontainers_list_virtual_clusters(containerProviderId,
@@ -1718,7 +1829,16 @@ emrcontainers_list_tags_for_resource <- function(resourceArn) {
 #'       tags = list(
 #'         "string"
 #'       ),
-#'       securityConfigurationId = "string"
+#'       securityConfigurationId = "string",
+#'       sessionEnabled = TRUE|FALSE,
+#'       schedulerConfiguration = list(
+#'         maxInQueueJobRuns = 123,
+#'         maxConcurrentJobRuns = 123
+#'       ),
+#'       schedulerStatus = list(
+#'         currentInQueueJobRuns = 123,
+#'         currentConcurrentJobRuns = 123
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1844,7 +1964,8 @@ emrcontainers_list_virtual_clusters <- function(containerProviderId = NULL, cont
 #'         logStreamNamePrefix = "string"
 #'       ),
 #'       s3MonitoringConfiguration = list(
-#'         logUri = "string"
+#'         logUri = "string",
+#'         encryptionKeyArn = "string"
 #'       ),
 #'       containerLogRotationConfiguration = list(
 #'         rotationSize = "string",
@@ -1984,3 +2105,91 @@ emrcontainers_untag_resource <- function(resourceArn, tagKeys) {
   return(response)
 }
 .emrcontainers$operations$untag_resource <- emrcontainers_untag_resource
+
+#' Updates a virtual cluster
+#'
+#' @description
+#' Updates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, update, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
+#'
+#' @usage
+#' emrcontainers_update_virtual_cluster(id, schedulerConfiguration,
+#'   clientToken)
+#'
+#' @param id &#91;required&#93; The ID of the virtual cluster to update.
+#' @param schedulerConfiguration The scheduler configuration to apply to the virtual cluster. The new configuration fully replaces the existing one. If you omit a field, the corresponding limit is removed.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualCluster = list(
+#'     id = "string",
+#'     name = "string",
+#'     arn = "string",
+#'     state = "RUNNING"|"TERMINATING"|"TERMINATED"|"ARRESTED",
+#'     containerProvider = list(
+#'       type = "EKS",
+#'       id = "string",
+#'       info = list(
+#'         eksInfo = list(
+#'           namespace = "string",
+#'           nodeLabel = "string"
+#'         )
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     securityConfigurationId = "string",
+#'     sessionEnabled = TRUE|FALSE,
+#'     schedulerConfiguration = list(
+#'       maxInQueueJobRuns = 123,
+#'       maxConcurrentJobRuns = 123
+#'     ),
+#'     schedulerStatus = list(
+#'       currentInQueueJobRuns = 123,
+#'       currentConcurrentJobRuns = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_virtual_cluster(
+#'   id = "string",
+#'   schedulerConfiguration = list(
+#'     maxInQueueJobRuns = 123,
+#'     maxConcurrentJobRuns = 123
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emrcontainers_update_virtual_cluster
+#'
+#' @aliases emrcontainers_update_virtual_cluster
+emrcontainers_update_virtual_cluster <- function(id, schedulerConfiguration = NULL, clientToken) {
+  op <- new_operation(
+    name = "UpdateVirtualCluster",
+    http_method = "PATCH",
+    http_path = "/virtualclusters/{virtualClusterId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .emrcontainers$update_virtual_cluster_input(id = id, schedulerConfiguration = schedulerConfiguration, clientToken = clientToken)
+  output <- .emrcontainers$update_virtual_cluster_output()
+  config <- get_config()
+  svc <- .emrcontainers$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrcontainers$operations$update_virtual_cluster <- emrcontainers_update_virtual_cluster

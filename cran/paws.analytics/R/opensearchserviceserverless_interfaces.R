@@ -5,552 +5,460 @@ NULL
 
 .opensearchserviceserverless$batch_get_collection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ids = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["batch_get_collection_input"]]))
 }
 
 .opensearchserviceserverless$batch_get_collection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(collectionDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), standbyReplicas = structure(logical(0), tags = list(type = "string")), vectorOptions = structure(list(ServerlessVectorAcceleration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE)), collectionEndpoint = structure(logical(0), tags = list(type = "string")), dashboardEndpoint = structure(logical(0), tags = list(type = "string")), fipsEndpoints = structure(list(collectionEndpoint = structure(logical(0), tags = list(type = "string")), dashboardEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), failureCode = structure(logical(0), tags = list(type = "string")), failureMessage = structure(logical(0), tags = list(type = "string")), collectionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), collectionErrorDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["batch_get_collection_output"]]))
 }
 
 .opensearchserviceserverless$batch_get_collection_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ids = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["batch_get_collection_group_input"]]))
 }
 
 .opensearchserviceserverless$batch_get_collection_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(collectionGroupDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), standbyReplicas = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), capacityLimits = structure(list(maxIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), maxSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure")), numberOfCollections = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), collectionGroupErrorDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["batch_get_collection_group_output"]]))
 }
 
 .opensearchserviceserverless$batch_get_effective_lifecycle_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceIdentifiers = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["batch_get_effective_lifecycle_policy_input"]]))
 }
 
 .opensearchserviceserverless$batch_get_effective_lifecycle_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(effectiveLifecyclePolicyDetails = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string")), policyName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), retentionPeriod = structure(logical(0), tags = list(type = "string")), noMinRetentionPeriod = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), effectiveLifecyclePolicyErrorDetails = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["batch_get_effective_lifecycle_policy_output"]]))
 }
 
 .opensearchserviceserverless$batch_get_lifecycle_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(identifiers = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["batch_get_lifecycle_policy_input"]]))
 }
 
 .opensearchserviceserverless$batch_get_lifecycle_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecyclePolicyDetails = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), policyVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), policy = structure(list(), tags = list(type = "structure", document = TRUE)), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), lifecyclePolicyErrorDetails = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["batch_get_lifecycle_policy_output"]]))
 }
 
 .opensearchserviceserverless$batch_get_vpc_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ids = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["batch_get_vpc_endpoint_input"]]))
 }
 
 .opensearchserviceserverless$batch_get_vpc_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(vpcEndpointDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), failureCode = structure(logical(0), tags = list(type = "string")), failureMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), vpcEndpointErrorDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["batch_get_vpc_endpoint_output"]]))
 }
 
 .opensearchserviceserverless$create_access_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["create_access_policy_input"]]))
 }
 
 .opensearchserviceserverless$create_access_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accessPolicyDetail = structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), policyVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), policy = structure(list(), tags = list(type = "structure", document = TRUE)), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["create_access_policy_output"]]))
 }
 
 .opensearchserviceserverless$create_collection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), standbyReplicas = structure(logical(0), tags = list(type = "string")), vectorOptions = structure(list(ServerlessVectorAcceleration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), collectionGroupName = structure(logical(0), tags = list(type = "string")), encryptionConfig = structure(list(aWSOwnedKey = structure(logical(0), tags = list(type = "boolean", box = TRUE)), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["create_collection_input"]]))
 }
 
 .opensearchserviceserverless$create_collection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createCollectionDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), standbyReplicas = structure(logical(0), tags = list(type = "string")), vectorOptions = structure(list(ServerlessVectorAcceleration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE)), collectionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["create_collection_output"]]))
 }
 
 .opensearchserviceserverless$create_collection_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), standbyReplicas = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), capacityLimits = structure(list(maxIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), maxSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["create_collection_group_input"]]))
 }
 
 .opensearchserviceserverless$create_collection_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createCollectionGroupDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), standbyReplicas = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), capacityLimits = structure(list(maxIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), maxSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["create_collection_group_output"]]))
 }
 
 .opensearchserviceserverless$create_index_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), indexName = structure(logical(0), tags = list(type = "string")), indexSchema = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["create_index_input"]]))
 }
 
 .opensearchserviceserverless$create_index_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["create_index_output"]]))
 }
 
 .opensearchserviceserverless$create_lifecycle_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["create_lifecycle_policy_input"]]))
 }
 
 .opensearchserviceserverless$create_lifecycle_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecyclePolicyDetail = structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), policyVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), policy = structure(list(), tags = list(type = "structure", document = TRUE)), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["create_lifecycle_policy_output"]]))
 }
 
 .opensearchserviceserverless$create_security_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), samlOptions = structure(list(metadata = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string")), openSearchServerlessEntityId = structure(logical(0), tags = list(type = "string")), sessionTimeout = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), iamIdentityCenterOptions = structure(list(instanceArn = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), iamFederationOptions = structure(list(groupAttribute = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["create_security_config_input"]]))
 }
 
 .opensearchserviceserverless$create_security_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(securityConfigDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), configVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), samlOptions = structure(list(metadata = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string")), openSearchServerlessEntityId = structure(logical(0), tags = list(type = "string")), sessionTimeout = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), iamIdentityCenterOptions = structure(list(instanceArn = structure(logical(0), tags = list(type = "string")), applicationArn = structure(logical(0), tags = list(type = "string")), applicationName = structure(logical(0), tags = list(type = "string")), applicationDescription = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), iamFederationOptions = structure(list(groupAttribute = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["create_security_config_output"]]))
 }
 
 .opensearchserviceserverless$create_security_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["create_security_policy_input"]]))
 }
 
 .opensearchserviceserverless$create_security_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(securityPolicyDetail = structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), policyVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), policy = structure(list(), tags = list(type = "structure", document = TRUE)), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["create_security_policy_output"]]))
 }
 
 .opensearchserviceserverless$create_vpc_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["create_vpc_endpoint_input"]]))
 }
 
 .opensearchserviceserverless$create_vpc_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createVpcEndpointDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["create_vpc_endpoint_output"]]))
 }
 
 .opensearchserviceserverless$delete_access_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["delete_access_policy_input"]]))
 }
 
 .opensearchserviceserverless$delete_access_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["delete_access_policy_output"]]))
 }
 
 .opensearchserviceserverless$delete_collection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["delete_collection_input"]]))
 }
 
 .opensearchserviceserverless$delete_collection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deleteCollectionDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["delete_collection_output"]]))
 }
 
 .opensearchserviceserverless$delete_collection_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["delete_collection_group_input"]]))
 }
 
 .opensearchserviceserverless$delete_collection_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["delete_collection_group_output"]]))
 }
 
 .opensearchserviceserverless$delete_index_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), indexName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["delete_index_input"]]))
 }
 
 .opensearchserviceserverless$delete_index_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["delete_index_output"]]))
 }
 
 .opensearchserviceserverless$delete_lifecycle_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["delete_lifecycle_policy_input"]]))
 }
 
 .opensearchserviceserverless$delete_lifecycle_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["delete_lifecycle_policy_output"]]))
 }
 
 .opensearchserviceserverless$delete_security_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["delete_security_config_input"]]))
 }
 
 .opensearchserviceserverless$delete_security_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["delete_security_config_output"]]))
 }
 
 .opensearchserviceserverless$delete_security_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["delete_security_policy_input"]]))
 }
 
 .opensearchserviceserverless$delete_security_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["delete_security_policy_output"]]))
 }
 
 .opensearchserviceserverless$delete_vpc_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["delete_vpc_endpoint_input"]]))
 }
 
 .opensearchserviceserverless$delete_vpc_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deleteVpcEndpointDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["delete_vpc_endpoint_output"]]))
 }
 
 .opensearchserviceserverless$get_access_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["get_access_policy_input"]]))
 }
 
 .opensearchserviceserverless$get_access_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accessPolicyDetail = structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), policyVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), policy = structure(list(), tags = list(type = "structure", document = TRUE)), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["get_access_policy_output"]]))
 }
 
 .opensearchserviceserverless$get_account_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["get_account_settings_input"]]))
 }
 
 .opensearchserviceserverless$get_account_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accountSettingsDetail = structure(list(capacityLimits = structure(list(maxIndexingCapacityInOCU = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxSearchCapacityInOCU = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["get_account_settings_output"]]))
 }
 
 .opensearchserviceserverless$get_index_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), indexName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["get_index_input"]]))
 }
 
 .opensearchserviceserverless$get_index_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(indexSchema = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["get_index_output"]]))
 }
 
 .opensearchserviceserverless$get_policies_stats_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["get_policies_stats_input"]]))
 }
 
 .opensearchserviceserverless$get_policies_stats_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccessPolicyStats = structure(list(DataPolicyCount = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure")), SecurityPolicyStats = structure(list(EncryptionPolicyCount = structure(logical(0), tags = list(type = "long", box = TRUE)), NetworkPolicyCount = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure")), SecurityConfigStats = structure(list(SamlConfigCount = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure")), LifecyclePolicyStats = structure(list(RetentionPolicyCount = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure")), TotalPolicyCount = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["get_policies_stats_output"]]))
 }
 
 .opensearchserviceserverless$get_security_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["get_security_config_input"]]))
 }
 
 .opensearchserviceserverless$get_security_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(securityConfigDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), configVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), samlOptions = structure(list(metadata = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string")), openSearchServerlessEntityId = structure(logical(0), tags = list(type = "string")), sessionTimeout = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), iamIdentityCenterOptions = structure(list(instanceArn = structure(logical(0), tags = list(type = "string")), applicationArn = structure(logical(0), tags = list(type = "string")), applicationName = structure(logical(0), tags = list(type = "string")), applicationDescription = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), iamFederationOptions = structure(list(groupAttribute = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["get_security_config_output"]]))
 }
 
 .opensearchserviceserverless$get_security_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["get_security_policy_input"]]))
 }
 
 .opensearchserviceserverless$get_security_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(securityPolicyDetail = structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), policyVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), policy = structure(list(), tags = list(type = "structure", document = TRUE)), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["get_security_policy_output"]]))
 }
 
 .opensearchserviceserverless$list_access_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), resource = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["list_access_policies_input"]]))
 }
 
 .opensearchserviceserverless$list_access_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accessPolicySummaries = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), policyVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["list_access_policies_output"]]))
 }
 
 .opensearchserviceserverless$list_collection_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["list_collection_groups_input"]]))
 }
 
 .opensearchserviceserverless$list_collection_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(collectionGroupSummaries = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), numberOfCollections = structure(logical(0), tags = list(type = "integer", box = TRUE)), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), capacityLimits = structure(list(maxIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), maxSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["list_collection_groups_output"]]))
 }
 
 .opensearchserviceserverless$list_collections_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(collectionFilters = structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), collectionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["list_collections_input"]]))
 }
 
 .opensearchserviceserverless$list_collections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(collectionSummaries = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), collectionGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["list_collections_output"]]))
 }
 
 .opensearchserviceserverless$list_lifecycle_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["list_lifecycle_policies_input"]]))
 }
 
 .opensearchserviceserverless$list_lifecycle_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecyclePolicySummaries = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), policyVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["list_lifecycle_policies_output"]]))
 }
 
 .opensearchserviceserverless$list_security_configs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["list_security_configs_input"]]))
 }
 
 .opensearchserviceserverless$list_security_configs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(securityConfigSummaries = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), configVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["list_security_configs_output"]]))
 }
 
 .opensearchserviceserverless$list_security_policies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), resource = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["list_security_policies_input"]]))
 }
 
 .opensearchserviceserverless$list_security_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(securityPolicySummaries = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), policyVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["list_security_policies_output"]]))
 }
 
 .opensearchserviceserverless$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["list_tags_for_resource_input"]]))
 }
 
 .opensearchserviceserverless$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["list_tags_for_resource_output"]]))
 }
 
 .opensearchserviceserverless$list_vpc_endpoints_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(vpcEndpointFilters = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["list_vpc_endpoints_input"]]))
 }
 
 .opensearchserviceserverless$list_vpc_endpoints_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(vpcEndpointSummaries = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["list_vpc_endpoints_output"]]))
 }
 
 .opensearchserviceserverless$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["tag_resource_input"]]))
 }
 
 .opensearchserviceserverless$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["tag_resource_output"]]))
 }
 
 .opensearchserviceserverless$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["untag_resource_input"]]))
 }
 
 .opensearchserviceserverless$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["untag_resource_output"]]))
 }
 
 .opensearchserviceserverless$update_access_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), policyVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_access_policy_input"]]))
 }
 
 .opensearchserviceserverless$update_access_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accessPolicyDetail = structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), policyVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), policy = structure(list(), tags = list(type = "structure", document = TRUE)), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_access_policy_output"]]))
 }
 
 .opensearchserviceserverless$update_account_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(capacityLimits = structure(list(maxIndexingCapacityInOCU = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxSearchCapacityInOCU = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_account_settings_input"]]))
 }
 
 .opensearchserviceserverless$update_account_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accountSettingsDetail = structure(list(capacityLimits = structure(list(maxIndexingCapacityInOCU = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxSearchCapacityInOCU = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_account_settings_output"]]))
 }
 
 .opensearchserviceserverless$update_collection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), vectorOptions = structure(list(ServerlessVectorAcceleration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_collection_input"]]))
 }
 
 .opensearchserviceserverless$update_collection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(updateCollectionDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), vectorOptions = structure(list(ServerlessVectorAcceleration = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), arn = structure(logical(0), tags = list(type = "string")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_collection_output"]]))
 }
 
 .opensearchserviceserverless$update_collection_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), capacityLimits = structure(list(maxIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), maxSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_collection_group_input"]]))
 }
 
 .opensearchserviceserverless$update_collection_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(updateCollectionGroupDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), capacityLimits = structure(list(maxIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), maxSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minIndexingCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE)), minSearchCapacityInOCU = structure(logical(0), tags = list(type = "float", box = TRUE))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_collection_group_output"]]))
 }
 
 .opensearchserviceserverless$update_index_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), indexName = structure(logical(0), tags = list(type = "string")), indexSchema = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_index_input"]]))
 }
 
 .opensearchserviceserverless$update_index_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_index_output"]]))
 }
 
 .opensearchserviceserverless$update_lifecycle_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), policyVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_lifecycle_policy_input"]]))
 }
 
 .opensearchserviceserverless$update_lifecycle_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(lifecyclePolicyDetail = structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), policyVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), policy = structure(list(), tags = list(type = "structure", document = TRUE)), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_lifecycle_policy_output"]]))
 }
 
 .opensearchserviceserverless$update_security_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), configVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), samlOptions = structure(list(metadata = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string")), openSearchServerlessEntityId = structure(logical(0), tags = list(type = "string")), sessionTimeout = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), iamIdentityCenterOptionsUpdates = structure(list(userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), iamFederationOptions = structure(list(groupAttribute = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_security_config_input"]]))
 }
 
 .opensearchserviceserverless$update_security_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(securityConfigDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), configVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), samlOptions = structure(list(metadata = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string")), openSearchServerlessEntityId = structure(logical(0), tags = list(type = "string")), sessionTimeout = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), iamIdentityCenterOptions = structure(list(instanceArn = structure(logical(0), tags = list(type = "string")), applicationArn = structure(logical(0), tags = list(type = "string")), applicationName = structure(logical(0), tags = list(type = "string")), applicationDescription = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string")), groupAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), iamFederationOptions = structure(list(groupAttribute = structure(logical(0), tags = list(type = "string")), userAttribute = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_security_config_output"]]))
 }
 
 .opensearchserviceserverless$update_security_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), policyVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_security_policy_input"]]))
 }
 
 .opensearchserviceserverless$update_security_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(securityPolicyDetail = structure(list(type = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), policyVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), policy = structure(list(), tags = list(type = "structure", document = TRUE)), createdDate = structure(logical(0), tags = list(type = "long", box = TRUE)), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_security_policy_output"]]))
 }
 
 .opensearchserviceserverless$update_vpc_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), addSubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), removeSubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), addSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), removeSecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_vpc_endpoint_input"]]))
 }
 
 .opensearchserviceserverless$update_vpc_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UpdateVpcEndpointDetail = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), lastModifiedDate = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .opensearchserviceserverless_shapes[["update_vpc_endpoint_output"]]))
 }

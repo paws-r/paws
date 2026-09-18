@@ -105,13 +105,14 @@ ivs_batch_start_viewer_session_revocation <- function(viewerSessions) {
 #' See [https://www.paws-r-sdk.com/docs/ivs_create_ad_configuration/](https://www.paws-r-sdk.com/docs/ivs_create_ad_configuration/) for full documentation.
 #'
 #' @param name Ad configuration name. Defaults to “”.
-#' @param mediaTailorPlaybackConfigurations &#91;required&#93; List of integration configurations with media tailor resources.
+#' @param mediaTailorPlaybackConfigurations &#91;required&#93; List of integration configurations with MediaTailor resources. The first item in the list is the default playback configuration used for the ad configuration. To select a different configuration per viewing session, see [Generate and Sign IVS Playback Tokens](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels-generate-tokens.html).
+#' @param postRollConfiguration Configuration for the post-roll ad break to use for this ad configuration. Default: disabled (`enabled` set to false, `durationSeconds` set to 15).
 #' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`. See [Best practices and strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html) in *Tagging Amazon Web Services Resources and Tag Editor* for details, including restrictions that apply to tags and "Tag naming limits and requirements"; Amazon IVS has no service-specific constraints beyond what is documented there.
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_create_ad_configuration
-ivs_create_ad_configuration <- function(name = NULL, mediaTailorPlaybackConfigurations, tags = NULL) {
+ivs_create_ad_configuration <- function(name = NULL, mediaTailorPlaybackConfigurations, postRollConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateAdConfiguration",
     http_method = "POST",
@@ -120,7 +121,7 @@ ivs_create_ad_configuration <- function(name = NULL, mediaTailorPlaybackConfigur
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ivs$create_ad_configuration_input(name = name, mediaTailorPlaybackConfigurations = mediaTailorPlaybackConfigurations, tags = tags)
+  input <- .ivs$create_ad_configuration_input(name = name, mediaTailorPlaybackConfigurations = mediaTailorPlaybackConfigurations, postRollConfiguration = postRollConfiguration, tags = tags)
   output <- .ivs$create_ad_configuration_output()
   config <- get_config()
   svc <- .ivs$service(config, op)
@@ -139,7 +140,7 @@ ivs_create_ad_configuration <- function(name = NULL, mediaTailorPlaybackConfigur
 #'
 #' @param name Channel name.
 #' @param latencyMode Channel latency mode. Use `NORMAL` to broadcast and deliver live video up to Full HD. Use `LOW` for near-real-time interaction with viewers. Default: `LOW`.
-#' @param type Channel type, which determines the allowable resolution and bitrate. *If you exceed the allowable input resolution or bitrate, the stream probably will disconnect immediately.* Default: `STANDARD`. For details, see [Channel Types](https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/).
+#' @param type Channel type, which determines the allowable resolution and bitrate. *If you exceed the allowable input resolution or bitrate, the stream probably will disconnect immediately.* Default: `STANDARD`. For details, see [Channel Types](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/channel-types.html).
 #' @param authorized Whether the channel is private (enabled for playback authorization). Default: `false`.
 #' @param recordingConfigurationArn Recording-configuration ARN. A valid ARN value here both specifies the ARN and enables recording. Default: "" (empty string, recording is disabled).
 #' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`. See [Best practices and strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html) in *Tagging Amazon Web Services Resources and Tag Editor* for details, including restrictions that apply to tags and "Tag naming limits and requirements"; Amazon IVS has no service-specific constraints beyond what is documented there.
@@ -758,7 +759,7 @@ ivs_import_playback_key_pair <- function(publicKeyMaterial, name = NULL, tags = 
 #' See [https://www.paws-r-sdk.com/docs/ivs_insert_ad_break/](https://www.paws-r-sdk.com/docs/ivs_insert_ad_break/) for full documentation.
 #'
 #' @param channelArn &#91;required&#93; ARN of the channel into which the ad break is inserted.
-#' @param durationSeconds &#91;required&#93; Maximum duration of the ad break, in seconds.
+#' @param durationSeconds &#91;required&#93; Duration of the ad break, in seconds.
 #'
 #' @keywords internal
 #'
@@ -1244,6 +1245,40 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 }
 .ivs$operations$untag_resource <- ivs_untag_resource
 
+#' Updates a specified ad configuration
+#'
+#' @description
+#' Updates a specified ad configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivs_update_ad_configuration/](https://www.paws-r-sdk.com/docs/ivs_update_ad_configuration/) for full documentation.
+#'
+#' @param arn &#91;required&#93; ARN of the ad configuration to be updated.
+#' @param name Ad configuration name. The value does not need to be unique.
+#' @param mediaTailorPlaybackConfigurations List of integration configurations with MediaTailor resources. The first item in the list is the default playback configuration used for the ad configuration. To select a different configuration per viewing session, see [Generate and Sign IVS Playback Tokens](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels-generate-tokens.html).
+#' @param postRollConfiguration Configuration for the post-roll ad break to use for this ad configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_update_ad_configuration
+ivs_update_ad_configuration <- function(arn, name = NULL, mediaTailorPlaybackConfigurations = NULL, postRollConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateAdConfiguration",
+    http_method = "POST",
+    http_path = "/UpdateAdConfiguration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ivs$update_ad_configuration_input(arn = arn, name = name, mediaTailorPlaybackConfigurations = mediaTailorPlaybackConfigurations, postRollConfiguration = postRollConfiguration)
+  output <- .ivs$update_ad_configuration_output()
+  config <- get_config()
+  svc <- .ivs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$update_ad_configuration <- ivs_update_ad_configuration
+
 #' Updates a channel's configuration
 #'
 #' @description
@@ -1254,7 +1289,7 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' @param arn &#91;required&#93; ARN of the channel to be updated.
 #' @param name Channel name.
 #' @param latencyMode Channel latency mode. Use `NORMAL` to broadcast and deliver live video up to Full HD. Use `LOW` for near-real-time interaction with viewers.
-#' @param type Channel type, which determines the allowable resolution and bitrate. *If you exceed the allowable input resolution or bitrate, the stream probably will disconnect immediately.* Default: `STANDARD`. For details, see [Channel Types](https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/).
+#' @param type Channel type, which determines the allowable resolution and bitrate. *If you exceed the allowable input resolution or bitrate, the stream probably will disconnect immediately.* Default: `STANDARD`. For details, see [Channel Types](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/channel-types.html).
 #' @param authorized Whether the channel is private (enabled for playback authorization).
 #' @param recordingConfigurationArn Recording-configuration ARN. A valid ARN value here both specifies the ARN and enables recording. If this is set to an empty string, recording is disabled.
 #' @param insecureIngest Whether the channel allows insecure RTMP and SRT ingest. Default: `false`.

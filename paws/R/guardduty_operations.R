@@ -157,6 +157,138 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 }
 .guardduty$operations$archive_findings <- guardduty_archive_findings
 
+#' Enables a custom detection rule for your account by creating an
+#' association
+#'
+#' @description
+#' Enables a custom detection rule for your account by creating an association. You specify the rule and the mode in which it operates.
+#'
+#' @usage
+#' guardduty_create_custom_detection_rule_association(RuleId, Mode,
+#'   ClientToken, Tags)
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param Mode &#91;required&#93; The rule execution mode. Valid values: `LIVE` | `DRY_RUN`.
+#' @param ClientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. Maximum 64 characters.
+#' @param Tags The tags to be added to the new custom detection rule association resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleAssociation = list(
+#'     AssociationId = "string",
+#'     Arn = "string",
+#'     RuleId = "string",
+#'     AccountId = "string",
+#'     Mode = "LIVE"|"DRY_RUN",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExpiresAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_custom_detection_rule_association(
+#'   RuleId = "string",
+#'   Mode = "LIVE"|"DRY_RUN",
+#'   ClientToken = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_create_custom_detection_rule_association
+#'
+#' @aliases guardduty_create_custom_detection_rule_association
+guardduty_create_custom_detection_rule_association <- function(RuleId, Mode, ClientToken = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateCustomDetectionRuleAssociation",
+    http_method = "POST",
+    http_path = "/custom-detection-rule/association",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$create_custom_detection_rule_association_input(RuleId = RuleId, Mode = Mode, ClientToken = ClientToken, Tags = Tags)
+  output <- .guardduty$create_custom_detection_rule_association_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$create_custom_detection_rule_association <- guardduty_create_custom_detection_rule_association
+
+#' Creates an organization-level configuration that enables a custom
+#' detection rule across your organization
+#'
+#' @description
+#' Creates an organization-level configuration that enables a custom detection rule across your organization. This operation is available only to the delegated administrator account.
+#'
+#' @usage
+#' guardduty_create_custom_detection_rule_org_configuration(RuleId, Mode,
+#'   IncludeAccountIds, ExcludeAccountIds, ClientToken)
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param Mode &#91;required&#93; The execution mode of the organization configuration. Valid values: `LIVE` | `DRY_RUN`.
+#' @param IncludeAccountIds The account IDs to include in the organization configuration. Mutually exclusive with `ExcludeAccountIds`.
+#' @param ExcludeAccountIds The account IDs to exclude from the organization configuration. Mutually exclusive with `IncludeAccountIds`.
+#' @param ClientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_custom_detection_rule_org_configuration(
+#'   RuleId = "string",
+#'   Mode = "LIVE"|"DRY_RUN",
+#'   IncludeAccountIds = list(
+#'     "string"
+#'   ),
+#'   ExcludeAccountIds = list(
+#'     "string"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_create_custom_detection_rule_org_configuration
+#'
+#' @aliases guardduty_create_custom_detection_rule_org_configuration
+guardduty_create_custom_detection_rule_org_configuration <- function(RuleId, Mode, IncludeAccountIds = NULL, ExcludeAccountIds = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateCustomDetectionRuleOrgConfiguration",
+    http_method = "POST",
+    http_path = "/custom-detection-rule/org-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$create_custom_detection_rule_org_configuration_input(RuleId = RuleId, Mode = Mode, IncludeAccountIds = IncludeAccountIds, ExcludeAccountIds = ExcludeAccountIds, ClientToken = ClientToken)
+  output <- .guardduty$create_custom_detection_rule_org_configuration_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$create_custom_detection_rule_org_configuration <- guardduty_create_custom_detection_rule_org_configuration
+
 #' Creates a single GuardDuty detector
 #'
 #' @description
@@ -228,7 +360,7 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 #'   ),
 #'   Features = list(
 #'     list(
-#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"RUNTIME_MONITORING",
+#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"RUNTIME_MONITORING"|"AI_PROTECTION"|"AI_ANALYST",
 #'       Status = "ENABLED"|"DISABLED",
 #'       AdditionalConfiguration = list(
 #'         list(
@@ -296,8 +428,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   createdAt
 #' 
 #'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
-#' 
-#' -   description
 #' 
 #' -   id
 #' 
@@ -633,10 +763,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   resource.rdsDbInstanceDetails.publiclyAccessible
 #' 
-#' -   resource.rdsDbInstanceDetails.tags.key
-#' 
-#' -   resource.rdsDbInstanceDetails.tags.value
-#' 
 #' -   resource.rdsDbInstanceDetails.vpcId
 #' 
 #' -   resource.rdsDbInstanceDetails.vpcSecurityGroups.status
@@ -734,8 +860,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   schemaVersion
 #' 
 #' -   service.action.actionType
-#' 
-#' -   service.action.awsApiCallAction.affectedResources
 #' 
 #' -   service.action.awsApiCallAction.api
 #' 
@@ -1024,10 +1148,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   service.archived
 #' 
 #' -   service.count
-#' 
-#' -   service.detection.anomaly.profiles
-#' 
-#' -   service.detection.anomaly.unusual.behavior
 #' 
 #' -   service.detection.sequence.actors.id
 #' 
@@ -1601,8 +1721,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #'     For more information, see [Findings severity levels](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings-severity.html) in the *Amazon GuardDuty User Guide*.
 #' 
-#' -   title
-#' 
 #' -   type
 #' 
 #' -   updatedAt
@@ -1760,6 +1878,75 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
   return(response)
 }
 .guardduty$operations$create_ip_set <- guardduty_create_ip_set
+
+#' This API is currently available as a preview
+#'
+#' @description
+#' This API is currently available as a preview. During the preview, you can initiate up to 10 investigations per account per day, with a total limit of 100 investigations per account. This feature is available in the following Amazon Web Services Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe (Stockholm), and Asia Pacific (Tokyo).
+#' 
+#' Initiates a GuardDuty investigation that automatically analyzes security findings, correlates related activity, performs account-level analysis, and produces a structured investigation summary with recommended next steps.
+#' 
+#' Only the administrator account can create an investigation. Member accounts don't have permission to create investigations from their accounts.
+#' 
+#' To use this operation, the `AI_ANALYST` feature must be enabled on your detector.
+#' 
+#' This feature uses Amazon Bedrock models that leverage Cross-Region Inference (CRIS), which automatically selects the optimal Amazon Web Services Region within your geography to process the investigation analysis and generate the investigation report. This maximizes available compute resources, model availability, and delivers the best customer experience. Your data remains stored only in the Region where the investigation request originates, however, investigation data and summary results may be processed outside that Region. All data is transmitted encrypted across Amazon's secure network. For more information, see [GuardDuty Investigation](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-investigation.html).
+#'
+#' @usage
+#' guardduty_create_investigation(DetectorId, TriggerPrompt, ClientToken)
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector for the account in which the investigation is created.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in the GuardDuty console, or run the [`list_detectors`][guardduty_list_detectors] API.
+#' @param TriggerPrompt &#91;required&#93; A natural-language description of what to investigate. For example:
+#' 
+#' -   `"Investigate finding 1ab2c3d4e5f6a7b8c9d0e1f2a3b4c5d6 in account 123456789012"`
+#' 
+#' -   `"Analyze findings in account with id 123456789012"`
+#' 
+#' -   `"Analyze findings in my organization"`
+#' @param ClientToken The idempotency token for the create request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InvestigationId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_investigation(
+#'   DetectorId = "string",
+#'   TriggerPrompt = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_create_investigation
+#'
+#' @aliases guardduty_create_investigation
+guardduty_create_investigation <- function(DetectorId, TriggerPrompt, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateInvestigation",
+    http_method = "POST",
+    http_path = "/detector/{DetectorId}/investigation",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$create_investigation_input(DetectorId = DetectorId, TriggerPrompt = TriggerPrompt, ClientToken = ClientToken)
+  output <- .guardduty$create_investigation_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$create_investigation <- guardduty_create_investigation
 
 #' Creates a new Malware Protection plan for the protected resource
 #'
@@ -2289,6 +2476,99 @@ guardduty_decline_invitations <- function(AccountIds) {
   return(response)
 }
 .guardduty$operations$decline_invitations <- guardduty_decline_invitations
+
+#' Disables a custom detection rule by deleting its association
+#'
+#' @description
+#' Disables a custom detection rule by deleting its association. This operation is idempotent.
+#'
+#' @usage
+#' guardduty_delete_custom_detection_rule_association(RuleId,
+#'   AssociationId)
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param AssociationId &#91;required&#93; The unique identifier for the association to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_custom_detection_rule_association(
+#'   RuleId = "string",
+#'   AssociationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_delete_custom_detection_rule_association
+#'
+#' @aliases guardduty_delete_custom_detection_rule_association
+guardduty_delete_custom_detection_rule_association <- function(RuleId, AssociationId) {
+  op <- new_operation(
+    name = "DeleteCustomDetectionRuleAssociation",
+    http_method = "DELETE",
+    http_path = "/custom-detection-rule/rule/{RuleId}/association/{AssociationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$delete_custom_detection_rule_association_input(RuleId = RuleId, AssociationId = AssociationId)
+  output <- .guardduty$delete_custom_detection_rule_association_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$delete_custom_detection_rule_association <- guardduty_delete_custom_detection_rule_association
+
+#' Deletes the organization-level configuration for a custom detection rule
+#'
+#' @description
+#' Deletes the organization-level configuration for a custom detection rule. This operation is available only to the delegated administrator account.
+#'
+#' @usage
+#' guardduty_delete_custom_detection_rule_org_configuration(RuleId, Mode)
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param Mode &#91;required&#93; The execution mode of the organization configuration to delete. Valid values: `LIVE` | `DRY_RUN`.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_custom_detection_rule_org_configuration(
+#'   RuleId = "string",
+#'   Mode = "LIVE"|"DRY_RUN"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_delete_custom_detection_rule_org_configuration
+#'
+#' @aliases guardduty_delete_custom_detection_rule_org_configuration
+guardduty_delete_custom_detection_rule_org_configuration <- function(RuleId, Mode) {
+  op <- new_operation(
+    name = "DeleteCustomDetectionRuleOrgConfiguration",
+    http_method = "DELETE",
+    http_path = "/custom-detection-rule/org-configuration/{RuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$delete_custom_detection_rule_org_configuration_input(RuleId = RuleId, Mode = Mode)
+  output <- .guardduty$delete_custom_detection_rule_org_configuration_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$delete_custom_detection_rule_org_configuration <- guardduty_delete_custom_detection_rule_org_configuration
 
 #' Deletes an Amazon GuardDuty detector that is specified by the detector
 #' ID
@@ -2952,7 +3232,7 @@ guardduty_describe_malware_scans <- function(DetectorId, NextToken = NULL, MaxRe
 #'   ),
 #'   Features = list(
 #'     list(
-#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"RUNTIME_MONITORING",
+#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"RUNTIME_MONITORING"|"AI_PROTECTION",
 #'       AutoEnable = "NEW"|"NONE"|"ALL",
 #'       AdditionalConfiguration = list(
 #'         list(
@@ -3459,6 +3739,217 @@ guardduty_get_coverage_statistics <- function(DetectorId, FilterCriteria = NULL,
 }
 .guardduty$operations$get_coverage_statistics <- guardduty_get_coverage_statistics
 
+#' Returns details for a custom detection rule in GuardDuty, including its
+#' detection logic
+#'
+#' @description
+#' Returns details for a custom detection rule in GuardDuty, including its detection logic.
+#'
+#' @usage
+#' guardduty_get_custom_detection_rule(RuleId)
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rule = list(
+#'     RuleId = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     Severity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW",
+#'     DataSource = "CloudTrailManagementEvent",
+#'     Tactic = "string",
+#'     Technique = "string",
+#'     Service = "string",
+#'     Definition = list(
+#'       Expression = "string"
+#'     ),
+#'     Language = "SQL",
+#'     Schema = "CloudTrail",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_custom_detection_rule(
+#'   RuleId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_custom_detection_rule
+#'
+#' @aliases guardduty_get_custom_detection_rule
+guardduty_get_custom_detection_rule <- function(RuleId) {
+  op <- new_operation(
+    name = "GetCustomDetectionRule",
+    http_method = "GET",
+    http_path = "/custom-detection-rule/rule/{RuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$get_custom_detection_rule_input(RuleId = RuleId)
+  output <- .guardduty$get_custom_detection_rule_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_custom_detection_rule <- guardduty_get_custom_detection_rule
+
+#' Returns details for a custom detection rule association
+#'
+#' @description
+#' Returns details for a custom detection rule association.
+#'
+#' @usage
+#' guardduty_get_custom_detection_rule_association(RuleId, AssociationId)
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param AssociationId &#91;required&#93; The unique identifier for the association.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleAssociation = list(
+#'     AssociationId = "string",
+#'     Arn = "string",
+#'     RuleId = "string",
+#'     AccountId = "string",
+#'     Mode = "LIVE"|"DRY_RUN",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExpiresAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_custom_detection_rule_association(
+#'   RuleId = "string",
+#'   AssociationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_custom_detection_rule_association
+#'
+#' @aliases guardduty_get_custom_detection_rule_association
+guardduty_get_custom_detection_rule_association <- function(RuleId, AssociationId) {
+  op <- new_operation(
+    name = "GetCustomDetectionRuleAssociation",
+    http_method = "GET",
+    http_path = "/custom-detection-rule/rule/{RuleId}/association/{AssociationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$get_custom_detection_rule_association_input(RuleId = RuleId, AssociationId = AssociationId)
+  output <- .guardduty$get_custom_detection_rule_association_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_custom_detection_rule_association <- guardduty_get_custom_detection_rule_association
+
+#' Returns the organization-level configuration for a custom detection rule
+#'
+#' @description
+#' Returns the organization-level configuration for a custom detection rule.
+#'
+#' @usage
+#' guardduty_get_custom_detection_rule_org_configuration(RuleId, Mode)
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param Mode &#91;required&#93; The execution mode of the organization configuration to retrieve. Valid values: `LIVE` | `DRY_RUN`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Configuration = list(
+#'     RuleId = "string",
+#'     Mode = "LIVE"|"DRY_RUN",
+#'     Status = "ACTIVE"|"PROCESSING"|"FAILED",
+#'     StatusReason = "string",
+#'     IncludeAccountIds = list(
+#'       "string"
+#'     ),
+#'     ExcludeAccountIds = list(
+#'       "string"
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExpiresAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_custom_detection_rule_org_configuration(
+#'   RuleId = "string",
+#'   Mode = "LIVE"|"DRY_RUN"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_custom_detection_rule_org_configuration
+#'
+#' @aliases guardduty_get_custom_detection_rule_org_configuration
+guardduty_get_custom_detection_rule_org_configuration <- function(RuleId, Mode) {
+  op <- new_operation(
+    name = "GetCustomDetectionRuleOrgConfiguration",
+    http_method = "GET",
+    http_path = "/custom-detection-rule/org-configuration/{RuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$get_custom_detection_rule_org_configuration_input(RuleId = RuleId, Mode = Mode)
+  output <- .guardduty$get_custom_detection_rule_org_configuration_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_custom_detection_rule_org_configuration <- guardduty_get_custom_detection_rule_org_configuration
+
 #' Retrieves a GuardDuty detector specified by the detectorId
 #'
 #' @description
@@ -3515,7 +4006,7 @@ guardduty_get_coverage_statistics <- function(DetectorId, FilterCriteria = NULL,
 #'   ),
 #'   Features = list(
 #'     list(
-#'       Name = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"RUNTIME_MONITORING",
+#'       Name = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"RUNTIME_MONITORING"|"AI_PROTECTION"|"AI_ANALYST",
 #'       Status = "ENABLED"|"DISABLED",
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -3620,7 +4111,14 @@ guardduty_get_detector <- function(DetectorId) {
 #'   ),
 #'   Tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Version = 123
 #' )
 #' ```
 #'
@@ -4050,7 +4548,39 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'         ),
 #'         RecoveryPointDetails = list(
 #'           RecoveryPointArn = "string",
-#'           BackupVaultName = "string"
+#'           BackupVaultName = "string",
+#'           ContinuousScanDetails = list(
+#'             StartTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             EndTime = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         BedrockGuardrailDetails = list(
+#'           GuardrailArn = "string",
+#'           GuardrailVersion = "string",
+#'           Guardrails = list(
+#'             list(
+#'               Arn = "string",
+#'               Version = "string"
+#'             )
+#'           ),
+#'           GuardrailAction = "GUARDRAIL_INTERVENED"|"NONE",
+#'           GuardrailSource = "INPUT"|"OUTPUT",
+#'           ContentPolicyFilters = list(
+#'             list(
+#'               Type = "PROMPT_ATTACK"|"JAILBREAK"|"HATE"|"INSULTS"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT",
+#'               Confidence = "HIGH"|"MEDIUM"|"LOW"|"NONE",
+#'               Action = "BLOCKED"|"NONE"
+#'             )
+#'           )
+#'         ),
+#'         ModelDetails = list(
+#'           list(
+#'             ModelId = "string"
+#'           )
 #'         )
 #'       ),
 #'       SchemaVersion = "string",
@@ -4458,7 +4988,12 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'             ToolCategory = "string",
 #'             ServiceName = "string",
 #'             CommandLineExample = "string",
-#'             ThreatFilePath = "string"
+#'             ThreatFilePath = "string",
+#'             FileOperation = "string",
+#'             FilePath = "string",
+#'             RelatedFilePaths = list(
+#'               "string"
+#'             )
 #'           )
 #'         ),
 #'         Detection = list(
@@ -4467,11 +5002,14 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'               list(
 #'                 list(
 #'                   list(
-#'                     ProfileType = "FREQUENCY",
-#'                     ProfileSubtype = "FREQUENT"|"INFREQUENT"|"UNSEEN"|"RARE",
+#'                     ProfileType = "FREQUENCY"|"VOLUME",
+#'                     ProfileSubtype = "FREQUENT"|"INFREQUENT"|"UNSEEN"|"RARE"|"COUNT"|"AVERAGE",
 #'                     Observations = list(
 #'                       Text = list(
 #'                         "string"
+#'                       ),
+#'                       Number = list(
+#'                         123
 #'                       )
 #'                     )
 #'                   )
@@ -4482,11 +5020,14 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'               Behavior = list(
 #'                 list(
 #'                   list(
-#'                     ProfileType = "FREQUENCY",
-#'                     ProfileSubtype = "FREQUENT"|"INFREQUENT"|"UNSEEN"|"RARE",
+#'                     ProfileType = "FREQUENCY"|"VOLUME",
+#'                     ProfileSubtype = "FREQUENT"|"INFREQUENT"|"UNSEEN"|"RARE"|"COUNT"|"AVERAGE",
 #'                     Observations = list(
 #'                       Text = list(
 #'                         "string"
+#'                       ),
+#'                       Number = list(
+#'                         123
 #'                       )
 #'                     )
 #'                   )
@@ -4530,7 +5071,7 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                 Uid = "string",
 #'                 Name = "string",
 #'                 AccountId = "string",
-#'                 ResourceType = "EC2_INSTANCE"|"EC2_NETWORK_INTERFACE"|"S3_BUCKET"|"S3_OBJECT"|"ACCESS_KEY"|"EKS_CLUSTER"|"KUBERNETES_WORKLOAD"|"CONTAINER"|"ECS_CLUSTER"|"ECS_TASK"|"AUTOSCALING_AUTO_SCALING_GROUP"|"IAM_INSTANCE_PROFILE"|"CLOUDFORMATION_STACK"|"EC2_LAUNCH_TEMPLATE"|"EC2_VPC"|"EC2_IMAGE",
+#'                 ResourceType = "EC2_INSTANCE"|"EC2_NETWORK_INTERFACE"|"S3_BUCKET"|"S3_OBJECT"|"ACCESS_KEY"|"EKS_CLUSTER"|"KUBERNETES_WORKLOAD"|"CONTAINER"|"ECS_CLUSTER"|"ECS_TASK"|"AUTOSCALING_AUTO_SCALING_GROUP"|"IAM_INSTANCE_PROFILE"|"CLOUDFORMATION_STACK"|"EC2_LAUNCH_TEMPLATE"|"EC2_VPC"|"EC2_IMAGE"|"BEDROCK_CUSTOM_MODEL"|"BEDROCK_IMPORTED_MODEL"|"BEDROCK_PROVISIONED_MODEL"|"BEDROCK_CUSTOM_MODEL_DEPLOYMENT"|"BEDROCK_INFERENCE_PROFILE"|"BEDROCK_APPLICATION_INFERENCE_PROFILE"|"BEDROCK_PROMPT"|"BEDROCK_PROMPT_ROUTER"|"BEDROCK_GUARDRAIL"|"SAGEMAKER_ENDPOINT",
 #'                 Region = "string",
 #'                 Service = "string",
 #'                 CloudPartition = "string",
@@ -4686,6 +5227,11 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                     Ec2InstanceUids = list(
 #'                       "string"
 #'                     )
+#'                   ),
+#'                   BedrockGuardrail = list(
+#'                     Version = "string",
+#'                     GuardrailAction = "GUARDRAIL_INTERVENED"|"NONE",
+#'                     GuardrailSource = "INPUT"|"OUTPUT"
 #'                   )
 #'                 )
 #'               )
@@ -4747,6 +5293,17 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                       "string"
 #'                     ),
 #'                     Title = "string"
+#'                   )
+#'                 ),
+#'                 Activities = list(
+#'                   list(
+#'                     Type = "API_CALL",
+#'                     Api = list(
+#'                       Operation = "string",
+#'                       Service = "string",
+#'                       Error = "string",
+#'                       UserAgent = "string"
+#'                     )
 #'                   )
 #'                 )
 #'               )
@@ -5068,6 +5625,91 @@ guardduty_get_ip_set <- function(DetectorId, IpSetId) {
   return(response)
 }
 .guardduty$operations$get_ip_set <- guardduty_get_ip_set
+
+#' This API is currently available as a preview
+#'
+#' @description
+#' This API is currently available as a preview. This feature is available in the following Amazon Web Services Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe (Stockholm), and Asia Pacific (Tokyo).
+#' 
+#' Retrieves the results and status of a specific GuardDuty investigation.
+#' 
+#' An administrator account can retrieve any investigation within the organization. Member accounts can only retrieve investigations that belong to them.
+#'
+#' @usage
+#' guardduty_get_investigation(DetectorId, InvestigationId)
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector associated with the investigation.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in the GuardDuty console, or run the [`list_detectors`][guardduty_list_detectors] API.
+#' @param InvestigationId &#91;required&#93; The unique identifier of the investigation to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Investigation = list(
+#'     InvestigationId = "string",
+#'     Status = "RUNNING"|"COMPLETED"|"FAILED",
+#'     TriggerPrompt = "string",
+#'     TriggeredBy = "string",
+#'     Metadata = list(
+#'       Version = "string",
+#'       Product = list(
+#'         Name = "string",
+#'         Feature = "string"
+#'       )
+#'     ),
+#'     Cloud = list(
+#'       Provider = "AWS",
+#'       Region = "string",
+#'       Account = "string"
+#'     ),
+#'     RiskLevel = "Info"|"Low"|"Medium"|"High"|"Critical",
+#'     Risk = "string",
+#'     Confidence = "Unknown"|"Low"|"Medium"|"High",
+#'     Summary = "string",
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Error = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_investigation(
+#'   DetectorId = "string",
+#'   InvestigationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_investigation
+#'
+#' @aliases guardduty_get_investigation
+guardduty_get_investigation <- function(DetectorId, InvestigationId) {
+  op <- new_operation(
+    name = "GetInvestigation",
+    http_method = "GET",
+    http_path = "/detector/{DetectorId}/investigation/{InvestigationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$get_investigation_input(DetectorId = DetectorId, InvestigationId = InvestigationId)
+  output <- .guardduty$get_investigation_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_investigation <- guardduty_get_investigation
 
 #' Returns the count of all GuardDuty membership invitations that were sent
 #' to the current member account except the currently accepted invitation
@@ -5519,7 +6161,7 @@ guardduty_get_master_account <- function(DetectorId) {
 #'       ),
 #'       Features = list(
 #'         list(
-#'           Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"RUNTIME_MONITORING",
+#'           Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"RUNTIME_MONITORING"|"AI_PROTECTION",
 #'           Status = "ENABLED"|"DISABLED",
 #'           UpdatedAt = as.POSIXct(
 #'             "2015-01-01"
@@ -5681,7 +6323,7 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
 #'       EnabledAccountsCount = 123,
 #'       CountByFeature = list(
 #'         list(
-#'           Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"RUNTIME_MONITORING",
+#'           Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"RUNTIME_MONITORING"|"AI_PROTECTION",
 #'           EnabledAccountsCount = 123,
 #'           AdditionalConfiguration = list(
 #'             list(
@@ -5769,7 +6411,7 @@ guardduty_get_organization_statistics <- function() {
 #'       ),
 #'       Features = list(
 #'         list(
-#'           Name = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING",
+#'           Name = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"AI_PROTECTION",
 #'           FreeTrialDaysRemaining = 123
 #'         )
 #'       )
@@ -6047,7 +6689,7 @@ guardduty_get_trusted_entity_set <- function(DetectorId, TrustedEntitySetId) {
 #'     ),
 #'     TopAccountsByFeature = list(
 #'       list(
-#'         Feature = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"RDS_DBI_PROTECTION_PROVISIONED"|"RDS_DBI_PROTECTION_SERVERLESS",
+#'         Feature = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"RDS_DBI_PROTECTION_PROVISIONED"|"RDS_DBI_PROTECTION_SERVERLESS"|"AI_PROTECTION",
 #'         Accounts = list(
 #'           list(
 #'             AccountId = "string",
@@ -6088,7 +6730,7 @@ guardduty_get_trusted_entity_set <- function(DetectorId, TrustedEntitySetId) {
 #'     ),
 #'     SumByFeature = list(
 #'       list(
-#'         Feature = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"RDS_DBI_PROTECTION_PROVISIONED"|"RDS_DBI_PROTECTION_SERVERLESS",
+#'         Feature = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"RDS_DBI_PROTECTION_PROVISIONED"|"RDS_DBI_PROTECTION_SERVERLESS"|"AI_PROTECTION",
 #'         Total = list(
 #'           Amount = "string",
 #'           Unit = "string"
@@ -6116,7 +6758,7 @@ guardduty_get_trusted_entity_set <- function(DetectorId, TrustedEntitySetId) {
 #'       "string"
 #'     ),
 #'     Features = list(
-#'       "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"RDS_DBI_PROTECTION_PROVISIONED"|"RDS_DBI_PROTECTION_SERVERLESS"
+#'       "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"RDS_DBI_PROTECTION_PROVISIONED"|"RDS_DBI_PROTECTION_SERVERLESS"|"AI_PROTECTION"
 #'     )
 #'   ),
 #'   Unit = "string",
@@ -6349,6 +6991,232 @@ guardduty_list_coverage <- function(DetectorId, NextToken = NULL, MaxResults = N
   return(response)
 }
 .guardduty$operations$list_coverage <- guardduty_list_coverage
+
+#' Returns all custom detection rule associations for your account
+#'
+#' @description
+#' Returns all custom detection rule associations for your account. You can filter by rule ID and mode.
+#'
+#' @usage
+#' guardduty_list_custom_detection_rule_associations(MaxResults, NextToken,
+#'   RuleId, Mode)
+#'
+#' @param MaxResults The maximum number of results to return in a single page. Minimum value of 1, maximum value of 100.
+#' @param NextToken A pagination token from a previous response. Use this token to retrieve the next page of results.
+#' @param RuleId The unique identifier for the custom detection rule to filter associations by.
+#' @param Mode The rule execution mode to filter associations by.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleAssociations = list(
+#'     list(
+#'       AssociationId = "string",
+#'       Arn = "string",
+#'       RuleId = "string",
+#'       Mode = "LIVE"|"DRY_RUN",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExpiresAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_custom_detection_rule_associations(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   RuleId = "string",
+#'   Mode = "LIVE"|"DRY_RUN"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_custom_detection_rule_associations
+#'
+#' @aliases guardduty_list_custom_detection_rule_associations
+guardduty_list_custom_detection_rule_associations <- function(MaxResults = NULL, NextToken = NULL, RuleId = NULL, Mode = NULL) {
+  op <- new_operation(
+    name = "ListCustomDetectionRuleAssociations",
+    http_method = "GET",
+    http_path = "/custom-detection-rule/association",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RuleAssociations"),
+    stream_api = FALSE
+  )
+  input <- .guardduty$list_custom_detection_rule_associations_input(MaxResults = MaxResults, NextToken = NextToken, RuleId = RuleId, Mode = Mode)
+  output <- .guardduty$list_custom_detection_rule_associations_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_custom_detection_rule_associations <- guardduty_list_custom_detection_rule_associations
+
+#' Returns all organization-level configurations for custom detection rules
+#'
+#' @description
+#' Returns all organization-level configurations for custom detection rules. You can filter the results by status.
+#'
+#' @usage
+#' guardduty_list_custom_detection_rule_org_configurations(MaxResults,
+#'   NextToken, Status)
+#'
+#' @param MaxResults The maximum number of results to return in a single page. Minimum value of 1, maximum value of 100.
+#' @param NextToken A pagination token from a previous response. Use this token to retrieve the next page of results.
+#' @param Status The configuration status to filter by.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Configurations = list(
+#'     list(
+#'       RuleId = "string",
+#'       Mode = "LIVE"|"DRY_RUN",
+#'       Status = "ACTIVE"|"PROCESSING"|"FAILED",
+#'       StatusReason = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExpiresAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_custom_detection_rule_org_configurations(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   Status = "ACTIVE"|"PROCESSING"|"FAILED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_custom_detection_rule_org_configurations
+#'
+#' @aliases guardduty_list_custom_detection_rule_org_configurations
+guardduty_list_custom_detection_rule_org_configurations <- function(MaxResults = NULL, NextToken = NULL, Status = NULL) {
+  op <- new_operation(
+    name = "ListCustomDetectionRuleOrgConfigurations",
+    http_method = "GET",
+    http_path = "/custom-detection-rule/org-configuration",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Configurations"),
+    stream_api = FALSE
+  )
+  input <- .guardduty$list_custom_detection_rule_org_configurations_input(MaxResults = MaxResults, NextToken = NextToken, Status = Status)
+  output <- .guardduty$list_custom_detection_rule_org_configurations_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_custom_detection_rule_org_configurations <- guardduty_list_custom_detection_rule_org_configurations
+
+#' Returns all available custom detection rules in GuardDuty
+#'
+#' @description
+#' Returns all available custom detection rules in GuardDuty. You can filter the results by data source, severity, tactic, technique, and service.
+#'
+#' @usage
+#' guardduty_list_custom_detection_rules(MaxResults, NextToken, Filters)
+#'
+#' @param MaxResults The maximum number of results to return in a single page. Minimum value of 1, maximum value of 100.
+#' @param NextToken A pagination token from a previous response. Use this token to retrieve the next page of results.
+#' @param Filters A list of filter criteria to apply when listing custom detection rules.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rules = list(
+#'     list(
+#'       RuleId = "string",
+#'       Arn = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Severity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW",
+#'       DataSource = "CloudTrailManagementEvent",
+#'       Tactic = "string",
+#'       Technique = "string",
+#'       Service = "string",
+#'       Language = "SQL",
+#'       Schema = "CloudTrail",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_custom_detection_rules(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "name"|"description"|"dataSource"|"severity"|"tactic"|"technique"|"service",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       Condition = "EQUALS"|"CONTAINS"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_custom_detection_rules
+#'
+#' @aliases guardduty_list_custom_detection_rules
+guardduty_list_custom_detection_rules <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListCustomDetectionRules",
+    http_method = "POST",
+    http_path = "/custom-detection-rule/rule",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Rules"),
+    stream_api = FALSE
+  )
+  input <- .guardduty$list_custom_detection_rules_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
+  output <- .guardduty$list_custom_detection_rules_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_custom_detection_rules <- guardduty_list_custom_detection_rules
 
 #' Lists detectorIds of all the existing Amazon GuardDuty detector
 #' resources
@@ -6723,6 +7591,88 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
   return(response)
 }
 .guardduty$operations$list_ip_sets <- guardduty_list_ip_sets
+
+#' This API is currently available as a preview
+#'
+#' @description
+#' This API is currently available as a preview. This feature is available in the following Amazon Web Services Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe (Stockholm), and Asia Pacific (Tokyo).
+#' 
+#' Returns a list of investigations associated with the specified GuardDuty detector.
+#' 
+#' An administrator account sees all investigations across the organization. Member accounts see only the investigations that belong to them.
+#'
+#' @usage
+#' guardduty_list_investigations(DetectorId, SortCriteria, MaxResults,
+#'   NextToken)
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector whose investigations you want to list.
+#' 
+#' To find the `detectorId` in the current Region, see the Settings page in the GuardDuty console, or run the [`list_detectors`][guardduty_list_detectors] API.
+#' @param SortCriteria Represents the criteria used for sorting investigations.
+#' @param MaxResults You can use this parameter to indicate the maximum number of items you want in the response. The default value is 50.
+#' @param NextToken You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the list action. For subsequent calls to the action, fill nextToken in the request with the value of NextToken from the previous response to continue listing data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Investigations = list(
+#'     list(
+#'       InvestigationId = "string",
+#'       Status = "RUNNING"|"COMPLETED"|"FAILED",
+#'       TriggerPrompt = "string",
+#'       RiskLevel = "Info"|"Low"|"Medium"|"High"|"Critical",
+#'       Confidence = "Unknown"|"Low"|"Medium"|"High",
+#'       Title = "string",
+#'       AccountId = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_investigations(
+#'   DetectorId = "string",
+#'   SortCriteria = list(
+#'     AttributeName = "START_TIME"|"END_TIME"|"STATUS"|"RISK_LEVEL"|"CONFIDENCE",
+#'     OrderBy = "ASC"|"DESC"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_investigations
+#'
+#' @aliases guardduty_list_investigations
+guardduty_list_investigations <- function(DetectorId, SortCriteria = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListInvestigations",
+    http_method = "POST",
+    http_path = "/detector/{DetectorId}/investigation/list",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Investigations"),
+    stream_api = FALSE
+  )
+  input <- .guardduty$list_investigations_input(DetectorId = DetectorId, SortCriteria = SortCriteria, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .guardduty$list_investigations_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_investigations <- guardduty_list_investigations
 
 #' Lists all GuardDuty membership invitations that were sent to the current
 #' Amazon Web Services account
@@ -7737,6 +8687,111 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .guardduty$operations$untag_resource <- guardduty_untag_resource
 
+#' Updates the mode of an existing custom detection rule association
+#'
+#' @description
+#' Updates the mode of an existing custom detection rule association.
+#'
+#' @usage
+#' guardduty_update_custom_detection_rule_association(RuleId,
+#'   AssociationId, Mode)
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param AssociationId &#91;required&#93; The unique identifier for the association to update.
+#' @param Mode &#91;required&#93; The rule execution mode. Valid values: `LIVE` | `DRY_RUN`.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_custom_detection_rule_association(
+#'   RuleId = "string",
+#'   AssociationId = "string",
+#'   Mode = "LIVE"|"DRY_RUN"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_update_custom_detection_rule_association
+#'
+#' @aliases guardduty_update_custom_detection_rule_association
+guardduty_update_custom_detection_rule_association <- function(RuleId, AssociationId, Mode) {
+  op <- new_operation(
+    name = "UpdateCustomDetectionRuleAssociation",
+    http_method = "PUT",
+    http_path = "/custom-detection-rule/rule/{RuleId}/association/{AssociationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$update_custom_detection_rule_association_input(RuleId = RuleId, AssociationId = AssociationId, Mode = Mode)
+  output <- .guardduty$update_custom_detection_rule_association_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$update_custom_detection_rule_association <- guardduty_update_custom_detection_rule_association
+
+#' Updates the organization-level configuration for a custom detection
+#' rule, including the mode and include/exclude account lists
+#'
+#' @description
+#' Updates the organization-level configuration for a custom detection rule, including the mode and include/exclude account lists.
+#'
+#' @usage
+#' guardduty_update_custom_detection_rule_org_configuration(RuleId, Mode,
+#'   IncludeAccountIds, ExcludeAccountIds)
+#'
+#' @param RuleId &#91;required&#93; The unique identifier for the custom detection rule.
+#' @param Mode &#91;required&#93; The execution mode of the organization configuration. Valid values: `LIVE` | `DRY_RUN`.
+#' @param IncludeAccountIds The account IDs to include in the organization configuration. Mutually exclusive with `ExcludeAccountIds`.
+#' @param ExcludeAccountIds The account IDs to exclude from the organization configuration. Mutually exclusive with `IncludeAccountIds`.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_custom_detection_rule_org_configuration(
+#'   RuleId = "string",
+#'   Mode = "LIVE"|"DRY_RUN",
+#'   IncludeAccountIds = list(
+#'     "string"
+#'   ),
+#'   ExcludeAccountIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_update_custom_detection_rule_org_configuration
+#'
+#' @aliases guardduty_update_custom_detection_rule_org_configuration
+guardduty_update_custom_detection_rule_org_configuration <- function(RuleId, Mode, IncludeAccountIds = NULL, ExcludeAccountIds = NULL) {
+  op <- new_operation(
+    name = "UpdateCustomDetectionRuleOrgConfiguration",
+    http_method = "PUT",
+    http_path = "/custom-detection-rule/org-configuration/{RuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .guardduty$update_custom_detection_rule_org_configuration_input(RuleId = RuleId, Mode = Mode, IncludeAccountIds = IncludeAccountIds, ExcludeAccountIds = ExcludeAccountIds)
+  output <- .guardduty$update_custom_detection_rule_org_configuration_output()
+  config <- get_config()
+  svc <- .guardduty$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$update_custom_detection_rule_org_configuration <- guardduty_update_custom_detection_rule_org_configuration
+
 #' Updates the GuardDuty detector specified by the detector ID
 #'
 #' @description
@@ -7786,7 +8841,7 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 #'   ),
 #'   Features = list(
 #'     list(
-#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"RUNTIME_MONITORING",
+#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"RUNTIME_MONITORING"|"AI_PROTECTION"|"AI_ANALYST",
 #'       Status = "ENABLED"|"DISABLED",
 #'       AdditionalConfiguration = list(
 #'         list(
@@ -7854,8 +8909,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' -   createdAt
 #' 
 #'     Type: Timestamp in Unix Epoch millisecond format. Ex: 1486685375000
-#' 
-#' -   description
 #' 
 #' -   id
 #' 
@@ -8191,10 +9244,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' 
 #' -   resource.rdsDbInstanceDetails.publiclyAccessible
 #' 
-#' -   resource.rdsDbInstanceDetails.tags.key
-#' 
-#' -   resource.rdsDbInstanceDetails.tags.value
-#' 
 #' -   resource.rdsDbInstanceDetails.vpcId
 #' 
 #' -   resource.rdsDbInstanceDetails.vpcSecurityGroups.status
@@ -8292,8 +9341,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' -   schemaVersion
 #' 
 #' -   service.action.actionType
-#' 
-#' -   service.action.awsApiCallAction.affectedResources
 #' 
 #' -   service.action.awsApiCallAction.api
 #' 
@@ -8582,10 +9629,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' -   service.archived
 #' 
 #' -   service.count
-#' 
-#' -   service.detection.anomaly.profiles
-#' 
-#' -   service.detection.anomaly.unusual.behavior
 #' 
 #' -   service.detection.sequence.actors.id
 #' 
@@ -9159,8 +10202,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' 
 #'     For more information, see [Findings severity levels](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings-severity.html) in the *Amazon GuardDuty User Guide*.
 #' 
-#' -   title
-#' 
 #' -   type
 #' 
 #' -   updatedAt
@@ -9546,7 +10587,7 @@ guardduty_update_malware_scan_settings <- function(DetectorId, ScanResourceCrite
 #'   ),
 #'   Features = list(
 #'     list(
-#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"RUNTIME_MONITORING",
+#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"RUNTIME_MONITORING"|"AI_PROTECTION",
 #'       Status = "ENABLED"|"DISABLED",
 #'       AdditionalConfiguration = list(
 #'         list(
@@ -9645,7 +10686,7 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 #'   ),
 #'   Features = list(
 #'     list(
-#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"RUNTIME_MONITORING",
+#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"RUNTIME_MONITORING"|"AI_PROTECTION",
 #'       AutoEnable = "NEW"|"NONE"|"ALL",
 #'       AdditionalConfiguration = list(
 #'         list(

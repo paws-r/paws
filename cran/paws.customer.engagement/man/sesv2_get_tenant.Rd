@@ -3,7 +3,8 @@
 \name{sesv2_get_tenant}
 \alias{sesv2_get_tenant}
 \title{Get information about a specific tenant, including the tenant's name,
-ID, ARN, creation timestamp, tags, and sending status}
+ID, ARN, creation timestamp, tags, sending status, and suppression
+attributes}
 \usage{
 sesv2_get_tenant(TenantName)
 }
@@ -11,7 +12,7 @@ sesv2_get_tenant(TenantName)
 \item{TenantName}{[required] The name of the tenant to retrieve information about.}
 }
 \description{
-Get information about a specific tenant, including the tenant's name, ID, ARN, creation timestamp, tags, and sending status.
+Get information about a specific tenant, including the tenant's name, ID, ARN, creation timestamp, tags, sending status, and suppression attributes.
 
 See \url{https://www.paws-r-sdk.com/docs/sesv2_get_tenant/} for full documentation.
 }

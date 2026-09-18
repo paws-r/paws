@@ -5,180 +5,150 @@ NULL
 
 .cloudwatchobservabilityaccessmanager$create_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LabelTemplate = structure(logical(0), tags = list(type = "string")), LinkConfiguration = structure(list(LogGroupConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SinkIdentifier = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["create_link_input"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$create_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), LabelTemplate = structure(logical(0), tags = list(type = "string")), LinkConfiguration = structure(list(LogGroupConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SinkArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["create_link_output"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$create_sink_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["create_sink_input"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$create_sink_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["create_sink_output"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$delete_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["delete_link_input"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$delete_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["delete_link_output"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$delete_sink_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["delete_sink_input"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$delete_sink_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["delete_sink_output"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$get_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), IncludeTags = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["get_link_input"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$get_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), LabelTemplate = structure(logical(0), tags = list(type = "string")), LinkConfiguration = structure(list(LogGroupConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SinkArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["get_link_output"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$get_sink_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), IncludeTags = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["get_sink_input"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$get_sink_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["get_sink_output"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$get_sink_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SinkIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["get_sink_policy_input"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$get_sink_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string")), SinkArn = structure(logical(0), tags = list(type = "string")), SinkId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["get_sink_policy_output"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$list_attached_links_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), SinkIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["list_attached_links_input"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$list_attached_links_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(Label = structure(logical(0), tags = list(type = "string")), LinkArn = structure(logical(0), tags = list(type = "string")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["list_attached_links_output"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$list_links_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["list_links_input"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$list_links_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SinkArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["list_links_output"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$list_sinks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["list_sinks_input"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$list_sinks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Items = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["list_sinks_output"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["list_tags_for_resource_input"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["list_tags_for_resource_output"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$put_sink_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string")), SinkIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["put_sink_policy_input"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$put_sink_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string")), SinkArn = structure(logical(0), tags = list(type = "string")), SinkId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["put_sink_policy_output"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["tag_resource_input"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["tag_resource_output"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["untag_resource_input"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["untag_resource_output"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$update_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), IncludeTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), LinkConfiguration = structure(list(LogGroupConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["update_link_input"]]))
 }
 
 .cloudwatchobservabilityaccessmanager$update_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), LabelTemplate = structure(logical(0), tags = list(type = "string")), LinkConfiguration = structure(list(LogGroupConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SinkArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
+  return(populate(args, .cloudwatchobservabilityaccessmanager_shapes[["update_link_output"]]))
 }

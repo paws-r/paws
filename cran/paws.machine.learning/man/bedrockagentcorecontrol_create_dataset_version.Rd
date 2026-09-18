@@ -12,7 +12,7 @@ bedrockagentcorecontrol_create_dataset_version(datasetId, clientToken = NULL)
 \item{clientToken}{A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 }
 \description{
-Publishes the current DRAFT as a new numbered version.
+Publishes the current DRAFT as a new numbered version. The DRAFT is preserved and remains editable after publishing. Returns immediately with status UPDATING. Poll \code{\link[=bedrockagentcorecontrol_get_dataset]{get_dataset}} until status transitions to ACTIVE or UPDATE_FAILED.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_create_dataset_version/} for full documentation.
 }

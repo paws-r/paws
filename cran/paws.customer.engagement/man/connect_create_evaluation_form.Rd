@@ -16,7 +16,8 @@ connect_create_evaluation_form(
   Tags = NULL,
   ReviewConfiguration = NULL,
   TargetConfiguration = NULL,
-  LanguageConfiguration = NULL
+  LanguageConfiguration = NULL,
+  AIVersion = NULL
 )
 }
 \arguments{
@@ -43,6 +44,8 @@ connect_create_evaluation_form(
 \item{TargetConfiguration}{Configuration that specifies the target for the evaluation form.}
 
 \item{LanguageConfiguration}{Configuration for language settings of the evaluation form.}
+
+\item{AIVersion}{The AI version to use for the evaluation form. This specifies which AI model version is used for automated evaluations.}
 }
 \description{
 Creates an evaluation form in the specified Connect Customer instance. The form can be used to define questions related to agent performance, and create sections to organize such questions. Question and section identifiers cannot be duplicated within the same evaluation form.

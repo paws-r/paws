@@ -375,7 +375,11 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
 #' 
 #' -   `DeliveryPolicy` – The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints.
 #' 
-#' -   `DisplayName` – The display name to use for a topic with SMS subscriptions.
+#' -   `DisplayName` – The display name to use for a topic with SMS, `email`, and `email-json` subscriptions. For `email` and `email-json` subscriptions, the display name is used as the sender name for regular notification messages. Subscription confirmation and unsubscribe confirmation emails always use "Amazon Web Services Notifications" as the sender name.
+#' 
+#' -   `MaximumMessageSize` – The maximum size, in bytes, of a message that can be published to the topic. Valid values are `1024` to `1048576` (1 MiB). The default is `262144` (256 KiB).
+#' 
+#'     A topic with a `MaximumMessageSize` above 256 KiB must have 100 or fewer subscriptions, and each subscription must be an Amazon SQS, Amazon Data Firehose, or Lambda subscription.
 #' 
 #' -   `Policy` – The policy that defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic.
 #' 
@@ -452,7 +456,9 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
 #' @param Tags The list of tags to add to a new topic.
 #' 
 #' To be able to tag a topic on creation, you must have the `sns:CreateTopic` and `sns:TagResource` permissions.
-#' @param DataProtectionPolicy The body of the policy document you want to use for this topic.
+#' @param DataProtectionPolicy Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see [Amazon SNS message data protection availability change](https://docs.aws.amazon.com/sns/latest/dg/sns-message-data-protection-availability-change.html).
+#' 
+#' The body of the policy document you want to use for this topic.
 #' 
 #' You can only add one policy per topic.
 #' 
@@ -691,10 +697,12 @@ sns_delete_topic <- function(TopicArn) {
 }
 .sns$operations$delete_topic <- sns_delete_topic
 
-#' Retrieves the specified inline DataProtectionPolicy document that is
-#' stored in the specified Amazon SNS topic
+#' Amazon SNS message data protection is no longer available to new
+#' customers
 #'
 #' @description
+#' Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see [Amazon SNS message data protection availability change](https://docs.aws.amazon.com/sns/latest/dg/sns-message-data-protection-availability-change.html).
+#' 
 #' Retrieves the specified inline `DataProtectionPolicy` document that is stored in the specified Amazon SNS topic.
 #'
 #' @usage
@@ -1680,7 +1688,11 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' 
 #' Constraints:
 #' 
-#' -   With the exception of SMS, messages must be UTF-8 encoded strings and at most 256 KB in size (262,144 bytes, not 262,144 characters).
+#' -   With the exception of SMS, messages must be UTF-8 encoded strings. By default, a message can be at most 256 KiB in size (262,144 bytes, not 262,144 characters).
+#' 
+#'     When you publish to a topic, the maximum size is determined by the topic's `MaximumMessageSize` attribute, which supports values up to 1 MiB (1,048,576 bytes). Amazon SNS validates the combined size of the message body and message attributes against this value and returns an `InvalidParameter` error if the limit is exceeded.
+#' 
+#'     For more information, see [Large message payloads](https://docs.aws.amazon.com/sns/latest/dg/large-message-payloads.html) in the *Amazon SNS Developer Guide.*
 #' 
 #' -   For SMS, each message can contain up to 140 characters. This character limit depends on the encoding schema. For example, an SMS message can contain 160 GSM characters, 140 ASCII characters, or 70 UCS-2 characters.
 #' 
@@ -1810,7 +1822,9 @@ sns_publish <- function(TopicArn = NULL, TargetArn = NULL, PhoneNumber = NULL, M
 #' 
 #' The result of publishing each message is reported individually in the response. Because the batch request can result in a combination of successful and unsuccessful actions, you should check for batch errors even when the call returns an HTTP status code of 200.
 #' 
-#' The maximum allowed individual message size and the maximum total payload size (the sum of the individual lengths of all of the batched messages) are both 256 KB (262,144 bytes).
+#' By default, the maximum allowed individual message size and the maximum total payload size (the sum of the individual lengths of all of the batched messages) are both 256 KiB (262,144 bytes). To publish larger batches, set the topic's `MaximumMessageSize` attribute, which supports values up to 1 MiB (1,048,576 bytes). The combined size of all messages in the batch, including each message's body and attributes, must not exceed the topic's `MaximumMessageSize`.
+#' 
+#' For more information, see [Large message payloads](https://docs.aws.amazon.com/sns/latest/dg/large-message-payloads.html) in the *Amazon SNS Developer Guide.*
 #' 
 #' The [`publish_batch`][sns_publish_batch] API can send up to 10 messages at a time. If you attempt to send more than 10 messages in one request, you will encounter a `TooManyEntriesInBatchRequest` exception. In such cases, split your messages into multiple requests, each containing no more than 10 messages.
 #' 
@@ -1900,10 +1914,12 @@ sns_publish_batch <- function(TopicArn, PublishBatchRequestEntries) {
 }
 .sns$operations$publish_batch <- sns_publish_batch
 
-#' Adds or updates an inline policy document that is stored in the
-#' specified Amazon SNS topic
+#' Amazon SNS message data protection is no longer available to new
+#' customers
 #'
 #' @description
+#' Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see [Amazon SNS message data protection availability change](https://docs.aws.amazon.com/sns/latest/dg/sns-message-data-protection-availability-change.html).
+#' 
 #' Adds or updates an inline policy document that is stored in the specified Amazon SNS topic.
 #'
 #' @usage
@@ -2336,7 +2352,13 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #' 
 #' -   `DeliveryPolicy` – The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints.
 #' 
-#' -   `DisplayName` – The display name to use for a topic with SMS subscriptions.
+#' -   `DisplayName` – The display name to use for a topic with SMS, `email`, and `email-json` subscriptions. For `email` and `email-json` subscriptions, the display name is used as the sender name for regular notification messages. Subscription confirmation and unsubscribe confirmation emails always use "Amazon Web Services Notifications" as the sender name.
+#' 
+#' -   `MaximumMessageSize` – The maximum size, in bytes, of a message that can be published to the topic. Valid values are `1024` to `1048576` (1 MiB). The default is `262144` (256 KiB).
+#' 
+#'     A topic with a `MaximumMessageSize` above 256 KiB must have 100 or fewer subscriptions, and each subscription must be an Amazon SQS, Amazon Data Firehose, or Lambda subscription.
+#' 
+#'     You can increase or decrease this value at any time. If the topic doesn't meet these requirements when you set a value above 256 KiB, Amazon SNS returns an `InvalidParameter` error. For more information, see [Large message payloads](https://docs.aws.amazon.com/sns/latest/dg/large-message-payloads.html) in the *Amazon SNS Developer Guide.*
 #' 
 #' -   `Policy` – The policy that defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic.
 #' 

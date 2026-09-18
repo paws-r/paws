@@ -84,6 +84,7 @@ Files, by calling the following:
 \itemize{
 \item \code{\link[=codecommit_delete_file]{delete_file}}, which deletes the content of a specified file from a specified branch.
 \item \code{\link[=codecommit_get_blob]{get_blob}}, which returns the base-64 encoded content of an individual Git blob object in a repository.
+\item \code{\link[=codecommit_get_blob_differences]{get_blob_differences}}, which returns a structured, line-level diff between two blob versions in a repository, with optional surrounding context lines.
 \item \code{\link[=codecommit_get_file]{get_file}}, which returns the base-64 encoded content of a specified file.
 \item \code{\link[=codecommit_get_folder]{get_folder}}, which returns the contents of a specified folder or directory.
 \item \code{\link[=codecommit_list_file_commit_history]{list_file_commit_history}}, which retrieves a list of commits and changes to a specified file.
@@ -244,6 +245,7 @@ For information about how to use CodeCommit, see the \href{https://docs.aws.amaz
 \link[=codecommit_evaluate_pull_request_approval_rules]{evaluate_pull_request_approval_rules} \tab Evaluates whether a pull request has met all the conditions specified in its associated approval rules\cr
 \link[=codecommit_get_approval_rule_template]{get_approval_rule_template} \tab Returns information about a specified approval rule template\cr
 \link[=codecommit_get_blob]{get_blob} \tab Returns the base-64 encoded content of an individual blob in a repository\cr
+\link[=codecommit_get_blob_differences]{get_blob_differences} \tab Returns a structured, line-level diff between two blob versions in a repository\cr
 \link[=codecommit_get_branch]{get_branch} \tab Returns information about a repository branch, including its name and the last commit ID\cr
 \link[=codecommit_get_comment]{get_comment} \tab Returns the content of a comment made on a change, file, or commit in a repository\cr
 \link[=codecommit_get_comment_reactions]{get_comment_reactions} \tab Returns information about reactions to a specified comment ID\cr
