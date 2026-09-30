@@ -110,7 +110,7 @@ For information about the permissions that you need to use this API, see \href{h
 \item The metering service supports Amazon ECS and EKS for Flexible Consumption Pricing (FCP) products using MeterUsage API. Amazon ECS is supported in all Amazon Web Services Regions that MeterUsage API is available except for GovCloud.
 \item Amazon EKS is supported in the following: us-east-1, us-east-2, us-west-1, us-west-2, eu-west-1, eu-central-1, eu-west-2, eu-west-3, eu-north-1, ap-east-1, ap-southeast-1, ap-northeast-1, ap-southeast-2, ap-northeast-2, ap-south-1, ca-central-1, sa-east-1.
 
-For questions about adding Amazon Web Services Regions for metering, contact \href{mailto://aws.amazon.com/marketplace/management/contact-us/}{Amazon Web Services Marketplace Seller Operations}.
+For questions about adding Amazon Web Services Regions for metering, contact Amazon Web Services Marketplace Seller Operations.
 }
 }
 \section{Service syntax}{
