@@ -561,7 +561,7 @@ verifiedpermissions_batch_is_authorized_with_token <- function(policyStoreId, id
 #' 
 #' -   OpenID Connect (OIDC) provider: `Namespace::[Entity type]::[entityIdPrefix]|[user principal attribute]`, for example `MyCorp::User::MyOIDCProvider|a1b2c3d4-5678-90ab-cdef-EXAMPLE22222`.
 #' 
-#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_create_identity_source(clientToken, policyStoreId,
@@ -678,7 +678,7 @@ verifiedpermissions_create_identity_source <- function(clientToken = NULL, polic
 #' 
 #' Creating a policy causes it to be validated against the schema in the policy store. If the policy doesn't pass validation, the operation fails and the policy isn't stored.
 #' 
-#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_create_policy(clientToken, policyStoreId,
@@ -793,7 +793,7 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
 #' 
 #' As of May 2026, Verified Permissions has aligned with Cedar and now supports multiple namespaces.
 #' 
-#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_create_policy_store(clientToken, validationSettings,
@@ -890,7 +890,7 @@ verifiedpermissions_create_policy_store <- function(clientToken = NULL, validati
 #' 
 #' This operation is idempotent. If multiple CreatePolicyStoreAlias requests are made where the `aliasName` and `policyStoreId` fields are the same between the requests, subsequent requests will be ignored. For each duplicate CreatePolicyStoreAlias request, a Success response will be returned and a new policy store alias will not be created.
 #' 
-#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_create_policy_store_alias(aliasName, policyStoreId)
@@ -952,7 +952,7 @@ verifiedpermissions_create_policy_store_alias <- function(aliasName, policyStore
 #' @description
 #' Creates a policy template. A template can use placeholders for the principal and resource. A template must be instantiated into a policy by associating it with specific principals and resources to use for the placeholders. That instantiated policy can then be considered in authorization decisions. The instantiated policy works identically to any other policy, except that it is dynamically linked to the template. If the template changes, then any policies that are linked to that template are immediately updated as well.
 #' 
-#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_create_policy_template(clientToken, policyStoreId,
@@ -2706,7 +2706,7 @@ verifiedpermissions_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Creates or updates the policy schema in the specified policy store. The schema is used to validate any Cedar policies and policy templates submitted to the policy store. Any changes to the schema validate only policies and templates submitted after the schema change. Existing policies and templates are not re-evaluated against the changed schema. If you later update a policy, then it is evaluated against the new schema at that time.
 #' 
-#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_put_schema(policyStoreId, definition)
@@ -2884,7 +2884,7 @@ verifiedpermissions_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates the specified identity source to use a new identity provider (IdP), or to change the mapping of identities from the IdP to a different principal entity type.
 #' 
-#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_update_identity_source(policyStoreId,
@@ -3009,7 +3009,7 @@ verifiedpermissions_update_identity_source <- function(policyStoreId, identitySo
 #' 
 #' -   To update a template-linked policy, you must update the template instead.
 #' 
-#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_update_policy(policyStoreId, policyId, definition,
@@ -3131,7 +3131,7 @@ verifiedpermissions_update_policy <- function(policyStoreId, policyId, definitio
 #' @description
 #' Modifies the validation setting for a policy store.
 #' 
-#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_update_policy_store(policyStoreId,
@@ -3210,7 +3210,7 @@ verifiedpermissions_update_policy_store <- function(policyStoreId, validationSet
 #' 
 #' Changes you make to the policy template content are immediately (within the constraints of eventual consistency) reflected in authorization decisions that involve all template-linked policies instantiated from this template.
 #' 
-#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_update_policy_template(policyStoreId,

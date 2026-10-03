@@ -231,7 +231,7 @@ test_that("check paws_install", {
   ))
   mock_install_local <- mock2()
   mock_install_local_pkg_list <- mock2()
-  mockery::stub(paws_install, "devtools::install_local", mock_install_local)
+  mockery::stub(paws_install, "pak::local_install", mock_install_local)
   mockery::stub(paws_install, "install_local_pkg_list", mock_install_local_pkg_list)
   mockery::stub(paws_install, "install_local_pkg_list", mock_install_local_pkg_list)
   mockery::stub(paws_install, "list_paws_pkgs", mock_list_paws_pkgs)
