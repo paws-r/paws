@@ -240,7 +240,7 @@ test_that("check paws_install", {
 
   expect_equal(
     mock_arg(mock_install_local),
-    list(file.path("dummy", "..", "paws.common"), force = TRUE)
+    list(file.path("dummy", "..", "paws.common"), TRUE)
   )
   expect_equal(
     lapply(mockery::mock_args(mock_install_local_pkg_list), function(x) x[[1]]),
