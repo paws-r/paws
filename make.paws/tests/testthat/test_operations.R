@@ -84,7 +84,8 @@ test_that("make_operation", {
         http_path = \"/abc\",
         host_prefix = \"\",
         paginator = list(),
-        stream_api = FALSE
+        stream_api = FALSE,
+        http_checksum = NULL
       )
       input <- .api$operation_input(Input1 = Input1, Input2 = Input2, Input3 = Input3)
       output <- .api$operation_output()
@@ -111,4 +112,78 @@ test_that("operation name with override", {
 test_that("operation name with no override", {
   op_name <- operation_name_override("Dummy")
   expect_equal(op_name, quoted("Dummy"))
+})
+
+test_that("set_http_checksum returns NULL for operations with no httpChecksum trait", {
+  operation <- list(name = "Operation", input = list(shape = "InputShape"))
+  api <- list(shapes = list(InputShape = list(members = list())))
+  expect_equal(set_http_checksum(operation, api), "NULL")
+})
+
+test_that("set_http_checksum captures the request algorithm member and its header", {
+  operation <- list(
+    name = "PutObject",
+    input = list(shape = "PutObjectRequest"),
+    httpChecksum = list(
+      requestAlgorithmMember = "ChecksumAlgorithm",
+      requestChecksumRequired = FALSE
+    )
+  )
+  api <- list(
+    shapes = list(
+      PutObjectRequest = list(
+        members = list(
+          ChecksumAlgorithm = list(
+            shape = "ChecksumAlgorithm",
+            location = "header",
+            locationName = "x-amz-sdk-checksum-algorithm"
+          )
+        )
+      )
+    )
+  )
+  result <- eval(parse(text = set_http_checksum(operation, api)))
+  expect_equal(result$request_algorithm_member, "ChecksumAlgorithm")
+  expect_equal(result$request_algorithm_header, "x-amz-sdk-checksum-algorithm")
+  expect_false(result$request_checksum_required)
+  expect_null(result$request_validation_mode_member)
+  expect_null(result$response_algorithms)
+})
+
+test_that("set_http_checksum captures requestChecksumRequired", {
+  operation <- list(
+    name = "DeleteObjects",
+    input = list(shape = "DeleteObjectsRequest"),
+    httpChecksum = list(
+      requestAlgorithmMember = "ChecksumAlgorithm",
+      requestChecksumRequired = TRUE
+    )
+  )
+  api <- list(
+    shapes = list(
+      DeleteObjectsRequest = list(
+        members = list(
+          ChecksumAlgorithm = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm")
+        )
+      )
+    )
+  )
+  result <- eval(parse(text = set_http_checksum(operation, api)))
+  expect_true(result$request_checksum_required)
+})
+
+test_that("set_http_checksum captures response validation mode and algorithms", {
+  operation <- list(
+    name = "GetObject",
+    httpChecksum = list(
+      requestValidationModeMember = "ChecksumMode",
+      responseAlgorithms = c("CRC64NVME", "CRC32", "SHA256")
+    )
+  )
+  api <- list(shapes = list())
+  result <- eval(parse(text = set_http_checksum(operation, api)))
+  expect_equal(result$request_validation_mode_member, "ChecksumMode")
+  expect_equal(result$response_algorithms, c("crc64nvme", "crc32", "sha256"))
+  expect_null(result$request_algorithm_member)
+  expect_false(result$request_checksum_required)
 })

@@ -19,6 +19,7 @@ Config <- struct(
   retryer = NULL,
   disable_param_validation = FALSE,
   disable_compute_checksums = FALSE,
+  request_checksum_calculation = "when_supported",
   s3_force_path_style = FALSE,
   s3_virtual_address = FALSE,
   s3_disable_100_continue = FALSE,

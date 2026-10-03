@@ -10,7 +10,8 @@ Operation <- struct(
   host_prefix = "",
   paginator = list(),
   stream_api = FALSE,
-  before_presign_fn = function() {}
+  before_presign_fn = function() {},
+  http_checksum = NULL
 )
 
 #' Return an API operation object
@@ -26,6 +27,9 @@ Operation <- struct(
 #' @param paginator List input_token and output_token.
 #' @param stream_api Set if operation is stream api or not
 #' @param before_presign_fn Currently unused.
+#' @param http_checksum The operation's `httpChecksum` trait, e.g.
+#'   `list(request_algorithm_member = "ChecksumAlgorithm", request_checksum_required = FALSE)`.
+#'   `NULL` if the operation has no flexible-checksum support.
 #'
 #' @family API request functions
 #'
@@ -46,7 +50,8 @@ new_operation <- function(
   host_prefix,
   paginator,
   stream_api = FALSE,
-  before_presign_fn = NULL
+  before_presign_fn = NULL,
+  http_checksum = NULL
 ) {
   args <- as.list(environment())
   args[lengths(args) == 0] <- NULL
