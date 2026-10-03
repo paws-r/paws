@@ -35,6 +35,42 @@ test_that("v4_sign_request_handler", {
   expect_match(actual, expected)
 })
 
+test_that("v4_sign_request_handler signs S3 Outposts access-point ARN requests correctly", {
+  metadata <- list(
+    endpoints = list(
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "s3.amazonaws.com",
+        global = FALSE
+      )
+    ),
+    service_name = "s3"
+  )
+  client <- new_service(metadata, new_handlers("restxml", "s3"), Config())
+  client$config$credentials <- test_creds
+  client$client_info$signing_region <- "us-east-1"
+
+  op <- new_operation("ListObjects", "GET", "/{Bucket}", list())
+  bucket_arn <- paste0(
+    "arn:aws:s3-outposts:us-west-2:123456789012:outpost/op-01234567890123456",
+    "/accesspoint/test"
+  )
+  params <- tag_add(list(Bucket = bucket_arn), list(type = "structure"))
+  data <- list()
+  req <- new_request(client, op, params, data)
+
+  req <- update_endpoint_for_s3_config(req)
+  res <- v4_sign_request_handler(req)
+
+  expect_equal(res$client_info$signing_name, "s3-outposts")
+  expect_equal(res$client_info$signing_region, "us-west-2")
+  actual <- res$http_request$header[["Authorization"]]
+  expect_match(
+    actual,
+    "AWS4-HMAC-SHA256 Credential=AKID/\\d{8}/us-west-2/s3-outposts/aws4_request.*"
+  )
+  expect_false(is.null(res$http_request$header[["X-Amz-Content-Sha256"]]))
+})
+
 test_that("sign with custom URI escape", {
   expected <- "AWS4-HMAC-SHA256 Credential=AKID/19700101/us-east-1/es/aws4_request, SignedHeaders=host;x-amz-date;x-amz-security-token, Signature=6601e883cc6d23871fd6c2a394c5677ea2b8c82b04a6446786d64cd74f520967"
 
