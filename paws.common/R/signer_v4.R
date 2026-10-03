@@ -81,6 +81,7 @@ SigningContext <- struct(
   disable_uri_path_escaping = FALSE,
   cred_values = list(),
   is_presigned = FALSE,
+  is_s3 = FALSE,
   formatted_time = "",
   formatted_short_time = "",
   unsigned_payload = "",
@@ -125,6 +126,10 @@ sign_sdk_request_with_curr_time <- function(request, curr_time_fn = now, opts = 
     name <- request$config$service_name
   }
 
+  # Keyed off service_name, not `name` above: `name` is the signing-scope
+  # name and may be overridden to "s3-outposts"/"s3-object-lambda" per ARN.
+  is_s3_family <- identical(request$client_info$service_name, "s3")
+
   v4 <- Signer(
     credentials = request$config$credentials,
     disable_header_hoisting = request$not_hoist,
@@ -132,7 +137,7 @@ sign_sdk_request_with_curr_time <- function(request, curr_time_fn = now, opts = 
     disable_request_body_overwrite = TRUE
   )
 
-  if (name == "s3") {
+  if (is_s3_family) {
     v4$disable_uri_path_escaping <- TRUE
   }
 
@@ -150,7 +155,8 @@ sign_sdk_request_with_curr_time <- function(request, curr_time_fn = now, opts = 
     region,
     request$expire_time,
     request$expire_time > 0,
-    signing_time
+    signing_time,
+    is_s3_family
   )
 
   # set headers for anonymous credentials
@@ -171,7 +177,8 @@ sign_with_body <- function(
   region,
   expire_time,
   is_presigned,
-  signing_time
+  signing_time,
+  is_s3_family = FALSE
 ) {
   curr_time_fn <- signer$curr_time_fn
   if (is.null(curr_time_fn)) {
@@ -189,6 +196,7 @@ sign_with_body <- function(
     time = signing_time,
     expire_time = expire_time,
     is_presigned = is_presigned,
+    is_s3 = is_s3_family,
     service_name = service,
     region = region,
     disable_uri_path_escaping = signer$disable_uri_path_escaping,
@@ -369,8 +377,8 @@ build_body_digest <- function(ctx) {
   hash <- get_element(ctx$request$header, "X-Amz-Content-Sha256")
   if (hash == "") {
     include_sha256_header <- (ctx$unsigned_payload ||
-      ctx$service_name %in% c("s3", "s3-object-lambda", "glacier"))
-    s3_presign <- (ctx$is_presigned && ctx$service_name %in% c("s3", "s3-object-lambda"))
+      ctx$is_s3 || ctx$service_name == "glacier")
+    s3_presign <- (ctx$is_presigned && ctx$is_s3)
     if (ctx$unsigned_payload || s3_presign) {
       hash <- "UNSIGNED-PAYLOAD"
       include_sha256_header <- !s3_presign

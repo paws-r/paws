@@ -84,21 +84,67 @@ is_access_point <- function(bucket_name) {
   return(grepl(regex, bucket_name))
 }
 
-# Parse the S3 access point ARN and return the corresponding endpoint.
-# See https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html
-#
-# ARN format: arn:aws:s3:{region}:{account-id}:accesspoint/{accesspoint-name}
-# Access point endpoint format: {accesspoint-name}-{account-id}.s3-accesspoint.{region}.{dns-suffix}
-# Example:
-#   In: arn:aws:s3:us-west-2:123456789012:accesspoint/test
-#   Out: test-123456789012.s3-accesspoint.us-west-2.amazonaws.com
-get_access_point_endpoint <- function(access_point) {
-  part <- strsplit(access_point, ":|/")[[1]]
-  region <- part[4]
-  account <- part[5]
-  name <- part[7]
-  endpoint <- sprintf("%s-%s.s3-accesspoint.%s.amazonaws.com", name, account, region)
-  return(endpoint)
+# Split an arn:partition:service:region:account:resource ARN into its fields.
+parse_arn_fields <- function(arn) {
+  part <- strsplit(arn, ":", fixed = TRUE)[[1]]
+  resource <- paste(part[6:length(part)], collapse = ":")
+  list(
+    partition = part[2],
+    service = part[3],
+    region = part[4],
+    account = part[5],
+    resource = resource
+  )
+}
+
+# Resolve resource type/name (and outpost id, if present) from an ARN's
+# resource field. Returns NULL if unsupported.
+parse_s3_arn_resource <- function(resource) {
+  part <- strsplit(resource, "[:/]")[[1]]
+  if (length(part) >= 4 && part[1] == "outpost" && part[3] == "accesspoint") {
+    return(list(resource_type = "outpost", outpost_id = part[2], name = part[4]))
+  }
+  if (length(part) >= 2 && part[1] == "accesspoint") {
+    return(list(resource_type = "accesspoint", outpost_id = NULL, name = part[2]))
+  }
+  return(NULL)
+}
+
+# DNS suffix (e.g. "amazonaws.com.cn") for a region, reusing .s3_endpoint()'s
+# per-partition templates instead of a second hardcoded table.
+s3_arn_dns_suffix <- function(region) {
+  template <- get_region_pattern(.s3_endpoint(), region)[["endpoint"]]
+  return(sub("^s3(\\.\\{region\\})?\\.", "", template))
+}
+
+# Resolve an S3 access-point / outposts access-point ARN to its endpoint
+# host, plus the SigV4 service name and region to sign the request with.
+# https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html
+# https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html
+get_s3_arn_endpoint <- function(access_point) {
+  arn <- parse_arn_fields(access_point)
+  resource <- parse_s3_arn_resource(arn$resource)
+  if (is.null(resource)) {
+    stopf("Unsupported S3 ARN resource: %s", access_point)
+  }
+  dns_suffix <- s3_arn_dns_suffix(arn$region)
+  base <- sprintf("%s-%s", resource$name, arn$account)
+
+  if (resource$resource_type == "outpost") {
+    host <- sprintf(
+      "%s.%s.s3-outposts.%s.%s",
+      base, resource$outpost_id, arn$region, dns_suffix
+    )
+    service <- "s3-outposts"
+  } else if (identical(arn$service, "s3-object-lambda")) {
+    host <- sprintf("%s.s3-object-lambda.%s.%s", base, arn$region, dns_suffix)
+    service <- "s3-object-lambda"
+  } else {
+    host <- sprintf("%s.s3-accesspoint.%s.%s", base, arn$region, dns_suffix)
+    service <- "s3"
+  }
+
+  return(list(host = host, service = service, region = arn$region))
 }
 
 remove_bucket_from_url <- function(url) {
@@ -115,8 +161,11 @@ update_endpoint_for_s3_config <- function(request) {
   }
 
   if (is_access_point(bucket_name)) {
-    request$http_request$url[["host"]] <- get_access_point_endpoint(bucket_name)
+    resolved <- get_s3_arn_endpoint(bucket_name)
+    request$http_request$url[["host"]] <- resolved$host
     request$http_request$url <- remove_bucket_from_url(request$http_request$url)
+    request$client_info$signing_name <- resolved$service
+    request$client_info$signing_region <- resolved$region
     return(request)
   }
 
