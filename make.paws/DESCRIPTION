@@ -35,7 +35,8 @@ Imports:
     urlchecker,
     stats,
     fs,
-    mirai
+    mirai,
+    pak
 Suggests: 
     covr,
     formatR,

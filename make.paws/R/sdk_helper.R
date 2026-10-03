@@ -276,7 +276,7 @@ paws_install <- function(in_dir = "../cran", force = FALSE) {
   pkgs <- list_paws_pkgs(in_dir)
   pkgs_sub_cat <- list_sub_cat_pkgs(pkgs)
   pkgs_cat <- list_cat_pkgs(pkgs)
-  devtools::install_local(file.path(in_dir, "..", "paws.common"), force = TRUE)
+  pak::local_install(file.path(in_dir, "..", "paws.common"), upgrade = TRUE, ask = FALSE)
   install_local_pkg_list(pkgs_sub_cat, force = force)
   install_local_pkg_list(pkgs_cat, force = force)
   install_local_pkg_list(file.path(in_dir, "paws"), force = force)
@@ -856,6 +856,6 @@ list_sub_cat_pkgs <- function(pkgs) {
 # install packages
 install_local_pkg_list <- function(pkgs, force) {
   for (pkg in pkgs) {
-    devtools::install_local(pkg, force = force)
+    pak::local_install(pkg, upgrade = force, ask = FALSE)
   }
 }

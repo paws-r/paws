@@ -46,7 +46,7 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' @param RegionFilters Specifies a list of Amazon Web Services Regions to limit the output to. If you use this parameter, the count of returned noncompliant resources includes only resources in the specified Regions.
 #' @param ResourceTypeFilters Specifies that you want the response to include information for only resources of the specified types. The format of each resource type is `service[:resourceType]`. For example, specifying a resource type of `ec2` returns all Amazon EC2 resources (which includes EC2 instances). Specifying a resource type of `ec2:instance` returns only EC2 instances.
 #' 
-#' The string for each service name and resource type is the same as that embedded in a resource's Amazon Resource Name (ARN). Consult the *\href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services General Reference}* for the following:
+#' The string for each service name and resource type is the same as that embedded in a resource's Amazon Resource Name (ARN). Consult the \emph{\href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services General Reference}} for the following:
 #' 
 #' -   For a list of service name strings, see [Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces).
 #' 

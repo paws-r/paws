@@ -231,7 +231,7 @@ test_that("check paws_install", {
   ))
   mock_install_local <- mock2()
   mock_install_local_pkg_list <- mock2()
-  mockery::stub(paws_install, "devtools::install_local", mock_install_local)
+  mockery::stub(paws_install, "pak::local_install", mock_install_local)
   mockery::stub(paws_install, "install_local_pkg_list", mock_install_local_pkg_list)
   mockery::stub(paws_install, "install_local_pkg_list", mock_install_local_pkg_list)
   mockery::stub(paws_install, "list_paws_pkgs", mock_list_paws_pkgs)
@@ -240,7 +240,7 @@ test_that("check paws_install", {
 
   expect_equal(
     mock_arg(mock_install_local),
-    list(file.path("dummy", "..", "paws.common"), force = TRUE)
+    list(file.path("dummy", "..", "paws.common"), upgrade = TRUE, ask = FALSE)
   )
   expect_equal(
     lapply(mockery::mock_args(mock_install_local_pkg_list), function(x) x[[1]]),
