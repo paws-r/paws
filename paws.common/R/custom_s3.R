@@ -133,7 +133,10 @@ get_s3_arn_endpoint <- function(access_point) {
   if (resource$resource_type == "outpost") {
     host <- sprintf(
       "%s.%s.s3-outposts.%s.%s",
-      base, resource$outpost_id, arn$region, dns_suffix
+      base,
+      resource$outpost_id,
+      arn$region,
+      dns_suffix
     )
     service <- "s3-outposts"
   } else if (identical(arn$service, "s3-object-lambda")) {

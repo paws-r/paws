@@ -377,7 +377,8 @@ build_body_digest <- function(ctx) {
   hash <- get_element(ctx$request$header, "X-Amz-Content-Sha256")
   if (hash == "") {
     include_sha256_header <- (ctx$unsigned_payload ||
-      ctx$is_s3 || ctx$service_name == "glacier")
+      ctx$is_s3 ||
+      ctx$service_name == "glacier")
     s3_presign <- (ctx$is_presigned && ctx$is_s3)
     if (ctx$unsigned_payload || s3_presign) {
       hash <- "UNSIGNED-PAYLOAD"

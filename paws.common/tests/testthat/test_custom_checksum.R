@@ -4,7 +4,10 @@ test_that("checksum_digest matches known values", {
   expect_equal(checksum_digest(body, "CRC32"), "ShexVg==")
   expect_equal(checksum_digest(body, "crc32c"), "aR2qLw==")
   expect_equal(checksum_digest(body, "SHA1"), "Ck1VqNd45QIvq3AZd8XYQLvEhtA=")
-  expect_equal(checksum_digest(body, "SHA256"), "pZGm1Av0IEBKARczz7exkNYsZb8LzaMrV7J32a2fFG4=")
+  expect_equal(
+    checksum_digest(body, "SHA256"),
+    "pZGm1Av0IEBKARczz7exkNYsZb8LzaMrV7J32a2fFG4="
+  )
   expect_equal(
     checksum_digest(body, "SHA512"),
     "LHT9F+2v2A6ER7DUZ0HuJDt+t03SFJoKsbkkb7MDgvJ+hT2FhXGeDmfL2g2qj1FnEGRhXWRa4nrLFb+xRH9Fmw=="
@@ -207,7 +210,12 @@ build_checksum_request <- function(body, checksum_algorithm = NULL, config = Con
     .tags = list(payload = "Body")
   )
   input <- populate(
-    list(Body = body, Bucket = "foo", Key = "bar", ChecksumAlgorithm = checksum_algorithm),
+    list(
+      Body = body,
+      Bucket = "foo",
+      Key = "bar",
+      ChecksumAlgorithm = checksum_algorithm
+    ),
     interface
   )
   output <- list()

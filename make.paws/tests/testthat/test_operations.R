@@ -163,7 +163,10 @@ test_that("set_http_checksum captures requestChecksumRequired", {
     shapes = list(
       DeleteObjectsRequest = list(
         members = list(
-          ChecksumAlgorithm = list(location = "header", locationName = "x-amz-sdk-checksum-algorithm")
+          ChecksumAlgorithm = list(
+            location = "header",
+            locationName = "x-amz-sdk-checksum-algorithm"
+          )
         )
       )
     )
