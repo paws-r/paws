@@ -19,8 +19,13 @@ new_handlers <- function(protocol, signer) {
   }
   handlers <- Handlers(
     validate = HandlerList(validate_endpoint_handler, validate_parameters_handler),
-    build = HandlerList(add_host_exec_env_user_agent_handler, handler(protocol, "build")),
+    build = HandlerList(
+      add_host_exec_env_user_agent_handler,
+      handler(protocol, "build"),
+      resolve_checksum_algorithm
+    ),
     sign = HandlerList(
+      apply_checksum_header,
       build_content_length_handler,
       handler(signer, "sign_request_handler")
     ),

@@ -11,7 +11,8 @@ new_operation(
   host_prefix,
   paginator,
   stream_api = FALSE,
-  before_presign_fn = NULL
+  before_presign_fn = NULL,
+  http_checksum = NULL
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ new_operation(
 \item{stream_api}{Set if operation is stream api or not}
 
 \item{before_presign_fn}{Currently unused.}
+
+\item{http_checksum}{The operation's \code{httpChecksum} trait, or \code{NULL}.}
 }
 \description{
 Return an API operation object, with information on what to request for a

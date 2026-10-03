@@ -23,7 +23,7 @@ LinkingTo:
 Imports:
     base64enc,
     curl,
-    digest,
+    digest (>= 0.6.35),
     httr2 (>= 1.0.4),
     jsonlite,
     methods,
@@ -58,6 +58,8 @@ Collate:
     'credentials.R'
     'client.R'
     'convert.R'
+    'request.R'
+    'custom_checksum.R'
     'service.R'
     'custom_dynamodb.R'
     'custom_rds.R'
@@ -82,7 +84,6 @@ Collate:
     'paginate.R'
     'populateutil.R'
     'queryutil.R'
-    'request.R'
     'retry.R'
     'service_parameter_helper.R'
     'signer_bearer.R'

@@ -34,7 +34,8 @@ operation_template <- template(
       http_path = ${http_path},
       host_prefix = ${host_prefix},
       paginator = ${paginator},
-      stream_api = ${stream_api}
+      stream_api = ${stream_api},
+      http_checksum = ${http_checksum}
     )
     input <- .${service}$${operation_input}
     output <- .${service}$${operation_output}
@@ -63,7 +64,8 @@ make_operation <- function(operation, api, doc_maker) {
     http_path = quoted(operation$http$requestUri),
     host_prefix = quoted(operation[["endpoint"]][["hostPrefix"]] %||% ""),
     paginator = set_paginator(operation$paginators),
-    stream_api = set_stream_api(operation)
+    stream_api = set_stream_api(operation),
+    http_checksum = set_http_checksum(operation, api)
   )
 }
 
@@ -93,6 +95,42 @@ set_paginator <- function(paginator) {
 
 set_stream_api <- function(operation) {
   as.character(operation$eventstream %||% FALSE)
+}
+
+# Carry the operation's `httpChecksum` trait over into the generated
+# `new_operation()` call, so paws.common can resolve and apply it at request
+# time. Also folds in the older, standalone `httpChecksumRequired` boolean
+# trait (e.g. several S3 Control operations) into the same
+# `request_checksum_required` field, since botocore treats both the same way.
+set_http_checksum <- function(operation, api) {
+  http_checksum <- operation[["httpChecksum"]]
+  legacy_required <- isTRUE(operation[["httpChecksumRequired"]])
+  if (is.null(http_checksum) && !legacy_required) {
+    return("NULL")
+  }
+
+  algorithm_member <- http_checksum[["requestAlgorithmMember"]]
+  algorithm_header <- NULL
+  if (!is.null(algorithm_member)) {
+    input_shape <- get_operation_input_shape(operation, api)
+    algorithm_header <- input_shape$members[[algorithm_member]][["locationName"]]
+  }
+
+  response_algorithms <- NULL
+  if (length(http_checksum[["responseAlgorithms"]]) > 0) {
+    response_algorithms <- tolower(unlist(http_checksum[["responseAlgorithms"]]))
+  }
+
+  fields <- list(
+    request_algorithm_member = algorithm_member,
+    request_algorithm_header = algorithm_header,
+    request_checksum_required = isTRUE(http_checksum[["requestChecksumRequired"]]) ||
+      legacy_required,
+    request_validation_mode_member = http_checksum[["requestValidationModeMember"]],
+    response_algorithms = response_algorithms
+  )
+  fields <- fields[!vapply(fields, is.null, logical(1))]
+  paste(trimws(deparse(fields)), collapse = " ")
 }
 
 # Override operation name from extdata/operation_name_override.yml

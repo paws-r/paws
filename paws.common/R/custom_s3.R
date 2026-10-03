@@ -133,7 +133,10 @@ get_s3_arn_endpoint <- function(access_point) {
   if (resource$resource_type == "outpost") {
     host <- sprintf(
       "%s.%s.s3-outposts.%s.%s",
-      base, resource$outpost_id, arn$region, dns_suffix
+      base,
+      resource$outpost_id,
+      arn$region,
+      dns_suffix
     )
     service <- "s3-outposts"
   } else if (identical(arn$service, "s3-object-lambda")) {
@@ -278,6 +281,10 @@ content_md5 <- function(request) {
         "UploadPart"
       ))
   ) {
+    return(request)
+  }
+  if (!is.null(request$context$checksum$request_algorithm)) {
+    # A flexible checksum will be sent instead; don't also send Content-MD5.
     return(request)
   }
   # Create Content-MD5 header if missing.
