@@ -18,19 +18,18 @@ jobs:
       fail-fast: false
       matrix:
         config:
-
           # Check latest R versions
-          - { os: "ubuntu-latest",  R: "latest" }
-          - { os: "macOS-latest",   R: "latest" }
+          - { os: "ubuntu-latest", R: "latest" }
+          - { os: "macOS-latest", R: "latest" }
           - { os: "windows-latest", R: "latest" }
-          - { os: "ubuntu-latest",  R: "devel" }
+          - { os: "ubuntu-latest", R: "devel" }
           - { os: "windows-latest", R: "devel" }
 
           # Check older versions of R
-          - { os: "ubuntu-latest",  R: 'oldrel-1'}
-          - { os: "ubuntu-latest",  R: 'oldrel-2'}
-          - { os: "ubuntu-latest",  R: 'oldrel-3'}
-          - { os: "ubuntu-latest",  R: 'oldrel-4'}
+          - { os: "ubuntu-latest", R: "oldrel-1" }
+          - { os: "ubuntu-latest", R: "oldrel-2" }
+          - { os: "ubuntu-latest", R: "oldrel-3" }
+          - { os: "ubuntu-latest", R: "oldrel-4" }
 
           - { os: "windows-latest", R: "oldrel-4" }
 
@@ -65,7 +64,7 @@ jobs:
 
       - name: List dependencies
         run: |
-          install.packages('remotes')
+          install.packages('pak')
           saveRDS(
             c(
               remotes::dev_package_deps('paws.common', dependencies = TRUE),
@@ -85,16 +84,14 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages('remotes')
-          remotes::install_deps('paws.common', dependencies = TRUE)
-          remotes::install_deps('make.paws', dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
+          install.packages('pak')
+          pak::pkg_install("rcmdcheck")
         shell: Rscript {0}
 
       - name: Install paws packages
         run: |
-          remotes::install_local('paws.common', force = TRUE)
-          remotes::install_local('make.paws', force = TRUE)
+          pak::local_install('paws.common', upgrade = TRUE)
+          pak::local_install('make.paws', upgrade = TRUE)
         shell: Rscript {0}
 
       - name: Check paws.common
