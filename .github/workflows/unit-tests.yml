@@ -66,10 +66,10 @@ jobs:
         run: |
           install.packages('pak')
           saveRDS(
-            c(
-              remotes::dev_package_deps('paws.common', dependencies = TRUE),
-              remotes::dev_package_deps('make.paws', dependencies = TRUE),
-              'remotes', 'covr'
+            list(
+              pak::pkg_deps('local::paws.common', dependencies = TRUE)[, c('package', 'version')],
+              pak::pkg_deps('local::make.paws', dependencies = TRUE)[, c('package', 'version')],
+              'covr'
             ),
             '.github/depends.Rds', version = 2
           )
