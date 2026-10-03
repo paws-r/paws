@@ -152,9 +152,7 @@ test_that("apply_checksum_header leaves an already-set algorithm header alone", 
 })
 
 #-------------------------------------------------------------------------------
-# Full build + sign pipeline, exercising the default handler wiring in
-# new_handlers() end to end (resolve_checksum_algorithm in `build`,
-# apply_checksum_header in `sign`, before the request is actually signed).
+# Full build + sign pipeline, exercising the default handler wiring end to end.
 
 checksum_test_creds <- Credentials(
   provider = list(function() {
@@ -235,13 +233,15 @@ test_that("sign() computes and signs a caller-requested checksum header", {
   )
 })
 
-test_that("sign() defaults to a CRC32 checksum when none is requested", {
+test_that("sign() defaults to a CRC32 checksum when none is requested, and skips Content-MD5", {
+  # service_name = "s3" means customizations$s3 (content_md5) is also in play.
   body <- charToRaw("Hello World")
   request <- build_checksum_request(body)
   result <- sign(request)
 
   expect_equal(result$http_request$header[["x-amz-checksum-crc32"]], "ShexVg==")
   expect_equal(result$http_request$header[["x-amz-sdk-checksum-algorithm"]], "CRC32")
+  expect_null(result$http_request$header[["Content-Md5"]])
   expect_match(
     result$http_request$header[["Authorization"]],
     "SignedHeaders=[^,]*x-amz-checksum-crc32"

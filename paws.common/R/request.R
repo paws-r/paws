@@ -27,9 +27,7 @@ Operation <- struct(
 #' @param paginator List input_token and output_token.
 #' @param stream_api Set if operation is stream api or not
 #' @param before_presign_fn Currently unused.
-#' @param http_checksum The operation's `httpChecksum` trait, e.g.
-#'   `list(request_algorithm_member = "ChecksumAlgorithm", request_checksum_required = FALSE)`.
-#'   `NULL` if the operation has no flexible-checksum support.
+#' @param http_checksum The operation's `httpChecksum` trait, or `NULL`.
 #'
 #' @family API request functions
 #'

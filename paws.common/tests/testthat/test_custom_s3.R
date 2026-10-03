@@ -127,6 +127,17 @@ test_that("content_md5 create new Content-Md5", {
   expect_equal(actual$http_request$header$`Content-Md5`, expect_hash)
 })
 
+test_that("content_md5 skips when a flexible checksum will be applied instead", {
+  request <- list(
+    "operation" = list("name" = "PutObject"),
+    body = raw(1),
+    context = list(checksum = list(request_algorithm = "CRC32"))
+  )
+
+  actual <- content_md5(request)
+  expect_null(actual$http_request$header$`Content-Md5`)
+})
+
 test_that("s3_unmarshal_get_bucket_location", {
   op <- Operation(name = "GetBucketLocation")
   svc <- Client()

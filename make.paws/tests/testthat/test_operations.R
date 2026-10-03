@@ -172,6 +172,19 @@ test_that("set_http_checksum captures requestChecksumRequired", {
   expect_true(result$request_checksum_required)
 })
 
+test_that("set_http_checksum folds the legacy httpChecksumRequired trait into request_checksum_required", {
+  operation <- list(
+    name = "PutBucketTagging",
+    input = list(shape = "PutBucketTaggingRequest"),
+    httpChecksumRequired = TRUE
+  )
+  api <- list(shapes = list(PutBucketTaggingRequest = list(members = list())))
+  result <- eval(parse(text = set_http_checksum(operation, api)))
+  expect_true(result$request_checksum_required)
+  expect_null(result$request_algorithm_member)
+  expect_null(result$request_algorithm_header)
+})
+
 test_that("set_http_checksum captures response validation mode and algorithms", {
   operation <- list(
     name = "GetObject",

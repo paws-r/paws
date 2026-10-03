@@ -97,34 +97,36 @@ set_stream_api <- function(operation) {
   as.character(operation$eventstream %||% FALSE)
 }
 
-# Carry the operation's `httpChecksum` trait (flexible checksums, e.g. S3's
-# ChecksumAlgorithm/ChecksumMode) over into the generated `new_operation()`
-# call, so paws.common can resolve and apply it at request time. Mirrors
-# botocore's `operation_model.http_checksum`:
-# https://github.com/boto/botocore/blob/develop/botocore/httpchecksum.py
+# Carry the operation's `httpChecksum` trait over into the generated
+# `new_operation()` call, so paws.common can resolve and apply it at request
+# time. Also folds in the older, standalone `httpChecksumRequired` boolean
+# trait (e.g. several S3 Control operations) into the same
+# `request_checksum_required` field, since botocore treats both the same way.
 set_http_checksum <- function(operation, api) {
-  http_checksum <- operation$httpChecksum
-  if (is.null(http_checksum)) {
+  http_checksum <- operation[["httpChecksum"]]
+  legacy_required <- isTRUE(operation[["httpChecksumRequired"]])
+  if (is.null(http_checksum) && !legacy_required) {
     return("NULL")
   }
 
-  algorithm_member <- http_checksum$requestAlgorithmMember
+  algorithm_member <- http_checksum[["requestAlgorithmMember"]]
   algorithm_header <- NULL
   if (!is.null(algorithm_member)) {
     input_shape <- get_operation_input_shape(operation, api)
-    algorithm_header <- input_shape$members[[algorithm_member]]$locationName
+    algorithm_header <- input_shape$members[[algorithm_member]][["locationName"]]
   }
 
   response_algorithms <- NULL
-  if (length(http_checksum$responseAlgorithms) > 0) {
-    response_algorithms <- tolower(unlist(http_checksum$responseAlgorithms))
+  if (length(http_checksum[["responseAlgorithms"]]) > 0) {
+    response_algorithms <- tolower(unlist(http_checksum[["responseAlgorithms"]]))
   }
 
   fields <- list(
     request_algorithm_member = algorithm_member,
     request_algorithm_header = algorithm_header,
-    request_checksum_required = isTRUE(http_checksum$requestChecksumRequired),
-    request_validation_mode_member = http_checksum$requestValidationModeMember,
+    request_checksum_required = isTRUE(http_checksum[["requestChecksumRequired"]]) ||
+      legacy_required,
+    request_validation_mode_member = http_checksum[["requestValidationModeMember"]],
     response_algorithms = response_algorithms
   )
   fields <- fields[!vapply(fields, is.null, logical(1))]

@@ -5,13 +5,11 @@ NULL
 
 ################################################################################
 # Flexible checksum support, driven by an operation's `httpChecksum` trait.
-# Developed from botocore:
 # https://github.com/boto/botocore/blob/develop/botocore/httpchecksum.py
 
-# Maps AWS's `ChecksumAlgorithm` enum values to the `digest` package's `algo`
-# name and the `x-amz-checksum-<suffix>` header to use. CRC64NVME is
-# deliberately absent: AWS SDKs only support it via the CRT (`awscrt`), and
-# `digest` has no equivalent.
+# Maps AWS's `ChecksumAlgorithm` values to `digest`'s `algo` name and the
+# x-amz-checksum-<suffix> header. CRC64NVME is absent: AWS SDKs only support
+# it via the CRT, which `digest` has no equivalent of.
 .CHECKSUM_ALGORITHMS <- list(
   CRC32 = list(digest_algo = "crc32", header_suffix = "crc32"),
   CRC32C = list(digest_algo = "crc32c", header_suffix = "crc32c"),
@@ -26,9 +24,6 @@ NULL
 
 DEFAULT_CHECKSUM_ALGORITHM <- "CRC32"
 
-# Look up the algorithm spec, erroring with the list of supported algorithms
-# if the caller asked for one paws.common can't compute (currently just
-# CRC64NVME).
 checksum_algorithm_spec <- function(algorithm) {
   spec <- .CHECKSUM_ALGORITHMS[[toupper(algorithm)]]
   if (is.null(spec)) {
@@ -58,9 +53,8 @@ checksum_digest <- function(body, algorithm) {
   return(base64enc::base64encode(hash))
 }
 
-# Whether the request already carries an `x-amz-checksum-*` header, meaning
-# the caller supplied a precomputed checksum directly (e.g. `ChecksumSHA256`)
-# and checksum resolution should be skipped entirely.
+# Whether the caller already supplied a precomputed checksum directly (e.g.
+# `ChecksumSHA256`), in which case resolution should be skipped entirely.
 has_checksum_header <- function(request) {
   headers <- names(request$http_request$header)
   if (length(headers) == 0) {
@@ -71,9 +65,8 @@ has_checksum_header <- function(request) {
 
 ################################################################################
 
-# Build-stage handler: decide which checksum algorithm (if any) applies to
-# this request, and record it in the request context for apply_checksum_header
-# to act on during signing. Mirrors botocore's resolve_request_checksum_algorithm.
+# Build-stage handler: decide which checksum algorithm (if any) applies, and
+# record it in the request context for apply_checksum_header to act on.
 resolve_checksum_algorithm <- function(request) {
   http_checksum <- request$operation$http_checksum
   if (is.null(http_checksum) || has_checksum_header(request)) {
@@ -107,13 +100,10 @@ resolve_checksum_algorithm <- function(request) {
   return(request)
 }
 
-# Sign-stage handler (must run before the request is signed, so the checksum
-# header is included in SigV4's SignedHeaders): compute the digest of the
-# already-buffered request body and set it as the resolved x-amz-checksum-*
-# header. Also sets the algorithm-name header (e.g.
-# x-amz-sdk-checksum-algorithm) when it wasn't already populated by the
-# caller supplying ChecksumAlgorithm themselves. Mirrors botocore's
-# apply_request_checksum / _apply_request_header_checksum.
+# Sign-stage handler: must run before the signer, so the checksum header
+# ends up in SigV4's SignedHeaders. Computes the resolved x-amz-checksum-*
+# header, and the algorithm-name header (e.g. x-amz-sdk-checksum-algorithm)
+# if the caller didn't set ChecksumAlgorithm themselves.
 apply_checksum_header <- function(request) {
   algorithm <- request$context$checksum$request_algorithm
   if (is.null(algorithm)) {

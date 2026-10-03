@@ -280,6 +280,10 @@ content_md5 <- function(request) {
   ) {
     return(request)
   }
+  if (!is.null(request$context$checksum$request_algorithm)) {
+    # A flexible checksum will be sent instead; don't also send Content-MD5.
+    return(request)
+  }
   # Create Content-MD5 header if missing.
   # https://github.com/aws/aws-sdk-go/blob/e2d6cb448883e4f4fcc5246650f89bde349041ec/private/checksum/content_md5.go#L18
   if (is.null(request$http_request$header[["Content-MD5"]])) {
