@@ -704,6 +704,55 @@ get_object_output_params <- structure(
   tags = list(type = "structure", payload = "Body")
 )
 
+test_that("check generate_presigned_url with session token credentials", {
+  metadata <- list(
+    endpoints = list(
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "s3.amazonaws.com",
+        global = FALSE
+      )
+    ),
+    service_name = "s3"
+  )
+  credentials <- Credentials(Creds(
+    access_key_id = "DUMMY",
+    secret_access_key = "SECRETDUMMY",
+    session_token = "TOKEN"
+  ))
+  client <- new_service(
+    metadata,
+    new_handlers("restxml", "s3"),
+    Config(credentials, region = "us-east-1")
+  )
+  op <- new_operation(
+    name = "ListObjectsV2",
+    http_method = "GET",
+    http_path = "/{Bucket}?list-type=2",
+    paginator = list()
+  )
+
+  input <- list_objects_v2_input_params(Bucket = "foo")
+  output <- list_objects_v2_output_params
+  req <- new_request(client, op, input, output)
+
+  req$expire_time <- 3600L
+
+  req <- build(req)
+  expect_no_warning(req <- sign_v1_auth_query(req))
+  actual <- build_url(req$http_request$url)
+  expect_true(grepl(
+    sprintf(
+      "https://%s.s3.amazonaws.com/\\?list-type=2&AWSAccessKeyId=%s&Expires=.*?&Signature=.*&x-amz-security-token=%s",
+      "foo",
+      "DUMMY",
+      "TOKEN"
+    ),
+    actual
+  ))
+  expect_false(grepl("date=TOKEN", actual))
+  expect_false(grepl("user-agent=TOKEN", actual))
+})
+
 test_that("check generate_presigned_url with query string arguments of interest", {
   metadata <- list(
     endpoints = list(

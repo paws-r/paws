@@ -243,7 +243,7 @@ canonical_string <- function(ctx, auth_path) {
 
   canonical_string <- paste(
     ctx$request$method,
-    paste(ctx$canonical_headers, sep = "\n"),
+    paste(ctx$canonical_headers, collapse = "\n"),
     resource,
     sep = "\n"
   )
@@ -273,10 +273,7 @@ inject_signature_query <- function(ctx) {
   l_header_nms <- tolower(header_names)
   found <- startsWith(l_header_nms, "x-amz-")
   found[!found] <- l_header_nms[!found] %in% c("content-md5", "content-type")
-
-  for (header_name in header_names[found]) {
-    query_list[l_header_nms] <- ctx$request$header[[header_name]]
-  }
+  query_list <- c(query_list, setNames(ctx$request$header[found], l_header_nms[found]))
 
   query_list <- if (!ctx$anonymous) query_list else list()
   query <- ctx$request$url$raw_query
